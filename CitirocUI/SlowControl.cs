@@ -541,10 +541,18 @@ namespace CitirocUI
         {
             bool result = false;
 
+            string strSC = getSC();
+            result = sendSC(usbDevId, strSC);
+            if (result) button_sendSC.BackColor = WeerocGreen;
+            else button_sendSC.BackColor = Color.LightCoral;
+            button_sendSC.ForeColor = Color.White;
+
+            return;
+
             // Test if software can read firmware version. If not, the board is not connected.
             if (Firmware.readWord(100, usbDevId) != "00000000")
             {
-                string strSC = getSC();
+               //string strSC = getSC();
                 result = sendSC(usbDevId, strSC);
                 if (result) button_sendSC.BackColor = WeerocGreen;
                 else button_sendSC.BackColor = Color.LightCoral;
@@ -572,23 +580,38 @@ namespace CitirocUI
             int SCLenght = strDefSC.Length;
             // Get length of current slow control bitstream
             int intLenStrSC = strSC.Length;
-            byte[] bytSC = new byte[SCLenght / 8];
+            byte[] bytSC = new byte[1 + SCLenght/8];
             // reverse slow control string before loading
-            strSC = strRev(strSC);
+            //strSC = strRev(strSC);
 
             // If the length of the current bitstream is not OK, return false
             // else store the slow control in byte array
             if (intLenStrSC == SCLenght)
             {
+                bytSC[0] = Convert.ToByte('C');
                 for (int i = 0; i < (SCLenght / 8); i++)
                 {
                     string strScCmdTmp = strSC.Substring(i * 8, 8);
                     strScCmdTmp = strRev(strScCmdTmp);
                     uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
-                    bytSC[i] = Convert.ToByte(intCmdTmp);
+                    bytSC[i+1] = Convert.ToByte(intCmdTmp);
                 }
             }
             else return result;
+
+            try
+            { 
+                mySerialPort.Write(bytSC, 0, 1 + SCLenght / 8);
+            }
+
+             catch (IOException)
+            {
+                return false;
+            }
+
+            result = true;
+
+            return result;
 
             // Select slow control parameters to FPGA
             Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
