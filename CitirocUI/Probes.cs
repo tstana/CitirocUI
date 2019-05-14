@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace CitirocUI
 {
@@ -11,10 +12,17 @@ namespace CitirocUI
         {
             bool result = false;
 
+            result = sendProbes(usbDevId);
+            if (result) button_sendProbes.BackColor = WeerocGreen;
+            else button_sendProbes.BackColor = Color.LightCoral;
+            button_sendProbes.ForeColor = Color.White;
+
+            return;
+
             // Test if software can read firmware version. If not, the board is not connected.
             if (Firmware.readWord(100, usbDevId) != "00000000")
             {
-                result = sendProbes(usbDevId);
+               result = sendProbes(usbDevId);
                 if (result) button_sendProbes.BackColor = WeerocGreen;
                 else button_sendProbes.BackColor = Color.LightCoral;
                 button_sendProbes.ForeColor = Color.White;
@@ -51,18 +59,33 @@ namespace CitirocUI
             string probeStream = new string(tmpProbeStream);
 
             int intLenProbeStream = probeStream.Length;
-            byte[] bytProbe = new byte[intLenProbeStream / 8];
+            byte[] bytProbe = new byte[1 + intLenProbeStream/8];
 
-            probeStream = strRev(probeStream);
+            //probeStream = strRev(probeStream);
 
+            bytProbe[0] = Convert.ToByte('P');
             for (int i = 0; i < (intLenProbeStream / 8); i++)
             {
                 string strProbeCmdTmp = probeStream.Substring(i * 8, 8);
                 strProbeCmdTmp = strRev(strProbeCmdTmp);
                 UInt32 intCmdTmp = Convert.ToUInt32(strProbeCmdTmp, 2);
-                bytProbe[i] = Convert.ToByte(intCmdTmp);
+                bytProbe[i+1] = Convert.ToByte(intCmdTmp);
             }
-            
+
+            try
+            {
+                mySerialPort.Write(bytProbe, 0, 1 + intLenProbeStream/8);
+            }
+
+            catch (IOException)
+            {
+                return false;
+            }
+
+            result = true;
+
+            return result;
+
             // Select probes parameters to FPGA
             Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
             // Send probes parameters to FPGA
