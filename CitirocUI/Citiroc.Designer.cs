@@ -1,4 +1,6 @@
-﻿namespace CitirocUI
+﻿using System;
+
+namespace CitirocUI
 {
     partial class Citiroc
     {
@@ -867,6 +869,7 @@
             this.backgroundWorker_holdScan = new System.ComponentModel.BackgroundWorker();
             this.button_screenshot = new System.Windows.Forms.Button();
             this.roundButton_connectSmall = new CitirocUI.roundButton();
+            this.comboBox_SelectPort = new System.Windows.Forms.ComboBox();
             this.tabControl_top.SuspendLayout();
             this.tabPage_main.SuspendLayout();
             this.tabPage_slowControl.SuspendLayout();
@@ -1166,6 +1169,7 @@
             // tabPage_main
             // 
             this.tabPage_main.BackColor = System.Drawing.Color.White;
+            this.tabPage_main.Controls.Add(this.comboBox_SelectPort);
             this.tabPage_main.Controls.Add(this.roundButton_connect);
             this.tabPage_main.Controls.Add(this.label_plug);
             this.tabPage_main.Controls.Add(this.progressBar_loadFw);
@@ -1854,8 +1858,8 @@
             this.checkBox_fshOnLg.AutoSize = true;
             this.checkBox_fshOnLg.Location = new System.Drawing.Point(485, 96);
             this.checkBox_fshOnLg.Name = "checkBox_fshOnLg";
-            this.checkBox_fshOnLg.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_fshOnLg.Size = new System.Drawing.Size(230, 28);
+            this.checkBox_fshOnLg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_fshOnLg.Size = new System.Drawing.Size(231, 28);
             this.checkBox_fshOnLg.TabIndex = 172;
             this.checkBox_fshOnLg.Text = "Low gain to fast shaper";
             this.checkBox_fshOnLg.UseVisualStyleBackColor = true;
@@ -1866,8 +1870,8 @@
             this.checkBox_triggerPolarity.AutoSize = true;
             this.checkBox_triggerPolarity.Location = new System.Drawing.Point(234, 96);
             this.checkBox_triggerPolarity.Name = "checkBox_triggerPolarity";
-            this.checkBox_triggerPolarity.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_triggerPolarity.Size = new System.Drawing.Size(171, 28);
+            this.checkBox_triggerPolarity.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_triggerPolarity.Size = new System.Drawing.Size(172, 28);
             this.checkBox_triggerPolarity.TabIndex = 170;
             this.checkBox_triggerPolarity.Text = "Negative trigger";
             this.checkBox_triggerPolarity.UseVisualStyleBackColor = true;
@@ -1878,8 +1882,8 @@
             this.checkBox_dacRef.AutoSize = true;
             this.checkBox_dacRef.Location = new System.Drawing.Point(234, 128);
             this.checkBox_dacRef.Name = "checkBox_dacRef";
-            this.checkBox_dacRef.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_dacRef.Size = new System.Drawing.Size(274, 28);
+            this.checkBox_dacRef.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_dacRef.Size = new System.Drawing.Size(275, 28);
             this.checkBox_dacRef.TabIndex = 169;
             this.checkBox_dacRef.Text = "Input DAC reference = 2.5 V";
             this.checkBox_dacRef.UseVisualStyleBackColor = true;
@@ -1890,8 +1894,8 @@
             this.checkBox_biasSca.AutoSize = true;
             this.checkBox_biasSca.Location = new System.Drawing.Point(234, 64);
             this.checkBox_biasSca.Name = "checkBox_biasSca";
-            this.checkBox_biasSca.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_biasSca.Size = new System.Drawing.Size(116, 28);
+            this.checkBox_biasSca.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_biasSca.Size = new System.Drawing.Size(117, 28);
             this.checkBox_biasSca.TabIndex = 168;
             this.checkBox_biasSca.Text = "SCA bias";
             this.checkBox_biasSca.UseVisualStyleBackColor = true;
@@ -1902,8 +1906,8 @@
             this.checkBox_latchDiscri.AutoSize = true;
             this.checkBox_latchDiscri.Location = new System.Drawing.Point(234, 32);
             this.checkBox_latchDiscri.Name = "checkBox_latchDiscri";
-            this.checkBox_latchDiscri.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_latchDiscri.Size = new System.Drawing.Size(142, 28);
+            this.checkBox_latchDiscri.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_latchDiscri.Size = new System.Drawing.Size(143, 28);
             this.checkBox_latchDiscri.TabIndex = 167;
             this.checkBox_latchDiscri.Text = "Latch trigger";
             this.checkBox_latchDiscri.UseVisualStyleBackColor = true;
@@ -1914,8 +1918,8 @@
             this.checkBox_scaOrPdLg.AutoSize = true;
             this.checkBox_scaOrPdLg.Location = new System.Drawing.Point(485, 64);
             this.checkBox_scaOrPdLg.Name = "checkBox_scaOrPdLg";
-            this.checkBox_scaOrPdLg.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_scaOrPdLg.Size = new System.Drawing.Size(276, 28);
+            this.checkBox_scaOrPdLg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_scaOrPdLg.Size = new System.Drawing.Size(277, 28);
             this.checkBox_scaOrPdLg.TabIndex = 166;
             this.checkBox_scaOrPdLg.Text = "Use peak sensing (low gain)";
             this.checkBox_scaOrPdLg.UseVisualStyleBackColor = true;
@@ -1926,8 +1930,8 @@
             this.checkBox_scaOrPdHg.AutoSize = true;
             this.checkBox_scaOrPdHg.Location = new System.Drawing.Point(485, 32);
             this.checkBox_scaOrPdHg.Name = "checkBox_scaOrPdHg";
-            this.checkBox_scaOrPdHg.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_scaOrPdHg.Size = new System.Drawing.Size(284, 28);
+            this.checkBox_scaOrPdHg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_scaOrPdHg.Size = new System.Drawing.Size(285, 28);
             this.checkBox_scaOrPdHg.TabIndex = 165;
             this.checkBox_scaOrPdHg.Text = "Use peak sensing (high gain)";
             this.checkBox_scaOrPdHg.UseVisualStyleBackColor = true;
@@ -10400,6 +10404,19 @@
             this.comboBox_triggerPreset.TabIndex = 165;
             this.comboBox_triggerPreset.SelectedIndexChanged += new System.EventHandler(this.comboBox_triggerPreset_SelectedIndexChanged);
             // 
+            // comboBox_SelectPort
+            // 
+            this.comboBox_SelectPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_SelectPort.FormattingEnabled = true;
+            this.comboBox_SelectPort.Items.AddRange(new object[] {
+            "USB",
+            "Serial port"});
+            this.comboBox_SelectPort.Location = new System.Drawing.Point(300, 381);
+            this.comboBox_SelectPort.Name = "comboBox_SelectPort";
+            this.comboBox_SelectPort.Size = new System.Drawing.Size(353, 32);
+            this.comboBox_SelectPort.TabIndex = 165;
+            this.comboBox_SelectPort.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectPort_SelectedIndexChanged);
+            // 
             // label136
             // 
             this.label136.AutoSize = true;
@@ -11438,6 +11455,46 @@
             this.roundButton_connectSmall.MouseEnter += new System.EventHandler(this.roundButton_connect_MouseEnter);
             this.roundButton_connectSmall.MouseLeave += new System.EventHandler(this.object_MouseLeave);
             // 
+            // comboBox_SelectPort
+            // 
+            //this.comboBox_SelectPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //this.comboBox_SelectPort.FormattingEnabled = true;
+            //this.comboBox_SelectPort.Items.AddRange(new object[] {
+            //"USB",
+            //"Serial port"});
+            //this.comboBox_SelectPort.Location = new System.Drawing.Point(667, 201);
+            //this.comboBox_SelectPort.Name = "comboBox_SelectPort";
+            //this.comboBox_SelectPort.Size = new System.Drawing.Size(353, 32);
+            //this.comboBox_SelectPort.TabIndex = 166;
+            // 
+            // checkBox_USB
+            // 
+            this.checkBox_USB = new CitirocUI.switchBox();
+            this.checkBox_USB.AutoSize = true;
+            this.checkBox_USB.Location = new System.Drawing.Point(64, 192);
+            this.checkBox_USB.Name = "checkBox_USB";
+            this.checkBox_USB.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_USB.Size = new System.Drawing.Size(177, 28);
+            this.checkBox_USB.TabIndex = 24;
+            this.checkBox_USB.Text = "USB";
+            this.checkBox_USB.UseVisualStyleBackColor = true;
+            this.checkBox_USB.Visible = false;
+            this.checkBox_USB.CheckedChanged += new System.EventHandler(this.checkBox_USB_CheckedChanged);
+            // 
+            // checkBox_SerialPort
+            // 
+            this.checkBox_SerialPort = new CitirocUI.switchBox();
+            this.checkBox_SerialPort.AutoSize = true;
+            this.checkBox_SerialPort.Location = new System.Drawing.Point(64, 192);
+            this.checkBox_SerialPort.Name = "checkBox_SerialPort";
+            this.checkBox_SerialPort.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_SerialPort.Size = new System.Drawing.Size(177, 28);
+            this.checkBox_SerialPort.TabIndex = 24;
+            this.checkBox_SerialPort.Text = "Serial Port";
+            this.checkBox_SerialPort.UseVisualStyleBackColor = true;
+            this.checkBox_SerialPort.Visible = false;
+            this.checkBox_SerialPort.CheckedChanged += new System.EventHandler(this.checkBox_SerialPort_CheckedChanged);
+            // 
             // Citiroc
             // 
             this.AllowDrop = true;
@@ -11537,6 +11594,21 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void comboBox_SelectPort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void checkBox_USB_CheckedChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void checkBox_SerialPort_CheckedChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -12365,6 +12437,9 @@
         private System.Windows.Forms.Button button_screenshot;
         private System.Windows.Forms.Button button_refreshHoldScan;
         private System.Windows.Forms.Label label_acqTime;
+        private System.Windows.Forms.ComboBox comboBox_SelectPort;
+        private switchBox checkBox_USB;
+        private switchBox checkBox_SerialPort;
     }
 }
 

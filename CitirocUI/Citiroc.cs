@@ -29,6 +29,7 @@ namespace CitirocUI
         {
             InitializeComponent();
 
+
             try
             {
                 byte[] fontData = Properties.Resources.Bryant_RegularCompressed;
@@ -196,7 +197,8 @@ namespace CitirocUI
             setSC("1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
             setSC(strDefSC);
 
-            //Inititalise serialPort.Write function used in SlowControls
+
+            //Initialise serialPort.Write function used in SlowControls
             mySerialPort = new SerialPort("COM5");
 
             mySerialPort.BaudRate = 115200;
@@ -211,7 +213,7 @@ namespace CitirocUI
             mySerialPort.ReadTimeout = 500;
             mySerialPort.WriteTimeout = 500;
 
-            mySerialPort.Open();
+            //mySerialPort.Open();
             
 
 
@@ -408,6 +410,31 @@ namespace CitirocUI
             textBox_word5.Text = Firmware.readWord(5, usbDevId);
         }
 
+        private void combobox_SelectPort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox_SelectPort.SelectedIndex)
+            {
+                case 1:
+                    checkBox_USB.Checked = true;
+                    Thread.Sleep(1);
+                    checkBox_SerialPort.Checked = false;
+                    Thread.Sleep(1);
+                    break;
+                case 2:
+                    checkBox_USB.Checked = false;
+                    Thread.Sleep(1);
+                    checkBox_SerialPort.Checked = true;
+                    Thread.Sleep(1);
+                    break;
+                default:
+                    checkBox_USB.Checked = false;
+                    Thread.Sleep(1);
+                    checkBox_SerialPort.Checked = false;
+                    Thread.Sleep(1);
+                    break;
+            }
+        }
+
         private void comboBox_triggerPreset_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox_triggerPreset.SelectedIndex)
@@ -480,6 +507,8 @@ namespace CitirocUI
                     break;
             }                
         }
+
+
 
         private void checkBox_selValEvt_CheckedChanged(object sender, EventArgs e)
         {
@@ -1348,6 +1377,10 @@ namespace CitirocUI
         }
 
         System.Threading.Timer tempTimer;
+        private IEnumerable<string> ports;
+
+        // private object getCOMPorts;
+
         private void tempCallback(object state)
         {
             int index = 0;
