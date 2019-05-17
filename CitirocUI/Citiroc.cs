@@ -410,31 +410,6 @@ namespace CitirocUI
             textBox_word5.Text = Firmware.readWord(5, usbDevId);
         }
 
-        private void combobox_SelectPort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (comboBox_SelectPort.SelectedIndex)
-            {
-                case 1:
-                    checkBox_USB.Checked = true;
-                    Thread.Sleep(1);
-                    checkBox_SerialPort.Checked = false;
-                    Thread.Sleep(1);
-                    break;
-                case 2:
-                    checkBox_USB.Checked = false;
-                    Thread.Sleep(1);
-                    checkBox_SerialPort.Checked = true;
-                    Thread.Sleep(1);
-                    break;
-                default:
-                    checkBox_USB.Checked = false;
-                    Thread.Sleep(1);
-                    checkBox_SerialPort.Checked = false;
-                    Thread.Sleep(1);
-                    break;
-            }
-        }
-
         private void comboBox_triggerPreset_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox_triggerPreset.SelectedIndex)
@@ -1777,6 +1752,11 @@ namespace CitirocUI
 
                 bitmap.Save(strSaveImageName, System.Drawing.Imaging.ImageFormat.Png);
             }
+        }
+
+        private void comboBox_SelectConnection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
