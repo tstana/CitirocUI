@@ -76,10 +76,14 @@ namespace CitirocUI
         {
             Application.Exit();
 
-            if (mySerialPort.IsOpen)
+            try
             {
-                mySerialPort.Close();
+                if (mySerialPort.IsOpen)
+                {
+                    mySerialPort.Close();
+                }
             }
+            catch { /* Blindly close... */}
         }
 
         private void btn_minimize_Click(object sender, EventArgs e)
@@ -170,6 +174,7 @@ namespace CitirocUI
 
         static int NbChannels = 32;
         private SerialPort mySerialPort;
+
         private void Citiroc_Load(object sender, EventArgs e)
         {
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();
@@ -197,33 +202,13 @@ namespace CitirocUI
             setSC("1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
             setSC(strDefSC);
 
-
-            //Initialise serialPort.Write function used in SlowControls
-            mySerialPort = new SerialPort("COM5");
-
-            mySerialPort.BaudRate = 115200;
-            mySerialPort.Parity = Parity.None;
-            mySerialPort.StopBits = StopBits.One;
-            mySerialPort.DataBits = 8;
-            mySerialPort.Handshake = Handshake.None;
-            mySerialPort.RtsEnable = true;
-
-
-            // Set the read/write timeouts
-            mySerialPort.ReadTimeout = 500;
-            mySerialPort.WriteTimeout = 500;
-
-            //mySerialPort.Open();
-            
-
-
             textBox_sCurveSavePath.Text = Path.GetTempPath() + "ScurvesCITI";
             textBox_dataSavePath.Text = Path.GetTempPath() + "dataCITI";
             textBox_staircaseSavePath.Text = Path.GetTempPath() + "staircaseCITI";
             textBox_holdScanSavePath.Text = Path.GetTempPath() + "holdScanCITI";
             comboBox_sCurvesClock.SelectedIndex = 3;
             comboBox_triggerPreset.SelectedIndex = 0;
-            
+
             enableZoom(chart_Scurves.ChartAreas[0], true);
             enableZoom(chart_staircase.ChartAreas[0], true);
             enableZoom(chart_perChannelChargeHG.ChartAreas[0], true);
@@ -298,7 +283,7 @@ namespace CitirocUI
             chart_perChannelChargeLG.ContextMenu = cm3;
             chart_perAcqChargeLG.ContextMenu = cm2;
 
-            roundButton_connect.Focus();
+            groupBox_SerialPortSettings.Visible = false;
         }
 
         #region fancy tabControl
@@ -334,7 +319,7 @@ namespace CitirocUI
         }
 
         #endregion
-        
+
         #region misc. methods
 
         public static int GrayToInt(BitArray gray, int length) // Gray code to integer conversion
@@ -398,7 +383,7 @@ namespace CitirocUI
         }
 
         #endregion
-        
+
         #region firmware options
 
         private void readAllFPGAWords()
@@ -480,7 +465,7 @@ namespace CitirocUI
                     Thread.Sleep(1);
                     checkBox_selPSGlobalTrigger.Checked = false;
                     break;
-            }                
+            }
         }
 
 
@@ -587,7 +572,7 @@ namespace CitirocUI
                 checkBox_PSGlobalTrigger.Visible = false;
                 if (((CheckBox)sender).Visible) checkBox_iofpgaOr32t.Visible = true;
             }
-        Firmware.sendWord(2, "000" + ((checkBox_softwareTrigger.Checked) ? "1" : "0") + ((checkBox_iofpgaOr32t.Checked) ? "1" : "0") + "1" + ((checkBox_ADC1.Checked) ? "1" : "0") + ((checkBox_ADC2.Checked) ? "1" : "0"), usbDevId);
+            Firmware.sendWord(2, "000" + ((checkBox_softwareTrigger.Checked) ? "1" : "0") + ((checkBox_iofpgaOr32t.Checked) ? "1" : "0") + "1" + ((checkBox_ADC1.Checked) ? "1" : "0") + ((checkBox_ADC2.Checked) ? "1" : "0"), usbDevId);
             readAllFPGAWords();
         }
 
@@ -611,7 +596,7 @@ namespace CitirocUI
         {
             if (((CheckBox)sender).Checked) ((CheckBox)sender).Text = "power ON (no power pulsing)";
             else ((CheckBox)sender).Text = "IO_FPGA4 power on (power pulsing)";
-            Firmware.sendWord(3, ((checkBox_rstbPS.Checked) ? "1" : "0") + "00" + ((checkBox_timeOutHold.Checked) ? "1" : "0") + ((checkBox_selHold.Checked) ? "1" : "0") + ((checkBox_selTrigToHold.Checked) ? "1" : "0") +  ((checkBox_triggerTorQ.Checked) ? "1" : "0") + ((checkBox_pwrOn.Checked) ? "1" : "0"), usbDevId);
+            Firmware.sendWord(3, ((checkBox_rstbPS.Checked) ? "1" : "0") + "00" + ((checkBox_timeOutHold.Checked) ? "1" : "0") + ((checkBox_selHold.Checked) ? "1" : "0") + ((checkBox_selTrigToHold.Checked) ? "1" : "0") + ((checkBox_triggerTorQ.Checked) ? "1" : "0") + ((checkBox_pwrOn.Checked) ? "1" : "0"), usbDevId);
             readAllFPGAWords();
         }
 
@@ -787,12 +772,12 @@ namespace CitirocUI
         {
             Charting.Axis ax = chart.ChartAreas[0].AxisX;
             Charting.Axis ay = chart.ChartAreas[0].AxisY;
-            
+
             ax.ScaleView.ZoomReset(0);
             ay.ScaleView.ZoomReset(0);
             chart.ChartAreas[0].CursorX.SetCursorPosition(double.NaN);
             chart.ChartAreas[0].CursorY.SetCursorPosition(double.NaN);
-            
+
             ax.Interval = 0;
             ax.LabelStyle.IntervalOffset = 0;
             ax.MajorGrid.IntervalOffset = 0;
@@ -802,7 +787,7 @@ namespace CitirocUI
             ay.LabelStyle.IntervalOffset = 0;
             ay.MajorGrid.IntervalOffset = 0;
             ay.MajorTickMark.IntervalOffset = 0;
-            
+
             if (chart == chart_Scurves)
             {
                 ay.LabelStyle.IntervalOffset += 5;
@@ -1057,7 +1042,7 @@ namespace CitirocUI
             ay.LabelStyle.IntervalOffset = Yoffset;
             ay.MajorGrid.IntervalOffset = Yoffset;
             ay.MajorTickMark.IntervalOffset = Yoffset;
-            
+
             if (chart == chart_Scurves)
             {
                 ay.LabelStyle.IntervalOffset += 5;
@@ -1080,16 +1065,16 @@ namespace CitirocUI
             Chart chart = (Chart)sender;
 
             chart.ChartAreas[0].InnerPlotPosition.Auto = true;
-            
+
             dragMoveChart = false;
 
             Charting.Axis ax = chart.ChartAreas[0].AxisX;
             Charting.Axis ay = chart.ChartAreas[0].AxisY;
-            
+
             ax.Interval = 0;
             ay.Interval = 0;
             ax.RoundAxisValues();
-            
+
             double Xoffset = ax.Minimum - ax.ScaleView.Position + 1;
 
             if (chart == chart_perAcqChargeHG || chart == chart_perAcqChargeLG) Xoffset += 1;
@@ -1111,7 +1096,7 @@ namespace CitirocUI
         }
 
         #endregion
-        
+
         #region delegate
         public delegate void TextBoxDelegate(string message, TextBox txtBox);
         private void UpdatingTextBox(string msg, TextBox TB)
@@ -1223,7 +1208,7 @@ namespace CitirocUI
         private void tabPage_mainSettings_MouseEnter(object sender, EventArgs e)
         {
             label_help.Text = "Main settings of the ASIC. Contains the threshold values for charge and time, shaping behavior, trigger masking and" +
-                " various behavior options. Ctest are injection capacitors embeded in the ASIC for test purpose. Plug a pulse generator on the" + 
+                " various behavior options. Ctest are injection capacitors embeded in the ASIC for test purpose. Plug a pulse generator on the" +
                 "\"IN_CALIB\" LEMO connector on the testboard and choose the channel to inject by checking the correponding checkbox.";
         }
 
@@ -1235,7 +1220,7 @@ namespace CitirocUI
 
         private void tabPage_preamplifier_MouseEnter(object sender, EventArgs e)
         {
-            label_help.Text = "On this page you can adjust the preamplifiers gains or disable them by individual channels. Refer to the datasheet " + 
+            label_help.Text = "On this page you can adjust the preamplifiers gains or disable them by individual channels. Refer to the datasheet " +
                 "to find the corresponding voltage gains.";
         }
 
@@ -1245,7 +1230,7 @@ namespace CitirocUI
                 " 32 fast shaper outputs is very low. The input DAC calibration is used to adjust individual high voltage biasing of SiPM in a SiPM array" +
                 " so every SiPM has the same gain. Input DAC can be disabled per individual channel thanks to the checkboxes.";
         }
-        
+
         private void button_saveSC_MouseEnter(object sender, EventArgs e)
         {
             label_help.Text = "Save the current slow control configuration into a file for later use.";
@@ -1294,7 +1279,7 @@ namespace CitirocUI
         {
             label_help.Text = "Start plotting the S-curves.";
         }
-        
+
         private void checkBox_useMaskScurves_MouseEnter(object sender, EventArgs e)
         {
             label_help.Text = "Unmask only the measured channel to reduce crosstalk during the measurement. Only available on the charge trigger.";
@@ -1366,7 +1351,7 @@ namespace CitirocUI
                 backgroundWorker_staircase.IsBusy ||
                 backgroundWorker_holdScan.IsBusy ||
                 index == 5) { SetEnable(false, label_tempOnBoard); tempTimer.Change(1000, Timeout.Infinite); return; }
-            
+
             SetEnable(true, label_tempOnBoard);
             double temp = (Convert.ToInt32(Firmware.readWord(64, usbDevId), 2) * 256 + Convert.ToInt32(Firmware.readWord(65, usbDevId), 2)) / 16;
             if (temp >= 2048) temp -= 1024;
@@ -1375,7 +1360,7 @@ namespace CitirocUI
 
             tempTimer.Change(1000, Timeout.Infinite);
         }
-        
+
         private void SaveImage_Click(object sender, EventArgs e)
         {
             Chart chart = (Chart)(((MenuItem)sender).GetContextMenu().SourceControl);
@@ -1434,7 +1419,7 @@ namespace CitirocUI
                 exportType = saveDialog.FilterIndex;
             }
             else return;
-            
+
             // Export series values into a DataSet object
             DataSet dataset = chart.DataManipulator.ExportSeriesValues();
 
@@ -1661,7 +1646,7 @@ namespace CitirocUI
 
                 Charting.Axis ax = chart.ChartAreas[0].AxisX;
                 Charting.Axis ay = chart.ChartAreas[0].AxisY;
-                
+
                 ax.ScaleView.Zoom(xAxisMin, xAxisMax);
                 ay.ScaleView.Zoom(yAxisMin, yAxisMax);
 
@@ -1699,7 +1684,7 @@ namespace CitirocUI
             if (checkBox_holdScanChoice.Checked) checkBox_holdScanChoice.Text = "On low gain";
             else checkBox_holdScanChoice.Text = "On high gain";
         }
-        
+
         [DllImport("gdi32.dll", EntryPoint = "BitBlt")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool BitBlt(
@@ -1722,7 +1707,7 @@ namespace CitirocUI
             else return;
 
             if (strSaveImageName == null) return;
-            
+
             Form frm = label_titleBar.FindForm();
 
             Thread.Sleep(100);
@@ -1753,10 +1738,6 @@ namespace CitirocUI
                 bitmap.Save(strSaveImageName, System.Drawing.Imaging.ImageFormat.Png);
             }
         }
-
-        private void comboBox_SelectConnection_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+           

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using FTD2XX_NET;
 using System.Threading;
 using System.IO;
+using System.IO.Ports;
 using System.Diagnostics;
 
 namespace CitirocUI
@@ -52,159 +53,212 @@ namespace CitirocUI
         int connectStatus = -1; // -1 = not connected, 0 = board connected but most likely powering issue, 1 = board connected
         unsafe private void roundButton_connect_Click(object sender, EventArgs e)
         {
-            label_plug.Visible = false;
-
-            // If usb already opened, close it.
-            if (usbDevId > 0)
+            if (comboBox_SelectConnection.SelectedIndex == 0)
             {
-                USB.CloseUsbDevice(usbDevId);
-                usbDevId = 0;
-            }
+                label_plug.Visible = false;
 
-            label_boardStatus.Text = "Board status\n" + "Not connected";
-
-            // if connectStatus was "connected", make it disconnected and return
-            if (connectStatus == 1)
-            {
-                roundButton_connect.BackColor = Color.Gainsboro;
-                roundButton_connect.ForeColor = Color.Black;
-                roundButton_connectSmall.BackColor = Color.Gainsboro;
-                roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
-                connectStatus = -1;
-                label_boardStatus.Text = "Board status\n" + "No board connected";
-                button_loadFw.Visible = false;
-                progressBar_loadFw.Visible = false;
-                return;
-            }
-
-            // check for usb devices
-            ftStatus = myFtdiDevice.GetNumberOfDevices(ref ftdiDeviceCount);
-
-            if (ftdiDeviceCount > 0)
-            {
-                ftdiDeviceList = new FTDI.FT_DEVICE_INFO_NODE[ftdiDeviceCount];
-                ftStatus = myFtdiDevice.GetDeviceList(ftdiDeviceList);
-
-                testBoardFtdiDevice[0] = ftdiDeviceList[0];
-                int index = 0;
-                if (ftdiDeviceList.Length > 2)
+                // If usb already opened, close it.
+                if (usbDevId > 0)
                 {
-                    using (Form_ftdiDevices frm = new Form_ftdiDevices(ftdiDeviceList))
-                    {
-                        frm.ShowDialog();
-
-                        index = frm.ftdiIndex;
-                    }
+                    USB.CloseUsbDevice(usbDevId);
+                    usbDevId = 0;
                 }
 
-                testBoardFtdiDevice[0] = ftdiDeviceList[index];
+                label_boardStatus.Text = "Board status\n" + "Not connected";
 
-                // Force connection to the A port of the USB. The B port is for firmware loading.
-                string serialNumber = testBoardFtdiDevice[0].SerialNumber;
-                serialNumber = serialNumber.Remove(serialNumber.Length - 1) + "A";
-                string description = testBoardFtdiDevice[0].Description;
-                description = description.Remove(description.Length - 1) + "A";
-                string boardFirmware = "";
-
-                int numUsbDev = USB.USB_GetNumberOfDevs();
-                // Open the usb device
-                usbDevId = USB.OpenUsbDevice(serialNumber);
-
-                bool retVerbose = false;
-                bool retUsbOpen = USB.USB_Init(usbDevId, ref retVerbose);
-                bool retSetLT = USB.USB_SetLatencyTimer(usbDevId, 2);
-
-                // Read Latency Time from FPGA
-                byte[] templtime = new byte[1];
-                unsafe
+                // if connectStatus was "connected", make it disconnected and return
+                if (connectStatus == 1)
                 {
-                    fixed (byte* array = templtime)
+                    roundButton_connect.BackColor = Color.Gainsboro;
+                    roundButton_connect.ForeColor = Color.Black;
+                    roundButton_connectSmall.BackColor = Color.Gainsboro;
+                    roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
+                    connectStatus = -1;
+                    label_boardStatus.Text = "Board status\n" + "No board connected";
+                    button_loadFw.Visible = false;
+                    progressBar_loadFw.Visible = false;
+                    return;
+                }
+
+                // check for usb devices
+                ftStatus = myFtdiDevice.GetNumberOfDevices(ref ftdiDeviceCount);
+
+                if (ftdiDeviceCount > 0)
+                {
+                    ftdiDeviceList = new FTDI.FT_DEVICE_INFO_NODE[ftdiDeviceCount];
+                    ftStatus = myFtdiDevice.GetDeviceList(ftdiDeviceList);
+
+                    testBoardFtdiDevice[0] = ftdiDeviceList[0];
+                    int index = 0;
+                    if (ftdiDeviceList.Length > 2)
                     {
-                        bool ret_value = USB.USB_GetLatencyTimer(usbDevId, array);
+                        using (Form_ftdiDevices frm = new Form_ftdiDevices(ftdiDeviceList))
+                        {
+                            frm.ShowDialog();
+
+                            index = frm.ftdiIndex;
+                        }
+                    }
+
+                    testBoardFtdiDevice[0] = ftdiDeviceList[index];
+
+                    // Force connection to the A port of the USB. The B port is for firmware loading.
+                    string serialNumber = testBoardFtdiDevice[0].SerialNumber;
+                    serialNumber = serialNumber.Remove(serialNumber.Length - 1) + "A";
+                    string description = testBoardFtdiDevice[0].Description;
+                    description = description.Remove(description.Length - 1) + "A";
+                    string boardFirmware = "";
+
+                    int numUsbDev = USB.USB_GetNumberOfDevs();
+                    // Open the usb device
+                    usbDevId = USB.OpenUsbDevice(serialNumber);
+
+                    bool retVerbose = false;
+                    bool retUsbOpen = USB.USB_Init(usbDevId, ref retVerbose);
+                    bool retSetLT = USB.USB_SetLatencyTimer(usbDevId, 2);
+
+                    // Read Latency Time from FPGA
+                    byte[] templtime = new byte[1];
+                    unsafe
+                    {
+                        fixed (byte* array = templtime)
+                        {
+                            bool ret_value = USB.USB_GetLatencyTimer(usbDevId, array);
+                        }
+                    }
+                    string strLatency = templtime[0].ToString();
+
+                    bool retSetBufSize = USB.USB_SetXferSize(usbDevId, 8192, 32768);
+                    bool retSetTimeOuts = USB.USB_SetTimeouts(usbDevId, 20, 20);
+
+                    if (retUsbOpen && retSetLT && retSetBufSize && retSetTimeOuts)
+                    {
+                        byte[] tempRx = new byte[1];
+                        string rdSubAdd100 = "00000000";
+                        int testCon = 0;
+                        // Try to connect to the device up to 10 times
+                        while (rdSubAdd100 == "00000000" && testCon < 10)
+                        {
+                            testCon++;
+                            // Sub address 100 contain the firware version. If rdSubAdd100 == 0 the board failed to connect
+                            rdSubAdd100 = Firmware.readWord(100, usbDevId);
+                            // Wait 20 ms
+                            Thread.Sleep(20);
+                        }
+
+                        // If rdSubAdd100 == 0, the board failed to connect 10 times in a row
+                        if (rdSubAdd100 == "00000000")
+                        {
+                            MessageBox.Show("Looks like there is an issue with the connection. Please verify the board is well plugged and powered and click again.");
+                            connectStatus = 0;
+                            roundButton_connect.BackColor = Color.IndianRed;
+                            roundButton_connect.ForeColor = Color.White;
+                            roundButton_connectSmall.BackColor = Color.IndianRed;
+                            roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
+                            label_boardStatus.Text = "Board status\n" + "Connection error";
+                            return;
+                        }
+                        else
+                        {
+                            label_help.Text = "The Citiroc testboard is connected. Click again if you wish to disconnect.";
+                            connectStatus = 1;
+                            roundButton_connect.BackColor = WeerocGreen;
+                            roundButton_connect.ForeColor = Color.White;
+                            roundButton_connectSmall.BackColor = WeerocGreen;
+                            roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
+
+                            // Initialize firmware static registers (contains firmware options)
+                            Firmware.sendWord(63, "00110100", usbDevId); // Temperature sensor config
+                            Firmware.sendWord(62, "00000011", usbDevId); // Send temp sensor config
+                            Firmware.sendWord(62, "00000010", usbDevId);
+                            tempTimer = new System.Threading.Timer(tempCallback, null, 1000, Timeout.Infinite);
+
+                            Firmware.sendWord(0, "00" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
+                            Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
+                            Firmware.sendWord(2, "000001" + ((checkBox_ADC1.Checked == true) ? "1" : "0") + ((checkBox_ADC2.Checked == true) ? "1" : "0"), usbDevId);
+                            Firmware.sendWord(3, ((checkBox_rstbPS.Checked == true) ? "1" : "0") + "00" + ((checkBox_timeOutHold.Checked == true) ? "1" : "0") + ((checkBox_selHold.Checked == true) ? "1" : "0") + ((checkBox_selTrigToHold.Checked == true) ? "1" : "0") + ((checkBox_triggerTorQ.Checked == true) ? "1" : "0") + ((checkBox_pwrOn.Checked == true) ? "1" : "0"), usbDevId);
+                            Firmware.sendWord(5, "0" + ((checkBox_selPSGlobalTrigger.Checked == true) ? "1" : "0") + ((checkBox_selPSMode.Checked == true) ? "1" : "0") + "000" + ((checkBox_PSGlobalTrigger.Checked == true) ? "1" : "0") + ((checkBox_PSMode.Checked == true) ? "1" : "0"), usbDevId);
+                            Firmware.sendWord(30, IntToBin(60, 8), usbDevId);
+                            readAllFPGAWords();
+                        }
+
+                        /* KTH firmware starts at v.250 */
+                        bool addKth = false;
+                        int fwVers = Convert.ToInt32(rdSubAdd100, 2);
+                        if (fwVers >= 250)
+                            addKth = true;
+                        boardFirmware = (fwVers.ToString());
+                        label_boardStatus.Text = "Board status\n" + "Serial number: " + serialNumber + "\n" + "Description: " + description + "\n" + "Firmware version: v" + boardFirmware;
+                        if (addKth)
+                            label_boardStatus.Text += " (KTH)";
+
+                        // Test if the firmware version correspond to the software version
+                        if (boardFirmware.ToString() == System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString())
+                        {
+                            button_loadFw.Visible = false;
+                            progressBar_loadFw.Visible = false;
+                        }
+                        else
+                        {
+                            label_boardStatus.Text += "\n\n" + "This software has been designed to work with the firmware version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString() + ". You can load it to the testboard with the button below.";
+                            button_loadFw.Visible = true;
+                        }
                     }
                 }
-                string strLatency = templtime[0].ToString();
-
-                bool retSetBufSize = USB.USB_SetXferSize(usbDevId, 8192, 32768);
-                bool retSetTimeOuts = USB.USB_SetTimeouts(usbDevId, 20, 20);
-
-                if (retUsbOpen && retSetLT && retSetBufSize && retSetTimeOuts)
+                else
                 {
-                    byte[] tempRx = new byte[1];
-                    string rdSubAdd100 = "00000000";
-                    int testCon = 0;
-                    // Try to connect to the device up to 10 times
-                    while (rdSubAdd100 == "00000000" && testCon < 10)
-                    {
-                        testCon++;
-                        // Sub address 100 contain the firware version. If rdSubAdd100 == 0 the board failed to connect
-                        rdSubAdd100 = Firmware.readWord(100, usbDevId);
-                        // Wait 20 ms
-                        Thread.Sleep(20);
-                    }
-
-                    // If rdSubAdd100 == 0, the board failed to connect 10 times in a row
-                    if (rdSubAdd100 == "00000000")
-                    {
-                        MessageBox.Show("Looks like there is an issue with the connection. Please verify the board is well plugged and powered and click again.");
-                        connectStatus = 0;
-                        roundButton_connect.BackColor = Color.IndianRed;
-                        roundButton_connect.ForeColor = Color.White;
-                        roundButton_connectSmall.BackColor = Color.IndianRed;
-                        roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
-                        label_boardStatus.Text = "Board status\n" + "Connection error";
-                        return;
-                    }
-                    else
-                    {
-                        label_help.Text = "The Citiroc testboard is connected. Click again if you wish to disconnect.";
-                        connectStatus = 1;
-                        roundButton_connect.BackColor = WeerocGreen;
-                        roundButton_connect.ForeColor = Color.White;
-                        roundButton_connectSmall.BackColor = WeerocGreen;
-                        roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
-
-                        // Initialize firmware static registers (contains firmware options)
-                        Firmware.sendWord(63, "00110100", usbDevId); // Temperature sensor config
-                        Firmware.sendWord(62, "00000011", usbDevId); // Send temp sensor config
-                        Firmware.sendWord(62, "00000010", usbDevId);
-                        tempTimer = new System.Threading.Timer(tempCallback, null, 1000, Timeout.Infinite);
-
-                        Firmware.sendWord(0, "00" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
-                        Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
-                        Firmware.sendWord(2, "000001" + ((checkBox_ADC1.Checked == true) ? "1" : "0") + ((checkBox_ADC2.Checked == true) ? "1" : "0"), usbDevId);
-                        Firmware.sendWord(3, ((checkBox_rstbPS.Checked == true) ? "1" : "0") + "00" + ((checkBox_timeOutHold.Checked == true) ? "1" : "0") + ((checkBox_selHold.Checked == true) ? "1" : "0") + ((checkBox_selTrigToHold.Checked == true) ? "1" : "0") + ((checkBox_triggerTorQ.Checked == true) ? "1" : "0") + ((checkBox_pwrOn.Checked == true) ? "1" : "0"), usbDevId);
-                        Firmware.sendWord(5, "0" + ((checkBox_selPSGlobalTrigger.Checked == true) ? "1" : "0") + ((checkBox_selPSMode.Checked == true) ? "1" : "0") + "000" + ((checkBox_PSGlobalTrigger.Checked == true) ? "1" : "0") + ((checkBox_PSMode.Checked == true) ? "1" : "0"), usbDevId);
-                        Firmware.sendWord(30, IntToBin(60, 8), usbDevId);
-                        readAllFPGAWords();
-                    }
-
-                    /* KTH firmware starts at v.250 */
-                    bool addKth = false;
-                    int fwVers = Convert.ToInt32(rdSubAdd100, 2);
-                    if (fwVers >= 250)
-                        addKth = true;
-                    boardFirmware = (fwVers.ToString());
-                    label_boardStatus.Text = "Board status\n" + "Serial number: " + serialNumber + "\n" + "Description: " + description + "\n" + "Firmware version: v" + boardFirmware;
-                    if (addKth)
-                        label_boardStatus.Text += " (KTH)";
-
-                    // Test if the firmware version correspond to the software version
-                    if (boardFirmware.ToString() == System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString())
-                    {
-                        button_loadFw.Visible = false;
-                        progressBar_loadFw.Visible = false;
-                    }
-                    else
-                    {
-                        label_boardStatus.Text += "\n\n" + "This software has been designed to work with the firmware version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString() + ". You can load it to the testboard with the button below.";
-                        button_loadFw.Visible = true;
-                    }
+                    MessageBox.Show("No USB Devices are connected.");
+                    connectStatus = -1;
+                    roundButton_connect.BackColor = Color.IndianRed;
+                    roundButton_connect.ForeColor = Color.White;
+                    roundButton_connectSmall.BackColor = Color.IndianRed;
+                    roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
+                    label_boardStatus.Text = "Board status\n" + "Not connected";
                 }
             }
-            else
+
+            else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                MessageBox.Show("No USB Devices are connected.");
+                mySerialPort = new SerialPort();
+
+                try
+                {
+                    mySerialPort.PortName = comboBox_COMPortList.Text;
+                    mySerialPort.BaudRate = Convert.ToInt32(comboBox_Baudrate);
+
+                    mySerialPort.Parity = Parity.None;
+                    mySerialPort.StopBits = StopBits.One;
+                    mySerialPort.DataBits = 8;
+                    mySerialPort.Handshake = Handshake.None;
+                    mySerialPort.RtsEnable = true;
+
+                    // Set the read/write timeouts
+                    mySerialPort.ReadTimeout = 500;
+                    mySerialPort.WriteTimeout = 500;
+
+                    // Finally! Open serial port!
+                    mySerialPort.Open();
+
+                    label_help.Text = "The " + comboBox_SelectConnection.Text + " board is connected. Click again if you wish to disconnect.";
+                    connectStatus = 1;
+                    roundButton_connect.BackColor = WeerocGreen;
+                    roundButton_connect.ForeColor = Color.White;
+                    roundButton_connectSmall.BackColor = WeerocGreen;
+                    roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
+                }
+                catch
+                {
+                    MessageBox.Show("Please configure your serial port settings AND make sure port is not already used.");
+                    connectStatus = -1;
+                    roundButton_connect.BackColor = Color.IndianRed;
+                    roundButton_connect.ForeColor = Color.White;
+                    roundButton_connectSmall.BackColor = Color.IndianRed;
+                    roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
+                    label_boardStatus.Text = "Board status\n" + "Not connected";
+                }
+            }
+            else {
+                MessageBox.Show("Please select an instrument to connect to via the drop-down.");
                 connectStatus = -1;
                 roundButton_connect.BackColor = Color.IndianRed;
                 roundButton_connect.ForeColor = Color.White;
@@ -213,6 +267,7 @@ namespace CitirocUI
                 label_boardStatus.Text = "Board status\n" + "Not connected";
             }
         }
+    
 
         private void button_loadFw_Click(object sender, EventArgs e)
         {
@@ -381,6 +436,32 @@ namespace CitirocUI
                 label_help.Text = "Looks like there is an issue with the connection. Please verify the board is well plugged and powered and click again.";
             else if (connectStatus == 1)
                 label_help.Text = "The Citiroc testboard is connected. Click again if you wish to disconnect.";
+        }
+
+        private void comboBox_SelectConnection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 0)
+            {
+                groupBox_SerialPortSettings.Visible = false;
+            }
+            else if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                groupBox_SerialPortSettings.Visible = true;
+                GetCOMPorts();
+                comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
+            }
+        }
+
+        private void GetCOMPorts()
+        {
+            string[] ports = SerialPort.GetPortNames();
+
+            foreach (string port in ports)
+                comboBox_COMPortList.Items.Add(ports);
+            if (comboBox_COMPortList.Items.Count > 0)
+            {
+                comboBox_COMPortList.SelectedIndex = 0;
+            }
         }
     }
 }
