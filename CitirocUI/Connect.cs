@@ -223,8 +223,8 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialPort.PortName = comboBox_COMPortList.Text;
-                    mySerialPort.BaudRate = Convert.ToInt32(comboBox_Baudrate);
+                    mySerialPort.PortName = comboBox_COMPortList.SelectedItem.ToString();
+                    mySerialPort.BaudRate = Convert.ToInt32(comboBox_Baudrate.SelectedItem.ToString());
 
                     mySerialPort.Parity = Parity.None;
                     mySerialPort.StopBits = StopBits.One;
@@ -457,7 +457,7 @@ namespace CitirocUI
             string[] ports = SerialPort.GetPortNames();
 
             foreach (string port in ports)
-                comboBox_COMPortList.Items.Add(ports);
+                comboBox_COMPortList.Items.Add(port);
             if (comboBox_COMPortList.Items.Count > 0)
             {
                 comboBox_COMPortList.SelectedIndex = 0;
