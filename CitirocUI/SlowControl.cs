@@ -542,33 +542,43 @@ namespace CitirocUI
             bool result = false;
 
             string strSC = getSC();
-            result = sendSC(usbDevId, strSC);
-            if (result) button_sendSC.BackColor = WeerocGreen;
-            else button_sendSC.BackColor = Color.LightCoral;
-            button_sendSC.ForeColor = Color.White;
 
-            return;
-
-            // Test if software can read firmware version. If not, the board is not connected.
-            if (Firmware.readWord(100, usbDevId) != "00000000")
+            if (comboBox_SelectConnection.SelectedIndex == 0)
             {
-               //string strSC = getSC();
+                // Test if software can read firmware version. If not, the board is not connected.
+                if (Firmware.readWord(100, usbDevId) != "00000000")
+                {
+                    result = sendSC(usbDevId, strSC);
+                    if (result) button_sendSC.BackColor = WeerocGreen;
+                    else button_sendSC.BackColor = Color.LightCoral;
+                    button_sendSC.ForeColor = Color.White;
+                }
+                else
+                {
+                    roundButton_connect.BackColor = Color.Gainsboro;
+                    roundButton_connect.ForeColor = Color.Black;
+                    roundButton_connectSmall.BackColor = Color.Gainsboro;
+                    roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
+                    connectStatus = -1;
+                    label_boardStatus.Text = "Board status\n" + "No board connected";
+                    button_loadFw.Visible = false;
+                    progressBar_loadFw.Visible = false;
+                    MessageBox.Show("No USB Devices found.", "Warning", MessageBoxButtons.OKCancel);
+                }
+            }
+            else if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
                 result = sendSC(usbDevId, strSC);
-                if (result) button_sendSC.BackColor = WeerocGreen;
-                else button_sendSC.BackColor = Color.LightCoral;
+                if (result)
+                    button_sendSC.BackColor = WeerocGreen;
+                else
+                    button_sendSC.BackColor = Color.LightCoral;
                 button_sendSC.ForeColor = Color.White;
             }
-            else
-            {
-                roundButton_connect.BackColor = Color.Gainsboro;
-                roundButton_connect.ForeColor = Color.Black;
-                roundButton_connectSmall.BackColor = Color.Gainsboro;
-                roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
-                connectStatus = -1;
-                label_boardStatus.Text = "Board status\n" + "No board connected";
-                button_loadFw.Visible = false;
-                progressBar_loadFw.Visible = false;
-                MessageBox.Show("No USB Devices found.", "Warning", MessageBoxButtons.OKCancel);
+            else {
+                MessageBox.Show("Please configure your connection.");
+                button_sendSC.BackColor = Color.LightCoral;
+                button_sendSC.ForeColor = Color.White;
             }
         }
 
@@ -576,82 +586,107 @@ namespace CitirocUI
         {
             // Initialize result as false
             bool result = false;
-            // Get standard length of slow control bitstream
-            int SCLenght = strDefSC.Length;
-            // Get length of current slow control bitstream
-            int intLenStrSC = strSC.Length;
-            byte[] bytSC = new byte[1 + SCLenght/8];
-            // reverse slow control string before loading
-            //strSC = strRev(strSC);
 
-            // If the length of the current bitstream is not OK, return false
-            // else store the slow control in byte array
-            if (intLenStrSC == SCLenght)
+            if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                bytSC[0] = Convert.ToByte('C');
-                for (int i = 0; i < (SCLenght / 8); i++)
+                // Get standard length of slow control bitstream
+                int SCLenght = strDefSC.Length;
+                // Get length of current slow control bitstream
+                int intLenStrSC = strSC.Length;
+                byte[] bytSC = new byte[1 + SCLenght/8];
+                // reverse slow control string before loading
+                //strSC = strRev(strSC);
+
+                // If the length of the current bitstream is not OK, return false
+                // else store the slow control in byte array
+                if (intLenStrSC == SCLenght)
                 {
-                    string strScCmdTmp = strSC.Substring(i * 8, 8);
-                    strScCmdTmp = strRev(strScCmdTmp);
-                    uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
-                    bytSC[i+1] = Convert.ToByte(intCmdTmp);
+                    bytSC[0] = Convert.ToByte('C');
+                    for (int i = 0; i < (SCLenght / 8); i++)
+                    {
+                        string strScCmdTmp = strSC.Substring(i * 8, 8);
+                        strScCmdTmp = strRev(strScCmdTmp);
+                        uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
+                        bytSC[i+1] = Convert.ToByte(intCmdTmp);
+                    }
+                }
+                else return result;
+
+                try
+                {
+                    mySerialPort.Write(bytSC, 0, 1 + SCLenght / 8);
+                    result = true;
+                }
+                catch
+                {
+                    result = false;
                 }
             }
-            else return result;
-
-            try
-            { 
-                mySerialPort.Write(bytSC, 0, 1 + SCLenght / 8);
-            }
-
-             catch (IOException)
+            else if (comboBox_SelectConnection.SelectedIndex == 0)
             {
-                return false;
+                // Get standard length of slow control bitstream
+                int SCLenght = strDefSC.Length;
+                // Get length of current slow control bitstream
+                int intLenStrSC = strSC.Length;
+                byte[] bytSC = new byte[SCLenght / 8];
+                // reverse slow control string before loading
+                strSC = strRev(strSC);
+
+                // If the length of the current bitstream is not OK, return false
+                // else store the slow control in byte array
+                if (intLenStrSC == SCLenght)
+                {
+                    for (int i = 0; i < (SCLenght / 8); i++)
+                    {
+                        string strScCmdTmp = strSC.Substring(i * 8, 8);
+                        strScCmdTmp = strRev(strScCmdTmp);
+                        uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
+                        bytSC[i] = Convert.ToByte(intCmdTmp);
+                    }
+                }
+                else return result;
+
+                // Select slow control parameters to FPGA
+                Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
+                // Send slow control parameters to FPGA
+                int intLenBytSC = bytSC.Length;
+                Firmware.sendWord(10, bytSC, intLenBytSC, usbDevId);
+
+                // Start shift parameters to ASIC
+                Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "10", usbDevId);
+                // Stop shift parameters to ASIC
+                Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
+
+                // Slow control test checksum test query
+                Firmware.sendWord(0, "10" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
+
+                // Load slow control
+                Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "01", usbDevId);
+                Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
+
+                // Send slow control parameters to FPGA
+                Firmware.sendWord(10, bytSC, intLenBytSC, usbDevId);
+
+                // Start shift parameters to ASIC
+                Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "10", usbDevId);
+                // Stop shift parameters to ASIC
+                Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
+
+                // Slow Control Correlation Test Result
+                if (Firmware.readWord(4, usbDevId) == "00000000") result = true;
+
+                // Reset slow control test checksum test query
+                Firmware.sendWord(0, "00" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
+
+                // Send delay in firmware
+                int delay = 130;
+                int.TryParse(textBox_delay.Text, out delay);
+                if (delay > 255) delay = 255;
+                else if (delay < 0) delay = 0;
+                Firmware.sendWord(30, IntToBin(delay, 8), usbDevId);
+            
+                result = true;
             }
-
-            result = true;
-
-            return result;
-
-            // Select slow control parameters to FPGA
-            Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
-            // Send slow control parameters to FPGA
-            int intLenBytSC = bytSC.Length;
-            Firmware.sendWord(10, bytSC, intLenBytSC, usbDevId);
-
-            // Start shift parameters to ASIC
-            Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "10", usbDevId);
-            // Stop shift parameters to ASIC
-            Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
-
-            // Slow control test checksum test query
-            Firmware.sendWord(0, "10" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
-
-            // Load slow control
-            Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "01", usbDevId);
-            Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
-
-            // Send slow control parameters to FPGA
-            Firmware.sendWord(10, bytSC, intLenBytSC, usbDevId);
-
-            // Start shift parameters to ASIC
-            Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "10", usbDevId);
-            // Stop shift parameters to ASIC
-            Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
-
-            // Slow Control Correlation Test Result
-            if (Firmware.readWord(4, usbDevId) == "00000000") result = true;
-
-            // Reset slow control test checksum test query
-            Firmware.sendWord(0, "00" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
-
-            // Send delay in firmware
-            int delay = 130;
-            int.TryParse(textBox_delay.Text, out delay);
-            if (delay > 255) delay = 255;
-            else if (delay < 0) delay = 0;
-            Firmware.sendWord(30, IntToBin(delay, 8), usbDevId);
-
             return result;
         }
 
