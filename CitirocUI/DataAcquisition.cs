@@ -26,20 +26,31 @@ namespace CitirocUI
         {
             if (backgroundWorker_dataAcquisition.IsBusy) { backgroundWorker_dataAcquisition.CancelAsync(); return; }
 
-            if (Firmware.readWord(100, usbDevId) == "00000000")
+            if (comboBox_SelectConnection.SelectedIndex == 0)
             {
-                roundButton_connect.BackColor = Color.Gainsboro;
-                roundButton_connect.ForeColor = Color.Black;
-                roundButton_connectSmall.BackColor = Color.Gainsboro;
-                roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
-                connectStatus = -1;
-                label_boardStatus.Text = "Board status\n" + "No board connected";
-                button_loadFw.Visible = false;
-                progressBar_loadFw.Visible = false;
-                MessageBox.Show("No USB Devices found.", "Warning", MessageBoxButtons.OKCancel);
-                return;
+                if (Firmware.readWord(100, usbDevId) == "00000000")
+                {
+                    roundButton_connect.BackColor = Color.Gainsboro;
+                    roundButton_connect.ForeColor = Color.Black;
+                    roundButton_connectSmall.BackColor = Color.Gainsboro;
+                    roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
+                    connectStatus = -1;
+                    label_boardStatus.Text = "Board status\n" + "No board connected";
+                    button_loadFw.Visible = false;
+                    progressBar_loadFw.Visible = false;
+                    MessageBox.Show("No USB Devices found.", "Warning", MessageBoxButtons.OKCancel);
+                    return;
+                }
             }
-            
+            else if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                if (switchBox_acquisitionMode.Checked == false)
+                {
+                    MessageBox.Show("Please switch to acquisition time.");
+                }
+                else return;
+            }
+                                             
             button_startAcquisition.Text = "Stop Acquisition";
 
             loadLargeData = 0;
