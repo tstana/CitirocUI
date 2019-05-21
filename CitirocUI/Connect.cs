@@ -463,5 +463,26 @@ namespace CitirocUI
                 comboBox_COMPortList.SelectedIndex = 0;
             }
         }
+
+        private void btn_OpenSerialMonitor_Click(object sender, EventArgs e)
+        {
+            /* Prevent re-opening the form if already open... */
+            Form f = Application.OpenForms["frmMonitor"];
+            if (f != null)
+                return;
+
+            /* Now really open the form */
+            frmMonitor frmMon = new frmMonitor();
+
+            showMonitor = true;
+            PrintInMonitorEvent += frmMon.PublishData;
+
+            frmMon.Show();
+            frmMon.Top = this.Top;
+            frmMon.Left = this.Right;
+            frmMon.Height = this.Height;
+        }
+
+
     }
 }

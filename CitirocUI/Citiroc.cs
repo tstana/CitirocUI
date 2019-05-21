@@ -174,8 +174,12 @@ namespace CitirocUI
 
         static int NbChannels = 32;
 
+        /* Serial port-related objects */
         private SerialPort mySerialPort;
         public static bool showMonitor = false;
+
+        public delegate void PassDataDelegate(byte[] data, bool direction);
+        public event PassDataDelegate PrintInMonitorEvent;
 
         private void Citiroc_Load(object sender, EventArgs e)
         {

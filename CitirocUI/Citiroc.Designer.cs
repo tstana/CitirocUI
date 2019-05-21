@@ -874,6 +874,7 @@
             this.backgroundWorker_holdScan = new System.ComponentModel.BackgroundWorker();
             this.button_screenshot = new System.Windows.Forms.Button();
             this.roundButton_connectSmall = new CitirocUI.roundButton();
+            this.btn_OpenSerialMonitor = new System.Windows.Forms.Button();
             this.tabControl_top.SuspendLayout();
             this.tabPage_main.SuspendLayout();
             this.groupBox_SerialPortSettings.SuspendLayout();
@@ -1192,13 +1193,14 @@
             // 
             // groupBox_SerialPortSettings
             // 
+            this.groupBox_SerialPortSettings.Controls.Add(this.btn_OpenSerialMonitor);
             this.groupBox_SerialPortSettings.Controls.Add(this.comboBox_COMPortList);
             this.groupBox_SerialPortSettings.Controls.Add(this.label139);
             this.groupBox_SerialPortSettings.Controls.Add(this.label138);
             this.groupBox_SerialPortSettings.Controls.Add(this.comboBox_Baudrate);
             this.groupBox_SerialPortSettings.Location = new System.Drawing.Point(804, 15);
             this.groupBox_SerialPortSettings.Name = "groupBox_SerialPortSettings";
-            this.groupBox_SerialPortSettings.Size = new System.Drawing.Size(255, 113);
+            this.groupBox_SerialPortSettings.Size = new System.Drawing.Size(255, 183);
             this.groupBox_SerialPortSettings.TabIndex = 11;
             this.groupBox_SerialPortSettings.TabStop = false;
             this.groupBox_SerialPortSettings.Text = "Serial Port Settings:";
@@ -11525,6 +11527,16 @@
             this.roundButton_connectSmall.MouseEnter += new System.EventHandler(this.roundButton_connect_MouseEnter);
             this.roundButton_connectSmall.MouseLeave += new System.EventHandler(this.object_MouseLeave);
             // 
+            // btn_OpenSerialMonitor
+            // 
+            this.btn_OpenSerialMonitor.Location = new System.Drawing.Point(10, 140);
+            this.btn_OpenSerialMonitor.Name = "btn_OpenSerialMonitor";
+            this.btn_OpenSerialMonitor.Size = new System.Drawing.Size(235, 37);
+            this.btn_OpenSerialMonitor.TabIndex = 11;
+            this.btn_OpenSerialMonitor.Text = "Open Serial Monitor...";
+            this.btn_OpenSerialMonitor.UseVisualStyleBackColor = true;
+            this.btn_OpenSerialMonitor.Click += new System.EventHandler(this.btn_OpenSerialMonitor_Click);
+            // 
             // Citiroc
             // 
             this.AllowDrop = true;
@@ -12462,6 +12474,7 @@
         private System.Windows.Forms.GroupBox groupBox_SerialPortSettings;
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.Label label138;
+        private System.Windows.Forms.Button btn_OpenSerialMonitor;
     }
 }
 
