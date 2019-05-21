@@ -11,34 +11,41 @@ namespace CitirocUI
         private void button_sendProbes_Click(object sender, EventArgs e)
         {
             bool result = false;
-
-            result = sendProbes(usbDevId);
-            if (result) button_sendProbes.BackColor = WeerocGreen;
-            else button_sendProbes.BackColor = Color.LightCoral;
-            button_sendProbes.ForeColor = Color.White;
-
-            return;
-
-            // Test if software can read firmware version. If not, the board is not connected.
-            if (Firmware.readWord(100, usbDevId) != "00000000")
+            if (comboBox_SelectConnection.SelectedIndex == 0)
+            //if (mySerialPort.IsOpen == false)
             {
-               result = sendProbes(usbDevId);
-                if (result) button_sendProbes.BackColor = WeerocGreen;
-                else button_sendProbes.BackColor = Color.LightCoral;
+                // Test if software can read firmware version. If not, the board is not connected.
+                if (Firmware.readWord(100, usbDevId) != "00000000")
+                {
+                    result = sendProbes(usbDevId);
+                    if (result) button_sendProbes.BackColor = WeerocGreen;
+                    else button_sendProbes.BackColor = Color.LightCoral;
+                    button_sendProbes.ForeColor = Color.White;
+                }
+                else
+                {
+                    roundButton_connect.BackColor = Color.Gainsboro;
+                    roundButton_connect.ForeColor = Color.Black;
+                    roundButton_connectSmall.BackColor = Color.Gainsboro;
+                    roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
+                    connectStatus = -1;
+                    label_boardStatus.Text = "Board status\n" + "No board connected";
+                    button_loadFw.Visible = false;
+                    progressBar_loadFw.Visible = false;
+                    MessageBox.Show("No USB Devices found.", "Warning", MessageBoxButtons.OKCancel);
+                }
+            }
+            else if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                result = sendProbes(usbDevId);
+                if (result)
+                    button_sendProbes.BackColor = WeerocGreen;
+                else
+                    button_sendProbes.BackColor = Color.LightCoral;
                 button_sendProbes.ForeColor = Color.White;
             }
-            else
-            {
-                roundButton_connect.BackColor = Color.Gainsboro;
-                roundButton_connect.ForeColor = Color.Black;
-                roundButton_connectSmall.BackColor = Color.Gainsboro;
-                roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
-                connectStatus = -1;
-                label_boardStatus.Text = "Board status\n" + "No board connected";
-                button_loadFw.Visible = false;
-                progressBar_loadFw.Visible = false;
-                MessageBox.Show("No USB Devices found.", "Warning", MessageBoxButtons.OKCancel);
-            }
+                       
+          //  return;
         }
 
         private bool sendProbes(int usbDevId)
@@ -55,68 +62,87 @@ namespace CitirocUI
             tmpProbeStream[(int)numericUpDown_probeDChannel.Value + 128] = (radioButton_probePDHG.Checked == true) ? '1' : '0';
             tmpProbeStream[(int)numericUpDown_probeAChannel.Value * 2 + 160] = (radioButton_probePaHG.Checked == true) ? '1' : '0';
             tmpProbeStream[(int)numericUpDown_probeAChannel.Value * 2 + 160 + 1] = (radioButton_probePaLG.Checked == true) ? '1' : '0';
-            
+
             string probeStream = new string(tmpProbeStream);
 
             int intLenProbeStream = probeStream.Length;
-            byte[] bytProbe = new byte[1 + intLenProbeStream/8];
 
-            //probeStream = strRev(probeStream);
-
-            bytProbe[0] = Convert.ToByte('P');
-            for (int i = 0; i < (intLenProbeStream / 8); i++)
+            if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                string strProbeCmdTmp = probeStream.Substring(i * 8, 8);
-                strProbeCmdTmp = strRev(strProbeCmdTmp);
-                UInt32 intCmdTmp = Convert.ToUInt32(strProbeCmdTmp, 2);
-                bytProbe[i+1] = Convert.ToByte(intCmdTmp);
-            }
+                byte[] bytProbe = new byte[1 + intLenProbeStream / 8];
 
-            try
+                bytProbe[0] = Convert.ToByte('P');
+                for (int i = 0; i < (intLenProbeStream / 8); i++)
+                {
+                    string strProbeCmdTmp = probeStream.Substring(i * 8, 8);
+                    strProbeCmdTmp = strRev(strProbeCmdTmp);
+                    UInt32 intCmdTmp = Convert.ToUInt32(strProbeCmdTmp, 2);
+                    bytProbe[i + 1] = Convert.ToByte(intCmdTmp);
+                }
+
+                try
+                {
+                    mySerialPort.Write(bytProbe, 0, 1 + intLenProbeStream / 8);
+                    if (showMonitor)
+                    {
+                        SendDataToMonitorEvent(bytProbe, true);
+                    }
+                    result = true;
+                }
+                catch (IOException)
+                {
+                    return false;
+                }
+            }
+            else if (comboBox_SelectConnection.SelectedIndex == 0)
             {
-                mySerialPort.Write(bytProbe, 0, 1 + intLenProbeStream/8);
+                byte[] bytProbe = new byte[intLenProbeStream / 8];
+
+                probeStream = strRev(probeStream);
+
+                bytProbe[0] = Convert.ToByte('P');
+                for (int i = 0; i < (intLenProbeStream / 8); i++)
+                {
+                    string strProbeCmdTmp = probeStream.Substring(i * 8, 8);
+                    strProbeCmdTmp = strRev(strProbeCmdTmp);
+                    UInt32 intCmdTmp = Convert.ToUInt32(strProbeCmdTmp, 2);
+                    bytProbe[i] = Convert.ToByte(intCmdTmp);
+                }
+
+                // Select probes parameters to FPGA
+                Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
+                // Send probes parameters to FPGA
+                int intLenBytProbes = bytProbe.Length;
+                Firmware.sendWord(10, bytProbe, intLenBytProbes, usbDevId);
+
+                // Start shift parameters to ASIC
+                Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "10", usbDevId);
+                // Stop shift parameters to ASIC
+                Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
+
+                // probes test checksum test query
+                Firmware.sendWord(0, "10" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
+
+                // Load probes
+                Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "01", usbDevId);
+                Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
+
+                // Send probes parameters to FPGA
+                Firmware.sendWord(10, bytProbe, intLenBytProbes, usbDevId);
+
+                // Start shift parameters to ASIC
+                Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "10", usbDevId);
+                // Stop shift parameters to ASIC
+                Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
+
+                // Probes Correlation Test Result
+                if (Firmware.readWord(4, usbDevId) == "00000000") result = true;
+
+                // Reset probes test checksum test query
+                Firmware.sendWord(0, "00" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
+
+                return true;
             }
-
-            catch (IOException)
-            {
-                return false;
-            }
-
-            result = true;
-
-            return result;
-
-            // Select probes parameters to FPGA
-            Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
-            // Send probes parameters to FPGA
-            int intLenBytProbes = bytProbe.Length;
-            Firmware.sendWord(10, bytProbe, intLenBytProbes, usbDevId);
-
-            // Start shift parameters to ASIC
-            Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "10", usbDevId);
-            // Stop shift parameters to ASIC
-            Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
-
-            // probes test checksum test query
-            Firmware.sendWord(0, "10" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
-
-            // Load probes
-            Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "01", usbDevId);
-            Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
-
-            // Send probes parameters to FPGA
-            Firmware.sendWord(10, bytProbe, intLenBytProbes, usbDevId);
-
-            // Start shift parameters to ASIC
-            Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "10", usbDevId);
-            // Stop shift parameters to ASIC
-            Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
-
-            // Probes Correlation Test Result
-            if (Firmware.readWord(4, usbDevId) == "00000000") result = true;
-
-            // Reset probes test checksum test query
-            Firmware.sendWord(0, "00" + ((checkBox_disReadAdc.Checked == true) ? "1" : "0") + ((checkBox_enSerialLink.Checked == true) ? "1" : "0") + ((checkBox_selRazChn.Checked == true) ? "1" : "0") + ((checkBox_valEvt.Checked == true) ? "1" : "0") + ((checkBox_razChn.Checked == true) ? "1" : "0") + ((checkBox_selValEvt.Checked == true) ? "1" : "0"), usbDevId);
 
             return result;
         }
