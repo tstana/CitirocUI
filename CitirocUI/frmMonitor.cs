@@ -6,9 +6,10 @@ namespace CitirocUI
 {
     public partial class frmMonitor : Form
     {
-        public static int x;
-        public static int vert;
-
+        public string ConnStatusLabel
+        {
+            set { label_ConnStatus.Text = value; }
+        }
 
         public frmMonitor()
         {
@@ -17,8 +18,7 @@ namespace CitirocUI
 
         private void frmMonitor_Load(object sender, EventArgs e)
         {
-            this.Left = x;
-            this.Height = vert;
+            label_ConnStatus.Text = "Not connected.";
         }
 
         private void frmMonitor_FormClosed(object sender, FormClosedEventArgs e)
@@ -58,6 +58,11 @@ namespace CitirocUI
             box.AppendText(BitConverter.ToString(rdata).Replace("-", " " /*string.Empty*/));
             box.SelectionColor = box.ForeColor;
             box.ScrollToCaret();
+        }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            rtxtMonitor.Clear();
         }
     }
 }

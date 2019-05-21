@@ -223,6 +223,12 @@ namespace CitirocUI
                 if (connectStatus == 1) {
                     mySerialPort.Close();
 
+                    Form f = Application.OpenForms["frmMonitor"];
+                    if (f != null){
+                        frmMonitor fm = (frmMonitor)f;
+                        fm.ConnStatusLabel = "Not connected.";
+                    }
+
                     roundButton_connect.BackColor = Color.Gainsboro;
                     roundButton_connect.ForeColor = Color.Black;
                     roundButton_connectSmall.BackColor = Color.Gainsboro;
@@ -257,6 +263,15 @@ namespace CitirocUI
                     // Finally! Open serial port!
                     mySerialPort.Open();
 
+                    // Update monitor form
+                    Form f = Application.OpenForms["frmMonitor"];
+                    if (f != null)
+                    {
+                        frmMonitor fm = (frmMonitor)f;
+                        fm.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
+                    }
+
+                    // Update text label
                     label_help.Text = "The " + comboBox_SelectConnection.Text + " board is connected. Click again if you wish to disconnect.";
                     connectStatus = 1;
                     roundButton_connect.BackColor = WeerocGreen;
@@ -499,6 +514,9 @@ namespace CitirocUI
             frmMon.Top = this.Top;
             frmMon.Left = this.Right;
             frmMon.Height = this.Height;
+
+            if ((mySerialPort != null) && (mySerialPort.IsOpen))
+                frmMon.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
         }
 
         void mySerialPort_OnDataReceived(object sender, SerialDataReceivedEventArgs e)
