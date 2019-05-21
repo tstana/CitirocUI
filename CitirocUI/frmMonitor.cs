@@ -31,19 +31,12 @@ namespace CitirocUI
             AppendByteArray(rtxtMonitor, data, Tx);
         }
 
-        private static void AppendText(RichTextBox box, string text, Color color)
-        {
-
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
-
-            box.SelectionColor = color;
-            box.AppendText(text);
-            box.SelectionColor = box.ForeColor;
-        }
-
         private static void AppendByteArray(RichTextBox box, byte[] rdata, bool txData)
         {
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+            box.AppendText("\n");
+
             if (txData)
             {
                 box.SelectionColor = Color.Yellow;
@@ -51,9 +44,7 @@ namespace CitirocUI
             else {
                 box.SelectionColor = Color.LightGreen;
             }
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
-            box.AppendText("\n");
+
             box.AppendText(BitConverter.ToString(rdata).Replace("-", " " /*string.Empty*/));
             box.SelectionColor = box.ForeColor;
             box.ScrollToCaret();
