@@ -41,6 +41,7 @@
             // 
             this.rtxtMonitor.BackColor = System.Drawing.SystemColors.InfoText;
             this.rtxtMonitor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtMonitor.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtMonitor.ForeColor = System.Drawing.SystemColors.Info;
             this.rtxtMonitor.Location = new System.Drawing.Point(0, 0);
             this.rtxtMonitor.Name = "rtxtMonitor";
@@ -51,9 +52,10 @@
             // 
             // button_Clear
             // 
-            this.button_Clear.Location = new System.Drawing.Point(376, 7);
+            this.button_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button_Clear.Location = new System.Drawing.Point(369, 0);
             this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(75, 23);
+            this.button_Clear.Size = new System.Drawing.Size(85, 36);
             this.button_Clear.TabIndex = 1;
             this.button_Clear.Text = "Clear";
             this.button_Clear.UseVisualStyleBackColor = true;
@@ -61,6 +63,7 @@
             // 
             // label_ConnStatus
             // 
+            this.label_ConnStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label_ConnStatus.Location = new System.Drawing.Point(3, 7);
             this.label_ConnStatus.Name = "label_ConnStatus";
             this.label_ConnStatus.Size = new System.Drawing.Size(360, 23);
