@@ -431,11 +431,11 @@ namespace CitirocUI
         private void roundButton_connect_MouseEnter(object sender, EventArgs e)
         {
             if (connectStatus == -1)
-                label_help.Text = "First thing first, click on this \"CONNECT\" button to connect the board to the computer via USB.";
+                label_help.Text = "Click on this button to connect the selected board to the computer.";
             else if (connectStatus == 0)
-                label_help.Text = "Looks like there is an issue with the connection. Please verify the board is well plugged and powered and click again.";
+                label_help.Text = "Looks like there is an issue with the connection. Please verify the board is properly plugged in and powered and click again.";
             else if (connectStatus == 1)
-                label_help.Text = "The Citiroc testboard is connected. Click again if you wish to disconnect.";
+                label_help.Text = "Connected successfully! Click again if you wish to disconnect.";
         }
 
         private void comboBox_SelectConnection_SelectedIndexChanged(object sender, EventArgs e)
