@@ -54,5 +54,15 @@ namespace CitirocUI
         {
             rtxtMonitor.Clear();
         }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            string helpString =
+                "TX data is colored yellow\r\n" +
+                "RX data is colored green\r\n" +
+                "\r\n" +
+                "Press \"Clear\" to clear the window";
+            MessageBox.Show(helpString, "Help");
+        }
     }
 }

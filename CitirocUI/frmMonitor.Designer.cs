@@ -33,6 +33,7 @@
             this.label_ConnStatus = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonHelp = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +67,7 @@
             this.label_ConnStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label_ConnStatus.Location = new System.Drawing.Point(3, 7);
             this.label_ConnStatus.Name = "label_ConnStatus";
-            this.label_ConnStatus.Size = new System.Drawing.Size(360, 23);
+            this.label_ConnStatus.Size = new System.Drawing.Size(325, 23);
             this.label_ConnStatus.TabIndex = 2;
             this.label_ConnStatus.Text = "label_ConnStatus";
             this.label_ConnStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -74,6 +75,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.label_ConnStatus);
+            this.panel1.Controls.Add(this.buttonHelp);
             this.panel1.Controls.Add(this.button_Clear);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 369);
@@ -89,6 +91,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(454, 369);
             this.panel2.TabIndex = 4;
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonHelp.Location = new System.Drawing.Point(334, 0);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(29, 36);
+            this.buttonHelp.TabIndex = 1;
+            this.buttonHelp.Text = "?";
+            this.buttonHelp.UseVisualStyleBackColor = true;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // frmMonitor
             // 
@@ -116,5 +129,6 @@
         private System.Windows.Forms.Label label_ConnStatus;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button buttonHelp;
     }
 }
