@@ -251,6 +251,9 @@ namespace CitirocUI
                     mySerialPort.ReadTimeout = 500;
                     mySerialPort.WriteTimeout = 500;
 
+                    // Add handler for DataReceived event
+                    mySerialPort.DataReceived += new SerialDataReceivedEventHandler(mySerialPort_OnDataReceived);
+
                     // Finally! Open serial port!
                     mySerialPort.Open();
 
@@ -490,12 +493,32 @@ namespace CitirocUI
             frmMonitor frmMon = new frmMonitor();
 
             showMonitor = true;
-            PrintInMonitorEvent += frmMon.PublishData;
+            SendDataToMonitorEvent += frmMon.PublishData;
 
             frmMon.Show();
             frmMon.Top = this.Top;
             frmMon.Left = this.Right;
             frmMon.Height = this.Height;
+        }
+
+        void mySerialPort_OnDataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            if (!InvokeRequired)
+            {
+                if (e.EventType == SerialData.Chars)
+                {
+                    SerialPort sp = (SerialPort)sender;
+                    int count = sp.BytesToRead;
+                    byte[] dataB = new byte[count];
+                    sp.Read(dataB, 0, dataB.Length);
+                    SendDataToMonitorEvent(dataB, false);
+                }
+            }
+            else
+            {
+                SerialDataReceivedEventHandler invoker = new SerialDataReceivedEventHandler(mySerialPort_OnDataReceived);
+                BeginInvoke(invoker, new object[] { sender, e });
+            }
         }
 
 

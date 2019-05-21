@@ -179,7 +179,7 @@ namespace CitirocUI
         public static bool showMonitor = false;
 
         public delegate void PassDataDelegate(byte[] data, bool direction);
-        public event PassDataDelegate PrintInMonitorEvent;
+        public event PassDataDelegate SendDataToMonitorEvent;
 
         private void Citiroc_Load(object sender, EventArgs e)
         {
