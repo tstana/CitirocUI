@@ -219,10 +219,25 @@ namespace CitirocUI
 
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                mySerialPort = new SerialPort();
+                /* Disconnect and exit if we are already connected... */
+                if (connectStatus == 1) {
+                    mySerialPort.Close();
 
+                    roundButton_connect.BackColor = Color.Gainsboro;
+                    roundButton_connect.ForeColor = Color.Black;
+                    roundButton_connectSmall.BackColor = Color.Gainsboro;
+                    roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
+                    connectStatus = -1;
+                    label_boardStatus.Text = "Board status\n" + "No board connected";
+                    return;
+                }
+
+                /* Otherwise, connect to selected port, creating it on first run of the code */
                 try
                 {
+                    if (mySerialPort == null)
+                        mySerialPort = new SerialPort();
+
                     mySerialPort.PortName = comboBox_COMPortList.SelectedItem.ToString();
                     mySerialPort.BaudRate = Convert.ToInt32(comboBox_Baudrate.SelectedItem.ToString());
 
