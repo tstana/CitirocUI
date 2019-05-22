@@ -19,8 +19,8 @@ namespace CitirocUI
         int[,] PerChannelChargeLG = new int[NbChannels + 1, 4096];
         int[] Hit = new int[NbChannels + 1];
         int nbAcq = 100;
-        string acquisitionTime = "00:10:00";
-        bool timeAcquisitionMode = false;
+        string acquisitionTime = "00:01:00";
+        bool timeAcquisitionMode = true;
 
         private void button_startAcquisition_Click(object sender, EventArgs e)
         {
@@ -44,11 +44,28 @@ namespace CitirocUI
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
+                // Proto-CUBES only supports timed acquisition mode:
                 if (switchBox_acquisitionMode.Checked == false)
                 {
-                    MessageBox.Show("Please switch to acquisition time.");
+                    MessageBox.Show("Proto-CUBES only (currently) supports time acquisition mode. Please change to this mode via the switch-box.");
+                    return;
                 }
-                else return;
+
+                // Make sure serial port exists and is open:
+                if ((mySerialPort == null) || (mySerialPort.IsOpen == false))
+                {
+                    MessageBox.Show("Please configure and open the serial port connection via the \"Connect\" tab.");
+                    return;
+                }
+
+                // Just in case we're setting an acquisition time not supported by Proto-CUBES:
+                AdjustAcquisitionTime();
+
+                return;     // TODO: Remove me!
+            }
+            else {
+                MessageBox.Show("No connection mode selected. Please select one via the \"Connect\" tab.");
+                return;
             }
                                              
             button_startAcquisition.Text = "Stop Acquisition";
@@ -653,21 +670,36 @@ namespace CitirocUI
         {
             if (e.KeyValue == 13)
             {
-                acquisitionTime = textBox_acquisitionTime.Text;
-                string[] splitAcqTime = acquisitionTime.Split(':');
-                if (Convert.ToInt32(splitAcqTime[2]) > 59) splitAcqTime[2] = "59";
-                if (Convert.ToInt32(splitAcqTime[1]) > 59) splitAcqTime[1] = "59";
-                textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
+                AdjustAcquisitionTime();
             }
         }
 
         private void textBox_acquisitionTime_Leave(object sender, EventArgs e)
         {
-            acquisitionTime = textBox_acquisitionTime.Text;
-            string[] splitAcqTime = acquisitionTime.Split(':');
+            AdjustAcquisitionTime();
+        }
+
+        private void AdjustAcquisitionTime()
+        {
+            // Make sure we don't set more than 59 mins and 59 seconds -- humans don't know about these... :)
+            string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
             if (Convert.ToInt32(splitAcqTime[2]) > 59) splitAcqTime[2] = "59";
             if (Convert.ToInt32(splitAcqTime[1]) > 59) splitAcqTime[1] = "59";
             textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
+            int acqTimeSeconds = 3600 * Convert.ToInt32(splitAcqTime[0]) +
+                                   60 * Convert.ToInt32(splitAcqTime[1]) +
+                                        Convert.ToInt32(splitAcqTime[0]);
+
+            // Adjust max. acquisition time available on CUBES...
+            if ((comboBox_SelectConnection.SelectedIndex == 1) && (acqTimeSeconds > 255)) {
+                splitAcqTime[0] = "00";
+                splitAcqTime[1] = "04";
+                splitAcqTime[2] = "15";
+                textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
+                MessageBox.Show("Proto-CUBES only (currently) supports max. 255-second DAQ time, setting acquisition time accordingly...", "Warning");
+            }
+
+            acquisitionTime = textBox_acquisitionTime.Text;
         }
     }
 }

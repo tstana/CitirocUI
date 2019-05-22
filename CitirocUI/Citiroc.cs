@@ -290,6 +290,23 @@ namespace CitirocUI
             chart_perAcqChargeLG.ContextMenu = cm2;
 
             groupBox_SerialPortSettings.Visible = false;
+
+            // Adjust enable state of labels in Data Acquisition tab
+            if (switchBox_acquisitionMode.Checked == true) {
+                    label_numData.Enabled = false;
+                    textBox_numData.Enabled = false;
+                    label_acquisitionTime.Enabled = true;
+                    textBox_acquisitionTime.Enabled = true;
+                    timeAcquisitionMode = true;
+            }
+            else
+            {
+                label_numData.Enabled = true;
+                textBox_numData.Enabled = true;
+                label_acquisitionTime.Enabled = false;
+                textBox_acquisitionTime.Enabled = false;
+                timeAcquisitionMode = false;
+            }
         }
 
         #region fancy tabControl
