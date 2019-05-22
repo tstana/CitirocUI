@@ -40,12 +40,13 @@ namespace CitirocUI
             if (txData)
             {
                 box.SelectionColor = Color.Yellow;
+                box.AppendText(BitConverter.ToString(rdata).Replace("-", " " /*string.Empty*/));
             }
             else {
                 box.SelectionColor = Color.LightGreen;
+                box.AppendText(System.Text.Encoding.UTF8.GetString(rdata, 0, rdata.Length));
             }
-
-            box.AppendText(BitConverter.ToString(rdata).Replace("-", " " /*string.Empty*/));
+            
             box.SelectionColor = box.ForeColor;
             box.ScrollToCaret();
         }
