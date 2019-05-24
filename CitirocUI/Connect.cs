@@ -497,6 +497,12 @@ namespace CitirocUI
             }
         }
 
+        private void comboBox_COMPortList_OnClick(object sender, EventArgs e)
+        {
+            comboBox_COMPortList.Items.Clear();
+            GetCOMPorts();
+        }
+
         private void btn_OpenSerialMonitor_Click(object sender, EventArgs e)
         {
             /* Prevent re-opening the form if already open... */

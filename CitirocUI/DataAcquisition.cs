@@ -681,7 +681,7 @@ namespace CitirocUI
 
         private void AdjustAcquisitionTime()
         {
-            // Make sure we don't set more than 59 mins and 59 seconds -- humans don't know about these... :)
+            // Make sure we don't set more than 59 mins and 59 seconds
             string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
             if (Convert.ToInt32(splitAcqTime[2]) > 59) splitAcqTime[2] = "59";
             if (Convert.ToInt32(splitAcqTime[1]) > 59) splitAcqTime[1] = "59";
@@ -699,6 +699,7 @@ namespace CitirocUI
                 MessageBox.Show("Proto-CUBES only (currently) supports max. 255-second DAQ time, setting acquisition time accordingly...", "Warning");
             }
 
+            // And finally set design-wide acquisition time
             acquisitionTime = textBox_acquisitionTime.Text;
         }
     }
