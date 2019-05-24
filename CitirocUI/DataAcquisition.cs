@@ -66,6 +66,7 @@ namespace CitirocUI
                 acqtime[0] = Convert.ToByte('D');
                 acqtime[1] = Convert.ToByte(acqTimeSeconds);
 
+                mySerialPort.Write(acqtime, 0, acqtime.Length);
                 if (showMonitor)
                 {
                     SendDataToMonitorEvent(acqtime, true);
@@ -698,7 +699,7 @@ namespace CitirocUI
             textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
             acqTimeSeconds = 3600 * Convert.ToInt32(splitAcqTime[0]) +
                                60 * Convert.ToInt32(splitAcqTime[1]) +
-                                    Convert.ToInt32(splitAcqTime[0]);
+                                    Convert.ToInt32(splitAcqTime[2]);
 
             // Adjust max. acquisition time available on CUBES...
             if ((comboBox_SelectConnection.SelectedIndex == 1) && (acqTimeSeconds > 255)) {
