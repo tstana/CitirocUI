@@ -21,6 +21,7 @@ namespace CitirocUI
         int nbAcq = 100;
         string acquisitionTime = "00:01:00";
         bool timeAcquisitionMode = true;
+        int acqTimeSeconds;
 
         private void button_startAcquisition_Click(object sender, EventArgs e)
         {
@@ -60,6 +61,15 @@ namespace CitirocUI
 
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
                 AdjustAcquisitionTime();
+
+                byte[] acqtime = new byte[2];
+                acqtime[0] = Convert.ToByte('D');
+                acqtime[1] = Convert.ToByte(acqTimeSeconds);
+
+                if (showMonitor)
+                {
+                    SendDataToMonitorEvent(acqtime, true);
+                }
 
                 return;     // TODO: Remove me!
             }
@@ -686,9 +696,9 @@ namespace CitirocUI
             if (Convert.ToInt32(splitAcqTime[2]) > 59) splitAcqTime[2] = "59";
             if (Convert.ToInt32(splitAcqTime[1]) > 59) splitAcqTime[1] = "59";
             textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
-            int acqTimeSeconds = 3600 * Convert.ToInt32(splitAcqTime[0]) +
-                                   60 * Convert.ToInt32(splitAcqTime[1]) +
-                                        Convert.ToInt32(splitAcqTime[0]);
+            acqTimeSeconds = 3600 * Convert.ToInt32(splitAcqTime[0]) +
+                               60 * Convert.ToInt32(splitAcqTime[1]) +
+                                    Convert.ToInt32(splitAcqTime[0]);
 
             // Adjust max. acquisition time available on CUBES...
             if ((comboBox_SelectConnection.SelectedIndex == 1) && (acqTimeSeconds > 255)) {
