@@ -221,7 +221,7 @@ namespace CitirocUI
             {
                 /* Disconnect and exit if we are already connected... */
                 if (connectStatus == 1) {
-                    mySerialPort.Close();
+                    mySerialComm.ClosePort();
 
                     Form f = Application.OpenForms["frmMonitor"];
                     if (f != null){
@@ -241,34 +241,34 @@ namespace CitirocUI
                 /* Otherwise, connect to selected port, creating it on first run of the code */
                 try
                 {
-                    if (mySerialPort == null)
-                        mySerialPort = new SerialPort();
+                    if (mySerialComm == null)
+                        mySerialComm = new ProtoCubesSerial();
 
-                    mySerialPort.PortName = comboBox_COMPortList.SelectedItem.ToString();
-                    mySerialPort.BaudRate = Convert.ToInt32(comboBox_Baudrate.SelectedItem.ToString());
+                    mySerialComm.PortName = comboBox_COMPortList.SelectedItem.ToString();
+                    mySerialComm.BaudRate = Convert.ToInt32(comboBox_Baudrate.SelectedItem.ToString());
 
-                    mySerialPort.Parity = Parity.None;
-                    mySerialPort.StopBits = StopBits.One;
-                    mySerialPort.DataBits = 8;
-                    mySerialPort.Handshake = Handshake.None;
-                    mySerialPort.RtsEnable = true;
+                    mySerialComm.Parity = Parity.None;
+                    mySerialComm.StopBits = StopBits.One;
+                    mySerialComm.DataBits = 8;
+                    mySerialComm.Handshake = Handshake.None;
+                    mySerialComm.RtsEnable = true;
 
-                    // Set the read/write timeouts
-                    mySerialPort.ReadTimeout = 500;
-                    mySerialPort.WriteTimeout = 500;
+                    //// Set the read/write timeouts
+                    mySerialComm.ReadTimeout = 500;
+                    mySerialComm.WriteTimeout = 500;
 
-                    // Add handler for DataReceived event
-                    mySerialPort.DataReceived += new SerialDataReceivedEventHandler(mySerialPort_OnDataReceived);
+                    //// Add handler for DataReceived event
+                    //mySerialPort.DataReceived += new SerialDataReceivedEventHandler(mySerialPort_OnDataReceived);
 
                     // Finally! Open serial port!
-                    mySerialPort.Open();
+                    mySerialComm.OpenPort();
 
                     // Update monitor form
                     Form f = Application.OpenForms["frmMonitor"];
                     if (f != null)
                     {
                         frmMonitor fm = (frmMonitor)f;
-                        fm.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
+                        fm.ConnStatusLabel = mySerialComm.info;
                     }
 
                     // Update text label
@@ -510,13 +510,15 @@ namespace CitirocUI
             showMonitor = true;
             SendDataToMonitorEvent += frmMon.PublishData;
 
+            SendWindowPosition += frmMon.SetPosition;
+
             frmMon.Show();
             frmMon.Top = this.Top;
             frmMon.Left = this.Right;
             frmMon.Height = this.Height;
 
-            if ((mySerialPort != null) && (mySerialPort.IsOpen))
-                frmMon.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
+            //if ((mySerialPort != null) && (mySerialPort.IsOpen))
+            //    frmMon.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
         }
 
         void mySerialPort_OnDataReceived(object sender, SerialDataReceivedEventArgs e)

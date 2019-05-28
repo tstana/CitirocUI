@@ -82,7 +82,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialPort.Write(bytProbe, 0, 1 + intLenProbeStream / 8);
+                    //mySerialPort.Write(bytProbe, 0, 1 + intLenProbeStream / 8);
                     if (showMonitor)
                     {
                         SendDataToMonitorEvent(bytProbe, true);

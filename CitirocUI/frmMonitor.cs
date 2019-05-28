@@ -31,6 +31,15 @@ namespace CitirocUI
             AppendByteArray(rtxtMonitor, data, Tx);
         }
 
+        public void SetPosition(Point position, int f_height)
+        {
+            this.Height = f_height;
+            this.Top = position.Y;
+            this.Left = position.X;
+
+            this.Refresh();
+        }
+
         private static void AppendByteArray(RichTextBox box, byte[] rdata, bool txData)
         {
             box.SelectionStart = box.TextLength;

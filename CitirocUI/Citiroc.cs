@@ -25,6 +25,8 @@ namespace CitirocUI
         FontFamily ffBryant = FontFamily.GenericSansSerif;
         private System.Drawing.Text.PrivateFontCollection pfcBryant = new System.Drawing.Text.PrivateFontCollection();
 
+        ProtoCubesSerial mySerialComm = new ProtoCubesSerial();
+
         public Citiroc()
         {
             InitializeComponent();
@@ -78,10 +80,7 @@ namespace CitirocUI
 
             try
             {
-                if (mySerialPort.IsOpen)
-                {
-                    mySerialPort.Close();
-                }
+                  mySerialComm.ClosePort();
             }
             catch { /* Blindly close... */}
         }
@@ -175,11 +174,14 @@ namespace CitirocUI
         static int NbChannels = 32;
 
         /* Serial port-related objects */
-        private SerialPort mySerialPort;
+//        private SerialPort mySerialPort;
         public static bool showMonitor = false;
 
         public delegate void PassDataDelegate(byte[] data, bool direction);
         public event PassDataDelegate SendDataToMonitorEvent;
+
+        public delegate void PassWindowPosition(Point position, int f_height);
+        public event PassWindowPosition SendWindowPosition;
 
         private void Citiroc_Load(object sender, EventArgs e)
         {
@@ -1761,6 +1763,13 @@ namespace CitirocUI
                 bitmap.Save(strSaveImageName, System.Drawing.Imaging.ImageFormat.Png);
             }
         }
+
+        private void Citiroc_LocationChanged(object sender, EventArgs e)
+        {
+            // new form position
+            Point p = new Point(this.Right, this.Top);
+            SendWindowPosition(p, this.Height);
+         }
     }
 }
            

@@ -22,13 +22,19 @@ namespace CitirocUI
 
         #region Manager Variables
         //property variables
-        private string _baudRate = string.Empty;
-        private string _parity = string.Empty;
-        private string _stopBits = string.Empty;
-        private string _dataBits = string.Empty;
+        private int _baudRate = 0;
+        private Parity _parity = 0;
+        private StopBits _stopBits = 0;
+        private int _dataBits = 8;
         private string _portName = string.Empty;
+        private Handshake _handshake = 0;
+        private int _writetimeout = 0;
+        private int _readtimeout = 0;
+        private bool _rtsenable = false;
+        private string _info;
         private TransmissionType _transType;
         private RichTextBox _displayWindow;
+
         //global manager variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
         private SerialPort comPort = new SerialPort();
@@ -39,7 +45,7 @@ namespace CitirocUI
         /// Property to hold the BaudRate
         /// of our manager class
         /// </summary>
-        public string BaudRate
+        public int BaudRate
         {
             get { return _baudRate; }
             set { _baudRate = value; }
@@ -49,7 +55,7 @@ namespace CitirocUI
         /// property to hold the Parity
         /// of our manager class
         /// </summary>
-        public string Parity
+        public Parity Parity
         {
             get { return _parity; }
             set { _parity = value; }
@@ -59,7 +65,7 @@ namespace CitirocUI
         /// property to hold the StopBits
         /// of our manager class
         /// </summary>
-        public string StopBits
+        public StopBits StopBits
         {
             get { return _stopBits; }
             set { _stopBits = value; }
@@ -69,7 +75,7 @@ namespace CitirocUI
         /// property to hold the DataBits
         /// of our manager class
         /// </summary>
-        public string DataBits
+        public int DataBits
         {
             get { return _dataBits; }
             set { _dataBits = value; }
@@ -83,6 +89,35 @@ namespace CitirocUI
         {
             get { return _portName; }
             set { _portName = value; }
+        }
+
+        public Handshake Handshake
+        {
+            get { return _handshake; }
+            set { _handshake = value; }
+        }
+
+        public bool RtsEnable
+        {
+            get { return _rtsenable; }
+            set { _rtsenable = value; }
+        }
+
+        public int ReadTimeout
+        {
+            get { return _readtimeout; }
+            set { _readtimeout = value; }
+        }
+        public int WriteTimeout
+        {
+            get { return _writetimeout; }
+            set { _writetimeout = value; }
+        }
+
+        public string info
+        {
+            get { return _info; }
+            set { _info = value; }
         }
 
         /// <summary>
@@ -115,7 +150,7 @@ namespace CitirocUI
         /// <param name="sBits">Desired StopBits</param>
         /// <param name="dBits">Desired DataBits</param>
         /// <param name="name">Desired PortName</param>
-        public ProtoCubesSerial(string baud, string par, string sBits, string dBits, string name, RichTextBox rtb)
+        public ProtoCubesSerial(int baud, Parity par, StopBits sBits, int dBits, string name, RichTextBox rtb)
         {
             _baudRate = baud;
             _parity = par;
@@ -133,10 +168,10 @@ namespace CitirocUI
         /// </summary>
         public ProtoCubesSerial()
         {
-            _baudRate = string.Empty;
-            _parity = string.Empty;
-            _stopBits = string.Empty;
-            _dataBits = string.Empty;
+            _baudRate = 115200;
+            _parity = Parity.None;
+            _stopBits = StopBits.One;
+            _dataBits = 8;
             _portName = "COM1";
             _displayWindow = null;
             //add event handler
@@ -264,13 +299,19 @@ namespace CitirocUI
                 if (comPort.IsOpen == true) comPort.Close();
 
                 //set the properties of our SerialPort Object
-                comPort.BaudRate = int.Parse(_baudRate);    //BaudRate
-                comPort.DataBits = int.Parse(_dataBits);    //DataBits
-                comPort.StopBits = (StopBits)Enum.Parse(typeof(StopBits), _stopBits);    //StopBits
-                comPort.Parity = (Parity)Enum.Parse(typeof(Parity), _parity);    //Parity
+                comPort.BaudRate = _baudRate;    //BaudRate
+                comPort.DataBits = _dataBits;    //DataBits
+                comPort.StopBits = _stopBits;    //StopBits
+                comPort.Parity =  _parity;    //Parity
                 comPort.PortName = _portName;   //PortName
+
+                comPort.RtsEnable = _rtsenable;
+                comPort.WriteTimeout = _writetimeout;
+                comPort.ReadTimeout = _readtimeout;
                 //now open the port
                 comPort.Open();
+
+                _info = "Connected / " + _portName + " / " + _baudRate.ToString();
                 //display message
                 DisplayData(MessageType.Normal, "Port opened at " + DateTime.Now + "\n");
                 //return true
@@ -278,11 +319,18 @@ namespace CitirocUI
             }
             catch (Exception ex)
             {
+                _info = "Error opening serial port!" + ex.Message;
                 DisplayData(MessageType.Error, ex.Message);
                 return false;
             }
         }
         #endregion
+
+        public bool ClosePort()
+        {
+            comPort.Close();
+            return true;
+        }
 
         #region SetParityValues
         public void SetParityValues(object obj)

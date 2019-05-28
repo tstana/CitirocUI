@@ -52,7 +52,7 @@ namespace CitirocUI
                 }
 
                 // Make sure serial port exists and is open:
-                if ((mySerialPort == null) || (mySerialPort.IsOpen == false))
+                if ((mySerialComm == null) || (mySerialComm.OpenPort() == false ))
                 {
                     MessageBox.Show("Please configure and open the serial port connection via the \"Connect\" tab.");
                     return;
