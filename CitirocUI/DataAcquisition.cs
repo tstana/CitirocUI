@@ -113,54 +113,82 @@ namespace CitirocUI
 
         private void backgroundWorker_dataAcquisition_DoWork(object sender, DoWorkEventArgs e)
         {
-            int FIFOAcqLength = 100; // The FIFO in the FPGA can store up to 100 acquisitions per cycle
-
-            TextWriter tw = new StreamWriter(DataLoadFile);
-
-            // write file header
-            string header = "";
-            for (int i = 0; i < NbChannels; i++) header += "hit" + i.ToString() + " ChargeLG" + i.ToString() + " " + " ChargeHG" + i.ToString() + " ";
-            header += "temp";
-            tw.WriteLine(header);
-
-            var swDaqRun = Stopwatch.StartNew(); // Start the stopwatch to measure acquisition time
-            long actualAcqTime = 0;
-
-            int daqIdleCount = 0;
-
-            // Get acquisition time specified by user
-            string[] splitAcqTime = acquisitionTime.Split(':');
-            int acquisitionTimems = Convert.ToInt32(splitAcqTime[0]) * 3600000 + Convert.ToInt32(splitAcqTime[1]) * 60000 + Convert.ToInt32(splitAcqTime[2]) * 1000;
-            
-            int nbCycles = nbAcq / FIFOAcqLength; // Calculate the number of acquisition cycles to do to have "nbAcq" acquisitions.
-            if (nbAcq % FIFOAcqLength != 0 || nbCycles == 0) nbCycles++; // add one cycle for the remainder or if nbCycle == 0 (ie nbAcq < 100)
-
-            // If the acquisition is done on a certain amount of time, the loop will be infinite and nbCycles will be 1
-            if (timeAcquisitionMode) nbCycles = 1;
-
-            for (int cycle = 0; cycle < nbCycles; cycle++)
+            if (comboBox_SelectConnection.SelectedIndex == 0)
             {
-                // Calculate the number of acquisition to do in this cycle, if the acquisition is done on a certain amount of time it is always 100.
-                int nbAcqInCycle = 0;
-                if (nbAcq >= FIFOAcqLength || timeAcquisitionMode) nbAcqInCycle = FIFOAcqLength;
-                else if (nbAcq < FIFOAcqLength) nbAcqInCycle = nbAcq;
 
-                // SubAdd 45 store the number of acquisitions to save in FIFO before reading it.
-                string strNbAcq = IntToBin(nbAcqInCycle, 8);
-                Firmware.sendWord(45, strNbAcq, usbDevId);
+                int FIFOAcqLength = 100; // The FIFO in the FPGA can store up to 100 acquisitions per cycle
 
-                Firmware.sendWord(43, "10000001", usbDevId); // Start ADC acquisition cycles (bit 0 signals DAQ is running)
+                TextWriter tw = new StreamWriter(DataLoadFile);
 
-                string rd4 = "00000000";
+                // write file header
+                string header = "";
+                for (int i = 0; i < NbChannels; i++) header += "hit" + i.ToString() + " ChargeLG" + i.ToString() + " " + " ChargeHG" + i.ToString() + " ";
+                header += "temp";
+                tw.WriteLine(header);
 
-                var swAcqTime = Stopwatch.StartNew(); // Start the stopwatch to measure "real" acquisition time
-                // bit 7 of subAdd 4 is 1 when the acquisitions are done
-                while (rd4.Substring(7, 1) == "0" && !backgroundWorker_dataAcquisition.CancellationPending)
+                var swDaqRun = Stopwatch.StartNew(); // Start the stopwatch to measure acquisition time
+                long actualAcqTime = 0;
+
+                int daqIdleCount = 0;
+
+                // Get acquisition time specified by user
+                string[] splitAcqTime = acquisitionTime.Split(':');
+                int acquisitionTimems = Convert.ToInt32(splitAcqTime[0]) * 3600000 + Convert.ToInt32(splitAcqTime[1]) * 60000 + Convert.ToInt32(splitAcqTime[2]) * 1000;
+
+                int nbCycles = nbAcq / FIFOAcqLength; // Calculate the number of acquisition cycles to do to have "nbAcq" acquisitions.
+                if (nbAcq % FIFOAcqLength != 0 || nbCycles == 0) nbCycles++; // add one cycle for the remainder or if nbCycle == 0 (ie nbAcq < 100)
+
+                // If the acquisition is done on a certain amount of time, the loop will be infinite and nbCycles will be 1
+                if (timeAcquisitionMode) nbCycles = 1;
+
+                for (int cycle = 0; cycle < nbCycles; cycle++)
                 {
-                    if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds > acquisitionTimems) // Stop the acquisition when time-out
+                    // Calculate the number of acquisition to do in this cycle, if the acquisition is done on a certain amount of time it is always 100.
+                    int nbAcqInCycle = 0;
+                    if (nbAcq >= FIFOAcqLength || timeAcquisitionMode) nbAcqInCycle = FIFOAcqLength;
+                    else if (nbAcq < FIFOAcqLength) nbAcqInCycle = nbAcq;
+
+                    // SubAdd 45 store the number of acquisitions to save in FIFO before reading it.
+                    string strNbAcq = IntToBin(nbAcqInCycle, 8);
+                    Firmware.sendWord(45, strNbAcq, usbDevId);
+
+                    Firmware.sendWord(43, "10000001", usbDevId); // Start ADC acquisition cycles (bit 0 signals DAQ is running)
+
+                    string rd4 = "00000000";
+
+                    var swAcqTime = Stopwatch.StartNew(); // Start the stopwatch to measure "real" acquisition time
+                                                          // bit 7 of subAdd 4 is 1 when the acquisitions are done
+                    while (rd4.Substring(7, 1) == "0" && !backgroundWorker_dataAcquisition.CancellationPending)
                     {
-                        swAcqTime.Stop(); // Stop the stopwatch to measure "real" acquisition time
-                        actualAcqTime += swAcqTime.ElapsedMilliseconds;
+                        if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds > acquisitionTimems) // Stop the acquisition when time-out
+                        {
+                            swAcqTime.Stop(); // Stop the stopwatch to measure "real" acquisition time
+                            actualAcqTime += swAcqTime.ElapsedMilliseconds;
+
+                            tw.Flush();
+                            tw.Close();
+
+                            swDaqRun.Stop();
+                            UpdateDaqTimeLabels(swDaqRun.ElapsedMilliseconds, actualAcqTime);
+
+                            return;
+                        }
+                        rd4 = Firmware.readWord(4, usbDevId);
+                        /* If no events are present in time mode DAQ, update every ~500 ms */
+                        ++daqIdleCount;
+                        if ((timeAcquisitionMode) && (daqIdleCount == 100))
+                        {
+                            daqIdleCount = 0;
+                            backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds * 100 / acquisitionTimems));
+                        }
+                        Thread.Sleep(5);
+                    }
+                    daqIdleCount = 0;
+                    swAcqTime.Stop(); // Stop the stopwatch to measure "real" acquisition time
+                    actualAcqTime += swAcqTime.ElapsedMilliseconds;
+                    if (backgroundWorker_dataAcquisition.CancellationPending)
+                    {
+                        e.Cancel = true;
 
                         tw.Flush();
                         tw.Close();
@@ -170,114 +198,139 @@ namespace CitirocUI
 
                         return;
                     }
-                    rd4 = Firmware.readWord(4, usbDevId);
-                    /* If no events are present in time mode DAQ, update every ~500 ms */
-                    ++daqIdleCount;
-                    if ((timeAcquisitionMode) && (daqIdleCount == 100))
+
+                    /* Report DAQ progress */
+                    if (timeAcquisitionMode)
                     {
-                        daqIdleCount = 0;
                         backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds * 100 / acquisitionTimems));
                     }
-                    Thread.Sleep(5);
-                }
-                daqIdleCount = 0;
-                swAcqTime.Stop(); // Stop the stopwatch to measure "real" acquisition time
-                actualAcqTime += swAcqTime.ElapsedMilliseconds;
-                if (backgroundWorker_dataAcquisition.CancellationPending)
-                {
-                    e.Cancel = true;
-
-                    tw.Flush();
-                    tw.Close();
-                    
-                    swDaqRun.Stop();
-                    UpdateDaqTimeLabels(swDaqRun.ElapsedMilliseconds, actualAcqTime);
-
-                    return;
-                }
-
-                /* Report DAQ progress */
-                if (timeAcquisitionMode) {
-                    backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds * 100 / acquisitionTimems));
-                } else {
-                    backgroundWorker_dataAcquisition.ReportProgress(cycle * 100 / nbCycles);
-                }
-
-                /* Skip reading FIFOs if they are empty and go on to next loop iteration (skip remaining part of this loop) */
-                string subAdd22 = Firmware.readWord(22, usbDevId);
-                if (subAdd22 != "00000000") { cycle -= 1; continue; }
-                
-                /* Read FIFOs and update data otherwise */
-                int nbData = (NbChannels + 1) * nbAcqInCycle;
-
-                byte[] FIFO20 = Firmware.readWord(20, nbData, usbDevId);
-                byte[] FIFO21 = Firmware.readWord(21, nbData, usbDevId);
-                byte[] FIFO23 = Firmware.readWord(23, nbData, usbDevId);
-                byte[] FIFO24 = Firmware.readWord(24, nbData, usbDevId);
-
-                byte[] FIFOHG = new byte[2 * nbData];
-                byte[] FIFOLG = new byte[2 * nbData];
-
-                for (int i = 0; i < nbData; i++)
-                {
-                    FIFOHG[i * 2 + 1] = FIFO20[i];
-                    FIFOHG[i * 2 + 0] = FIFO21[i];
-                    FIFOLG[i * 2 + 1] = FIFO23[i];
-                    FIFOLG[i * 2 + 0] = FIFO24[i];
-                }
-
-                BitArray bitArrayHG = new BitArray(FIFOHG);
-                BitArray bitArrayLG = new BitArray(FIFOLG);
-                int[] dataHG = new int[nbData];
-                int[] dataLG = new int[nbData];
-                int[] hit = new int[nbData];
-                
-                for (int i = 0; i < nbAcqInCycle; i++)
-                {
-                    for (int chn = 0; chn < NbChannels + 1; chn++)
+                    else
                     {
-                        bool[] boolArrayDataHG = { bitArrayHG[i * 528 + chn * 16 + 0], bitArrayHG[i * 528 + chn * 16 + 1], bitArrayHG[i * 528 + chn * 16 + 2], bitArrayHG[i * 528 + chn * 16 + 3], bitArrayHG[i * 528 + chn * 16 + 4], bitArrayHG[i * 528 + chn * 16 + 5],
-                            bitArrayHG[i * 528 + chn * 16 + 6], bitArrayHG[i * 528 + chn * 16 + 7], bitArrayHG[i * 528 + chn * 16 + 8], bitArrayHG[i * 528 + chn * 16 + 9], bitArrayHG[i * 528 + chn * 16 + 10], bitArrayHG[i * 528 + chn * 16 + 11] };
-                        BitArray bitArrayDataHG = new BitArray(boolArrayDataHG);
-                        int[] array = new int[1];
-                        bitArrayDataHG.CopyTo(array, 0);
-                        dataHG[chn] = array[0];
-
-                        PerChannelChargeHG[chn, dataHG[chn]]++;
-
-                        bool[] boolArrayDataLG = { bitArrayLG[i * 528 + chn * 16 + 0], bitArrayLG[i * 528 + chn * 16 + 1], bitArrayLG[i * 528 + chn * 16 + 2], bitArrayLG[i * 528 + chn * 16 + 3], bitArrayLG[i * 528 + chn * 16 + 4], bitArrayLG[i * 528 + chn * 16 + 5],
-                            bitArrayLG[i * 528 + chn * 16 + 6], bitArrayLG[i * 528 + chn * 16 + 7], bitArrayLG[i * 528 + chn * 16 + 8], bitArrayLG[i * 528 + chn * 16 + 9], bitArrayLG[i * 528 + chn * 16 + 10], bitArrayLG[i * 528 + chn * 16 + 11] };
-                        BitArray bitArrayDataLG = new BitArray(boolArrayDataLG);
-                        bitArrayDataLG.CopyTo(array, 0);
-                        dataLG[chn] = array[0];
-
-                        PerChannelChargeLG[chn, dataLG[chn]]++;
-
-                        hit[chn] = Convert.ToInt32(bitArrayHG[i * 528 + chn * 16 + 13]);
-                        Hit[chn] += hit[chn];
+                        backgroundWorker_dataAcquisition.ReportProgress(cycle * 100 / nbCycles);
                     }
-                    string outdata = "";
 
-                    for (int chn = 0; chn < NbChannels; chn++)
-                        outdata += hit[chn] + " " + dataLG[chn] + " " + dataHG[chn] + " ";
-                    outdata += (dataHG[NbChannels]).ToString();
+                    /* Skip reading FIFOs if they are empty and go on to next loop iteration (skip remaining part of this loop) */
+                    string subAdd22 = Firmware.readWord(22, usbDevId);
+                    if (subAdd22 != "00000000") { cycle -= 1; continue; }
 
-                    tw.WriteLine(outdata);
+                    /* Read FIFOs and update data otherwise */
+                    int nbData = (NbChannels + 1) * nbAcqInCycle;
+
+                    byte[] FIFO20 = Firmware.readWord(20, nbData, usbDevId);
+                    byte[] FIFO21 = Firmware.readWord(21, nbData, usbDevId);
+                    byte[] FIFO23 = Firmware.readWord(23, nbData, usbDevId);
+                    byte[] FIFO24 = Firmware.readWord(24, nbData, usbDevId);
+
+                    byte[] FIFOHG = new byte[2 * nbData];
+                    byte[] FIFOLG = new byte[2 * nbData];
+
+                    for (int i = 0; i < nbData; i++)
+                    {
+                        FIFOHG[i * 2 + 1] = FIFO20[i];
+                        FIFOHG[i * 2 + 0] = FIFO21[i];
+                        FIFOLG[i * 2 + 1] = FIFO23[i];
+                        FIFOLG[i * 2 + 0] = FIFO24[i];
+                    }
+
+                    BitArray bitArrayHG = new BitArray(FIFOHG);
+                    BitArray bitArrayLG = new BitArray(FIFOLG);
+                    int[] dataHG = new int[nbData];
+                    int[] dataLG = new int[nbData];
+                    int[] hit = new int[nbData];
+
+                    for (int i = 0; i < nbAcqInCycle; i++)
+                    {
+                        for (int chn = 0; chn < NbChannels + 1; chn++)
+                        {
+                            bool[] boolArrayDataHG = { bitArrayHG[i * 528 + chn * 16 + 0], bitArrayHG[i * 528 + chn * 16 + 1], bitArrayHG[i * 528 + chn * 16 + 2], bitArrayHG[i * 528 + chn * 16 + 3], bitArrayHG[i * 528 + chn * 16 + 4], bitArrayHG[i * 528 + chn * 16 + 5],
+                            bitArrayHG[i * 528 + chn * 16 + 6], bitArrayHG[i * 528 + chn * 16 + 7], bitArrayHG[i * 528 + chn * 16 + 8], bitArrayHG[i * 528 + chn * 16 + 9], bitArrayHG[i * 528 + chn * 16 + 10], bitArrayHG[i * 528 + chn * 16 + 11] };
+                            BitArray bitArrayDataHG = new BitArray(boolArrayDataHG);
+                            int[] array = new int[1];
+                            bitArrayDataHG.CopyTo(array, 0);
+                            dataHG[chn] = array[0];
+
+                            PerChannelChargeHG[chn, dataHG[chn]]++;
+
+                            bool[] boolArrayDataLG = { bitArrayLG[i * 528 + chn * 16 + 0], bitArrayLG[i * 528 + chn * 16 + 1], bitArrayLG[i * 528 + chn * 16 + 2], bitArrayLG[i * 528 + chn * 16 + 3], bitArrayLG[i * 528 + chn * 16 + 4], bitArrayLG[i * 528 + chn * 16 + 5],
+                            bitArrayLG[i * 528 + chn * 16 + 6], bitArrayLG[i * 528 + chn * 16 + 7], bitArrayLG[i * 528 + chn * 16 + 8], bitArrayLG[i * 528 + chn * 16 + 9], bitArrayLG[i * 528 + chn * 16 + 10], bitArrayLG[i * 528 + chn * 16 + 11] };
+                            BitArray bitArrayDataLG = new BitArray(boolArrayDataLG);
+                            bitArrayDataLG.CopyTo(array, 0);
+                            dataLG[chn] = array[0];
+
+                            PerChannelChargeLG[chn, dataLG[chn]]++;
+
+                            hit[chn] = Convert.ToInt32(bitArrayHG[i * 528 + chn * 16 + 13]);
+                            Hit[chn] += hit[chn];
+                        }
+                        string outdata = "";
+
+                        for (int chn = 0; chn < NbChannels; chn++)
+                            outdata += hit[chn] + " " + dataLG[chn] + " " + dataHG[chn] + " ";
+                        outdata += (dataHG[NbChannels]).ToString();
+
+                        tw.WriteLine(outdata);
+                    }
+
+                    Firmware.sendWord(43, "00000001", usbDevId); // Set word 43 bit 7 to '0' to inform firmware a new ADC cycle can commence
+
+                    if (timeAcquisitionMode) cycle -= 1;
                 }
 
-                Firmware.sendWord(43, "00000001", usbDevId); // Set word 43 bit 7 to '0' to inform firmware a new ADC cycle can commence
+                swDaqRun.Stop();
 
-                if (timeAcquisitionMode) cycle -= 1;
+                /* Close the file */
+                tw.Flush();
+                tw.Close();
+
+                /* Update elapsed & live time label */
+                UpdateDaqTimeLabels(swDaqRun.ElapsedMilliseconds, actualAcqTime);
             }
 
-            swDaqRun.Stop();
+            else if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                var swDaqRun = Stopwatch.StartNew(); // Start the stopwatch to measure acquisition time
 
-            /* Close the file */
-            tw.Flush();
-            tw.Close();
+                // Get acquisition time specified by user
+                string[] splitAcqTime = acquisitionTime.Split(':');
+                acqTimeSeconds = Convert.ToInt32(splitAcqTime[0]) * 3600000 + Convert.ToInt32(splitAcqTime[1]) * 60000 + Convert.ToInt32(splitAcqTime[2]) * 1000;
 
-            /* Update elapsed & live time label */
-            UpdateDaqTimeLabels(swDaqRun.ElapsedMilliseconds, actualAcqTime);
+                while (!backgroundWorker_dataAcquisition.CancellationPending)
+                {
+                    if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds / 1000 > acqTimeSeconds) // Stop the acquisition when time-out
+                    {
+                        swDaqRun.Stop();
+                        break;
+                    }
+                    Thread.Sleep(5);
+
+                    /* DAQ progess  */
+                    if (timeAcquisitionMode)
+                    {
+                        backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds/1000 * 100 / acqTimeSeconds));
+                    }
+                }
+
+                // For serial monitor to show "request payload data" has been sent
+                byte[] reqData = new byte[1];
+                reqData[0] = Convert.ToByte('R');
+
+                mySerialPort.Write(reqData, 0, reqData.Length);
+
+                if (showMonitor)
+                {
+                    SendDataToMonitorEvent(reqData, true);
+                }
+
+                // To read the byte array sent by arduino
+                byte[] acqdData = new byte[25000];
+                mySerialPort.Read(acqdData, 0, acqdData.Length);
+
+                // To save the byte array to a file
+                const string fileName = "CUBESfile.dat";
+                BinaryWriter cubesfile = new BinaryWriter(File.Open(fileName, FileMode.Create));
+                cubesfile.Write(acqdData);
+                cubesfile.Close();
+            }
         }
 
         private void UpdateDaqTimeLabels(long daqRunTime, long actualAcqTime)
