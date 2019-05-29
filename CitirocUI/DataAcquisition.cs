@@ -72,7 +72,7 @@ namespace CitirocUI
                     SendDataToMonitorEvent(acqtime, true);
                 }
 
-                return;     // TODO: Remove me!
+                //return;     // TODO: Remove me!
             }
             else {
                 MessageBox.Show("No connection mode selected. Please select one via the \"Connect\" tab.");
@@ -113,7 +113,7 @@ namespace CitirocUI
 
         private void backgroundWorker_dataAcquisition_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (comboBox_SelectConnection.SelectedIndex == 0)
+            if (SelectedConnectionSerial == 0)
             {
 
                 int FIFOAcqLength = 100; // The FIFO in the FPGA can store up to 100 acquisitions per cycle
@@ -286,13 +286,14 @@ namespace CitirocUI
                 UpdateDaqTimeLabels(swDaqRun.ElapsedMilliseconds, actualAcqTime);
             }
 
-            else if (comboBox_SelectConnection.SelectedIndex == 1)
+            else if (SelectedConnectionSerial == 1)
             {
                 var swDaqRun = Stopwatch.StartNew(); // Start the stopwatch to measure acquisition time
 
                 // Get acquisition time specified by user
-                string[] splitAcqTime = acquisitionTime.Split(':');
-                acqTimeSeconds = Convert.ToInt32(splitAcqTime[0]) * 3600000 + Convert.ToInt32(splitAcqTime[1]) * 60000 + Convert.ToInt32(splitAcqTime[2]) * 1000;
+                /*string[] splitAcqTime = acquisitionTime.Split(':');
+                acqTimeSeconds = Convert.ToInt32(splitAcqTime[0]) * 3600 + Convert.ToInt32(splitAcqTime[1]) * 60 + Convert.ToInt32(splitAcqTime[2]);*/
+                AdjustAcquisitionTime();
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
@@ -309,6 +310,8 @@ namespace CitirocUI
                         backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds/1000 * 100 / acqTimeSeconds));
                     }
                 }
+
+                return;
 
                 // For serial monitor to show "request payload data" has been sent
                 byte[] reqData = new byte[1];
@@ -755,7 +758,7 @@ namespace CitirocUI
                                     Convert.ToInt32(splitAcqTime[2]);
 
             // Adjust max. acquisition time available on CUBES...
-            if ((comboBox_SelectConnection.SelectedIndex == 1) && (acqTimeSeconds > 255)) {
+            if ((SelectedConnectionSerial == 1) && (acqTimeSeconds > 255)) {
                 splitAcqTime[0] = "00";
                 splitAcqTime[1] = "04";
                 splitAcqTime[2] = "15";
