@@ -614,11 +614,7 @@ namespace CitirocUI
 
                 try
                 {
-                    // mySerialPort.Write(bytSC, 0, 1 + SCLenght/8);
-                    if (showMonitor)
-                    {
-                        SendDataToMonitorEvent(bytSC, true);
-                    }
+                    mySerialComm.WriteData(bytSC, 1 + SCLenght/8);
                     result = true;
                 }
                 catch

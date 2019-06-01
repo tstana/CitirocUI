@@ -35,7 +35,9 @@ namespace CitirocUI
         private TransmissionType _transType;
         private RichTextBox _displayWindow;
 
-        //global manager variables
+        private bool _monvisible = false;
+
+         //global manager variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
         private SerialPort comPort = new SerialPort();
         #endregion
@@ -120,6 +122,13 @@ namespace CitirocUI
             set { _info = value; }
         }
 
+
+        public bool MonitorActive
+        {
+            get { return _monvisible; }
+            set { _monvisible = value; }
+        }
+
         /// <summary>
         /// property to hold our TransmissionType
         /// of our manager class
@@ -174,120 +183,70 @@ namespace CitirocUI
             _dataBits = 8;
             _portName = "COM1";
             _displayWindow = null;
+            _monvisible = false;
             //add event handler
             comPort.DataReceived += new SerialDataReceivedEventHandler(comPort_DataReceived);
+
         }
         #endregion
 
         #region WriteData
-        public void WriteData(string msg)
+        public void WriteData(byte[] msg, int msg_length)
         {
-            switch (CurrentTransmissionType)
+            try
             {
-                case TransmissionType.Text:
-                    //first make sure the port is open
-                    //if its not open then open it
-                    if (!(comPort.IsOpen == true)) comPort.Open();
-                    //send the message to the port
-                    comPort.Write(msg);
-                    //display the message
-                    DisplayData(MessageType.Outgoing, msg + "\n");
-                    break;
-                case TransmissionType.Hex:
-                    try
-                    {
-                        //convert the message to byte array
-                        byte[] newMsg = HexToByte(msg);
-                        //send the message to the port
-                        comPort.Write(newMsg, 0, newMsg.Length);
-                        //convert back to hex and display
-                        DisplayData(MessageType.Outgoing, ByteToHex(newMsg) + "\n");
-                    }
-                    catch (FormatException ex)
-                    {
-                        //display error message
-                        DisplayData(MessageType.Error, ex.Message);
-                    }
-                    finally
-                    {
-                        _displayWindow.SelectAll();
-                    }
-                    break;
-                default:
-                    //first make sure the port is open
-                    //if its not open then open it
-                    if (!(comPort.IsOpen == true)) comPort.Open();
-                    //send the message to the port
-                    comPort.Write(msg);
-                    //display the message
-                    DisplayData(MessageType.Outgoing, msg + "\n");
-                    break;
+                comPort.Write(msg, 0, msg_length);
+                
+                if(_monvisible)
+                    DisplayBData(msg);
+            }
+            catch (FormatException ex)
+            {
+                //display error message
+                if(_monvisible)
+                    DisplayData(System.Text.Encoding.UTF8.GetBytes(ex.ToString()));
+            }
+            finally
+            {
+             //   _displayWindow.SelectAll();
             }
         }
         #endregion
 
-        #region HexToByte
-        /// <summary>
-        /// method to convert hex string into a byte array
-        /// </summary>
-        /// <param name="msg">string to convert</param>
-        /// <returns>a byte array</returns>
-        private byte[] HexToByte(string msg)
-        {
-            //remove any spaces from the string
-            msg = msg.Replace(" ", "");
-            //create a byte array the length of the
-            //divided by 2 (Hex is 2 characters in length)
-            byte[] comBuffer = new byte[msg.Length / 2];
-            //loop through the length of the provided string
-            for (int i = 0; i < msg.Length; i += 2)
-                //convert each set of 2 characters to a byte
-                //and add to the array
-                comBuffer[i / 2] = (byte)Convert.ToByte(msg.Substring(i, 2), 16);
-            //return the array
-            return comBuffer;
-        }
-        #endregion
-
-        #region ByteToHex
-        /// <summary>
-        /// method to convert a byte array into a hex string
-        /// </summary>
-        /// <param name="comByte">byte array to convert</param>
-        /// <returns>a hex string</returns>
-        private string ByteToHex(byte[] comByte)
-        {
-            //create a new StringBuilder object
-            StringBuilder builder = new StringBuilder(comByte.Length * 3);
-            //loop through each byte in the array
-            foreach (byte data in comByte)
-                //convert the byte to a string and add to the stringbuilder
-                builder.Append(Convert.ToString(data, 16).PadLeft(2, '0').PadRight(3, ' '));
-            //return the converted value
-            return builder.ToString().ToUpper();
-        }
-        #endregion
-
         #region DisplayData
-        /// <summary>
-        /// method to display the data to & from the port
-        /// on the screen
-        /// </summary>
-        /// <param name="type">MessageType of the message</param>
-        /// <param name="msg">Message to display</param>
         [STAThread]
-        private void DisplayData(MessageType type, string msg)
+        private void DisplayData(byte[] msg)
         {
             _displayWindow.Invoke(new EventHandler(delegate
             {
-                _displayWindow.SelectedText = string.Empty;
-                _displayWindow.SelectionFont = new Font(_displayWindow.SelectionFont, FontStyle.Bold);
-                _displayWindow.SelectionColor = MessageColor[(int)type];
-                _displayWindow.AppendText(msg);
+                _displayWindow.SelectionStart = _displayWindow.TextLength;
+                _displayWindow.SelectionLength = 0;
+                _displayWindow.AppendText("\n");
+                _displayWindow.SelectionColor = Color.LightGreen;
+                _displayWindow.AppendText(System.Text.Encoding.UTF8.GetString(msg, 0, msg.Length));
+                _displayWindow.SelectionColor = _displayWindow.ForeColor;
                 _displayWindow.ScrollToCaret();
             }));
         }
-        #endregion
+
+        [STAThread]
+        private void DisplayBData(byte[] msg)
+        {
+            _displayWindow.Invoke(new EventHandler(delegate
+            {
+                //_displayWindow.SelectedText = string.Empty;
+                //_displayWindow.SelectionFont = new Font(_displayWindow.SelectionFont, FontStyle.Bold);
+                _displayWindow.SelectionStart = _displayWindow.TextLength;
+                _displayWindow.SelectionLength = 0;
+                _displayWindow.AppendText("\n");
+                _displayWindow.SelectionColor = Color.Yellow;
+                _displayWindow.AppendText(BitConverter.ToString(msg).Replace("-", " " /*string.Empty*/));
+                _displayWindow.SelectionColor = _displayWindow.ForeColor;
+                _displayWindow.ScrollToCaret();
+            }));
+        }
+
+         #endregion
 
         #region OpenPort
         public bool OpenPort()
@@ -312,15 +271,11 @@ namespace CitirocUI
                 comPort.Open();
 
                 _info = "Connected / " + _portName + " / " + _baudRate.ToString();
-                //display message
-                DisplayData(MessageType.Normal, "Port opened at " + DateTime.Now + "\n");
-                //return true
                 return true;
             }
             catch (Exception ex)
             {
                 _info = "Error opening serial port!" + ex.Message;
-                DisplayData(MessageType.Error, ex.Message);
                 return false;
             }
         }
@@ -372,35 +327,14 @@ namespace CitirocUI
         void comPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             //determine the mode the user selected (binary/string)
-            switch (CurrentTransmissionType)
-            {
-                //user chose string
-                case TransmissionType.Text:
-                    //read data waiting in the buffer
-                    string msg = comPort.ReadExisting();
-                    //display the data to the user
-                    DisplayData(MessageType.Incoming, msg + "\n");
-                    break;
-                //user chose binary
-                case TransmissionType.Hex:
-                    //retrieve number of bytes in the buffer
-                    int bytes = comPort.BytesToRead;
-                    //create a byte array to hold the awaiting data
-                    byte[] comBuffer = new byte[bytes];
-                    //read the data and store it
-                    comPort.Read(comBuffer, 0, bytes);
-                    //display the data to the user
-                    DisplayData(MessageType.Incoming, ByteToHex(comBuffer) + "\n");
-                    break;
-                default:
-                    //read data waiting in the buffer
-                    string str = comPort.ReadExisting();
-                    //display the data to the user
-                    DisplayData(MessageType.Incoming, str + "\n");
-                    break;
-            }
-        }
-        #endregion
+            int bytes = comPort.BytesToRead;        //retrieve number of bytes in the buffer
+            byte[] comBuffer = new byte[bytes];     //create a byte array to hold the awaiting data
+            comPort.Read(comBuffer, 0, bytes);      //read the data and store it
+                                                    //display the data to the user
+            if(_monvisible)
+                DisplayData(comBuffer);
+         }
 
+        #endregion
     }
 }

@@ -253,6 +253,20 @@ namespace CitirocUI
                     mySerialComm.Handshake = Handshake.None;
                     mySerialComm.RtsEnable = true;
 
+                    // TODO check if form is opened, else return ?
+                    Form fm0 = Application.OpenForms["frmMonitor"];
+                    if (fm0 != null)
+                    {
+                        frmMonitor fm1 = (frmMonitor)fm0;
+                        mySerialComm.DisplayWindow = fm1.rtxtMonitor;
+                        mySerialComm.MonitorActive = true;
+                    }
+                    else
+                    {
+                        mySerialComm.DisplayWindow = null;
+                        mySerialComm.MonitorActive = false;
+                    }
+                                             
                     //// Set the read/write timeouts
                     mySerialComm.ReadTimeout = 500;
                     mySerialComm.WriteTimeout = 500;
@@ -508,6 +522,9 @@ namespace CitirocUI
             frmMonitor frmMon = new frmMonitor();
 
             showMonitor = true;
+            mySerialComm.DisplayWindow = frmMon.rtxtMonitor;
+            mySerialComm.MonitorActive = true;
+
             SendDataToMonitorEvent += frmMon.PublishData;
 
             SendWindowPosition += frmMon.SetPosition;
@@ -520,27 +537,5 @@ namespace CitirocUI
             //if ((mySerialPort != null) && (mySerialPort.IsOpen))
             //    frmMon.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
         }
-
-        void mySerialPort_OnDataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            if (!InvokeRequired)
-            {
-                if (e.EventType == SerialData.Chars)
-                {
-                    SerialPort sp = (SerialPort)sender;
-                    int count = sp.BytesToRead;
-                    byte[] dataB = new byte[count];
-                    sp.Read(dataB, 0, dataB.Length);
-                    SendDataToMonitorEvent(dataB, false);
-                }
-            }
-            else
-            {
-                SerialDataReceivedEventHandler invoker = new SerialDataReceivedEventHandler(mySerialPort_OnDataReceived);
-                BeginInvoke(invoker, new object[] { sender, e });
-            }
-        }
-
-
     }
 }

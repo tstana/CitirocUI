@@ -32,8 +32,8 @@
             this.button_Clear = new System.Windows.Forms.Button();
             this.label_ConnStatus = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.buttonHelp = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -83,15 +83,6 @@
             this.panel1.Size = new System.Drawing.Size(454, 36);
             this.panel1.TabIndex = 3;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.rtxtMonitor);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(454, 369);
-            this.panel2.TabIndex = 4;
-            // 
             // buttonHelp
             // 
             this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
@@ -102,6 +93,15 @@
             this.buttonHelp.Text = "?";
             this.buttonHelp.UseVisualStyleBackColor = true;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.rtxtMonitor);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(454, 369);
+            this.panel2.TabIndex = 4;
             // 
             // frmMonitor
             // 
@@ -123,12 +123,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.RichTextBox rtxtMonitor;
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Label label_ConnStatus;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonHelp;
+        public System.Windows.Forms.RichTextBox rtxtMonitor;
     }
 }
