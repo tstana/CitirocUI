@@ -181,7 +181,7 @@ namespace CitirocUI
         public event PassDataDelegate SendDataToMonitorEvent;
 
         public delegate void PassWindowPosition(Point position, int f_height);
-        public event PassWindowPosition SendWindowPosition;
+        public event PassWindowPosition SendWindowPositionEvent;
 
         private void Citiroc_Load(object sender, EventArgs e)
         {
@@ -1768,7 +1768,9 @@ namespace CitirocUI
         {
             // new form position
             Point p = new Point(this.Right, this.Top);
-            SendWindowPosition(p, this.Height);
+
+            /* Call the event handler if one is associated */
+            SendWindowPositionEvent?.Invoke(p, this.Height);
          }
     }
 }

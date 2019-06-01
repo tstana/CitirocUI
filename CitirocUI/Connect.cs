@@ -526,16 +526,12 @@ namespace CitirocUI
             mySerialComm.MonitorActive = true;
 
             SendDataToMonitorEvent += frmMon.PublishData;
-
-            SendWindowPosition += frmMon.SetPosition;
+            SendWindowPositionEvent += frmMon.SetPosition;
 
             frmMon.Show();
             frmMon.Top = this.Top;
             frmMon.Left = this.Right;
             frmMon.Height = this.Height;
-
-            //if ((mySerialPort != null) && (mySerialPort.IsOpen))
-            //    frmMon.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
         }
     }
 }
