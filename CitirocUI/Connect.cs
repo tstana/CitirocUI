@@ -529,6 +529,7 @@ namespace CitirocUI
         }
 
         bool _storingDaqData = false;
+        byte[] _tmpDataBuf = new byte[256];
 
         void mySerialPort_OnDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -539,30 +540,54 @@ namespace CitirocUI
                     SerialPort sp = (SerialPort)sender;
                     int count = sp.BytesToRead;
                     byte[] dataB = new byte[count];
-                    int readBytes = sp.Read(dataB, 0, count);
-                    //if (!_retrievingDaqData) {
+                    int numReadBytes = sp.Read(dataB, 0, count);
+                    if (showMonitor)
                         SendDataToMonitorEvent(dataB, false);
-                    //}
-                    //else {
-                        if (_retrievingDaqData && !_storingDaqData) {
-                            if (dataB.ToString().Contains("C1")) {
+
+                    if (_retrievingDaqData) {
+                        if (!_storingDaqData) {
+                            /*
+                             * Look for "Unix time" string in received data and
+                             * start storing DAQ data when it has been obtained.
+                             */
+                            Array.Copy(dataB, 0, _tmpDataBuf, _numDaqBytesRetrieved, numReadBytes);
+                            _numDaqBytesRetrieved += numReadBytes;
+                            var tmpStr = System.Text.Encoding.Default.GetString(_tmpDataBuf);
+
+                            if (tmpStr.Contains("Unix time")) {
                                 _storingDaqData = true;
-                                int startIndex = dataB.ToString().IndexOf("C1");
-                                Array.Copy(dataB, startIndex, _daqDataArray, 0, readBytes - startIndex);
-                                _numDaqBytesRetrieved = readBytes - startIndex;
+                                int startIndex = tmpStr.IndexOf("Unix time");
+                                Array.Copy(_tmpDataBuf, startIndex, _daqDataArray, 0, _numDaqBytesRetrieved - startIndex);
+                                _numDaqBytesRetrieved -= startIndex;
                             }
                         }
                         else
                         {
+                            /*
+                             * Store DAQ data when it arrives; stop storing when
+                             * the number of bytes expected as part of one DAQ
+                             * run has been received...
+                             */
                             if (_numDaqBytesRetrieved < _daqDataArray.Length)
                             {
-                                dataB.CopyTo(_daqDataArray, _numDaqBytesRetrieved);
-                                _numDaqBytesRetrieved += readBytes;
+                                try
+                                {
+                                    dataB.CopyTo(_daqDataArray, _numDaqBytesRetrieved);
+                                    _numDaqBytesRetrieved += numReadBytes;
+                                }
+                                catch {
+                                    MessageBox.Show("Attempting to write too many bytes to _daqDataArray:\n" +
+                                        "_numDaqBytesRetrieved = " + _numDaqBytesRetrieved + "\n" +
+                                        "dataB.Length = " + dataB.Length + "\n", "Exception");
+                                    _retrievingDaqData = false;
+                                    _storingDaqData = false;
+                                }
                             }
-                            else {
+                            /* ... and write data to file */
+                            else
+                            {
                                 _retrievingDaqData = false;
                                 _storingDaqData = false;
-                                // To save the byte array to a file
                                 const string fileName = "CUBESfile.dat";
                                 using (BinaryWriter cubesfile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
                                 {
@@ -570,7 +595,7 @@ namespace CitirocUI
                                 }
                             }
                         }
-                    //}
+                    }
                 }
             }
             else
