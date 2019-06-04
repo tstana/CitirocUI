@@ -23,12 +23,28 @@ namespace CitirocUI
         bool timeAcquisitionMode = true;
         int acqTimeSeconds;
 
+        byte[] _daqDataArray = new byte[25000];
+        bool _retrievingDaqData = false;
+        int _numDaqBytesRetrieved = 0;
+
         private void button_startAcquisition_Click(object sender, EventArgs e)
         {
-            if (backgroundWorker_dataAcquisition.IsBusy) { backgroundWorker_dataAcquisition.CancelAsync(); return; }
+            if (backgroundWorker_dataAcquisition.IsBusy) {
+                backgroundWorker_dataAcquisition.CancelAsync();
+                return;
+            }
 
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
+                Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
+                Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
+                Array.Clear(Hit, 0, Hit.Length);
+
+                chart_perChannelChargeHG.Series.Clear();
+                chart_perChannelChargeLG.Series.Clear();
+                chart_perChannelChargeHG.Series.Add("Charge");
+                chart_perChannelChargeLG.Series.Add("Charge");
+
                 if (Firmware.readWord(100, usbDevId) == "00000000")
                 {
                     roundButton_connect.BackColor = Color.Gainsboro;
@@ -71,8 +87,6 @@ namespace CitirocUI
                 {
                     SendDataToMonitorEvent(acqtime, true);
                 }
-
-                //return;     // TODO: Remove me!
             }
             else {
                 MessageBox.Show("No connection mode selected. Please select one via the \"Connect\" tab.");
@@ -80,10 +94,6 @@ namespace CitirocUI
             }
                                              
             button_startAcquisition.Text = "Stop Acquisition";
-
-            loadLargeData = 0;
-
-            DataLoadFile = textBox_dataSavePath.Text;
 
             tabControl_dataAcquisition.Enabled = false;
             string date = DateTime.Now.ToOADate().ToString();
@@ -93,15 +103,6 @@ namespace CitirocUI
 
             progressBar_acquisition.Visible = true;
             
-            Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
-            Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
-            Array.Clear(Hit, 0, Hit.Length);
-
-            chart_perChannelChargeHG.Series.Clear();
-            chart_perChannelChargeLG.Series.Clear();
-            chart_perChannelChargeHG.Series.Add("Charge");
-            chart_perChannelChargeLG.Series.Add("Charge");
-
             nbAcq = Convert.ToInt32(textBox_numData.Text);
             acquisitionTime = textBox_acquisitionTime.Text;
 
@@ -290,9 +291,6 @@ namespace CitirocUI
             {
                 var swDaqRun = Stopwatch.StartNew(); // Start the stopwatch to measure acquisition time
 
-                // Get acquisition time specified by user
-                AdjustAcquisitionTime();
-
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
                     if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds / 1000 >= acqTimeSeconds) // Stop the acquisition when time-out
@@ -300,7 +298,7 @@ namespace CitirocUI
                         swDaqRun.Stop();
                         break;
                     }
-                    Thread.Sleep(1);
+                    Thread.Sleep(5);
 
                     /* DAQ progess  */
                     if (timeAcquisitionMode)
@@ -360,51 +358,47 @@ namespace CitirocUI
                 byte[] reqData = new byte[1];
                 reqData[0] = Convert.ToByte('p');
 
-                mySerialPort.Write(reqData, 0, reqData.Length);
+                // Signal the OnDataReceived event that we are retrieving the data
+                _retrievingDaqData = true;
+                _numDaqBytesRetrieved = 0;
 
+                mySerialPort.Write(reqData, 0, reqData.Length);
                 if (showMonitor)
                 {
                     SendDataToMonitorEvent(reqData, true);
                 }
-
-                // To read the byte array sent by arduino
-                byte[] acqdData = new byte[25000];
-                mySerialPort.Read(acqdData, 0, acqdData.Length);
-
-                // To save the byte array to a file
-                const string fileName = "CUBESfile.dat";
-                BinaryWriter cubesfile = new BinaryWriter(File.Open(fileName, FileMode.Create));
-                cubesfile.Write(acqdData);
-                cubesfile.Close();
             }
         }
         
         private void backgroundWorker_dataAcquisition_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar_acquisition.Value = e.ProgressPercentage;
-            
-            if (tabControl_dataAcquisition.SelectedIndex == 0)
+
+            if (_selectedConnectionMode == 0)
             {
-                int chNum = (int)(numericUpDown_loadCh.Value);
+                if (tabControl_dataAcquisition.SelectedIndex == 0)
+                {
+                    int chNum = (int)(numericUpDown_loadCh.Value);
 
-                chart_perChannelChargeHG.Series.Clear();
-                chart_perChannelChargeHG.Series.Add("Charge");
-                chart_perChannelChargeHG.Series[0].Color = WeerocPaleBlue;
-                chart_perChannelChargeHG.Series[0]["PointWidth"] = "1";
-                chart_perChannelChargeHG.ResetAutoValues();
+                    chart_perChannelChargeHG.Series.Clear();
+                    chart_perChannelChargeHG.Series.Add("Charge");
+                    chart_perChannelChargeHG.Series[0].Color = WeerocPaleBlue;
+                    chart_perChannelChargeHG.Series[0]["PointWidth"] = "1";
+                    chart_perChannelChargeHG.ResetAutoValues();
 
-                chart_perChannelChargeLG.Series.Clear();
-                chart_perChannelChargeLG.Series.Add("Charge");
-                chart_perChannelChargeLG.Series[0].Color = WeerocPaleBlue;
-                chart_perChannelChargeLG.Series[0]["PointWidth"] = "1";
-                chart_perChannelChargeLG.ResetAutoValues();
+                    chart_perChannelChargeLG.Series.Clear();
+                    chart_perChannelChargeLG.Series.Add("Charge");
+                    chart_perChannelChargeLG.Series[0].Color = WeerocPaleBlue;
+                    chart_perChannelChargeLG.Series[0]["PointWidth"] = "1";
+                    chart_perChannelChargeLG.ResetAutoValues();
 
-                for (int i = 0; i < 4096; i++) if (PerChannelChargeHG[chNum, i] != 0) chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
-                for (int i = 0; i < 4096; i++) if (PerChannelChargeLG[chNum, i] != 0) chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
-                label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + Hit[chNum];
+                    for (int i = 0; i < 4096; i++) if (PerChannelChargeHG[chNum, i] != 0) chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
+                    for (int i = 0; i < 4096; i++) if (PerChannelChargeLG[chNum, i] != 0) chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
+                    label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + Hit[chNum];
 
-                resetZoom(chart_perChannelChargeHG);
-                resetZoom(chart_perChannelChargeLG);
+                    resetZoom(chart_perChannelChargeHG);
+                    resetZoom(chart_perChannelChargeLG);
+                }
             }
         }
 

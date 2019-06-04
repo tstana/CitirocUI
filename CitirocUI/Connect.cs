@@ -528,6 +528,8 @@ namespace CitirocUI
                 frmMon.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
         }
 
+        bool _storingDaqData = false;
+
         void mySerialPort_OnDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (!InvokeRequired)
@@ -537,8 +539,38 @@ namespace CitirocUI
                     SerialPort sp = (SerialPort)sender;
                     int count = sp.BytesToRead;
                     byte[] dataB = new byte[count];
-                    sp.Read(dataB, 0, dataB.Length);
-                    SendDataToMonitorEvent(dataB, false);
+                    int readBytes = sp.Read(dataB, 0, count);
+                    //if (!_retrievingDaqData) {
+                        SendDataToMonitorEvent(dataB, false);
+                    //}
+                    //else {
+                        if (_retrievingDaqData && !_storingDaqData) {
+                            if (dataB.ToString().Contains("C1")) {
+                                _storingDaqData = true;
+                                int startIndex = dataB.ToString().IndexOf("C1");
+                                Array.Copy(dataB, startIndex, _daqDataArray, 0, readBytes - startIndex);
+                                _numDaqBytesRetrieved = readBytes - startIndex;
+                            }
+                        }
+                        else
+                        {
+                            if (_numDaqBytesRetrieved < _daqDataArray.Length)
+                            {
+                                dataB.CopyTo(_daqDataArray, _numDaqBytesRetrieved);
+                                _numDaqBytesRetrieved += readBytes;
+                            }
+                            else {
+                                _retrievingDaqData = false;
+                                _storingDaqData = false;
+                                // To save the byte array to a file
+                                const string fileName = "CUBESfile.dat";
+                                using (BinaryWriter cubesfile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+                                {
+                                    cubesfile.Write(_daqDataArray);
+                                }
+                            }
+                        }
+                    //}
                 }
             }
             else
