@@ -11,7 +11,7 @@ namespace CitirocUI
 {
     public partial class Citiroc : Form
     {
-        private int SelectedConnectionSerial;
+        private int _selectedConnectionMode; // = 0 for USB and 1 for Serial
 
         #region FTDI Public def.
         FTDI.FT_DEVICE ftdiDevice;
@@ -477,14 +477,14 @@ namespace CitirocUI
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 groupBox_SerialPortSettings.Visible = false;
-                SelectedConnectionSerial = 0;
+                _selectedConnectionMode = 0;
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
                 groupBox_SerialPortSettings.Visible = true;
                 GetCOMPorts();
                 comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
-                SelectedConnectionSerial = 1;
+                _selectedConnectionMode = 1;
             }
         }
 

@@ -113,7 +113,7 @@ namespace CitirocUI
 
         private void backgroundWorker_dataAcquisition_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (SelectedConnectionSerial == 0)
+            if (_selectedConnectionMode == 0) // USB
             {
 
                 int FIFOAcqLength = 100; // The FIFO in the FPGA can store up to 100 acquisitions per cycle
@@ -286,53 +286,30 @@ namespace CitirocUI
                 UpdateDaqTimeLabels(swDaqRun.ElapsedMilliseconds, actualAcqTime);
             }
 
-            else if (SelectedConnectionSerial == 1)
+            else if (_selectedConnectionMode == 1)  // Serial
             {
                 var swDaqRun = Stopwatch.StartNew(); // Start the stopwatch to measure acquisition time
 
                 // Get acquisition time specified by user
-                /*string[] splitAcqTime = acquisitionTime.Split(':');
-                acqTimeSeconds = Convert.ToInt32(splitAcqTime[0]) * 3600 + Convert.ToInt32(splitAcqTime[1]) * 60 + Convert.ToInt32(splitAcqTime[2]);*/
                 AdjustAcquisitionTime();
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
-                    if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds / 1000 > acqTimeSeconds) // Stop the acquisition when time-out
+                    if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds / 1000 >= acqTimeSeconds) // Stop the acquisition when time-out
                     {
                         swDaqRun.Stop();
                         break;
                     }
-                    Thread.Sleep(5);
+                    Thread.Sleep(1);
 
                     /* DAQ progess  */
                     if (timeAcquisitionMode)
                     {
-                        backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds/1000 * 100 / acqTimeSeconds));
+                        backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds / 1000 * 100 / acqTimeSeconds));
                     }
                 }
 
                 return;
-
-                // For serial monitor to show "request payload data" has been sent
-                byte[] reqData = new byte[1];
-                reqData[0] = Convert.ToByte('R');
-
-                mySerialPort.Write(reqData, 0, reqData.Length);
-
-                if (showMonitor)
-                {
-                    SendDataToMonitorEvent(reqData, true);
-                }
-
-                // To read the byte array sent by arduino
-                byte[] acqdData = new byte[25000];
-                mySerialPort.Read(acqdData, 0, acqdData.Length);
-
-                // To save the byte array to a file
-                const string fileName = "CUBESfile.dat";
-                BinaryWriter cubesfile = new BinaryWriter(File.Open(fileName, FileMode.Create));
-                cubesfile.Write(acqdData);
-                cubesfile.Close();
             }
         }
 
@@ -373,9 +350,33 @@ namespace CitirocUI
             progressBar_acquisition.Value = 0;
             progressBar_acquisition.Visible = false;
 
-            Firmware.sendWord(43, "00000000", usbDevId);
+            if (_selectedConnectionMode == 0)
+            {
+                Firmware.sendWord(43, "00000000", usbDevId);
+                refreshDataChart();
+            }
+            else if (_selectedConnectionMode == 1)
+            {
+                byte[] reqData = new byte[1];
+                reqData[0] = Convert.ToByte('R');
 
-            refreshDataChart();
+                mySerialPort.Write(reqData, 0, reqData.Length);
+
+                if (showMonitor)
+                {
+                    SendDataToMonitorEvent(reqData, true);
+                }
+
+                // To read the byte array sent by arduino
+                byte[] acqdData = new byte[25000];
+                mySerialPort.Read(acqdData, 0, acqdData.Length);
+
+                // To save the byte array to a file
+                const string fileName = "CUBESfile.dat";
+                BinaryWriter cubesfile = new BinaryWriter(File.Open(fileName, FileMode.Create));
+                cubesfile.Write(acqdData);
+                cubesfile.Close();
+            }
         }
         
         private void backgroundWorker_dataAcquisition_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -758,7 +759,7 @@ namespace CitirocUI
                                     Convert.ToInt32(splitAcqTime[2]);
 
             // Adjust max. acquisition time available on CUBES...
-            if ((SelectedConnectionSerial == 1) && (acqTimeSeconds > 255)) {
+            if ((_selectedConnectionMode == 1) && (acqTimeSeconds > 255)) {
                 splitAcqTime[0] = "00";
                 splitAcqTime[1] = "04";
                 splitAcqTime[2] = "15";
