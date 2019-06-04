@@ -358,7 +358,7 @@ namespace CitirocUI
             else if (_selectedConnectionMode == 1)
             {
                 byte[] reqData = new byte[1];
-                reqData[0] = Convert.ToByte('R');
+                reqData[0] = Convert.ToByte('p');
 
                 mySerialPort.Write(reqData, 0, reqData.Length);
 
