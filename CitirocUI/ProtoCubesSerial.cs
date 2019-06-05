@@ -190,6 +190,7 @@ namespace CitirocUI
             _portName = "COM1";
             _displayWindow = null;
             _monvisible = false;
+            _comBuffer = new byte[comPort.ReadBufferSize];
             //add event handler
             comPort.DataReceived += new SerialDataReceivedEventHandler(comPort_DataReceived);
 
