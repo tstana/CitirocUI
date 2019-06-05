@@ -19,7 +19,7 @@ namespace CitirocUI
         int[,] PerChannelChargeLG = new int[NbChannels + 1, 4096];
         int[] Hit = new int[NbChannels + 1];
         int nbAcq = 100;
-        string acquisitionTime = "00:01:00";
+        string acquisitionTime = "00:00:05";    // TODO: Set me to 1-min default!
         bool timeAcquisitionMode = true;
         int acqTimeSeconds;
 
