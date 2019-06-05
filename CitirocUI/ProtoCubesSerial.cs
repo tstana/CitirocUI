@@ -373,6 +373,7 @@ namespace CitirocUI
                         /* Start storing data from index of "Unix time" */
                         int startIndex = tmpStr.IndexOf("Unix time");
                         Array.Copy(_comBuffer, startIndex, _daqDataArray, 0, _numDaqBytesRetrieved - startIndex);
+                        Array.Clear(_comBuffer, 0, _comBuffer.Length);
                         _numDaqBytesRetrieved -= startIndex;
                         _storingDaqData = true;
                     }
@@ -403,13 +404,14 @@ namespace CitirocUI
                     /* ... and write data to file */
                     else
                     {
-                        _retrievingDaqData = false;
-                        _storingDaqData = false;
                         const string fileName = "CUBESfile.dat";
                         using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
                         {
                             dataFile.Write(_daqDataArray);
                         }
+                        _retrievingDaqData = false;
+                        _storingDaqData = false;
+                        _numDaqBytesRetrieved = 0;
                     }
                 }
             }
