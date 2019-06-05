@@ -37,6 +37,8 @@ namespace CitirocUI
 
         private bool _monvisible = false;
 
+        private byte[] _comBuffer;
+
          //global manager variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
         private SerialPort comPort = new SerialPort();
@@ -122,13 +124,17 @@ namespace CitirocUI
             set { _info = value; }
         }
 
-
         public bool MonitorActive
         {
             get { return _monvisible; }
             set { _monvisible = value; }
         }
 
+        public byte[] ComBuffer
+        {
+            get { return _comBuffer; }
+            set { /* Read-only buffer */ }
+        }
         /// <summary>
         /// property to hold our TransmissionType
         /// of our manager class
@@ -328,11 +334,10 @@ namespace CitirocUI
         {
             //determine the mode the user selected (binary/string)
             int bytes = comPort.BytesToRead;        //retrieve number of bytes in the buffer
-            byte[] comBuffer = new byte[bytes];     //create a byte array to hold the awaiting data
-            comPort.Read(comBuffer, 0, bytes);      //read the data and store it
+            comPort.Read(_comBuffer, 0, bytes);      //read the data and store it
                                                     //display the data to the user
             if(_monvisible)
-                DisplayData(comBuffer);
+                DisplayData(_comBuffer);
          }
 
         #endregion
