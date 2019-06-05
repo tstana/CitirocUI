@@ -8,7 +8,7 @@ namespace CitirocUI
 {
     class ProtoCubesSerial
     {
-        #region Manager Enums
+        #region Enums
         /// <summary>
         /// enumeration to hold our transmission types
         /// </summary>
@@ -20,7 +20,7 @@ namespace CitirocUI
         public enum MessageType { Incoming, Outgoing, Normal, Warning, Error };
         #endregion
 
-        #region Manager Variables
+        #region Variables
         //property variables
         private int _baudRate = 0;
         private Parity _parity = 0;
@@ -42,7 +42,7 @@ namespace CitirocUI
         private SerialPort comPort = new SerialPort();
         #endregion
 
-        #region Manager Properties
+        #region Properties
         /// <summary>
         /// Property to hold the BaudRate
         /// of our manager class
@@ -150,7 +150,7 @@ namespace CitirocUI
         }
         #endregion
 
-        #region Manager Constructors
+        #region Constructors
         /// <summary>
         /// Constructor to set the properties of our Manager Class
         /// </summary>
