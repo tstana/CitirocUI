@@ -19,13 +19,11 @@ namespace CitirocUI
         int[,] PerChannelChargeLG = new int[NbChannels + 1, 4096];
         int[] Hit = new int[NbChannels + 1];
         int nbAcq = 100;
-        string acquisitionTime = "00:00:05";    // TODO: Set me to 1-min default!
+        string acquisitionTime;
         bool timeAcquisitionMode = true;
         int acqTimeSeconds;
 
         byte[] _daqDataArray = new byte[25000];
-        bool _retrievingDaqData = false;
-        int _numDaqBytesRetrieved = 0;
 
         private void button_startAcquisition_Click(object sender, EventArgs e)
         {
@@ -44,6 +42,9 @@ namespace CitirocUI
                 chart_perChannelChargeLG.Series.Clear();
                 chart_perChannelChargeHG.Series.Add("Charge");
                 chart_perChannelChargeLG.Series.Add("Charge");
+
+                nbAcq = Convert.ToInt32(textBox_numData.Text);
+                acquisitionTime = textBox_acquisitionTime.Text;
 
                 if (Firmware.readWord(100, usbDevId) == "00000000")
                 {
@@ -99,9 +100,6 @@ namespace CitirocUI
 
             progressBar_acquisition.Visible = true;
             
-            nbAcq = Convert.ToInt32(textBox_numData.Text);
-            acquisitionTime = textBox_acquisitionTime.Text;
-
             label_elapsedTimeAcquisition.Enabled = true;
             label_acqTime.Enabled = true;
                         
@@ -355,8 +353,7 @@ namespace CitirocUI
                 reqData[0] = Convert.ToByte('p');
 
                 // Signal the OnDataReceived event that we are retrieving the data
-                _retrievingDaqData = true;
-                _numDaqBytesRetrieved = 0;
+                mySerialComm.RetrievingDaqData = true;
 
                 mySerialComm.WriteData(reqData, reqData.Length);
             }

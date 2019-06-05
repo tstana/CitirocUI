@@ -1,7 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.IO.Ports;
 using System.Text;
 using System.Drawing;
-using System.IO.Ports;
 using System.Windows.Forms;
 
 namespace CitirocUI
@@ -38,6 +39,12 @@ namespace CitirocUI
         private bool _monvisible = false;
 
         private byte[] _comBuffer;
+
+        private byte[] _daqDataArray = new byte[25000];
+
+        private bool _retrievingDaqData = false;
+        private bool _storingDaqData = false;
+        private int _numDaqBytesRetrieved = 0;
 
          //global manager variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
@@ -135,6 +142,13 @@ namespace CitirocUI
             get { return _comBuffer; }
             set { /* Read-only buffer */ }
         }
+
+        public bool RetrievingDaqData
+        {
+            get { return _retrievingDaqData; }
+            set { _retrievingDaqData = value;  }
+        }
+
         /// <summary>
         /// property to hold our TransmissionType
         /// of our manager class
@@ -173,6 +187,8 @@ namespace CitirocUI
             _dataBits = dBits;
             _portName = name;
             _displayWindow = rtb;
+
+            _comBuffer = new byte[comPort.ReadBufferSize];
             //now add an event handler
             comPort.DataReceived += new SerialDataReceivedEventHandler(comPort_DataReceived);
         }
@@ -190,10 +206,10 @@ namespace CitirocUI
             _portName = "COM1";
             _displayWindow = null;
             _monvisible = false;
+
             _comBuffer = new byte[comPort.ReadBufferSize];
             //add event handler
             comPort.DataReceived += new SerialDataReceivedEventHandler(comPort_DataReceived);
-
         }
         #endregion
 
@@ -333,13 +349,71 @@ namespace CitirocUI
         /// <param name="e"></param>
         void comPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            //determine the mode the user selected (binary/string)
-            int bytes = comPort.BytesToRead;        //retrieve number of bytes in the buffer
-            comPort.Read(_comBuffer, 0, bytes);      //read the data and store it
-                                                    //display the data to the user
+            int numBytesRead = comPort.BytesToRead;
+            byte[] dataBytes = new byte[numBytesRead];
+            comPort.Read(dataBytes, 0, numBytesRead);
+            
             if(_monvisible)
-                DisplayData(_comBuffer);
-         }
+                DisplayData(dataBytes);
+
+            if (_retrievingDaqData)
+            {
+                if (!_storingDaqData)
+                {
+                    /*
+                     * Look for "Unix time" string in received data and
+                     * start storing DAQ data when it has been obtained.
+                     */
+                    Array.Copy(dataBytes, 0, _comBuffer, _numDaqBytesRetrieved, numBytesRead);
+                    _numDaqBytesRetrieved += numBytesRead;
+                    var tmpStr = System.Text.Encoding.Default.GetString(_comBuffer);
+
+                    if (tmpStr.Contains("Unix time"))
+                    {
+                        /* Start storing data from index of "Unix time" */
+                        int startIndex = tmpStr.IndexOf("Unix time");
+                        Array.Copy(_comBuffer, startIndex, _daqDataArray, 0, _numDaqBytesRetrieved - startIndex);
+                        _numDaqBytesRetrieved -= startIndex;
+                        _storingDaqData = true;
+                    }
+                }
+                else
+                {
+                    /*
+                     * Store DAQ data when it arrives; stop storing when
+                     * the number of bytes expected as part of one DAQ
+                     * run has been received...
+                     */
+                    if (_numDaqBytesRetrieved < _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
+                    {
+                        try
+                        {
+                            dataBytes.CopyTo(_daqDataArray, _numDaqBytesRetrieved);
+                            _numDaqBytesRetrieved += numBytesRead;
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Attempting to write too many bytes to _daqDataArray:\n" +
+                                "_numDaqBytesRetrieved = " + _numDaqBytesRetrieved + "\n" +
+                                "dataB.Length = " + dataBytes.Length + "\n", "Exception");
+                            _retrievingDaqData = false;
+                            _storingDaqData = false;
+                        }
+                    }
+                    /* ... and write data to file */
+                    else
+                    {
+                        _retrievingDaqData = false;
+                        _storingDaqData = false;
+                        const string fileName = "CUBESfile.dat";
+                        using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+                        {
+                            dataFile.Write(_daqDataArray);
+                        }
+                    }
+                }
+            }
+        }
 
         #endregion
     }
