@@ -45,6 +45,7 @@ namespace CitirocUI
         private bool _retrievingDaqData = false;
         private bool _storingDaqData = false;
         private int _numDaqBytesRetrieved = 0;
+        private string _daqDataFileName = "CUBESfile.dat";
 
          //global manager variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
@@ -147,6 +148,12 @@ namespace CitirocUI
         {
             get { return _retrievingDaqData; }
             set { _retrievingDaqData = value;  }
+        }
+
+        public string DataFileName
+        {
+            get { return _daqDataFileName; }
+            set { _daqDataFileName = value; }
         }
 
         /// <summary>
@@ -399,13 +406,13 @@ namespace CitirocUI
                                 "dataB.Length = " + dataBytes.Length + "\n", "Exception");
                             _retrievingDaqData = false;
                             _storingDaqData = false;
+                            _numDaqBytesRetrieved = 0;
                         }
                     }
                     /* ... and write data to file */
                     else
                     {
-                        const string fileName = "CUBESfile.dat";
-                        using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+                        using (BinaryWriter dataFile = new BinaryWriter(File.Open(_daqDataFileName, FileMode.Create)))
                         {
                             dataFile.Write(_daqDataArray);
                         }

@@ -89,15 +89,19 @@ namespace CitirocUI
                 MessageBox.Show("No connection mode selected. Please select one via the \"Connect\" tab.");
                 return;
             }
-                                             
+
+            string date = DateTime.Now.ToString();
+            date = date.Replace(' ', '_');
+            date = date.Replace(':', '-');
+            DataLoadFile = textBox_dataSavePath.Text + "_" + date + ".dat";
+            if (!validPath(DataLoadFile)) {
+                MessageBox.Show("The save path does not exist.");
+                return;
+            }
+
             button_startAcquisition.Text = "Stop Acquisition";
 
             tabControl_dataAcquisition.Enabled = false;
-            string date = DateTime.Now.ToOADate().ToString();
-            date = date.Replace('.', '_');
-            DataLoadFile = textBox_dataSavePath.Text + "_" + date;
-            if (!validPath(DataLoadFile)) { MessageBox.Show("The save path does not exist."); return; }
-
             progressBar_acquisition.Visible = true;
             
             label_elapsedTimeAcquisition.Enabled = true;
@@ -352,9 +356,12 @@ namespace CitirocUI
                 byte[] reqData = new byte[1];
                 reqData[0] = Convert.ToByte('p');
 
-                // Signal the OnDataReceived event that we are retrieving the data
+                /*
+                 * Prep the ProtoCubesSerial instance for DAQ data reception
+                 * and GO!
+                 */
+                mySerialComm.DataFileName = DataLoadFile;
                 mySerialComm.RetrievingDaqData = true;
-
                 mySerialComm.WriteData(reqData, reqData.Length);
             }
         }
