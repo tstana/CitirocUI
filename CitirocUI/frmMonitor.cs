@@ -23,12 +23,20 @@ namespace CitirocUI
 
         private void frmMonitor_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Citiroc.showMonitor = false;
         }
 
         public void PublishData(byte[] data, bool Tx)
         {
             AppendByteArray(rtxtMonitor, data, Tx);
+        }
+
+        public void SetPosition(Point position, int f_height)
+        {
+            this.Height = f_height;
+            this.Top = position.Y;
+            this.Left = position.X;
+
+            this.Refresh();
         }
 
         private static void AppendByteArray(RichTextBox box, byte[] rdata, bool txData)

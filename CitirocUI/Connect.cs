@@ -11,7 +11,6 @@ namespace CitirocUI
 {
     public partial class Citiroc : Form
     {
-        private int _selectedConnectionMode; // = 0 for USB and 1 for Serial
 
         #region FTDI Public def.
         FTDI.FT_DEVICE ftdiDevice;
@@ -50,6 +49,8 @@ namespace CitirocUI
         private const byte CUR_DATA = 0x00;
         private const byte DEF_VALUE = 0x0E;
         #endregion
+
+        private int _selectedConnectionMode; // = 0 for USB and 1 for Serial
 
         int connectStatus = -1; // -1 = not connected, 0 = board connected but most likely powering issue, 1 = board connected
         unsafe private void roundButton_connect_Click(object sender, EventArgs e)
@@ -222,7 +223,7 @@ namespace CitirocUI
             {
                 /* Disconnect and exit if we are already connected... */
                 if (connectStatus == 1) {
-                    mySerialPort.Close();
+                    mySerialComm.ClosePort();
 
                     Form f = Application.OpenForms["frmMonitor"];
                     if (f != null){
@@ -242,34 +243,45 @@ namespace CitirocUI
                 /* Otherwise, connect to selected port, creating it on first run of the code */
                 try
                 {
-                    if (mySerialPort == null)
-                        mySerialPort = new SerialPort();
+                    if (mySerialComm == null)
+                        mySerialComm = new ProtoCubesSerial();
 
-                    mySerialPort.PortName = comboBox_COMPortList.SelectedItem.ToString();
-                    mySerialPort.BaudRate = Convert.ToInt32(comboBox_Baudrate.SelectedItem.ToString());
+                    mySerialComm.PortName = comboBox_COMPortList.SelectedItem.ToString();
+                    mySerialComm.BaudRate = Convert.ToInt32(comboBox_Baudrate.SelectedItem.ToString());
 
-                    mySerialPort.Parity = Parity.None;
-                    mySerialPort.StopBits = StopBits.One;
-                    mySerialPort.DataBits = 8;
-                    mySerialPort.Handshake = Handshake.None;
-                    mySerialPort.RtsEnable = true;
+                    mySerialComm.Parity = Parity.None;
+                    mySerialComm.StopBits = StopBits.One;
+                    mySerialComm.DataBits = 8;
+                    mySerialComm.Handshake = Handshake.None;
+                    mySerialComm.RtsEnable = true;
 
-                    // Set the read/write timeouts
-                    mySerialPort.ReadTimeout = 500;
-                    mySerialPort.WriteTimeout = 500;
-
-                    // Add handler for DataReceived event
-                    mySerialPort.DataReceived += new SerialDataReceivedEventHandler(mySerialPort_OnDataReceived);
+                    // TODO check if form is opened, else return ?
+                    Form fm0 = Application.OpenForms["frmMonitor"];
+                    if (fm0 != null)
+                    {
+                        frmMonitor fm1 = (frmMonitor)fm0;
+                        mySerialComm.DisplayWindow = fm1.rtxtMonitor;
+                        mySerialComm.MonitorActive = true;
+                    }
+                    else
+                    {
+                        mySerialComm.DisplayWindow = null;
+                        mySerialComm.MonitorActive = false;
+                    }
+                                             
+                    //// Set the read/write timeouts
+                    mySerialComm.ReadTimeout = 500;
+                    mySerialComm.WriteTimeout = 500;
 
                     // Finally! Open serial port!
-                    mySerialPort.Open();
+                    mySerialComm.OpenPort();
 
                     // Update monitor form
                     Form f = Application.OpenForms["frmMonitor"];
                     if (f != null)
                     {
                         frmMonitor fm = (frmMonitor)f;
-                        fm.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
+                        fm.ConnStatusLabel = mySerialComm.info;
                     }
 
                     // Update text label
@@ -477,15 +489,21 @@ namespace CitirocUI
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 groupBox_SerialPortSettings.Visible = false;
-                _selectedConnectionMode = 0;
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
                 groupBox_SerialPortSettings.Visible = true;
                 GetCOMPorts();
                 comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
-                _selectedConnectionMode = 1;
             }
+
+            _selectedConnectionMode = comboBox_SelectConnection.SelectedIndex;
+        }
+
+        private void comboBox_COMPortList_OnClick(object sender, EventArgs e)
+        {
+            comboBox_COMPortList.Items.Clear();
+            GetCOMPorts();
         }
 
         private void GetCOMPorts()
@@ -500,12 +518,6 @@ namespace CitirocUI
             }
         }
 
-        private void comboBox_COMPortList_OnClick(object sender, EventArgs e)
-        {
-            comboBox_COMPortList.Items.Clear();
-            GetCOMPorts();
-        }
-
         private void btn_OpenSerialMonitor_Click(object sender, EventArgs e)
         {
             /* Prevent re-opening the form if already open... */
@@ -516,95 +528,15 @@ namespace CitirocUI
             /* Now really open the form */
             frmMonitor frmMon = new frmMonitor();
 
-            showMonitor = true;
-            SendDataToMonitorEvent += frmMon.PublishData;
+            mySerialComm.DisplayWindow = frmMon.rtxtMonitor;
+            mySerialComm.MonitorActive = true;
+
+            SendWindowPositionEvent += frmMon.SetPosition;
 
             frmMon.Show();
             frmMon.Top = this.Top;
             frmMon.Left = this.Right;
             frmMon.Height = this.Height;
-
-            if ((mySerialPort != null) && (mySerialPort.IsOpen))
-                frmMon.ConnStatusLabel = "Connected / " + mySerialPort.PortName + " / " + mySerialPort.BaudRate;
         }
-
-        bool _storingDaqData = false;
-        byte[] _tmpDataBuf = new byte[256];
-
-        void mySerialPort_OnDataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            if (!InvokeRequired)
-            {
-                if (e.EventType == SerialData.Chars)
-                {
-                    SerialPort sp = (SerialPort)sender;
-                    int count = sp.BytesToRead;
-                    byte[] dataB = new byte[count];
-                    int numReadBytes = sp.Read(dataB, 0, count);
-                    if (showMonitor)
-                        SendDataToMonitorEvent(dataB, false);
-
-                    if (_retrievingDaqData) {
-                        if (!_storingDaqData) {
-                            /*
-                             * Look for "Unix time" string in received data and
-                             * start storing DAQ data when it has been obtained.
-                             */
-                            Array.Copy(dataB, 0, _tmpDataBuf, _numDaqBytesRetrieved, numReadBytes);
-                            _numDaqBytesRetrieved += numReadBytes;
-                            var tmpStr = System.Text.Encoding.Default.GetString(_tmpDataBuf);
-
-                            if (tmpStr.Contains("Unix time")) {
-                                _storingDaqData = true;
-                                int startIndex = tmpStr.IndexOf("Unix time");
-                                Array.Copy(_tmpDataBuf, startIndex, _daqDataArray, 0, _numDaqBytesRetrieved - startIndex);
-                                _numDaqBytesRetrieved -= startIndex;
-                            }
-                        }
-                        else
-                        {
-                            /*
-                             * Store DAQ data when it arrives; stop storing when
-                             * the number of bytes expected as part of one DAQ
-                             * run has been received...
-                             */
-                            if (_numDaqBytesRetrieved < _daqDataArray.Length)
-                            {
-                                try
-                                {
-                                    dataB.CopyTo(_daqDataArray, _numDaqBytesRetrieved);
-                                    _numDaqBytesRetrieved += numReadBytes;
-                                }
-                                catch {
-                                    MessageBox.Show("Attempting to write too many bytes to _daqDataArray:\n" +
-                                        "_numDaqBytesRetrieved = " + _numDaqBytesRetrieved + "\n" +
-                                        "dataB.Length = " + dataB.Length + "\n", "Exception");
-                                    _retrievingDaqData = false;
-                                    _storingDaqData = false;
-                                }
-                            }
-                            /* ... and write data to file */
-                            else
-                            {
-                                _retrievingDaqData = false;
-                                _storingDaqData = false;
-                                const string fileName = "CUBESfile.dat";
-                                using (BinaryWriter cubesfile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
-                                {
-                                    cubesfile.Write(_daqDataArray);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                SerialDataReceivedEventHandler invoker = new SerialDataReceivedEventHandler(mySerialPort_OnDataReceived);
-                BeginInvoke(invoker, new object[] { sender, e });
-            }
-        }
-
-
     }
 }

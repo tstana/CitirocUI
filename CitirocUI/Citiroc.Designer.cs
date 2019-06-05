@@ -11569,6 +11569,7 @@
             this.Name = "Citiroc";
             this.Text = "Citiroc User Interface";
             this.Load += new System.EventHandler(this.Citiroc_Load);
+            this.LocationChanged += new System.EventHandler(this.Citiroc_LocationChanged);
             this.tabControl_top.ResumeLayout(false);
             this.tabPage_main.ResumeLayout(false);
             this.tabPage_main.PerformLayout();

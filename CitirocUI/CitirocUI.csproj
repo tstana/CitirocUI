@@ -99,6 +99,7 @@
     <Compile Include="Citiroc.Designer.cs">
       <DependentUpon>Citiroc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProtoCubesSerial.cs" />
     <Compile Include="Connect.cs">
       <SubType>Form</SubType>
     </Compile>

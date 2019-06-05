@@ -12,7 +12,6 @@ namespace CitirocUI
         {
             bool result = false;
             if (comboBox_SelectConnection.SelectedIndex == 0)
-            //if (mySerialPort.IsOpen == false)
             {
                 // Test if software can read firmware version. If not, the board is not connected.
                 if (Firmware.readWord(100, usbDevId) != "00000000")
@@ -82,11 +81,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialPort.Write(bytProbe, 0, 1 + intLenProbeStream / 8);
-                    if (showMonitor)
-                    {
-                        SendDataToMonitorEvent(bytProbe, true);
-                    }
+                    mySerialComm.WriteData(bytProbe, 1 + intLenProbeStream/8);
                     result = true;
                 }
                 catch (IOException)

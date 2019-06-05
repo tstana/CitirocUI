@@ -69,7 +69,7 @@ namespace CitirocUI
                 }
 
                 // Make sure serial port exists and is open:
-                if ((mySerialPort == null) || (mySerialPort.IsOpen == false))
+                if ((mySerialComm == null) || (mySerialComm.OpenPort() == false ))
                 {
                     MessageBox.Show("Please configure and open the serial port connection via the \"Connect\" tab.");
                     return;
@@ -82,11 +82,7 @@ namespace CitirocUI
                 acqtime[0] = Convert.ToByte('D');
                 acqtime[1] = Convert.ToByte(acqTimeSeconds);
 
-                mySerialPort.Write(acqtime, 0, acqtime.Length);
-                if (showMonitor)
-                {
-                    SendDataToMonitorEvent(acqtime, true);
-                }
+                mySerialComm.WriteData(acqtime, acqtime.Length);
             }
             else {
                 MessageBox.Show("No connection mode selected. Please select one via the \"Connect\" tab.");
@@ -362,11 +358,7 @@ namespace CitirocUI
                 _retrievingDaqData = true;
                 _numDaqBytesRetrieved = 0;
 
-                mySerialPort.Write(reqData, 0, reqData.Length);
-                if (showMonitor)
-                {
-                    SendDataToMonitorEvent(reqData, true);
-                }
+                mySerialComm.WriteData(reqData, reqData.Length);
             }
         }
         
