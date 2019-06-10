@@ -93,20 +93,30 @@ namespace CitirocUI
             date = date.Replace(':', '-');
             date = date.Replace('/', '-');
             DataLoadFile = textBox_dataSavePath.Text + "CitirocData_" + date + ".dat";
-            if (!validPath(DataLoadFile)) {
-                MessageBox.Show("The save path does not exist.");
+            try {
+                if (!validPath(DataLoadFile))
+                {
+                    throw new ArgumentException();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Cannot start data acquisition!\n\n" +
+                    "The selected save path is invalid:\n" +
+                    DataLoadFile, "Error");
                 return;
             }
+
             label_help.Text = "Now saving data file to " + DataLoadFile;
 
             button_startAcquisition.Text = "Stop Acquisition";
 
             tabControl_dataAcquisition.Enabled = false;
             progressBar_acquisition.Visible = true;
-            
+
             label_elapsedTimeAcquisition.Enabled = true;
             label_acqTime.Enabled = true;
-                        
+
             backgroundWorker_dataAcquisition.RunWorkerAsync();
         }
 
