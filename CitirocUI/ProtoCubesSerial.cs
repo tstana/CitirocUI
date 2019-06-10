@@ -305,7 +305,8 @@ namespace CitirocUI
             }
             catch (Exception ex)
             {
-                _info = "Error opening serial port!" + ex.Message;
+                //_info = "Error opening serial port!" + ex.Message;
+                MessageBox.Show("Error: " + ex.Message, "Error opening serial port!", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
         }

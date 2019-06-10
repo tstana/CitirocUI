@@ -274,7 +274,7 @@ namespace CitirocUI
                     mySerialComm.WriteTimeout = 500;
 
                     // Finally! Open serial port!
-                    mySerialComm.OpenPort();
+                    if(!mySerialComm.OpenPort()) return;
 
                     // Update monitor form
                     Form f = Application.OpenForms["frmMonitor"];
@@ -538,6 +538,7 @@ namespace CitirocUI
             frmMon.Top = this.Top;
             frmMon.Left = this.Right;
             frmMon.Height = this.Height;
+            frmMon.ConnStatusLabel = mySerialComm.info ;
         }
     }
 }
