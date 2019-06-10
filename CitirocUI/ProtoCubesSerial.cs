@@ -394,6 +394,17 @@ namespace CitirocUI
                      */
                     if (_numDaqBytesRetrieved < _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
                     {
+                        using (BinaryWriter dataFile = new BinaryWriter(File.Open(_daqDataFileName, FileMode.Create)))
+                        {
+                            dataFile.Write(_daqDataArray);
+                        }
+                        _retrievingDaqData = false;
+                        _storingDaqData = false;
+                        _numDaqBytesRetrieved = 0;
+                    }
+                    /* ... and write data to file */
+                    else
+                    {
                         try
                         {
                             dataBytes.CopyTo(_daqDataArray, _numDaqBytesRetrieved);
@@ -408,17 +419,6 @@ namespace CitirocUI
                             _storingDaqData = false;
                             _numDaqBytesRetrieved = 0;
                         }
-                    }
-                    /* ... and write data to file */
-                    else
-                    {
-                        using (BinaryWriter dataFile = new BinaryWriter(File.Open(_daqDataFileName, FileMode.Create)))
-                        {
-                            dataFile.Write(_daqDataArray);
-                        }
-                        _retrievingDaqData = false;
-                        _storingDaqData = false;
-                        _numDaqBytesRetrieved = 0;
                     }
                 }
             }

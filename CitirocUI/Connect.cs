@@ -284,7 +284,8 @@ namespace CitirocUI
                         fm.ConnStatusLabel = mySerialComm.info;
                     }
 
-                    // Update text label
+                    // Update text label		DataFileName	"CUBESfile.dat"	string
+
                     label_help.Text = "The " + comboBox_SelectConnection.Text + " board is connected. Click again if you wish to disconnect.";
                     connectStatus = 1;
                     roundButton_connect.BackColor = WeerocGreen;
