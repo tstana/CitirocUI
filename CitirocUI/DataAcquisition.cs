@@ -30,12 +30,18 @@ namespace CitirocUI
                 return;
             }
 
-            /* Check for valid data file path early */
-            string date = DateTime.Now.ToString();
+            /*
+             * Check for valid data file path early
+             *
+             * Use Swedish date and time style, as it is closer to ISO-8601.
+             * This style allows for file names that appear chronologically when
+             * displayed in a file explorer window, or using 'ls'.
+             */
+            string date = DateTime.Now.ToString(new System.Globalization.CultureInfo("se-SE"));
             date = date.Replace(' ', '_');
             date = date.Replace(':', '-');
             date = date.Replace('/', '-');
-            DataLoadFile = textBox_dataSavePath.Text + "CitirocData_" + date + ".dat";
+            DataLoadFile = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
             try
             {
                 if (!validPath(DataLoadFile))
@@ -46,8 +52,9 @@ namespace CitirocUI
             catch
             {
                 MessageBox.Show("Cannot start data acquisition!\n\n" +
-                    "The selected save path is invalid:\n" +
-                    DataLoadFile, "Error");
+                    "The selected save path is invalid:\n\n" +
+                    DataLoadFile,
+                    "Error");
                 return;
             }
 
