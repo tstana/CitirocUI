@@ -118,7 +118,7 @@ namespace CitirocUI
             }
 
             /* Finally, start the DAQ on the UI end... */
-            label_help.Text = "Now saving data file to " + DataLoadFile;
+            label_help.Text = "Acquired data will be saved to " + DataLoadFile;
 
             button_startAcquisition.Text = "Stop Acquisition";
 

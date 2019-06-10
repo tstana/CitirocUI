@@ -388,37 +388,34 @@ namespace CitirocUI
                 else
                 {
                     /*
-                     * Store DAQ data when it arrives; stop storing when
-                     * the number of bytes expected as part of one DAQ
-                     * run has been received...
+                     * Store DAQ data to a byte array when it arrives. When the
+                     * number of bytes expected as part of one DAQ run has been
+                     * received, store it to the file selected by the user in
+                     * the UI.
                      */
-                    if (_numDaqBytesRetrieved < _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
+                    try
                     {
-                        using (BinaryWriter dataFile = new BinaryWriter(File.Open(_daqDataFileName, FileMode.Create)))
+                        dataBytes.CopyTo(_daqDataArray, _numDaqBytesRetrieved);
+                        _numDaqBytesRetrieved += numBytesRead;
+                        if (_numDaqBytesRetrieved == _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
                         {
-                            dataFile.Write(_daqDataArray);
-                        }
-                        _retrievingDaqData = false;
-                        _storingDaqData = false;
-                        _numDaqBytesRetrieved = 0;
-                    }
-                    /* ... and write data to file */
-                    else
-                    {
-                        try
-                        {
-                            dataBytes.CopyTo(_daqDataArray, _numDaqBytesRetrieved);
-                            _numDaqBytesRetrieved += numBytesRead;
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Attempting to write too many bytes to _daqDataArray:\n" +
-                                "_numDaqBytesRetrieved = " + _numDaqBytesRetrieved + "\n" +
-                                "dataB.Length = " + dataBytes.Length + "\n", "Exception");
+                            using (BinaryWriter dataFile = new BinaryWriter(File.Open(_daqDataFileName, FileMode.Create)))
+                            {
+                                dataFile.Write(_daqDataArray);
+                            }
                             _retrievingDaqData = false;
                             _storingDaqData = false;
                             _numDaqBytesRetrieved = 0;
                         }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Attempting to write too many bytes to _daqDataArray:\n" +
+                            "_numDaqBytesRetrieved = " + _numDaqBytesRetrieved + "\n" +
+                            "dataB.Length = " + dataBytes.Length + "\n", "Exception");
+                        _retrievingDaqData = false;
+                        _storingDaqData = false;
+                        _numDaqBytesRetrieved = 0;
                     }
                 }
             }
