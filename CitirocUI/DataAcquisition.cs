@@ -23,8 +23,6 @@ namespace CitirocUI
         bool timeAcquisitionMode = true;
         int acqTimeSeconds;
 
-        byte[] _daqDataArray = new byte[25000];
-
         private void button_startAcquisition_Click(object sender, EventArgs e)
         {
             if (backgroundWorker_dataAcquisition.IsBusy) {
