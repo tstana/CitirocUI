@@ -30,6 +30,28 @@ namespace CitirocUI
                 return;
             }
 
+            /* Check for valid data file path early */
+            string date = DateTime.Now.ToString();
+            date = date.Replace(' ', '_');
+            date = date.Replace(':', '-');
+            date = date.Replace('/', '-');
+            DataLoadFile = textBox_dataSavePath.Text + "CitirocData_" + date + ".dat";
+            try
+            {
+                if (!validPath(DataLoadFile))
+                {
+                    throw new ArgumentException();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Cannot start data acquisition!\n\n" +
+                    "The selected save path is invalid:\n" +
+                    DataLoadFile, "Error");
+                return;
+            }
+
+            /* Data file OK, now send bytes on comm. channel to start DAQ */
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
@@ -88,25 +110,7 @@ namespace CitirocUI
                 return;
             }
 
-            string date = DateTime.Now.ToString();
-            date = date.Replace(' ', '_');
-            date = date.Replace(':', '-');
-            date = date.Replace('/', '-');
-            DataLoadFile = textBox_dataSavePath.Text + "CitirocData_" + date + ".dat";
-            try {
-                if (!validPath(DataLoadFile))
-                {
-                    throw new ArgumentException();
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Cannot start data acquisition!\n\n" +
-                    "The selected save path is invalid:\n" +
-                    DataLoadFile, "Error");
-                return;
-            }
-
+            /* Finally, start the DAQ on the UI end... */
             label_help.Text = "Now saving data file to " + DataLoadFile;
 
             button_startAcquisition.Text = "Stop Acquisition";
