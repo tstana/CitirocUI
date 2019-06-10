@@ -93,11 +93,13 @@ namespace CitirocUI
             string date = DateTime.Now.ToString();
             date = date.Replace(' ', '_');
             date = date.Replace(':', '-');
-            DataLoadFile = textBox_dataSavePath.Text + "_" + date + ".dat";
+            date = date.Replace('/', '-');
+            DataLoadFile = textBox_dataSavePath.Text + "CitirocData_" + date + ".dat";
             if (!validPath(DataLoadFile)) {
                 MessageBox.Show("The save path does not exist.");
                 return;
             }
+            label_help.Text = "Now saving data file to " + DataLoadFile;
 
             button_startAcquisition.Text = "Stop Acquisition";
 
@@ -400,11 +402,14 @@ namespace CitirocUI
 
         private void button_dataSavePath_Click(object sender, EventArgs e)
         {
-            SaveFileDialog DataSDialog = new SaveFileDialog();
-            DataSDialog.Title = "Specify Output file";
-            DataSDialog.Filter = "All Files(*.*)|*.*";
-            DataSDialog.RestoreDirectory = true;
-            if (DataSDialog.ShowDialog() == DialogResult.OK) textBox_dataSavePath.Text = DataSDialog.FileName;
+            String path = textBox_dataSavePath.Text;
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.Description = "Select folder to save to..";
+            folderDlg.SelectedPath = path;
+            if(folderDlg.ShowDialog() == DialogResult.OK)
+            {
+                textBox_dataSavePath.Text = folderDlg.SelectedPath + "\\";
+            }
         }
 
         private void loadData()
