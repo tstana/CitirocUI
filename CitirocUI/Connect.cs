@@ -274,7 +274,10 @@ namespace CitirocUI
                     mySerialComm.WriteTimeout = 500;
 
                     // Finally! Open serial port!
-                    if(!mySerialComm.OpenPort()) return;
+                    if (!mySerialComm.OpenPort())
+                    {
+                        throw new Exception();
+                    }
 
                     // Update monitor form
                     Form f = Application.OpenForms["frmMonitor"];
@@ -295,7 +298,6 @@ namespace CitirocUI
                 }
                 catch
                 {
-                    MessageBox.Show("Please configure your serial port settings AND make sure port is not already used.");
                     connectStatus = -1;
                     roundButton_connect.BackColor = Color.IndianRed;
                     roundButton_connect.ForeColor = Color.White;
