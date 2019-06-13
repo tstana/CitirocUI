@@ -8,6 +8,7 @@ namespace CitirocUI
 {
     public partial class Citiroc : Form
     {
+        double _hvValue;
         private void button_sendProbes_Click(object sender, EventArgs e)
         {
             bool result = false;
@@ -43,8 +44,8 @@ namespace CitirocUI
                     button_sendProbes.BackColor = Color.LightCoral;
                 button_sendProbes.ForeColor = Color.White;
             }
-                       
-          //  return;
+
+            //  return;
         }
 
         private bool sendProbes(int usbDevId)
@@ -81,7 +82,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialComm.WriteData(bytProbe, 1 + intLenProbeStream/8);
+                    mySerialComm.WriteData(bytProbe, 1 + intLenProbeStream / 8);
                     result = true;
                 }
                 catch (IOException)
@@ -172,17 +173,17 @@ namespace CitirocUI
         {
             bool result = false;
             char[] tmpRrStream = new char[40];
-            
+
             for (int i = 0; i < 40; i++) tmpRrStream[i] = '0';
-            
+
             tmpRrStream[(int)numericUpDown_rr.Value] = (checkBox_rr.Checked == true) ? '1' : '0';
-            
+
             string rrStream = new string(tmpRrStream);
-            
+
             byte[] bytRr = new byte[5];
-            
+
             rrStream = strRev(rrStream);
-            
+
             for (int i = 0; i < 5; i++)
             {
                 string strRrCmdTmp = rrStream.Substring(i * 8, 8);
@@ -224,5 +225,57 @@ namespace CitirocUI
 
             return result;
         }
+
+        // To send HV to MPPCs when serial port is selected
+        private bool sendHV()
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                byte[] hv = new byte[24];
+                hv[0] = Convert.ToByte('H');
+
+                UInt16 HVconversion = (UInt16)(_hvValue / 1.812e-3); // Conversion factor is picked from the command reference dcoument of C11204-02.
+                byte[] HVfinal = BitConverter.GetBytes(HVconversion);
+
+                int sz = HVfinal.Length;
+
+                for (int i = 23; i > 23-sz; i--) // filling last bytes of the array
+                {
+                    hv[i] = HVfinal[23-i];
+                }
+
+                try
+                {
+                    mySerialComm.WriteData(hv, 1);
+                }
+                catch( IOException ie)
+                {
+                    MessageBox.Show(ie.Message);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void button_HVPS_Click(object sender, EventArgs e)
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                bool result = false;
+                result = sendHV();
+                if (result)
+                    button_HVPS.BackColor = WeerocGreen;
+                else
+                    button_HVPS.BackColor = Color.IndianRed;
+                button_HVPS.ForeColor = Color.White;
+            }
+        }
+
+        private void textBox_HV_Leave(object sender, EventArgs e)
+        {
+            TextBox txthv = (TextBox)sender;
+            _hvValue = Convert.ToDouble(txthv.Text);
+        }
+
     }
 }

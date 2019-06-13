@@ -492,12 +492,16 @@ namespace CitirocUI
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 groupBox_SerialPortSettings.Visible = false;
+                groupBox_HV.Visible = false; // HVPS button on slow control page not visible
+                button_HouseKeeping.Visible = false; 
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
                 groupBox_SerialPortSettings.Visible = true;
                 GetCOMPorts();
                 comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
+                groupBox_HV.Visible = true; // HVPS groupBox on slow control page visible
+                button_HouseKeeping.Visible = true;
             }
 
             _selectedConnectionMode = comboBox_SelectConnection.SelectedIndex;
