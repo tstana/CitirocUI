@@ -46,6 +46,7 @@ namespace CitirocUI
         private bool _storingDaqData = false;
         private int _numDaqBytesRetrieved = 0;
         private string _daqDataFileName = "CUBESfile.dat";
+        private int _numHKBytesRetrieved = 0;
 
          //global manager variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
@@ -420,8 +421,96 @@ namespace CitirocUI
                     }
                 }
             }
-        }
 
+            // To receive House Keeping data
+            else
+            {
+                Array.Copy(dataBytes, 0, _comBuffer, _numHKBytesRetrieved, numBytesRead);
+                _numHKBytesRetrieved += numBytesRead;
+                var tmpStr = System.Text.Encoding.Default.GetString(_comBuffer);
+
+               // if (dataBytes[0] == 'h')
+                {
+                    string unixtime = "\0";
+                    uint countsCh0 =0, countsCh16=0, countsCh21=0, countsCh31=0, current=0, voltage=0;
+                    double temperature=0.0;
+
+                    string time = "0";
+                    string temperature_1 = "0";
+                    string countsCh0_1 = "0";
+                    string countsCh16_1 = "0";
+                    string countsCh31_1 = "0";
+                    string countsCh21_1 = "0";
+                    string current_1 = "0";
+                    string voltage_1 = "0";
+
+                    Form f = Application.OpenForms["frmMonitor"];
+                    frmMonitor fm = (frmMonitor)f;
+
+                    for (int i = 1; i < 10; i++)
+                    {
+                        unixtime += BitConverter.ToChar(dataBytes, i);
+                    }
+
+                    //for (int i = 9; i < 18; i += 8)
+                    for (int i = 11; i < 21; i ++)
+                    {
+                       time = BitConverter.ToString(dataBytes, i);
+                    }
+                    fm.textBox_time(time);
+
+                    for (int i = 21; i < 25; i++)
+                    {
+                        countsCh0 = BitConverter.ToUInt32(dataBytes, i);
+                    }
+                    countsCh0_1 += Convert.ToString(countsCh0);
+                    fm.textBox_ch0(countsCh0_1);
+
+                    for (int i = 25; i < 28; i++)
+                    {
+                        countsCh16 = BitConverter.ToUInt32(dataBytes, i);
+                    }
+                    countsCh16_1 = Convert.ToString(countsCh16);
+                    fm.textBox_ch16(countsCh16_1);
+
+                    for (int i = 28; i < 30; i++)
+                    {
+                        countsCh31 = BitConverter.ToUInt32(dataBytes, i);
+                    }
+                    countsCh31_1 = Convert.ToString(countsCh31);
+                    fm.textBox_ch31(countsCh31_1);
+
+                    for (int i = 30; i < 34; i++)
+                    {
+                        countsCh21 = BitConverter.ToUInt32(dataBytes, i);
+                    }
+                    countsCh21_1 = Convert.ToString(countsCh21);
+                    fm.textBox_ch21(countsCh21_1);
+
+                    for (int i = 34; i < 38; i++)
+                    {
+                        voltage = BitConverter.ToUInt32(dataBytes, i);
+                    }
+                    voltage_1 = Convert.ToString(voltage);
+                    fm.textBox_voltage(voltage_1);
+
+                    for (int i = 38; i < 42; i++)
+                    {
+                        current = BitConverter.ToUInt32(dataBytes, i);
+                    }
+                    current_1 = Convert.ToString(current);
+                    fm.textBox_current(current_1);
+                    
+                    for (int i = 42; i < 45; i++)
+                    {
+                        temperature = BitConverter.ToDouble(dataBytes, i);
+                        temperature = (temperature * 1.907 * 10 - 5 - 1.035) / (-5.5 * 10 - 3);
+                    }
+                    temperature_1 = Convert.ToString(temperature);
+                    fm.textBox_temp(temperature_1);
+                }
+            }
+        }
         #endregion
     }
 }

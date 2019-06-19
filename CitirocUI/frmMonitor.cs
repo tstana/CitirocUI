@@ -73,5 +73,46 @@ namespace CitirocUI
                 "Press \"Clear\" to clear the window";
             MessageBox.Show(helpString, "Help");
         }
+
+        public void textBox_time(string a)
+        {
+            textBox_Time.Text = a;
+        }
+
+        public void textBox_temp (string a)
+        {
+            textBox_Temperature.Text = a;
+        }
+
+        public void textBox_ch0(string a)
+        {
+            textBox_Ch0Counts.Text = a;
+        }
+
+        public void textBox_ch16(string a)
+        {
+            textBox_Ch16Counts.Text = a;
+        }
+
+        public void textBox_ch31(string a)
+        {
+            textBox_Ch31Counts.Text = a;
+        }
+
+        public void textBox_ch21(string a)
+        {
+            textBox_Ch21Counts.Text = a;
+        }
+
+        public void textBox_current(string a)
+        {
+            textBox2.Text = a;
+        }
+
+        public void textBox_voltage(string a)
+        {
+            textBox1.Text = a;
+        }
+
     }
 }

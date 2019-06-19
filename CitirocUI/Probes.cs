@@ -239,16 +239,16 @@ namespace CitirocUI
 
                 int sz = HVfinal.Length;
 
-                for (int i = 23; i > 23-sz; i--) // filling last bytes of the array
+                for (int i = 23; i > 23 - sz; i--) // filling last bytes of the array
                 {
-                    hv[i] = HVfinal[23-i];
+                    hv[i] = HVfinal[23 - i];
                 }
 
                 try
                 {
                     mySerialComm.WriteData(hv, 1);
                 }
-                catch( IOException ie)
+                catch (IOException ie)
                 {
                     MessageBox.Show(ie.Message);
                     return false;
@@ -277,5 +277,32 @@ namespace CitirocUI
             _hvValue = Convert.ToDouble(txthv.Text);
         }
 
+        #region HK parameters
+        // To send command for HK parameters
+        private bool sendHouseKeeping()
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                byte[] HKpara = new byte[1];
+                HKpara[0] = Convert.ToByte('h');
+                mySerialComm.WriteData(HKpara, 1);
+            }
+            return true;
+        }
+
+        private void button_HouseKeeping_Click(object sender, EventArgs e)
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                bool result = false;
+                result = sendHouseKeeping();
+                if (result)
+                    button_HouseKeeping.BackColor = WeerocGreen;
+                else
+                    button_HouseKeeping.BackColor = Color.IndianRed;
+                button_HouseKeeping.ForeColor = Color.White;
+            }
+        }
+        #endregion
     }
 }
