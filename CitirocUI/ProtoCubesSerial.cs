@@ -41,10 +41,11 @@ namespace CitirocUI
         private byte[] _comBuffer;
 
         private byte[] _daqDataArray = new byte[25000];
+        private byte[] _hkDataArray = new byte[64];
 
         private bool _retrievingDaqData = false;
-        private bool _storingDaqData = false;
-        private int _numDaqBytesRetrieved = 0;
+        private bool _storingData = false;
+        private int _numBytesRetrieved = 0;
         private string _daqDataFileName = "CUBESfile.dat";
         private int _numHKBytesRetrieved = 0;
 
@@ -367,24 +368,24 @@ namespace CitirocUI
 
             if (_retrievingDaqData)
             {
-                if (!_storingDaqData)
+                if (!_storingData)
                 {
                     /*
                      * Look for "Unix time" string in received data and
                      * start storing DAQ data when it has been obtained.
                      */
-                    Array.Copy(dataBytes, 0, _comBuffer, _numDaqBytesRetrieved, numBytesRead);
-                    _numDaqBytesRetrieved += numBytesRead;
+                    Array.Copy(dataBytes, 0, _comBuffer, _numBytesRetrieved, numBytesRead);
+                    _numBytesRetrieved += numBytesRead;
                     var tmpStr = System.Text.Encoding.Default.GetString(_comBuffer);
 
                     if (tmpStr.Contains("Unix time"))
                     {
                         /* Start storing data from index of "Unix time" */
                         int startIndex = tmpStr.IndexOf("Unix time");
-                        Array.Copy(_comBuffer, startIndex, _daqDataArray, 0, _numDaqBytesRetrieved - startIndex);
+                        Array.Copy(_comBuffer, startIndex, _daqDataArray, 0, _numBytesRetrieved - startIndex);
                         Array.Clear(_comBuffer, 0, _comBuffer.Length);
-                        _numDaqBytesRetrieved -= startIndex;
-                        _storingDaqData = true;
+                        _numBytesRetrieved -= startIndex;
+                        _storingData = true;
                     }
                 }
                 else
@@ -397,120 +398,93 @@ namespace CitirocUI
                      */
                     try
                     {
-                        dataBytes.CopyTo(_daqDataArray, _numDaqBytesRetrieved);
-                        _numDaqBytesRetrieved += numBytesRead;
-                        if (_numDaqBytesRetrieved == _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
+                        dataBytes.CopyTo(_daqDataArray, _numBytesRetrieved);
+                        _numBytesRetrieved += numBytesRead;
+                        if (_numBytesRetrieved == _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
                         {
                             using (BinaryWriter dataFile = new BinaryWriter(File.Open(_daqDataFileName, FileMode.Create)))
                             {
                                 dataFile.Write(_daqDataArray);
                             }
                             _retrievingDaqData = false;
-                            _storingDaqData = false;
-                            _numDaqBytesRetrieved = 0;
+                            _storingData = false;
+                            _numBytesRetrieved = 0;
                         }
                     }
                     catch
                     {
                         MessageBox.Show("Attempting to write too many bytes to _daqDataArray:\n" +
-                            "_numDaqBytesRetrieved = " + _numDaqBytesRetrieved + "\n" +
+                            "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
                             "dataB.Length = " + dataBytes.Length + "\n", "Exception");
                         _retrievingDaqData = false;
-                        _storingDaqData = false;
-                        _numDaqBytesRetrieved = 0;
+                        _storingData = false;
+                        _numBytesRetrieved = 0;
                     }
                 }
             }
 
-            // To receive House Keeping data
             else
             {
-                Array.Copy(dataBytes, 0, _comBuffer, _numHKBytesRetrieved, numBytesRead);
-                _numHKBytesRetrieved += numBytesRead;
-                var tmpStr = System.Text.Encoding.Default.GetString(_comBuffer);
-
-               // if (dataBytes[0] == 'h')
+                if (_storingData)
                 {
-                    string unixtime = "\0";
-                    uint countsCh0 =0, countsCh16=0, countsCh21=0, countsCh31=0, current=0, voltage=0;
-                    double temperature=0.0;
+                    Array.Copy(dataBytes, 0, _comBuffer, _numHKBytesRetrieved, numBytesRead);
+                    _numHKBytesRetrieved += numBytesRead;
+                    var tmpStr = System.Text.Encoding.Default.GetString(_comBuffer);
 
-                    string time = "0";
-                    string temperature_1 = "0";
-                    string countsCh0_1 = "0";
-                    string countsCh16_1 = "0";
-                    string countsCh31_1 = "0";
-                    string countsCh21_1 = "0";
-                    string current_1 = "0";
-                    string voltage_1 = "0";
-
-                    Form f = Application.OpenForms["frmMonitor"];
-                    frmMonitor fm = (frmMonitor)f;
-
-                    for (int i = 1; i < 10; i++)
+                    if (tmpStr.Contains("Unix time"))
                     {
-                        unixtime += BitConverter.ToChar(dataBytes, i);
+                        string a = "0", a1 = "0";
+                       
+                        /* Start storing data from index of "Unix time" */
+                        int startIndex = tmpStr.IndexOf("Unix time");
+                        Array.Copy(_comBuffer, startIndex, _hkDataArray, 0, _numBytesRetrieved - startIndex);
+                        _storingData = true;
+                        _numBytesRetrieved -= startIndex;
                     }
-
-                    //for (int i = 9; i < 18; i += 8)
-                    for (int i = 11; i < 21; i ++)
+                }
+                else {
+                    try
                     {
-                       time = BitConverter.ToString(dataBytes, i);
+                        dataBytes.CopyTo(_hkDataArray, _numBytesRetrieved);
+                        _numBytesRetrieved += numBytesRead;
+                        if (_numBytesRetrieved == _hkDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
+                        {
+                            Form f = Application.OpenForms["frmMonitor"];
+                            if (f != null)
+                            {
+                                frmMonitor fm = (frmMonitor)f;
+                                for (int i = 10; i < 21; i++)
+                            {
+                               fm.textBox_time  += BitConverter.ToString(_hkDataArray, i);
+                            }
+                                fm.textBox_ch0 = BitConverter.ToString(_hkDataArray, 21);
+                                fm.textBox_ch16 = BitConverter.ToString(_hkDataArray, 25);
+                                fm.textBox_ch21 = BitConverter.ToString(_hkDataArray, 29);
+                                fm.textBox_ch31 = BitConverter.ToString(_hkDataArray, 33);
+                                fm.textBox_temp = BitConverter.ToString(_hkDataArray, 37);
+                                fm.textBox_voltage = BitConverter.ToString(_hkDataArray, 41);
+                                fm.textBox_current = BitConverter.ToString(_hkDataArray, 45);
+                            }
+                            _storingData = false;
+                            _numBytesRetrieved = 0;                           
+                        }
                     }
-                    fm.textBox_time(time);
-
-                    for (int i = 21; i < 25; i++)
+                    catch
                     {
-                        countsCh0 = BitConverter.ToUInt32(dataBytes, i);
+                        MessageBox.Show("Attempting to write too many bytes to _hkDataArray:\n" +
+                            "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
+                            "dataB.Length = " + dataBytes.Length + "\n", "Exception");
+                        _storingData = false;
+                        _numBytesRetrieved = 0;
                     }
-                    countsCh0_1 += Convert.ToString(countsCh0);
-                    fm.textBox_ch0(countsCh0_1);
-
-                    for (int i = 25; i < 28; i++)
-                    {
-                        countsCh16 = BitConverter.ToUInt32(dataBytes, i);
-                    }
-                    countsCh16_1 = Convert.ToString(countsCh16);
-                    fm.textBox_ch16(countsCh16_1);
-
-                    for (int i = 28; i < 30; i++)
-                    {
-                        countsCh31 = BitConverter.ToUInt32(dataBytes, i);
-                    }
-                    countsCh31_1 = Convert.ToString(countsCh31);
-                    fm.textBox_ch31(countsCh31_1);
-
-                    for (int i = 30; i < 34; i++)
-                    {
-                        countsCh21 = BitConverter.ToUInt32(dataBytes, i);
-                    }
-                    countsCh21_1 = Convert.ToString(countsCh21);
-                    fm.textBox_ch21(countsCh21_1);
-
-                    for (int i = 34; i < 38; i++)
-                    {
-                        voltage = BitConverter.ToUInt32(dataBytes, i);
-                    }
-                    voltage_1 = Convert.ToString(voltage);
-                    fm.textBox_voltage(voltage_1);
-
-                    for (int i = 38; i < 42; i++)
-                    {
-                        current = BitConverter.ToUInt32(dataBytes, i);
-                    }
-                    current_1 = Convert.ToString(current);
-                    fm.textBox_current(current_1);
-                    
-                    for (int i = 42; i < 45; i++)
-                    {
-                        temperature = BitConverter.ToDouble(dataBytes, i);
-                        temperature = (temperature * 1.907 * 10 - 5 - 1.035) / (-5.5 * 10 - 3);
-                    }
-                    temperature_1 = Convert.ToString(temperature);
-                    fm.textBox_temp(temperature_1);
                 }
             }
         }
         #endregion
+
+       /* public SerialPort ComPort
+        {
+            get { return comPort; }
+        }*/
     }
 }

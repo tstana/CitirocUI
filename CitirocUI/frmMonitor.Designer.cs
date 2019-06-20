@@ -35,6 +35,10 @@
             this.buttonHelp = new System.Windows.Forms.Button();
             this.panelHKControl = new System.Windows.Forms.Panel();
             this.panel_HKParameters = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label_Current = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label_Voltage = new System.Windows.Forms.Label();
             this.textBox_Time = new System.Windows.Forms.TextBox();
             this.label_Time = new System.Windows.Forms.Label();
             this.label_HKParameters = new System.Windows.Forms.Label();
@@ -50,10 +54,7 @@
             this.label_Temperature = new System.Windows.Forms.Label();
             this.label_HKFrequency = new System.Windows.Forms.Label();
             this.textBox_HKFrequency = new System.Windows.Forms.TextBox();
-            this.label_Voltage = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label_Current = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelHKControl.SuspendLayout();
             this.panel_HKParameters.SuspendLayout();
@@ -127,6 +128,7 @@
             // 
             // panel_HKParameters
             // 
+            this.panel_HKParameters.Controls.Add(this.button1);
             this.panel_HKParameters.Controls.Add(this.textBox2);
             this.panel_HKParameters.Controls.Add(this.label_Current);
             this.panel_HKParameters.Controls.Add(this.textBox1);
@@ -150,6 +152,40 @@
             this.panel_HKParameters.Name = "panel_HKParameters";
             this.panel_HKParameters.Size = new System.Drawing.Size(445, 200);
             this.panel_HKParameters.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(328, 99);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(83, 20);
+            this.textBox2.TabIndex = 18;
+            // 
+            // label_Current
+            // 
+            this.label_Current.AutoSize = true;
+            this.label_Current.Location = new System.Drawing.Point(251, 99);
+            this.label_Current.Name = "label_Current";
+            this.label_Current.Size = new System.Drawing.Size(41, 13);
+            this.label_Current.TabIndex = 17;
+            this.label_Current.Text = "Current";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(90, 99);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(83, 20);
+            this.textBox1.TabIndex = 16;
+            // 
+            // label_Voltage
+            // 
+            this.label_Voltage.AutoSize = true;
+            this.label_Voltage.Location = new System.Drawing.Point(36, 99);
+            this.label_Voltage.Name = "label_Voltage";
+            this.label_Voltage.Size = new System.Drawing.Size(43, 13);
+            this.label_Voltage.TabIndex = 15;
+            this.label_Voltage.Text = "Voltage";
             // 
             // textBox_Time
             // 
@@ -279,39 +315,15 @@
             this.textBox_HKFrequency.Size = new System.Drawing.Size(83, 20);
             this.textBox_HKFrequency.TabIndex = 0;
             // 
-            // label_Voltage
+            // button1
             // 
-            this.label_Voltage.AutoSize = true;
-            this.label_Voltage.Location = new System.Drawing.Point(36, 99);
-            this.label_Voltage.Name = "label_Voltage";
-            this.label_Voltage.Size = new System.Drawing.Size(43, 13);
-            this.label_Voltage.TabIndex = 15;
-            this.label_Voltage.Text = "Voltage";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(90, 99);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(83, 20);
-            this.textBox1.TabIndex = 16;
-            // 
-            // label_Current
-            // 
-            this.label_Current.AutoSize = true;
-            this.label_Current.Location = new System.Drawing.Point(251, 99);
-            this.label_Current.Name = "label_Current";
-            this.label_Current.Size = new System.Drawing.Size(41, 13);
-            this.label_Current.TabIndex = 17;
-            this.label_Current.Text = "Current";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(328, 99);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(83, 20);
-            this.textBox2.TabIndex = 18;
+            this.button1.Location = new System.Drawing.Point(281, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // frmMonitor
             // 
@@ -361,5 +373,6 @@
         private System.Windows.Forms.Label label_Current;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label_Voltage;
+        private System.Windows.Forms.Button button1;
     }
 }

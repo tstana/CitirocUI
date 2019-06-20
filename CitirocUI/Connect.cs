@@ -51,6 +51,8 @@ namespace CitirocUI
         #endregion
 
         private int _selectedConnectionMode; // = 0 for USB and 1 for Serial
+        private int _numHKBytesRetrieved = 0;
+        private byte[] _hkcomBuffer;
 
         int connectStatus = -1; // -1 = not connected, 0 = board connected but most likely powering issue, 1 = board connected
         unsafe private void roundButton_connect_Click(object sender, EventArgs e)
@@ -492,16 +494,12 @@ namespace CitirocUI
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 groupBox_SerialPortSettings.Visible = false;
-                groupBox_HV.Visible = false; // HVPS button on slow control page not visible
-                button_HouseKeeping.Visible = false; 
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
                 groupBox_SerialPortSettings.Visible = true;
                 GetCOMPorts();
                 comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
-                groupBox_HV.Visible = true; // HVPS groupBox on slow control page visible
-                button_HouseKeeping.Visible = true;
             }
 
             _selectedConnectionMode = comboBox_SelectConnection.SelectedIndex;
@@ -546,5 +544,84 @@ namespace CitirocUI
             frmMon.Height = this.Height;
             frmMon.ConnStatusLabel = mySerialComm.info ;
         }
+
+        // To send HV to MPPCs when serial port is selected
+        private bool sendHV()
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                byte[] hv = new byte[24];
+                hv[0] = Convert.ToByte('H');
+
+                UInt16 HVconversion = (UInt16)(_hvValue / 1.812e-3); // Conversion factor is picked from the command reference dcoument of C11204-02.
+                byte[] HVfinal = BitConverter.GetBytes(HVconversion);
+
+                int sz = HVfinal.Length;
+
+                for (int i = 23; i > 23 - sz; i--) // filling last bytes of the array
+                {
+                    hv[i] = HVfinal[23 - i];
+                }
+
+                try
+                {
+                    mySerialComm.WriteData(hv, 1);
+                }
+                catch (IOException ie)
+                {
+                    MessageBox.Show(ie.Message);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void button_HVPS_Click(object sender, EventArgs e)
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                bool result = false;
+                result = sendHV();
+                if (result)
+                    button_HVPS.BackColor = WeerocGreen;
+                else
+                    button_HVPS.BackColor = Color.IndianRed;
+                button_HVPS.ForeColor = Color.White;
+            }
+        }
+
+        private void textBox_HV_Leave(object sender, EventArgs e)
+        {
+            TextBox txthv = (TextBox)sender;
+            _hvValue = Convert.ToDouble(txthv.Text);
+        }
+
+        #region HK parameters
+        // To send command for HK parameters
+        private bool sendHouseKeeping()
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                byte[] HKpara = new byte[1];
+                HKpara[0] = Convert.ToByte('h');
+                mySerialComm.WriteData(HKpara, 1);
+            }
+            return true;
+        }
+
+        private void button_HouseKeeping_Click(object sender, EventArgs e)
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                bool result = false;
+                result = sendHouseKeeping();
+                if (result)
+                    button_HouseKeeping.BackColor = WeerocGreen;
+                else
+                    button_HouseKeeping.BackColor = Color.IndianRed;
+                button_HouseKeeping.ForeColor = Color.White;
+            }
+        }
+        #endregion
     }
 }

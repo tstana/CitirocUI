@@ -74,45 +74,73 @@ namespace CitirocUI
             MessageBox.Show(helpString, "Help");
         }
 
-        public void textBox_time(string a)
+        public string textBox_time
         {
-            textBox_Time.Text = a;
+            set { textBox_Time.Text = value; }
+            get { return textBox_Time.Text; }
         }
 
-        public void textBox_temp (string a)
+        public string textBox_temp
         {
-            textBox_Temperature.Text = a;
+            set { textBox_Temperature.Text = value; }
+            get { return textBox_Temperature.Text; }
         }
 
-        public void textBox_ch0(string a)
+        public string textBox_ch0
         {
-            textBox_Ch0Counts.Text = a;
+            set { textBox_Ch0Counts.Text = value; }
+            get { return textBox_Ch0Counts.Text; }
         }
 
-        public void textBox_ch16(string a)
+        public string textBox_ch16
         {
-            textBox_Ch16Counts.Text = a;
+            set { textBox_Ch16Counts.Text = value; }
+            get { return textBox_Ch16Counts.Text; }
         }
 
-        public void textBox_ch31(string a)
+        public string textBox_ch31
         {
-            textBox_Ch31Counts.Text = a;
+            set { textBox_Ch31Counts.Text = value; }
+            get { return textBox_Ch31Counts.Text; }
         }
 
-        public void textBox_ch21(string a)
+        public string textBox_ch21
         {
-            textBox_Ch21Counts.Text = a;
+            set { textBox_Ch21Counts.Text = value; }
+            get { return textBox_Ch21Counts.Text; }
         }
 
-        public void textBox_current(string a)
+        public string textBox_current
         {
-            textBox2.Text = a;
+            set { textBox2.Text = value; }
+            get { return textBox2.Text; }
         }
 
-        public void textBox_voltage(string a)
+        public string textBox_voltage
         {
-            textBox1.Text = a;
+            set { textBox1.Text = value; }
+            get { return textBox1.Text; }
         }
 
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            byte[] _hkDataArray = new byte[64];
+            byte[] time = System.Text.Encoding.ASCII.GetBytes("Unix time: 1560871356\r\n");
+            Array.Copy(time, _hkDataArray, time.Length);
+                
+            byte[] me =    { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x02, 0x05, 0x36, 0x7B, 0x30, 0x35,
+            0x36, 0x38, 0x30, 0x30, 0x35, 0x43, 0x42, 0x38, 0x36, 0x39};
+
+            Array.Copy(me, 0, _hkDataArray, time.Length, me.Length);
+
+            this.textBox_ch0        = Convert.ToString(BitConverter.ToUInt32(_hkDataArray, 23));
+            this.textBox_ch16       = Convert.ToString(BitConverter.ToUInt32(_hkDataArray, 27));
+            this.textBox_ch21       = Convert.ToString(BitConverter.ToUInt32(_hkDataArray, 31));
+            this.textBox_ch31       = Convert.ToString(BitConverter.ToUInt32(_hkDataArray, 35));
+            this.textBox_temp       = Convert.ToString(BitConverter.ToUInt32(_hkDataArray, 39));
+            this.textBox_voltage    = Convert.ToString(BitConverter.ToUInt32(_hkDataArray, 43));
+            this.textBox_current    = Convert.ToString(BitConverter.ToUInt32(_hkDataArray, 47));
+        }
     }
 }

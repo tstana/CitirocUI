@@ -59,6 +59,11 @@
             this.tabControl_top = new System.Windows.Forms.TabControl();
             this.tabPage_main = new System.Windows.Forms.TabPage();
             this.groupBox_SerialPortSettings = new System.Windows.Forms.GroupBox();
+            this.groupBox_HV = new System.Windows.Forms.GroupBox();
+            this.button_HVPS = new System.Windows.Forms.Button();
+            this.textBox_HV = new System.Windows.Forms.TextBox();
+            this.label140 = new System.Windows.Forms.Label();
+            this.button_HouseKeeping = new System.Windows.Forms.Button();
             this.btn_OpenSerialMonitor = new System.Windows.Forms.Button();
             this.comboBox_COMPortList = new System.Windows.Forms.ComboBox();
             this.label139 = new System.Windows.Forms.Label();
@@ -603,11 +608,6 @@
             this.label65 = new System.Windows.Forms.Label();
             this.textBox_calibDac0 = new CitirocUI.intTextBox();
             this.tabPage_probes = new System.Windows.Forms.TabPage();
-            this.groupBox_HV = new System.Windows.Forms.GroupBox();
-            this.label140 = new System.Windows.Forms.Label();
-            this.button_HVPS = new System.Windows.Forms.Button();
-            this.textBox_HV = new System.Windows.Forms.TextBox();
-            this.button_HouseKeeping = new System.Windows.Forms.Button();
             this.button_sendReadRegister = new System.Windows.Forms.Button();
             this.numericUpDown_rr = new System.Windows.Forms.NumericUpDown();
             this.groupBox_digitalProbe = new System.Windows.Forms.GroupBox();
@@ -883,6 +883,7 @@
             this.tabControl_top.SuspendLayout();
             this.tabPage_main.SuspendLayout();
             this.groupBox_SerialPortSettings.SuspendLayout();
+            this.groupBox_HV.SuspendLayout();
             this.tabPage_slowControl.SuspendLayout();
             this.tabControl_slowControl.SuspendLayout();
             this.tabPage_mainSettings.SuspendLayout();
@@ -896,7 +897,6 @@
             this.groupBox_DacT.SuspendLayout();
             this.groupBox_DacQ.SuspendLayout();
             this.tabPage_probes.SuspendLayout();
-            this.groupBox_HV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_rr)).BeginInit();
             this.groupBox_digitalProbe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_probeDChannel)).BeginInit();
@@ -1199,6 +1199,8 @@
             // 
             // groupBox_SerialPortSettings
             // 
+            this.groupBox_SerialPortSettings.Controls.Add(this.groupBox_HV);
+            this.groupBox_SerialPortSettings.Controls.Add(this.button_HouseKeeping);
             this.groupBox_SerialPortSettings.Controls.Add(this.btn_OpenSerialMonitor);
             this.groupBox_SerialPortSettings.Controls.Add(this.comboBox_COMPortList);
             this.groupBox_SerialPortSettings.Controls.Add(this.label139);
@@ -1206,10 +1208,58 @@
             this.groupBox_SerialPortSettings.Controls.Add(this.comboBox_Baudrate);
             this.groupBox_SerialPortSettings.Location = new System.Drawing.Point(804, 15);
             this.groupBox_SerialPortSettings.Name = "groupBox_SerialPortSettings";
-            this.groupBox_SerialPortSettings.Size = new System.Drawing.Size(255, 183);
+            this.groupBox_SerialPortSettings.Size = new System.Drawing.Size(264, 459);
             this.groupBox_SerialPortSettings.TabIndex = 11;
             this.groupBox_SerialPortSettings.TabStop = false;
             this.groupBox_SerialPortSettings.Text = "Serial Port Settings:";
+            // 
+            // groupBox_HV
+            // 
+            this.groupBox_HV.Controls.Add(this.button_HVPS);
+            this.groupBox_HV.Controls.Add(this.textBox_HV);
+            this.groupBox_HV.Controls.Add(this.label140);
+            this.groupBox_HV.Location = new System.Drawing.Point(33, 305);
+            this.groupBox_HV.Name = "groupBox_HV";
+            this.groupBox_HV.Size = new System.Drawing.Size(202, 137);
+            this.groupBox_HV.TabIndex = 13;
+            this.groupBox_HV.TabStop = false;
+            this.groupBox_HV.Text = "HV settings";
+            // 
+            // button_HVPS
+            // 
+            this.button_HVPS.Location = new System.Drawing.Point(48, 87);
+            this.button_HVPS.Name = "button_HVPS";
+            this.button_HVPS.Size = new System.Drawing.Size(114, 30);
+            this.button_HVPS.TabIndex = 2;
+            this.button_HVPS.Text = "Send HV";
+            this.button_HVPS.UseVisualStyleBackColor = true;
+            this.button_HVPS.Click += new System.EventHandler(this.button_HVPS_Click);
+            // 
+            // textBox_HV
+            // 
+            this.textBox_HV.Location = new System.Drawing.Point(93, 40);
+            this.textBox_HV.Name = "textBox_HV";
+            this.textBox_HV.Size = new System.Drawing.Size(100, 29);
+            this.textBox_HV.TabIndex = 1;
+            // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.Location = new System.Drawing.Point(16, 44);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(69, 24);
+            this.label140.TabIndex = 0;
+            this.label140.Text = "Set HV";
+            // 
+            // button_HouseKeeping
+            // 
+            this.button_HouseKeeping.Location = new System.Drawing.Point(33, 226);
+            this.button_HouseKeeping.Name = "button_HouseKeeping";
+            this.button_HouseKeeping.Size = new System.Drawing.Size(202, 39);
+            this.button_HouseKeeping.TabIndex = 12;
+            this.button_HouseKeeping.Text = "HK parameters";
+            this.button_HouseKeeping.UseVisualStyleBackColor = true;
+            this.button_HouseKeeping.Click += new System.EventHandler(this.button_HouseKeeping_Click);
             // 
             // btn_OpenSerialMonitor
             // 
@@ -7974,8 +8024,6 @@
             // tabPage_probes
             // 
             this.tabPage_probes.BackColor = System.Drawing.Color.White;
-            this.tabPage_probes.Controls.Add(this.groupBox_HV);
-            this.tabPage_probes.Controls.Add(this.button_HouseKeeping);
             this.tabPage_probes.Controls.Add(this.button_sendReadRegister);
             this.tabPage_probes.Controls.Add(this.numericUpDown_rr);
             this.tabPage_probes.Controls.Add(this.groupBox_digitalProbe);
@@ -7990,57 +8038,6 @@
             this.tabPage_probes.Text = "Probes";
             this.tabPage_probes.MouseEnter += new System.EventHandler(this.tabPage_probes_MouseEnter);
             this.tabPage_probes.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // groupBox_HV
-            // 
-            this.groupBox_HV.Controls.Add(this.label140);
-            this.groupBox_HV.Controls.Add(this.button_HVPS);
-            this.groupBox_HV.Controls.Add(this.textBox_HV);
-            this.groupBox_HV.Location = new System.Drawing.Point(6, 350);
-            this.groupBox_HV.Name = "groupBox_HV";
-            this.groupBox_HV.Size = new System.Drawing.Size(194, 118);
-            this.groupBox_HV.TabIndex = 57;
-            this.groupBox_HV.TabStop = false;
-            this.groupBox_HV.Text = "HV settings";
-            this.groupBox_HV.Visible = false;
-            // 
-            // label140
-            // 
-            this.label140.AutoSize = true;
-            this.label140.Location = new System.Drawing.Point(6, 40);
-            this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(69, 24);
-            this.label140.TabIndex = 55;
-            this.label140.Text = "Set HV";
-            // 
-            // button_HVPS
-            // 
-            this.button_HVPS.Location = new System.Drawing.Point(32, 73);
-            this.button_HVPS.Name = "button_HVPS";
-            this.button_HVPS.Size = new System.Drawing.Size(122, 39);
-            this.button_HVPS.TabIndex = 54;
-            this.button_HVPS.Text = "Send HV";
-            this.button_HVPS.UseVisualStyleBackColor = true;
-            this.button_HVPS.Click += new System.EventHandler(this.button_HVPS_Click);
-            // 
-            // textBox_HV
-            // 
-            this.textBox_HV.Location = new System.Drawing.Point(81, 40);
-            this.textBox_HV.Name = "textBox_HV";
-            this.textBox_HV.Size = new System.Drawing.Size(100, 29);
-            this.textBox_HV.TabIndex = 56;
-            this.textBox_HV.Leave += new System.EventHandler(this.textBox_HV_Leave);
-            // 
-            // button_HouseKeeping
-            // 
-            this.button_HouseKeeping.Location = new System.Drawing.Point(896, 400);
-            this.button_HouseKeeping.Name = "button_HouseKeeping";
-            this.button_HouseKeeping.Size = new System.Drawing.Size(154, 35);
-            this.button_HouseKeeping.TabIndex = 27;
-            this.button_HouseKeeping.Text = "HK parameters";
-            this.button_HouseKeeping.UseVisualStyleBackColor = true;
-            this.button_HouseKeeping.Visible = false;
-            this.button_HouseKeeping.Click += new System.EventHandler(this.button_HouseKeeping_Click);
             // 
             // button_sendReadRegister
             // 
@@ -11634,6 +11631,8 @@
             this.tabPage_main.PerformLayout();
             this.groupBox_SerialPortSettings.ResumeLayout(false);
             this.groupBox_SerialPortSettings.PerformLayout();
+            this.groupBox_HV.ResumeLayout(false);
+            this.groupBox_HV.PerformLayout();
             this.tabPage_slowControl.ResumeLayout(false);
             this.tabControl_slowControl.ResumeLayout(false);
             this.tabPage_mainSettings.ResumeLayout(false);
@@ -11654,8 +11653,6 @@
             this.groupBox_DacQ.PerformLayout();
             this.tabPage_probes.ResumeLayout(false);
             this.tabPage_probes.PerformLayout();
-            this.groupBox_HV.ResumeLayout(false);
-            this.groupBox_HV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_rr)).EndInit();
             this.groupBox_digitalProbe.ResumeLayout(false);
             this.groupBox_digitalProbe.PerformLayout();
@@ -12541,10 +12538,10 @@
         private System.Windows.Forms.Label label138;
         private System.Windows.Forms.Button btn_OpenSerialMonitor;
         private System.Windows.Forms.Button button_HouseKeeping;
+        private System.Windows.Forms.GroupBox groupBox_HV;
+        private System.Windows.Forms.Button button_HVPS;
         private System.Windows.Forms.TextBox textBox_HV;
         private System.Windows.Forms.Label label140;
-        private System.Windows.Forms.Button button_HVPS;
-        private System.Windows.Forms.GroupBox groupBox_HV;
     }
 }
 
