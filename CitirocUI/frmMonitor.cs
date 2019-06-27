@@ -74,52 +74,46 @@ namespace CitirocUI
             MessageBox.Show(helpString, "Help");
         }
 
-        public string textBox_time
-        {
-            set { textBox_Time.Text = value; }
-            get { return textBox_Time.Text; }
-        }
-
         public string textBox_temp
         {
-            set { textBox_Temperature.Text = value; }
-            get { return textBox_Temperature.Text; }
+            set { textBox_tempFromHVPS.Text = value; }
+            get { return textBox_tempFromHVPS.Text; }
         }
 
         public string textBox_ch0
         {
-            set { textBox_Ch0Counts.Text = value; }
-            get { return textBox_Ch0Counts.Text; }
+            set { textBox_hitCountMPPC1.Text = value; }
+            get { return textBox_hitCountMPPC1.Text; }
         }
 
         public string textBox_ch16
         {
-            set { textBox_Ch16Counts.Text = value; }
-            get { return textBox_Ch16Counts.Text; }
+            set { textBox_hitCountMPPC3.Text = value; }
+            get { return textBox_hitCountMPPC3.Text; }
         }
 
         public string textBox_ch31
         {
-            set { textBox_Ch31Counts.Text = value; }
-            get { return textBox_Ch31Counts.Text; }
+            set { textBox_hitCountMPPC2.Text = value; }
+            get { return textBox_hitCountMPPC2.Text; }
         }
 
         public string textBox_ch21
         {
-            set { textBox_Ch21Counts.Text = value; }
-            get { return textBox_Ch21Counts.Text; }
+            set { textBox_hitCountOR32.Text = value; }
+            get { return textBox_hitCountOR32.Text; }
         }
 
         public string textBox_current
         {
-            set { textBox2.Text = value; }
-            get { return textBox2.Text; }
+            set { textBox_currentFromHVPS.Text = value; }
+            get { return textBox_currentFromHVPS.Text; }
         }
 
         public string textBox_voltage
         {
-            set { textBox1.Text = value; }
-            get { return textBox1.Text; }
+            set { textBox_voltageFromHVPS.Text = value; }
+            get { return textBox_voltageFromHVPS.Text; }
         }
 
         private void Button1_Click(object sender, EventArgs e)
