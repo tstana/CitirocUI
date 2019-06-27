@@ -108,50 +108,5 @@ namespace CitirocUI
         {
             set { textBox_tempFromHVPS.Text = value.ToString(); }
         }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            byte[] _hkDataArray = new byte[64];
-            byte[] time = System.Text.Encoding.ASCII.GetBytes("Unix time: 1560871356\r\n");
-            Array.Copy(time, _hkDataArray, time.Length);
-                
-            byte[] me = {
-                0x00, 0x00, 0x00, 0x00,
-                0x00, 0x00, 0x00, 0x00,
-                0x00, 0x00, 0x00, 0x00,
-                0x02, 0x05, 0x36, 0x7B,
-                0x30, 0x35, 0x36, 0x38,
-                0x30, 0x30, 0x35, 0x43,
-                0x42, 0x38, 0x36, 0x39
-            };
-
-            Array.Copy(me, 0, _hkDataArray, time.Length, me.Length);
-
-            byte[] ch0_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 23));
-            byte[] ch16_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 27));
-            byte[] ch31_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 31));
-            byte[] ch21_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 35));
-            byte[] hvps_temp = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 39));
-            byte[] hvps_voltage = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 43));
-            byte[] hvps_current = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 47));
-            if (BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(ch0_hit_rate);
-                Array.Reverse(ch16_hit_rate);
-                Array.Reverse(ch31_hit_rate);
-                Array.Reverse(ch21_hit_rate);
-                Array.Reverse(hvps_temp);
-                Array.Reverse(hvps_voltage);
-                Array.Reverse(hvps_current);
-            }
-
-            this.hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_rate, 0);
-            this.hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_rate, 0);
-            this.hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_rate, 0);
-            this.hitCountOR32 = BitConverter.ToUInt32(ch21_hit_rate, 0);
-            this.voltageFromHVPS = BitConverter.ToUInt32(hvps_voltage, 0);
-            this.currentFromHVPS = BitConverter.ToUInt32(hvps_current, 0);
-            this.tempFromHVPS = BitConverter.ToUInt32(hvps_temp, 0);
-        }
     }
 }
