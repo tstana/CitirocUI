@@ -74,46 +74,39 @@ namespace CitirocUI
             MessageBox.Show(helpString, "Help");
         }
 
-        public string textBox_temp
+        public UInt32 hitCountMPPC1
         {
-            set { textBox_tempFromHVPS.Text = value; }
-            get { return textBox_tempFromHVPS.Text; }
+            set { textBox_hitCountMPPC1.Text = value.ToString(); }
         }
 
-        public string textBox_ch0
+        public UInt32 hitCountMPPC2
         {
-            set { textBox_hitCountMPPC1.Text = value; }
-            get { return textBox_hitCountMPPC1.Text; }
+            set { textBox_hitCountMPPC2.Text = value.ToString(); }
         }
 
-        public string textBox_ch16
+        public UInt32 hitCountMPPC3
         {
-            set { textBox_hitCountMPPC3.Text = value; }
-            get { return textBox_hitCountMPPC3.Text; }
+            set { textBox_hitCountMPPC3.Text = value.ToString(); }
         }
 
-        public string textBox_ch31
+        public UInt32 hitCountOR32
         {
-            set { textBox_hitCountMPPC2.Text = value; }
-            get { return textBox_hitCountMPPC2.Text; }
+            set { textBox_hitCountOR32.Text = value.ToString(); }
         }
 
-        public string textBox_ch21
+        public UInt32 voltageFromHVPS
         {
-            set { textBox_hitCountOR32.Text = value; }
-            get { return textBox_hitCountOR32.Text; }
+            set { textBox_voltageFromHVPS.Text = value.ToString(); }
         }
 
-        public string textBox_current
+        public UInt32 currentFromHVPS
         {
-            set { textBox_currentFromHVPS.Text = value; }
-            get { return textBox_currentFromHVPS.Text; }
+            set { textBox_currentFromHVPS.Text = value.ToString(); }
         }
 
-        public string textBox_voltage
+        public UInt32 tempFromHVPS
         {
-            set { textBox_voltageFromHVPS.Text = value; }
-            get { return textBox_voltageFromHVPS.Text; }
+            set { textBox_tempFromHVPS.Text = value.ToString(); }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -152,13 +145,13 @@ namespace CitirocUI
                 Array.Reverse(hvps_current);
             }
 
-            this.textBox_ch0 = Convert.ToString(BitConverter.ToUInt32(ch0_hit_rate, 0));
-            this.textBox_ch16 = Convert.ToString(BitConverter.ToUInt32(ch16_hit_rate, 0));
-            this.textBox_ch21 = Convert.ToString(BitConverter.ToUInt32(ch31_hit_rate, 0));
-            this.textBox_ch31 = Convert.ToString(BitConverter.ToUInt32(ch21_hit_rate, 0));
-            this.textBox_temp = Convert.ToString(BitConverter.ToUInt32(hvps_temp, 0));
-            this.textBox_voltage = Convert.ToString(BitConverter.ToUInt32(hvps_voltage, 0));
-            this.textBox_current = Convert.ToString(BitConverter.ToUInt32(hvps_current, 0));
+            this.hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_rate, 0);
+            this.hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_rate, 0);
+            this.hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_rate, 0);
+            this.hitCountOR32 = BitConverter.ToUInt32(ch21_hit_rate, 0);
+            this.voltageFromHVPS = BitConverter.ToUInt32(hvps_voltage, 0);
+            this.currentFromHVPS = BitConverter.ToUInt32(hvps_current, 0);
+            this.tempFromHVPS = BitConverter.ToUInt32(hvps_temp, 0);
         }
     }
 }

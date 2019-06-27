@@ -456,13 +456,13 @@ namespace CitirocUI
                                 frmMonitor fm = (frmMonitor)f;
                                 for (int i = 10; i < 21; i++)
                                 {
-                                    fm.textBox_ch0 = BitConverter.ToString(_hkDataArray, 21);
-                                    fm.textBox_ch16 = BitConverter.ToString(_hkDataArray, 25);
-                                    fm.textBox_ch21 = BitConverter.ToString(_hkDataArray, 29);
-                                    fm.textBox_ch31 = BitConverter.ToString(_hkDataArray, 33);
-                                    fm.textBox_temp = BitConverter.ToString(_hkDataArray, 37);
-                                    fm.textBox_voltage = BitConverter.ToString(_hkDataArray, 41);
-                                    fm.textBox_current = BitConverter.ToString(_hkDataArray, 45);
+                                    //fm.textBox_ch0 = BitConverter.ToString(_hkDataArray, 21);
+                                    //fm.textBox_ch16 = BitConverter.ToString(_hkDataArray, 25);
+                                    //fm.textBox_ch21 = BitConverter.ToString(_hkDataArray, 29);
+                                    //fm.textBox_ch31 = BitConverter.ToString(_hkDataArray, 33);
+                                    //fm.textBox_temp = BitConverter.ToString(_hkDataArray, 37);
+                                    //fm.textBox_voltage = BitConverter.ToString(_hkDataArray, 41);
+                                    //fm.textBox_current = BitConverter.ToString(_hkDataArray, 45);
                                 }
                                 _storingData = false;
                                 _numBytesRetrieved = 0;
