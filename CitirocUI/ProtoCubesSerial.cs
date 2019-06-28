@@ -7,6 +7,45 @@ using System.Windows.Forms;
 
 namespace CitirocUI
 {
+    class DataReadyEventArgs : EventArgs
+    {
+        #region Members
+        private UInt32 _telemetryTimestamp;
+        private UInt32 _hitCountMPPC3;
+        private UInt32 _hitCountMPPC2;
+        private UInt32 _hitCountMPPC1;
+        private UInt32 _hitCountOR32;
+        private UInt32 _voltageFromHVPS;
+        private UInt32 _currentFromHVPS;
+        private UInt32 _tempFromHVPS;
+        #endregion
+
+        #region Properties
+        public UInt32 TelemetryTimestamp;
+        public UInt32 HitCountMPPC3;
+        public UInt32 HitCountMPPC2;
+        public UInt32 HitCountMPPC1;
+        public UInt32 HitCountOR32;
+        public UInt32 VoltageFromHVPS;
+        public UInt32 CurrentFromHVPS;
+        public UInt32 TempFromHVPS;
+        #endregion
+
+        #region Constructor
+        public DataReadyEventArgs()
+        {
+            _telemetryTimestamp = 0;
+            _hitCountMPPC1 = 0;
+            _hitCountMPPC2 = 0;
+            _hitCountMPPC3 = 0;
+            _hitCountOR32 = 0;
+            _voltageFromHVPS = 0;
+            _currentFromHVPS = 0;
+            _tempFromHVPS = 0;
+        }
+        #endregion
+    }
+
     class ProtoCubesSerial
     {
         #region Enums
@@ -47,9 +86,34 @@ namespace CitirocUI
         private int _numBytesRetrieved = 0;
         private string _daqDataFileName = "CUBESfile.dat";
 
-         //global manager variables
+         //global variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
         private SerialPort comPort = new SerialPort();
+        #endregion
+
+        #region Events
+        public event EventHandler DataReadyEvent;
+
+        protected virtual void OnDataReadyEvent(DataReadyEventArgs e)
+        {
+            EventHandler<DataReadyEventArgs> handler = DataReadyEvent;
+
+            if (handler != null)
+            {
+                e.HitCountMPPC1 = _hitCountMPPC1;
+                e.HitCountMPPC2 = _hitCountMPPC2;
+                e.HitCountMPPC3 = _hitCountMPPC3;
+            }
+        }
+
+        private UInt32 _telemetryTimestamp;
+        private UInt32 _hitCountMPPC3;
+        private UInt32 _hitCountMPPC2;
+        private UInt32 _hitCountMPPC1;
+        private UInt32 _hitCountOR32;
+        private UInt32 _voltageFromHVPS;
+        private UInt32 _currentFromHVPS;
+        private UInt32 _tempFromHVPS;
         #endregion
 
         #region Properties
@@ -428,14 +492,14 @@ namespace CitirocUI
                                 Array.Reverse(hvps_current);
                             }
 
-                            fm.TelemetryTimestamp = timestamp;
-                            fm.hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_rate, 0);
-                            fm.hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_rate, 0);
-                            fm.hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_rate, 0);
-                            fm.hitCountOR32 = BitConverter.ToUInt32(ch21_hit_rate, 0);
-                            fm.voltageFromHVPS = BitConverter.ToUInt32(hvps_voltage, 0);
-                            fm.currentFromHVPS = BitConverter.ToUInt32(hvps_current, 0);
-                            fm.tempFromHVPS = BitConverter.ToUInt32(hvps_temp, 0);
+                            _telemetryTimestamp = timestamp;
+                            _hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_rate, 0);
+                            _hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_rate, 0);
+                            _hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_rate, 0);
+                            _hitCountOR32 = BitConverter.ToUInt32(ch21_hit_rate, 0);
+                            _voltageFromHVPS = BitConverter.ToUInt32(hvps_voltage, 0);
+                            _currentFromHVPS = BitConverter.ToUInt32(hvps_current, 0);
+                            _tempFromHVPS = BitConverter.ToUInt32(hvps_temp, 0);
 
                             _numBytesRetrieved = 0;
                         }
