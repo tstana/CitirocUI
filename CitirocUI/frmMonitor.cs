@@ -29,6 +29,11 @@ namespace CitirocUI
             set { label_ConnStatus.Text = value; }
         }
 
+        public UInt32 TelemetryTimestamp
+        {
+            set { textBox_timestamp.Text = value.ToString(); }
+        }
+
         public UInt32 hitCountMPPC1
         {
             set { textBox_hitCountMPPC1.Text = value.ToString(); }
