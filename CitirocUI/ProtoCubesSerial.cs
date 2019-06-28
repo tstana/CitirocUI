@@ -41,13 +41,11 @@ namespace CitirocUI
         private byte[] _comBuffer;
 
         private byte[] _daqDataArray = new byte[25000];
-        private byte[] _hkDataArray = new byte[64];
+        private byte[] _hkDataArray = new byte[53];
 
         private bool _retrievingDaqData = false;
-        private bool _storingData = false;
         private int _numBytesRetrieved = 0;
         private string _daqDataFileName = "CUBESfile.dat";
-        private int _numHKBytesRetrieved = 0;
 
          //global manager variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
@@ -368,123 +366,95 @@ namespace CitirocUI
 
             if (_retrievingDaqData)
             {
-                if (!_storingData)
+                /*
+                    * Store DAQ data to a byte array when it arrives. When the
+                    * number of bytes expected as part of one DAQ run has been
+                    * received, store it to the file selected by the user in
+                    * the UI.
+                    */
+                try
                 {
-                    /*
-                     * Look for "Unix time" string in received data and
-                     * start storing DAQ data when it has been obtained.
-                     */
-                    Array.Copy(dataBytes, 0, _comBuffer, _numBytesRetrieved, numBytesRead);
+                    dataBytes.CopyTo(_daqDataArray, _numBytesRetrieved);
                     _numBytesRetrieved += numBytesRead;
-                    var tmpStr = System.Text.Encoding.Default.GetString(_comBuffer);
-
-                    if (tmpStr.Contains("Unix time"))
+                    if (_numBytesRetrieved == _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
                     {
-                        /* Start storing data from index of "Unix time" */
-                        int startIndex = tmpStr.IndexOf("Unix time");
-                        Array.Copy(_comBuffer, startIndex, _daqDataArray, 0, _numBytesRetrieved - startIndex);
-                        Array.Clear(_comBuffer, 0, _comBuffer.Length);
-                        _numBytesRetrieved -= startIndex;
-                        _storingData = true;
-                    }
-                }
-                else
-                {
-                    /*
-                     * Store DAQ data to a byte array when it arrives. When the
-                     * number of bytes expected as part of one DAQ run has been
-                     * received, store it to the file selected by the user in
-                     * the UI.
-                     */
-                    try
-                    {
-                        dataBytes.CopyTo(_daqDataArray, _numBytesRetrieved);
-                        _numBytesRetrieved += numBytesRead;
-                        if (_numBytesRetrieved == _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
+                        using (BinaryWriter dataFile = new BinaryWriter(File.Open(_daqDataFileName, FileMode.Create)))
                         {
-                            using (BinaryWriter dataFile = new BinaryWriter(File.Open(_daqDataFileName, FileMode.Create)))
-                            {
-                                dataFile.Write(_daqDataArray);
-                            }
-                            _retrievingDaqData = false;
-                            _storingData = false;
-                            _numBytesRetrieved = 0;
+                            dataFile.Write(_daqDataArray);
                         }
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Attempting to write too many bytes to _daqDataArray:\n" +
-                            "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
-                            "dataB.Length = " + dataBytes.Length + "\n", "Exception");
                         _retrievingDaqData = false;
-                        _storingData = false;
                         _numBytesRetrieved = 0;
                     }
+                }
+                catch
+                {
+                    MessageBox.Show("Attempting to write too many bytes to _daqDataArray:\n" +
+                        "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
+                        "dataB.Length = " + dataBytes.Length + "\n", "Exception");
+                    _retrievingDaqData = false;
+                    _numBytesRetrieved = 0;
                 }
             }
 
             else
             {
-                if (_storingData)
+                try
                 {
-                    Array.Copy(dataBytes, 0, _comBuffer, _numHKBytesRetrieved, numBytesRead);
-                    _numHKBytesRetrieved += numBytesRead;
-                    var tmpStr = System.Text.Encoding.Default.GetString(_comBuffer);
-
-                    if (tmpStr.Contains("Unix time"))
+                    dataBytes.CopyTo(_hkDataArray, _numBytesRetrieved);
+                    _numBytesRetrieved += numBytesRead;
+                    if (_numBytesRetrieved == _hkDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
                     {
-                        string a = "0", a1 = "0";
-                       
-                        /* Start storing data from index of "Unix time" */
-                        int startIndex = tmpStr.IndexOf("Unix time");
-                        Array.Copy(_comBuffer, startIndex, _hkDataArray, 0, _numBytesRetrieved - startIndex);
-                        _storingData = true;
-                        _numBytesRetrieved -= startIndex;
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        dataBytes.CopyTo(_hkDataArray, _numBytesRetrieved);
-                        _numBytesRetrieved += numBytesRead;
-                        if (_numBytesRetrieved == _hkDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
+                        Form f = Application.OpenForms["frmMonitor"];
+                        if (f != null)
                         {
-                            Form f = Application.OpenForms["frmMonitor"];
-                            if (f != null)
+                            frmMonitor fm = (frmMonitor)f;
+                            UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(_hkDataArray, 11, 10));
+
+                            byte[] ch0_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 23));
+                            byte[] ch16_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 27));
+                            byte[] ch31_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 31));
+                            byte[] ch21_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 35));
+                            byte[] hvps_voltage = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 39));
+                            byte[] hvps_current = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 43));
+                            byte[] hvps_temp = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 47));
+                            if (BitConverter.IsLittleEndian)
                             {
-                                frmMonitor fm = (frmMonitor)f;
-                                for (int i = 10; i < 21; i++)
-                                {
-                                    //fm.textBox_ch0 = BitConverter.ToString(_hkDataArray, 21);
-                                    //fm.textBox_ch16 = BitConverter.ToString(_hkDataArray, 25);
-                                    //fm.textBox_ch21 = BitConverter.ToString(_hkDataArray, 29);
-                                    //fm.textBox_ch31 = BitConverter.ToString(_hkDataArray, 33);
-                                    //fm.textBox_temp = BitConverter.ToString(_hkDataArray, 37);
-                                    //fm.textBox_voltage = BitConverter.ToString(_hkDataArray, 41);
-                                    //fm.textBox_current = BitConverter.ToString(_hkDataArray, 45);
-                                }
-                                _storingData = false;
-                                _numBytesRetrieved = 0;
+                                Array.Reverse(ch0_hit_rate);
+                                Array.Reverse(ch16_hit_rate);
+                                Array.Reverse(ch31_hit_rate);
+                                Array.Reverse(ch21_hit_rate);
+                                Array.Reverse(hvps_temp);
+                                Array.Reverse(hvps_voltage);
+                                Array.Reverse(hvps_current);
                             }
+
+                            fm.TelemetryTimestamp = timestamp;
+                            fm.hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_rate, 0);
+                            fm.hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_rate, 0);
+                            fm.hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_rate, 0);
+                            fm.hitCountOR32 = BitConverter.ToUInt32(ch21_hit_rate, 0);
+                            fm.voltageFromHVPS = BitConverter.ToUInt32(hvps_voltage, 0);
+                            fm.currentFromHVPS = BitConverter.ToUInt32(hvps_current, 0);
+                            fm.tempFromHVPS = BitConverter.ToUInt32(hvps_temp, 0);
+
+                            _numBytesRetrieved = 0;
                         }
                     }
-                    catch
-                    {
-                        MessageBox.Show("Attempting to write too many bytes to _hkDataArray:\n" +
-                            "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
-                            "dataB.Length = " + dataBytes.Length + "\n", "Exception");
-                        _storingData = false;
-                        _numBytesRetrieved = 0;
-                    }
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("Attempting to write too many bytes to _hkDataArray:\n" +
+                        "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
+                        "dataB.Length = " + dataBytes.Length + "\n", "Exception");
+                    _numBytesRetrieved = 0;
+                }
+                catch (Exception excep)
+                {
+                    MessageBox.Show(excep.Message, "Error");
+                    _numBytesRetrieved = 0;
                 }
             }
         }
         #endregion
-
-       /* public SerialPort ComPort
-        {
-            get { return comPort; }
-        }*/
     }
 }

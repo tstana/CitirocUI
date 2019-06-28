@@ -608,82 +608,20 @@ namespace CitirocUI
                 return;
             }
 
-            frmMonitor fm = (frmMonitor)f;
-
-            /* Dummy code to write some data to the text boxes... */
-            byte[] _hkDataArray = new byte[64];
-            byte[] time = System.Text.Encoding.ASCII.GetBytes("Unix time: 1560871356\r\n");
-            Array.Copy(time, _hkDataArray, time.Length);
-
-            byte[] me = {
-                0x00, 0x00, 0x00, 0x03, // MPPC3 hits
-                0x00, 0x00, 0x00, 0x02, // MPPC2 hits
-                0x00, 0x00, 0x00, 0x0A, // MPPC1 hits
-                0x00, 0x00, 0x00, 0x0A, // OR32 hits
-                0x30, 0x35, 0x36, 0x38, // HVPS voltage
-                0x30, 0x30, 0x35, 0x43, // HVPS current
-                0x42, 0x38, 0x36, 0x39 // HVPS temp.
-            };
-
-            Array.Copy(me, 0, _hkDataArray, time.Length, me.Length);
-
-            UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(_hkDataArray, 11, 10));
-            byte[] ch0_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 23));
-            byte[] ch16_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 27));
-            byte[] ch31_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 31));
-            byte[] ch21_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 35));
-            byte[] hvps_voltage = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 39));
-            byte[] hvps_current = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 43));
-            byte[] hvps_temp = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 47));
-            if (BitConverter.IsLittleEndian)
+            /* Form open, time to send CMD_REQ_HK (if serial port connection allows) */
+            byte[] telemetryParam = new byte[1];
+            telemetryParam[0] = Convert.ToByte('h');
+            try
             {
-                Array.Reverse(ch0_hit_rate);
-                Array.Reverse(ch16_hit_rate);
-                Array.Reverse(ch31_hit_rate);
-                Array.Reverse(ch21_hit_rate);
-                Array.Reverse(hvps_temp);
-                Array.Reverse(hvps_voltage);
-                Array.Reverse(hvps_current);
+                mySerialComm.WriteData(telemetryParam, 1);
+                button_readTelemetry.BackColor = WeerocGreen;
             }
-
-            fm.TelemetryTimestamp = timestamp;
-            fm.hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_rate, 0);
-            fm.hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_rate, 0);
-            fm.hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_rate, 0);
-            fm.hitCountOR32 = BitConverter.ToUInt32(ch21_hit_rate, 0);
-            fm.voltageFromHVPS = BitConverter.ToUInt32(hvps_voltage, 0);
-            fm.currentFromHVPS = BitConverter.ToUInt32(hvps_current, 0);
-            fm.tempFromHVPS = BitConverter.ToUInt32(hvps_temp, 0);
-
-            button_readTelemetry.BackColor = WeerocGreen;
-        }
-        #region HK parameters
-
-        // To send command for HK parameters
-        private bool sendHouseKeeping()
-        {
-            if (comboBox_SelectConnection.SelectedIndex == 1)
+            catch
             {
-                byte[] HKpara = new byte[1];
-                HKpara[0] = Convert.ToByte('h');
-                mySerialComm.WriteData(HKpara, 1);
-            }
-            return true;
-        }
-
-        private void button_HouseKeeping_Click(object sender, EventArgs e)
-        {
-            if (comboBox_SelectConnection.SelectedIndex == 1)
-            {
-                bool result = false;
-                result = sendHouseKeeping();
-                if (result)
-                    button_readTelemetry.BackColor = WeerocGreen;
-                else
-                    button_readTelemetry.BackColor = Color.IndianRed;
-                button_readTelemetry.ForeColor = Color.White;
+                label_help.Text = "ERROR: Failed to send telemetry fetch command to Proto-CUBES! " +
+                    "Please check the connection...";
+                button_readTelemetry.BackColor = Color.IndianRed;
             }
         }
-        #endregion
     }
 }
