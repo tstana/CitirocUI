@@ -596,13 +596,13 @@ namespace CitirocUI
             _hvValue = Convert.ToDouble(txthv.Text);
         }
 
-        private void button_readHK_Click(object sender, EventArgs e)
+        private void button_readTelemetry_Click(object sender, EventArgs e)
         {
             /* Prevent running any more code if Monitor Form is not open */
             Form f = Application.OpenForms["frmMonitor"];
             if (f == null)
             {
-                button_readHK.BackColor = Color.IndianRed;
+                button_readTelemetry.BackColor = Color.IndianRed;
                 label_help.Text = "ERROR: The Monitor Form needs to be open" +
                     " for this operation to be performed!";
                 return;
@@ -627,6 +627,7 @@ namespace CitirocUI
 
             Array.Copy(me, 0, _hkDataArray, time.Length, me.Length);
 
+            UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(_hkDataArray, 11, 10));
             byte[] ch0_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 23));
             byte[] ch16_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 27));
             byte[] ch31_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 31));
@@ -645,6 +646,7 @@ namespace CitirocUI
                 Array.Reverse(hvps_current);
             }
 
+            fm.TelemetryTimestamp = timestamp;
             fm.hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_rate, 0);
             fm.hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_rate, 0);
             fm.hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_rate, 0);
@@ -653,7 +655,7 @@ namespace CitirocUI
             fm.currentFromHVPS = BitConverter.ToUInt32(hvps_current, 0);
             fm.tempFromHVPS = BitConverter.ToUInt32(hvps_temp, 0);
 
-            button_readHK.BackColor = WeerocGreen;
+            button_readTelemetry.BackColor = WeerocGreen;
         }
         #region HK parameters
 
@@ -676,10 +678,10 @@ namespace CitirocUI
                 bool result = false;
                 result = sendHouseKeeping();
                 if (result)
-                    button_readHK.BackColor = WeerocGreen;
+                    button_readTelemetry.BackColor = WeerocGreen;
                 else
-                    button_readHK.BackColor = Color.IndianRed;
-                button_readHK.ForeColor = Color.White;
+                    button_readTelemetry.BackColor = Color.IndianRed;
+                button_readTelemetry.ForeColor = Color.White;
             }
         }
         #endregion

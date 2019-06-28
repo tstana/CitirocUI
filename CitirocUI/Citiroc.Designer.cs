@@ -63,7 +63,7 @@
             this.button_HVPS = new System.Windows.Forms.Button();
             this.textBox_HV = new System.Windows.Forms.TextBox();
             this.label140 = new System.Windows.Forms.Label();
-            this.button_readHK = new System.Windows.Forms.Button();
+            this.button_readTelemetry = new System.Windows.Forms.Button();
             this.btn_OpenSerialMonitor = new System.Windows.Forms.Button();
             this.comboBox_COMPortList = new System.Windows.Forms.ComboBox();
             this.label139 = new System.Windows.Forms.Label();
@@ -1200,7 +1200,7 @@
             // groupBox_SerialPortSettings
             // 
             this.groupBox_SerialPortSettings.Controls.Add(this.groupBox_HV);
-            this.groupBox_SerialPortSettings.Controls.Add(this.button_readHK);
+            this.groupBox_SerialPortSettings.Controls.Add(this.button_readTelemetry);
             this.groupBox_SerialPortSettings.Controls.Add(this.btn_OpenSerialMonitor);
             this.groupBox_SerialPortSettings.Controls.Add(this.comboBox_COMPortList);
             this.groupBox_SerialPortSettings.Controls.Add(this.label139);
@@ -1252,15 +1252,15 @@
             this.label140.TabIndex = 0;
             this.label140.Text = "Set HV";
             // 
-            // button_readHK
+            // button_readTelemetry
             // 
-            this.button_readHK.Location = new System.Drawing.Point(10, 260);
-            this.button_readHK.Name = "button_readHK";
-            this.button_readHK.Size = new System.Drawing.Size(235, 39);
-            this.button_readHK.TabIndex = 12;
-            this.button_readHK.Text = "Read HK";
-            this.button_readHK.UseVisualStyleBackColor = true;
-            this.button_readHK.Click += new System.EventHandler(this.button_readHK_Click);
+            this.button_readTelemetry.Location = new System.Drawing.Point(10, 260);
+            this.button_readTelemetry.Name = "button_readTelemetry";
+            this.button_readTelemetry.Size = new System.Drawing.Size(235, 39);
+            this.button_readTelemetry.TabIndex = 12;
+            this.button_readTelemetry.Text = "Read Telemetry";
+            this.button_readTelemetry.UseVisualStyleBackColor = true;
+            this.button_readTelemetry.Click += new System.EventHandler(this.button_readTelemetry_Click);
             // 
             // btn_OpenSerialMonitor
             // 
@@ -12538,7 +12538,7 @@
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.Label label138;
         private System.Windows.Forms.Button btn_OpenSerialMonitor;
-        private System.Windows.Forms.Button button_readHK;
+        private System.Windows.Forms.Button button_readTelemetry;
         private System.Windows.Forms.GroupBox groupBox_HV;
         private System.Windows.Forms.Button button_HVPS;
         private System.Windows.Forms.TextBox textBox_HV;
