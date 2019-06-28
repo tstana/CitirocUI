@@ -6,11 +6,8 @@ namespace CitirocUI
 {
     public partial class frmMonitor : Form
     {
-        public string ConnStatusLabel
-        {
-            set { label_ConnStatus.Text = value; }
-        }
 
+        #region "Constructor and Load"
         public frmMonitor()
         {
             InitializeComponent();
@@ -24,54 +21,12 @@ namespace CitirocUI
         private void frmMonitor_FormClosed(object sender, FormClosedEventArgs e)
         {
         }
+        #endregion
 
-        public void PublishData(byte[] data, bool Tx)
+        #region Properties
+        public string ConnStatusLabel
         {
-            AppendByteArray(rtxtMonitor, data, Tx);
-        }
-
-        public void SetPosition(Point position, int f_height)
-        {
-            this.Height = f_height;
-            this.Top = position.Y;
-            this.Left = position.X;
-
-            this.Refresh();
-        }
-
-        private static void AppendByteArray(RichTextBox box, byte[] rdata, bool txData)
-        {
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
-            box.AppendText("\n");
-
-            if (txData)
-            {
-                box.SelectionColor = Color.Yellow;
-                box.AppendText(BitConverter.ToString(rdata).Replace("-", " " /*string.Empty*/));
-            }
-            else {
-                box.SelectionColor = Color.LightGreen;
-                box.AppendText(System.Text.Encoding.UTF8.GetString(rdata, 0, rdata.Length));
-            }
-            
-            box.SelectionColor = box.ForeColor;
-            box.ScrollToCaret();
-        }
-
-        private void button_Clear_Click(object sender, EventArgs e)
-        {
-            rtxtMonitor.Clear();
-        }
-
-        private void buttonHelp_Click(object sender, EventArgs e)
-        {
-            string helpString =
-                "TX data is colored yellow\r\n" +
-                "RX data is colored green\r\n" +
-                "\r\n" +
-                "Press \"Clear\" to clear the window";
-            MessageBox.Show(helpString, "Help");
+            set { label_ConnStatus.Text = value; }
         }
 
         public UInt32 hitCountMPPC1
@@ -108,5 +63,59 @@ namespace CitirocUI
         {
             set { textBox_tempFromHVPS.Text = value.ToString(); }
         }
+        #endregion
+
+        #region "Methods"
+        public void PublishData(byte[] data, bool Tx)
+        {
+            AppendByteArray(rtxtMonitor, data, Tx);
+        }
+
+        public void SetPosition(Point position, int f_height)
+        {
+            this.Height = f_height;
+            this.Top = position.Y;
+            this.Left = position.X;
+
+            this.Refresh();
+        }
+
+        private static void AppendByteArray(RichTextBox box, byte[] rdata, bool txData)
+        {
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+            box.AppendText("\n");
+
+            if (txData)
+            {
+                box.SelectionColor = Color.Yellow;
+                box.AppendText(BitConverter.ToString(rdata).Replace("-", " " /*string.Empty*/));
+            }
+            else {
+                box.SelectionColor = Color.LightGreen;
+                box.AppendText(System.Text.Encoding.UTF8.GetString(rdata, 0, rdata.Length));
+            }
+            
+            box.SelectionColor = box.ForeColor;
+            box.ScrollToCaret();
+        }
+        #endregion
+
+        #region Events
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            rtxtMonitor.Clear();
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            string helpString =
+                "TX data is colored yellow\r\n" +
+                "RX data is colored green\r\n" +
+                "\r\n" +
+                "Press \"Clear\" to clear the window";
+            MessageBox.Show(helpString, "Help");
+        }
+        #endregion
     }
 }
