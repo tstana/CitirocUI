@@ -7,46 +7,37 @@ using System.Windows.Forms;
 
 namespace CitirocUI
 {
-    class DataReadyEventArgs : EventArgs
+    public class DataReadyEventArgs : EventArgs
     {
+        #region Constructor
+        public DataReadyEventArgs(ProtoCubesSerial.Command cmd, byte[] dataBytes)
+        {
+            _cmd = cmd;
+            _dataBytes = dataBytes;
+        }
+        #endregion
+
         #region Members
-        private UInt32 _telemetryTimestamp;
-        private UInt32 _hitCountMPPC3;
-        private UInt32 _hitCountMPPC2;
-        private UInt32 _hitCountMPPC1;
-        private UInt32 _hitCountOR32;
-        private UInt32 _voltageFromHVPS;
-        private UInt32 _currentFromHVPS;
-        private UInt32 _tempFromHVPS;
+        ProtoCubesSerial.Command _cmd;
+        byte[] _dataBytes;
         #endregion
 
         #region Properties
-        public UInt32 TelemetryTimestamp;
-        public UInt32 HitCountMPPC3;
-        public UInt32 HitCountMPPC2;
-        public UInt32 HitCountMPPC1;
-        public UInt32 HitCountOR32;
-        public UInt32 VoltageFromHVPS;
-        public UInt32 CurrentFromHVPS;
-        public UInt32 TempFromHVPS;
-        #endregion
-
-        #region Constructor
-        public DataReadyEventArgs()
+        public ProtoCubesSerial.Command Command
         {
-            _telemetryTimestamp = 0;
-            _hitCountMPPC1 = 0;
-            _hitCountMPPC2 = 0;
-            _hitCountMPPC3 = 0;
-            _hitCountOR32 = 0;
-            _voltageFromHVPS = 0;
-            _currentFromHVPS = 0;
-            _tempFromHVPS = 0;
+            // TODO: This property is not currently used -- implement its usage!
+            get { return _cmd; }
+            set { _cmd = value; }
+        }
+        public byte[] DataBytes
+        {
+            get { return _dataBytes; }
+            set { _dataBytes = value; }
         }
         #endregion
     }
 
-    class ProtoCubesSerial
+    public class ProtoCubesSerial
     {
         #region Enums
         /// <summary>
@@ -58,6 +49,19 @@ namespace CitirocUI
         /// enumeration to hold our message types
         /// </summary>
         public enum MessageType { Incoming, Outgoing, Normal, Warning, Error };
+
+        /// <summary>
+        /// Enum to hold Proto-CUBES commands
+        /// </summary>
+        public enum Command
+        {
+            SendCitirocConf     = 'C',
+            SendProbeConf       = 'P',
+            SendHVPSConf        = 'H',
+            SendDAQDurAndStart  = 'D',
+            ReqHK               = 'h',
+            ReqPayload          = 'p'
+        }
         #endregion
 
         #region Variables
@@ -92,28 +96,7 @@ namespace CitirocUI
         #endregion
 
         #region Events
-        public event EventHandler DataReadyEvent;
-
-        protected virtual void OnDataReadyEvent(DataReadyEventArgs e)
-        {
-            EventHandler<DataReadyEventArgs> handler = DataReadyEvent;
-
-            if (handler != null)
-            {
-                e.HitCountMPPC1 = _hitCountMPPC1;
-                e.HitCountMPPC2 = _hitCountMPPC2;
-                e.HitCountMPPC3 = _hitCountMPPC3;
-            }
-        }
-
-        private UInt32 _telemetryTimestamp;
-        private UInt32 _hitCountMPPC3;
-        private UInt32 _hitCountMPPC2;
-        private UInt32 _hitCountMPPC1;
-        private UInt32 _hitCountOR32;
-        private UInt32 _voltageFromHVPS;
-        private UInt32 _currentFromHVPS;
-        private UInt32 _tempFromHVPS;
+        public event EventHandler<DataReadyEventArgs> DataReadyEvent;
         #endregion
 
         #region Properties
@@ -342,7 +325,7 @@ namespace CitirocUI
 
          #endregion
 
-        #region OpenPort
+        #region Open and Close Port
         public bool OpenPort()
         {
             try
@@ -374,13 +357,13 @@ namespace CitirocUI
                 return false;
             }
         }
-        #endregion
 
         public bool ClosePort()
         {
             comPort.Close();
             return true;
         }
+        #endregion
 
         #region SetParityValues
         public void SetParityValues(object obj)
@@ -468,41 +451,8 @@ namespace CitirocUI
                     _numBytesRetrieved += numBytesRead;
                     if (_numBytesRetrieved == _hkDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
                     {
-                        Form f = Application.OpenForms["frmMonitor"];
-                        if (f != null)
-                        {
-                            frmMonitor fm = (frmMonitor)f;
-                            UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(_hkDataArray, 11, 10));
-
-                            byte[] ch0_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 23));
-                            byte[] ch16_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 27));
-                            byte[] ch31_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 31));
-                            byte[] ch21_hit_rate = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 35));
-                            byte[] hvps_voltage = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 39));
-                            byte[] hvps_current = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 43));
-                            byte[] hvps_temp = BitConverter.GetBytes(BitConverter.ToUInt32(_hkDataArray, 47));
-                            if (BitConverter.IsLittleEndian)
-                            {
-                                Array.Reverse(ch0_hit_rate);
-                                Array.Reverse(ch16_hit_rate);
-                                Array.Reverse(ch31_hit_rate);
-                                Array.Reverse(ch21_hit_rate);
-                                Array.Reverse(hvps_temp);
-                                Array.Reverse(hvps_voltage);
-                                Array.Reverse(hvps_current);
-                            }
-
-                            _telemetryTimestamp = timestamp;
-                            _hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_rate, 0);
-                            _hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_rate, 0);
-                            _hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_rate, 0);
-                            _hitCountOR32 = BitConverter.ToUInt32(ch21_hit_rate, 0);
-                            _voltageFromHVPS = BitConverter.ToUInt32(hvps_voltage, 0);
-                            _currentFromHVPS = BitConverter.ToUInt32(hvps_current, 0);
-                            _tempFromHVPS = BitConverter.ToUInt32(hvps_temp, 0);
-
-                            _numBytesRetrieved = 0;
-                        }
+                        DataReadyEvent(this, new DataReadyEventArgs(Command.ReqHK, _hkDataArray));
+                        _numBytesRetrieved = 0;
                     }
                 }
                 catch (ArgumentException)

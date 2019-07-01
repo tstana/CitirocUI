@@ -7,9 +7,11 @@ namespace CitirocUI
     public partial class frmMonitor : Form
     {
 
-        #region "Constructor and Load"
-        public frmMonitor()
+        #region Constructor and Load
+        public frmMonitor(ProtoCubesSerial c)
         {
+            commChannel = c;
+            commChannel.DataReadyEvent += commChannel_DataReady;
             InitializeComponent();
         }
 
@@ -20,7 +22,12 @@ namespace CitirocUI
 
         private void frmMonitor_FormClosed(object sender, FormClosedEventArgs e)
         {
+            commChannel.DataReadyEvent -= commChannel_DataReady;
         }
+        #endregion
+
+        #region Members
+        ProtoCubesSerial commChannel;
         #endregion
 
         #region Properties
@@ -29,49 +36,113 @@ namespace CitirocUI
             set { label_ConnStatus.Text = value; }
         }
 
-        public UInt32 TelemetryTimestamp
+        private UInt32 TelemetryTimestamp
         {
-            set { textBox_timestamp.Text = value.ToString(); }
+            set
+            {
+                textBox_timestamp.Invoke( new EventHandler(
+                    delegate
+                    {
+                        textBox_timestamp.Text = value.ToString();
+                    }
+                    ));
+            }
         }
 
-        public UInt32 hitCountMPPC1
+        private UInt32 HitCountMPPC1
         {
-            set { textBox_hitCountMPPC1.Text = value.ToString(); }
+            set
+            {
+                textBox_hitCountMPPC1.Invoke(new EventHandler(
+                    delegate
+                    {
+                        textBox_hitCountMPPC1.Text = value.ToString();
+                    }
+                    ));
+            }
         }
 
-        public UInt32 hitCountMPPC2
+        private UInt32 HitCountMPPC2
         {
-            set { textBox_hitCountMPPC2.Text = value.ToString(); }
+            set
+            {
+                textBox_hitCountMPPC2.Invoke(new EventHandler(
+                    delegate
+                    {
+                        textBox_hitCountMPPC2.Text = value.ToString();
+                    }
+                    ));
+            }
         }
 
-        public UInt32 hitCountMPPC3
+        private UInt32 HitCountMPPC3
         {
-            set { textBox_hitCountMPPC3.Text = value.ToString(); }
+            set
+            {
+                textBox_hitCountMPPC3.Invoke(new EventHandler(
+                    delegate
+                    {
+                        textBox_hitCountMPPC3.Text = value.ToString();
+                    }
+                    ));
+            }
         }
 
-        public UInt32 hitCountOR32
+        private UInt32 HitCountOR32
         {
-            set { textBox_hitCountOR32.Text = value.ToString(); }
+            set
+            {
+                textBox_hitCountOR32.Invoke(new EventHandler(
+                    delegate
+                    {
+                        textBox_hitCountOR32.Text = value.ToString();
+                    }
+                    ));
+            }
         }
 
-        public UInt32 voltageFromHVPS
+        private UInt32 VoltageFromHVPS
         {
-            set { textBox_voltageFromHVPS.Text = value.ToString(); }
+            set
+            {
+                textBox_voltageFromHVPS.Invoke(new EventHandler(
+                    delegate
+                    {
+                        textBox_voltageFromHVPS.Text = value.ToString();
+                    }
+                    ));
+            }
         }
 
-        public UInt32 currentFromHVPS
+        private UInt32 CurrentFromHVPS
         {
-            set { textBox_currentFromHVPS.Text = value.ToString(); }
+            set
+            {
+                textBox_currentFromHVPS.Invoke(new EventHandler(
+                    delegate
+                    {
+                        textBox_currentFromHVPS.Text = value.ToString();
+                    }
+                    ));
+            }
         }
 
-        public UInt32 tempFromHVPS
+        private UInt32 TempFromHVPS
         {
-            set { textBox_tempFromHVPS.Text = value.ToString(); }
+            set
+            {
+                textBox_tempFromHVPS.Invoke(new EventHandler(
+                    delegate
+                    {
+                        textBox_tempFromHVPS.Text = value.ToString();
+                    }
+                    ));
+            }
         }
         #endregion
 
-        #region "Methods"
-        public void PublishData(byte[] data, bool Tx)
+        #region Methods
+        private void PublishData(byte[] data, bool Tx)
         {
             AppendByteArray(rtxtMonitor, data, Tx);
         }
@@ -120,6 +191,37 @@ namespace CitirocUI
                 "\r\n" +
                 "Press \"Clear\" to clear the window";
             MessageBox.Show(helpString, "Help");
+        }
+
+        private void commChannel_DataReady(object sender, DataReadyEventArgs e)
+        {
+            UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(e.DataBytes, 11, 10));
+            byte[] ch0_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 23));
+            byte[] ch16_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 27));
+            byte[] ch31_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 31));
+            byte[] ch21_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 35));
+            byte[] hvps_voltage = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 39));
+            byte[] hvps_current = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 43));
+            byte[] hvps_temp = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 47));
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(ch0_hit_count);
+                Array.Reverse(ch16_hit_count);
+                Array.Reverse(ch31_hit_count);
+                Array.Reverse(ch21_hit_count);
+                Array.Reverse(hvps_temp);
+                Array.Reverse(hvps_voltage);
+                Array.Reverse(hvps_current);
+            }
+
+            TelemetryTimestamp = timestamp;
+            HitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_count, 0);
+            HitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_count, 0);
+            HitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_count, 0);
+            HitCountOR32 = BitConverter.ToUInt32( ch21_hit_count, 0);
+            VoltageFromHVPS = BitConverter.ToUInt32(hvps_voltage, 0);
+            CurrentFromHVPS = BitConverter.ToUInt32(hvps_current, 0);
+            TempFromHVPS = BitConverter.ToUInt32(hvps_temp, 0);
         }
         #endregion
     }

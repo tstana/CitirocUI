@@ -531,7 +531,7 @@ namespace CitirocUI
                 return;
 
             /* Now really open the form */
-            frmMonitor frmMon = new frmMonitor();
+            frmMonitor frmMon = new frmMonitor(mySerialComm);
 
             mySerialComm.DisplayWindow = frmMon.rtxtMonitor;
             mySerialComm.MonitorActive = true;
