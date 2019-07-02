@@ -761,6 +761,27 @@ namespace CitirocUI
             AdjustAcquisitionTime();
         }
 
+
+        private void textBox_numData_Leave(object sender, EventArgs e)
+        {
+            // Adjust acquisition times for Proto-CUBES
+            if (selectedConnectionMode == 1)
+            {
+                int individualAcqTime = Convert.ToInt32(textBox_numData.Text);
+                if (individualAcqTime > 255)
+                {
+                    individualAcqTime = 255;
+                    
+                    MessageBox.Show("Setting individual DAQ time to " +
+                        individualAcqTime.ToString() + " s (the maximum " +
+                        "currently accepted by Proto-CUBES).\n", "Info");
+                    textBox_numData.Text = individualAcqTime.ToString();
+                }
+
+                AdjustAcquisitionTime();
+            }
+        }
+
         private void AdjustAcquisitionTime()
         {
             // Make sure we don't set more than 59 mins and 59 seconds

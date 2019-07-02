@@ -10505,6 +10505,7 @@
             this.textBox_numData.Size = new System.Drawing.Size(100, 29);
             this.textBox_numData.TabIndex = 18;
             this.textBox_numData.Text = "100";
+            this.textBox_numData.Leave += new System.EventHandler(this.textBox_numData_Leave);
             // 
             // switchBox_acquisitionMode
             // 
