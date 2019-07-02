@@ -133,7 +133,7 @@ namespace CitirocUI
 
         private void backgroundWorker_dataAcquisition_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (_selectedConnectionMode == 0) // USB
+            if (selectedConnectionMode == 0) // USB
             {
 
                 int FIFOAcqLength = 100; // The FIFO in the FPGA can store up to 100 acquisitions per cycle
@@ -306,7 +306,7 @@ namespace CitirocUI
                 UpdateDaqTimeLabels(swDaqRun.ElapsedMilliseconds, actualAcqTime);
             }
 
-            else if (_selectedConnectionMode == 1)  // Serial
+            else if (selectedConnectionMode == 1)  // Serial
             {
                 var swDaqRun = Stopwatch.StartNew(); // Start the stopwatch to measure acquisition time
 
@@ -367,12 +367,12 @@ namespace CitirocUI
             progressBar_acquisition.Value = 0;
             progressBar_acquisition.Visible = false;
 
-            if (_selectedConnectionMode == 0)
+            if (selectedConnectionMode == 0)
             {
                 Firmware.sendWord(43, "00000000", usbDevId);
                 refreshDataChart();
             }
-            else if (_selectedConnectionMode == 1)
+            else if (selectedConnectionMode == 1)
             {
                 byte[] reqData = new byte[1];
                 reqData[0] = Convert.ToByte('p');
@@ -391,7 +391,7 @@ namespace CitirocUI
         {
             progressBar_acquisition.Value = e.ProgressPercentage;
 
-            if (_selectedConnectionMode == 0)
+            if (selectedConnectionMode == 0)
             {
                 if (tabControl_dataAcquisition.SelectedIndex == 0)
                 {
@@ -765,24 +765,31 @@ namespace CitirocUI
         {
             // Make sure we don't set more than 59 mins and 59 seconds
             string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
-            if (Convert.ToInt32(splitAcqTime[2]) > 59) splitAcqTime[2] = "59";
-            if (Convert.ToInt32(splitAcqTime[1]) > 59) splitAcqTime[1] = "59";
-            textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
-            acqTimeSeconds = 3600 * Convert.ToInt32(splitAcqTime[0]) +
-                               60 * Convert.ToInt32(splitAcqTime[1]) +
-                                    Convert.ToInt32(splitAcqTime[2]);
+            if (Convert.ToInt32(splitAcqTime[1]) > 59)
+                splitAcqTime[1] = "59";
+            if (Convert.ToInt32(splitAcqTime[2]) > 59)
+                splitAcqTime[2] = "59";
 
-            // Adjust max. acquisition time available on CUBES...
-            if ((_selectedConnectionMode == 1) && (acqTimeSeconds > 255)) {
-                splitAcqTime[0] = "00";
-                splitAcqTime[1] = "04";
-                splitAcqTime[2] = "15";
-                textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
-                MessageBox.Show("Proto-CUBES only (currently) supports max. 255-second DAQ time, setting acquisition time accordingly...", "Warning");
+            // Adjust minimum acquisition time according to individual DAQ
+            // time selection
+            if (selectedConnectionMode == 1)
+            {
+                int acqTimeSeconds = 3600 * Convert.ToInt32(splitAcqTime[0]) +
+                                       60 * Convert.ToInt32(splitAcqTime[1]) +
+                                            Convert.ToInt32(splitAcqTime[2]);
+                int individualAcqTime = Convert.ToInt32(textBox_numData.Text);
+                if (acqTimeSeconds < individualAcqTime)
+                {
+                    splitAcqTime[2] = String.Format("{0,2:00}", (individualAcqTime % 60));
+                    splitAcqTime[1] = String.Format("{0,2:00}", (individualAcqTime / 60));
+                    splitAcqTime[0] = "00";
+                    label_help.Text = "NOTE: Setting acquisition time to " +
+                        "individual DAQ time...";
+                }
             }
 
-            // And finally set design-wide acquisition time
-            acquisitionTime = textBox_acquisitionTime.Text;
+            // Finally, set the total DAQ time
+            textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
         }
     }
 }

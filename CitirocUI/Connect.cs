@@ -50,7 +50,14 @@ namespace CitirocUI
         private const byte DEF_VALUE = 0x0E;
         #endregion
 
-        private int _selectedConnectionMode; // = 0 for USB and 1 for Serial
+        // Member to store currently selected connection mode; needed since
+        // the connection mode is accessed from a separate thread, which can't
+        // gain access to the SelectedIndex property of the combo-box (due to
+        // WinForms threading issues...)
+        //
+        // = 0 for USB and 1 for Serial;
+        private int selectedConnectionMode;
+
         private int _numHKBytesRetrieved = 0;
         private byte[] _hkcomBuffer;
 
@@ -491,6 +498,8 @@ namespace CitirocUI
 
         private void comboBox_SelectConnection_SelectedIndexChanged(object sender, EventArgs e)
         {
+            selectedConnectionMode = comboBox_SelectConnection.SelectedIndex;
+
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 groupBox_SerialPortSettings.Visible = false;
@@ -515,9 +524,9 @@ namespace CitirocUI
                 label_numData.Text = "Individual DAQ time (s):";
                 textBox_numData.Enabled = true;
                 textBox_numData.Text = "60";
-            }
 
-            _selectedConnectionMode = comboBox_SelectConnection.SelectedIndex;
+                AdjustAcquisitionTime();
+            }
         }
 
         private void comboBox_COMPortList_OnClick(object sender, EventArgs e)
