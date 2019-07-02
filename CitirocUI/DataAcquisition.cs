@@ -760,8 +760,7 @@ namespace CitirocUI
         {
             AdjustAcquisitionTime();
         }
-
-
+        
         private void textBox_numData_Leave(object sender, EventArgs e)
         {
             // Adjust acquisition times for Proto-CUBES
@@ -784,13 +783,28 @@ namespace CitirocUI
 
         private void AdjustAcquisitionTime()
         {
-            // Make sure we don't set more than 59 mins and 59 seconds
+            // Split the string in hh:mm:ss and apply two-digit formatting
             string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
+
+            for (int i = 0; i < splitAcqTime.Length; ++i)
+            { 
+                try
+                {
+                    splitAcqTime[i] = String.Format("{0,2:00}", Convert.ToInt32(splitAcqTime[i]));
+                }
+                catch
+                {
+                    splitAcqTime[i] = "00";
+                }
+            }
+
+            // Make sure the user doesn't set a value higher than 59 in mins or seconds fields
             if (Convert.ToInt32(splitAcqTime[1]) > 59)
                 splitAcqTime[1] = "59";
-            if (Convert.ToInt32(splitAcqTime[2]) > 59)
-                splitAcqTime[2] = "59";
 
+            if (Convert.ToInt32(splitAcqTime[2]) > 59)
+                    splitAcqTime[2] = "59";
+            
             // Adjust minimum acquisition time according to individual DAQ
             // time selection
             if (selectedConnectionMode == 1)
