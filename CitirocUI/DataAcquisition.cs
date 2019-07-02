@@ -19,9 +19,7 @@ namespace CitirocUI
         int[,] PerChannelChargeLG = new int[NbChannels + 1, 4096];
         int[] Hit = new int[NbChannels + 1];
         int nbAcq = 100;
-        string acquisitionTime;
         bool timeAcquisitionMode = true;
-        int acqTimeSeconds;
 
         private void button_startAcquisition_Click(object sender, EventArgs e)
         {
@@ -59,6 +57,11 @@ namespace CitirocUI
             }
 
             /* Data file OK, now send bytes on comm. channel to start DAQ */
+
+            // Start by getting the DAQ time
+            string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
+
+            // Now actually send the bytes...
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
@@ -71,7 +74,6 @@ namespace CitirocUI
                 chart_perChannelChargeLG.Series.Add("Charge");
 
                 nbAcq = Convert.ToInt32(textBox_numData.Text);
-                acquisitionTime = textBox_acquisitionTime.Text;
 
                 if (Firmware.readWord(100, usbDevId) == "00000000")
                 {
@@ -89,6 +91,10 @@ namespace CitirocUI
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
+                int acqTimeSeconds = 3600 * Convert.ToInt32(splitAcqTime[0]) +
+                                       60 * Convert.ToInt32(splitAcqTime[1]) +
+                                            Convert.ToInt32(splitAcqTime[2]);
+
                 // Proto-CUBES only supports timed acquisition mode:
                 if (switchBox_acquisitionMode.Checked == false)
                 {
@@ -104,7 +110,7 @@ namespace CitirocUI
                 }
 
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
-                AdjustAcquisitionTime();
+                AdjustAcquisitionTime();            // TODO: Remove?
 
                 byte[] acqtime = new byte[2];
                 acqtime[0] = Convert.ToByte('D');
@@ -133,6 +139,11 @@ namespace CitirocUI
 
         private void backgroundWorker_dataAcquisition_DoWork(object sender, DoWorkEventArgs e)
         {
+            string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
+            int acqTimeMillisec = (3600 * Convert.ToInt32(splitAcqTime[0]) +
+                                     60 * Convert.ToInt32(splitAcqTime[1]) +
+                                          Convert.ToInt32(splitAcqTime[2])) * 1000;
+
             if (selectedConnectionMode == 0) // USB
             {
 
@@ -150,10 +161,6 @@ namespace CitirocUI
                 long actualAcqTime = 0;
 
                 int daqIdleCount = 0;
-
-                // Get acquisition time specified by user
-                string[] splitAcqTime = acquisitionTime.Split(':');
-                int acquisitionTimems = Convert.ToInt32(splitAcqTime[0]) * 3600000 + Convert.ToInt32(splitAcqTime[1]) * 60000 + Convert.ToInt32(splitAcqTime[2]) * 1000;
 
                 int nbCycles = nbAcq / FIFOAcqLength; // Calculate the number of acquisition cycles to do to have "nbAcq" acquisitions.
                 if (nbAcq % FIFOAcqLength != 0 || nbCycles == 0) nbCycles++; // add one cycle for the remainder or if nbCycle == 0 (ie nbAcq < 100)
@@ -180,7 +187,7 @@ namespace CitirocUI
                                                           // bit 7 of subAdd 4 is 1 when the acquisitions are done
                     while (rd4.Substring(7, 1) == "0" && !backgroundWorker_dataAcquisition.CancellationPending)
                     {
-                        if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds > acquisitionTimems) // Stop the acquisition when time-out
+                        if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds > acqTimeMillisec) // Stop the acquisition when time-out
                         {
                             swAcqTime.Stop(); // Stop the stopwatch to measure "real" acquisition time
                             actualAcqTime += swAcqTime.ElapsedMilliseconds;
@@ -199,7 +206,7 @@ namespace CitirocUI
                         if ((timeAcquisitionMode) && (daqIdleCount == 100))
                         {
                             daqIdleCount = 0;
-                            backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds * 100 / acquisitionTimems));
+                            backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds * 100 / acqTimeMillisec));
                         }
                         Thread.Sleep(5);
                     }
@@ -222,7 +229,7 @@ namespace CitirocUI
                     /* Report DAQ progress */
                     if (timeAcquisitionMode)
                     {
-                        backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds * 100 / acquisitionTimems));
+                        backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds * 100 / acqTimeMillisec));
                     }
                     else
                     {
@@ -312,7 +319,7 @@ namespace CitirocUI
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
-                    if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds / 1000 >= acqTimeSeconds) // Stop the acquisition when time-out
+                    if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds >= acqTimeMillisec) // Stop the acquisition when time-out
                     {
                         swDaqRun.Stop();
                         break;
@@ -322,7 +329,7 @@ namespace CitirocUI
                     /* DAQ progess  */
                     if (timeAcquisitionMode)
                     {
-                        backgroundWorker_dataAcquisition.ReportProgress((int)(swDaqRun.ElapsedMilliseconds / 1000 * 100 / acqTimeSeconds));
+                        backgroundWorker_dataAcquisition.ReportProgress((int)( (swDaqRun.ElapsedMilliseconds / acqTimeMillisec) * 100 ));
                     }
                 }
 
