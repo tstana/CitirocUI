@@ -494,12 +494,27 @@ namespace CitirocUI
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 groupBox_SerialPortSettings.Visible = false;
+
+                switchBox_acquisitionMode.Visible = true;
+                label_numData.Text = "Number of acquisitions:";
+                textBox_numData.Text = "100";
+                switchBox_acquisitionMode_CheckedChanged(switchBox_acquisitionMode, EventArgs.Empty);
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
+                // Find COM ports and add them to the combo box, selecting the
+                // last COM port in list by default.
                 groupBox_SerialPortSettings.Visible = true;
                 AddCurrentComPortsToComboBox();
                 comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
+
+                // Use the number of acquisitions box as the individual DAQ timer
+                // setting for Proto-CUBES...
+                switchBox_acquisitionMode.Visible = false;
+                label_numData.Enabled = true;
+                label_numData.Text = "Individual DAQ time (s):";
+                textBox_numData.Enabled = true;
+                textBox_numData.Text = "60";
             }
 
             _selectedConnectionMode = comboBox_SelectConnection.SelectedIndex;
