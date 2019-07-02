@@ -498,7 +498,7 @@ namespace CitirocUI
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
                 groupBox_SerialPortSettings.Visible = true;
-                GetCOMPorts();
+                AddCurrentComPortsToComboBox();
                 comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
             }
 
@@ -508,10 +508,10 @@ namespace CitirocUI
         private void comboBox_COMPortList_OnClick(object sender, EventArgs e)
         {
             comboBox_COMPortList.Items.Clear();
-            GetCOMPorts();
+            AddCurrentComPortsToComboBox();
         }
 
-        private void GetCOMPorts()
+        private void AddCurrentComPortsToComboBox()
         {
             string[] ports = SerialPort.GetPortNames();
 

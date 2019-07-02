@@ -1361,8 +1361,6 @@ namespace CitirocUI
         System.Threading.Timer tempTimer;
         private IEnumerable<string> ports;
 
-        // private object getCOMPorts;
-
         private void tempCallback(object state)
         {
             int index = 0;
