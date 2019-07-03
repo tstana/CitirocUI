@@ -315,13 +315,27 @@ namespace CitirocUI
 
             else if (selectedConnectionMode == 1)  // Serial
             {
-                var swDaqRun = Stopwatch.StartNew(); // Start the stopwatch to measure acquisition time
+                // Start two stopwatches to measure acquisition times, one for total DAQ time
+                // and the other for individual DAQs (Proto-CUBES runs multiple DAQs and sends
+                // the file corresponding to a single DAQ after the run is done).
+                var stopwatchTotalDaqRun = Stopwatch.StartNew();
+                var stopwatchIndividualDaqRun = Stopwatch.StartNew();
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
-                    if (timeAcquisitionMode && swDaqRun.ElapsedMilliseconds >= acqTimeMillisec) // Stop the acquisition when time-out
+                    var individualDaqTimeMillisec = Convert.ToInt32(textBox_numData.Text) * 1000;      // TODO: Handle exception (???)
+
+                    if (timeAcquisitionMode &&
+                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000) )    // TODO: This is very hardcoded and time-dependant -- fix!
                     {
-                        swDaqRun.Stop();
+                        SendReqPayload();
+                    }
+
+                    // Stop the acquisition when on DAQ run "time-out"
+                    if (timeAcquisitionMode && stopwatchTotalDaqRun.ElapsedMilliseconds >= acqTimeMillisec)
+                    {
+                        stopwatchTotalDaqRun.Stop();
+                        stopwatchIndividualDaqRun.Stop();
                         break;
                     }
                     Thread.Sleep(5);
@@ -329,7 +343,7 @@ namespace CitirocUI
                     /* DAQ progess  */
                     if (timeAcquisitionMode)
                     {
-                        backgroundWorker_dataAcquisition.ReportProgress((int)( (swDaqRun.ElapsedMilliseconds / acqTimeMillisec) * 100 ));
+                        backgroundWorker_dataAcquisition.ReportProgress((int)( (stopwatchTotalDaqRun.ElapsedMilliseconds / acqTimeMillisec) * 100 ));
                     }
                 }
 
@@ -381,19 +395,32 @@ namespace CitirocUI
             }
             else if (selectedConnectionMode == 1)
             {
-                byte[] reqData = new byte[1];
-                reqData[0] = Convert.ToByte('p');
-
-                /*
-                 * Prep the ProtoCubesSerial instance for DAQ data reception
-                 * and GO!
-                 */
-                mySerialComm.DataFileName = DataLoadFile;
-                mySerialComm.RetrievingDaqData = true;
-                mySerialComm.WriteData(reqData, reqData.Length);
+                SendDaqStop();
+                SendReqPayload();
             }
         }
-        
+
+        private void SendReqPayload()
+        {
+            byte[] reqData = new byte[1];
+            reqData[0] = Convert.ToByte('p');
+
+            /*
+             * Prep the ProtoCubesSerial instance for DAQ data reception
+             * and GO!
+             */
+            mySerialComm.DataFileName = DataLoadFile;
+            mySerialComm.RetrievingDaqData = true;
+            mySerialComm.WriteData(reqData, reqData.Length);
+        }
+
+        private void SendDaqStop()
+        {
+            byte[] cmd = new byte[1];
+            cmd[0] = Convert.ToByte('T');
+            mySerialComm.WriteData(cmd, cmd.Length);
+        }
+
         private void backgroundWorker_dataAcquisition_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar_acquisition.Value = e.ProgressPercentage;
