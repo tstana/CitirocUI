@@ -29,35 +29,36 @@
         private void InitializeComponent()
         {
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox_telemetry = new System.Windows.Forms.GroupBox();
+            this.groupBox_HitRates = new System.Windows.Forms.GroupBox();
+            this.label_hitCountMPPC1 = new System.Windows.Forms.Label();
+            this.textBox_hitCountOR32 = new System.Windows.Forms.TextBox();
+            this.textBox_hitCountMPPC2 = new System.Windows.Forms.TextBox();
+            this.label_hitCountOR32 = new System.Windows.Forms.Label();
+            this.textBox_hitCountMPPC1 = new System.Windows.Forms.TextBox();
+            this.textBox_hitCountMPPC3 = new System.Windows.Forms.TextBox();
+            this.label_hitCountMPPC2 = new System.Windows.Forms.Label();
+            this.label_hitCountMPPC3 = new System.Windows.Forms.Label();
+            this.groupBox_HvpsTelemetry = new System.Windows.Forms.GroupBox();
+            this.label_Voltage = new System.Windows.Forms.Label();
+            this.label_Temperature = new System.Windows.Forms.Label();
+            this.textBox_tempFromHVPS = new System.Windows.Forms.TextBox();
+            this.textBox_voltageFromHVPS = new System.Windows.Forms.TextBox();
+            this.label_Current = new System.Windows.Forms.Label();
+            this.textBox_currentFromHVPS = new System.Windows.Forms.TextBox();
+            this.textBox_timestamp = new System.Windows.Forms.TextBox();
+            this.label_timestamp = new System.Windows.Forms.Label();
             this.rtxtMonitor = new System.Windows.Forms.RichTextBox();
             this.panel_clearSerialMonitor = new System.Windows.Forms.Panel();
             this.label_ConnStatus = new System.Windows.Forms.Label();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.button_Clear = new System.Windows.Forms.Button();
-            this.label_timestamp = new System.Windows.Forms.Label();
-            this.textBox_timestamp = new System.Windows.Forms.TextBox();
-            this.groupBox_HvpsTelemetry = new System.Windows.Forms.GroupBox();
-            this.textBox_currentFromHVPS = new System.Windows.Forms.TextBox();
-            this.label_Current = new System.Windows.Forms.Label();
-            this.textBox_voltageFromHVPS = new System.Windows.Forms.TextBox();
-            this.textBox_tempFromHVPS = new System.Windows.Forms.TextBox();
-            this.label_Temperature = new System.Windows.Forms.Label();
-            this.label_Voltage = new System.Windows.Forms.Label();
-            this.groupBox_HitRates = new System.Windows.Forms.GroupBox();
-            this.label_hitCountMPPC3 = new System.Windows.Forms.Label();
-            this.label_hitCountMPPC2 = new System.Windows.Forms.Label();
-            this.textBox_hitCountMPPC3 = new System.Windows.Forms.TextBox();
-            this.textBox_hitCountMPPC1 = new System.Windows.Forms.TextBox();
-            this.label_hitCountOR32 = new System.Windows.Forms.Label();
-            this.textBox_hitCountMPPC2 = new System.Windows.Forms.TextBox();
-            this.textBox_hitCountOR32 = new System.Windows.Forms.TextBox();
-            this.label_hitCountMPPC1 = new System.Windows.Forms.Label();
-            this.groupBox_telemetry = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
-            this.panel_clearSerialMonitor.SuspendLayout();
-            this.groupBox_HvpsTelemetry.SuspendLayout();
-            this.groupBox_HitRates.SuspendLayout();
             this.groupBox_telemetry.SuspendLayout();
+            this.groupBox_HitRates.SuspendLayout();
+            this.groupBox_HvpsTelemetry.SuspendLayout();
+            this.panel_clearSerialMonitor.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -76,6 +77,195 @@
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.368421F));
             this.panel_main.Size = new System.Drawing.Size(454, 575);
             this.panel_main.TabIndex = 4;
+            // 
+            // groupBox_telemetry
+            // 
+            this.groupBox_telemetry.Controls.Add(this.groupBox_HitRates);
+            this.groupBox_telemetry.Controls.Add(this.groupBox_HvpsTelemetry);
+            this.groupBox_telemetry.Controls.Add(this.textBox_timestamp);
+            this.groupBox_telemetry.Controls.Add(this.label_timestamp);
+            this.groupBox_telemetry.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox_telemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_telemetry.Location = new System.Drawing.Point(3, 3);
+            this.groupBox_telemetry.Name = "groupBox_telemetry";
+            this.groupBox_telemetry.Size = new System.Drawing.Size(448, 175);
+            this.groupBox_telemetry.TabIndex = 21;
+            this.groupBox_telemetry.TabStop = false;
+            this.groupBox_telemetry.Text = "Proto-CUBES Telemetry";
+            // 
+            // groupBox_HitRates
+            // 
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC1);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountOR32);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC2);
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountOR32);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC1);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC3);
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC2);
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC3);
+            this.groupBox_HitRates.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_HitRates.Location = new System.Drawing.Point(6, 55);
+            this.groupBox_HitRates.Name = "groupBox_HitRates";
+            this.groupBox_HitRates.Size = new System.Drawing.Size(206, 123);
+            this.groupBox_HitRates.TabIndex = 40;
+            this.groupBox_HitRates.TabStop = false;
+            this.groupBox_HitRates.Text = "Channel Hit Rates";
+            // 
+            // label_hitCountMPPC1
+            // 
+            this.label_hitCountMPPC1.AutoSize = true;
+            this.label_hitCountMPPC1.Location = new System.Drawing.Point(6, 20);
+            this.label_hitCountMPPC1.Name = "label_hitCountMPPC1";
+            this.label_hitCountMPPC1.Size = new System.Drawing.Size(46, 13);
+            this.label_hitCountMPPC1.TabIndex = 20;
+            this.label_hitCountMPPC1.Text = "MPPC1:";
+            // 
+            // textBox_hitCountOR32
+            // 
+            this.textBox_hitCountOR32.Location = new System.Drawing.Point(85, 93);
+            this.textBox_hitCountOR32.Name = "textBox_hitCountOR32";
+            this.textBox_hitCountOR32.ReadOnly = true;
+            this.textBox_hitCountOR32.Size = new System.Drawing.Size(83, 20);
+            this.textBox_hitCountOR32.TabIndex = 11;
+            // 
+            // textBox_hitCountMPPC2
+            // 
+            this.textBox_hitCountMPPC2.Location = new System.Drawing.Point(85, 42);
+            this.textBox_hitCountMPPC2.Name = "textBox_hitCountMPPC2";
+            this.textBox_hitCountMPPC2.ReadOnly = true;
+            this.textBox_hitCountMPPC2.Size = new System.Drawing.Size(83, 20);
+            this.textBox_hitCountMPPC2.TabIndex = 23;
+            // 
+            // label_hitCountOR32
+            // 
+            this.label_hitCountOR32.AutoSize = true;
+            this.label_hitCountOR32.Location = new System.Drawing.Point(6, 96);
+            this.label_hitCountOR32.Name = "label_hitCountOR32";
+            this.label_hitCountOR32.Size = new System.Drawing.Size(58, 13);
+            this.label_hitCountOR32.TabIndex = 10;
+            this.label_hitCountOR32.Text = "All (OR32):";
+            // 
+            // textBox_hitCountMPPC1
+            // 
+            this.textBox_hitCountMPPC1.Location = new System.Drawing.Point(85, 16);
+            this.textBox_hitCountMPPC1.Name = "textBox_hitCountMPPC1";
+            this.textBox_hitCountMPPC1.ReadOnly = true;
+            this.textBox_hitCountMPPC1.Size = new System.Drawing.Size(83, 20);
+            this.textBox_hitCountMPPC1.TabIndex = 21;
+            // 
+            // textBox_hitCountMPPC3
+            // 
+            this.textBox_hitCountMPPC3.Location = new System.Drawing.Point(85, 68);
+            this.textBox_hitCountMPPC3.Name = "textBox_hitCountMPPC3";
+            this.textBox_hitCountMPPC3.ReadOnly = true;
+            this.textBox_hitCountMPPC3.Size = new System.Drawing.Size(83, 20);
+            this.textBox_hitCountMPPC3.TabIndex = 7;
+            // 
+            // label_hitCountMPPC2
+            // 
+            this.label_hitCountMPPC2.AutoSize = true;
+            this.label_hitCountMPPC2.Location = new System.Drawing.Point(6, 45);
+            this.label_hitCountMPPC2.Name = "label_hitCountMPPC2";
+            this.label_hitCountMPPC2.Size = new System.Drawing.Size(46, 13);
+            this.label_hitCountMPPC2.TabIndex = 22;
+            this.label_hitCountMPPC2.Text = "MPPC2:";
+            // 
+            // label_hitCountMPPC3
+            // 
+            this.label_hitCountMPPC3.AutoSize = true;
+            this.label_hitCountMPPC3.Location = new System.Drawing.Point(6, 71);
+            this.label_hitCountMPPC3.Name = "label_hitCountMPPC3";
+            this.label_hitCountMPPC3.Size = new System.Drawing.Size(46, 13);
+            this.label_hitCountMPPC3.TabIndex = 6;
+            this.label_hitCountMPPC3.Text = "MPPC3:";
+            // 
+            // groupBox_HvpsTelemetry
+            // 
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label1);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Voltage);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Temperature);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_tempFromHVPS);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_voltageFromHVPS);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Current);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_currentFromHVPS);
+            this.groupBox_HvpsTelemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_HvpsTelemetry.Location = new System.Drawing.Point(218, 55);
+            this.groupBox_HvpsTelemetry.Name = "groupBox_HvpsTelemetry";
+            this.groupBox_HvpsTelemetry.Size = new System.Drawing.Size(221, 123);
+            this.groupBox_HvpsTelemetry.TabIndex = 39;
+            this.groupBox_HvpsTelemetry.TabStop = false;
+            this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry";
+            // 
+            // label_Voltage
+            // 
+            this.label_Voltage.AutoSize = true;
+            this.label_Voltage.Location = new System.Drawing.Point(6, 19);
+            this.label_Voltage.Name = "label_Voltage";
+            this.label_Voltage.Size = new System.Drawing.Size(62, 13);
+            this.label_Voltage.TabIndex = 15;
+            this.label_Voltage.Text = "Voltage (V):";
+            // 
+            // label_Temperature
+            // 
+            this.label_Temperature.AutoSize = true;
+            this.label_Temperature.Location = new System.Drawing.Point(6, 71);
+            this.label_Temperature.Name = "label_Temperature";
+            this.label_Temperature.Size = new System.Drawing.Size(90, 13);
+            this.label_Temperature.TabIndex = 2;
+            this.label_Temperature.Text = "Temperature (°C):";
+            // 
+            // textBox_tempFromHVPS
+            // 
+            this.textBox_tempFromHVPS.Location = new System.Drawing.Point(107, 68);
+            this.textBox_tempFromHVPS.Name = "textBox_tempFromHVPS";
+            this.textBox_tempFromHVPS.ReadOnly = true;
+            this.textBox_tempFromHVPS.Size = new System.Drawing.Size(83, 20);
+            this.textBox_tempFromHVPS.TabIndex = 3;
+            // 
+            // textBox_voltageFromHVPS
+            // 
+            this.textBox_voltageFromHVPS.Location = new System.Drawing.Point(107, 16);
+            this.textBox_voltageFromHVPS.Name = "textBox_voltageFromHVPS";
+            this.textBox_voltageFromHVPS.ReadOnly = true;
+            this.textBox_voltageFromHVPS.Size = new System.Drawing.Size(83, 20);
+            this.textBox_voltageFromHVPS.TabIndex = 16;
+            // 
+            // label_Current
+            // 
+            this.label_Current.AutoSize = true;
+            this.label_Current.Location = new System.Drawing.Point(6, 45);
+            this.label_Current.Name = "label_Current";
+            this.label_Current.Size = new System.Drawing.Size(68, 13);
+            this.label_Current.TabIndex = 17;
+            this.label_Current.Text = "Current (mA):";
+            // 
+            // textBox_currentFromHVPS
+            // 
+            this.textBox_currentFromHVPS.Location = new System.Drawing.Point(107, 42);
+            this.textBox_currentFromHVPS.Name = "textBox_currentFromHVPS";
+            this.textBox_currentFromHVPS.ReadOnly = true;
+            this.textBox_currentFromHVPS.Size = new System.Drawing.Size(83, 20);
+            this.textBox_currentFromHVPS.TabIndex = 18;
+            // 
+            // textBox_timestamp
+            // 
+            this.textBox_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_timestamp.Location = new System.Drawing.Point(214, 21);
+            this.textBox_timestamp.Name = "textBox_timestamp";
+            this.textBox_timestamp.ReadOnly = true;
+            this.textBox_timestamp.Size = new System.Drawing.Size(225, 20);
+            this.textBox_timestamp.TabIndex = 1;
+            this.textBox_timestamp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label_timestamp
+            // 
+            this.label_timestamp.AutoSize = true;
+            this.label_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_timestamp.Location = new System.Drawing.Point(6, 26);
+            this.label_timestamp.Name = "label_timestamp";
+            this.label_timestamp.Size = new System.Drawing.Size(208, 13);
+            this.label_timestamp.TabIndex = 0;
+            this.label_timestamp.Text = "Timestamp of last telemetry packet:";
             // 
             // rtxtMonitor
             // 
@@ -132,193 +322,15 @@
             this.button_Clear.Text = "Clear";
             this.button_Clear.UseVisualStyleBackColor = true;
             // 
-            // label_timestamp
+            // label1
             // 
-            this.label_timestamp.AutoSize = true;
-            this.label_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_timestamp.Location = new System.Drawing.Point(6, 26);
-            this.label_timestamp.Name = "label_timestamp";
-            this.label_timestamp.Size = new System.Drawing.Size(208, 13);
-            this.label_timestamp.TabIndex = 0;
-            this.label_timestamp.Text = "Timestamp of last telemetry packet:";
-            // 
-            // textBox_timestamp
-            // 
-            this.textBox_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_timestamp.Location = new System.Drawing.Point(214, 21);
-            this.textBox_timestamp.Name = "textBox_timestamp";
-            this.textBox_timestamp.ReadOnly = true;
-            this.textBox_timestamp.Size = new System.Drawing.Size(225, 20);
-            this.textBox_timestamp.TabIndex = 1;
-            this.textBox_timestamp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // groupBox_HvpsTelemetry
-            // 
-            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Voltage);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Temperature);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_tempFromHVPS);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_voltageFromHVPS);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Current);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_currentFromHVPS);
-            this.groupBox_HvpsTelemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_HvpsTelemetry.Location = new System.Drawing.Point(218, 55);
-            this.groupBox_HvpsTelemetry.Name = "groupBox_HvpsTelemetry";
-            this.groupBox_HvpsTelemetry.Size = new System.Drawing.Size(221, 123);
-            this.groupBox_HvpsTelemetry.TabIndex = 39;
-            this.groupBox_HvpsTelemetry.TabStop = false;
-            this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry";
-            // 
-            // textBox_currentFromHVPS
-            // 
-            this.textBox_currentFromHVPS.Location = new System.Drawing.Point(86, 42);
-            this.textBox_currentFromHVPS.Name = "textBox_currentFromHVPS";
-            this.textBox_currentFromHVPS.ReadOnly = true;
-            this.textBox_currentFromHVPS.Size = new System.Drawing.Size(83, 20);
-            this.textBox_currentFromHVPS.TabIndex = 18;
-            // 
-            // label_Current
-            // 
-            this.label_Current.AutoSize = true;
-            this.label_Current.Location = new System.Drawing.Point(6, 45);
-            this.label_Current.Name = "label_Current";
-            this.label_Current.Size = new System.Drawing.Size(44, 13);
-            this.label_Current.TabIndex = 17;
-            this.label_Current.Text = "Current:";
-            // 
-            // textBox_voltageFromHVPS
-            // 
-            this.textBox_voltageFromHVPS.Location = new System.Drawing.Point(86, 16);
-            this.textBox_voltageFromHVPS.Name = "textBox_voltageFromHVPS";
-            this.textBox_voltageFromHVPS.ReadOnly = true;
-            this.textBox_voltageFromHVPS.Size = new System.Drawing.Size(83, 20);
-            this.textBox_voltageFromHVPS.TabIndex = 16;
-            // 
-            // textBox_tempFromHVPS
-            // 
-            this.textBox_tempFromHVPS.Location = new System.Drawing.Point(86, 68);
-            this.textBox_tempFromHVPS.Name = "textBox_tempFromHVPS";
-            this.textBox_tempFromHVPS.ReadOnly = true;
-            this.textBox_tempFromHVPS.Size = new System.Drawing.Size(83, 20);
-            this.textBox_tempFromHVPS.TabIndex = 3;
-            // 
-            // label_Temperature
-            // 
-            this.label_Temperature.AutoSize = true;
-            this.label_Temperature.Location = new System.Drawing.Point(6, 71);
-            this.label_Temperature.Name = "label_Temperature";
-            this.label_Temperature.Size = new System.Drawing.Size(70, 13);
-            this.label_Temperature.TabIndex = 2;
-            this.label_Temperature.Text = "Temperature:";
-            // 
-            // label_Voltage
-            // 
-            this.label_Voltage.AutoSize = true;
-            this.label_Voltage.Location = new System.Drawing.Point(6, 19);
-            this.label_Voltage.Name = "label_Voltage";
-            this.label_Voltage.Size = new System.Drawing.Size(46, 13);
-            this.label_Voltage.TabIndex = 15;
-            this.label_Voltage.Text = "Voltage:";
-            // 
-            // groupBox_HitRates
-            // 
-            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC1);
-            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountOR32);
-            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC2);
-            this.groupBox_HitRates.Controls.Add(this.label_hitCountOR32);
-            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC1);
-            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC3);
-            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC2);
-            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC3);
-            this.groupBox_HitRates.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_HitRates.Location = new System.Drawing.Point(6, 55);
-            this.groupBox_HitRates.Name = "groupBox_HitRates";
-            this.groupBox_HitRates.Size = new System.Drawing.Size(206, 123);
-            this.groupBox_HitRates.TabIndex = 40;
-            this.groupBox_HitRates.TabStop = false;
-            this.groupBox_HitRates.Text = "Channel Hit Rates";
-            // 
-            // label_hitCountMPPC3
-            // 
-            this.label_hitCountMPPC3.AutoSize = true;
-            this.label_hitCountMPPC3.Location = new System.Drawing.Point(6, 71);
-            this.label_hitCountMPPC3.Name = "label_hitCountMPPC3";
-            this.label_hitCountMPPC3.Size = new System.Drawing.Size(46, 13);
-            this.label_hitCountMPPC3.TabIndex = 6;
-            this.label_hitCountMPPC3.Text = "MPPC3:";
-            // 
-            // label_hitCountMPPC2
-            // 
-            this.label_hitCountMPPC2.AutoSize = true;
-            this.label_hitCountMPPC2.Location = new System.Drawing.Point(6, 45);
-            this.label_hitCountMPPC2.Name = "label_hitCountMPPC2";
-            this.label_hitCountMPPC2.Size = new System.Drawing.Size(46, 13);
-            this.label_hitCountMPPC2.TabIndex = 22;
-            this.label_hitCountMPPC2.Text = "MPPC2:";
-            // 
-            // textBox_hitCountMPPC3
-            // 
-            this.textBox_hitCountMPPC3.Location = new System.Drawing.Point(85, 68);
-            this.textBox_hitCountMPPC3.Name = "textBox_hitCountMPPC3";
-            this.textBox_hitCountMPPC3.ReadOnly = true;
-            this.textBox_hitCountMPPC3.Size = new System.Drawing.Size(83, 20);
-            this.textBox_hitCountMPPC3.TabIndex = 7;
-            // 
-            // textBox_hitCountMPPC1
-            // 
-            this.textBox_hitCountMPPC1.Location = new System.Drawing.Point(85, 16);
-            this.textBox_hitCountMPPC1.Name = "textBox_hitCountMPPC1";
-            this.textBox_hitCountMPPC1.ReadOnly = true;
-            this.textBox_hitCountMPPC1.Size = new System.Drawing.Size(83, 20);
-            this.textBox_hitCountMPPC1.TabIndex = 21;
-            // 
-            // label_hitCountOR32
-            // 
-            this.label_hitCountOR32.AutoSize = true;
-            this.label_hitCountOR32.Location = new System.Drawing.Point(6, 96);
-            this.label_hitCountOR32.Name = "label_hitCountOR32";
-            this.label_hitCountOR32.Size = new System.Drawing.Size(58, 13);
-            this.label_hitCountOR32.TabIndex = 10;
-            this.label_hitCountOR32.Text = "All (OR32):";
-            // 
-            // textBox_hitCountMPPC2
-            // 
-            this.textBox_hitCountMPPC2.Location = new System.Drawing.Point(85, 42);
-            this.textBox_hitCountMPPC2.Name = "textBox_hitCountMPPC2";
-            this.textBox_hitCountMPPC2.ReadOnly = true;
-            this.textBox_hitCountMPPC2.Size = new System.Drawing.Size(83, 20);
-            this.textBox_hitCountMPPC2.TabIndex = 23;
-            // 
-            // textBox_hitCountOR32
-            // 
-            this.textBox_hitCountOR32.Location = new System.Drawing.Point(85, 93);
-            this.textBox_hitCountOR32.Name = "textBox_hitCountOR32";
-            this.textBox_hitCountOR32.ReadOnly = true;
-            this.textBox_hitCountOR32.Size = new System.Drawing.Size(83, 20);
-            this.textBox_hitCountOR32.TabIndex = 11;
-            // 
-            // label_hitCountMPPC1
-            // 
-            this.label_hitCountMPPC1.AutoSize = true;
-            this.label_hitCountMPPC1.Location = new System.Drawing.Point(6, 20);
-            this.label_hitCountMPPC1.Name = "label_hitCountMPPC1";
-            this.label_hitCountMPPC1.Size = new System.Drawing.Size(46, 13);
-            this.label_hitCountMPPC1.TabIndex = 20;
-            this.label_hitCountMPPC1.Text = "MPPC1:";
-            // 
-            // groupBox_telemetry
-            // 
-            this.groupBox_telemetry.Controls.Add(this.groupBox_HitRates);
-            this.groupBox_telemetry.Controls.Add(this.groupBox_HvpsTelemetry);
-            this.groupBox_telemetry.Controls.Add(this.textBox_timestamp);
-            this.groupBox_telemetry.Controls.Add(this.label_timestamp);
-            this.groupBox_telemetry.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_telemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_telemetry.Location = new System.Drawing.Point(3, 3);
-            this.groupBox_telemetry.Name = "groupBox_telemetry";
-            this.groupBox_telemetry.Size = new System.Drawing.Size(448, 175);
-            this.groupBox_telemetry.TabIndex = 21;
-            this.groupBox_telemetry.TabStop = false;
-            this.groupBox_telemetry.Text = "Proto-CUBES Telemetry";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(191, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "NB: Read by hardware every 5s!";
             // 
             // frmMonitor
             // 
@@ -333,13 +345,13 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMonitor_FormClosed);
             this.Load += new System.EventHandler(this.frmMonitor_Load);
             this.panel_main.ResumeLayout(false);
-            this.panel_clearSerialMonitor.ResumeLayout(false);
-            this.groupBox_HvpsTelemetry.ResumeLayout(false);
-            this.groupBox_HvpsTelemetry.PerformLayout();
-            this.groupBox_HitRates.ResumeLayout(false);
-            this.groupBox_HitRates.PerformLayout();
             this.groupBox_telemetry.ResumeLayout(false);
             this.groupBox_telemetry.PerformLayout();
+            this.groupBox_HitRates.ResumeLayout(false);
+            this.groupBox_HitRates.PerformLayout();
+            this.groupBox_HvpsTelemetry.ResumeLayout(false);
+            this.groupBox_HvpsTelemetry.PerformLayout();
+            this.panel_clearSerialMonitor.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -371,5 +383,6 @@
         private System.Windows.Forms.TextBox textBox_currentFromHVPS;
         private System.Windows.Forms.TextBox textBox_timestamp;
         private System.Windows.Forms.Label label_timestamp;
+        private System.Windows.Forms.Label label1;
     }
 }
