@@ -58,7 +58,9 @@ namespace CitirocUI
             SendCitirocConf     = 'C',
             SendProbeConf       = 'P',
             SendHVPSConf        = 'H',
-            SendDAQDurAndStart  = 'D',
+            SendDAQDur          = 'D',
+            DAQStart            = 'S',
+            DAQStop             = 'T',
             ReqHK               = 'h',
             ReqPayload          = 'p'
         }
