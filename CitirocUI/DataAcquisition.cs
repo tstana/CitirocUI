@@ -62,6 +62,8 @@ namespace CitirocUI
             string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
 
             // Now actually send the bytes...
+            
+            // USB (Weeroc board)
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
@@ -89,11 +91,11 @@ namespace CitirocUI
                     return;
                 }
             }
+
+            // serial -- Proto-CUBES board
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                int acqTimeSeconds = 3600 * Convert.ToInt32(splitAcqTime[0]) +
-                                       60 * Convert.ToInt32(splitAcqTime[1]) +
-                                            Convert.ToInt32(splitAcqTime[2]);
+                byte individAcqTime = Convert.ToByte(textBox_numData.Text);
 
                 // Proto-CUBES only supports timed acquisition mode:
                 if (switchBox_acquisitionMode.Checked == false)
@@ -113,11 +115,13 @@ namespace CitirocUI
                 AdjustAcquisitionTime();            // TODO: Remove?
 
                 byte[] acqtime = new byte[2];
-                acqtime[0] = Convert.ToByte('D');
-                acqtime[1] = Convert.ToByte(acqTimeSeconds);
+                acqtime[0] = Convert.ToByte(ProtoCubesSerial.Command.SendDAQDur);
+                acqtime[1] = Convert.ToByte(individAcqTime);
 
                 mySerialComm.WriteData(acqtime, acqtime.Length);
             }
+
+            // No connection
             else {
                 MessageBox.Show("No connection mode selected. Please select one via the \"Connect\" tab.");
                 return;
@@ -319,6 +323,7 @@ namespace CitirocUI
                 // and the other for individual DAQs (Proto-CUBES runs multiple DAQs and sends
                 // the file corresponding to a single DAQ after the run is done).
                 var stopwatchTotalDaqRun = Stopwatch.StartNew();
+                bool skippedFirstRun = false;
                 var stopwatchIndividualDaqRun = Stopwatch.StartNew();
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
@@ -326,9 +331,13 @@ namespace CitirocUI
                     var individualDaqTimeMillisec = Convert.ToInt32(textBox_numData.Text) * 1000;      // TODO: Handle exception (???)
 
                     if (timeAcquisitionMode &&
-                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000) )    // TODO: This is very hardcoded and time-dependant -- fix!
+                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000) &&
+                         (stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) < 3010)    // TODO: This is very hardcoded and time-dependant -- fix!
                     {
-                        SendReqPayload();
+                        if (skippedFirstRun)
+                            SendReqPayload();
+
+                        skippedFirstRun = true;
                     }
 
                     // Stop the acquisition when on DAQ run "time-out"
