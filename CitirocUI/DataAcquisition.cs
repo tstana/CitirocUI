@@ -61,7 +61,7 @@ namespace CitirocUI
             // Start by getting the DAQ time
             string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
 
-            // Now actually send the bytes...
+            /* Now actually send the bytes... */
             
             // USB (Weeroc board)
             if (comboBox_SelectConnection.SelectedIndex == 0)
@@ -105,20 +105,20 @@ namespace CitirocUI
                 }
 
                 // Make sure serial port exists and is open:
-                if ((mySerialComm == null) || (mySerialComm.OpenPort() == false ))
-                {
-                    MessageBox.Show("Please configure and open the serial port connection via the \"Connect\" tab.");
-                    return;
-                }
+                //if ((mySerialComm == null) || (mySerialComm.OpenPort() == false ))
+                //{
+                //    MessageBox.Show("Please configure and open the serial port connection via the \"Connect\" tab.");
+                //    return;
+                //}
 
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
                 AdjustAcquisitionTime();            // TODO: Remove?
 
-                byte[] acqtime = new byte[2];
-                acqtime[0] = Convert.ToByte(ProtoCubesSerial.Command.SendDAQDur);
-                acqtime[1] = Convert.ToByte(individAcqTime);
+                //byte[] daqDurData = new byte[2];
+                //daqDurData[0] = Convert.ToByte(ProtoCubesSerial.Command.SendDAQDur);
+                //daqDurData[1] = Convert.ToByte(individAcqTime);
 
-                mySerialComm.WriteData(acqtime, acqtime.Length);
+                //mySerialComm.WriteData(daqDurData, daqDurData.Length);
             }
 
             // No connection
@@ -330,13 +330,18 @@ namespace CitirocUI
                 {
                     var individualDaqTimeMillisec = Convert.ToInt32(textBox_numData.Text) * 1000;      // TODO: Handle exception (???)
 
+                    int run = 0;
+
                     if (timeAcquisitionMode &&
                         ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000) &&
                          (stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) < 3010)    // TODO: This is very hardcoded and time-dependant -- fix!
                     {
-                        if (skippedFirstRun)
-                            SendReqPayload();
+                        if (skippedFirstRun) {
+                            MessageBox.Show("Run " + (run++).ToString());
+                            //SendReqPayload();
+                        }
 
+                        ++run;
                         skippedFirstRun = true;
                     }
 
@@ -352,11 +357,63 @@ namespace CitirocUI
                     /* DAQ progess  */
                     if (timeAcquisitionMode)
                     {
-                        backgroundWorker_dataAcquisition.ReportProgress((int)( (stopwatchTotalDaqRun.ElapsedMilliseconds / acqTimeMillisec) * 100 ));
+                        backgroundWorker_dataAcquisition.ReportProgress((int)(stopwatchTotalDaqRun.ElapsedMilliseconds * 100 / acqTimeMillisec));
                     }
                 }
 
                 return;
+            }
+        }
+
+        private void backgroundWorker_dataAcquisition_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar_acquisition.Value = e.ProgressPercentage;
+
+            if (selectedConnectionMode == 0)
+            {
+                if (tabControl_dataAcquisition.SelectedIndex == 0)
+                {
+                    int chNum = (int)(numericUpDown_loadCh.Value);
+
+                    chart_perChannelChargeHG.Series.Clear();
+                    chart_perChannelChargeHG.Series.Add("Charge");
+                    chart_perChannelChargeHG.Series[0].Color = WeerocPaleBlue;
+                    chart_perChannelChargeHG.Series[0]["PointWidth"] = "1";
+                    chart_perChannelChargeHG.ResetAutoValues();
+
+                    chart_perChannelChargeLG.Series.Clear();
+                    chart_perChannelChargeLG.Series.Add("Charge");
+                    chart_perChannelChargeLG.Series[0].Color = WeerocPaleBlue;
+                    chart_perChannelChargeLG.Series[0]["PointWidth"] = "1";
+                    chart_perChannelChargeLG.ResetAutoValues();
+
+                    for (int i = 0; i < 4096; i++) if (PerChannelChargeHG[chNum, i] != 0) chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
+                    for (int i = 0; i < 4096; i++) if (PerChannelChargeLG[chNum, i] != 0) chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
+                    label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + Hit[chNum];
+
+                    resetZoom(chart_perChannelChargeHG);
+                    resetZoom(chart_perChannelChargeLG);
+                }
+            }
+        }
+
+        private void backgroundWorker_dataAcquisition_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            button_startAcquisition.Text = "Start Acquisition";
+            tabControl_dataAcquisition.Enabled = true;
+            progressBar_acquisition.Value = 0;
+            progressBar_acquisition.Visible = false;
+
+            if (selectedConnectionMode == 0)
+            {
+                Firmware.sendWord(43, "00000000", usbDevId);
+                refreshDataChart();
+            }
+            else if (selectedConnectionMode == 1)
+            {
+                MessageBox.Show("Finished background job.", "Info");
+                //SendDaqStop();
+                //SendReqPayload();
             }
         }
 
@@ -390,25 +447,6 @@ namespace CitirocUI
             }
         }
 
-        private void backgroundWorker_dataAcquisition_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            button_startAcquisition.Text = "Start Acquisition";
-            tabControl_dataAcquisition.Enabled = true;
-            progressBar_acquisition.Value = 0;
-            progressBar_acquisition.Visible = false;
-
-            if (selectedConnectionMode == 0)
-            {
-                Firmware.sendWord(43, "00000000", usbDevId);
-                refreshDataChart();
-            }
-            else if (selectedConnectionMode == 1)
-            {
-                SendDaqStop();
-                SendReqPayload();
-            }
-        }
-
         private void SendReqPayload()
         {
             byte[] reqData = new byte[1];
@@ -428,38 +466,6 @@ namespace CitirocUI
             byte[] cmd = new byte[1];
             cmd[0] = Convert.ToByte('T');
             mySerialComm.WriteData(cmd, cmd.Length);
-        }
-
-        private void backgroundWorker_dataAcquisition_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            progressBar_acquisition.Value = e.ProgressPercentage;
-
-            if (selectedConnectionMode == 0)
-            {
-                if (tabControl_dataAcquisition.SelectedIndex == 0)
-                {
-                    int chNum = (int)(numericUpDown_loadCh.Value);
-
-                    chart_perChannelChargeHG.Series.Clear();
-                    chart_perChannelChargeHG.Series.Add("Charge");
-                    chart_perChannelChargeHG.Series[0].Color = WeerocPaleBlue;
-                    chart_perChannelChargeHG.Series[0]["PointWidth"] = "1";
-                    chart_perChannelChargeHG.ResetAutoValues();
-
-                    chart_perChannelChargeLG.Series.Clear();
-                    chart_perChannelChargeLG.Series.Add("Charge");
-                    chart_perChannelChargeLG.Series[0].Color = WeerocPaleBlue;
-                    chart_perChannelChargeLG.Series[0]["PointWidth"] = "1";
-                    chart_perChannelChargeLG.ResetAutoValues();
-
-                    for (int i = 0; i < 4096; i++) if (PerChannelChargeHG[chNum, i] != 0) chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
-                    for (int i = 0; i < 4096; i++) if (PerChannelChargeLG[chNum, i] != 0) chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
-                    label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + Hit[chNum];
-
-                    resetZoom(chart_perChannelChargeHG);
-                    resetZoom(chart_perChannelChargeLG);
-                }
-            }
         }
 
         private void button_dataSavePath_Click(object sender, EventArgs e)
