@@ -323,27 +323,50 @@ namespace CitirocUI
                 // and the other for individual DAQs (Proto-CUBES runs multiple DAQs and sends
                 // the file corresponding to a single DAQ after the run is done).
                 var stopwatchTotalDaqRun = Stopwatch.StartNew();
-                bool skippedFirstRun = false;
                 var stopwatchIndividualDaqRun = Stopwatch.StartNew();
+                bool inhibitReqPayload = true;
+                int run = 0;
+
+                /// Start by sleeping for 50 ms, to make sure we don't de-inhibit
+                /// the first REQ_PAYLOAD.
+                Thread.Sleep(50);
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
                     var individualDaqTimeMillisec = Convert.ToInt32(textBox_numData.Text) * 1000;      // TODO: Handle exception (???)
 
-                    int run = 0;
+                    /// TODO: This is very hardcoded and time-dependant -- make event-based or similar!
 
-                    if (timeAcquisitionMode &&
-                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000) &&
-                         (stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) < 3010)    // TODO: This is very hardcoded and time-dependant -- fix!
+                    /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                    /// Note: Can't use Control.Timer (or whatever the first hit when searching online
+                    /// for ".NET Timer" is), because that one is "optimized for WinForms", which can
+                    /// only run in UI thread -- and it is not the UART thread that this function works in.
+
+                    /// On every "<individual DAQ time> MOD 3", send REQ_PAYLOAD
+                    /// command. Inhibit the REQ_PAYLOAD until next "MOD 3"
+                    /// iteration.
+                    if (timeAcquisitionMode && (!inhibitReqPayload) &&
+                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000))
                     {
-                        if (skippedFirstRun) {
-                            MessageBox.Show("Run " + (run++).ToString());
-                            //SendReqPayload();
-                        }
-
+                        //SendReqPayload();
+                        UpdatingLabel("(Run " + run.ToString() + " / " +
+                            stopwatchIndividualDaqRun.ElapsedMilliseconds.ToString() +
+                            ") REQ_PAYLOAD", label_help);
                         ++run;
-                        skippedFirstRun = true;
+                        inhibitReqPayload = true;
                     }
+
+                    // De-inhibit the REQ_PAYLOAD on "MOD 3" overflow.
+                    if (timeAcquisitionMode &&
+                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 0) &&
+                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) < 50))
+                    {
+                        UpdatingLabel("(Run " + run.ToString() + " / " +
+                            stopwatchIndividualDaqRun.ElapsedMilliseconds.ToString() +
+                            ") MOD 3 overflow!", label_help);
+                        inhibitReqPayload = false;
+                    }
+                    /// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
                     // Stop the acquisition when on DAQ run "time-out"
                     if (timeAcquisitionMode && stopwatchTotalDaqRun.ElapsedMilliseconds >= acqTimeMillisec)
