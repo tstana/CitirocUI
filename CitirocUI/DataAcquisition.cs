@@ -105,20 +105,20 @@ namespace CitirocUI
                 }
 
                 // Make sure serial port exists and is open:
-                //if ((mySerialComm == null) || (mySerialComm.OpenPort() == false ))
-                //{
-                //    MessageBox.Show("Please configure and open the serial port connection via the \"Connect\" tab.");
-                //    return;
-                //}
+                if ((mySerialComm == null) || (mySerialComm.OpenPort() == false))
+                {
+                    MessageBox.Show("Please configure and open the serial port connection via the \"Connect\" tab.");
+                    return;
+                }
 
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
                 AdjustAcquisitionTime();            // TODO: Remove?
 
-                //byte[] daqDurData = new byte[2];
-                //daqDurData[0] = Convert.ToByte(ProtoCubesSerial.Command.SendDAQDur);
-                //daqDurData[1] = Convert.ToByte(individAcqTime);
+                byte[] daqDurData = new byte[2];
+                daqDurData[0] = Convert.ToByte(ProtoCubesSerial.Command.SendDAQDur);
+                daqDurData[1] = Convert.ToByte(individAcqTime);
 
-                //mySerialComm.WriteData(daqDurData, daqDurData.Length);
+                mySerialComm.WriteData(daqDurData, daqDurData.Length);
             }
 
             // No connection
@@ -319,13 +319,15 @@ namespace CitirocUI
 
             else if (selectedConnectionMode == 1)  // Serial
             {
-                // Start two stopwatches to measure acquisition times, one for total DAQ time
-                // and the other for individual DAQs (Proto-CUBES runs multiple DAQs and sends
-                // the file corresponding to a single DAQ after the run is done).
+                /// Start two stopwatches to measure acquisition times, one for
+                /// total DAQ time and the other for individual DAQs
+                /// (Proto-CUBES runs multiple DAQs and sends the file
+                /// corresponding to a single DAQ after the run is done).
+                /// 
+                /// TODO: Change stopwatchIndividualDaqRun with timer? (See below...)
                 var stopwatchTotalDaqRun = Stopwatch.StartNew();
                 var stopwatchIndividualDaqRun = Stopwatch.StartNew();
                 bool inhibitReqPayload = true;
-                int run = 0;
 
                 /// Start by sleeping for 50 ms, to make sure we don't de-inhibit
                 /// the first REQ_PAYLOAD.
@@ -342,28 +344,21 @@ namespace CitirocUI
                     /// for ".NET Timer" is), because that one is "optimized for WinForms", which can
                     /// only run in UI thread -- and it is not the UART thread that this function works in.
 
-                    /// On every "<individual DAQ time> MOD 3", send REQ_PAYLOAD
-                    /// command. Inhibit the REQ_PAYLOAD until next "MOD 3"
+                    /// On every "DAQ_DUR + 3", send REQ_PAYLOAD command.
+                    /// Inhibit the REQ_PAYLOAD until next "DAQ_DUR+3"
                     /// iteration.
                     if (timeAcquisitionMode && (!inhibitReqPayload) &&
                         ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000))
                     {
-                        //SendReqPayload();
-                        UpdatingLabel("(Run " + run.ToString() + " / " +
-                            stopwatchIndividualDaqRun.ElapsedMilliseconds.ToString() +
-                            ") REQ_PAYLOAD", label_help);
-                        ++run;
+                        SendReqPayload();
                         inhibitReqPayload = true;
                     }
 
-                    // De-inhibit the REQ_PAYLOAD on "MOD 3" overflow.
+                    // De-inhibit the REQ_PAYLOAD on "DAQ_DUR + 3" overflow.
                     if (timeAcquisitionMode &&
                         ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 0) &&
                         ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) < 50))
                     {
-                        UpdatingLabel("(Run " + run.ToString() + " / " +
-                            stopwatchIndividualDaqRun.ElapsedMilliseconds.ToString() +
-                            ") MOD 3 overflow!", label_help);
                         inhibitReqPayload = false;
                     }
                     /// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
