@@ -21,6 +21,7 @@ namespace CitirocUI
         int nbAcq = 100;
         bool timeAcquisitionMode = true;
 
+        #region Start Acquisition Button
         private void button_startAcquisition_Click(object sender, EventArgs e)
         {
             if (backgroundWorker_dataAcquisition.IsBusy) {
@@ -90,6 +91,8 @@ namespace CitirocUI
                     MessageBox.Show("No USB Devices found.", "Warning", MessageBoxButtons.OKCancel);
                     return;
                 }
+
+                label_help.Text = "Acquired data will be saved to " + DataLoadFile;
             }
 
             // serial -- Proto-CUBES board
@@ -114,15 +117,17 @@ namespace CitirocUI
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
                 AdjustAcquisitionTime();            // TODO: Remove?
 
-                byte[] daqDurData = new byte[2];
-                daqDurData[0] = Convert.ToByte(ProtoCubesSerial.Command.SendDAQDur);
-                daqDurData[1] = Convert.ToByte(individAcqTime);
+                byte[] cmd;
 
-                mySerialComm.WriteData(daqDurData, daqDurData.Length);
+                cmd = new byte[2];
+                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendDAQDur);
+                cmd[1] = Convert.ToByte(individAcqTime);
 
-                byte[] daqStart = new byte[1];
-                daqStart[1] = Convert.ToByte(ProtoCubesSerial.Command.DAQStart);
-                mySerialComm.WriteData(daqStart, daqStart.Length);
+                mySerialComm.WriteData(cmd, cmd.Length);
+
+                cmd = new byte[1];
+                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStart);
+                mySerialComm.WriteData(cmd, cmd.Length);
             }
 
             // No connection
@@ -132,8 +137,6 @@ namespace CitirocUI
             }
 
             /* Finally, start the DAQ on the UI end... */
-            label_help.Text = "Acquired data will be saved to " + DataLoadFile;
-
             button_startAcquisition.Text = "Stop Acquisition";
 
             tabControl_dataAcquisition.Enabled = false;
@@ -144,7 +147,9 @@ namespace CitirocUI
 
             backgroundWorker_dataAcquisition.RunWorkerAsync();
         }
+        #endregion
 
+        #region Background Worker
         private void backgroundWorker_dataAcquisition_DoWork(object sender, DoWorkEventArgs e)
         {
             string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
@@ -354,6 +359,7 @@ namespace CitirocUI
                     if (timeAcquisitionMode && (!inhibitReqPayload) &&
                         ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000))
                     {
+                        UpdatingLabel("Sending REQ_PAYLOAD to Proto-CUBES...", label_help);
                         SendReqPayload();
                         inhibitReqPayload = true;
                     }
@@ -447,7 +453,9 @@ namespace CitirocUI
                 SendReqPayload();
             }
         }
+        #endregion
 
+        #region Helper Functions
         private void UpdateDaqTimeLabels(long daqRunTime, long actualAcqTime)
         {
             /* Get actual acquistion time -- counted using a 10 MHz clock -- from firmware registers */
@@ -490,18 +498,6 @@ namespace CitirocUI
             mySerialComm.DataFileName = DataLoadFile;
             mySerialComm.RetrievingDaqData = true;
             mySerialComm.WriteData(reqData, reqData.Length);
-        }
-
-        private void button_dataSavePath_Click(object sender, EventArgs e)
-        {
-            String path = textBox_dataSavePath.Text;
-            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
-            folderDlg.Description = "Select folder to save to..";
-            folderDlg.SelectedPath = path;
-            if(folderDlg.ShowDialog() == DialogResult.OK)
-            {
-                textBox_dataSavePath.Text = folderDlg.SelectedPath + "\\";
-            }
         }
 
         private void loadData()
@@ -685,7 +681,7 @@ namespace CitirocUI
                 chargeHG[chn] = Convert.ToInt32(DataSplit[chn * 3 + 2]);
                 hit[chn] = Convert.ToInt32(DataSplit[chn * 3]);
             }
-            
+
             chart_perAcqChargeHG.Series.Clear();
             chart_perAcqChargeHG.ResetAutoValues();
             chart_perAcqChargeHG.Series.Add("Charge");
@@ -757,6 +753,42 @@ namespace CitirocUI
             }
 
             return 0;
+        }
+        #endregion
+
+        #region Serial Data Ready Event Handler
+        private void mySerialComm_DataReady(object sender, DataReadyEventArgs e)
+        {
+            if ((e.Command == ProtoCubesSerial.Command.ReqPayload) &&
+                (selectedConnectionMode == 1))
+            {
+                string date = DateTime.Now.ToString(new System.Globalization.CultureInfo("se-SE"));
+                date = date.Replace(' ', '_');
+                date = date.Replace(':', '-');
+                date = date.Replace('/', '-');
+                string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
+
+                label_help.Text = "Writing DAQ data to " + fileName;
+
+                using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+                {
+                    dataFile.Write(e.DataBytes);
+                }
+            }
+        }
+        #endregion
+
+        #region Other UI Event Handlers
+        private void button_dataSavePath_Click(object sender, EventArgs e)
+        {
+            String path = textBox_dataSavePath.Text;
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.Description = "Select folder to save to..";
+            folderDlg.SelectedPath = path;
+            if(folderDlg.ShowDialog() == DialogResult.OK)
+            {
+                textBox_dataSavePath.Text = folderDlg.SelectedPath + "\\";
+            }
         }
 
         private void numericUpDown_loadData_ValueChanged(object sender, EventArgs e)
@@ -853,7 +885,9 @@ namespace CitirocUI
                 AdjustAcquisitionTime();
             }
         }
+        #endregion
 
+        #region Adjust Acquisition Time
         private void AdjustAcquisitionTime()
         {
             // Split the string in hh:mm:ss and apply two-digit formatting
@@ -899,5 +933,6 @@ namespace CitirocUI
             // Finally, set the total DAQ time
             textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
         }
+        #endregion
     }
 }

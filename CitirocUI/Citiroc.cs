@@ -25,12 +25,11 @@ namespace CitirocUI
         FontFamily ffBryant = FontFamily.GenericSansSerif;
         private System.Drawing.Text.PrivateFontCollection pfcBryant = new System.Drawing.Text.PrivateFontCollection();
 
-        ProtoCubesSerial mySerialComm = new ProtoCubesSerial();
+        ProtoCubesSerial mySerialComm;
 
         public Citiroc()
         {
             InitializeComponent();
-
 
             try
             {
@@ -292,11 +291,11 @@ namespace CitirocUI
 
             // Adjust enable state of labels in Data Acquisition tab
             if (switchBox_acquisitionMode.Checked == true) {
-                    label_numData.Enabled = false;
-                    textBox_numData.Enabled = false;
-                    label_acquisitionTime.Enabled = true;
-                    textBox_acquisitionTime.Enabled = true;
-                    timeAcquisitionMode = true;
+                label_numData.Enabled = false;
+                textBox_numData.Enabled = false;
+                label_acquisitionTime.Enabled = true;
+                textBox_acquisitionTime.Enabled = true;
+                timeAcquisitionMode = true;
             }
             else
             {
@@ -306,6 +305,10 @@ namespace CitirocUI
                 textBox_acquisitionTime.Enabled = false;
                 timeAcquisitionMode = false;
             }
+
+            // Create serial comm object and attach event to local function
+            mySerialComm = new ProtoCubesSerial();
+            mySerialComm.DataReadyEvent += this.mySerialComm_DataReady;
         }
 
         #region fancy tabControl

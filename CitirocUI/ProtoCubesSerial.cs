@@ -427,10 +427,7 @@ namespace CitirocUI
                     _numBytesRetrieved += numBytesRead;
                     if (_numBytesRetrieved == _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
                     {
-                        using (BinaryWriter dataFile = new BinaryWriter(File.Open(_daqDataFileName, FileMode.Create)))
-                        {
-                            dataFile.Write(_daqDataArray);
-                        }
+                        DataReadyEvent(this, new DataReadyEventArgs(Command.ReqPayload, _daqDataArray));
                         _retrievingDaqData = false;
                         _numBytesRetrieved = 0;
                     }
