@@ -879,7 +879,37 @@
             this.pictureBox_logoWeeroc = new System.Windows.Forms.PictureBox();
             this.backgroundWorker_holdScan = new System.ComponentModel.BackgroundWorker();
             this.button_screenshot = new System.Windows.Forms.Button();
+            this.tblPnlMain = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.roundButton_connectSmall = new CitirocUI.roundButton();
+            this.pnlTopBar = new System.Windows.Forms.Panel();
+            this.pnlTools = new System.Windows.Forms.Panel();
+            this.panel_CubesMonitor = new System.Windows.Forms.Panel();
+            this.groupBox_telemetry = new System.Windows.Forms.GroupBox();
+            this.groupBox_HitRates = new System.Windows.Forms.GroupBox();
+            this.label_hitCountMPPC1 = new System.Windows.Forms.Label();
+            this.textBox_hitCountOR32 = new System.Windows.Forms.TextBox();
+            this.textBox_hitCountMPPC2 = new System.Windows.Forms.TextBox();
+            this.label_hitCountOR32 = new System.Windows.Forms.Label();
+            this.textBox_hitCountMPPC1 = new System.Windows.Forms.TextBox();
+            this.textBox_hitCountMPPC3 = new System.Windows.Forms.TextBox();
+            this.label_hitCountMPPC2 = new System.Windows.Forms.Label();
+            this.label_hitCountMPPC3 = new System.Windows.Forms.Label();
+            this.groupBox_HvpsTelemetry = new System.Windows.Forms.GroupBox();
+            this.label141 = new System.Windows.Forms.Label();
+            this.label_Voltage = new System.Windows.Forms.Label();
+            this.label_Temperature = new System.Windows.Forms.Label();
+            this.textBox_tempFromHVPS = new System.Windows.Forms.TextBox();
+            this.textBox_voltageFromHVPS = new System.Windows.Forms.TextBox();
+            this.label_Current = new System.Windows.Forms.Label();
+            this.textBox_currentFromHVPS = new System.Windows.Forms.TextBox();
+            this.textBox_timestamp = new System.Windows.Forms.TextBox();
+            this.label_timestamp = new System.Windows.Forms.Label();
+            this.rtxtMonitor = new System.Windows.Forms.RichTextBox();
+            this.panel_clearSerialMonitor = new System.Windows.Forms.Panel();
+            this.label_ConnStatus = new System.Windows.Forms.Label();
+            this.buttonHelp = new System.Windows.Forms.Button();
+            this.button_Clear = new System.Windows.Forms.Button();
             this.tabControl_top.SuspendLayout();
             this.tabPage_main.SuspendLayout();
             this.groupBox_SerialPortSettings.SuspendLayout();
@@ -929,6 +959,15 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logoWeeroc)).BeginInit();
+            this.tblPnlMain.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnlTopBar.SuspendLayout();
+            this.pnlTools.SuspendLayout();
+            this.panel_CubesMonitor.SuspendLayout();
+            this.groupBox_telemetry.SuspendLayout();
+            this.groupBox_HitRates.SuspendLayout();
+            this.groupBox_HvpsTelemetry.SuspendLayout();
+            this.panel_clearSerialMonitor.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_UIScale
@@ -937,7 +976,7 @@
             this.button_UIScale.FlatAppearance.BorderSize = 0;
             this.button_UIScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_UIScale.ForeColor = System.Drawing.Color.Transparent;
-            this.button_UIScale.Location = new System.Drawing.Point(1220, 0);
+            this.button_UIScale.Location = new System.Drawing.Point(80, 1);
             this.button_UIScale.Name = "button_UIScale";
             this.button_UIScale.Size = new System.Drawing.Size(30, 30);
             this.button_UIScale.TabIndex = 35;
@@ -948,9 +987,11 @@
             // label_help
             // 
             this.label_help.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.label_help.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_help.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.label_help.ForeColor = System.Drawing.Color.White;
             this.label_help.Location = new System.Drawing.Point(200, 520);
+            this.label_help.Margin = new System.Windows.Forms.Padding(0);
             this.label_help.Name = "label_help";
             this.label_help.Padding = new System.Windows.Forms.Padding(10, 10, 20, 10);
             this.label_help.Size = new System.Drawing.Size(1080, 200);
@@ -964,7 +1005,7 @@
             this.btn_minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(151)))), ((int)(((byte)(174)))));
             this.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_minimize.ForeColor = System.Drawing.Color.White;
-            this.btn_minimize.Location = new System.Drawing.Point(1190, 0);
+            this.btn_minimize.Location = new System.Drawing.Point(56, 1);
             this.btn_minimize.Name = "btn_minimize";
             this.btn_minimize.Size = new System.Drawing.Size(30, 30);
             this.btn_minimize.TabIndex = 27;
@@ -975,8 +1016,10 @@
             // label_weerocDotCom
             // 
             this.label_weerocDotCom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(32)))), ((int)(((byte)(70)))));
+            this.label_weerocDotCom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_weerocDotCom.ForeColor = System.Drawing.Color.White;
             this.label_weerocDotCom.Location = new System.Drawing.Point(0, 0);
+            this.label_weerocDotCom.Margin = new System.Windows.Forms.Padding(0);
             this.label_weerocDotCom.Name = "label_weerocDotCom";
             this.label_weerocDotCom.Size = new System.Drawing.Size(200, 30);
             this.label_weerocDotCom.TabIndex = 23;
@@ -991,7 +1034,7 @@
             this.btn_close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(1250, 0);
+            this.btn_close.Location = new System.Drawing.Point(107, 1);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(30, 30);
             this.btn_close.TabIndex = 25;
@@ -1002,8 +1045,9 @@
             // label_titleBar
             // 
             this.label_titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.label_titleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_titleBar.ForeColor = System.Drawing.Color.White;
-            this.label_titleBar.Location = new System.Drawing.Point(200, 0);
+            this.label_titleBar.Location = new System.Drawing.Point(0, 0);
             this.label_titleBar.Name = "label_titleBar";
             this.label_titleBar.Size = new System.Drawing.Size(1080, 30);
             this.label_titleBar.TabIndex = 26;
@@ -1023,7 +1067,7 @@
             this.radioButton_calibration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton_calibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.radioButton_calibration.ForeColor = System.Drawing.Color.White;
-            this.radioButton_calibration.Location = new System.Drawing.Point(0, 240);
+            this.radioButton_calibration.Location = new System.Drawing.Point(3, 214);
             this.radioButton_calibration.Name = "radioButton_calibration";
             this.radioButton_calibration.Size = new System.Drawing.Size(200, 70);
             this.radioButton_calibration.TabIndex = 32;
@@ -1045,7 +1089,7 @@
             this.radioButton_probes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton_probes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.radioButton_probes.ForeColor = System.Drawing.Color.White;
-            this.radioButton_probes.Location = new System.Drawing.Point(0, 170);
+            this.radioButton_probes.Location = new System.Drawing.Point(3, 143);
             this.radioButton_probes.Name = "radioButton_probes";
             this.radioButton_probes.Size = new System.Drawing.Size(200, 70);
             this.radioButton_probes.TabIndex = 31;
@@ -1067,7 +1111,7 @@
             this.radioButton_dataAcquisition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton_dataAcquisition.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.radioButton_dataAcquisition.ForeColor = System.Drawing.Color.White;
-            this.radioButton_dataAcquisition.Location = new System.Drawing.Point(0, 310);
+            this.radioButton_dataAcquisition.Location = new System.Drawing.Point(3, 284);
             this.radioButton_dataAcquisition.Name = "radioButton_dataAcquisition";
             this.radioButton_dataAcquisition.Size = new System.Drawing.Size(200, 70);
             this.radioButton_dataAcquisition.TabIndex = 30;
@@ -1089,7 +1133,7 @@
             this.radioButton_slowControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton_slowControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.radioButton_slowControl.ForeColor = System.Drawing.Color.White;
-            this.radioButton_slowControl.Location = new System.Drawing.Point(0, 100);
+            this.radioButton_slowControl.Location = new System.Drawing.Point(3, 71);
             this.radioButton_slowControl.Name = "radioButton_slowControl";
             this.radioButton_slowControl.Size = new System.Drawing.Size(200, 70);
             this.radioButton_slowControl.TabIndex = 29;
@@ -1112,7 +1156,7 @@
             this.radioButton_connect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton_connect.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.radioButton_connect.ForeColor = System.Drawing.Color.White;
-            this.radioButton_connect.Location = new System.Drawing.Point(0, 30);
+            this.radioButton_connect.Location = new System.Drawing.Point(3, -1);
             this.radioButton_connect.Name = "radioButton_connect";
             this.radioButton_connect.Size = new System.Drawing.Size(200, 70);
             this.radioButton_connect.TabIndex = 28;
@@ -1134,7 +1178,7 @@
             this.radioButton_firmware.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton_firmware.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.radioButton_firmware.ForeColor = System.Drawing.Color.White;
-            this.radioButton_firmware.Location = new System.Drawing.Point(0, 380);
+            this.radioButton_firmware.Location = new System.Drawing.Point(3, 363);
             this.radioButton_firmware.Name = "radioButton_firmware";
             this.radioButton_firmware.Size = new System.Drawing.Size(200, 70);
             this.radioButton_firmware.TabIndex = 34;
@@ -1149,7 +1193,7 @@
             // label_rectangleFill
             // 
             this.label_rectangleFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(65)))), ((int)(((byte)(103)))));
-            this.label_rectangleFill.Location = new System.Drawing.Point(0, 30);
+            this.label_rectangleFill.Location = new System.Drawing.Point(3, 0);
             this.label_rectangleFill.Name = "label_rectangleFill";
             this.label_rectangleFill.Size = new System.Drawing.Size(200, 490);
             this.label_rectangleFill.TabIndex = 33;
@@ -1164,14 +1208,16 @@
             this.tabControl_top.Controls.Add(this.tabPage_calibration);
             this.tabControl_top.Controls.Add(this.tabPage_dataAcquisition);
             this.tabControl_top.Controls.Add(this.tabPage1);
+            this.tabControl_top.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl_top.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl_top.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
             this.tabControl_top.ItemSize = new System.Drawing.Size(70, 10);
-            this.tabControl_top.Location = new System.Drawing.Point(186, 26);
+            this.tabControl_top.Location = new System.Drawing.Point(200, 30);
+            this.tabControl_top.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl_top.Multiline = true;
             this.tabControl_top.Name = "tabControl_top";
             this.tabControl_top.SelectedIndex = 0;
-            this.tabControl_top.Size = new System.Drawing.Size(1098, 498);
+            this.tabControl_top.Size = new System.Drawing.Size(1080, 490);
             this.tabControl_top.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl_top.TabIndex = 36;
             this.tabControl_top.TabStop = false;
@@ -1193,7 +1239,7 @@
             this.tabPage_main.Location = new System.Drawing.Point(14, 4);
             this.tabPage_main.Name = "tabPage_main";
             this.tabPage_main.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_main.Size = new System.Drawing.Size(1080, 490);
+            this.tabPage_main.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_main.TabIndex = 1;
             this.tabPage_main.Text = "Connect";
             // 
@@ -1407,7 +1453,7 @@
             this.tabPage_slowControl.Location = new System.Drawing.Point(14, 4);
             this.tabPage_slowControl.Name = "tabPage_slowControl";
             this.tabPage_slowControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_slowControl.Size = new System.Drawing.Size(1080, 490);
+            this.tabPage_slowControl.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_slowControl.TabIndex = 0;
             this.tabPage_slowControl.Text = "Slow Control";
             this.tabPage_slowControl.DragDrop += new System.Windows.Forms.DragEventHandler(this.slowControl_DragDrop);
@@ -8034,7 +8080,7 @@
             this.tabPage_probes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_probes.Location = new System.Drawing.Point(14, 4);
             this.tabPage_probes.Name = "tabPage_probes";
-            this.tabPage_probes.Size = new System.Drawing.Size(1080, 490);
+            this.tabPage_probes.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_probes.TabIndex = 3;
             this.tabPage_probes.Text = "Probes";
             this.tabPage_probes.MouseEnter += new System.EventHandler(this.tabPage_probes_MouseEnter);
@@ -8262,7 +8308,7 @@
             this.tabPage_calibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_calibration.Location = new System.Drawing.Point(14, 4);
             this.tabPage_calibration.Name = "tabPage_calibration";
-            this.tabPage_calibration.Size = new System.Drawing.Size(1080, 490);
+            this.tabPage_calibration.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_calibration.TabIndex = 4;
             this.tabPage_calibration.Text = "S-curves";
             // 
@@ -10074,7 +10120,7 @@
             this.tabPage_dataAcquisition.Location = new System.Drawing.Point(14, 4);
             this.tabPage_dataAcquisition.Name = "tabPage_dataAcquisition";
             this.tabPage_dataAcquisition.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_dataAcquisition.Size = new System.Drawing.Size(1080, 490);
+            this.tabPage_dataAcquisition.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_dataAcquisition.TabIndex = 2;
             this.tabPage_dataAcquisition.Text = "Data acquisition";
             // 
@@ -10539,7 +10585,7 @@
             this.tabPage1.Location = new System.Drawing.Point(14, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1080, 490);
+            this.tabPage1.Size = new System.Drawing.Size(1062, 482);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "tabPage_FPGA";
             // 
@@ -11549,8 +11595,10 @@
             // pictureBox_logoWeeroc
             // 
             this.pictureBox_logoWeeroc.BackColor = System.Drawing.Color.White;
+            this.pictureBox_logoWeeroc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox_logoWeeroc.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_logoWeeroc.Image")));
             this.pictureBox_logoWeeroc.Location = new System.Drawing.Point(0, 520);
+            this.pictureBox_logoWeeroc.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox_logoWeeroc.Name = "pictureBox_logoWeeroc";
             this.pictureBox_logoWeeroc.Size = new System.Drawing.Size(200, 200);
             this.pictureBox_logoWeeroc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -11574,12 +11622,51 @@
             this.button_screenshot.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(151)))), ((int)(((byte)(174)))));
             this.button_screenshot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_screenshot.ForeColor = System.Drawing.Color.White;
-            this.button_screenshot.Location = new System.Drawing.Point(1126, 0);
+            this.button_screenshot.Location = new System.Drawing.Point(0, 1);
             this.button_screenshot.Name = "button_screenshot";
             this.button_screenshot.Size = new System.Drawing.Size(60, 30);
             this.button_screenshot.TabIndex = 28;
             this.button_screenshot.UseVisualStyleBackColor = false;
             this.button_screenshot.Click += new System.EventHandler(this.button_screenshot_Click);
+            // 
+            // tblPnlMain
+            // 
+            this.tblPnlMain.ColumnCount = 3;
+            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1080F));
+            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 457F));
+            this.tblPnlMain.Controls.Add(this.panel1, 0, 1);
+            this.tblPnlMain.Controls.Add(this.pnlTopBar, 1, 0);
+            this.tblPnlMain.Controls.Add(this.tabControl_top, 1, 1);
+            this.tblPnlMain.Controls.Add(this.pictureBox_logoWeeroc, 0, 2);
+            this.tblPnlMain.Controls.Add(this.label_help, 1, 2);
+            this.tblPnlMain.Controls.Add(this.label_weerocDotCom, 0, 0);
+            this.tblPnlMain.Controls.Add(this.panel_CubesMonitor, 2, 1);
+            this.tblPnlMain.Location = new System.Drawing.Point(0, 0);
+            this.tblPnlMain.Margin = new System.Windows.Forms.Padding(0);
+            this.tblPnlMain.Name = "tblPnlMain";
+            this.tblPnlMain.RowCount = 3;
+            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tblPnlMain.Size = new System.Drawing.Size(1737, 720);
+            this.tblPnlMain.TabIndex = 38;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.roundButton_connectSmall);
+            this.panel1.Controls.Add(this.radioButton_connect);
+            this.panel1.Controls.Add(this.radioButton_slowControl);
+            this.panel1.Controls.Add(this.radioButton_probes);
+            this.panel1.Controls.Add(this.radioButton_firmware);
+            this.panel1.Controls.Add(this.radioButton_dataAcquisition);
+            this.panel1.Controls.Add(this.radioButton_calibration);
+            this.panel1.Controls.Add(this.label_rectangleFill);
+            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 490);
+            this.panel1.TabIndex = 39;
             // 
             // roundButton_connectSmall
             // 
@@ -11589,7 +11676,7 @@
             this.roundButton_connectSmall.FlatAppearance.BorderSize = 0;
             this.roundButton_connectSmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.roundButton_connectSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.roundButton_connectSmall.Location = new System.Drawing.Point(14, 45);
+            this.roundButton_connectSmall.Location = new System.Drawing.Point(22, 15);
             this.roundButton_connectSmall.Name = "roundButton_connectSmall";
             this.roundButton_connectSmall.Size = new System.Drawing.Size(40, 40);
             this.roundButton_connectSmall.TabIndex = 7;
@@ -11598,30 +11685,314 @@
             this.roundButton_connectSmall.MouseEnter += new System.EventHandler(this.roundButton_connect_MouseEnter);
             this.roundButton_connectSmall.MouseLeave += new System.EventHandler(this.object_MouseLeave);
             // 
+            // pnlTopBar
+            // 
+            this.pnlTopBar.Controls.Add(this.pnlTools);
+            this.pnlTopBar.Controls.Add(this.label_titleBar);
+            this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTopBar.Location = new System.Drawing.Point(200, 0);
+            this.pnlTopBar.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlTopBar.Name = "pnlTopBar";
+            this.pnlTopBar.Size = new System.Drawing.Size(1080, 30);
+            this.pnlTopBar.TabIndex = 39;
+            // 
+            // pnlTools
+            // 
+            this.pnlTools.Controls.Add(this.button_screenshot);
+            this.pnlTools.Controls.Add(this.btn_minimize);
+            this.pnlTools.Controls.Add(this.button_UIScale);
+            this.pnlTools.Controls.Add(this.btn_close);
+            this.pnlTools.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlTools.Location = new System.Drawing.Point(941, 0);
+            this.pnlTools.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlTools.Name = "pnlTools";
+            this.pnlTools.Size = new System.Drawing.Size(139, 30);
+            this.pnlTools.TabIndex = 40;
+            // 
+            // panel_CubesMonitor
+            // 
+            this.panel_CubesMonitor.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_CubesMonitor.Controls.Add(this.groupBox_telemetry);
+            this.panel_CubesMonitor.Controls.Add(this.rtxtMonitor);
+            this.panel_CubesMonitor.Controls.Add(this.panel_clearSerialMonitor);
+            this.panel_CubesMonitor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_CubesMonitor.Location = new System.Drawing.Point(1280, 30);
+            this.panel_CubesMonitor.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_CubesMonitor.Name = "panel_CubesMonitor";
+            this.tblPnlMain.SetRowSpan(this.panel_CubesMonitor, 2);
+            this.panel_CubesMonitor.Size = new System.Drawing.Size(457, 690);
+            this.panel_CubesMonitor.TabIndex = 40;
+            // 
+            // groupBox_telemetry
+            // 
+            this.groupBox_telemetry.Controls.Add(this.groupBox_HitRates);
+            this.groupBox_telemetry.Controls.Add(this.groupBox_HvpsTelemetry);
+            this.groupBox_telemetry.Controls.Add(this.textBox_timestamp);
+            this.groupBox_telemetry.Controls.Add(this.label_timestamp);
+            this.groupBox_telemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_telemetry.Location = new System.Drawing.Point(3, 7);
+            this.groupBox_telemetry.Name = "groupBox_telemetry";
+            this.groupBox_telemetry.Size = new System.Drawing.Size(448, 206);
+            this.groupBox_telemetry.TabIndex = 23;
+            this.groupBox_telemetry.TabStop = false;
+            this.groupBox_telemetry.Text = "Proto-CUBES Telemetry";
+            // 
+            // groupBox_HitRates
+            // 
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC1);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountOR32);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC2);
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountOR32);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC1);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC3);
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC2);
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC3);
+            this.groupBox_HitRates.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_HitRates.Location = new System.Drawing.Point(6, 55);
+            this.groupBox_HitRates.Name = "groupBox_HitRates";
+            this.groupBox_HitRates.Size = new System.Drawing.Size(206, 145);
+            this.groupBox_HitRates.TabIndex = 40;
+            this.groupBox_HitRates.TabStop = false;
+            this.groupBox_HitRates.Text = "Channel Hit Rates";
+            // 
+            // label_hitCountMPPC1
+            // 
+            this.label_hitCountMPPC1.AutoSize = true;
+            this.label_hitCountMPPC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_hitCountMPPC1.Location = new System.Drawing.Point(8, 26);
+            this.label_hitCountMPPC1.Name = "label_hitCountMPPC1";
+            this.label_hitCountMPPC1.Size = new System.Drawing.Size(64, 18);
+            this.label_hitCountMPPC1.TabIndex = 20;
+            this.label_hitCountMPPC1.Text = "MPPC1:";
+            // 
+            // textBox_hitCountOR32
+            // 
+            this.textBox_hitCountOR32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_hitCountOR32.Location = new System.Drawing.Point(109, 110);
+            this.textBox_hitCountOR32.Name = "textBox_hitCountOR32";
+            this.textBox_hitCountOR32.ReadOnly = true;
+            this.textBox_hitCountOR32.Size = new System.Drawing.Size(83, 24);
+            this.textBox_hitCountOR32.TabIndex = 11;
+            // 
+            // textBox_hitCountMPPC2
+            // 
+            this.textBox_hitCountMPPC2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_hitCountMPPC2.Location = new System.Drawing.Point(109, 52);
+            this.textBox_hitCountMPPC2.Name = "textBox_hitCountMPPC2";
+            this.textBox_hitCountMPPC2.ReadOnly = true;
+            this.textBox_hitCountMPPC2.Size = new System.Drawing.Size(83, 24);
+            this.textBox_hitCountMPPC2.TabIndex = 23;
+            // 
+            // label_hitCountOR32
+            // 
+            this.label_hitCountOR32.AutoSize = true;
+            this.label_hitCountOR32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_hitCountOR32.Location = new System.Drawing.Point(8, 113);
+            this.label_hitCountOR32.Name = "label_hitCountOR32";
+            this.label_hitCountOR32.Size = new System.Drawing.Size(80, 18);
+            this.label_hitCountOR32.TabIndex = 10;
+            this.label_hitCountOR32.Text = "All (OR32):";
+            // 
+            // textBox_hitCountMPPC1
+            // 
+            this.textBox_hitCountMPPC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_hitCountMPPC1.Location = new System.Drawing.Point(109, 23);
+            this.textBox_hitCountMPPC1.Name = "textBox_hitCountMPPC1";
+            this.textBox_hitCountMPPC1.ReadOnly = true;
+            this.textBox_hitCountMPPC1.Size = new System.Drawing.Size(83, 24);
+            this.textBox_hitCountMPPC1.TabIndex = 21;
+            // 
+            // textBox_hitCountMPPC3
+            // 
+            this.textBox_hitCountMPPC3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_hitCountMPPC3.Location = new System.Drawing.Point(109, 81);
+            this.textBox_hitCountMPPC3.Name = "textBox_hitCountMPPC3";
+            this.textBox_hitCountMPPC3.ReadOnly = true;
+            this.textBox_hitCountMPPC3.Size = new System.Drawing.Size(83, 24);
+            this.textBox_hitCountMPPC3.TabIndex = 7;
+            // 
+            // label_hitCountMPPC2
+            // 
+            this.label_hitCountMPPC2.AutoSize = true;
+            this.label_hitCountMPPC2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_hitCountMPPC2.Location = new System.Drawing.Point(8, 55);
+            this.label_hitCountMPPC2.Name = "label_hitCountMPPC2";
+            this.label_hitCountMPPC2.Size = new System.Drawing.Size(64, 18);
+            this.label_hitCountMPPC2.TabIndex = 22;
+            this.label_hitCountMPPC2.Text = "MPPC2:";
+            // 
+            // label_hitCountMPPC3
+            // 
+            this.label_hitCountMPPC3.AutoSize = true;
+            this.label_hitCountMPPC3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_hitCountMPPC3.Location = new System.Drawing.Point(8, 84);
+            this.label_hitCountMPPC3.Name = "label_hitCountMPPC3";
+            this.label_hitCountMPPC3.Size = new System.Drawing.Size(64, 18);
+            this.label_hitCountMPPC3.TabIndex = 6;
+            this.label_hitCountMPPC3.Text = "MPPC3:";
+            // 
+            // groupBox_HvpsTelemetry
+            // 
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label141);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Voltage);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Temperature);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_tempFromHVPS);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_voltageFromHVPS);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Current);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_currentFromHVPS);
+            this.groupBox_HvpsTelemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_HvpsTelemetry.Location = new System.Drawing.Point(218, 55);
+            this.groupBox_HvpsTelemetry.Name = "groupBox_HvpsTelemetry";
+            this.groupBox_HvpsTelemetry.Size = new System.Drawing.Size(221, 145);
+            this.groupBox_HvpsTelemetry.TabIndex = 39;
+            this.groupBox_HvpsTelemetry.TabStop = false;
+            this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry";
+            // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label141.Location = new System.Drawing.Point(16, 127);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(248, 18);
+            this.label141.TabIndex = 19;
+            this.label141.Text = "NB: Read by hardware every 5s!";
+            // 
+            // label_Voltage
+            // 
+            this.label_Voltage.AutoSize = true;
+            this.label_Voltage.Location = new System.Drawing.Point(6, 32);
+            this.label_Voltage.Name = "label_Voltage";
+            this.label_Voltage.Size = new System.Drawing.Size(84, 18);
+            this.label_Voltage.TabIndex = 15;
+            this.label_Voltage.Text = "Voltage (V):";
+            // 
+            // label_Temperature
+            // 
+            this.label_Temperature.AutoSize = true;
+            this.label_Temperature.Location = new System.Drawing.Point(6, 84);
+            this.label_Temperature.Name = "label_Temperature";
+            this.label_Temperature.Size = new System.Drawing.Size(127, 18);
+            this.label_Temperature.TabIndex = 2;
+            this.label_Temperature.Text = "Temperature (°C):";
+            // 
+            // textBox_tempFromHVPS
+            // 
+            this.textBox_tempFromHVPS.Location = new System.Drawing.Point(132, 81);
+            this.textBox_tempFromHVPS.Name = "textBox_tempFromHVPS";
+            this.textBox_tempFromHVPS.ReadOnly = true;
+            this.textBox_tempFromHVPS.Size = new System.Drawing.Size(83, 24);
+            this.textBox_tempFromHVPS.TabIndex = 3;
+            // 
+            // textBox_voltageFromHVPS
+            // 
+            this.textBox_voltageFromHVPS.Location = new System.Drawing.Point(132, 29);
+            this.textBox_voltageFromHVPS.Name = "textBox_voltageFromHVPS";
+            this.textBox_voltageFromHVPS.ReadOnly = true;
+            this.textBox_voltageFromHVPS.Size = new System.Drawing.Size(83, 24);
+            this.textBox_voltageFromHVPS.TabIndex = 16;
+            // 
+            // label_Current
+            // 
+            this.label_Current.AutoSize = true;
+            this.label_Current.Location = new System.Drawing.Point(6, 58);
+            this.label_Current.Name = "label_Current";
+            this.label_Current.Size = new System.Drawing.Size(97, 18);
+            this.label_Current.TabIndex = 17;
+            this.label_Current.Text = "Current (mA):";
+            // 
+            // textBox_currentFromHVPS
+            // 
+            this.textBox_currentFromHVPS.Location = new System.Drawing.Point(132, 55);
+            this.textBox_currentFromHVPS.Name = "textBox_currentFromHVPS";
+            this.textBox_currentFromHVPS.ReadOnly = true;
+            this.textBox_currentFromHVPS.Size = new System.Drawing.Size(83, 24);
+            this.textBox_currentFromHVPS.TabIndex = 18;
+            // 
+            // textBox_timestamp
+            // 
+            this.textBox_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_timestamp.Location = new System.Drawing.Point(266, 21);
+            this.textBox_timestamp.Name = "textBox_timestamp";
+            this.textBox_timestamp.ReadOnly = true;
+            this.textBox_timestamp.Size = new System.Drawing.Size(173, 24);
+            this.textBox_timestamp.TabIndex = 1;
+            this.textBox_timestamp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label_timestamp
+            // 
+            this.label_timestamp.AutoSize = true;
+            this.label_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_timestamp.Location = new System.Drawing.Point(6, 26);
+            this.label_timestamp.Name = "label_timestamp";
+            this.label_timestamp.Size = new System.Drawing.Size(277, 18);
+            this.label_timestamp.TabIndex = 0;
+            this.label_timestamp.Text = "Timestamp of last telemetry packet:";
+            // 
+            // rtxtMonitor
+            // 
+            this.rtxtMonitor.BackColor = System.Drawing.SystemColors.InfoText;
+            this.rtxtMonitor.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtMonitor.ForeColor = System.Drawing.SystemColors.Info;
+            this.rtxtMonitor.Location = new System.Drawing.Point(3, 219);
+            this.rtxtMonitor.Name = "rtxtMonitor";
+            this.rtxtMonitor.ReadOnly = true;
+            this.rtxtMonitor.Size = new System.Drawing.Size(448, 432);
+            this.rtxtMonitor.TabIndex = 22;
+            this.rtxtMonitor.Text = "";
+            // 
+            // panel_clearSerialMonitor
+            // 
+            this.panel_clearSerialMonitor.Controls.Add(this.label_ConnStatus);
+            this.panel_clearSerialMonitor.Controls.Add(this.buttonHelp);
+            this.panel_clearSerialMonitor.Controls.Add(this.button_Clear);
+            this.panel_clearSerialMonitor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel_clearSerialMonitor.Location = new System.Drawing.Point(0, 653);
+            this.panel_clearSerialMonitor.Name = "panel_clearSerialMonitor";
+            this.panel_clearSerialMonitor.Size = new System.Drawing.Size(457, 37);
+            this.panel_clearSerialMonitor.TabIndex = 21;
+            // 
+            // label_ConnStatus
+            // 
+            this.label_ConnStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ConnStatus.Location = new System.Drawing.Point(3, 5);
+            this.label_ConnStatus.Name = "label_ConnStatus";
+            this.label_ConnStatus.Size = new System.Drawing.Size(316, 23);
+            this.label_ConnStatus.TabIndex = 2;
+            this.label_ConnStatus.Text = "label_ConnStatus";
+            this.label_ConnStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonHelp.Location = new System.Drawing.Point(325, 0);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(29, 32);
+            this.buttonHelp.TabIndex = 1;
+            this.buttonHelp.Text = "?";
+            this.buttonHelp.UseVisualStyleBackColor = true;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            // 
+            // button_Clear
+            // 
+            this.button_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Clear.Location = new System.Drawing.Point(360, 0);
+            this.button_Clear.Name = "button_Clear";
+            this.button_Clear.Size = new System.Drawing.Size(85, 32);
+            this.button_Clear.TabIndex = 1;
+            this.button_Clear.Text = "Clear";
+            this.button_Clear.UseVisualStyleBackColor = true;
+            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
+            // 
             // Citiroc
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.button_screenshot);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1735, 720);
+            this.Controls.Add(this.tblPnlMain);
             this.Controls.Add(this.label_tempOnBoard);
-            this.Controls.Add(this.roundButton_connectSmall);
-            this.Controls.Add(this.button_UIScale);
-            this.Controls.Add(this.label_help);
-            this.Controls.Add(this.pictureBox_logoWeeroc);
-            this.Controls.Add(this.btn_minimize);
-            this.Controls.Add(this.label_weerocDotCom);
-            this.Controls.Add(this.btn_close);
-            this.Controls.Add(this.label_titleBar);
-            this.Controls.Add(this.tabControl_top);
-            this.Controls.Add(this.radioButton_calibration);
-            this.Controls.Add(this.radioButton_probes);
-            this.Controls.Add(this.radioButton_dataAcquisition);
-            this.Controls.Add(this.radioButton_slowControl);
-            this.Controls.Add(this.radioButton_connect);
-            this.Controls.Add(this.radioButton_firmware);
-            this.Controls.Add(this.label_rectangleFill);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Citiroc";
@@ -11700,6 +12071,18 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logoWeeroc)).EndInit();
+            this.tblPnlMain.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.pnlTopBar.ResumeLayout(false);
+            this.pnlTools.ResumeLayout(false);
+            this.panel_CubesMonitor.ResumeLayout(false);
+            this.groupBox_telemetry.ResumeLayout(false);
+            this.groupBox_telemetry.PerformLayout();
+            this.groupBox_HitRates.ResumeLayout(false);
+            this.groupBox_HitRates.PerformLayout();
+            this.groupBox_HvpsTelemetry.ResumeLayout(false);
+            this.groupBox_HvpsTelemetry.PerformLayout();
+            this.panel_clearSerialMonitor.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -12544,6 +12927,36 @@
         private System.Windows.Forms.Button button_HVPS;
         private System.Windows.Forms.TextBox textBox_HV;
         private System.Windows.Forms.Label label140;
+        private System.Windows.Forms.TableLayoutPanel tblPnlMain;
+        private System.Windows.Forms.Panel pnlTopBar;
+        private System.Windows.Forms.Panel pnlTools;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_CubesMonitor;
+        private System.Windows.Forms.Panel panel_clearSerialMonitor;
+        private System.Windows.Forms.Label label_ConnStatus;
+        private System.Windows.Forms.Button buttonHelp;
+        private System.Windows.Forms.Button button_Clear;
+        public System.Windows.Forms.RichTextBox rtxtMonitor;
+        private System.Windows.Forms.GroupBox groupBox_telemetry;
+        private System.Windows.Forms.GroupBox groupBox_HitRates;
+        private System.Windows.Forms.Label label_hitCountMPPC1;
+        private System.Windows.Forms.TextBox textBox_hitCountOR32;
+        private System.Windows.Forms.TextBox textBox_hitCountMPPC2;
+        private System.Windows.Forms.Label label_hitCountOR32;
+        private System.Windows.Forms.TextBox textBox_hitCountMPPC1;
+        private System.Windows.Forms.TextBox textBox_hitCountMPPC3;
+        private System.Windows.Forms.Label label_hitCountMPPC2;
+        private System.Windows.Forms.Label label_hitCountMPPC3;
+        private System.Windows.Forms.GroupBox groupBox_HvpsTelemetry;
+        private System.Windows.Forms.Label label141;
+        private System.Windows.Forms.Label label_Voltage;
+        private System.Windows.Forms.Label label_Temperature;
+        private System.Windows.Forms.TextBox textBox_tempFromHVPS;
+        private System.Windows.Forms.TextBox textBox_voltageFromHVPS;
+        private System.Windows.Forms.Label label_Current;
+        private System.Windows.Forms.TextBox textBox_currentFromHVPS;
+        private System.Windows.Forms.TextBox textBox_timestamp;
+        private System.Windows.Forms.Label label_timestamp;
     }
 }
 

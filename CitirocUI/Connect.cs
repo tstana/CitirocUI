@@ -231,14 +231,18 @@ namespace CitirocUI
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
                 /* Disconnect and exit if we are already connected... */
-                if (connectStatus == 1) {
+                if (connectStatus == 1)
+                {
                     mySerialComm.ClosePort();
 
-                    Form f = Application.OpenForms["frmMonitor"];
-                    if (f != null){
-                        frmMonitor fm = (frmMonitor)f;
-                        fm.ConnStatusLabel = "Not connected.";
-                    }
+                    //Form f = Application.OpenForms["frmMonitor"];
+                    //if (f != null)
+                    //{
+                    //    frmMonitor fm = (frmMonitor)f;
+                    //    fm.ConnStatusLabel = "Not connected.";
+                    //}
+                    label_ConnStatus.Text= "Not connected.";
+                    label_ConnStatus.BackColor = Color.Red;
 
                     roundButton_connect.BackColor = Color.Gainsboro;
                     roundButton_connect.ForeColor = Color.Black;
@@ -264,20 +268,9 @@ namespace CitirocUI
                     mySerialComm.Handshake = Handshake.None;
                     mySerialComm.RtsEnable = true;
 
-                    // TODO check if form is opened, else return ?
-                    Form fm0 = Application.OpenForms["frmMonitor"];
-                    if (fm0 != null)
-                    {
-                        frmMonitor fm1 = (frmMonitor)fm0;
-                        mySerialComm.DisplayWindow = fm1.rtxtMonitor;
-                        mySerialComm.MonitorActive = true;
-                    }
-                    else
-                    {
-                        mySerialComm.DisplayWindow = null;
-                        mySerialComm.MonitorActive = false;
-                    }
-                                             
+                    mySerialComm.DisplayWindow = rtxtMonitor;
+                    mySerialComm.MonitorActive = true;
+
                     //// Set the read/write timeouts
                     mySerialComm.ReadTimeout = 500;
                     mySerialComm.WriteTimeout = 500;
@@ -288,13 +281,8 @@ namespace CitirocUI
                         throw new Exception();
                     }
 
-                    // Update monitor form
-                    Form f = Application.OpenForms["frmMonitor"];
-                    if (f != null)
-                    {
-                        frmMonitor fm = (frmMonitor)f;
-                        fm.ConnStatusLabel = mySerialComm.info;
-                    }
+                    label_ConnStatus.Text = mySerialComm.info;
+                    label_ConnStatus.BackColor = Color.Green;
 
                     // Update text label		DataFileName	"CUBESfile.dat"	string
 
@@ -315,7 +303,8 @@ namespace CitirocUI
                     label_boardStatus.Text = "Board status\n" + "Not connected";
                 }
             }
-            else {
+            else
+            {
                 MessageBox.Show("Please select an instrument to connect to via the drop-down.");
                 connectStatus = -1;
                 roundButton_connect.BackColor = Color.IndianRed;
@@ -325,7 +314,7 @@ namespace CitirocUI
                 label_boardStatus.Text = "Board status\n" + "Not connected";
             }
         }
-    
+
 
         private void button_loadFw_Click(object sender, EventArgs e)
         {
@@ -549,24 +538,42 @@ namespace CitirocUI
 
         private void btn_OpenSerialMonitor_Click(object sender, EventArgs e)
         {
-            /* Prevent re-opening the form if already open... */
-            Form f = Application.OpenForms["frmMonitor"];
-            if (f != null)
-                return;
 
-            /* Now really open the form */
-            frmMonitor frmMon = new frmMonitor(mySerialComm);
+            if (this.Width > 1300) return;  // already show the panel_CubesMonitor
 
-            mySerialComm.DisplayWindow = frmMon.rtxtMonitor;
-            mySerialComm.MonitorActive = true;
+            panel_CubesMonitor.Visible = true;
+            Panel tPnl = new Panel();
+            tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
+            tblPnlMain.SetColumnSpan(tPnl, 2);
 
-            SendWindowPositionEvent += frmMon.SetPosition;
+            tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
+            tblPnlMain.ColumnStyles[2].Width = 455;
 
-            frmMon.Show();
-            frmMon.Top = this.Top;
-            frmMon.Left = this.Right;
-            frmMon.Height = this.Height;
-            frmMon.ConnStatusLabel = mySerialComm.info ;
+            tblPnlMain.Width = 1735;
+            this.Width = tblPnlMain.Width;
+
+            // open the Serial Com Port
+
+            label_ConnStatus.Text = "Not connected.";
+
+            ///* Prevent re-opening the form if already open... */
+            //Form f = Application.OpenForms["frmMonitor"];
+            //if (f != null)
+            //    return;
+
+            ///* Now really open the form */
+            //frmMonitor frmMon = new frmMonitor(mySerialComm);
+
+            //mySerialComm.DisplayWindow = frmMon.rtxtMonitor;
+            //mySerialComm.MonitorActive = true;
+
+            //SendWindowPositionEvent += frmMon.SetPosition;
+
+            //frmMon.Show();
+            //frmMon.Top = this.Top;
+            //frmMon.Left = this.Right;
+            //frmMon.Height = this.Height;
+            //frmMon.ConnStatusLabel = mySerialComm.info ;
         }
 
         // To send HV to MPPCs when serial port is selected

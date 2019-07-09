@@ -187,6 +187,13 @@ namespace CitirocUI
             if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
                 label_titleBar.Text += " (KTH)";
 
+            TableLayoutColumnStyleCollection styles =     this.tblPnlMain.ColumnStyles;
+            styles[2].SizeType = SizeType.Absolute;
+            styles[2].Width = 0;
+            tblPnlMain.Width = 1280;
+            this.Width = tblPnlMain.Width;
+            panel_CubesMonitor.Visible = false;
+
             // Set FTDI device count to 0
             ftdiDeviceCount = 0;
             // Create new instance of the FTDI device class
@@ -1766,6 +1773,24 @@ namespace CitirocUI
 
             /* Call the event handler if one is associated */
             SendWindowPositionEvent?.Invoke(p, this.Height);
+        }
+
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            string helpString =
+            "TX data is colored yellow\r\n" +
+            "RX data is colored green\r\n" +
+            "\r\n" +
+            "Press \"Clear\" to clear the window";
+            MessageBox.Show(helpString, "Help");
+        }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            rtxtMonitor.Clear();
+
+            // ?? also clear HK text boxes?
         }
     }
 }
