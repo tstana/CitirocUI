@@ -119,6 +119,10 @@ namespace CitirocUI
                 daqDurData[1] = Convert.ToByte(individAcqTime);
 
                 mySerialComm.WriteData(daqDurData, daqDurData.Length);
+
+                byte[] daqStart = new byte[1];
+                daqStart[1] = Convert.ToByte(ProtoCubesSerial.Command.DAQStart);
+                mySerialComm.WriteData(daqStart, daqStart.Length);
             }
 
             // No connection
@@ -429,9 +433,18 @@ namespace CitirocUI
             }
             else if (selectedConnectionMode == 1)
             {
-                MessageBox.Show("Finished background job.", "Info");
-                //SendDaqStop();
-                //SendReqPayload();
+                // Send DAQ_STOP command
+                byte[] cmd = new byte[1];
+                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStop);
+                mySerialComm.WriteData(cmd, cmd.Length);
+
+                // Wait for 3 seconds and send REQ_PAYLOAD command
+                Stopwatch s = Stopwatch.StartNew();
+                label_help.Text = "NOTE: Waiting 3 seconds until sending REQ_PAYLOAD...";
+                while (s.ElapsedMilliseconds < 3000)
+                    ;
+                label_help.Text = "";
+                SendReqPayload();
             }
         }
 
@@ -477,13 +490,6 @@ namespace CitirocUI
             mySerialComm.DataFileName = DataLoadFile;
             mySerialComm.RetrievingDaqData = true;
             mySerialComm.WriteData(reqData, reqData.Length);
-        }
-
-        private void SendDaqStop()
-        {
-            byte[] cmd = new byte[1];
-            cmd[0] = Convert.ToByte('T');
-            mySerialComm.WriteData(cmd, cmd.Length);
         }
 
         private void button_dataSavePath_Click(object sender, EventArgs e)
