@@ -296,7 +296,7 @@ namespace CitirocUI
                         fm.ConnStatusLabel = mySerialComm.info;
                     }
 
-                    // Update text label		DataFileName	"CUBESfile.dat"	string
+                    // Update text label
 
                     label_help.Text = "The " + comboBox_SelectConnection.Text + " board is connected. Click again if you wish to disconnect.";
                     connectStatus = 1;
@@ -325,7 +325,6 @@ namespace CitirocUI
                 label_boardStatus.Text = "Board status\n" + "Not connected";
             }
         }
-    
 
         private void button_loadFw_Click(object sender, EventArgs e)
         {
