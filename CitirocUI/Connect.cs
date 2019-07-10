@@ -556,24 +556,10 @@ namespace CitirocUI
 
             label_ConnStatus.Text = "Not connected.";
 
-            ///* Prevent re-opening the form if already open... */
-            //Form f = Application.OpenForms["frmMonitor"];
-            //if (f != null)
-            //    return;
+            mySerialComm.DataReadyEvent += CubesMonitor_DataReady;
 
-            ///* Now really open the form */
-            //frmMonitor frmMon = new frmMonitor(mySerialComm);
+            // respectiv -= la inchidere
 
-            //mySerialComm.DisplayWindow = frmMon.rtxtMonitor;
-            //mySerialComm.MonitorActive = true;
-
-            //SendWindowPositionEvent += frmMon.SetPosition;
-
-            //frmMon.Show();
-            //frmMon.Top = this.Top;
-            //frmMon.Left = this.Right;
-            //frmMon.Height = this.Height;
-            //frmMon.ConnStatusLabel = mySerialComm.info ;
         }
 
         // To send HV to MPPCs when serial port is selected
@@ -653,6 +639,106 @@ namespace CitirocUI
                     "Please check the connection...";
                 button_readTelemetry.BackColor = Color.IndianRed;
             }
+        }
+
+        private void CubesMonitor_DataReady(object sender, DataReadyEventArgs e)
+        {
+            // 1. Handle the simple ones: the hit counts...
+            UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(e.DataBytes, 11, 10));
+            byte[] ch0_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 23));
+            byte[] ch16_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 27));
+            byte[] ch31_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 31));
+            byte[] ch21_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 35));
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(ch0_hit_count);
+                Array.Reverse(ch16_hit_count);
+                Array.Reverse(ch31_hit_count);
+                Array.Reverse(ch21_hit_count);
+            }
+            UInt32 hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_count, 0);
+            UInt32 hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_count, 0);
+            UInt32 hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_count, 0);
+            UInt32 hitCountOR32 = BitConverter.ToUInt32(ch21_hit_count, 0);
+
+            // 2. Now for the HVPS stuff... It is presented as ASCII characters
+            // by the HVPS, placed at particular offsets in the HK data stream.
+            // These characters need to be converted to a string, which then needs
+            // to be converted to a double representation before the conversion
+            // formula in the datasheet can be applied.
+            string s;
+
+            byte[] hvps_voltage = new byte[4];
+            Array.Copy(e.DataBytes, 39, hvps_voltage, 0, 4);
+            s = System.Text.Encoding.ASCII.GetString(hvps_voltage);
+            double voltageFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
+            voltageFromHVPS *= 1.812 * Math.Pow(10, -3);
+
+            byte[] hvps_current = new byte[4];
+            Array.Copy(e.DataBytes, 43, hvps_current, 0, 4);
+            s = System.Text.Encoding.ASCII.GetString(hvps_current);
+            double currentFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
+            currentFromHVPS *= 5.194 * Math.Pow(10, -3);
+
+            byte[] hvps_temp = new byte[4];
+            Array.Copy(e.DataBytes, 47, hvps_temp, 0, 4);
+            s = System.Text.Encoding.ASCII.GetString(hvps_temp);
+            double tempFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
+            tempFromHVPS = (tempFromHVPS * 1.907 * Math.Pow(10, -5) - 1.035) /
+                           (-5.5 * Math.Pow(10, -3));
+
+            // 3. Apply the values into the text boxes; use the Control.Invoke()
+            //    method, to make sure the writing is done inside the original
+            //    UI thread
+            textBox_timestamp.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_timestamp.Text = timestamp.ToString();
+                }
+            ));
+
+            textBox_hitCountMPPC1.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hitCountMPPC1.Text = hitCountMPPC1.ToString();
+                }
+            ));
+            textBox_hitCountMPPC2.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hitCountMPPC2.Text = hitCountMPPC2.ToString();
+                }
+            ));
+            textBox_hitCountMPPC3.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hitCountMPPC3.Text = hitCountMPPC3.ToString();
+                }
+            ));
+            textBox_hitCountOR32.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hitCountOR32.Text = hitCountOR32.ToString();
+                }
+              ));
+            textBox_voltageFromHVPS.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_voltageFromHVPS.Text = voltageFromHVPS.ToString("N3");
+                }
+            ));
+            textBox_currentFromHVPS.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_currentFromHVPS.Text = currentFromHVPS.ToString("N3");
+                }
+            ));
+            textBox_tempFromHVPS.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_tempFromHVPS.Text = tempFromHVPS.ToString("N3");
+                }
+            ));
         }
     }
 }

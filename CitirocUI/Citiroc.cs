@@ -172,10 +172,7 @@ namespace CitirocUI
         }
 
         static int NbChannels = 32;
-
-        public delegate void PassWindowPosition(Point position, int f_height);
-        public event PassWindowPosition SendWindowPositionEvent;
-
+        
         private void Citiroc_Load(object sender, EventArgs e)
         {
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();
@@ -1765,16 +1762,6 @@ namespace CitirocUI
                 bitmap.Save(strSaveImageName, System.Drawing.Imaging.ImageFormat.Png);
             }
         }
-
-        private void Citiroc_LocationChanged(object sender, EventArgs e)
-        {
-            // new form position
-            Point p = new Point(this.Right, this.Top);
-
-            /* Call the event handler if one is associated */
-            SendWindowPositionEvent?.Invoke(p, this.Height);
-        }
-
 
         private void buttonHelp_Click(object sender, EventArgs e)
         {
