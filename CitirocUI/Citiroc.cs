@@ -91,6 +91,7 @@ namespace CitirocUI
         }
 
         double scale = 1;
+        bool extended = false;
         private void button_UIScale_Click(object sender, EventArgs e)
         {
             float scaleF = 1;
@@ -103,6 +104,22 @@ namespace CitirocUI
 
             if (WindowState == FormWindowState.Normal)
             {
+                // close panel CubesMonitor if opened
+                if (panel_CubesMonitor.Visible)
+                {
+                    extended = true;
+                    panel_CubesMonitor.Visible = false;
+                    Panel tPnl = new Panel();
+                    tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
+                    tblPnlMain.SetColumnSpan(tPnl, 1);
+
+                    tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
+                    tblPnlMain.ColumnStyles[2].Width = 0;
+
+                    tblPnlMain.Width = 1280;
+                    this.Width = tblPnlMain.Width;
+                }
+                
                 WindowState = FormWindowState.Maximized;
                 SizeF Scale = new SizeF(scaleF, scaleF);
                 ActiveForm.Scale(Scale);
@@ -125,9 +142,29 @@ namespace CitirocUI
             }
             else
             {
+
+
                 WindowState = FormWindowState.Normal;
                 SizeF Scale = new SizeF(1.0F / scaleF, 1.0F / scaleF);
                 ActiveForm.Scale(Scale);
+
+                // if panel CubesMonitor was ON, restore
+                if (extended)
+                {
+                    extended = false;
+
+                    panel_CubesMonitor.Visible = true;
+                    Panel tPnl = new Panel();
+                    tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
+                    tblPnlMain.SetColumnSpan(tPnl, 2);
+
+                    tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
+                    tblPnlMain.ColumnStyles[2].Width = 455;
+
+                    tblPnlMain.Width = 1735;
+                    this.Width = tblPnlMain.Width;
+                }
+
 
                 foreach (Control control in controlList)
                 {
