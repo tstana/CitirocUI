@@ -235,12 +235,6 @@ namespace CitirocUI
                 {
                     mySerialComm.ClosePort();
 
-                    //Form f = Application.OpenForms["frmMonitor"];
-                    //if (f != null)
-                    //{
-                    //    frmMonitor fm = (frmMonitor)f;
-                    //    fm.ConnStatusLabel = "Not connected.";
-                    //}
                     label_ConnStatus.Text= "Not connected.";
                     label_ConnStatus.BackColor = Color.Red;
 
