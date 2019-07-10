@@ -180,6 +180,10 @@ namespace CitirocUI
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = customCulture;
 
             tabControl_top.SendToBack();
+
+            tabControl_top.ItemSize = new Size(0, 1);
+            tabControl_top.SizeMode = TabSizeMode.Fixed;
+
             label_titleBar.Text += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
                 label_titleBar.Text += " (KTH)";

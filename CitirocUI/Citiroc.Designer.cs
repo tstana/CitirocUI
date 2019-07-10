@@ -1216,6 +1216,7 @@
             this.tabControl_top.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl_top.Multiline = true;
             this.tabControl_top.Name = "tabControl_top";
+            this.tabControl_top.Padding = new System.Drawing.Point(0, 0);
             this.tabControl_top.SelectedIndex = 0;
             this.tabControl_top.Size = new System.Drawing.Size(1080, 490);
             this.tabControl_top.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -1237,8 +1238,8 @@
             this.tabPage_main.Controls.Add(this.label_boardStatus);
             this.tabPage_main.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_main.Location = new System.Drawing.Point(14, 4);
+            this.tabPage_main.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage_main.Name = "tabPage_main";
-            this.tabPage_main.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_main.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_main.TabIndex = 1;
             this.tabPage_main.Text = "Connect";
@@ -1362,7 +1363,7 @@
             // label137
             // 
             this.label137.AutoSize = true;
-            this.label137.Location = new System.Drawing.Point(425, 8);
+            this.label137.Location = new System.Drawing.Point(422, 5);
             this.label137.Name = "label137";
             this.label137.Size = new System.Drawing.Size(240, 24);
             this.label137.TabIndex = 8;
