@@ -64,7 +64,7 @@
             this.textBox_HV = new System.Windows.Forms.TextBox();
             this.label140 = new System.Windows.Forms.Label();
             this.button_readTelemetry = new System.Windows.Forms.Button();
-            this.btn_OpenSerialMonitor = new System.Windows.Forms.Button();
+            this.btn_CubesMonitor = new System.Windows.Forms.Button();
             this.comboBox_COMPortList = new System.Windows.Forms.ComboBox();
             this.label139 = new System.Windows.Forms.Label();
             this.label138 = new System.Windows.Forms.Label();
@@ -1248,7 +1248,7 @@
             // 
             this.groupBox_SerialPortSettings.Controls.Add(this.groupBox_HV);
             this.groupBox_SerialPortSettings.Controls.Add(this.button_readTelemetry);
-            this.groupBox_SerialPortSettings.Controls.Add(this.btn_OpenSerialMonitor);
+            this.groupBox_SerialPortSettings.Controls.Add(this.btn_CubesMonitor);
             this.groupBox_SerialPortSettings.Controls.Add(this.comboBox_COMPortList);
             this.groupBox_SerialPortSettings.Controls.Add(this.label139);
             this.groupBox_SerialPortSettings.Controls.Add(this.label138);
@@ -1309,15 +1309,15 @@
             this.button_readTelemetry.UseVisualStyleBackColor = true;
             this.button_readTelemetry.Click += new System.EventHandler(this.button_readTelemetry_Click);
             // 
-            // btn_OpenSerialMonitor
+            // btn_CubesMonitor
             // 
-            this.btn_OpenSerialMonitor.Location = new System.Drawing.Point(10, 140);
-            this.btn_OpenSerialMonitor.Name = "btn_OpenSerialMonitor";
-            this.btn_OpenSerialMonitor.Size = new System.Drawing.Size(235, 37);
-            this.btn_OpenSerialMonitor.TabIndex = 11;
-            this.btn_OpenSerialMonitor.Text = "Open CUBES Monitor >>>";
-            this.btn_OpenSerialMonitor.UseVisualStyleBackColor = true;
-            this.btn_OpenSerialMonitor.Click += new System.EventHandler(this.btn_OpenSerialMonitor_Click);
+            this.btn_CubesMonitor.Location = new System.Drawing.Point(10, 140);
+            this.btn_CubesMonitor.Name = "btn_CubesMonitor";
+            this.btn_CubesMonitor.Size = new System.Drawing.Size(235, 37);
+            this.btn_CubesMonitor.TabIndex = 11;
+            this.btn_CubesMonitor.Text = "CUBES Monitor >>>";
+            this.btn_CubesMonitor.UseVisualStyleBackColor = true;
+            this.btn_CubesMonitor.Click += new System.EventHandler(this.btn_CubesMonitor_Click);
             // 
             // comboBox_COMPortList
             // 
@@ -12922,7 +12922,7 @@
         private System.Windows.Forms.GroupBox groupBox_SerialPortSettings;
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.Label label138;
-        private System.Windows.Forms.Button btn_OpenSerialMonitor;
+        private System.Windows.Forms.Button btn_CubesMonitor;
         private System.Windows.Forms.Button button_readTelemetry;
         private System.Windows.Forms.GroupBox groupBox_HV;
         private System.Windows.Forms.Button button_HVPS;
