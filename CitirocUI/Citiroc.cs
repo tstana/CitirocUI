@@ -244,6 +244,7 @@ namespace CitirocUI
             enableZoom(chart_holdScan.ChartAreas[0], true);
 
             roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
+            label_ConnStatus.Text = "Not Connected";
 
             #region Weeroc font
             controlList = GetControlHierarchy(this).ToList(); // Get the list of all the controls in the UI
