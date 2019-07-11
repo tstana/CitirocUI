@@ -308,11 +308,13 @@ namespace CitirocUI
             chart_perChannelChargeLG.ContextMenu = cm3;
             chart_perAcqChargeLG.ContextMenu = cm2;
 
+            // Serial Port Settings and CUBES Monitor specifics...
             groupBox_SerialPortSettings.Visible = false;
             CubesMonitorVisible(false);
             label_ConnStatus.Font = new Font(label_ConnStatus.Font, FontStyle.Bold);
             label_ConnStatus.ForeColor = Color.IndianRed;
             label_ConnStatus.Text = "Not connected";
+            label_NoteOnHVPSTelem.Font = new Font(label_NoteOnHVPSTelem.Font, FontStyle.Bold);
 
             // Adjust enable state of labels in Data Acquisition tab
             if (switchBox_acquisitionMode.Checked == true) {

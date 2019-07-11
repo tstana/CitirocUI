@@ -896,7 +896,7 @@
             this.label_hitCountMPPC2 = new System.Windows.Forms.Label();
             this.label_hitCountMPPC3 = new System.Windows.Forms.Label();
             this.groupBox_HvpsTelemetry = new System.Windows.Forms.GroupBox();
-            this.label141 = new System.Windows.Forms.Label();
+            this.label_NoteOnHVPSTelem = new System.Windows.Forms.Label();
             this.label_Voltage = new System.Windows.Forms.Label();
             this.label_Temperature = new System.Windows.Forms.Label();
             this.textBox_tempFromHVPS = new System.Windows.Forms.TextBox();
@@ -11835,7 +11835,7 @@
             // 
             // groupBox_HvpsTelemetry
             // 
-            this.groupBox_HvpsTelemetry.Controls.Add(this.label141);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_NoteOnHVPSTelem);
             this.groupBox_HvpsTelemetry.Controls.Add(this.label_Voltage);
             this.groupBox_HvpsTelemetry.Controls.Add(this.label_Temperature);
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_tempFromHVPS);
@@ -11850,15 +11850,15 @@
             this.groupBox_HvpsTelemetry.TabStop = false;
             this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry";
             // 
-            // label141
+            // label_NoteOnHVPSTelem
             // 
-            this.label141.AutoSize = true;
-            this.label141.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label141.Location = new System.Drawing.Point(16, 127);
-            this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(248, 18);
-            this.label141.TabIndex = 19;
-            this.label141.Text = "NB: Read by hardware every 5s!";
+            this.label_NoteOnHVPSTelem.AutoSize = true;
+            this.label_NoteOnHVPSTelem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_NoteOnHVPSTelem.Location = new System.Drawing.Point(6, 113);
+            this.label_NoteOnHVPSTelem.Name = "label_NoteOnHVPSTelem";
+            this.label_NoteOnHVPSTelem.Size = new System.Drawing.Size(248, 18);
+            this.label_NoteOnHVPSTelem.TabIndex = 19;
+            this.label_NoteOnHVPSTelem.Text = "NB: Read by hardware every 5s!";
             // 
             // label_Voltage
             // 
@@ -12949,7 +12949,7 @@
         private System.Windows.Forms.Label label_hitCountMPPC2;
         private System.Windows.Forms.Label label_hitCountMPPC3;
         private System.Windows.Forms.GroupBox groupBox_HvpsTelemetry;
-        private System.Windows.Forms.Label label141;
+        private System.Windows.Forms.Label label_NoteOnHVPSTelem;
         private System.Windows.Forms.Label label_Voltage;
         private System.Windows.Forms.Label label_Temperature;
         private System.Windows.Forms.TextBox textBox_tempFromHVPS;
