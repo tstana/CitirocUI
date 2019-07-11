@@ -607,12 +607,11 @@ namespace CitirocUI
 
         private void button_readTelemetry_Click(object sender, EventArgs e)
         {
-            /* Prevent running any more code if Monitor Form is not open */
-            Form f = Application.OpenForms["frmMonitor"];
-            if (f == null)
+            /* Prevent sending any commands if monitor is not open... */
+            if (!panel_CubesMonitor.Visible)
             {
                 button_readTelemetry.BackColor = Color.IndianRed;
-                label_help.Text = "ERROR: The Monitor Form needs to be open" +
+                label_help.Text = "ERROR: The CUBES Monitor needs to be open" +
                     " for this operation to be performed!";
                 return;
             }
