@@ -540,7 +540,7 @@ namespace CitirocUI
                 label_ConnStatus.Text = "Not connected.";
 
                 mySerialComm.DataReadyEvent += CubesMonitor_DataReady;
-                btn_OpenSerialMonitor.Text = "Close CUBES Monitor";
+                btn_OpenSerialMonitor.Text = "Close CUBES Monitor <<";
             }
             else
             {
@@ -550,7 +550,7 @@ namespace CitirocUI
                 label_ConnStatus.Text = "Not connected.";
 
                 mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
-                btn_OpenSerialMonitor.Text = "Open CUBES Monitor";
+                btn_OpenSerialMonitor.Text = "Open CUBES Monitor >>";
             }
         }
 
