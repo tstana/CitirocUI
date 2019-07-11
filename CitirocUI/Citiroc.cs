@@ -206,8 +206,6 @@ namespace CitirocUI
             if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
                 label_titleBar.Text += " (KTH)";
 
-            CubesMonitorVisible(false);
-
             // Set FTDI device count to 0
             ftdiDeviceCount = 0;
             // Create new instance of the FTDI device class
@@ -311,6 +309,10 @@ namespace CitirocUI
             chart_perAcqChargeLG.ContextMenu = cm2;
 
             groupBox_SerialPortSettings.Visible = false;
+            CubesMonitorVisible(false);
+            label_ConnStatus.Font = new Font(label_ConnStatus.Font, FontStyle.Bold);
+            label_ConnStatus.ForeColor = Color.IndianRed;
+            label_ConnStatus.Text = "Not connected";
 
             // Adjust enable state of labels in Data Acquisition tab
             if (switchBox_acquisitionMode.Checked == true) {

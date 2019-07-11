@@ -235,8 +235,8 @@ namespace CitirocUI
                 {
                     mySerialComm.ClosePort();
 
-                    label_ConnStatus.Text= "Not connected.";
-                    label_ConnStatus.ForeColor = Color.Black;
+                    label_ConnStatus.Text = "Not connected.";
+                    label_ConnStatus.ForeColor = Color.IndianRed;
 
                     roundButton_connect.BackColor = Color.Gainsboro;
                     roundButton_connect.ForeColor = Color.Black;
@@ -276,7 +276,7 @@ namespace CitirocUI
                     }
 
                     label_ConnStatus.Text = mySerialComm.info;
-                    label_ConnStatus.ForeColor = Color.Green;
+                    label_ConnStatus.ForeColor = WeerocGreen;
 
                     // Update text label		DataFileName	"CUBESfile.dat"	string
 
@@ -295,8 +295,6 @@ namespace CitirocUI
                     roundButton_connectSmall.BackColor = Color.IndianRed;
                     roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
                     label_boardStatus.Text = "Board status\n" + "Not connected";
-                    label_ConnStatus.Text = "Connection error";
-                    label_ConnStatus.ForeColor = Color.Red;
                 }
             }
             else
@@ -550,8 +548,6 @@ namespace CitirocUI
                 mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
                 btn_CubesMonitor.Text = "CUBES Monitor >>>";
             }
-
-            rtxtMonitor.Text = "";
         }
 
         // To send HV to MPPCs when serial port is selected
