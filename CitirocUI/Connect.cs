@@ -535,18 +535,7 @@ namespace CitirocUI
 
             if (panel_CubesMonitor.Visible == false)
             {
-                panel_CubesMonitor.Visible = true;
-                Panel tPnl = new Panel();
-                tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
-                tblPnlMain.SetColumnSpan(tPnl, 2);
-
-                tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
-                tblPnlMain.ColumnStyles[2].Width = 455;
-
-                tblPnlMain.Width = 1735;
-                this.Width = tblPnlMain.Width;
-
-                // open the Serial Com Port
+                CubesMonitorVisible(true);
 
                 label_ConnStatus.Text = "Not connected.";
 
@@ -556,27 +545,13 @@ namespace CitirocUI
             else
             {
                 // already visible, will be closed
-                panel_CubesMonitor.Visible = false;
-                Panel tPnl = new Panel();
-                tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
-                tblPnlMain.SetColumnSpan(tPnl, 1);
-
-                tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
-                tblPnlMain.ColumnStyles[2].Width = 0;
-
-                tblPnlMain.Width = 1280;
-                this.Width = tblPnlMain.Width;
-
-                // open the Serial Com Port
-
+                CubesMonitorVisible(false);
+    
                 label_ConnStatus.Text = "Not connected.";
 
                 mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
                 btn_OpenSerialMonitor.Text = "Open CUBES Monitor";
             }
-
-            // respectiv -= la inchidere
-
         }
 
         // To send HV to MPPCs when serial port is selected
@@ -756,6 +731,25 @@ namespace CitirocUI
                     textBox_tempFromHVPS.Text = tempFromHVPS.ToString("N3");
                 }
             ));
+        }
+
+        private void CubesMonitorVisible(bool mode)
+        {
+            panel_CubesMonitor.Visible = mode;
+    
+            tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
+            if (mode)
+            {
+                tblPnlMain.ColumnStyles[2].Width = 455;
+                tblPnlMain.Width = 1735;
+            }
+            else
+            {
+                tblPnlMain.ColumnStyles[2].Width = 0;
+                tblPnlMain.Width = 1280;
+            }
+
+            this.Width = tblPnlMain.Width;
         }
     }
 }

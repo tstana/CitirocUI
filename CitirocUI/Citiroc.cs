@@ -108,16 +108,7 @@ namespace CitirocUI
                 if (panel_CubesMonitor.Visible)
                 {
                     extended = true;
-                    panel_CubesMonitor.Visible = false;
-                    Panel tPnl = new Panel();
-                    tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
-                    tblPnlMain.SetColumnSpan(tPnl, 1);
-
-                    tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
-                    tblPnlMain.ColumnStyles[2].Width = 0;
-
-                    tblPnlMain.Width = 1280;
-                    this.Width = tblPnlMain.Width;
+                    CubesMonitorVisible(false);
                 }
                 
                 WindowState = FormWindowState.Maximized;
@@ -152,17 +143,7 @@ namespace CitirocUI
                 if (extended)
                 {
                     extended = false;
-
-                    panel_CubesMonitor.Visible = true;
-                    Panel tPnl = new Panel();
-                    tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
-                    tblPnlMain.SetColumnSpan(tPnl, 2);
-
-                    tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
-                    tblPnlMain.ColumnStyles[2].Width = 455;
-
-                    tblPnlMain.Width = 1735;
-                    this.Width = tblPnlMain.Width;
+                    CubesMonitorVisible(true);
                 }
 
 
@@ -225,12 +206,7 @@ namespace CitirocUI
             if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
                 label_titleBar.Text += " (KTH)";
 
-            TableLayoutColumnStyleCollection styles =     this.tblPnlMain.ColumnStyles;
-            styles[2].SizeType = SizeType.Absolute;
-            styles[2].Width = 0;
-            tblPnlMain.Width = 1280;
-            this.Width = tblPnlMain.Width;
-            panel_CubesMonitor.Visible = false;
+            CubesMonitorVisible(false);
 
             // Set FTDI device count to 0
             ftdiDeviceCount = 0;

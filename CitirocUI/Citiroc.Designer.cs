@@ -11642,7 +11642,7 @@
             this.tblPnlMain.Controls.Add(this.pictureBox_logoWeeroc, 0, 2);
             this.tblPnlMain.Controls.Add(this.label_help, 1, 2);
             this.tblPnlMain.Controls.Add(this.label_weerocDotCom, 0, 0);
-            this.tblPnlMain.Controls.Add(this.panel_CubesMonitor, 2, 1);
+            this.tblPnlMain.Controls.Add(this.panel_CubesMonitor, 2, 0);
             this.tblPnlMain.Location = new System.Drawing.Point(0, 0);
             this.tblPnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.tblPnlMain.Name = "tblPnlMain";
@@ -11650,6 +11650,7 @@
             this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblPnlMain.Size = new System.Drawing.Size(1737, 720);
             this.tblPnlMain.TabIndex = 38;
             // 
@@ -11717,11 +11718,11 @@
             this.panel_CubesMonitor.Controls.Add(this.rtxtMonitor);
             this.panel_CubesMonitor.Controls.Add(this.panel_clearSerialMonitor);
             this.panel_CubesMonitor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_CubesMonitor.Location = new System.Drawing.Point(1280, 30);
+            this.panel_CubesMonitor.Location = new System.Drawing.Point(1280, 0);
             this.panel_CubesMonitor.Margin = new System.Windows.Forms.Padding(0);
             this.panel_CubesMonitor.Name = "panel_CubesMonitor";
-            this.tblPnlMain.SetRowSpan(this.panel_CubesMonitor, 2);
-            this.panel_CubesMonitor.Size = new System.Drawing.Size(457, 690);
+            this.tblPnlMain.SetRowSpan(this.panel_CubesMonitor, 3);
+            this.panel_CubesMonitor.Size = new System.Drawing.Size(457, 720);
             this.panel_CubesMonitor.TabIndex = 40;
             // 
             // groupBox_telemetry
@@ -11948,7 +11949,7 @@
             this.panel_clearSerialMonitor.Controls.Add(this.buttonHelp);
             this.panel_clearSerialMonitor.Controls.Add(this.button_Clear);
             this.panel_clearSerialMonitor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_clearSerialMonitor.Location = new System.Drawing.Point(0, 653);
+            this.panel_clearSerialMonitor.Location = new System.Drawing.Point(0, 683);
             this.panel_clearSerialMonitor.Name = "panel_clearSerialMonitor";
             this.panel_clearSerialMonitor.Size = new System.Drawing.Size(457, 37);
             this.panel_clearSerialMonitor.TabIndex = 21;
