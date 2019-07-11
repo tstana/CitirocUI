@@ -1365,9 +1365,9 @@
             this.label137.AutoSize = true;
             this.label137.Location = new System.Drawing.Point(422, 5);
             this.label137.Name = "label137";
-            this.label137.Size = new System.Drawing.Size(240, 24);
+            this.label137.Size = new System.Drawing.Size(159, 24);
             this.label137.TabIndex = 8;
-            this.label137.Text = "Select connection medium:";
+            this.label137.Text = "Select instrument:";
             // 
             // comboBox_SelectConnection
             // 
@@ -1375,8 +1375,8 @@
             this.comboBox_SelectConnection.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBox_SelectConnection.FormattingEnabled = true;
             this.comboBox_SelectConnection.Items.AddRange(new object[] {
-            "USB",
-            "Proto-CUBES Serial Port"});
+            "Citiroc Evaluation Kit",
+            "Proto-CUBES"});
             this.comboBox_SelectConnection.Location = new System.Drawing.Point(425, 38);
             this.comboBox_SelectConnection.Name = "comboBox_SelectConnection";
             this.comboBox_SelectConnection.Size = new System.Drawing.Size(240, 32);
