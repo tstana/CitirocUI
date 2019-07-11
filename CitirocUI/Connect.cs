@@ -278,14 +278,15 @@ namespace CitirocUI
                     label_ConnStatus.Text = mySerialComm.info;
                     label_ConnStatus.ForeColor = WeerocGreen;
 
-                    // Update text label		DataFileName	"CUBESfile.dat"	string
-
-                    label_help.Text = "The " + comboBox_SelectConnection.Text + " board is connected. Click again if you wish to disconnect.";
+                    // Update connection indicators
                     connectStatus = 1;
                     roundButton_connect.BackColor = WeerocGreen;
                     roundButton_connect.ForeColor = Color.White;
                     roundButton_connectSmall.BackColor = WeerocGreen;
                     roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
+                    label_help.Text = comboBox_SelectConnection.Text + " is connected. Click again if you wish to disconnect.";
+                    label_boardStatus.Text = "Board status\n" +
+                        comboBox_SelectConnection.Text + " is connected.";
                 }
                 catch
                 {
