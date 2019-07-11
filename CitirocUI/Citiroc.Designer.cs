@@ -1315,7 +1315,7 @@
             this.btn_OpenSerialMonitor.Name = "btn_OpenSerialMonitor";
             this.btn_OpenSerialMonitor.Size = new System.Drawing.Size(235, 37);
             this.btn_OpenSerialMonitor.TabIndex = 11;
-            this.btn_OpenSerialMonitor.Text = "Open Serial Monitor...";
+            this.btn_OpenSerialMonitor.Text = "Open CUBES Monitor";
             this.btn_OpenSerialMonitor.UseVisualStyleBackColor = true;
             this.btn_OpenSerialMonitor.Click += new System.EventHandler(this.btn_OpenSerialMonitor_Click);
             // 

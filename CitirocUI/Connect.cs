@@ -533,24 +533,47 @@ namespace CitirocUI
         private void btn_OpenSerialMonitor_Click(object sender, EventArgs e)
         {
 
-            if (this.Width > 1300) return;  // already show the panel_CubesMonitor
+            if (panel_CubesMonitor.Visible == false)
+            {
+                panel_CubesMonitor.Visible = true;
+                Panel tPnl = new Panel();
+                tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
+                tblPnlMain.SetColumnSpan(tPnl, 2);
 
-            panel_CubesMonitor.Visible = true;
-            Panel tPnl = new Panel();
-            tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
-            tblPnlMain.SetColumnSpan(tPnl, 2);
+                tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
+                tblPnlMain.ColumnStyles[2].Width = 455;
 
-            tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
-            tblPnlMain.ColumnStyles[2].Width = 455;
+                tblPnlMain.Width = 1735;
+                this.Width = tblPnlMain.Width;
 
-            tblPnlMain.Width = 1735;
-            this.Width = tblPnlMain.Width;
+                // open the Serial Com Port
 
-            // open the Serial Com Port
+                label_ConnStatus.Text = "Not connected.";
 
-            label_ConnStatus.Text = "Not connected.";
+                mySerialComm.DataReadyEvent += CubesMonitor_DataReady;
+                btn_OpenSerialMonitor.Text = "Close CUBES Monitor";
+            }
+            else
+            {
+                // already visible, will be closed
+                panel_CubesMonitor.Visible = false;
+                Panel tPnl = new Panel();
+                tPnl = (Panel)tblPnlMain.GetControlFromPosition(1, 0);
+                tblPnlMain.SetColumnSpan(tPnl, 1);
 
-            mySerialComm.DataReadyEvent += CubesMonitor_DataReady;
+                tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
+                tblPnlMain.ColumnStyles[2].Width = 0;
+
+                tblPnlMain.Width = 1280;
+                this.Width = tblPnlMain.Width;
+
+                // open the Serial Com Port
+
+                label_ConnStatus.Text = "Not connected.";
+
+                mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
+                btn_OpenSerialMonitor.Text = "Open CUBES Monitor";
+            }
 
             // respectiv -= la inchidere
 
