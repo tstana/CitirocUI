@@ -540,7 +540,7 @@ namespace CitirocUI
                 CubesMonitorVisible(true);
 
                 mySerialComm.DataReadyEvent += CubesMonitor_DataReady;
-                btn_OpenSerialMonitor.Text = "Close CUBES Monitor <<";
+                btn_OpenSerialMonitor.Text = "Close CUBES Monitor <<<";
             }
             else
             {
@@ -548,7 +548,7 @@ namespace CitirocUI
                 CubesMonitorVisible(false);
     
                 mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
-                btn_OpenSerialMonitor.Text = "Open CUBES Monitor >>";
+                btn_OpenSerialMonitor.Text = "Open CUBES Monitor >>>";
             }
 
             rtxtMonitor.Text = "";
