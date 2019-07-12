@@ -90,6 +90,7 @@ namespace CitirocUI
         }
 
         double scale = 1;
+        bool extended = false;
         private void button_UIScale_Click(object sender, EventArgs e)
         {
             float scaleF = 1;
@@ -102,6 +103,13 @@ namespace CitirocUI
 
             if (WindowState == FormWindowState.Normal)
             {
+                // close panel CubesMonitor if opened
+                if (panel_CubesMonitor.Visible)
+                {
+                    extended = true;
+                    CubesMonitorVisible(false);
+                }
+                
                 WindowState = FormWindowState.Maximized;
                 SizeF Scale = new SizeF(scaleF, scaleF);
                 ActiveForm.Scale(Scale);
@@ -124,9 +132,19 @@ namespace CitirocUI
             }
             else
             {
+
+
                 WindowState = FormWindowState.Normal;
                 SizeF Scale = new SizeF(1.0F / scaleF, 1.0F / scaleF);
                 ActiveForm.Scale(Scale);
+
+                // if panel CubesMonitor was ON, restore
+                if (extended)
+                {
+                    extended = false;
+                    CubesMonitorVisible(true);
+                }
+
 
                 foreach (Control control in controlList)
                 {
@@ -171,10 +189,7 @@ namespace CitirocUI
         }
 
         static int NbChannels = 32;
-
-        public delegate void PassWindowPosition(Point position, int f_height);
-        public event PassWindowPosition SendWindowPositionEvent;
-
+        
         private void Citiroc_Load(object sender, EventArgs e)
         {
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();
@@ -182,6 +197,10 @@ namespace CitirocUI
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = customCulture;
 
             tabControl_top.SendToBack();
+
+            tabControl_top.ItemSize = new Size(0, 1);
+            tabControl_top.SizeMode = TabSizeMode.Fixed;
+
             label_titleBar.Text += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
                 label_titleBar.Text += " (KTH)";
@@ -222,6 +241,7 @@ namespace CitirocUI
             enableZoom(chart_holdScan.ChartAreas[0], true);
 
             roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
+            label_ConnStatus.Text = "Not Connected";
 
             #region Weeroc font
             controlList = GetControlHierarchy(this).ToList(); // Get the list of all the controls in the UI
@@ -287,7 +307,13 @@ namespace CitirocUI
             chart_perChannelChargeLG.ContextMenu = cm3;
             chart_perAcqChargeLG.ContextMenu = cm2;
 
+            // Serial Port Settings and CUBES Monitor specifics...
             groupBox_SerialPortSettings.Visible = false;
+            CubesMonitorVisible(false);
+            label_ConnStatus.Font = new Font(label_ConnStatus.Font, FontStyle.Bold);
+            label_ConnStatus.ForeColor = Color.IndianRed;
+            label_ConnStatus.Text = "Not connected";
+            label_NoteOnHVPSTelem.Font = new Font(label_NoteOnHVPSTelem.Font, FontStyle.Bold);
 
             // Adjust enable state of labels in Data Acquisition tab
             if (switchBox_acquisitionMode.Checked == true) {
@@ -1762,14 +1788,170 @@ namespace CitirocUI
             }
         }
 
-        private void Citiroc_LocationChanged(object sender, EventArgs e)
+        #region CUBES Monitor
+        private void btn_CubesMonitor_Click(object sender, EventArgs e)
         {
-            // new form position
-            Point p = new Point(this.Right, this.Top);
 
-            /* Call the event handler if one is associated */
-            SendWindowPositionEvent?.Invoke(p, this.Height);
+            if (panel_CubesMonitor.Visible == false)
+            {
+                CubesMonitorVisible(true);
+
+                mySerialComm.DataReadyEvent += CubesMonitor_DataReady;
+                btn_CubesMonitor.Text = "CUBES Monitor <<<";
+            }
+            else
+            {
+                // already visible, will be closed
+                CubesMonitorVisible(false);
+
+                mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
+                btn_CubesMonitor.Text = "CUBES Monitor >>>";
+            }
         }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            textBox_timestamp.Text = "";
+            textBox_hitCountMPPC1.Text = "";
+            textBox_hitCountMPPC2.Text = "";
+            textBox_hitCountMPPC3.Text = "";
+            textBox_hitCountOR32.Text = "";
+            textBox_voltageFromHVPS.Text = "";
+            textBox_currentFromHVPS.Text = "";
+            textBox_tempFromHVPS.Text = "";
+
+            rtxtMonitor.Clear();
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            string helpString =
+            "TX data is colored yellow\r\n" +
+            "RX data is colored green\r\n" +
+            "\r\n" +
+            "Press \"Clear\" to clear monitor contents.";
+            MessageBox.Show(helpString, "Help");
+        }
+
+        private void CubesMonitor_DataReady(object sender, DataReadyEventArgs e)
+        {
+            // 1. Handle the simple ones: the hit counts...
+            UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(e.DataBytes, 11, 10));
+            byte[] ch0_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 23));
+            byte[] ch16_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 27));
+            byte[] ch31_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 31));
+            byte[] ch21_hit_count = BitConverter.GetBytes(BitConverter.ToUInt32(e.DataBytes, 35));
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(ch0_hit_count);
+                Array.Reverse(ch16_hit_count);
+                Array.Reverse(ch31_hit_count);
+                Array.Reverse(ch21_hit_count);
+            }
+            UInt32 hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_count, 0);
+            UInt32 hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_count, 0);
+            UInt32 hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_count, 0);
+            UInt32 hitCountOR32 = BitConverter.ToUInt32(ch21_hit_count, 0);
+
+            // 2. Now for the HVPS stuff... It is presented as ASCII characters
+            // by the HVPS, placed at particular offsets in the HK data stream.
+            // These characters need to be converted to a string, which then needs
+            // to be converted to a double representation before the conversion
+            // formula in the datasheet can be applied.
+            string s;
+
+            byte[] hvps_voltage = new byte[4];
+            Array.Copy(e.DataBytes, 39, hvps_voltage, 0, 4);
+            s = System.Text.Encoding.ASCII.GetString(hvps_voltage);
+            double voltageFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
+            voltageFromHVPS *= 1.812 * Math.Pow(10, -3);
+
+            byte[] hvps_current = new byte[4];
+            Array.Copy(e.DataBytes, 43, hvps_current, 0, 4);
+            s = System.Text.Encoding.ASCII.GetString(hvps_current);
+            double currentFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
+            currentFromHVPS *= 5.194 * Math.Pow(10, -3);
+
+            byte[] hvps_temp = new byte[4];
+            Array.Copy(e.DataBytes, 47, hvps_temp, 0, 4);
+            s = System.Text.Encoding.ASCII.GetString(hvps_temp);
+            double tempFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
+            tempFromHVPS = (tempFromHVPS * 1.907 * Math.Pow(10, -5) - 1.035) /
+                           (-5.5 * Math.Pow(10, -3));
+
+            // 3. Apply the values into the text boxes; use the Control.Invoke()
+            //    method, to make sure the writing is done inside the original
+            //    UI thread
+            textBox_timestamp.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_timestamp.Text = timestamp.ToString();
+                }
+            ));
+
+            textBox_hitCountMPPC1.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hitCountMPPC1.Text = hitCountMPPC1.ToString();
+                }
+            ));
+            textBox_hitCountMPPC2.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hitCountMPPC2.Text = hitCountMPPC2.ToString();
+                }
+            ));
+            textBox_hitCountMPPC3.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hitCountMPPC3.Text = hitCountMPPC3.ToString();
+                }
+            ));
+            textBox_hitCountOR32.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hitCountOR32.Text = hitCountOR32.ToString();
+                }
+              ));
+            textBox_voltageFromHVPS.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_voltageFromHVPS.Text = voltageFromHVPS.ToString("N3");
+                }
+            ));
+            textBox_currentFromHVPS.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_currentFromHVPS.Text = currentFromHVPS.ToString("N3");
+                }
+            ));
+            textBox_tempFromHVPS.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_tempFromHVPS.Text = tempFromHVPS.ToString("N3");
+                }
+            ));
+        }
+
+        private void CubesMonitorVisible(bool mode)
+        {
+            panel_CubesMonitor.Visible = mode;
+
+            tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
+            if (mode)
+            {
+                tblPnlMain.ColumnStyles[2].Width = 455;
+                tblPnlMain.Width = 1735;
+            }
+            else
+            {
+                tblPnlMain.ColumnStyles[2].Width = 0;
+                tblPnlMain.Width = 1280;
+            }
+
+            this.Width = tblPnlMain.Width;
+        }
+        #endregion
     }
 }
            
