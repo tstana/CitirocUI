@@ -1863,18 +1863,24 @@ namespace CitirocUI
             byte[] hvps_voltage = new byte[4];
             Array.Copy(e.DataBytes, 39, hvps_voltage, 0, 4);
             s = System.Text.Encoding.ASCII.GetString(hvps_voltage);
+            if (s == "\0\0\0\0")
+                s = "0000";
             double voltageFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
             voltageFromHVPS *= 1.812 * Math.Pow(10, -3);
 
             byte[] hvps_current = new byte[4];
             Array.Copy(e.DataBytes, 43, hvps_current, 0, 4);
             s = System.Text.Encoding.ASCII.GetString(hvps_current);
+            if (s == "\0\0\0\0")
+                s = "0000";
             double currentFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
             currentFromHVPS *= 5.194 * Math.Pow(10, -3);
 
             byte[] hvps_temp = new byte[4];
             Array.Copy(e.DataBytes, 47, hvps_temp, 0, 4);
             s = System.Text.Encoding.ASCII.GetString(hvps_temp);
+            if (s == "\0\0\0\0")
+                s = "0000";
             double tempFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
             tempFromHVPS = (tempFromHVPS * 1.907 * Math.Pow(10, -5) - 1.035) /
                            (-5.5 * Math.Pow(10, -3));
