@@ -489,14 +489,15 @@ namespace CitirocUI
         private void SendReqPayload()
         {
             byte[] reqData = new byte[1];
-            reqData[0] = Convert.ToByte('p');
+            reqData[0] = Convert.ToByte(ProtoCubesSerial.Command.ReqPayload);
 
             /*
              * Prep the ProtoCubesSerial instance for DAQ data reception
              * and GO!
              */
-            mySerialComm.DataFileName = DataLoadFile;
             mySerialComm.RetrievingDaqData = true;
+            mySerialComm.NumBins = 2048;        // TODO: Replace with ProtoCubesSerial.Command parameter
+                                                //       and number from WinForms control.
             mySerialComm.WriteData(reqData, reqData.Length);
         }
 
@@ -768,7 +769,7 @@ namespace CitirocUI
                 date = date.Replace('/', '-');
                 string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
 
-                label_help.Text = "Writing DAQ data to " + fileName;
+                UpdatingLabel("Writing DAQ data to " + fileName, label_help);
 
                 using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
                 {

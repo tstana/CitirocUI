@@ -90,7 +90,7 @@ namespace CitirocUI
 
         private bool _retrievingDaqData = false;
         private int _numBytesRetrieved = 0;
-        private string _daqDataFileName = "CUBESfile.dat";
+        private int _numBins;       // TODO: Remove me (replace with expectedNumBytes or equiv.)
 
          //global variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
@@ -199,10 +199,10 @@ namespace CitirocUI
             set { _retrievingDaqData = value;  }
         }
 
-        public string DataFileName
+        public int NumBins
         {
-            get { return _daqDataFileName; }
-            set { _daqDataFileName = value; }
+            get { return _numBins; }
+            set { _numBins = value; }
         }
 
         /// <summary>
@@ -425,19 +425,23 @@ namespace CitirocUI
                 {
                     dataBytes.CopyTo(_daqDataArray, _numBytesRetrieved);
                     _numBytesRetrieved += numBytesRead;
-                    if (_numBytesRetrieved == _daqDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
+                    if (_numBytesRetrieved >= 22 + 256 + 6*(_numBins*2))      // TODO: Replace me with "end-of-DAQ-data" marker...
                     {
                         DataReadyEvent(this, new DataReadyEventArgs(Command.ReqPayload, _daqDataArray));
                         _retrievingDaqData = false;
                         _numBytesRetrieved = 0;
                     }
                 }
-                catch
+                catch (ArgumentException)
                 {
-                    MessageBox.Show("Attempting to write too many bytes to _daqDataArray:\n" +
+                    MessageBox.Show("Attempting to write too many bytes to _hkDataArray:\n" +
                         "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
                         "dataB.Length = " + dataBytes.Length + "\n", "Exception");
-                    _retrievingDaqData = false;
+                    _numBytesRetrieved = 0;
+                }
+                catch (Exception excep)
+                {
+                    MessageBox.Show(excep.Message, "Error");
                     _numBytesRetrieved = 0;
                 }
             }
