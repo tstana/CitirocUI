@@ -58,9 +58,6 @@ namespace CitirocUI
         // = 0 for USB and 1 for Serial;
         private int selectedConnectionMode;
 
-        private int _numHKBytesRetrieved = 0;
-        private byte[] _hkcomBuffer;
-
         int connectStatus = -1; // -1 = not connected, 0 = board connected but most likely powering issue, 1 = board connected
         unsafe private void roundButton_connect_Click(object sender, EventArgs e)
         {
@@ -536,22 +533,25 @@ namespace CitirocUI
         {
             if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                byte[] hv = new byte[24];
-                hv[0] = Convert.ToByte('H');
+                byte[] cmd = new byte[3];
 
-                UInt16 HVconversion = (UInt16)(_hvValue / 1.812e-3); // Conversion factor is picked from the command reference dcoument of C11204-02.
-                byte[] HVfinal = BitConverter.GetBytes(HVconversion);
+                // Prep command
+                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendHVPSTmpVolt);
+                for (int i = 1; i < cmd.Length; ++i)
+                    cmd[i] = 0;
 
-                int sz = HVfinal.Length;
+                // Set conversion factor from the command reference dcoument of C11204-02.
+                UInt16 volt = (UInt16)(Convert.ToDouble(textBox_HV.Text) / 1.812e-3);
+                byte[] voltBytes = BitConverter.GetBytes(volt);
+                if (BitConverter.IsLittleEndian)
+                    Array.Reverse(voltBytes);
 
-                for (int i = 23; i > 23 - sz; i--) // filling last bytes of the array
-                {
-                    hv[i] = HVfinal[23 - i];
-                }
+                cmd[1] = voltBytes[0];
+                cmd[2] = voltBytes[1];
 
                 try
                 {
-                    mySerialComm.WriteData(hv, 1);
+                    mySerialComm.WriteData(cmd, cmd.Length);
                 }
                 catch (IOException ie)
                 {
@@ -574,12 +574,6 @@ namespace CitirocUI
                     button_HVPS.BackColor = Color.IndianRed;
                 button_HVPS.ForeColor = Color.White;
             }
-        }
-
-        private void textBox_HV_Leave(object sender, EventArgs e)
-        {
-            TextBox txthv = (TextBox)sender;
-            _hvValue = Convert.ToDouble(txthv.Text);
         }
 
         private void button_readTelemetry_Click(object sender, EventArgs e)

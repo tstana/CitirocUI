@@ -58,6 +58,7 @@ namespace CitirocUI
             SendCitirocConf     = 'C',
             SendProbeConf       = 'P',
             SendHVPSConf        = 'H',
+            SendHVPSTmpVolt     = 'V',
             SendDAQDur          = 'D',
             DAQStart            = 'S',
             DAQStop             = 'T',

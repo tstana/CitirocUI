@@ -8,7 +8,6 @@ namespace CitirocUI
 {
     public partial class Citiroc : Form
     {
-        double _hvValue;
         private void button_sendProbes_Click(object sender, EventArgs e)
         {
             bool result = false;
