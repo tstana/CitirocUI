@@ -541,7 +541,8 @@ namespace CitirocUI
         // To send HV to MPPCs when serial port is selected
         private bool sendHV() {
 
-            if (connectStatus != 1) return false;
+            if (connectStatus != 1)
+                return false;
 
             if (comboBox_SelectConnection.SelectedIndex == 1)
             {
