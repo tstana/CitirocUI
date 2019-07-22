@@ -485,6 +485,16 @@ namespace CitirocUI
             {
                 groupBox_SerialPortSettings.Visible = false;
 
+
+                if (panel_CubesMonitor.Visible)
+                {
+                    // already visible, will be closed
+                    CubesMonitorVisible(false);
+
+                    mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
+                    btn_CubesMonitor.Text = "CUBES Monitor >>>";
+                }
+
                 switchBox_acquisitionMode.Visible = true;
                 label_numData.Text = "Number of acquisitions:";
                 textBox_numData.Text = "100";
