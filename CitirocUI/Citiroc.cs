@@ -43,7 +43,10 @@ namespace CitirocUI
 
                 ffBryant = pfcBryant.Families[0];
             }
-            catch { MessageBox.Show("An error occured during the loading of the font. A generic font will be used which can impair the optimal display."); }
+            catch(Exception ex) {
+                //MessageBox.Show("An error occured during the loading of the font. A generic font will be used which can impair the optimal display.");
+                MessageBox.Show(ex.Message);
+            }
         }
 
         #region title bar
@@ -1959,7 +1962,9 @@ namespace CitirocUI
 
             this.Width = tblPnlMain.Width;
         }
+
         #endregion
+
     }
 }
            

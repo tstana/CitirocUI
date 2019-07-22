@@ -273,6 +273,8 @@ namespace CitirocUI
         #region WriteData
         public void WriteData(byte[] msg, int msg_length)
         {
+            if (comPort.IsOpen == false) return;
+
             try
             {
                 comPort.Write(msg, 0, msg_length);

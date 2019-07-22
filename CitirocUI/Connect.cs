@@ -539,25 +539,29 @@ namespace CitirocUI
         }
 
         // To send HV to MPPCs when serial port is selected
-        private bool sendHV()
-        {
+        private bool sendHV() {
+
+            if (connectStatus != 1) return false;
+
             if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                byte[] cmd = new byte[3];
+                byte[] cmd = new byte[4];
 
                 // Prep command
                 cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendHVPSTmpVolt);
                 for (int i = 1; i < cmd.Length; ++i)
                     cmd[i] = 0;
 
+                cmd[1] = checkBox_HVON.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
+
                 // Set conversion factor from the command reference dcoument of C11204-02.
-                UInt16 volt = (UInt16)(Convert.ToDouble(textBox_HV.Text) / 1.812e-3);
+                UInt16 volt = (UInt16)(Convert.ToDouble(numUpDown_HV.Text) / 1.812e-3);
                 byte[] voltBytes = BitConverter.GetBytes(volt);
                 if (BitConverter.IsLittleEndian)
                     Array.Reverse(voltBytes);
 
-                cmd[1] = voltBytes[0];
-                cmd[2] = voltBytes[1];
+                cmd[2] = voltBytes[0];
+                cmd[3] = voltBytes[1];
 
                 try
                 {
@@ -579,9 +583,13 @@ namespace CitirocUI
                 bool result = false;
                 result = sendHV();
                 if (result)
+                {
                     button_HVPS.BackColor = WeerocGreen;
+                }
                 else
+                {
                     button_HVPS.BackColor = Color.IndianRed;
+                }
                 button_HVPS.ForeColor = Color.White;
             }
         }
