@@ -2020,6 +2020,7 @@ namespace CitirocUI
                     button_HVPS.BackColor = Color.IndianRed;
                 }
                 button_HVPS.ForeColor = Color.White;
+                tmrButtonColor.Enabled = true;
             }
         }
 
@@ -2041,248 +2042,18 @@ namespace CitirocUI
             }
         }
 
-        private void roundButton_connect_Click(object sender, EventArgs e)
+        private void tmrButtonColor_Tick(object sender, EventArgs e)
         {
+            tmrButtonColor.Enabled = false;
 
-        }
+            button_HVPS.BackColor = SystemColors.Control;
+            button_HVPS.ForeColor = SystemColors.ControlText;
 
-        private void roundButton_connect_MouseEnter(object sender, EventArgs e)
-        {
+            button_sendSC.BackColor = Color.Gainsboro;
+            button_sendSC.ForeColor = SystemColors.ControlText;
 
-        }
-
-        private void checkBox_CtestLg_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_delay_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_paLgBias_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_testBitOtaQ_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_fshOnLg_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_triggerPolarity_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_dacRef_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_biasSca_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_latch_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_scaOrPdLg_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_scaOrPdHg_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_mask_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_threshold2_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_threshold2_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void textBox_threshold1_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_threshold1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void checkBox_CtestHg_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_shapingTimeHg_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_shapingTimeHg_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void textBox_shapingTimeLg_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_shapingTimeLg_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void checkBox_selTrigExtPd_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_bypassPd_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_paHgGain_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_paHgGain_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void textBox_paLgGain_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_paLgGain_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void checkBox_enPa_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_cmdInputDac_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_inputDac_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_inputDac_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void textBox_calibDacT_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_calibDacT_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void textBox_calibDac_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_calibDac_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void checkBox_ScurvesTorQ_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_ScurvesChoice_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_maxCodeScurves_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_minCodeScurves_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_showScatterPlot_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_holdScanMaxGradient_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void checkBox_staircaseLogScale_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_staircaseTorQ_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loadData_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loadData_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void textBox_numData_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void switchBox_acquisitionMode_CheckedChanged(object sender, EventArgs e)
-        {
+            button_sendProbes.BackColor = Color.Gainsboro;
+            button_sendProbes.ForeColor = SystemColors.ControlText;
 
         }
     }
