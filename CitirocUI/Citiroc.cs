@@ -1965,6 +1965,82 @@ namespace CitirocUI
 
         #endregion
 
-          }
+        // To send HV to MPPCs when serial port is selected
+        private bool sendHV()
+        {
+
+            if (connectStatus != 1)
+                return false;
+
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                byte[] cmd = new byte[4];
+
+                // Prep command
+                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendHVPSTmpVolt);
+                for (int i = 1; i < cmd.Length; ++i)
+                    cmd[i] = 0;
+
+                cmd[1] = checkBox_HVON.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
+
+                // Set conversion factor from the command reference dcoument of C11204-02.
+                UInt16 volt = (UInt16)(Convert.ToDouble(numUpDown_HV.Text) / 1.812e-3);
+                byte[] voltBytes = BitConverter.GetBytes(volt);
+                if (BitConverter.IsLittleEndian)
+                    Array.Reverse(voltBytes);
+
+                cmd[2] = voltBytes[0];
+                cmd[3] = voltBytes[1];
+
+                try
+                {
+                    mySerialComm.WriteData(cmd, cmd.Length);
+                }
+                catch (IOException ie)
+                {
+                    MessageBox.Show(ie.Message);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void button_HVPS_Click(object sender, EventArgs e)
+        {
+            if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                bool result = false;
+                result = sendHV();
+                if (result)
+                {
+                    button_HVPS.BackColor = WeerocGreen;
+                }
+                else
+                {
+                    button_HVPS.BackColor = Color.IndianRed;
+                }
+                button_HVPS.ForeColor = Color.White;
+            }
+        }
+
+        private void button_readTelemetry_Click(object sender, EventArgs e)
+        {
+            /* Form open, time to send CMD_REQ_HK (if serial port connection allows) */
+            byte[] telemetryParam = new byte[1];
+            telemetryParam[0] = Convert.ToByte('h');
+            try
+            {
+                mySerialComm.WriteData(telemetryParam, 1);
+                button_readTelemetry.BackColor = WeerocGreen;
+            }
+            catch
+            {
+                label_help.Text = "ERROR: Failed to send telemetry fetch command to Proto-CUBES! " +
+                    "Please check the connection...";
+                button_readTelemetry.BackColor = Color.IndianRed;
+            }
+        }
+
+    }
 }
            
