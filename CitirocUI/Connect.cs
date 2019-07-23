@@ -607,15 +607,6 @@ namespace CitirocUI
 
         private void button_readTelemetry_Click(object sender, EventArgs e)
         {
-            /* Prevent sending any commands if monitor is not open... */
-            if (!panel_CubesMonitor.Visible)
-            {
-                button_readTelemetry.BackColor = Color.IndianRed;
-                label_help.Text = "ERROR: The CUBES Monitor needs to be open" +
-                    " for this operation to be performed!";
-                return;
-            }
-
             /* Form open, time to send CMD_REQ_HK (if serial port connection allows) */
             byte[] telemetryParam = new byte[1];
             telemetryParam[0] = Convert.ToByte('h');
