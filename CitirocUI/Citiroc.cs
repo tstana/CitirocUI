@@ -1963,8 +1963,6 @@ namespace CitirocUI
             this.Width = tblPnlMain.Width;
         }
 
-        #endregion
-
         // To send HV to MPPCs when serial port is selected
         private bool sendHV()
         {
@@ -2018,6 +2016,8 @@ namespace CitirocUI
                 else
                 {
                     button_HVPS.BackColor = Color.IndianRed;
+                    label_help.Text = "ERROR: Failed to send HVPS settings to Proto-CUBES! " +
+                        "Please check the connection...";
                 }
                 button_HVPS.ForeColor = Color.White;
                 tmrButtonColor.Enabled = true;
@@ -2031,8 +2031,16 @@ namespace CitirocUI
             telemetryParam[0] = Convert.ToByte('h');
             try
             {
-                mySerialComm.WriteData(telemetryParam, 1);
-                button_readTelemetry.BackColor = WeerocGreen;
+                if (connectStatus == 1)
+                {
+                    mySerialComm.WriteData(telemetryParam, 1);
+                    button_readTelemetry.BackColor = WeerocGreen;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
             }
             catch
             {
@@ -2040,11 +2048,16 @@ namespace CitirocUI
                     "Please check the connection...";
                 button_readTelemetry.BackColor = Color.IndianRed;
             }
+            tmrButtonColor.Enabled = true;
         }
+
+        #endregion
 
         private void tmrButtonColor_Tick(object sender, EventArgs e)
         {
             tmrButtonColor.Enabled = false;
+
+            button_readTelemetry.BackColor = SystemColors.Control;
 
             button_HVPS.BackColor = SystemColors.Control;
             button_HVPS.ForeColor = SystemColors.ControlText;

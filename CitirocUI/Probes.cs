@@ -42,9 +42,9 @@ namespace CitirocUI
                 else
                     button_sendProbes.BackColor = Color.LightCoral;
                 button_sendProbes.ForeColor = Color.White;
-            }
 
-            //  return;
+                tmrButtonColor.Enabled = true;
+            }
         }
 
         private bool sendProbes(int usbDevId)
@@ -68,6 +68,12 @@ namespace CitirocUI
 
             if (comboBox_SelectConnection.SelectedIndex == 1)
             {
+                if (connectStatus != 1)
+                {
+                    label_help.Text = "Please configure your connection.";
+                    return false;
+                }
+                    
                 byte[] bytProbe = new byte[1 + intLenProbeStream / 8];
 
                 bytProbe[0] = Convert.ToByte('P');

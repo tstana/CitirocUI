@@ -572,14 +572,21 @@ namespace CitirocUI
                 if (result)
                     button_sendSC.BackColor = WeerocGreen;
                 else
+                {
                     button_sendSC.BackColor = Color.LightCoral;
+                    label_help.Text = "Please configure your connection.";
+                }
+                    
                 button_sendSC.ForeColor = Color.White;
             }
-            else {
-                MessageBox.Show("Please configure your connection.");
+            else
+            {
+                label_help.Text= "Please configure your connection.";
                 button_sendSC.BackColor = Color.LightCoral;
                 button_sendSC.ForeColor = Color.White;
             }
+
+            tmrButtonColor.Enabled = true;
         }
 
         private bool sendSC(int usbDevId, string strSC)
@@ -589,6 +596,9 @@ namespace CitirocUI
 
             if (comboBox_SelectConnection.SelectedIndex == 1)
             {
+                if (connectStatus != 1)
+                    return false;
+                
                 // Get standard length of slow control bitstream
                 int SCLenght = strDefSC.Length;
                 // Get length of current slow control bitstream
