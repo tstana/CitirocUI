@@ -869,21 +869,14 @@ namespace CitirocUI
         
         private void textBox_numData_Leave(object sender, EventArgs e)
         {
-            // Adjust acquisition times for Proto-CUBES
-            if (selectedConnectionMode == 1)
-            {
-                int individualAcqTime = Convert.ToInt32(textBox_numData.Text);
-                if (individualAcqTime > 255)
-                {
-                    individualAcqTime = 255;
-                    
-                    MessageBox.Show("Setting individual DAQ time to " +
-                        individualAcqTime.ToString() + " s (the maximum " +
-                        "currently accepted by Proto-CUBES).\n", "Info");
-                    textBox_numData.Text = individualAcqTime.ToString();
-                }
+            NumDataCheck();
+        }
 
-                AdjustAcquisitionTime();
+        private void textBox_numData_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                NumDataCheck();
             }
         }
         #endregion
@@ -933,6 +926,35 @@ namespace CitirocUI
 
             // Finally, set the total DAQ time
             textBox_acquisitionTime.Text = splitAcqTime[0] + ":" + splitAcqTime[1] + ":" + splitAcqTime[2];
+        }
+
+        private void NumDataCheck()
+        {
+            if (selectedConnectionMode != 1)
+                return;
+
+            // Adjust acquisition times for Proto-CUBES
+            int individualAcqTime = Convert.ToInt32(textBox_numData.Text);
+            if (individualAcqTime > 255)
+            {
+                individualAcqTime = 255;
+
+                MessageBox.Show("Setting individual DAQ time to " +
+                    individualAcqTime.ToString() + " s (the maximum " +
+                    "currently accepted by Proto-CUBES).\n", "Info");
+                textBox_numData.Text = individualAcqTime.ToString();
+            }
+            else if (individualAcqTime < 5)
+            {
+                individualAcqTime = 5;
+
+                MessageBox.Show("Setting individual DAQ time to " +
+                    individualAcqTime.ToString() + " s (the minimum " +
+                    "currently accepted by Proto-CUBES).\n", "Info");
+                textBox_numData.Text = individualAcqTime.ToString();
+            }
+
+            AdjustAcquisitionTime();
         }
         #endregion
     }
