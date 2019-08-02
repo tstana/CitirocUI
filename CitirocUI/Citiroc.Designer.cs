@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Citiroc));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea19 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea20 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea21 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.button_UIScale = new System.Windows.Forms.Button();
             this.label_help = new System.Windows.Forms.Label();
             this.btn_minimize = new System.Windows.Forms.Button();
@@ -67,6 +67,7 @@
             this.comboBox_Baudrate = new System.Windows.Forms.ComboBox();
             this.label137 = new System.Windows.Forms.Label();
             this.comboBox_SelectConnection = new System.Windows.Forms.ComboBox();
+            this.roundButton_connect = new CitirocUI.roundButton();
             this.label_plug = new System.Windows.Forms.Label();
             this.progressBar_loadFw = new System.Windows.Forms.ProgressBar();
             this.button_loadFw = new System.Windows.Forms.Button();
@@ -82,348 +83,6 @@
             this.groupBox_CtestLg = new System.Windows.Forms.GroupBox();
             this.button_injectNoneLg = new System.Windows.Forms.Button();
             this.button_injectAllLg = new System.Windows.Forms.Button();
-            this.label112 = new System.Windows.Forms.Label();
-            this.label115 = new System.Windows.Forms.Label();
-            this.label108 = new System.Windows.Forms.Label();
-            this.groupBox_mask = new System.Windows.Forms.GroupBox();
-            this.button_unmaskAll = new System.Windows.Forms.Button();
-            this.button_maskAll = new System.Windows.Forms.Button();
-            this.groupBox_CtestHg = new System.Windows.Forms.GroupBox();
-            this.button_injectNoneHg = new System.Windows.Forms.Button();
-            this.button_injectAllHg = new System.Windows.Forms.Button();
-            this.label101 = new System.Windows.Forms.Label();
-            this.label100 = new System.Windows.Forms.Label();
-            this.label111 = new System.Windows.Forms.Label();
-            this.tabPage_preamplifier = new System.Windows.Forms.TabPage();
-            this.button_setAllPaHg = new System.Windows.Forms.Button();
-            this.button_uncheckAllPa = new System.Windows.Forms.Button();
-            this.button_checkAllPa = new System.Windows.Forms.Button();
-            this.button_setAllPaLg = new System.Windows.Forms.Button();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.tabPage_EN = new System.Windows.Forms.TabPage();
-            this.checkBox_ppProbeOtaQ = new System.Windows.Forms.CheckBox();
-            this.checkBox_enProbeOtaQ = new System.Windows.Forms.CheckBox();
-            this.label117 = new System.Windows.Forms.Label();
-            this.checkBox_ppBg = new System.Windows.Forms.CheckBox();
-            this.checkBox_enBg = new System.Windows.Forms.CheckBox();
-            this.label116 = new System.Windows.Forms.Label();
-            this.label99 = new System.Windows.Forms.Label();
-            this.checkBox_enTriggersOutput = new System.Windows.Forms.CheckBox();
-            this.checkBox_enNor32TOc = new System.Windows.Forms.CheckBox();
-            this.label98 = new System.Windows.Forms.Label();
-            this.checkBox_enNor32Oc = new System.Windows.Forms.CheckBox();
-            this.label67 = new System.Windows.Forms.Label();
-            this.checkBox_enOr32 = new System.Windows.Forms.CheckBox();
-            this.label64 = new System.Windows.Forms.Label();
-            this.checkBox_enDigitalMuxOutput = new System.Windows.Forms.CheckBox();
-            this.label63 = new System.Windows.Forms.Label();
-            this.checkBox_ppRazChnReceiver = new System.Windows.Forms.CheckBox();
-            this.checkBox_enRazChnReceiver = new System.Windows.Forms.CheckBox();
-            this.label62 = new System.Windows.Forms.Label();
-            this.checkBox_ppValEvtReceiver = new System.Windows.Forms.CheckBox();
-            this.checkBox_enValEvtReceiver = new System.Windows.Forms.CheckBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.checkBox_ppLgOtaQ = new System.Windows.Forms.CheckBox();
-            this.checkBox_enLgOtaQ = new System.Windows.Forms.CheckBox();
-            this.label59 = new System.Windows.Forms.Label();
-            this.checkBox_ppHgOtaQ = new System.Windows.Forms.CheckBox();
-            this.checkBox_enHgOtaQ = new System.Windows.Forms.CheckBox();
-            this.label60 = new System.Windows.Forms.Label();
-            this.checkBox_ppThresholdDac2 = new System.Windows.Forms.CheckBox();
-            this.checkBox_enThresholdDac2 = new System.Windows.Forms.CheckBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.checkBox_ppThresholdDac1 = new System.Windows.Forms.CheckBox();
-            this.checkBox_enThresholdDac1 = new System.Windows.Forms.CheckBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.checkBox_ppTemp = new System.Windows.Forms.CheckBox();
-            this.checkBox_enTemp = new System.Windows.Forms.CheckBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.checkBox_enInputDac = new System.Windows.Forms.CheckBox();
-            this.checkBox_ppPaHg = new System.Windows.Forms.CheckBox();
-            this.checkBox_enPaHg = new System.Windows.Forms.CheckBox();
-            this.label54 = new System.Windows.Forms.Label();
-            this.checkBox_ppPaLg = new System.Windows.Forms.CheckBox();
-            this.checkBox_enPaLg = new System.Windows.Forms.CheckBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.checkBox_ppSshHg = new System.Windows.Forms.CheckBox();
-            this.checkBox_enSshHg = new System.Windows.Forms.CheckBox();
-            this.label53 = new System.Windows.Forms.Label();
-            this.checkBox_ppSshLg = new System.Windows.Forms.CheckBox();
-            this.checkBox_enSshLg = new System.Windows.Forms.CheckBox();
-            this.label52 = new System.Windows.Forms.Label();
-            this.checkBox_ppFsh = new System.Windows.Forms.CheckBox();
-            this.checkBox_enFsh = new System.Windows.Forms.CheckBox();
-            this.label51 = new System.Windows.Forms.Label();
-            this.checkBox_ppFshBuffer = new System.Windows.Forms.CheckBox();
-            this.label50 = new System.Windows.Forms.Label();
-            this.checkBox_ppPdetLg = new System.Windows.Forms.CheckBox();
-            this.checkBox_enPdetLg = new System.Windows.Forms.CheckBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.checkBox_ppPdetHg = new System.Windows.Forms.CheckBox();
-            this.checkBox_enPdetHg = new System.Windows.Forms.CheckBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.checkBox_ppThLg = new System.Windows.Forms.CheckBox();
-            this.checkBox_enThLg = new System.Windows.Forms.CheckBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.checkBox_ppThHg = new System.Windows.Forms.CheckBox();
-            this.checkBox_enThHg = new System.Windows.Forms.CheckBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.checkBox_ppCalibDacT = new System.Windows.Forms.CheckBox();
-            this.checkBox_enCalibDacT = new System.Windows.Forms.CheckBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.checkBox_ppCalibDacQ = new System.Windows.Forms.CheckBox();
-            this.checkBox_enCalibDacQ = new System.Windows.Forms.CheckBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.checkBox_ppDiscriT = new System.Windows.Forms.CheckBox();
-            this.checkBox_enDiscriT = new System.Windows.Forms.CheckBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.checkBox_ppDiscri = new System.Windows.Forms.CheckBox();
-            this.checkBox_enDiscri = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.tabPage_calibDac = new System.Windows.Forms.TabPage();
-            this.groupBox_inputDac = new System.Windows.Forms.GroupBox();
-            this.button_uncheckAllInputDac = new System.Windows.Forms.Button();
-            this.button_checkAllInputDac = new System.Windows.Forms.Button();
-            this.button_setAllInputDac = new System.Windows.Forms.Button();
-            this.groupBox_DacT = new System.Windows.Forms.GroupBox();
-            this.button_setAllDacT = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.groupBox_DacQ = new System.Windows.Forms.GroupBox();
-            this.button_setAllDac = new System.Windows.Forms.Button();
-            this.label90 = new System.Windows.Forms.Label();
-            this.label97 = new System.Windows.Forms.Label();
-            this.label96 = new System.Windows.Forms.Label();
-            this.label95 = new System.Windows.Forms.Label();
-            this.label94 = new System.Windows.Forms.Label();
-            this.label93 = new System.Windows.Forms.Label();
-            this.label92 = new System.Windows.Forms.Label();
-            this.label91 = new System.Windows.Forms.Label();
-            this.label89 = new System.Windows.Forms.Label();
-            this.label88 = new System.Windows.Forms.Label();
-            this.label87 = new System.Windows.Forms.Label();
-            this.label86 = new System.Windows.Forms.Label();
-            this.label85 = new System.Windows.Forms.Label();
-            this.label84 = new System.Windows.Forms.Label();
-            this.label83 = new System.Windows.Forms.Label();
-            this.label82 = new System.Windows.Forms.Label();
-            this.label81 = new System.Windows.Forms.Label();
-            this.label80 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.label77 = new System.Windows.Forms.Label();
-            this.label76 = new System.Windows.Forms.Label();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label74 = new System.Windows.Forms.Label();
-            this.label73 = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label71 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.tabPage_probes = new System.Windows.Forms.TabPage();
-            this.button_sendReadRegister = new System.Windows.Forms.Button();
-            this.numericUpDown_rr = new System.Windows.Forms.NumericUpDown();
-            this.groupBox_digitalProbe = new System.Windows.Forms.GroupBox();
-            this.radioButton_noDProbe = new System.Windows.Forms.RadioButton();
-            this.label119 = new System.Windows.Forms.Label();
-            this.numericUpDown_probeDChannel = new System.Windows.Forms.NumericUpDown();
-            this.radioButton_probePDLG = new System.Windows.Forms.RadioButton();
-            this.radioButton_probePDHG = new System.Windows.Forms.RadioButton();
-            this.groupBox_analogueProbe = new System.Windows.Forms.GroupBox();
-            this.radioButton_probePaLG = new System.Windows.Forms.RadioButton();
-            this.radioButton_probePaHG = new System.Windows.Forms.RadioButton();
-            this.label118 = new System.Windows.Forms.Label();
-            this.radioButton_noAProbe = new System.Windows.Forms.RadioButton();
-            this.radioButton_probeSshHG = new System.Windows.Forms.RadioButton();
-            this.radioButton_probeSshLG = new System.Windows.Forms.RadioButton();
-            this.radioButton_probeFsh = new System.Windows.Forms.RadioButton();
-            this.numericUpDown_probeAChannel = new System.Windows.Forms.NumericUpDown();
-            this.button_sendProbes = new System.Windows.Forms.Button();
-            this.tabPage_calibration = new System.Windows.Forms.TabPage();
-            this.tabControl_calibration = new System.Windows.Forms.TabControl();
-            this.tabPage_sCurves = new System.Windows.Forms.TabPage();
-            this.label110 = new System.Windows.Forms.Label();
-            this.comboBox_sCurvesClock = new System.Windows.Forms.ComboBox();
-            this.label134 = new System.Windows.Forms.Label();
-            this.button_ScurvesUncheckAll = new System.Windows.Forms.Button();
-            this.button_ScurvesCheckAll = new System.Windows.Forms.Button();
-            this.button_channelSelectionScurves = new System.Windows.Forms.Button();
-            this.groupBox_channelSelectionScurves = new System.Windows.Forms.GroupBox();
-            this.button_autocalibration = new System.Windows.Forms.Button();
-            this.button_Scurves = new System.Windows.Forms.Button();
-            this.button_resetZoomScurves = new System.Windows.Forms.Button();
-            this.label102 = new System.Windows.Forms.Label();
-            this.progressBar_Scurves = new System.Windows.Forms.ProgressBar();
-            this.label103 = new System.Windows.Forms.Label();
-            this.label109 = new System.Windows.Forms.Label();
-            this.label104 = new System.Windows.Forms.Label();
-            this.button_sCurveSavePath = new System.Windows.Forms.Button();
-            this.textBox_sCurveSavePath = new System.Windows.Forms.TextBox();
-            this.chart_Scurves = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage_holdScan = new System.Windows.Forms.TabPage();
-            this.button_refreshHoldScan = new System.Windows.Forms.Button();
-            this.button_scatterToPng = new System.Windows.Forms.Button();
-            this.label_holdScanMaxGradient = new System.Windows.Forms.Label();
-            this.label135 = new System.Windows.Forms.Label();
-            this.button_loadHoldScan = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label105 = new System.Windows.Forms.Label();
-            this.button_holdScanSavePath = new System.Windows.Forms.Button();
-            this.textBox_holdScanSavePath = new System.Windows.Forms.TextBox();
-            this.label124 = new System.Windows.Forms.Label();
-            this.label122 = new System.Windows.Forms.Label();
-            this.label121 = new System.Windows.Forms.Label();
-            this.label114 = new System.Windows.Forms.Label();
-            this.label113 = new System.Windows.Forms.Label();
-            this.numericUpDown_channelHoldScan = new System.Windows.Forms.NumericUpDown();
-            this.chart_holdScan = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.button_holdScan = new System.Windows.Forms.Button();
-            this.tabPage_staircase = new System.Windows.Forms.TabPage();
-            this.label123 = new System.Windows.Forms.Label();
-            this.label120 = new System.Windows.Forms.Label();
-            this.button_staircaseUncheckAll = new System.Windows.Forms.Button();
-            this.button_staircaseCheckAll = new System.Windows.Forms.Button();
-            this.button_channelSelectionStaircase = new System.Windows.Forms.Button();
-            this.groupBox_channelSelectionStaircase = new System.Windows.Forms.GroupBox();
-            this.label129 = new System.Windows.Forms.Label();
-            this.label130 = new System.Windows.Forms.Label();
-            this.label131 = new System.Windows.Forms.Label();
-            this.label132 = new System.Windows.Forms.Label();
-            this.button_staircaseSavePath = new System.Windows.Forms.Button();
-            this.textBox_staircaseSavePath = new System.Windows.Forms.TextBox();
-            this.progressBar_staircase = new System.Windows.Forms.ProgressBar();
-            this.button_startStaircase = new System.Windows.Forms.Button();
-            this.button_resetZoomStaircase = new System.Windows.Forms.Button();
-            this.chart_staircase = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage_dataAcquisition = new System.Windows.Forms.TabPage();
-            this.label_acquisitionTime = new System.Windows.Forms.Label();
-            this.textBox_acquisitionTime = new System.Windows.Forms.MaskedTextBox();
-            this.progressBar_acquisition = new System.Windows.Forms.ProgressBar();
-            this.label_acqTime = new System.Windows.Forms.Label();
-            this.label_elapsedTimeAcquisition = new System.Windows.Forms.Label();
-            this.tabControl_dataAcquisition = new System.Windows.Forms.TabControl();
-            this.tabPage_perChannelCharge = new System.Windows.Forms.TabPage();
-            this.label128 = new System.Windows.Forms.Label();
-            this.label133 = new System.Windows.Forms.Label();
-            this.label127 = new System.Windows.Forms.Label();
-            this.label126 = new System.Windows.Forms.Label();
-            this.chart_perChannelChargeLG = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label107 = new System.Windows.Forms.Label();
-            this.label_nbHit = new System.Windows.Forms.Label();
-            this.chart_perChannelChargeHG = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.numericUpDown_loadCh = new System.Windows.Forms.NumericUpDown();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.chart_perAcqChargeLG = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart_perAcqChargeHG = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label125 = new System.Windows.Forms.Label();
-            this.numericUpDown_acquisitionNumber = new System.Windows.Forms.NumericUpDown();
-            this.button_loadData = new System.Windows.Forms.Button();
-            this.button_dataSavePath = new System.Windows.Forms.Button();
-            this.textBox_dataSavePath = new System.Windows.Forms.TextBox();
-            this.button_startAcquisition = new System.Windows.Forms.Button();
-            this.label106 = new System.Windows.Forms.Label();
-            this.label_numData = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.comboBox_triggerPreset = new System.Windows.Forms.ComboBox();
-            this.label136 = new System.Windows.Forms.Label();
-            this.groupBox_timeTriggerMask = new System.Windows.Forms.GroupBox();
-            this.button_sendMaskTime = new System.Windows.Forms.Button();
-            this.button_unmaskAllTime = new System.Windows.Forms.Button();
-            this.button_maskAllTime = new System.Windows.Forms.Button();
-            this.textBox_word5 = new System.Windows.Forms.TextBox();
-            this.textBox_word3 = new System.Windows.Forms.TextBox();
-            this.textBox_word2 = new System.Windows.Forms.TextBox();
-            this.textBox_word1 = new System.Windows.Forms.TextBox();
-            this.textBox_word0 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox_HV = new System.Windows.Forms.GroupBox();
-            this.numUpDown_HV = new System.Windows.Forms.NumericUpDown();
-            this.checkBox_HVON = new System.Windows.Forms.CheckBox();
-            this.button_HVPS = new System.Windows.Forms.Button();
-            this.label140 = new System.Windows.Forms.Label();
-            this.button_readTelemetry = new System.Windows.Forms.Button();
-            this.label_tempOnBoard = new System.Windows.Forms.Label();
-            this.backgroundWorker_Scurves = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorker_staircase = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorker_dataAcquisition = new System.ComponentModel.BackgroundWorker();
-            this.pictureBox_logoWeeroc = new System.Windows.Forms.PictureBox();
-            this.backgroundWorker_holdScan = new System.ComponentModel.BackgroundWorker();
-            this.button_screenshot = new System.Windows.Forms.Button();
-            this.tblPnlMain = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlTopBar = new System.Windows.Forms.Panel();
-            this.pnlTools = new System.Windows.Forms.Panel();
-            this.panel_CubesMonitor = new System.Windows.Forms.Panel();
-            this.groupBox_telemetry = new System.Windows.Forms.GroupBox();
-            this.groupBox_HitRates = new System.Windows.Forms.GroupBox();
-            this.label_hitCountMPPC1 = new System.Windows.Forms.Label();
-            this.textBox_hitCountOR32 = new System.Windows.Forms.TextBox();
-            this.textBox_hitCountMPPC2 = new System.Windows.Forms.TextBox();
-            this.label_hitCountOR32 = new System.Windows.Forms.Label();
-            this.textBox_hitCountMPPC1 = new System.Windows.Forms.TextBox();
-            this.textBox_hitCountMPPC3 = new System.Windows.Forms.TextBox();
-            this.label_hitCountMPPC2 = new System.Windows.Forms.Label();
-            this.label_hitCountMPPC3 = new System.Windows.Forms.Label();
-            this.groupBox_HvpsTelemetry = new System.Windows.Forms.GroupBox();
-            this.label_NoteOnHVPSTelem = new System.Windows.Forms.Label();
-            this.label_Voltage = new System.Windows.Forms.Label();
-            this.label_Temperature = new System.Windows.Forms.Label();
-            this.textBox_tempFromHVPS = new System.Windows.Forms.TextBox();
-            this.textBox_voltageFromHVPS = new System.Windows.Forms.TextBox();
-            this.label_Current = new System.Windows.Forms.Label();
-            this.textBox_currentFromHVPS = new System.Windows.Forms.TextBox();
-            this.textBox_timestamp = new System.Windows.Forms.TextBox();
-            this.label_timestamp = new System.Windows.Forms.Label();
-            this.rtxtMonitor = new System.Windows.Forms.RichTextBox();
-            this.panel_clearSerialMonitor = new System.Windows.Forms.Panel();
-            this.label_ConnStatus = new System.Windows.Forms.Label();
-            this.buttonHelp = new System.Windows.Forms.Button();
-            this.button_Clear = new System.Windows.Forms.Button();
-            this.tmrButtonColor = new System.Windows.Forms.Timer(this.components);
-            this.roundButton_connectSmall = new CitirocUI.roundButton();
-            this.roundButton_connect = new CitirocUI.roundButton();
             this.checkBox_CtestLg0 = new CitirocUI.maskCheckBox();
             this.checkBox_CtestLg1 = new CitirocUI.maskCheckBox();
             this.checkBox_CtestLg2 = new CitirocUI.maskCheckBox();
@@ -456,6 +115,8 @@
             this.checkBox_CtestLg29 = new CitirocUI.maskCheckBox();
             this.checkBox_CtestLg30 = new CitirocUI.maskCheckBox();
             this.checkBox_CtestLg31 = new CitirocUI.maskCheckBox();
+            this.label112 = new System.Windows.Forms.Label();
+            this.label115 = new System.Windows.Forms.Label();
             this.textBox_delay = new CitirocUI.intTextBox();
             this.checkBox_paLgBias = new CitirocUI.checkBox();
             this.checkBox_testBitOtaQ = new CitirocUI.checkBox();
@@ -466,8 +127,12 @@
             this.checkBox_latchDiscri = new CitirocUI.switchBox();
             this.checkBox_scaOrPdLg = new CitirocUI.switchBox();
             this.checkBox_scaOrPdHg = new CitirocUI.switchBox();
+            this.label108 = new System.Windows.Forms.Label();
+            this.groupBox_mask = new System.Windows.Forms.GroupBox();
             this.checkBox_mask0 = new CitirocUI.maskCheckBox();
+            this.button_unmaskAll = new System.Windows.Forms.Button();
             this.checkBox_mask13 = new CitirocUI.maskCheckBox();
+            this.button_maskAll = new System.Windows.Forms.Button();
             this.checkBox_mask14 = new CitirocUI.maskCheckBox();
             this.checkBox_mask12 = new CitirocUI.maskCheckBox();
             this.checkBox_mask15 = new CitirocUI.maskCheckBox();
@@ -500,6 +165,9 @@
             this.checkBox_mask25 = new CitirocUI.maskCheckBox();
             this.textBox_threshold2 = new CitirocUI.intTextBox();
             this.textBox_threshold1 = new CitirocUI.intTextBox();
+            this.groupBox_CtestHg = new System.Windows.Forms.GroupBox();
+            this.button_injectNoneHg = new System.Windows.Forms.Button();
+            this.button_injectAllHg = new System.Windows.Forms.Button();
             this.checkBox_CtestHg0 = new CitirocUI.maskCheckBox();
             this.checkBox_CtestHg1 = new CitirocUI.maskCheckBox();
             this.checkBox_CtestHg2 = new CitirocUI.maskCheckBox();
@@ -536,6 +204,22 @@
             this.textBox_shapingTimeLg = new CitirocUI.intTextBox();
             this.checkBox_selTrigExtPd = new CitirocUI.checkBox();
             this.checkBox_bypassPd = new CitirocUI.checkBox();
+            this.label101 = new System.Windows.Forms.Label();
+            this.label100 = new System.Windows.Forms.Label();
+            this.label111 = new System.Windows.Forms.Label();
+            this.tabPage_preamplifier = new System.Windows.Forms.TabPage();
+            this.button_setAllPaHg = new System.Windows.Forms.Button();
+            this.button_uncheckAllPa = new System.Windows.Forms.Button();
+            this.button_checkAllPa = new System.Windows.Forms.Button();
+            this.button_setAllPaLg = new System.Windows.Forms.Button();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.textBox_setAllPaHg = new CitirocUI.intTextBox();
             this.textBox_setAllPaLg = new CitirocUI.intTextBox();
             this.textBox_paHgGain31 = new CitirocUI.intTextBox();
@@ -634,6 +318,92 @@
             this.checkBox_enPa2 = new CitirocUI.maskCheckBox();
             this.checkBox_enPa1 = new CitirocUI.maskCheckBox();
             this.checkBox_enPa0 = new CitirocUI.maskCheckBox();
+            this.tabPage_EN = new System.Windows.Forms.TabPage();
+            this.checkBox_ppProbeOtaQ = new System.Windows.Forms.CheckBox();
+            this.checkBox_enProbeOtaQ = new System.Windows.Forms.CheckBox();
+            this.label117 = new System.Windows.Forms.Label();
+            this.checkBox_ppBg = new System.Windows.Forms.CheckBox();
+            this.checkBox_enBg = new System.Windows.Forms.CheckBox();
+            this.label116 = new System.Windows.Forms.Label();
+            this.label99 = new System.Windows.Forms.Label();
+            this.checkBox_enTriggersOutput = new System.Windows.Forms.CheckBox();
+            this.checkBox_enNor32TOc = new System.Windows.Forms.CheckBox();
+            this.label98 = new System.Windows.Forms.Label();
+            this.checkBox_enNor32Oc = new System.Windows.Forms.CheckBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.checkBox_enOr32 = new System.Windows.Forms.CheckBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.checkBox_enDigitalMuxOutput = new System.Windows.Forms.CheckBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.checkBox_ppRazChnReceiver = new System.Windows.Forms.CheckBox();
+            this.checkBox_enRazChnReceiver = new System.Windows.Forms.CheckBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.checkBox_ppValEvtReceiver = new System.Windows.Forms.CheckBox();
+            this.checkBox_enValEvtReceiver = new System.Windows.Forms.CheckBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.checkBox_ppLgOtaQ = new System.Windows.Forms.CheckBox();
+            this.checkBox_enLgOtaQ = new System.Windows.Forms.CheckBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.checkBox_ppHgOtaQ = new System.Windows.Forms.CheckBox();
+            this.checkBox_enHgOtaQ = new System.Windows.Forms.CheckBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.checkBox_ppThresholdDac2 = new System.Windows.Forms.CheckBox();
+            this.checkBox_enThresholdDac2 = new System.Windows.Forms.CheckBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.checkBox_ppThresholdDac1 = new System.Windows.Forms.CheckBox();
+            this.checkBox_enThresholdDac1 = new System.Windows.Forms.CheckBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.checkBox_ppTemp = new System.Windows.Forms.CheckBox();
+            this.checkBox_enTemp = new System.Windows.Forms.CheckBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.checkBox_enInputDac = new System.Windows.Forms.CheckBox();
+            this.checkBox_ppPaHg = new System.Windows.Forms.CheckBox();
+            this.checkBox_enPaHg = new System.Windows.Forms.CheckBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.checkBox_ppPaLg = new System.Windows.Forms.CheckBox();
+            this.checkBox_enPaLg = new System.Windows.Forms.CheckBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.checkBox_ppSshHg = new System.Windows.Forms.CheckBox();
+            this.checkBox_enSshHg = new System.Windows.Forms.CheckBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.checkBox_ppSshLg = new System.Windows.Forms.CheckBox();
+            this.checkBox_enSshLg = new System.Windows.Forms.CheckBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.checkBox_ppFsh = new System.Windows.Forms.CheckBox();
+            this.checkBox_enFsh = new System.Windows.Forms.CheckBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.checkBox_ppFshBuffer = new System.Windows.Forms.CheckBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.checkBox_ppPdetLg = new System.Windows.Forms.CheckBox();
+            this.checkBox_enPdetLg = new System.Windows.Forms.CheckBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.checkBox_ppPdetHg = new System.Windows.Forms.CheckBox();
+            this.checkBox_enPdetHg = new System.Windows.Forms.CheckBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.checkBox_ppThLg = new System.Windows.Forms.CheckBox();
+            this.checkBox_enThLg = new System.Windows.Forms.CheckBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.checkBox_ppThHg = new System.Windows.Forms.CheckBox();
+            this.checkBox_enThHg = new System.Windows.Forms.CheckBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.checkBox_ppCalibDacT = new System.Windows.Forms.CheckBox();
+            this.checkBox_enCalibDacT = new System.Windows.Forms.CheckBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.checkBox_ppCalibDacQ = new System.Windows.Forms.CheckBox();
+            this.checkBox_enCalibDacQ = new System.Windows.Forms.CheckBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.checkBox_ppDiscriT = new System.Windows.Forms.CheckBox();
+            this.checkBox_enDiscriT = new System.Windows.Forms.CheckBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.checkBox_ppDiscri = new System.Windows.Forms.CheckBox();
+            this.checkBox_enDiscri = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.tabPage_calibDac = new System.Windows.Forms.TabPage();
+            this.groupBox_inputDac = new System.Windows.Forms.GroupBox();
+            this.button_uncheckAllInputDac = new System.Windows.Forms.Button();
+            this.button_checkAllInputDac = new System.Windows.Forms.Button();
+            this.button_setAllInputDac = new System.Windows.Forms.Button();
             this.textBox_setAllInputDac = new CitirocUI.intTextBox();
             this.checkBox_cmdInputDac1 = new CitirocUI.maskCheckBox();
             this.textBox_inputDac31 = new CitirocUI.intTextBox();
@@ -699,74 +469,171 @@
             this.textBox_inputDac5 = new CitirocUI.intTextBox();
             this.checkBox_cmdInputDac20 = new CitirocUI.maskCheckBox();
             this.textBox_inputDac21 = new CitirocUI.intTextBox();
+            this.groupBox_DacT = new System.Windows.Forms.GroupBox();
+            this.button_setAllDacT = new System.Windows.Forms.Button();
             this.textBox_setAllDacT = new CitirocUI.intTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBox_calibDacT31 = new CitirocUI.intTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.textBox_calibDacT30 = new CitirocUI.intTextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.textBox_calibDacT29 = new CitirocUI.intTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.textBox_calibDacT28 = new CitirocUI.intTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.textBox_calibDacT27 = new CitirocUI.intTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.textBox_calibDacT26 = new CitirocUI.intTextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.textBox_calibDacT25 = new CitirocUI.intTextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.textBox_calibDacT24 = new CitirocUI.intTextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.textBox_calibDacT23 = new CitirocUI.intTextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.textBox_calibDacT22 = new CitirocUI.intTextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.textBox_calibDacT21 = new CitirocUI.intTextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.textBox_calibDacT20 = new CitirocUI.intTextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.textBox_calibDacT19 = new CitirocUI.intTextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.textBox_calibDacT18 = new CitirocUI.intTextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.textBox_calibDacT17 = new CitirocUI.intTextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.textBox_calibDacT16 = new CitirocUI.intTextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.textBox_calibDacT15 = new CitirocUI.intTextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.textBox_calibDacT14 = new CitirocUI.intTextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.textBox_calibDacT13 = new CitirocUI.intTextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.textBox_calibDacT12 = new CitirocUI.intTextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.textBox_calibDacT11 = new CitirocUI.intTextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.textBox_calibDacT10 = new CitirocUI.intTextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.textBox_calibDacT9 = new CitirocUI.intTextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.textBox_calibDacT8 = new CitirocUI.intTextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.textBox_calibDacT7 = new CitirocUI.intTextBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.textBox_calibDacT6 = new CitirocUI.intTextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.textBox_calibDacT5 = new CitirocUI.intTextBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.textBox_calibDacT4 = new CitirocUI.intTextBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.textBox_calibDacT3 = new CitirocUI.intTextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.textBox_calibDacT2 = new CitirocUI.intTextBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.textBox_calibDacT1 = new CitirocUI.intTextBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.textBox_calibDacT0 = new CitirocUI.intTextBox();
+            this.groupBox_DacQ = new System.Windows.Forms.GroupBox();
+            this.button_setAllDac = new System.Windows.Forms.Button();
             this.textBox_setAllDac = new CitirocUI.intTextBox();
+            this.label90 = new System.Windows.Forms.Label();
             this.textBox_calibDac31 = new CitirocUI.intTextBox();
+            this.label97 = new System.Windows.Forms.Label();
             this.textBox_calibDac30 = new CitirocUI.intTextBox();
+            this.label96 = new System.Windows.Forms.Label();
             this.textBox_calibDac29 = new CitirocUI.intTextBox();
+            this.label95 = new System.Windows.Forms.Label();
             this.textBox_calibDac28 = new CitirocUI.intTextBox();
+            this.label94 = new System.Windows.Forms.Label();
             this.textBox_calibDac27 = new CitirocUI.intTextBox();
+            this.label93 = new System.Windows.Forms.Label();
             this.textBox_calibDac26 = new CitirocUI.intTextBox();
+            this.label92 = new System.Windows.Forms.Label();
             this.textBox_calibDac25 = new CitirocUI.intTextBox();
+            this.label91 = new System.Windows.Forms.Label();
             this.textBox_calibDac24 = new CitirocUI.intTextBox();
+            this.label89 = new System.Windows.Forms.Label();
             this.textBox_calibDac23 = new CitirocUI.intTextBox();
+            this.label88 = new System.Windows.Forms.Label();
             this.textBox_calibDac22 = new CitirocUI.intTextBox();
+            this.label87 = new System.Windows.Forms.Label();
             this.textBox_calibDac21 = new CitirocUI.intTextBox();
+            this.label86 = new System.Windows.Forms.Label();
             this.textBox_calibDac20 = new CitirocUI.intTextBox();
+            this.label85 = new System.Windows.Forms.Label();
             this.textBox_calibDac19 = new CitirocUI.intTextBox();
+            this.label84 = new System.Windows.Forms.Label();
             this.textBox_calibDac18 = new CitirocUI.intTextBox();
+            this.label83 = new System.Windows.Forms.Label();
             this.textBox_calibDac17 = new CitirocUI.intTextBox();
+            this.label82 = new System.Windows.Forms.Label();
             this.textBox_calibDac16 = new CitirocUI.intTextBox();
+            this.label81 = new System.Windows.Forms.Label();
             this.textBox_calibDac15 = new CitirocUI.intTextBox();
+            this.label80 = new System.Windows.Forms.Label();
             this.textBox_calibDac14 = new CitirocUI.intTextBox();
+            this.label79 = new System.Windows.Forms.Label();
             this.textBox_calibDac13 = new CitirocUI.intTextBox();
+            this.label78 = new System.Windows.Forms.Label();
             this.textBox_calibDac12 = new CitirocUI.intTextBox();
+            this.label77 = new System.Windows.Forms.Label();
             this.textBox_calibDac11 = new CitirocUI.intTextBox();
+            this.label76 = new System.Windows.Forms.Label();
             this.textBox_calibDac10 = new CitirocUI.intTextBox();
+            this.label75 = new System.Windows.Forms.Label();
             this.textBox_calibDac9 = new CitirocUI.intTextBox();
+            this.label74 = new System.Windows.Forms.Label();
             this.textBox_calibDac8 = new CitirocUI.intTextBox();
+            this.label73 = new System.Windows.Forms.Label();
             this.textBox_calibDac7 = new CitirocUI.intTextBox();
+            this.label72 = new System.Windows.Forms.Label();
             this.textBox_calibDac6 = new CitirocUI.intTextBox();
+            this.label71 = new System.Windows.Forms.Label();
             this.textBox_calibDac5 = new CitirocUI.intTextBox();
+            this.label70 = new System.Windows.Forms.Label();
             this.textBox_calibDac4 = new CitirocUI.intTextBox();
+            this.label69 = new System.Windows.Forms.Label();
             this.textBox_calibDac3 = new CitirocUI.intTextBox();
+            this.label68 = new System.Windows.Forms.Label();
             this.textBox_calibDac2 = new CitirocUI.intTextBox();
+            this.label66 = new System.Windows.Forms.Label();
             this.textBox_calibDac1 = new CitirocUI.intTextBox();
+            this.label65 = new System.Windows.Forms.Label();
             this.textBox_calibDac0 = new CitirocUI.intTextBox();
+            this.tabPage_probes = new System.Windows.Forms.TabPage();
+            this.button_sendReadRegister = new System.Windows.Forms.Button();
+            this.numericUpDown_rr = new System.Windows.Forms.NumericUpDown();
+            this.groupBox_digitalProbe = new System.Windows.Forms.GroupBox();
+            this.radioButton_noDProbe = new System.Windows.Forms.RadioButton();
+            this.label119 = new System.Windows.Forms.Label();
+            this.numericUpDown_probeDChannel = new System.Windows.Forms.NumericUpDown();
+            this.radioButton_probePDLG = new System.Windows.Forms.RadioButton();
+            this.radioButton_probePDHG = new System.Windows.Forms.RadioButton();
+            this.groupBox_analogueProbe = new System.Windows.Forms.GroupBox();
+            this.radioButton_probePaLG = new System.Windows.Forms.RadioButton();
+            this.radioButton_probePaHG = new System.Windows.Forms.RadioButton();
+            this.label118 = new System.Windows.Forms.Label();
+            this.radioButton_noAProbe = new System.Windows.Forms.RadioButton();
+            this.radioButton_probeSshHG = new System.Windows.Forms.RadioButton();
+            this.radioButton_probeSshLG = new System.Windows.Forms.RadioButton();
+            this.radioButton_probeFsh = new System.Windows.Forms.RadioButton();
+            this.numericUpDown_probeAChannel = new System.Windows.Forms.NumericUpDown();
+            this.button_sendProbes = new System.Windows.Forms.Button();
             this.checkBox_rr = new CitirocUI.checkBox();
+            this.tabPage_calibration = new System.Windows.Forms.TabPage();
+            this.tabControl_calibration = new System.Windows.Forms.TabControl();
+            this.tabPage_sCurves = new System.Windows.Forms.TabPage();
+            this.label110 = new System.Windows.Forms.Label();
+            this.comboBox_sCurvesClock = new System.Windows.Forms.ComboBox();
             this.checkBox_ScurvesTorQ = new CitirocUI.switchBox();
+            this.label134 = new System.Windows.Forms.Label();
+            this.button_ScurvesUncheckAll = new System.Windows.Forms.Button();
+            this.button_ScurvesCheckAll = new System.Windows.Forms.Button();
+            this.button_channelSelectionScurves = new System.Windows.Forms.Button();
+            this.groupBox_channelSelectionScurves = new System.Windows.Forms.GroupBox();
             this.checkBox_selChn31 = new CitirocUI.checkBox();
             this.checkBox_selChn30 = new CitirocUI.checkBox();
             this.checkBox_selChn29 = new CitirocUI.checkBox();
@@ -804,6 +671,35 @@
             this.textBox_maxCodeScurves = new CitirocUI.intTextBox();
             this.textBox_minCodeScurves = new CitirocUI.intTextBox();
             this.checkBox_useMaskScurves = new CitirocUI.checkBox();
+            this.button_autocalibration = new System.Windows.Forms.Button();
+            this.button_Scurves = new System.Windows.Forms.Button();
+            this.button_resetZoomScurves = new System.Windows.Forms.Button();
+            this.label102 = new System.Windows.Forms.Label();
+            this.progressBar_Scurves = new System.Windows.Forms.ProgressBar();
+            this.label103 = new System.Windows.Forms.Label();
+            this.label109 = new System.Windows.Forms.Label();
+            this.label104 = new System.Windows.Forms.Label();
+            this.button_sCurveSavePath = new System.Windows.Forms.Button();
+            this.textBox_sCurveSavePath = new System.Windows.Forms.TextBox();
+            this.chart_Scurves = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage_holdScan = new System.Windows.Forms.TabPage();
+            this.button_refreshHoldScan = new System.Windows.Forms.Button();
+            this.button_scatterToPng = new System.Windows.Forms.Button();
+            this.label_holdScanMaxGradient = new System.Windows.Forms.Label();
+            this.label135 = new System.Windows.Forms.Label();
+            this.button_loadHoldScan = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label105 = new System.Windows.Forms.Label();
+            this.button_holdScanSavePath = new System.Windows.Forms.Button();
+            this.textBox_holdScanSavePath = new System.Windows.Forms.TextBox();
+            this.label124 = new System.Windows.Forms.Label();
+            this.label122 = new System.Windows.Forms.Label();
+            this.label121 = new System.Windows.Forms.Label();
+            this.label114 = new System.Windows.Forms.Label();
+            this.label113 = new System.Windows.Forms.Label();
+            this.numericUpDown_channelHoldScan = new System.Windows.Forms.NumericUpDown();
+            this.chart_holdScan = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button_holdScan = new System.Windows.Forms.Button();
             this.checkBox_showScatterPlot = new CitirocUI.checkBox();
             this.textBox_granularity = new CitirocUI.intTextBox();
             this.textBox_holdScanMinGradient = new CitirocUI.intTextBox();
@@ -813,8 +709,15 @@
             this.textBox_stepCodeHoldScan = new CitirocUI.intTextBox();
             this.textBox_maxCodeHoldScan = new CitirocUI.intTextBox();
             this.textBox_minCodeHoldScan = new CitirocUI.intTextBox();
+            this.tabPage_staircase = new System.Windows.Forms.TabPage();
             this.checkBox_staircaseLogScale = new CitirocUI.checkBox();
             this.textBox_staircaseTimeWindow = new CitirocUI.intTextBox();
+            this.label123 = new System.Windows.Forms.Label();
+            this.label120 = new System.Windows.Forms.Label();
+            this.button_staircaseUncheckAll = new System.Windows.Forms.Button();
+            this.button_staircaseCheckAll = new System.Windows.Forms.Button();
+            this.button_channelSelectionStaircase = new System.Windows.Forms.Button();
+            this.groupBox_channelSelectionStaircase = new System.Windows.Forms.GroupBox();
             this.checkBox_selStaircaseCh31 = new CitirocUI.checkBox();
             this.checkBox_selStaircaseCh30 = new CitirocUI.checkBox();
             this.checkBox_selStaircaseCh29 = new CitirocUI.checkBox();
@@ -847,19 +750,64 @@
             this.checkBox_selStaircaseCh2 = new CitirocUI.checkBox();
             this.checkBox_selStaircaseCh1 = new CitirocUI.checkBox();
             this.checkBox_selStaircaseCh0 = new CitirocUI.checkBox();
+            this.label129 = new System.Windows.Forms.Label();
+            this.label130 = new System.Windows.Forms.Label();
+            this.label131 = new System.Windows.Forms.Label();
+            this.label132 = new System.Windows.Forms.Label();
+            this.button_staircaseSavePath = new System.Windows.Forms.Button();
+            this.textBox_staircaseSavePath = new System.Windows.Forms.TextBox();
+            this.progressBar_staircase = new System.Windows.Forms.ProgressBar();
+            this.button_startStaircase = new System.Windows.Forms.Button();
+            this.button_resetZoomStaircase = new System.Windows.Forms.Button();
+            this.chart_staircase = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.checkBox_staircaseTorQ = new CitirocUI.switchBox();
             this.checkBox_useMaskStaircase = new CitirocUI.checkBox();
             this.textBox_stepStaircase = new CitirocUI.intTextBox();
             this.textBox_maxStaircase = new CitirocUI.intTextBox();
             this.textBox_minStaircase = new CitirocUI.intTextBox();
+            this.tabPage_dataAcquisition = new System.Windows.Forms.TabPage();
+            this.label_acquisitionTime = new System.Windows.Forms.Label();
+            this.textBox_acquisitionTime = new System.Windows.Forms.MaskedTextBox();
+            this.progressBar_acquisition = new System.Windows.Forms.ProgressBar();
+            this.label_acqTime = new System.Windows.Forms.Label();
+            this.label_elapsedTimeAcquisition = new System.Windows.Forms.Label();
+            this.tabControl_dataAcquisition = new System.Windows.Forms.TabControl();
+            this.tabPage_perChannelCharge = new System.Windows.Forms.TabPage();
             this.textBox_LgCutLow = new CitirocUI.intTextBox();
             this.textBox_LgCutHigh = new CitirocUI.intTextBox();
             this.textBox_HgCutLow = new CitirocUI.intTextBox();
             this.textBox_HgCutHigh = new CitirocUI.intTextBox();
+            this.label128 = new System.Windows.Forms.Label();
+            this.label133 = new System.Windows.Forms.Label();
+            this.label127 = new System.Windows.Forms.Label();
+            this.label126 = new System.Windows.Forms.Label();
+            this.chart_perChannelChargeLG = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label107 = new System.Windows.Forms.Label();
+            this.label_nbHit = new System.Windows.Forms.Label();
+            this.chart_perChannelChargeHG = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.numericUpDown_loadCh = new System.Windows.Forms.NumericUpDown();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chart_perAcqChargeLG = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart_perAcqChargeHG = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label125 = new System.Windows.Forms.Label();
+            this.numericUpDown_acquisitionNumber = new System.Windows.Forms.NumericUpDown();
+            this.button_loadData = new System.Windows.Forms.Button();
+            this.button_dataSavePath = new System.Windows.Forms.Button();
+            this.textBox_dataSavePath = new System.Windows.Forms.TextBox();
+            this.button_startAcquisition = new System.Windows.Forms.Button();
+            this.label106 = new System.Windows.Forms.Label();
+            this.label_numData = new System.Windows.Forms.Label();
             this.textBox_numData = new CitirocUI.intTextBox();
             this.switchBox_acquisitionMode = new CitirocUI.switchBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBox_triggerPreset = new System.Windows.Forms.ComboBox();
+            this.label136 = new System.Windows.Forms.Label();
+            this.groupBox_timeTriggerMask = new System.Windows.Forms.GroupBox();
+            this.button_sendMaskTime = new System.Windows.Forms.Button();
             this.checkBox_timeTriggerMask0 = new CitirocUI.maskCheckBox();
+            this.button_unmaskAllTime = new System.Windows.Forms.Button();
             this.checkBox_timeTriggerMask13 = new CitirocUI.maskCheckBox();
+            this.button_maskAllTime = new System.Windows.Forms.Button();
             this.checkBox_timeTriggerMask14 = new CitirocUI.maskCheckBox();
             this.checkBox_timeTriggerMask12 = new CitirocUI.maskCheckBox();
             this.checkBox_timeTriggerMask15 = new CitirocUI.maskCheckBox();
@@ -890,6 +838,12 @@
             this.checkBox_timeTriggerMask2 = new CitirocUI.maskCheckBox();
             this.checkBox_timeTriggerMask1 = new CitirocUI.maskCheckBox();
             this.checkBox_timeTriggerMask25 = new CitirocUI.maskCheckBox();
+            this.textBox_word5 = new System.Windows.Forms.TextBox();
+            this.textBox_word3 = new System.Windows.Forms.TextBox();
+            this.textBox_word2 = new System.Windows.Forms.TextBox();
+            this.textBox_word1 = new System.Windows.Forms.TextBox();
+            this.textBox_word0 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox_OR32polarity = new CitirocUI.switchBox();
             this.checkBox_triggerTorQ = new CitirocUI.switchBox();
             this.checkBox_selHold = new CitirocUI.switchBox();
@@ -898,6 +852,7 @@
             this.checkBox_ADC1 = new CitirocUI.switchBox();
             this.checkBox_readOutSpeed = new CitirocUI.switchBox();
             this.checkBox_disReadAdc = new CitirocUI.switchBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox_softwareTrigger = new CitirocUI.switchBox();
             this.checkBox_iofpgaOr32t = new CitirocUI.switchBox();
             this.checkBox_PSGlobalTrigger = new CitirocUI.checkBox();
@@ -913,6 +868,51 @@
             this.checkBox_rstbPa = new CitirocUI.checkBox();
             this.checkBox_selPSGlobalTrigger = new CitirocUI.switchBox();
             this.checkBox_timeOutHold = new CitirocUI.checkBox();
+            this.groupBox_HV = new System.Windows.Forms.GroupBox();
+            this.numUpDown_HV = new System.Windows.Forms.NumericUpDown();
+            this.checkBox_HVON = new System.Windows.Forms.CheckBox();
+            this.button_HVPS = new System.Windows.Forms.Button();
+            this.label140 = new System.Windows.Forms.Label();
+            this.button_readTelemetry = new System.Windows.Forms.Button();
+            this.label_tempOnBoard = new System.Windows.Forms.Label();
+            this.backgroundWorker_Scurves = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker_staircase = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker_dataAcquisition = new System.ComponentModel.BackgroundWorker();
+            this.pictureBox_logoWeeroc = new System.Windows.Forms.PictureBox();
+            this.backgroundWorker_holdScan = new System.ComponentModel.BackgroundWorker();
+            this.button_screenshot = new System.Windows.Forms.Button();
+            this.tblPnlMain = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.roundButton_connectSmall = new CitirocUI.roundButton();
+            this.pnlTopBar = new System.Windows.Forms.Panel();
+            this.pnlTools = new System.Windows.Forms.Panel();
+            this.panel_CubesMonitor = new System.Windows.Forms.Panel();
+            this.groupBox_telemetry = new System.Windows.Forms.GroupBox();
+            this.groupBox_HitRates = new System.Windows.Forms.GroupBox();
+            this.label_hitCountMPPC1 = new System.Windows.Forms.Label();
+            this.textBox_hitCountOR32 = new System.Windows.Forms.TextBox();
+            this.textBox_hitCountMPPC2 = new System.Windows.Forms.TextBox();
+            this.label_hitCountOR32 = new System.Windows.Forms.Label();
+            this.textBox_hitCountMPPC1 = new System.Windows.Forms.TextBox();
+            this.textBox_hitCountMPPC3 = new System.Windows.Forms.TextBox();
+            this.label_hitCountMPPC2 = new System.Windows.Forms.Label();
+            this.label_hitCountMPPC3 = new System.Windows.Forms.Label();
+            this.groupBox_HvpsTelemetry = new System.Windows.Forms.GroupBox();
+            this.label_NoteOnHVPSTelem = new System.Windows.Forms.Label();
+            this.label_Voltage = new System.Windows.Forms.Label();
+            this.label_Temperature = new System.Windows.Forms.Label();
+            this.textBox_tempFromHVPS = new System.Windows.Forms.TextBox();
+            this.textBox_voltageFromHVPS = new System.Windows.Forms.TextBox();
+            this.label_Current = new System.Windows.Forms.Label();
+            this.textBox_currentFromHVPS = new System.Windows.Forms.TextBox();
+            this.textBox_timestamp = new System.Windows.Forms.TextBox();
+            this.label_timestamp = new System.Windows.Forms.Label();
+            this.rtxtMonitor = new System.Windows.Forms.RichTextBox();
+            this.panel_clearSerialMonitor = new System.Windows.Forms.Panel();
+            this.label_ConnStatus = new System.Windows.Forms.Label();
+            this.buttonHelp = new System.Windows.Forms.Button();
+            this.button_Clear = new System.Windows.Forms.Button();
+            this.tmrButtonColor = new System.Windows.Forms.Timer(this.components);
             this.tabControl_top.SuspendLayout();
             this.tabPage_main.SuspendLayout();
             this.groupBox_SerialPortSettings.SuspendLayout();
@@ -999,7 +999,7 @@
             this.label_help.Name = "label_help";
             this.label_help.Padding = new System.Windows.Forms.Padding(10, 10, 20, 10);
             this.label_help.Size = new System.Drawing.Size(1080, 200);
-            this.label_help.TabIndex = 22;
+            this.label_help.TabIndex = 3;
             this.label_help.Text = "Welcome to the Citiroc User Interface";
             // 
             // btn_minimize
@@ -1074,7 +1074,7 @@
             this.radioButton_calibration.Location = new System.Drawing.Point(3, 214);
             this.radioButton_calibration.Name = "radioButton_calibration";
             this.radioButton_calibration.Size = new System.Drawing.Size(200, 70);
-            this.radioButton_calibration.TabIndex = 32;
+            this.radioButton_calibration.TabIndex = 3;
             this.radioButton_calibration.TabStop = true;
             this.radioButton_calibration.Text = "Calibration";
             this.radioButton_calibration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1096,7 +1096,7 @@
             this.radioButton_probes.Location = new System.Drawing.Point(3, 143);
             this.radioButton_probes.Name = "radioButton_probes";
             this.radioButton_probes.Size = new System.Drawing.Size(200, 70);
-            this.radioButton_probes.TabIndex = 31;
+            this.radioButton_probes.TabIndex = 2;
             this.radioButton_probes.TabStop = true;
             this.radioButton_probes.Text = "Probes";
             this.radioButton_probes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1118,7 +1118,7 @@
             this.radioButton_dataAcquisition.Location = new System.Drawing.Point(3, 284);
             this.radioButton_dataAcquisition.Name = "radioButton_dataAcquisition";
             this.radioButton_dataAcquisition.Size = new System.Drawing.Size(200, 70);
-            this.radioButton_dataAcquisition.TabIndex = 30;
+            this.radioButton_dataAcquisition.TabIndex = 4;
             this.radioButton_dataAcquisition.TabStop = true;
             this.radioButton_dataAcquisition.Text = "Data Acquisition";
             this.radioButton_dataAcquisition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1140,7 +1140,7 @@
             this.radioButton_slowControl.Location = new System.Drawing.Point(3, 71);
             this.radioButton_slowControl.Name = "radioButton_slowControl";
             this.radioButton_slowControl.Size = new System.Drawing.Size(200, 70);
-            this.radioButton_slowControl.TabIndex = 29;
+            this.radioButton_slowControl.TabIndex = 6;
             this.radioButton_slowControl.TabStop = true;
             this.radioButton_slowControl.Text = "Slow Control";
             this.radioButton_slowControl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1163,7 +1163,7 @@
             this.radioButton_connect.Location = new System.Drawing.Point(3, -1);
             this.radioButton_connect.Name = "radioButton_connect";
             this.radioButton_connect.Size = new System.Drawing.Size(200, 70);
-            this.radioButton_connect.TabIndex = 28;
+            this.radioButton_connect.TabIndex = 0;
             this.radioButton_connect.TabStop = true;
             this.radioButton_connect.Text = "Connect";
             this.radioButton_connect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1185,7 +1185,7 @@
             this.radioButton_firmware.Location = new System.Drawing.Point(3, 363);
             this.radioButton_firmware.Name = "radioButton_firmware";
             this.radioButton_firmware.Size = new System.Drawing.Size(200, 70);
-            this.radioButton_firmware.TabIndex = 34;
+            this.radioButton_firmware.TabIndex = 5;
             this.radioButton_firmware.TabStop = true;
             this.radioButton_firmware.Text = "Firmware options";
             this.radioButton_firmware.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1224,7 +1224,7 @@
             this.tabControl_top.SelectedIndex = 0;
             this.tabControl_top.Size = new System.Drawing.Size(1080, 490);
             this.tabControl_top.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl_top.TabIndex = 36;
+            this.tabControl_top.TabIndex = 0;
             this.tabControl_top.TabStop = false;
             this.tabControl_top.DragDrop += new System.Windows.Forms.DragEventHandler(this.slowControl_DragDrop);
             this.tabControl_top.DragEnter += new System.Windows.Forms.DragEventHandler(this.slowControl_DragEnter);
@@ -1267,7 +1267,7 @@
             this.btn_CubesMonitor.Location = new System.Drawing.Point(10, 140);
             this.btn_CubesMonitor.Name = "btn_CubesMonitor";
             this.btn_CubesMonitor.Size = new System.Drawing.Size(235, 37);
-            this.btn_CubesMonitor.TabIndex = 11;
+            this.btn_CubesMonitor.TabIndex = 2;
             this.btn_CubesMonitor.Text = "CUBES Monitor >>>";
             this.btn_CubesMonitor.UseVisualStyleBackColor = true;
             this.btn_CubesMonitor.Click += new System.EventHandler(this.btn_CubesMonitor_Click);
@@ -1278,7 +1278,7 @@
             this.comboBox_COMPortList.Location = new System.Drawing.Point(124, 34);
             this.comboBox_COMPortList.Name = "comboBox_COMPortList";
             this.comboBox_COMPortList.Size = new System.Drawing.Size(121, 32);
-            this.comboBox_COMPortList.TabIndex = 9;
+            this.comboBox_COMPortList.TabIndex = 0;
             this.comboBox_COMPortList.Click += new System.EventHandler(this.comboBox_COMPortList_OnClick);
             // 
             // label139
@@ -1311,7 +1311,7 @@
             this.comboBox_Baudrate.Location = new System.Drawing.Point(124, 72);
             this.comboBox_Baudrate.Name = "comboBox_Baudrate";
             this.comboBox_Baudrate.Size = new System.Drawing.Size(121, 32);
-            this.comboBox_Baudrate.TabIndex = 10;
+            this.comboBox_Baudrate.TabIndex = 1;
             // 
             // label137
             // 
@@ -1333,8 +1333,24 @@
             this.comboBox_SelectConnection.Location = new System.Drawing.Point(425, 38);
             this.comboBox_SelectConnection.Name = "comboBox_SelectConnection";
             this.comboBox_SelectConnection.Size = new System.Drawing.Size(240, 32);
-            this.comboBox_SelectConnection.TabIndex = 7;
+            this.comboBox_SelectConnection.TabIndex = 0;
             this.comboBox_SelectConnection.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectConnection_SelectedIndexChanged);
+            // 
+            // roundButton_connect
+            // 
+            this.roundButton_connect.BackColor = System.Drawing.Color.Gainsboro;
+            this.roundButton_connect.FlatAppearance.BorderSize = 0;
+            this.roundButton_connect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButton_connect.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
+            this.roundButton_connect.Location = new System.Drawing.Point(470, 169);
+            this.roundButton_connect.Name = "roundButton_connect";
+            this.roundButton_connect.Size = new System.Drawing.Size(150, 150);
+            this.roundButton_connect.TabIndex = 1;
+            this.roundButton_connect.Text = "CONNECT";
+            this.roundButton_connect.UseVisualStyleBackColor = false;
+            this.roundButton_connect.Click += new System.EventHandler(this.roundButton_connect_Click);
+            this.roundButton_connect.MouseEnter += new System.EventHandler(this.roundButton_connect_MouseEnter);
+            this.roundButton_connect.MouseLeave += new System.EventHandler(this.object_MouseLeave);
             // 
             // label_plug
             // 
@@ -1588,6 +1604,358 @@
             this.button_injectAllLg.UseVisualStyleBackColor = false;
             this.button_injectAllLg.Click += new System.EventHandler(this.button_injectAllLg_Click);
             // 
+            // checkBox_CtestLg0
+            // 
+            this.checkBox_CtestLg0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg0.Location = new System.Drawing.Point(11, 28);
+            this.checkBox_CtestLg0.Name = "checkBox_CtestLg0";
+            this.checkBox_CtestLg0.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg0.TabIndex = 64;
+            this.checkBox_CtestLg0.Text = "0";
+            this.checkBox_CtestLg0.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg0.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg1
+            // 
+            this.checkBox_CtestLg1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg1.Location = new System.Drawing.Point(11, 64);
+            this.checkBox_CtestLg1.Name = "checkBox_CtestLg1";
+            this.checkBox_CtestLg1.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg1.TabIndex = 65;
+            this.checkBox_CtestLg1.Text = "1";
+            this.checkBox_CtestLg1.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg1.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg2
+            // 
+            this.checkBox_CtestLg2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg2.Location = new System.Drawing.Point(11, 100);
+            this.checkBox_CtestLg2.Name = "checkBox_CtestLg2";
+            this.checkBox_CtestLg2.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg2.TabIndex = 66;
+            this.checkBox_CtestLg2.Text = "2";
+            this.checkBox_CtestLg2.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg2.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg3
+            // 
+            this.checkBox_CtestLg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg3.Location = new System.Drawing.Point(11, 136);
+            this.checkBox_CtestLg3.Name = "checkBox_CtestLg3";
+            this.checkBox_CtestLg3.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg3.TabIndex = 67;
+            this.checkBox_CtestLg3.Text = "3";
+            this.checkBox_CtestLg3.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg3.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg4
+            // 
+            this.checkBox_CtestLg4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg4.Location = new System.Drawing.Point(11, 172);
+            this.checkBox_CtestLg4.Name = "checkBox_CtestLg4";
+            this.checkBox_CtestLg4.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg4.TabIndex = 68;
+            this.checkBox_CtestLg4.Text = "4";
+            this.checkBox_CtestLg4.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg4.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg5
+            // 
+            this.checkBox_CtestLg5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg5.Location = new System.Drawing.Point(11, 208);
+            this.checkBox_CtestLg5.Name = "checkBox_CtestLg5";
+            this.checkBox_CtestLg5.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg5.TabIndex = 69;
+            this.checkBox_CtestLg5.Text = "5";
+            this.checkBox_CtestLg5.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg5.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg6
+            // 
+            this.checkBox_CtestLg6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg6.Location = new System.Drawing.Point(11, 244);
+            this.checkBox_CtestLg6.Name = "checkBox_CtestLg6";
+            this.checkBox_CtestLg6.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg6.TabIndex = 70;
+            this.checkBox_CtestLg6.Text = "6";
+            this.checkBox_CtestLg6.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg6.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg7
+            // 
+            this.checkBox_CtestLg7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg7.Location = new System.Drawing.Point(11, 280);
+            this.checkBox_CtestLg7.Name = "checkBox_CtestLg7";
+            this.checkBox_CtestLg7.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg7.TabIndex = 71;
+            this.checkBox_CtestLg7.Text = "7";
+            this.checkBox_CtestLg7.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg7.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg8
+            // 
+            this.checkBox_CtestLg8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg8.Location = new System.Drawing.Point(47, 28);
+            this.checkBox_CtestLg8.Name = "checkBox_CtestLg8";
+            this.checkBox_CtestLg8.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg8.TabIndex = 72;
+            this.checkBox_CtestLg8.Text = "8";
+            this.checkBox_CtestLg8.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg8.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg9
+            // 
+            this.checkBox_CtestLg9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg9.Location = new System.Drawing.Point(47, 64);
+            this.checkBox_CtestLg9.Name = "checkBox_CtestLg9";
+            this.checkBox_CtestLg9.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg9.TabIndex = 73;
+            this.checkBox_CtestLg9.Text = "9";
+            this.checkBox_CtestLg9.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg9.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg10
+            // 
+            this.checkBox_CtestLg10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg10.Location = new System.Drawing.Point(47, 100);
+            this.checkBox_CtestLg10.Name = "checkBox_CtestLg10";
+            this.checkBox_CtestLg10.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg10.TabIndex = 74;
+            this.checkBox_CtestLg10.Text = "10";
+            this.checkBox_CtestLg10.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg10.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg11
+            // 
+            this.checkBox_CtestLg11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg11.Location = new System.Drawing.Point(47, 136);
+            this.checkBox_CtestLg11.Name = "checkBox_CtestLg11";
+            this.checkBox_CtestLg11.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg11.TabIndex = 75;
+            this.checkBox_CtestLg11.Text = "11";
+            this.checkBox_CtestLg11.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg11.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg12
+            // 
+            this.checkBox_CtestLg12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg12.Location = new System.Drawing.Point(47, 172);
+            this.checkBox_CtestLg12.Name = "checkBox_CtestLg12";
+            this.checkBox_CtestLg12.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg12.TabIndex = 76;
+            this.checkBox_CtestLg12.Text = "12";
+            this.checkBox_CtestLg12.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg12.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg13
+            // 
+            this.checkBox_CtestLg13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg13.Location = new System.Drawing.Point(47, 208);
+            this.checkBox_CtestLg13.Name = "checkBox_CtestLg13";
+            this.checkBox_CtestLg13.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg13.TabIndex = 77;
+            this.checkBox_CtestLg13.Text = "13";
+            this.checkBox_CtestLg13.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg13.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg14
+            // 
+            this.checkBox_CtestLg14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg14.Location = new System.Drawing.Point(47, 244);
+            this.checkBox_CtestLg14.Name = "checkBox_CtestLg14";
+            this.checkBox_CtestLg14.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg14.TabIndex = 78;
+            this.checkBox_CtestLg14.Text = "14";
+            this.checkBox_CtestLg14.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg14.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg15
+            // 
+            this.checkBox_CtestLg15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg15.Location = new System.Drawing.Point(47, 280);
+            this.checkBox_CtestLg15.Name = "checkBox_CtestLg15";
+            this.checkBox_CtestLg15.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg15.TabIndex = 79;
+            this.checkBox_CtestLg15.Text = "15";
+            this.checkBox_CtestLg15.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg15.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg16
+            // 
+            this.checkBox_CtestLg16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg16.Location = new System.Drawing.Point(83, 28);
+            this.checkBox_CtestLg16.Name = "checkBox_CtestLg16";
+            this.checkBox_CtestLg16.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg16.TabIndex = 80;
+            this.checkBox_CtestLg16.Text = "16";
+            this.checkBox_CtestLg16.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg16.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg17
+            // 
+            this.checkBox_CtestLg17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg17.Location = new System.Drawing.Point(83, 64);
+            this.checkBox_CtestLg17.Name = "checkBox_CtestLg17";
+            this.checkBox_CtestLg17.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg17.TabIndex = 81;
+            this.checkBox_CtestLg17.Text = "17";
+            this.checkBox_CtestLg17.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg17.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg18
+            // 
+            this.checkBox_CtestLg18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg18.Location = new System.Drawing.Point(83, 100);
+            this.checkBox_CtestLg18.Name = "checkBox_CtestLg18";
+            this.checkBox_CtestLg18.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg18.TabIndex = 82;
+            this.checkBox_CtestLg18.Text = "18";
+            this.checkBox_CtestLg18.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg18.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg19
+            // 
+            this.checkBox_CtestLg19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg19.Location = new System.Drawing.Point(83, 136);
+            this.checkBox_CtestLg19.Name = "checkBox_CtestLg19";
+            this.checkBox_CtestLg19.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg19.TabIndex = 83;
+            this.checkBox_CtestLg19.Text = "19";
+            this.checkBox_CtestLg19.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg19.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg20
+            // 
+            this.checkBox_CtestLg20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg20.Location = new System.Drawing.Point(83, 172);
+            this.checkBox_CtestLg20.Name = "checkBox_CtestLg20";
+            this.checkBox_CtestLg20.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg20.TabIndex = 84;
+            this.checkBox_CtestLg20.Text = "20";
+            this.checkBox_CtestLg20.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg20.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg21
+            // 
+            this.checkBox_CtestLg21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg21.Location = new System.Drawing.Point(83, 208);
+            this.checkBox_CtestLg21.Name = "checkBox_CtestLg21";
+            this.checkBox_CtestLg21.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg21.TabIndex = 85;
+            this.checkBox_CtestLg21.Text = "21";
+            this.checkBox_CtestLg21.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg21.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg22
+            // 
+            this.checkBox_CtestLg22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg22.Location = new System.Drawing.Point(83, 244);
+            this.checkBox_CtestLg22.Name = "checkBox_CtestLg22";
+            this.checkBox_CtestLg22.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg22.TabIndex = 86;
+            this.checkBox_CtestLg22.Text = "22";
+            this.checkBox_CtestLg22.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg22.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg23
+            // 
+            this.checkBox_CtestLg23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg23.Location = new System.Drawing.Point(83, 280);
+            this.checkBox_CtestLg23.Name = "checkBox_CtestLg23";
+            this.checkBox_CtestLg23.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg23.TabIndex = 87;
+            this.checkBox_CtestLg23.Text = "23";
+            this.checkBox_CtestLg23.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg23.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg24
+            // 
+            this.checkBox_CtestLg24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg24.Location = new System.Drawing.Point(119, 28);
+            this.checkBox_CtestLg24.Name = "checkBox_CtestLg24";
+            this.checkBox_CtestLg24.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg24.TabIndex = 88;
+            this.checkBox_CtestLg24.Text = "24";
+            this.checkBox_CtestLg24.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg24.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg25
+            // 
+            this.checkBox_CtestLg25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg25.Location = new System.Drawing.Point(119, 64);
+            this.checkBox_CtestLg25.Name = "checkBox_CtestLg25";
+            this.checkBox_CtestLg25.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg25.TabIndex = 89;
+            this.checkBox_CtestLg25.Text = "25";
+            this.checkBox_CtestLg25.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg25.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg26
+            // 
+            this.checkBox_CtestLg26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg26.Location = new System.Drawing.Point(119, 100);
+            this.checkBox_CtestLg26.Name = "checkBox_CtestLg26";
+            this.checkBox_CtestLg26.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg26.TabIndex = 90;
+            this.checkBox_CtestLg26.Text = "26";
+            this.checkBox_CtestLg26.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg26.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg27
+            // 
+            this.checkBox_CtestLg27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg27.Location = new System.Drawing.Point(119, 136);
+            this.checkBox_CtestLg27.Name = "checkBox_CtestLg27";
+            this.checkBox_CtestLg27.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg27.TabIndex = 91;
+            this.checkBox_CtestLg27.Text = "27";
+            this.checkBox_CtestLg27.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg27.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg28
+            // 
+            this.checkBox_CtestLg28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg28.Location = new System.Drawing.Point(119, 172);
+            this.checkBox_CtestLg28.Name = "checkBox_CtestLg28";
+            this.checkBox_CtestLg28.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg28.TabIndex = 92;
+            this.checkBox_CtestLg28.Text = "28";
+            this.checkBox_CtestLg28.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg28.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg29
+            // 
+            this.checkBox_CtestLg29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg29.Location = new System.Drawing.Point(119, 208);
+            this.checkBox_CtestLg29.Name = "checkBox_CtestLg29";
+            this.checkBox_CtestLg29.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg29.TabIndex = 93;
+            this.checkBox_CtestLg29.Text = "29";
+            this.checkBox_CtestLg29.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg29.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg30
+            // 
+            this.checkBox_CtestLg30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg30.Location = new System.Drawing.Point(119, 244);
+            this.checkBox_CtestLg30.Name = "checkBox_CtestLg30";
+            this.checkBox_CtestLg30.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg30.TabIndex = 94;
+            this.checkBox_CtestLg30.Text = "30";
+            this.checkBox_CtestLg30.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg30.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
+            // checkBox_CtestLg31
+            // 
+            this.checkBox_CtestLg31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestLg31.Location = new System.Drawing.Point(119, 280);
+            this.checkBox_CtestLg31.Name = "checkBox_CtestLg31";
+            this.checkBox_CtestLg31.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestLg31.TabIndex = 95;
+            this.checkBox_CtestLg31.Text = "31";
+            this.checkBox_CtestLg31.UseVisualStyleBackColor = true;
+            this.checkBox_CtestLg31.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
+            // 
             // label112
             // 
             this.label112.AutoSize = true;
@@ -1605,6 +1973,122 @@
             this.label115.Size = new System.Drawing.Size(145, 24);
             this.label115.TabIndex = 176;
             this.label115.Text = "Delay (firmware)";
+            // 
+            // textBox_delay
+            // 
+            this.textBox_delay.enableNegative = false;
+            this.textBox_delay.Location = new System.Drawing.Point(464, 358);
+            this.textBox_delay.Name = "textBox_delay";
+            this.textBox_delay.Size = new System.Drawing.Size(43, 29);
+            this.textBox_delay.TabIndex = 175;
+            this.textBox_delay.Text = "60";
+            this.textBox_delay.TextChanged += new System.EventHandler(this.textBox_delay_TextChanged);
+            // 
+            // checkBox_paLgBias
+            // 
+            this.checkBox_paLgBias.AutoSize = true;
+            this.checkBox_paLgBias.Location = new System.Drawing.Point(234, 192);
+            this.checkBox_paLgBias.Name = "checkBox_paLgBias";
+            this.checkBox_paLgBias.Size = new System.Drawing.Size(294, 28);
+            this.checkBox_paLgBias.TabIndex = 174;
+            this.checkBox_paLgBias.Text = "Weak low gain preamplifier bias";
+            this.checkBox_paLgBias.UseVisualStyleBackColor = true;
+            this.checkBox_paLgBias.CheckedChanged += new System.EventHandler(this.checkBox_paLgBias_CheckedChanged);
+            // 
+            // checkBox_testBitOtaQ
+            // 
+            this.checkBox_testBitOtaQ.AutoSize = true;
+            this.checkBox_testBitOtaQ.Location = new System.Drawing.Point(485, 128);
+            this.checkBox_testBitOtaQ.Name = "checkBox_testBitOtaQ";
+            this.checkBox_testBitOtaQ.Size = new System.Drawing.Size(137, 28);
+            this.checkBox_testBitOtaQ.TabIndex = 173;
+            this.checkBox_testBitOtaQ.Text = "OTAq test bit";
+            this.checkBox_testBitOtaQ.UseVisualStyleBackColor = true;
+            this.checkBox_testBitOtaQ.CheckedChanged += new System.EventHandler(this.checkBox_testBitOtaQ_CheckedChanged);
+            // 
+            // checkBox_fshOnLg
+            // 
+            this.checkBox_fshOnLg.AutoSize = true;
+            this.checkBox_fshOnLg.Location = new System.Drawing.Point(485, 96);
+            this.checkBox_fshOnLg.Name = "checkBox_fshOnLg";
+            this.checkBox_fshOnLg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_fshOnLg.Size = new System.Drawing.Size(231, 28);
+            this.checkBox_fshOnLg.TabIndex = 172;
+            this.checkBox_fshOnLg.Text = "Low gain to fast shaper";
+            this.checkBox_fshOnLg.UseVisualStyleBackColor = true;
+            this.checkBox_fshOnLg.CheckedChanged += new System.EventHandler(this.checkBox_fshOnLg_CheckedChanged);
+            // 
+            // checkBox_triggerPolarity
+            // 
+            this.checkBox_triggerPolarity.AutoSize = true;
+            this.checkBox_triggerPolarity.Location = new System.Drawing.Point(234, 96);
+            this.checkBox_triggerPolarity.Name = "checkBox_triggerPolarity";
+            this.checkBox_triggerPolarity.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_triggerPolarity.Size = new System.Drawing.Size(172, 28);
+            this.checkBox_triggerPolarity.TabIndex = 170;
+            this.checkBox_triggerPolarity.Text = "Negative trigger";
+            this.checkBox_triggerPolarity.UseVisualStyleBackColor = true;
+            this.checkBox_triggerPolarity.CheckedChanged += new System.EventHandler(this.checkBox_triggerPolarity_CheckedChanged);
+            // 
+            // checkBox_dacRef
+            // 
+            this.checkBox_dacRef.AutoSize = true;
+            this.checkBox_dacRef.Location = new System.Drawing.Point(234, 128);
+            this.checkBox_dacRef.Name = "checkBox_dacRef";
+            this.checkBox_dacRef.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_dacRef.Size = new System.Drawing.Size(275, 28);
+            this.checkBox_dacRef.TabIndex = 169;
+            this.checkBox_dacRef.Text = "Input DAC reference = 2.5 V";
+            this.checkBox_dacRef.UseVisualStyleBackColor = true;
+            this.checkBox_dacRef.CheckedChanged += new System.EventHandler(this.checkBox_dacRef_CheckedChanged);
+            // 
+            // checkBox_biasSca
+            // 
+            this.checkBox_biasSca.AutoSize = true;
+            this.checkBox_biasSca.Location = new System.Drawing.Point(234, 64);
+            this.checkBox_biasSca.Name = "checkBox_biasSca";
+            this.checkBox_biasSca.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_biasSca.Size = new System.Drawing.Size(117, 28);
+            this.checkBox_biasSca.TabIndex = 168;
+            this.checkBox_biasSca.Text = "SCA bias";
+            this.checkBox_biasSca.UseVisualStyleBackColor = true;
+            this.checkBox_biasSca.CheckedChanged += new System.EventHandler(this.checkBox_biasSca_CheckedChanged);
+            // 
+            // checkBox_latchDiscri
+            // 
+            this.checkBox_latchDiscri.AutoSize = true;
+            this.checkBox_latchDiscri.Location = new System.Drawing.Point(234, 32);
+            this.checkBox_latchDiscri.Name = "checkBox_latchDiscri";
+            this.checkBox_latchDiscri.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_latchDiscri.Size = new System.Drawing.Size(143, 28);
+            this.checkBox_latchDiscri.TabIndex = 167;
+            this.checkBox_latchDiscri.Text = "Latch trigger";
+            this.checkBox_latchDiscri.UseVisualStyleBackColor = true;
+            this.checkBox_latchDiscri.CheckedChanged += new System.EventHandler(this.checkBox_latch_CheckedChanged);
+            // 
+            // checkBox_scaOrPdLg
+            // 
+            this.checkBox_scaOrPdLg.AutoSize = true;
+            this.checkBox_scaOrPdLg.Location = new System.Drawing.Point(485, 64);
+            this.checkBox_scaOrPdLg.Name = "checkBox_scaOrPdLg";
+            this.checkBox_scaOrPdLg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_scaOrPdLg.Size = new System.Drawing.Size(277, 28);
+            this.checkBox_scaOrPdLg.TabIndex = 166;
+            this.checkBox_scaOrPdLg.Text = "Use peak sensing (low gain)";
+            this.checkBox_scaOrPdLg.UseVisualStyleBackColor = true;
+            this.checkBox_scaOrPdLg.CheckedChanged += new System.EventHandler(this.checkBox_scaOrPdLg_CheckedChanged);
+            // 
+            // checkBox_scaOrPdHg
+            // 
+            this.checkBox_scaOrPdHg.AutoSize = true;
+            this.checkBox_scaOrPdHg.Location = new System.Drawing.Point(485, 32);
+            this.checkBox_scaOrPdHg.Name = "checkBox_scaOrPdHg";
+            this.checkBox_scaOrPdHg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_scaOrPdHg.Size = new System.Drawing.Size(285, 28);
+            this.checkBox_scaOrPdHg.TabIndex = 165;
+            this.checkBox_scaOrPdHg.Text = "Use peak sensing (high gain)";
+            this.checkBox_scaOrPdHg.UseVisualStyleBackColor = true;
+            this.checkBox_scaOrPdHg.CheckedChanged += new System.EventHandler(this.checkBox_scaOrPdHg_CheckedChanged);
             // 
             // label108
             // 
@@ -1660,6 +2144,21 @@
             this.groupBox_mask.MouseEnter += new System.EventHandler(this.groupBox_mask_MouseEnter);
             this.groupBox_mask.MouseLeave += new System.EventHandler(this.object_MouseLeave);
             // 
+            // checkBox_mask0
+            // 
+            this.checkBox_mask0.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask0.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask0.Location = new System.Drawing.Point(11, 28);
+            this.checkBox_mask0.Name = "checkBox_mask0";
+            this.checkBox_mask0.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask0.TabIndex = 32;
+            this.checkBox_mask0.Text = "0";
+            this.checkBox_mask0.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask0.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask0.UseVisualStyleBackColor = true;
+            this.checkBox_mask0.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
             // button_unmaskAll
             // 
             this.button_unmaskAll.BackColor = System.Drawing.Color.Gainsboro;
@@ -1674,6 +2173,21 @@
             this.button_unmaskAll.UseVisualStyleBackColor = false;
             this.button_unmaskAll.Click += new System.EventHandler(this.button_unmaskAll_Click);
             // 
+            // checkBox_mask13
+            // 
+            this.checkBox_mask13.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask13.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask13.Location = new System.Drawing.Point(47, 208);
+            this.checkBox_mask13.Name = "checkBox_mask13";
+            this.checkBox_mask13.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask13.TabIndex = 45;
+            this.checkBox_mask13.Text = "13";
+            this.checkBox_mask13.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask13.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask13.UseVisualStyleBackColor = true;
+            this.checkBox_mask13.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
             // button_maskAll
             // 
             this.button_maskAll.BackColor = System.Drawing.Color.Gainsboro;
@@ -1687,6 +2201,476 @@
             this.button_maskAll.Text = "Mask all";
             this.button_maskAll.UseVisualStyleBackColor = false;
             this.button_maskAll.Click += new System.EventHandler(this.button_maskAll_Click);
+            // 
+            // checkBox_mask14
+            // 
+            this.checkBox_mask14.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask14.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask14.Location = new System.Drawing.Point(47, 244);
+            this.checkBox_mask14.Name = "checkBox_mask14";
+            this.checkBox_mask14.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask14.TabIndex = 46;
+            this.checkBox_mask14.Text = "14";
+            this.checkBox_mask14.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask14.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask14.UseVisualStyleBackColor = true;
+            this.checkBox_mask14.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask12
+            // 
+            this.checkBox_mask12.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask12.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask12.Location = new System.Drawing.Point(47, 172);
+            this.checkBox_mask12.Name = "checkBox_mask12";
+            this.checkBox_mask12.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask12.TabIndex = 44;
+            this.checkBox_mask12.Text = "12";
+            this.checkBox_mask12.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask12.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask12.UseVisualStyleBackColor = true;
+            this.checkBox_mask12.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask15
+            // 
+            this.checkBox_mask15.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask15.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask15.Location = new System.Drawing.Point(47, 280);
+            this.checkBox_mask15.Name = "checkBox_mask15";
+            this.checkBox_mask15.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask15.TabIndex = 47;
+            this.checkBox_mask15.Text = "15";
+            this.checkBox_mask15.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask15.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask15.UseVisualStyleBackColor = true;
+            this.checkBox_mask15.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask11
+            // 
+            this.checkBox_mask11.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask11.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask11.Location = new System.Drawing.Point(47, 136);
+            this.checkBox_mask11.Name = "checkBox_mask11";
+            this.checkBox_mask11.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask11.TabIndex = 43;
+            this.checkBox_mask11.Text = "11";
+            this.checkBox_mask11.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask11.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask11.UseVisualStyleBackColor = true;
+            this.checkBox_mask11.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask16
+            // 
+            this.checkBox_mask16.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask16.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask16.Location = new System.Drawing.Point(83, 28);
+            this.checkBox_mask16.Name = "checkBox_mask16";
+            this.checkBox_mask16.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask16.TabIndex = 48;
+            this.checkBox_mask16.Text = "16";
+            this.checkBox_mask16.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask16.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask16.UseVisualStyleBackColor = true;
+            this.checkBox_mask16.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask10
+            // 
+            this.checkBox_mask10.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask10.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask10.Location = new System.Drawing.Point(47, 100);
+            this.checkBox_mask10.Name = "checkBox_mask10";
+            this.checkBox_mask10.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask10.TabIndex = 42;
+            this.checkBox_mask10.Text = "10";
+            this.checkBox_mask10.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask10.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask10.UseVisualStyleBackColor = true;
+            this.checkBox_mask10.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask17
+            // 
+            this.checkBox_mask17.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask17.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask17.Location = new System.Drawing.Point(83, 64);
+            this.checkBox_mask17.Name = "checkBox_mask17";
+            this.checkBox_mask17.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask17.TabIndex = 49;
+            this.checkBox_mask17.Text = "17";
+            this.checkBox_mask17.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask17.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask17.UseVisualStyleBackColor = true;
+            this.checkBox_mask17.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask9
+            // 
+            this.checkBox_mask9.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask9.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask9.Location = new System.Drawing.Point(47, 64);
+            this.checkBox_mask9.Name = "checkBox_mask9";
+            this.checkBox_mask9.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask9.TabIndex = 41;
+            this.checkBox_mask9.Text = "9";
+            this.checkBox_mask9.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask9.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask9.UseVisualStyleBackColor = true;
+            this.checkBox_mask9.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask18
+            // 
+            this.checkBox_mask18.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask18.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask18.Location = new System.Drawing.Point(83, 100);
+            this.checkBox_mask18.Name = "checkBox_mask18";
+            this.checkBox_mask18.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask18.TabIndex = 50;
+            this.checkBox_mask18.Text = "18";
+            this.checkBox_mask18.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask18.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask18.UseVisualStyleBackColor = true;
+            this.checkBox_mask18.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask8
+            // 
+            this.checkBox_mask8.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask8.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask8.Location = new System.Drawing.Point(47, 28);
+            this.checkBox_mask8.Name = "checkBox_mask8";
+            this.checkBox_mask8.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask8.TabIndex = 40;
+            this.checkBox_mask8.Text = "8";
+            this.checkBox_mask8.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask8.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask8.UseVisualStyleBackColor = true;
+            this.checkBox_mask8.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask19
+            // 
+            this.checkBox_mask19.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask19.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask19.Location = new System.Drawing.Point(83, 136);
+            this.checkBox_mask19.Name = "checkBox_mask19";
+            this.checkBox_mask19.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask19.TabIndex = 51;
+            this.checkBox_mask19.Text = "19";
+            this.checkBox_mask19.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask19.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask19.UseVisualStyleBackColor = true;
+            this.checkBox_mask19.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask7
+            // 
+            this.checkBox_mask7.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask7.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask7.Location = new System.Drawing.Point(11, 280);
+            this.checkBox_mask7.Name = "checkBox_mask7";
+            this.checkBox_mask7.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask7.TabIndex = 39;
+            this.checkBox_mask7.Text = "7";
+            this.checkBox_mask7.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask7.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask7.UseVisualStyleBackColor = true;
+            this.checkBox_mask7.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask20
+            // 
+            this.checkBox_mask20.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask20.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask20.Location = new System.Drawing.Point(83, 172);
+            this.checkBox_mask20.Name = "checkBox_mask20";
+            this.checkBox_mask20.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask20.TabIndex = 52;
+            this.checkBox_mask20.Text = "20";
+            this.checkBox_mask20.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask20.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask20.UseVisualStyleBackColor = true;
+            this.checkBox_mask20.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask6
+            // 
+            this.checkBox_mask6.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask6.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask6.Location = new System.Drawing.Point(11, 244);
+            this.checkBox_mask6.Name = "checkBox_mask6";
+            this.checkBox_mask6.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask6.TabIndex = 38;
+            this.checkBox_mask6.Text = "6";
+            this.checkBox_mask6.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask6.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask6.UseVisualStyleBackColor = true;
+            this.checkBox_mask6.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask21
+            // 
+            this.checkBox_mask21.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask21.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask21.Location = new System.Drawing.Point(83, 208);
+            this.checkBox_mask21.Name = "checkBox_mask21";
+            this.checkBox_mask21.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask21.TabIndex = 53;
+            this.checkBox_mask21.Text = "21";
+            this.checkBox_mask21.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask21.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask21.UseVisualStyleBackColor = true;
+            this.checkBox_mask21.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask5
+            // 
+            this.checkBox_mask5.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask5.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask5.Location = new System.Drawing.Point(11, 208);
+            this.checkBox_mask5.Name = "checkBox_mask5";
+            this.checkBox_mask5.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask5.TabIndex = 37;
+            this.checkBox_mask5.Text = "5";
+            this.checkBox_mask5.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask5.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask5.UseVisualStyleBackColor = true;
+            this.checkBox_mask5.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask31
+            // 
+            this.checkBox_mask31.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask31.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask31.Location = new System.Drawing.Point(119, 280);
+            this.checkBox_mask31.Name = "checkBox_mask31";
+            this.checkBox_mask31.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask31.TabIndex = 63;
+            this.checkBox_mask31.Text = "31";
+            this.checkBox_mask31.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask31.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask31.UseVisualStyleBackColor = true;
+            this.checkBox_mask31.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask22
+            // 
+            this.checkBox_mask22.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask22.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask22.Location = new System.Drawing.Point(83, 244);
+            this.checkBox_mask22.Name = "checkBox_mask22";
+            this.checkBox_mask22.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask22.TabIndex = 54;
+            this.checkBox_mask22.Text = "22";
+            this.checkBox_mask22.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask22.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask22.UseVisualStyleBackColor = true;
+            this.checkBox_mask22.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask30
+            // 
+            this.checkBox_mask30.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask30.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask30.Location = new System.Drawing.Point(119, 244);
+            this.checkBox_mask30.Name = "checkBox_mask30";
+            this.checkBox_mask30.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask30.TabIndex = 62;
+            this.checkBox_mask30.Text = "30";
+            this.checkBox_mask30.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask30.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask30.UseVisualStyleBackColor = true;
+            this.checkBox_mask30.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask4
+            // 
+            this.checkBox_mask4.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask4.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask4.Location = new System.Drawing.Point(11, 172);
+            this.checkBox_mask4.Name = "checkBox_mask4";
+            this.checkBox_mask4.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask4.TabIndex = 36;
+            this.checkBox_mask4.Text = "4";
+            this.checkBox_mask4.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask4.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask4.UseVisualStyleBackColor = true;
+            this.checkBox_mask4.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask29
+            // 
+            this.checkBox_mask29.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask29.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask29.Location = new System.Drawing.Point(119, 208);
+            this.checkBox_mask29.Name = "checkBox_mask29";
+            this.checkBox_mask29.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask29.TabIndex = 61;
+            this.checkBox_mask29.Text = "29";
+            this.checkBox_mask29.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask29.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask29.UseVisualStyleBackColor = true;
+            this.checkBox_mask29.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask23
+            // 
+            this.checkBox_mask23.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask23.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask23.Location = new System.Drawing.Point(83, 280);
+            this.checkBox_mask23.Name = "checkBox_mask23";
+            this.checkBox_mask23.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask23.TabIndex = 55;
+            this.checkBox_mask23.Text = "23";
+            this.checkBox_mask23.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask23.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask23.UseVisualStyleBackColor = true;
+            this.checkBox_mask23.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask28
+            // 
+            this.checkBox_mask28.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask28.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask28.Location = new System.Drawing.Point(119, 172);
+            this.checkBox_mask28.Name = "checkBox_mask28";
+            this.checkBox_mask28.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask28.TabIndex = 60;
+            this.checkBox_mask28.Text = "28";
+            this.checkBox_mask28.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask28.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask28.UseVisualStyleBackColor = true;
+            this.checkBox_mask28.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask3
+            // 
+            this.checkBox_mask3.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask3.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask3.Location = new System.Drawing.Point(11, 136);
+            this.checkBox_mask3.Name = "checkBox_mask3";
+            this.checkBox_mask3.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask3.TabIndex = 35;
+            this.checkBox_mask3.Text = "3";
+            this.checkBox_mask3.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask3.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask3.UseVisualStyleBackColor = true;
+            this.checkBox_mask3.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask27
+            // 
+            this.checkBox_mask27.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask27.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask27.Location = new System.Drawing.Point(119, 136);
+            this.checkBox_mask27.Name = "checkBox_mask27";
+            this.checkBox_mask27.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask27.TabIndex = 59;
+            this.checkBox_mask27.Text = "27";
+            this.checkBox_mask27.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask27.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask27.UseVisualStyleBackColor = true;
+            this.checkBox_mask27.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask24
+            // 
+            this.checkBox_mask24.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask24.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask24.Location = new System.Drawing.Point(119, 28);
+            this.checkBox_mask24.Name = "checkBox_mask24";
+            this.checkBox_mask24.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask24.TabIndex = 56;
+            this.checkBox_mask24.Text = "24";
+            this.checkBox_mask24.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask24.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask24.UseVisualStyleBackColor = true;
+            this.checkBox_mask24.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask26
+            // 
+            this.checkBox_mask26.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask26.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask26.Location = new System.Drawing.Point(119, 100);
+            this.checkBox_mask26.Name = "checkBox_mask26";
+            this.checkBox_mask26.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask26.TabIndex = 58;
+            this.checkBox_mask26.Text = "26";
+            this.checkBox_mask26.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask26.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask26.UseVisualStyleBackColor = true;
+            this.checkBox_mask26.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask2
+            // 
+            this.checkBox_mask2.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask2.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask2.Location = new System.Drawing.Point(11, 100);
+            this.checkBox_mask2.Name = "checkBox_mask2";
+            this.checkBox_mask2.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask2.TabIndex = 34;
+            this.checkBox_mask2.Text = "2";
+            this.checkBox_mask2.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask2.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask2.UseVisualStyleBackColor = true;
+            this.checkBox_mask2.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask1
+            // 
+            this.checkBox_mask1.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask1.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask1.Location = new System.Drawing.Point(11, 64);
+            this.checkBox_mask1.Name = "checkBox_mask1";
+            this.checkBox_mask1.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask1.TabIndex = 33;
+            this.checkBox_mask1.Text = "1";
+            this.checkBox_mask1.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask1.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask1.UseVisualStyleBackColor = true;
+            this.checkBox_mask1.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // checkBox_mask25
+            // 
+            this.checkBox_mask25.checkedBackColor = System.Drawing.Color.White;
+            this.checkBox_mask25.checkedForeColor = System.Drawing.Color.Black;
+            this.checkBox_mask25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_mask25.Location = new System.Drawing.Point(119, 64);
+            this.checkBox_mask25.Name = "checkBox_mask25";
+            this.checkBox_mask25.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_mask25.TabIndex = 57;
+            this.checkBox_mask25.Text = "25";
+            this.checkBox_mask25.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.checkBox_mask25.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_mask25.UseVisualStyleBackColor = true;
+            this.checkBox_mask25.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
+            // 
+            // textBox_threshold2
+            // 
+            this.textBox_threshold2.enableNegative = false;
+            this.textBox_threshold2.Location = new System.Drawing.Point(575, 307);
+            this.textBox_threshold2.Name = "textBox_threshold2";
+            this.textBox_threshold2.Size = new System.Drawing.Size(80, 29);
+            this.textBox_threshold2.TabIndex = 73;
+            this.textBox_threshold2.Leave += new System.EventHandler(this.textBox_threshold2_Leave);
+            this.textBox_threshold2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_threshold2_PreviewKeyDown);
+            // 
+            // textBox_threshold1
+            // 
+            this.textBox_threshold1.enableNegative = false;
+            this.textBox_threshold1.Location = new System.Drawing.Point(345, 307);
+            this.textBox_threshold1.Name = "textBox_threshold1";
+            this.textBox_threshold1.Size = new System.Drawing.Size(80, 29);
+            this.textBox_threshold1.TabIndex = 72;
+            this.textBox_threshold1.Leave += new System.EventHandler(this.textBox_threshold1_Leave);
+            this.textBox_threshold1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_threshold1_PreviewKeyDown);
             // 
             // groupBox_CtestHg
             // 
@@ -1760,6 +2744,400 @@
             this.button_injectAllHg.Text = "Inject all";
             this.button_injectAllHg.UseVisualStyleBackColor = false;
             this.button_injectAllHg.Click += new System.EventHandler(this.button_injectAllHg_Click);
+            // 
+            // checkBox_CtestHg0
+            // 
+            this.checkBox_CtestHg0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg0.Location = new System.Drawing.Point(11, 28);
+            this.checkBox_CtestHg0.Name = "checkBox_CtestHg0";
+            this.checkBox_CtestHg0.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg0.TabIndex = 96;
+            this.checkBox_CtestHg0.Text = "0";
+            this.checkBox_CtestHg0.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg0.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg1
+            // 
+            this.checkBox_CtestHg1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg1.Location = new System.Drawing.Point(11, 64);
+            this.checkBox_CtestHg1.Name = "checkBox_CtestHg1";
+            this.checkBox_CtestHg1.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg1.TabIndex = 97;
+            this.checkBox_CtestHg1.Text = "1";
+            this.checkBox_CtestHg1.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg1.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg2
+            // 
+            this.checkBox_CtestHg2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg2.Location = new System.Drawing.Point(11, 100);
+            this.checkBox_CtestHg2.Name = "checkBox_CtestHg2";
+            this.checkBox_CtestHg2.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg2.TabIndex = 98;
+            this.checkBox_CtestHg2.Text = "2";
+            this.checkBox_CtestHg2.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg2.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg3
+            // 
+            this.checkBox_CtestHg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg3.Location = new System.Drawing.Point(11, 136);
+            this.checkBox_CtestHg3.Name = "checkBox_CtestHg3";
+            this.checkBox_CtestHg3.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg3.TabIndex = 99;
+            this.checkBox_CtestHg3.Text = "3";
+            this.checkBox_CtestHg3.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg3.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg4
+            // 
+            this.checkBox_CtestHg4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg4.Location = new System.Drawing.Point(11, 172);
+            this.checkBox_CtestHg4.Name = "checkBox_CtestHg4";
+            this.checkBox_CtestHg4.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg4.TabIndex = 100;
+            this.checkBox_CtestHg4.Text = "4";
+            this.checkBox_CtestHg4.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg4.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg5
+            // 
+            this.checkBox_CtestHg5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg5.Location = new System.Drawing.Point(11, 208);
+            this.checkBox_CtestHg5.Name = "checkBox_CtestHg5";
+            this.checkBox_CtestHg5.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg5.TabIndex = 101;
+            this.checkBox_CtestHg5.Text = "5";
+            this.checkBox_CtestHg5.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg5.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg6
+            // 
+            this.checkBox_CtestHg6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg6.Location = new System.Drawing.Point(11, 244);
+            this.checkBox_CtestHg6.Name = "checkBox_CtestHg6";
+            this.checkBox_CtestHg6.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg6.TabIndex = 102;
+            this.checkBox_CtestHg6.Text = "6";
+            this.checkBox_CtestHg6.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg6.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg7
+            // 
+            this.checkBox_CtestHg7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg7.Location = new System.Drawing.Point(11, 280);
+            this.checkBox_CtestHg7.Name = "checkBox_CtestHg7";
+            this.checkBox_CtestHg7.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg7.TabIndex = 103;
+            this.checkBox_CtestHg7.Text = "7";
+            this.checkBox_CtestHg7.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg7.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg8
+            // 
+            this.checkBox_CtestHg8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg8.Location = new System.Drawing.Point(47, 28);
+            this.checkBox_CtestHg8.Name = "checkBox_CtestHg8";
+            this.checkBox_CtestHg8.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg8.TabIndex = 104;
+            this.checkBox_CtestHg8.Text = "8";
+            this.checkBox_CtestHg8.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg8.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg9
+            // 
+            this.checkBox_CtestHg9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg9.Location = new System.Drawing.Point(47, 64);
+            this.checkBox_CtestHg9.Name = "checkBox_CtestHg9";
+            this.checkBox_CtestHg9.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg9.TabIndex = 105;
+            this.checkBox_CtestHg9.Text = "9";
+            this.checkBox_CtestHg9.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg9.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg10
+            // 
+            this.checkBox_CtestHg10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg10.Location = new System.Drawing.Point(47, 100);
+            this.checkBox_CtestHg10.Name = "checkBox_CtestHg10";
+            this.checkBox_CtestHg10.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg10.TabIndex = 106;
+            this.checkBox_CtestHg10.Text = "10";
+            this.checkBox_CtestHg10.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg10.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg11
+            // 
+            this.checkBox_CtestHg11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg11.Location = new System.Drawing.Point(47, 136);
+            this.checkBox_CtestHg11.Name = "checkBox_CtestHg11";
+            this.checkBox_CtestHg11.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg11.TabIndex = 107;
+            this.checkBox_CtestHg11.Text = "11";
+            this.checkBox_CtestHg11.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg11.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg12
+            // 
+            this.checkBox_CtestHg12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg12.Location = new System.Drawing.Point(47, 172);
+            this.checkBox_CtestHg12.Name = "checkBox_CtestHg12";
+            this.checkBox_CtestHg12.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg12.TabIndex = 108;
+            this.checkBox_CtestHg12.Text = "12";
+            this.checkBox_CtestHg12.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg12.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg13
+            // 
+            this.checkBox_CtestHg13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg13.Location = new System.Drawing.Point(47, 208);
+            this.checkBox_CtestHg13.Name = "checkBox_CtestHg13";
+            this.checkBox_CtestHg13.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg13.TabIndex = 109;
+            this.checkBox_CtestHg13.Text = "13";
+            this.checkBox_CtestHg13.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg13.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg14
+            // 
+            this.checkBox_CtestHg14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg14.Location = new System.Drawing.Point(47, 244);
+            this.checkBox_CtestHg14.Name = "checkBox_CtestHg14";
+            this.checkBox_CtestHg14.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg14.TabIndex = 110;
+            this.checkBox_CtestHg14.Text = "14";
+            this.checkBox_CtestHg14.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg14.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg15
+            // 
+            this.checkBox_CtestHg15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg15.Location = new System.Drawing.Point(47, 280);
+            this.checkBox_CtestHg15.Name = "checkBox_CtestHg15";
+            this.checkBox_CtestHg15.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg15.TabIndex = 111;
+            this.checkBox_CtestHg15.Text = "15";
+            this.checkBox_CtestHg15.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg15.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg16
+            // 
+            this.checkBox_CtestHg16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg16.Location = new System.Drawing.Point(83, 28);
+            this.checkBox_CtestHg16.Name = "checkBox_CtestHg16";
+            this.checkBox_CtestHg16.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg16.TabIndex = 112;
+            this.checkBox_CtestHg16.Text = "16";
+            this.checkBox_CtestHg16.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg16.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg17
+            // 
+            this.checkBox_CtestHg17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg17.Location = new System.Drawing.Point(83, 64);
+            this.checkBox_CtestHg17.Name = "checkBox_CtestHg17";
+            this.checkBox_CtestHg17.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg17.TabIndex = 113;
+            this.checkBox_CtestHg17.Text = "17";
+            this.checkBox_CtestHg17.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg17.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg18
+            // 
+            this.checkBox_CtestHg18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg18.Location = new System.Drawing.Point(83, 100);
+            this.checkBox_CtestHg18.Name = "checkBox_CtestHg18";
+            this.checkBox_CtestHg18.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg18.TabIndex = 114;
+            this.checkBox_CtestHg18.Text = "18";
+            this.checkBox_CtestHg18.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg18.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg19
+            // 
+            this.checkBox_CtestHg19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg19.Location = new System.Drawing.Point(83, 136);
+            this.checkBox_CtestHg19.Name = "checkBox_CtestHg19";
+            this.checkBox_CtestHg19.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg19.TabIndex = 115;
+            this.checkBox_CtestHg19.Text = "19";
+            this.checkBox_CtestHg19.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg19.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg20
+            // 
+            this.checkBox_CtestHg20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg20.Location = new System.Drawing.Point(83, 172);
+            this.checkBox_CtestHg20.Name = "checkBox_CtestHg20";
+            this.checkBox_CtestHg20.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg20.TabIndex = 116;
+            this.checkBox_CtestHg20.Text = "20";
+            this.checkBox_CtestHg20.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg20.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg21
+            // 
+            this.checkBox_CtestHg21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg21.Location = new System.Drawing.Point(83, 208);
+            this.checkBox_CtestHg21.Name = "checkBox_CtestHg21";
+            this.checkBox_CtestHg21.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg21.TabIndex = 117;
+            this.checkBox_CtestHg21.Text = "21";
+            this.checkBox_CtestHg21.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg21.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg22
+            // 
+            this.checkBox_CtestHg22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg22.Location = new System.Drawing.Point(83, 244);
+            this.checkBox_CtestHg22.Name = "checkBox_CtestHg22";
+            this.checkBox_CtestHg22.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg22.TabIndex = 118;
+            this.checkBox_CtestHg22.Text = "22";
+            this.checkBox_CtestHg22.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg22.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg23
+            // 
+            this.checkBox_CtestHg23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg23.Location = new System.Drawing.Point(83, 280);
+            this.checkBox_CtestHg23.Name = "checkBox_CtestHg23";
+            this.checkBox_CtestHg23.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg23.TabIndex = 119;
+            this.checkBox_CtestHg23.Text = "23";
+            this.checkBox_CtestHg23.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg23.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg24
+            // 
+            this.checkBox_CtestHg24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg24.Location = new System.Drawing.Point(119, 28);
+            this.checkBox_CtestHg24.Name = "checkBox_CtestHg24";
+            this.checkBox_CtestHg24.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg24.TabIndex = 120;
+            this.checkBox_CtestHg24.Text = "24";
+            this.checkBox_CtestHg24.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg24.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg25
+            // 
+            this.checkBox_CtestHg25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg25.Location = new System.Drawing.Point(119, 64);
+            this.checkBox_CtestHg25.Name = "checkBox_CtestHg25";
+            this.checkBox_CtestHg25.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg25.TabIndex = 121;
+            this.checkBox_CtestHg25.Text = "25";
+            this.checkBox_CtestHg25.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg25.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg26
+            // 
+            this.checkBox_CtestHg26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg26.Location = new System.Drawing.Point(119, 100);
+            this.checkBox_CtestHg26.Name = "checkBox_CtestHg26";
+            this.checkBox_CtestHg26.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg26.TabIndex = 122;
+            this.checkBox_CtestHg26.Text = "26";
+            this.checkBox_CtestHg26.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg26.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg27
+            // 
+            this.checkBox_CtestHg27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg27.Location = new System.Drawing.Point(119, 136);
+            this.checkBox_CtestHg27.Name = "checkBox_CtestHg27";
+            this.checkBox_CtestHg27.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg27.TabIndex = 123;
+            this.checkBox_CtestHg27.Text = "27";
+            this.checkBox_CtestHg27.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg27.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg28
+            // 
+            this.checkBox_CtestHg28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg28.Location = new System.Drawing.Point(119, 172);
+            this.checkBox_CtestHg28.Name = "checkBox_CtestHg28";
+            this.checkBox_CtestHg28.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg28.TabIndex = 124;
+            this.checkBox_CtestHg28.Text = "28";
+            this.checkBox_CtestHg28.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg28.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg29
+            // 
+            this.checkBox_CtestHg29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg29.Location = new System.Drawing.Point(119, 208);
+            this.checkBox_CtestHg29.Name = "checkBox_CtestHg29";
+            this.checkBox_CtestHg29.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg29.TabIndex = 125;
+            this.checkBox_CtestHg29.Text = "29";
+            this.checkBox_CtestHg29.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg29.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg30
+            // 
+            this.checkBox_CtestHg30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg30.Location = new System.Drawing.Point(119, 244);
+            this.checkBox_CtestHg30.Name = "checkBox_CtestHg30";
+            this.checkBox_CtestHg30.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg30.TabIndex = 126;
+            this.checkBox_CtestHg30.Text = "30";
+            this.checkBox_CtestHg30.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg30.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // checkBox_CtestHg31
+            // 
+            this.checkBox_CtestHg31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_CtestHg31.Location = new System.Drawing.Point(119, 280);
+            this.checkBox_CtestHg31.Name = "checkBox_CtestHg31";
+            this.checkBox_CtestHg31.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_CtestHg31.TabIndex = 127;
+            this.checkBox_CtestHg31.Text = "31";
+            this.checkBox_CtestHg31.UseVisualStyleBackColor = true;
+            this.checkBox_CtestHg31.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
+            // 
+            // textBox_shapingTimeHg
+            // 
+            this.textBox_shapingTimeHg.enableNegative = false;
+            this.textBox_shapingTimeHg.Location = new System.Drawing.Point(575, 240);
+            this.textBox_shapingTimeHg.Name = "textBox_shapingTimeHg";
+            this.textBox_shapingTimeHg.Size = new System.Drawing.Size(80, 29);
+            this.textBox_shapingTimeHg.TabIndex = 71;
+            this.textBox_shapingTimeHg.Leave += new System.EventHandler(this.textBox_shapingTimeHg_Leave);
+            this.textBox_shapingTimeHg.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_shapingTimeHg_PreviewKeyDown);
+            // 
+            // textBox_shapingTimeLg
+            // 
+            this.textBox_shapingTimeLg.enableNegative = false;
+            this.textBox_shapingTimeLg.Location = new System.Drawing.Point(345, 240);
+            this.textBox_shapingTimeLg.Name = "textBox_shapingTimeLg";
+            this.textBox_shapingTimeLg.Size = new System.Drawing.Size(80, 29);
+            this.textBox_shapingTimeLg.TabIndex = 70;
+            this.textBox_shapingTimeLg.Leave += new System.EventHandler(this.textBox_shapingTimeLg_Leave);
+            this.textBox_shapingTimeLg.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_shapingTimeLg_PreviewKeyDown);
+            // 
+            // checkBox_selTrigExtPd
+            // 
+            this.checkBox_selTrigExtPd.AutoSize = true;
+            this.checkBox_selTrigExtPd.Location = new System.Drawing.Point(485, 160);
+            this.checkBox_selTrigExtPd.Name = "checkBox_selTrigExtPd";
+            this.checkBox_selTrigExtPd.Size = new System.Drawing.Size(192, 28);
+            this.checkBox_selTrigExtPd.TabIndex = 69;
+            this.checkBox_selTrigExtPd.Text = "Use external trigger";
+            this.checkBox_selTrigExtPd.UseVisualStyleBackColor = true;
+            this.checkBox_selTrigExtPd.CheckedChanged += new System.EventHandler(this.checkBox_selTrigExtPd_CheckedChanged);
+            // 
+            // checkBox_bypassPd
+            // 
+            this.checkBox_bypassPd.AutoSize = true;
+            this.checkBox_bypassPd.Location = new System.Drawing.Point(234, 160);
+            this.checkBox_bypassPd.Name = "checkBox_bypassPd";
+            this.checkBox_bypassPd.Size = new System.Drawing.Size(206, 28);
+            this.checkBox_bypassPd.TabIndex = 68;
+            this.checkBox_bypassPd.Text = "Bypass peak sensing";
+            this.checkBox_bypassPd.UseVisualStyleBackColor = true;
+            this.checkBox_bypassPd.CheckedChanged += new System.EventHandler(this.checkBox_bypassPd_CheckedChanged);
             // 
             // label101
             // 
@@ -2035,6 +3413,1112 @@
             this.label35.Size = new System.Drawing.Size(86, 24);
             this.label35.TabIndex = 226;
             this.label35.Text = "Low gain";
+            // 
+            // textBox_setAllPaHg
+            // 
+            this.textBox_setAllPaHg.enableNegative = false;
+            this.textBox_setAllPaHg.Location = new System.Drawing.Point(987, 10);
+            this.textBox_setAllPaHg.Name = "textBox_setAllPaHg";
+            this.textBox_setAllPaHg.Size = new System.Drawing.Size(80, 29);
+            this.textBox_setAllPaHg.TabIndex = 238;
+            this.textBox_setAllPaHg.Text = "8";
+            // 
+            // textBox_setAllPaLg
+            // 
+            this.textBox_setAllPaLg.enableNegative = false;
+            this.textBox_setAllPaLg.Location = new System.Drawing.Point(745, 10);
+            this.textBox_setAllPaLg.Name = "textBox_setAllPaLg";
+            this.textBox_setAllPaLg.Size = new System.Drawing.Size(80, 29);
+            this.textBox_setAllPaLg.TabIndex = 234;
+            this.textBox_setAllPaLg.Text = "0";
+            // 
+            // textBox_paHgGain31
+            // 
+            this.textBox_paHgGain31.enableNegative = false;
+            this.textBox_paHgGain31.Location = new System.Drawing.Point(900, 345);
+            this.textBox_paHgGain31.Name = "textBox_paHgGain31";
+            this.textBox_paHgGain31.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain31.TabIndex = 225;
+            this.textBox_paHgGain31.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain31.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain30
+            // 
+            this.textBox_paHgGain30.enableNegative = false;
+            this.textBox_paHgGain30.Location = new System.Drawing.Point(900, 310);
+            this.textBox_paHgGain30.Name = "textBox_paHgGain30";
+            this.textBox_paHgGain30.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain30.TabIndex = 224;
+            this.textBox_paHgGain30.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain30.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain29
+            // 
+            this.textBox_paHgGain29.enableNegative = false;
+            this.textBox_paHgGain29.Location = new System.Drawing.Point(900, 275);
+            this.textBox_paHgGain29.Name = "textBox_paHgGain29";
+            this.textBox_paHgGain29.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain29.TabIndex = 223;
+            this.textBox_paHgGain29.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain29.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain28
+            // 
+            this.textBox_paHgGain28.enableNegative = false;
+            this.textBox_paHgGain28.Location = new System.Drawing.Point(900, 240);
+            this.textBox_paHgGain28.Name = "textBox_paHgGain28";
+            this.textBox_paHgGain28.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain28.TabIndex = 222;
+            this.textBox_paHgGain28.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain28.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain27
+            // 
+            this.textBox_paHgGain27.enableNegative = false;
+            this.textBox_paHgGain27.Location = new System.Drawing.Point(900, 205);
+            this.textBox_paHgGain27.Name = "textBox_paHgGain27";
+            this.textBox_paHgGain27.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain27.TabIndex = 221;
+            this.textBox_paHgGain27.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain27.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain26
+            // 
+            this.textBox_paHgGain26.enableNegative = false;
+            this.textBox_paHgGain26.Location = new System.Drawing.Point(900, 170);
+            this.textBox_paHgGain26.Name = "textBox_paHgGain26";
+            this.textBox_paHgGain26.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain26.TabIndex = 220;
+            this.textBox_paHgGain26.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain26.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain25
+            // 
+            this.textBox_paHgGain25.enableNegative = false;
+            this.textBox_paHgGain25.Location = new System.Drawing.Point(900, 135);
+            this.textBox_paHgGain25.Name = "textBox_paHgGain25";
+            this.textBox_paHgGain25.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain25.TabIndex = 219;
+            this.textBox_paHgGain25.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain25.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain24
+            // 
+            this.textBox_paHgGain24.enableNegative = false;
+            this.textBox_paHgGain24.Location = new System.Drawing.Point(900, 100);
+            this.textBox_paHgGain24.Name = "textBox_paHgGain24";
+            this.textBox_paHgGain24.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain24.TabIndex = 218;
+            this.textBox_paHgGain24.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain24.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain31
+            // 
+            this.textBox_paLgGain31.enableNegative = false;
+            this.textBox_paLgGain31.Location = new System.Drawing.Point(814, 345);
+            this.textBox_paLgGain31.Name = "textBox_paLgGain31";
+            this.textBox_paLgGain31.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain31.TabIndex = 217;
+            this.textBox_paLgGain31.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain31.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain30
+            // 
+            this.textBox_paLgGain30.enableNegative = false;
+            this.textBox_paLgGain30.Location = new System.Drawing.Point(814, 310);
+            this.textBox_paLgGain30.Name = "textBox_paLgGain30";
+            this.textBox_paLgGain30.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain30.TabIndex = 216;
+            this.textBox_paLgGain30.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain30.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain29
+            // 
+            this.textBox_paLgGain29.enableNegative = false;
+            this.textBox_paLgGain29.Location = new System.Drawing.Point(814, 275);
+            this.textBox_paLgGain29.Name = "textBox_paLgGain29";
+            this.textBox_paLgGain29.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain29.TabIndex = 215;
+            this.textBox_paLgGain29.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain29.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain28
+            // 
+            this.textBox_paLgGain28.enableNegative = false;
+            this.textBox_paLgGain28.Location = new System.Drawing.Point(814, 240);
+            this.textBox_paLgGain28.Name = "textBox_paLgGain28";
+            this.textBox_paLgGain28.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain28.TabIndex = 214;
+            this.textBox_paLgGain28.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain28.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain27
+            // 
+            this.textBox_paLgGain27.enableNegative = false;
+            this.textBox_paLgGain27.Location = new System.Drawing.Point(814, 205);
+            this.textBox_paLgGain27.Name = "textBox_paLgGain27";
+            this.textBox_paLgGain27.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain27.TabIndex = 213;
+            this.textBox_paLgGain27.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain27.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain26
+            // 
+            this.textBox_paLgGain26.enableNegative = false;
+            this.textBox_paLgGain26.Location = new System.Drawing.Point(814, 170);
+            this.textBox_paLgGain26.Name = "textBox_paLgGain26";
+            this.textBox_paLgGain26.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain26.TabIndex = 212;
+            this.textBox_paLgGain26.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain26.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain25
+            // 
+            this.textBox_paLgGain25.enableNegative = false;
+            this.textBox_paLgGain25.Location = new System.Drawing.Point(814, 135);
+            this.textBox_paLgGain25.Name = "textBox_paLgGain25";
+            this.textBox_paLgGain25.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain25.TabIndex = 211;
+            this.textBox_paLgGain25.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain25.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain24
+            // 
+            this.textBox_paLgGain24.enableNegative = false;
+            this.textBox_paLgGain24.Location = new System.Drawing.Point(814, 100);
+            this.textBox_paLgGain24.Name = "textBox_paLgGain24";
+            this.textBox_paLgGain24.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain24.TabIndex = 210;
+            this.textBox_paLgGain24.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain24.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain23
+            // 
+            this.textBox_paHgGain23.enableNegative = false;
+            this.textBox_paHgGain23.Location = new System.Drawing.Point(672, 345);
+            this.textBox_paHgGain23.Name = "textBox_paHgGain23";
+            this.textBox_paHgGain23.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain23.TabIndex = 209;
+            this.textBox_paHgGain23.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain23.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain22
+            // 
+            this.textBox_paHgGain22.enableNegative = false;
+            this.textBox_paHgGain22.Location = new System.Drawing.Point(672, 310);
+            this.textBox_paHgGain22.Name = "textBox_paHgGain22";
+            this.textBox_paHgGain22.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain22.TabIndex = 208;
+            this.textBox_paHgGain22.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain22.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain21
+            // 
+            this.textBox_paHgGain21.enableNegative = false;
+            this.textBox_paHgGain21.Location = new System.Drawing.Point(672, 275);
+            this.textBox_paHgGain21.Name = "textBox_paHgGain21";
+            this.textBox_paHgGain21.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain21.TabIndex = 207;
+            this.textBox_paHgGain21.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain21.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain20
+            // 
+            this.textBox_paHgGain20.enableNegative = false;
+            this.textBox_paHgGain20.Location = new System.Drawing.Point(672, 240);
+            this.textBox_paHgGain20.Name = "textBox_paHgGain20";
+            this.textBox_paHgGain20.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain20.TabIndex = 206;
+            this.textBox_paHgGain20.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain20.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain19
+            // 
+            this.textBox_paHgGain19.enableNegative = false;
+            this.textBox_paHgGain19.Location = new System.Drawing.Point(672, 205);
+            this.textBox_paHgGain19.Name = "textBox_paHgGain19";
+            this.textBox_paHgGain19.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain19.TabIndex = 205;
+            this.textBox_paHgGain19.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain19.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain18
+            // 
+            this.textBox_paHgGain18.enableNegative = false;
+            this.textBox_paHgGain18.Location = new System.Drawing.Point(672, 170);
+            this.textBox_paHgGain18.Name = "textBox_paHgGain18";
+            this.textBox_paHgGain18.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain18.TabIndex = 204;
+            this.textBox_paHgGain18.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain18.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain17
+            // 
+            this.textBox_paHgGain17.enableNegative = false;
+            this.textBox_paHgGain17.Location = new System.Drawing.Point(672, 135);
+            this.textBox_paHgGain17.Name = "textBox_paHgGain17";
+            this.textBox_paHgGain17.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain17.TabIndex = 203;
+            this.textBox_paHgGain17.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain17.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain16
+            // 
+            this.textBox_paHgGain16.enableNegative = false;
+            this.textBox_paHgGain16.Location = new System.Drawing.Point(672, 100);
+            this.textBox_paHgGain16.Name = "textBox_paHgGain16";
+            this.textBox_paHgGain16.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain16.TabIndex = 202;
+            this.textBox_paHgGain16.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain16.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain23
+            // 
+            this.textBox_paLgGain23.enableNegative = false;
+            this.textBox_paLgGain23.Location = new System.Drawing.Point(586, 345);
+            this.textBox_paLgGain23.Name = "textBox_paLgGain23";
+            this.textBox_paLgGain23.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain23.TabIndex = 201;
+            this.textBox_paLgGain23.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain23.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain22
+            // 
+            this.textBox_paLgGain22.enableNegative = false;
+            this.textBox_paLgGain22.Location = new System.Drawing.Point(586, 310);
+            this.textBox_paLgGain22.Name = "textBox_paLgGain22";
+            this.textBox_paLgGain22.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain22.TabIndex = 200;
+            this.textBox_paLgGain22.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain22.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain21
+            // 
+            this.textBox_paLgGain21.enableNegative = false;
+            this.textBox_paLgGain21.Location = new System.Drawing.Point(586, 275);
+            this.textBox_paLgGain21.Name = "textBox_paLgGain21";
+            this.textBox_paLgGain21.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain21.TabIndex = 199;
+            this.textBox_paLgGain21.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain21.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain20
+            // 
+            this.textBox_paLgGain20.enableNegative = false;
+            this.textBox_paLgGain20.Location = new System.Drawing.Point(586, 240);
+            this.textBox_paLgGain20.Name = "textBox_paLgGain20";
+            this.textBox_paLgGain20.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain20.TabIndex = 198;
+            this.textBox_paLgGain20.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain20.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain19
+            // 
+            this.textBox_paLgGain19.enableNegative = false;
+            this.textBox_paLgGain19.Location = new System.Drawing.Point(586, 205);
+            this.textBox_paLgGain19.Name = "textBox_paLgGain19";
+            this.textBox_paLgGain19.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain19.TabIndex = 197;
+            this.textBox_paLgGain19.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain19.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain18
+            // 
+            this.textBox_paLgGain18.enableNegative = false;
+            this.textBox_paLgGain18.Location = new System.Drawing.Point(586, 170);
+            this.textBox_paLgGain18.Name = "textBox_paLgGain18";
+            this.textBox_paLgGain18.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain18.TabIndex = 196;
+            this.textBox_paLgGain18.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain18.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain17
+            // 
+            this.textBox_paLgGain17.enableNegative = false;
+            this.textBox_paLgGain17.Location = new System.Drawing.Point(586, 135);
+            this.textBox_paLgGain17.Name = "textBox_paLgGain17";
+            this.textBox_paLgGain17.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain17.TabIndex = 195;
+            this.textBox_paLgGain17.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain17.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain16
+            // 
+            this.textBox_paLgGain16.enableNegative = false;
+            this.textBox_paLgGain16.Location = new System.Drawing.Point(586, 100);
+            this.textBox_paLgGain16.Name = "textBox_paLgGain16";
+            this.textBox_paLgGain16.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain16.TabIndex = 194;
+            this.textBox_paLgGain16.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain16.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain15
+            // 
+            this.textBox_paHgGain15.enableNegative = false;
+            this.textBox_paHgGain15.Location = new System.Drawing.Point(444, 345);
+            this.textBox_paHgGain15.Name = "textBox_paHgGain15";
+            this.textBox_paHgGain15.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain15.TabIndex = 193;
+            this.textBox_paHgGain15.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain15.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain14
+            // 
+            this.textBox_paHgGain14.enableNegative = false;
+            this.textBox_paHgGain14.Location = new System.Drawing.Point(444, 310);
+            this.textBox_paHgGain14.Name = "textBox_paHgGain14";
+            this.textBox_paHgGain14.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain14.TabIndex = 192;
+            this.textBox_paHgGain14.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain14.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain13
+            // 
+            this.textBox_paHgGain13.enableNegative = false;
+            this.textBox_paHgGain13.Location = new System.Drawing.Point(444, 275);
+            this.textBox_paHgGain13.Name = "textBox_paHgGain13";
+            this.textBox_paHgGain13.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain13.TabIndex = 191;
+            this.textBox_paHgGain13.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain13.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain12
+            // 
+            this.textBox_paHgGain12.enableNegative = false;
+            this.textBox_paHgGain12.Location = new System.Drawing.Point(444, 240);
+            this.textBox_paHgGain12.Name = "textBox_paHgGain12";
+            this.textBox_paHgGain12.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain12.TabIndex = 190;
+            this.textBox_paHgGain12.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain12.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain11
+            // 
+            this.textBox_paHgGain11.enableNegative = false;
+            this.textBox_paHgGain11.Location = new System.Drawing.Point(444, 205);
+            this.textBox_paHgGain11.Name = "textBox_paHgGain11";
+            this.textBox_paHgGain11.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain11.TabIndex = 189;
+            this.textBox_paHgGain11.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain11.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain10
+            // 
+            this.textBox_paHgGain10.enableNegative = false;
+            this.textBox_paHgGain10.Location = new System.Drawing.Point(444, 170);
+            this.textBox_paHgGain10.Name = "textBox_paHgGain10";
+            this.textBox_paHgGain10.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain10.TabIndex = 188;
+            this.textBox_paHgGain10.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain10.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain9
+            // 
+            this.textBox_paHgGain9.enableNegative = false;
+            this.textBox_paHgGain9.Location = new System.Drawing.Point(444, 135);
+            this.textBox_paHgGain9.Name = "textBox_paHgGain9";
+            this.textBox_paHgGain9.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain9.TabIndex = 187;
+            this.textBox_paHgGain9.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain9.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain8
+            // 
+            this.textBox_paHgGain8.enableNegative = false;
+            this.textBox_paHgGain8.Location = new System.Drawing.Point(444, 100);
+            this.textBox_paHgGain8.Name = "textBox_paHgGain8";
+            this.textBox_paHgGain8.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain8.TabIndex = 186;
+            this.textBox_paHgGain8.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain8.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain15
+            // 
+            this.textBox_paLgGain15.enableNegative = false;
+            this.textBox_paLgGain15.Location = new System.Drawing.Point(358, 345);
+            this.textBox_paLgGain15.Name = "textBox_paLgGain15";
+            this.textBox_paLgGain15.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain15.TabIndex = 185;
+            this.textBox_paLgGain15.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain15.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain14
+            // 
+            this.textBox_paLgGain14.enableNegative = false;
+            this.textBox_paLgGain14.Location = new System.Drawing.Point(358, 310);
+            this.textBox_paLgGain14.Name = "textBox_paLgGain14";
+            this.textBox_paLgGain14.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain14.TabIndex = 184;
+            this.textBox_paLgGain14.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain14.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain13
+            // 
+            this.textBox_paLgGain13.enableNegative = false;
+            this.textBox_paLgGain13.Location = new System.Drawing.Point(358, 275);
+            this.textBox_paLgGain13.Name = "textBox_paLgGain13";
+            this.textBox_paLgGain13.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain13.TabIndex = 183;
+            this.textBox_paLgGain13.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain13.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain12
+            // 
+            this.textBox_paLgGain12.enableNegative = false;
+            this.textBox_paLgGain12.Location = new System.Drawing.Point(358, 240);
+            this.textBox_paLgGain12.Name = "textBox_paLgGain12";
+            this.textBox_paLgGain12.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain12.TabIndex = 182;
+            this.textBox_paLgGain12.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain12.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain11
+            // 
+            this.textBox_paLgGain11.enableNegative = false;
+            this.textBox_paLgGain11.Location = new System.Drawing.Point(358, 205);
+            this.textBox_paLgGain11.Name = "textBox_paLgGain11";
+            this.textBox_paLgGain11.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain11.TabIndex = 181;
+            this.textBox_paLgGain11.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain11.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain10
+            // 
+            this.textBox_paLgGain10.enableNegative = false;
+            this.textBox_paLgGain10.Location = new System.Drawing.Point(358, 170);
+            this.textBox_paLgGain10.Name = "textBox_paLgGain10";
+            this.textBox_paLgGain10.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain10.TabIndex = 180;
+            this.textBox_paLgGain10.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain10.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain9
+            // 
+            this.textBox_paLgGain9.enableNegative = false;
+            this.textBox_paLgGain9.Location = new System.Drawing.Point(358, 135);
+            this.textBox_paLgGain9.Name = "textBox_paLgGain9";
+            this.textBox_paLgGain9.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain9.TabIndex = 179;
+            this.textBox_paLgGain9.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain9.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain8
+            // 
+            this.textBox_paLgGain8.enableNegative = false;
+            this.textBox_paLgGain8.Location = new System.Drawing.Point(358, 100);
+            this.textBox_paLgGain8.Name = "textBox_paLgGain8";
+            this.textBox_paLgGain8.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain8.TabIndex = 178;
+            this.textBox_paLgGain8.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain8.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain7
+            // 
+            this.textBox_paHgGain7.enableNegative = false;
+            this.textBox_paHgGain7.Location = new System.Drawing.Point(216, 345);
+            this.textBox_paHgGain7.Name = "textBox_paHgGain7";
+            this.textBox_paHgGain7.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain7.TabIndex = 177;
+            this.textBox_paHgGain7.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain7.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain6
+            // 
+            this.textBox_paHgGain6.enableNegative = false;
+            this.textBox_paHgGain6.Location = new System.Drawing.Point(216, 310);
+            this.textBox_paHgGain6.Name = "textBox_paHgGain6";
+            this.textBox_paHgGain6.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain6.TabIndex = 176;
+            this.textBox_paHgGain6.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain6.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain5
+            // 
+            this.textBox_paHgGain5.enableNegative = false;
+            this.textBox_paHgGain5.Location = new System.Drawing.Point(216, 275);
+            this.textBox_paHgGain5.Name = "textBox_paHgGain5";
+            this.textBox_paHgGain5.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain5.TabIndex = 175;
+            this.textBox_paHgGain5.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain5.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain4
+            // 
+            this.textBox_paHgGain4.enableNegative = false;
+            this.textBox_paHgGain4.Location = new System.Drawing.Point(216, 240);
+            this.textBox_paHgGain4.Name = "textBox_paHgGain4";
+            this.textBox_paHgGain4.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain4.TabIndex = 174;
+            this.textBox_paHgGain4.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain4.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain3
+            // 
+            this.textBox_paHgGain3.enableNegative = false;
+            this.textBox_paHgGain3.Location = new System.Drawing.Point(216, 205);
+            this.textBox_paHgGain3.Name = "textBox_paHgGain3";
+            this.textBox_paHgGain3.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain3.TabIndex = 173;
+            this.textBox_paHgGain3.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain2
+            // 
+            this.textBox_paHgGain2.enableNegative = false;
+            this.textBox_paHgGain2.Location = new System.Drawing.Point(216, 170);
+            this.textBox_paHgGain2.Name = "textBox_paHgGain2";
+            this.textBox_paHgGain2.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain2.TabIndex = 172;
+            this.textBox_paHgGain2.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain1
+            // 
+            this.textBox_paHgGain1.enableNegative = false;
+            this.textBox_paHgGain1.Location = new System.Drawing.Point(216, 135);
+            this.textBox_paHgGain1.Name = "textBox_paHgGain1";
+            this.textBox_paHgGain1.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain1.TabIndex = 171;
+            this.textBox_paHgGain1.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paHgGain0
+            // 
+            this.textBox_paHgGain0.enableNegative = false;
+            this.textBox_paHgGain0.Location = new System.Drawing.Point(216, 100);
+            this.textBox_paHgGain0.Name = "textBox_paHgGain0";
+            this.textBox_paHgGain0.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paHgGain0.TabIndex = 170;
+            this.textBox_paHgGain0.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
+            this.textBox_paHgGain0.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain7
+            // 
+            this.textBox_paLgGain7.enableNegative = false;
+            this.textBox_paLgGain7.Location = new System.Drawing.Point(130, 345);
+            this.textBox_paLgGain7.Name = "textBox_paLgGain7";
+            this.textBox_paLgGain7.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain7.TabIndex = 169;
+            this.textBox_paLgGain7.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain7.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain6
+            // 
+            this.textBox_paLgGain6.enableNegative = false;
+            this.textBox_paLgGain6.Location = new System.Drawing.Point(130, 310);
+            this.textBox_paLgGain6.Name = "textBox_paLgGain6";
+            this.textBox_paLgGain6.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain6.TabIndex = 168;
+            this.textBox_paLgGain6.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain6.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain5
+            // 
+            this.textBox_paLgGain5.enableNegative = false;
+            this.textBox_paLgGain5.Location = new System.Drawing.Point(130, 275);
+            this.textBox_paLgGain5.Name = "textBox_paLgGain5";
+            this.textBox_paLgGain5.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain5.TabIndex = 167;
+            this.textBox_paLgGain5.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain5.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain4
+            // 
+            this.textBox_paLgGain4.enableNegative = false;
+            this.textBox_paLgGain4.Location = new System.Drawing.Point(130, 240);
+            this.textBox_paLgGain4.Name = "textBox_paLgGain4";
+            this.textBox_paLgGain4.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain4.TabIndex = 166;
+            this.textBox_paLgGain4.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain4.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain3
+            // 
+            this.textBox_paLgGain3.enableNegative = false;
+            this.textBox_paLgGain3.Location = new System.Drawing.Point(130, 205);
+            this.textBox_paLgGain3.Name = "textBox_paLgGain3";
+            this.textBox_paLgGain3.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain3.TabIndex = 165;
+            this.textBox_paLgGain3.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain2
+            // 
+            this.textBox_paLgGain2.enableNegative = false;
+            this.textBox_paLgGain2.Location = new System.Drawing.Point(130, 170);
+            this.textBox_paLgGain2.Name = "textBox_paLgGain2";
+            this.textBox_paLgGain2.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain2.TabIndex = 164;
+            this.textBox_paLgGain2.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain1
+            // 
+            this.textBox_paLgGain1.enableNegative = false;
+            this.textBox_paLgGain1.Location = new System.Drawing.Point(130, 135);
+            this.textBox_paLgGain1.Name = "textBox_paLgGain1";
+            this.textBox_paLgGain1.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain1.TabIndex = 163;
+            this.textBox_paLgGain1.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // textBox_paLgGain0
+            // 
+            this.textBox_paLgGain0.enableNegative = false;
+            this.textBox_paLgGain0.Location = new System.Drawing.Point(130, 100);
+            this.textBox_paLgGain0.Name = "textBox_paLgGain0";
+            this.textBox_paLgGain0.Size = new System.Drawing.Size(80, 29);
+            this.textBox_paLgGain0.TabIndex = 162;
+            this.textBox_paLgGain0.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
+            this.textBox_paLgGain0.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
+            // 
+            // checkBox_enPa31
+            // 
+            this.checkBox_enPa31.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa31.Location = new System.Drawing.Point(778, 344);
+            this.checkBox_enPa31.Name = "checkBox_enPa31";
+            this.checkBox_enPa31.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa31.TabIndex = 159;
+            this.checkBox_enPa31.Text = "31";
+            this.checkBox_enPa31.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa31.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa31.UseVisualStyleBackColor = true;
+            this.checkBox_enPa31.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa30
+            // 
+            this.checkBox_enPa30.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa30.Location = new System.Drawing.Point(778, 309);
+            this.checkBox_enPa30.Name = "checkBox_enPa30";
+            this.checkBox_enPa30.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa30.TabIndex = 158;
+            this.checkBox_enPa30.Text = "30";
+            this.checkBox_enPa30.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa30.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa30.UseVisualStyleBackColor = true;
+            this.checkBox_enPa30.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa29
+            // 
+            this.checkBox_enPa29.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa29.Location = new System.Drawing.Point(778, 274);
+            this.checkBox_enPa29.Name = "checkBox_enPa29";
+            this.checkBox_enPa29.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa29.TabIndex = 157;
+            this.checkBox_enPa29.Text = "29";
+            this.checkBox_enPa29.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa29.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa29.UseVisualStyleBackColor = true;
+            this.checkBox_enPa29.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa28
+            // 
+            this.checkBox_enPa28.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa28.Location = new System.Drawing.Point(778, 239);
+            this.checkBox_enPa28.Name = "checkBox_enPa28";
+            this.checkBox_enPa28.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa28.TabIndex = 156;
+            this.checkBox_enPa28.Text = "28";
+            this.checkBox_enPa28.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa28.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa28.UseVisualStyleBackColor = true;
+            this.checkBox_enPa28.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa27
+            // 
+            this.checkBox_enPa27.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa27.Location = new System.Drawing.Point(778, 204);
+            this.checkBox_enPa27.Name = "checkBox_enPa27";
+            this.checkBox_enPa27.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa27.TabIndex = 155;
+            this.checkBox_enPa27.Text = "27";
+            this.checkBox_enPa27.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa27.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa27.UseVisualStyleBackColor = true;
+            this.checkBox_enPa27.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa26
+            // 
+            this.checkBox_enPa26.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa26.Location = new System.Drawing.Point(778, 169);
+            this.checkBox_enPa26.Name = "checkBox_enPa26";
+            this.checkBox_enPa26.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa26.TabIndex = 154;
+            this.checkBox_enPa26.Text = "26";
+            this.checkBox_enPa26.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa26.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa26.UseVisualStyleBackColor = true;
+            this.checkBox_enPa26.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa25
+            // 
+            this.checkBox_enPa25.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa25.Location = new System.Drawing.Point(778, 134);
+            this.checkBox_enPa25.Name = "checkBox_enPa25";
+            this.checkBox_enPa25.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa25.TabIndex = 153;
+            this.checkBox_enPa25.Text = "25";
+            this.checkBox_enPa25.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa25.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa25.UseVisualStyleBackColor = true;
+            this.checkBox_enPa25.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa24
+            // 
+            this.checkBox_enPa24.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa24.Location = new System.Drawing.Point(778, 99);
+            this.checkBox_enPa24.Name = "checkBox_enPa24";
+            this.checkBox_enPa24.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa24.TabIndex = 152;
+            this.checkBox_enPa24.Text = "24";
+            this.checkBox_enPa24.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa24.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa24.UseVisualStyleBackColor = true;
+            this.checkBox_enPa24.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa23
+            // 
+            this.checkBox_enPa23.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa23.Location = new System.Drawing.Point(550, 344);
+            this.checkBox_enPa23.Name = "checkBox_enPa23";
+            this.checkBox_enPa23.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa23.TabIndex = 151;
+            this.checkBox_enPa23.Text = "23";
+            this.checkBox_enPa23.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa23.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa23.UseVisualStyleBackColor = true;
+            this.checkBox_enPa23.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa22
+            // 
+            this.checkBox_enPa22.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa22.Location = new System.Drawing.Point(550, 309);
+            this.checkBox_enPa22.Name = "checkBox_enPa22";
+            this.checkBox_enPa22.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa22.TabIndex = 150;
+            this.checkBox_enPa22.Text = "22";
+            this.checkBox_enPa22.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa22.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa22.UseVisualStyleBackColor = true;
+            this.checkBox_enPa22.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa21
+            // 
+            this.checkBox_enPa21.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa21.Location = new System.Drawing.Point(550, 274);
+            this.checkBox_enPa21.Name = "checkBox_enPa21";
+            this.checkBox_enPa21.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa21.TabIndex = 149;
+            this.checkBox_enPa21.Text = "21";
+            this.checkBox_enPa21.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa21.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa21.UseVisualStyleBackColor = true;
+            this.checkBox_enPa21.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa20
+            // 
+            this.checkBox_enPa20.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa20.Location = new System.Drawing.Point(550, 239);
+            this.checkBox_enPa20.Name = "checkBox_enPa20";
+            this.checkBox_enPa20.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa20.TabIndex = 148;
+            this.checkBox_enPa20.Text = "20";
+            this.checkBox_enPa20.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa20.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa20.UseVisualStyleBackColor = true;
+            this.checkBox_enPa20.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa19
+            // 
+            this.checkBox_enPa19.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa19.Location = new System.Drawing.Point(550, 204);
+            this.checkBox_enPa19.Name = "checkBox_enPa19";
+            this.checkBox_enPa19.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa19.TabIndex = 147;
+            this.checkBox_enPa19.Text = "19";
+            this.checkBox_enPa19.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa19.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa19.UseVisualStyleBackColor = true;
+            this.checkBox_enPa19.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa18
+            // 
+            this.checkBox_enPa18.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa18.Location = new System.Drawing.Point(550, 169);
+            this.checkBox_enPa18.Name = "checkBox_enPa18";
+            this.checkBox_enPa18.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa18.TabIndex = 146;
+            this.checkBox_enPa18.Text = "18";
+            this.checkBox_enPa18.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa18.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa18.UseVisualStyleBackColor = true;
+            this.checkBox_enPa18.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa17
+            // 
+            this.checkBox_enPa17.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa17.Location = new System.Drawing.Point(550, 134);
+            this.checkBox_enPa17.Name = "checkBox_enPa17";
+            this.checkBox_enPa17.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa17.TabIndex = 145;
+            this.checkBox_enPa17.Text = "17";
+            this.checkBox_enPa17.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa17.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa17.UseVisualStyleBackColor = true;
+            this.checkBox_enPa17.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa16
+            // 
+            this.checkBox_enPa16.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa16.Location = new System.Drawing.Point(550, 99);
+            this.checkBox_enPa16.Name = "checkBox_enPa16";
+            this.checkBox_enPa16.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa16.TabIndex = 144;
+            this.checkBox_enPa16.Text = "16";
+            this.checkBox_enPa16.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa16.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa16.UseVisualStyleBackColor = true;
+            this.checkBox_enPa16.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa15
+            // 
+            this.checkBox_enPa15.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa15.Location = new System.Drawing.Point(322, 344);
+            this.checkBox_enPa15.Name = "checkBox_enPa15";
+            this.checkBox_enPa15.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa15.TabIndex = 143;
+            this.checkBox_enPa15.Text = "15";
+            this.checkBox_enPa15.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa15.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa15.UseVisualStyleBackColor = true;
+            this.checkBox_enPa15.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa14
+            // 
+            this.checkBox_enPa14.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa14.Location = new System.Drawing.Point(322, 309);
+            this.checkBox_enPa14.Name = "checkBox_enPa14";
+            this.checkBox_enPa14.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa14.TabIndex = 142;
+            this.checkBox_enPa14.Text = "14";
+            this.checkBox_enPa14.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa14.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa14.UseVisualStyleBackColor = true;
+            this.checkBox_enPa14.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa13
+            // 
+            this.checkBox_enPa13.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa13.Location = new System.Drawing.Point(322, 274);
+            this.checkBox_enPa13.Name = "checkBox_enPa13";
+            this.checkBox_enPa13.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa13.TabIndex = 141;
+            this.checkBox_enPa13.Text = "13";
+            this.checkBox_enPa13.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa13.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa13.UseVisualStyleBackColor = true;
+            this.checkBox_enPa13.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa12
+            // 
+            this.checkBox_enPa12.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa12.Location = new System.Drawing.Point(322, 239);
+            this.checkBox_enPa12.Name = "checkBox_enPa12";
+            this.checkBox_enPa12.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa12.TabIndex = 140;
+            this.checkBox_enPa12.Text = "12";
+            this.checkBox_enPa12.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa12.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa12.UseVisualStyleBackColor = true;
+            this.checkBox_enPa12.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa11
+            // 
+            this.checkBox_enPa11.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa11.Location = new System.Drawing.Point(322, 204);
+            this.checkBox_enPa11.Name = "checkBox_enPa11";
+            this.checkBox_enPa11.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa11.TabIndex = 139;
+            this.checkBox_enPa11.Text = "11";
+            this.checkBox_enPa11.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa11.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa11.UseVisualStyleBackColor = true;
+            this.checkBox_enPa11.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa10
+            // 
+            this.checkBox_enPa10.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa10.Location = new System.Drawing.Point(322, 169);
+            this.checkBox_enPa10.Name = "checkBox_enPa10";
+            this.checkBox_enPa10.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa10.TabIndex = 138;
+            this.checkBox_enPa10.Text = "10";
+            this.checkBox_enPa10.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa10.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa10.UseVisualStyleBackColor = true;
+            this.checkBox_enPa10.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa9
+            // 
+            this.checkBox_enPa9.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa9.Location = new System.Drawing.Point(322, 134);
+            this.checkBox_enPa9.Name = "checkBox_enPa9";
+            this.checkBox_enPa9.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa9.TabIndex = 137;
+            this.checkBox_enPa9.Text = "9";
+            this.checkBox_enPa9.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa9.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa9.UseVisualStyleBackColor = true;
+            this.checkBox_enPa9.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa8
+            // 
+            this.checkBox_enPa8.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa8.Location = new System.Drawing.Point(322, 99);
+            this.checkBox_enPa8.Name = "checkBox_enPa8";
+            this.checkBox_enPa8.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa8.TabIndex = 136;
+            this.checkBox_enPa8.Text = "8";
+            this.checkBox_enPa8.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa8.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa8.UseVisualStyleBackColor = true;
+            this.checkBox_enPa8.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa7
+            // 
+            this.checkBox_enPa7.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa7.Location = new System.Drawing.Point(94, 344);
+            this.checkBox_enPa7.Name = "checkBox_enPa7";
+            this.checkBox_enPa7.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa7.TabIndex = 135;
+            this.checkBox_enPa7.Text = "7";
+            this.checkBox_enPa7.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa7.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa7.UseVisualStyleBackColor = true;
+            this.checkBox_enPa7.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa6
+            // 
+            this.checkBox_enPa6.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa6.Location = new System.Drawing.Point(94, 309);
+            this.checkBox_enPa6.Name = "checkBox_enPa6";
+            this.checkBox_enPa6.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa6.TabIndex = 134;
+            this.checkBox_enPa6.Text = "6";
+            this.checkBox_enPa6.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa6.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa6.UseVisualStyleBackColor = true;
+            this.checkBox_enPa6.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa5
+            // 
+            this.checkBox_enPa5.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa5.Location = new System.Drawing.Point(94, 274);
+            this.checkBox_enPa5.Name = "checkBox_enPa5";
+            this.checkBox_enPa5.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa5.TabIndex = 133;
+            this.checkBox_enPa5.Text = "5";
+            this.checkBox_enPa5.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa5.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa5.UseVisualStyleBackColor = true;
+            this.checkBox_enPa5.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa4
+            // 
+            this.checkBox_enPa4.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa4.Location = new System.Drawing.Point(94, 239);
+            this.checkBox_enPa4.Name = "checkBox_enPa4";
+            this.checkBox_enPa4.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa4.TabIndex = 132;
+            this.checkBox_enPa4.Text = "4";
+            this.checkBox_enPa4.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa4.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa4.UseVisualStyleBackColor = true;
+            this.checkBox_enPa4.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa3
+            // 
+            this.checkBox_enPa3.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa3.Location = new System.Drawing.Point(94, 204);
+            this.checkBox_enPa3.Name = "checkBox_enPa3";
+            this.checkBox_enPa3.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa3.TabIndex = 131;
+            this.checkBox_enPa3.Text = "3";
+            this.checkBox_enPa3.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa3.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa3.UseVisualStyleBackColor = true;
+            this.checkBox_enPa3.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa2
+            // 
+            this.checkBox_enPa2.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa2.Location = new System.Drawing.Point(94, 169);
+            this.checkBox_enPa2.Name = "checkBox_enPa2";
+            this.checkBox_enPa2.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa2.TabIndex = 130;
+            this.checkBox_enPa2.Text = "2";
+            this.checkBox_enPa2.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa2.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa2.UseVisualStyleBackColor = true;
+            this.checkBox_enPa2.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa1
+            // 
+            this.checkBox_enPa1.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa1.Location = new System.Drawing.Point(94, 134);
+            this.checkBox_enPa1.Name = "checkBox_enPa1";
+            this.checkBox_enPa1.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa1.TabIndex = 129;
+            this.checkBox_enPa1.Text = "1";
+            this.checkBox_enPa1.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa1.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa1.UseVisualStyleBackColor = true;
+            this.checkBox_enPa1.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
+            // 
+            // checkBox_enPa0
+            // 
+            this.checkBox_enPa0.checkedBackColor = System.Drawing.Color.IndianRed;
+            this.checkBox_enPa0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.checkBox_enPa0.Location = new System.Drawing.Point(94, 99);
+            this.checkBox_enPa0.Name = "checkBox_enPa0";
+            this.checkBox_enPa0.Size = new System.Drawing.Size(30, 30);
+            this.checkBox_enPa0.TabIndex = 128;
+            this.checkBox_enPa0.Text = "0";
+            this.checkBox_enPa0.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
+            this.checkBox_enPa0.uncheckedForeColor = System.Drawing.Color.White;
+            this.checkBox_enPa0.UseVisualStyleBackColor = true;
+            this.checkBox_enPa0.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
             // 
             // tabPage_EN
             // 
@@ -3287,5402 +5771,6 @@
             this.button_setAllInputDac.UseVisualStyleBackColor = false;
             this.button_setAllInputDac.Click += new System.EventHandler(this.button_setAllInputDac_Click);
             // 
-            // groupBox_DacT
-            // 
-            this.groupBox_DacT.Controls.Add(this.button_setAllDacT);
-            this.groupBox_DacT.Controls.Add(this.textBox_setAllDacT);
-            this.groupBox_DacT.Controls.Add(this.label1);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT31);
-            this.groupBox_DacT.Controls.Add(this.label2);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT30);
-            this.groupBox_DacT.Controls.Add(this.label3);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT29);
-            this.groupBox_DacT.Controls.Add(this.label4);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT28);
-            this.groupBox_DacT.Controls.Add(this.label5);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT27);
-            this.groupBox_DacT.Controls.Add(this.label6);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT26);
-            this.groupBox_DacT.Controls.Add(this.label7);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT25);
-            this.groupBox_DacT.Controls.Add(this.label8);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT24);
-            this.groupBox_DacT.Controls.Add(this.label10);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT23);
-            this.groupBox_DacT.Controls.Add(this.label11);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT22);
-            this.groupBox_DacT.Controls.Add(this.label12);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT21);
-            this.groupBox_DacT.Controls.Add(this.label13);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT20);
-            this.groupBox_DacT.Controls.Add(this.label14);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT19);
-            this.groupBox_DacT.Controls.Add(this.label15);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT18);
-            this.groupBox_DacT.Controls.Add(this.label16);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT17);
-            this.groupBox_DacT.Controls.Add(this.label17);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT16);
-            this.groupBox_DacT.Controls.Add(this.label18);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT15);
-            this.groupBox_DacT.Controls.Add(this.label19);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT14);
-            this.groupBox_DacT.Controls.Add(this.label20);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT13);
-            this.groupBox_DacT.Controls.Add(this.label21);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT12);
-            this.groupBox_DacT.Controls.Add(this.label22);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT11);
-            this.groupBox_DacT.Controls.Add(this.label23);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT10);
-            this.groupBox_DacT.Controls.Add(this.label24);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT9);
-            this.groupBox_DacT.Controls.Add(this.label25);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT8);
-            this.groupBox_DacT.Controls.Add(this.label26);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT7);
-            this.groupBox_DacT.Controls.Add(this.label27);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT6);
-            this.groupBox_DacT.Controls.Add(this.label29);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT5);
-            this.groupBox_DacT.Controls.Add(this.label30);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT4);
-            this.groupBox_DacT.Controls.Add(this.label31);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT3);
-            this.groupBox_DacT.Controls.Add(this.label32);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT2);
-            this.groupBox_DacT.Controls.Add(this.label33);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT1);
-            this.groupBox_DacT.Controls.Add(this.label34);
-            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT0);
-            this.groupBox_DacT.Location = new System.Drawing.Point(327, 11);
-            this.groupBox_DacT.Name = "groupBox_DacT";
-            this.groupBox_DacT.Size = new System.Drawing.Size(300, 383);
-            this.groupBox_DacT.TabIndex = 162;
-            this.groupBox_DacT.TabStop = false;
-            this.groupBox_DacT.Text = "DAC time";
-            // 
-            // button_setAllDacT
-            // 
-            this.button_setAllDacT.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_setAllDacT.FlatAppearance.BorderSize = 0;
-            this.button_setAllDacT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setAllDacT.Location = new System.Drawing.Point(142, 337);
-            this.button_setAllDacT.Name = "button_setAllDacT";
-            this.button_setAllDacT.Size = new System.Drawing.Size(80, 29);
-            this.button_setAllDacT.TabIndex = 163;
-            this.button_setAllDacT.Text = "Set all to";
-            this.button_setAllDacT.UseVisualStyleBackColor = false;
-            this.button_setAllDacT.Click += new System.EventHandler(this.button_setAllDacT_Click);
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(6, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 30);
-            this.label1.TabIndex = 104;
-            this.label1.Text = "0";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(6, 75);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 30);
-            this.label2.TabIndex = 97;
-            this.label2.Text = "1";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(6, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 30);
-            this.label3.TabIndex = 98;
-            this.label3.Text = "2";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(6, 145);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 30);
-            this.label4.TabIndex = 99;
-            this.label4.Text = "3";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(6, 180);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 30);
-            this.label5.TabIndex = 100;
-            this.label5.Text = "4";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(6, 215);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 30);
-            this.label6.TabIndex = 101;
-            this.label6.Text = "5";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(6, 250);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 30);
-            this.label7.TabIndex = 102;
-            this.label7.Text = "6";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(6, 285);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 30);
-            this.label8.TabIndex = 103;
-            this.label8.Text = "7";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            this.label10.Location = new System.Drawing.Point(78, 75);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 30);
-            this.label10.TabIndex = 105;
-            this.label10.Text = "9";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.Location = new System.Drawing.Point(78, 110);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(30, 30);
-            this.label11.TabIndex = 106;
-            this.label11.Text = "10";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.Location = new System.Drawing.Point(78, 145);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(30, 30);
-            this.label12.TabIndex = 107;
-            this.label12.Text = "11";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.Location = new System.Drawing.Point(78, 180);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(30, 30);
-            this.label13.TabIndex = 108;
-            this.label13.Text = "12";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            this.label14.Location = new System.Drawing.Point(78, 215);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(30, 30);
-            this.label14.TabIndex = 109;
-            this.label14.Text = "13";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.Location = new System.Drawing.Point(78, 250);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(30, 30);
-            this.label15.TabIndex = 110;
-            this.label15.Text = "14";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label16
-            // 
-            this.label16.Location = new System.Drawing.Point(78, 285);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(30, 30);
-            this.label16.TabIndex = 111;
-            this.label16.Text = "15";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label17
-            // 
-            this.label17.Location = new System.Drawing.Point(78, 40);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(30, 30);
-            this.label17.TabIndex = 112;
-            this.label17.Text = "8";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label18
-            // 
-            this.label18.Location = new System.Drawing.Point(150, 75);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(30, 30);
-            this.label18.TabIndex = 113;
-            this.label18.Text = "17";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label19
-            // 
-            this.label19.Location = new System.Drawing.Point(150, 110);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(30, 30);
-            this.label19.TabIndex = 114;
-            this.label19.Text = "18";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label20
-            // 
-            this.label20.Location = new System.Drawing.Point(150, 145);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(30, 30);
-            this.label20.TabIndex = 115;
-            this.label20.Text = "19";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label21
-            // 
-            this.label21.Location = new System.Drawing.Point(150, 180);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(30, 30);
-            this.label21.TabIndex = 116;
-            this.label21.Text = "20";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label22
-            // 
-            this.label22.Location = new System.Drawing.Point(150, 215);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(30, 30);
-            this.label22.TabIndex = 117;
-            this.label22.Text = "21";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label23
-            // 
-            this.label23.Location = new System.Drawing.Point(150, 250);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(30, 30);
-            this.label23.TabIndex = 118;
-            this.label23.Text = "22";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label24
-            // 
-            this.label24.Location = new System.Drawing.Point(150, 285);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(30, 30);
-            this.label24.TabIndex = 119;
-            this.label24.Text = "23";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label25
-            // 
-            this.label25.Location = new System.Drawing.Point(150, 40);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(30, 30);
-            this.label25.TabIndex = 120;
-            this.label25.Text = "16";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label26
-            // 
-            this.label26.Location = new System.Drawing.Point(222, 75);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(30, 30);
-            this.label26.TabIndex = 121;
-            this.label26.Text = "25";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label27
-            // 
-            this.label27.Location = new System.Drawing.Point(222, 110);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(30, 30);
-            this.label27.TabIndex = 122;
-            this.label27.Text = "26";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label29
-            // 
-            this.label29.Location = new System.Drawing.Point(222, 145);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(30, 30);
-            this.label29.TabIndex = 123;
-            this.label29.Text = "27";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label30
-            // 
-            this.label30.Location = new System.Drawing.Point(222, 180);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(30, 30);
-            this.label30.TabIndex = 124;
-            this.label30.Text = "28";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label31
-            // 
-            this.label31.Location = new System.Drawing.Point(222, 215);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(30, 30);
-            this.label31.TabIndex = 125;
-            this.label31.Text = "29";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label32
-            // 
-            this.label32.Location = new System.Drawing.Point(222, 250);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(30, 30);
-            this.label32.TabIndex = 126;
-            this.label32.Text = "30";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label33
-            // 
-            this.label33.Location = new System.Drawing.Point(222, 285);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(30, 30);
-            this.label33.TabIndex = 127;
-            this.label33.Text = "31";
-            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label34
-            // 
-            this.label34.Location = new System.Drawing.Point(222, 40);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(30, 30);
-            this.label34.TabIndex = 128;
-            this.label34.Text = "24";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // groupBox_DacQ
-            // 
-            this.groupBox_DacQ.Controls.Add(this.button_setAllDac);
-            this.groupBox_DacQ.Controls.Add(this.textBox_setAllDac);
-            this.groupBox_DacQ.Controls.Add(this.label90);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac31);
-            this.groupBox_DacQ.Controls.Add(this.label97);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac30);
-            this.groupBox_DacQ.Controls.Add(this.label96);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac29);
-            this.groupBox_DacQ.Controls.Add(this.label95);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac28);
-            this.groupBox_DacQ.Controls.Add(this.label94);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac27);
-            this.groupBox_DacQ.Controls.Add(this.label93);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac26);
-            this.groupBox_DacQ.Controls.Add(this.label92);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac25);
-            this.groupBox_DacQ.Controls.Add(this.label91);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac24);
-            this.groupBox_DacQ.Controls.Add(this.label89);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac23);
-            this.groupBox_DacQ.Controls.Add(this.label88);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac22);
-            this.groupBox_DacQ.Controls.Add(this.label87);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac21);
-            this.groupBox_DacQ.Controls.Add(this.label86);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac20);
-            this.groupBox_DacQ.Controls.Add(this.label85);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac19);
-            this.groupBox_DacQ.Controls.Add(this.label84);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac18);
-            this.groupBox_DacQ.Controls.Add(this.label83);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac17);
-            this.groupBox_DacQ.Controls.Add(this.label82);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac16);
-            this.groupBox_DacQ.Controls.Add(this.label81);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac15);
-            this.groupBox_DacQ.Controls.Add(this.label80);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac14);
-            this.groupBox_DacQ.Controls.Add(this.label79);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac13);
-            this.groupBox_DacQ.Controls.Add(this.label78);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac12);
-            this.groupBox_DacQ.Controls.Add(this.label77);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac11);
-            this.groupBox_DacQ.Controls.Add(this.label76);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac10);
-            this.groupBox_DacQ.Controls.Add(this.label75);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac9);
-            this.groupBox_DacQ.Controls.Add(this.label74);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac8);
-            this.groupBox_DacQ.Controls.Add(this.label73);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac7);
-            this.groupBox_DacQ.Controls.Add(this.label72);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac6);
-            this.groupBox_DacQ.Controls.Add(this.label71);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac5);
-            this.groupBox_DacQ.Controls.Add(this.label70);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac4);
-            this.groupBox_DacQ.Controls.Add(this.label69);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac3);
-            this.groupBox_DacQ.Controls.Add(this.label68);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac2);
-            this.groupBox_DacQ.Controls.Add(this.label66);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac1);
-            this.groupBox_DacQ.Controls.Add(this.label65);
-            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac0);
-            this.groupBox_DacQ.Location = new System.Drawing.Point(19, 11);
-            this.groupBox_DacQ.Name = "groupBox_DacQ";
-            this.groupBox_DacQ.Size = new System.Drawing.Size(300, 383);
-            this.groupBox_DacQ.TabIndex = 161;
-            this.groupBox_DacQ.TabStop = false;
-            this.groupBox_DacQ.Text = "DAC charge";
-            // 
-            // button_setAllDac
-            // 
-            this.button_setAllDac.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_setAllDac.FlatAppearance.BorderSize = 0;
-            this.button_setAllDac.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setAllDac.Location = new System.Drawing.Point(142, 337);
-            this.button_setAllDac.Name = "button_setAllDac";
-            this.button_setAllDac.Size = new System.Drawing.Size(80, 29);
-            this.button_setAllDac.TabIndex = 162;
-            this.button_setAllDac.Text = "Set all to";
-            this.button_setAllDac.UseVisualStyleBackColor = false;
-            this.button_setAllDac.Click += new System.EventHandler(this.button_setAllDac_Click);
-            // 
-            // label90
-            // 
-            this.label90.Location = new System.Drawing.Point(6, 40);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(30, 30);
-            this.label90.TabIndex = 104;
-            this.label90.Text = "0";
-            this.label90.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label97
-            // 
-            this.label97.Location = new System.Drawing.Point(6, 75);
-            this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(30, 30);
-            this.label97.TabIndex = 97;
-            this.label97.Text = "1";
-            this.label97.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label96
-            // 
-            this.label96.Location = new System.Drawing.Point(6, 110);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(30, 30);
-            this.label96.TabIndex = 98;
-            this.label96.Text = "2";
-            this.label96.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label95
-            // 
-            this.label95.Location = new System.Drawing.Point(6, 145);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(30, 30);
-            this.label95.TabIndex = 99;
-            this.label95.Text = "3";
-            this.label95.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label94
-            // 
-            this.label94.Location = new System.Drawing.Point(6, 180);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(30, 30);
-            this.label94.TabIndex = 100;
-            this.label94.Text = "4";
-            this.label94.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label93
-            // 
-            this.label93.Location = new System.Drawing.Point(6, 215);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(30, 30);
-            this.label93.TabIndex = 101;
-            this.label93.Text = "5";
-            this.label93.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label92
-            // 
-            this.label92.Location = new System.Drawing.Point(6, 250);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(30, 30);
-            this.label92.TabIndex = 102;
-            this.label92.Text = "6";
-            this.label92.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label91
-            // 
-            this.label91.Location = new System.Drawing.Point(6, 285);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(30, 30);
-            this.label91.TabIndex = 103;
-            this.label91.Text = "7";
-            this.label91.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label89
-            // 
-            this.label89.Location = new System.Drawing.Point(78, 75);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(30, 30);
-            this.label89.TabIndex = 105;
-            this.label89.Text = "9";
-            this.label89.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label88
-            // 
-            this.label88.Location = new System.Drawing.Point(78, 110);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(30, 30);
-            this.label88.TabIndex = 106;
-            this.label88.Text = "10";
-            this.label88.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label87
-            // 
-            this.label87.Location = new System.Drawing.Point(78, 145);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(30, 30);
-            this.label87.TabIndex = 107;
-            this.label87.Text = "11";
-            this.label87.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label86
-            // 
-            this.label86.Location = new System.Drawing.Point(78, 180);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(30, 30);
-            this.label86.TabIndex = 108;
-            this.label86.Text = "12";
-            this.label86.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label85
-            // 
-            this.label85.Location = new System.Drawing.Point(78, 215);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(30, 30);
-            this.label85.TabIndex = 109;
-            this.label85.Text = "13";
-            this.label85.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label84
-            // 
-            this.label84.Location = new System.Drawing.Point(78, 250);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(30, 30);
-            this.label84.TabIndex = 110;
-            this.label84.Text = "14";
-            this.label84.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label83
-            // 
-            this.label83.Location = new System.Drawing.Point(78, 285);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(30, 30);
-            this.label83.TabIndex = 111;
-            this.label83.Text = "15";
-            this.label83.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label82
-            // 
-            this.label82.Location = new System.Drawing.Point(78, 40);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(30, 30);
-            this.label82.TabIndex = 112;
-            this.label82.Text = "8";
-            this.label82.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label81
-            // 
-            this.label81.Location = new System.Drawing.Point(150, 75);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(30, 30);
-            this.label81.TabIndex = 113;
-            this.label81.Text = "17";
-            this.label81.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label80
-            // 
-            this.label80.Location = new System.Drawing.Point(150, 110);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(30, 30);
-            this.label80.TabIndex = 114;
-            this.label80.Text = "18";
-            this.label80.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label79
-            // 
-            this.label79.Location = new System.Drawing.Point(150, 145);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(30, 30);
-            this.label79.TabIndex = 115;
-            this.label79.Text = "19";
-            this.label79.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label78
-            // 
-            this.label78.Location = new System.Drawing.Point(150, 180);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(30, 30);
-            this.label78.TabIndex = 116;
-            this.label78.Text = "20";
-            this.label78.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label77
-            // 
-            this.label77.Location = new System.Drawing.Point(150, 215);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(30, 30);
-            this.label77.TabIndex = 117;
-            this.label77.Text = "21";
-            this.label77.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label76
-            // 
-            this.label76.Location = new System.Drawing.Point(150, 250);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(30, 30);
-            this.label76.TabIndex = 118;
-            this.label76.Text = "22";
-            this.label76.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label75
-            // 
-            this.label75.Location = new System.Drawing.Point(150, 285);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(30, 30);
-            this.label75.TabIndex = 119;
-            this.label75.Text = "23";
-            this.label75.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label74
-            // 
-            this.label74.Location = new System.Drawing.Point(150, 40);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(30, 30);
-            this.label74.TabIndex = 120;
-            this.label74.Text = "16";
-            this.label74.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label73
-            // 
-            this.label73.Location = new System.Drawing.Point(222, 75);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(30, 30);
-            this.label73.TabIndex = 121;
-            this.label73.Text = "25";
-            this.label73.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label72
-            // 
-            this.label72.Location = new System.Drawing.Point(222, 110);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(30, 30);
-            this.label72.TabIndex = 122;
-            this.label72.Text = "26";
-            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label71
-            // 
-            this.label71.Location = new System.Drawing.Point(222, 145);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(30, 30);
-            this.label71.TabIndex = 123;
-            this.label71.Text = "27";
-            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label70
-            // 
-            this.label70.Location = new System.Drawing.Point(222, 180);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(30, 30);
-            this.label70.TabIndex = 124;
-            this.label70.Text = "28";
-            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label69
-            // 
-            this.label69.Location = new System.Drawing.Point(222, 215);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(30, 30);
-            this.label69.TabIndex = 125;
-            this.label69.Text = "29";
-            this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label68
-            // 
-            this.label68.Location = new System.Drawing.Point(222, 250);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(30, 30);
-            this.label68.TabIndex = 126;
-            this.label68.Text = "30";
-            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label66
-            // 
-            this.label66.Location = new System.Drawing.Point(222, 285);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(30, 30);
-            this.label66.TabIndex = 127;
-            this.label66.Text = "31";
-            this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label65
-            // 
-            this.label65.Location = new System.Drawing.Point(222, 40);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(30, 30);
-            this.label65.TabIndex = 128;
-            this.label65.Text = "24";
-            this.label65.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tabPage_probes
-            // 
-            this.tabPage_probes.BackColor = System.Drawing.Color.White;
-            this.tabPage_probes.Controls.Add(this.button_sendReadRegister);
-            this.tabPage_probes.Controls.Add(this.numericUpDown_rr);
-            this.tabPage_probes.Controls.Add(this.groupBox_digitalProbe);
-            this.tabPage_probes.Controls.Add(this.groupBox_analogueProbe);
-            this.tabPage_probes.Controls.Add(this.button_sendProbes);
-            this.tabPage_probes.Controls.Add(this.checkBox_rr);
-            this.tabPage_probes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.tabPage_probes.Location = new System.Drawing.Point(14, 4);
-            this.tabPage_probes.Name = "tabPage_probes";
-            this.tabPage_probes.Size = new System.Drawing.Size(1062, 482);
-            this.tabPage_probes.TabIndex = 3;
-            this.tabPage_probes.Text = "Probes";
-            this.tabPage_probes.MouseEnter += new System.EventHandler(this.tabPage_probes_MouseEnter);
-            this.tabPage_probes.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // button_sendReadRegister
-            // 
-            this.button_sendReadRegister.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_sendReadRegister.FlatAppearance.BorderSize = 0;
-            this.button_sendReadRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_sendReadRegister.Location = new System.Drawing.Point(650, 55);
-            this.button_sendReadRegister.Name = "button_sendReadRegister";
-            this.button_sendReadRegister.Size = new System.Drawing.Size(160, 35);
-            this.button_sendReadRegister.TabIndex = 26;
-            this.button_sendReadRegister.Text = "Send Read Register";
-            this.button_sendReadRegister.UseVisualStyleBackColor = false;
-            this.button_sendReadRegister.Click += new System.EventHandler(this.button_sendReadRegister_Click);
-            // 
-            // numericUpDown_rr
-            // 
-            this.numericUpDown_rr.Location = new System.Drawing.Point(567, 55);
-            this.numericUpDown_rr.Maximum = new decimal(new int[] {
-            31,
-            0,
-            0,
-            0});
-            this.numericUpDown_rr.Name = "numericUpDown_rr";
-            this.numericUpDown_rr.Size = new System.Drawing.Size(52, 29);
-            this.numericUpDown_rr.TabIndex = 25;
-            // 
-            // groupBox_digitalProbe
-            // 
-            this.groupBox_digitalProbe.Controls.Add(this.radioButton_noDProbe);
-            this.groupBox_digitalProbe.Controls.Add(this.label119);
-            this.groupBox_digitalProbe.Controls.Add(this.numericUpDown_probeDChannel);
-            this.groupBox_digitalProbe.Controls.Add(this.radioButton_probePDLG);
-            this.groupBox_digitalProbe.Controls.Add(this.radioButton_probePDHG);
-            this.groupBox_digitalProbe.Location = new System.Drawing.Point(543, 106);
-            this.groupBox_digitalProbe.Name = "groupBox_digitalProbe";
-            this.groupBox_digitalProbe.Size = new System.Drawing.Size(267, 210);
-            this.groupBox_digitalProbe.TabIndex = 17;
-            this.groupBox_digitalProbe.TabStop = false;
-            this.groupBox_digitalProbe.Text = "Digital probe";
-            // 
-            // radioButton_noDProbe
-            // 
-            this.radioButton_noDProbe.AutoSize = true;
-            this.radioButton_noDProbe.Checked = true;
-            this.radioButton_noDProbe.Location = new System.Drawing.Point(24, 39);
-            this.radioButton_noDProbe.Name = "radioButton_noDProbe";
-            this.radioButton_noDProbe.Size = new System.Drawing.Size(161, 28);
-            this.radioButton_noDProbe.TabIndex = 24;
-            this.radioButton_noDProbe.TabStop = true;
-            this.radioButton_noDProbe.Text = "No digital probe";
-            this.radioButton_noDProbe.UseVisualStyleBackColor = true;
-            // 
-            // label119
-            // 
-            this.label119.AutoSize = true;
-            this.label119.Location = new System.Drawing.Point(106, 156);
-            this.label119.Name = "label119";
-            this.label119.Size = new System.Drawing.Size(81, 24);
-            this.label119.TabIndex = 23;
-            this.label119.Text = "Channel";
-            // 
-            // numericUpDown_probeDChannel
-            // 
-            this.numericUpDown_probeDChannel.Location = new System.Drawing.Point(177, 154);
-            this.numericUpDown_probeDChannel.Maximum = new decimal(new int[] {
-            31,
-            0,
-            0,
-            0});
-            this.numericUpDown_probeDChannel.Name = "numericUpDown_probeDChannel";
-            this.numericUpDown_probeDChannel.Size = new System.Drawing.Size(70, 29);
-            this.numericUpDown_probeDChannel.TabIndex = 22;
-            // 
-            // radioButton_probePDLG
-            // 
-            this.radioButton_probePDLG.AutoSize = true;
-            this.radioButton_probePDLG.Location = new System.Drawing.Point(24, 103);
-            this.radioButton_probePDLG.Name = "radioButton_probePDLG";
-            this.radioButton_probePDLG.Size = new System.Drawing.Size(277, 28);
-            this.radioButton_probePDLG.TabIndex = 18;
-            this.radioButton_probePDLG.Text = "Low gain peak detector mode";
-            this.radioButton_probePDLG.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_probePDHG
-            // 
-            this.radioButton_probePDHG.AutoSize = true;
-            this.radioButton_probePDHG.Location = new System.Drawing.Point(24, 71);
-            this.radioButton_probePDHG.Name = "radioButton_probePDHG";
-            this.radioButton_probePDHG.Size = new System.Drawing.Size(282, 28);
-            this.radioButton_probePDHG.TabIndex = 19;
-            this.radioButton_probePDHG.Text = "High gain peak detector mode";
-            this.radioButton_probePDHG.UseVisualStyleBackColor = true;
-            // 
-            // groupBox_analogueProbe
-            // 
-            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probePaLG);
-            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probePaHG);
-            this.groupBox_analogueProbe.Controls.Add(this.label118);
-            this.groupBox_analogueProbe.Controls.Add(this.radioButton_noAProbe);
-            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probeSshHG);
-            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probeSshLG);
-            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probeFsh);
-            this.groupBox_analogueProbe.Controls.Add(this.numericUpDown_probeAChannel);
-            this.groupBox_analogueProbe.Location = new System.Drawing.Point(242, 106);
-            this.groupBox_analogueProbe.Name = "groupBox_analogueProbe";
-            this.groupBox_analogueProbe.Size = new System.Drawing.Size(251, 305);
-            this.groupBox_analogueProbe.TabIndex = 16;
-            this.groupBox_analogueProbe.TabStop = false;
-            this.groupBox_analogueProbe.Text = "Analogue probe";
-            // 
-            // radioButton_probePaLG
-            // 
-            this.radioButton_probePaLG.AutoSize = true;
-            this.radioButton_probePaLG.Location = new System.Drawing.Point(19, 71);
-            this.radioButton_probePaLG.Name = "radioButton_probePaLG";
-            this.radioButton_probePaLG.Size = new System.Drawing.Size(264, 28);
-            this.radioButton_probePaLG.TabIndex = 23;
-            this.radioButton_probePaLG.Text = "Low gain preamplifier output";
-            this.radioButton_probePaLG.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_probePaHG
-            // 
-            this.radioButton_probePaHG.AutoSize = true;
-            this.radioButton_probePaHG.Location = new System.Drawing.Point(19, 135);
-            this.radioButton_probePaHG.Name = "radioButton_probePaHG";
-            this.radioButton_probePaHG.Size = new System.Drawing.Size(269, 28);
-            this.radioButton_probePaHG.TabIndex = 22;
-            this.radioButton_probePaHG.Text = "High gain preamplifier output";
-            this.radioButton_probePaHG.UseVisualStyleBackColor = true;
-            // 
-            // label118
-            // 
-            this.label118.AutoSize = true;
-            this.label118.Location = new System.Drawing.Point(92, 252);
-            this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(81, 24);
-            this.label118.TabIndex = 21;
-            this.label118.Text = "Channel";
-            // 
-            // radioButton_noAProbe
-            // 
-            this.radioButton_noAProbe.AutoSize = true;
-            this.radioButton_noAProbe.Checked = true;
-            this.radioButton_noAProbe.Location = new System.Drawing.Point(19, 39);
-            this.radioButton_noAProbe.Name = "radioButton_noAProbe";
-            this.radioButton_noAProbe.Size = new System.Drawing.Size(192, 28);
-            this.radioButton_noAProbe.TabIndex = 20;
-            this.radioButton_noAProbe.TabStop = true;
-            this.radioButton_noAProbe.Text = "No analogue probe";
-            this.radioButton_noAProbe.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_probeSshHG
-            // 
-            this.radioButton_probeSshHG.AutoSize = true;
-            this.radioButton_probeSshHG.Location = new System.Drawing.Point(19, 167);
-            this.radioButton_probeSshHG.Name = "radioButton_probeSshHG";
-            this.radioButton_probeSshHG.Size = new System.Drawing.Size(272, 28);
-            this.radioButton_probeSshHG.TabIndex = 17;
-            this.radioButton_probeSshHG.Text = "High gain slow shaper output";
-            this.radioButton_probeSshHG.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_probeSshLG
-            // 
-            this.radioButton_probeSshLG.AutoSize = true;
-            this.radioButton_probeSshLG.Location = new System.Drawing.Point(19, 103);
-            this.radioButton_probeSshLG.Name = "radioButton_probeSshLG";
-            this.radioButton_probeSshLG.Size = new System.Drawing.Size(267, 28);
-            this.radioButton_probeSshLG.TabIndex = 16;
-            this.radioButton_probeSshLG.Text = "Low gain slow shaper output";
-            this.radioButton_probeSshLG.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_probeFsh
-            // 
-            this.radioButton_probeFsh.AutoSize = true;
-            this.radioButton_probeFsh.Location = new System.Drawing.Point(19, 199);
-            this.radioButton_probeFsh.Name = "radioButton_probeFsh";
-            this.radioButton_probeFsh.Size = new System.Drawing.Size(183, 28);
-            this.radioButton_probeFsh.TabIndex = 15;
-            this.radioButton_probeFsh.Text = "Fast shaper output";
-            this.radioButton_probeFsh.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown_probeAChannel
-            // 
-            this.numericUpDown_probeAChannel.Location = new System.Drawing.Point(163, 250);
-            this.numericUpDown_probeAChannel.Maximum = new decimal(new int[] {
-            31,
-            0,
-            0,
-            0});
-            this.numericUpDown_probeAChannel.Name = "numericUpDown_probeAChannel";
-            this.numericUpDown_probeAChannel.Size = new System.Drawing.Size(70, 29);
-            this.numericUpDown_probeAChannel.TabIndex = 14;
-            // 
-            // button_sendProbes
-            // 
-            this.button_sendProbes.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_sendProbes.FlatAppearance.BorderSize = 0;
-            this.button_sendProbes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_sendProbes.Location = new System.Drawing.Point(650, 376);
-            this.button_sendProbes.Name = "button_sendProbes";
-            this.button_sendProbes.Size = new System.Drawing.Size(160, 35);
-            this.button_sendProbes.TabIndex = 13;
-            this.button_sendProbes.Text = "Send probes";
-            this.button_sendProbes.UseVisualStyleBackColor = false;
-            this.button_sendProbes.Click += new System.EventHandler(this.button_sendProbes_Click);
-            // 
-            // tabPage_calibration
-            // 
-            this.tabPage_calibration.BackColor = System.Drawing.Color.White;
-            this.tabPage_calibration.Controls.Add(this.tabControl_calibration);
-            this.tabPage_calibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.tabPage_calibration.Location = new System.Drawing.Point(14, 4);
-            this.tabPage_calibration.Name = "tabPage_calibration";
-            this.tabPage_calibration.Size = new System.Drawing.Size(1062, 482);
-            this.tabPage_calibration.TabIndex = 4;
-            this.tabPage_calibration.Text = "S-curves";
-            // 
-            // tabControl_calibration
-            // 
-            this.tabControl_calibration.Controls.Add(this.tabPage_sCurves);
-            this.tabControl_calibration.Controls.Add(this.tabPage_holdScan);
-            this.tabControl_calibration.Controls.Add(this.tabPage_staircase);
-            this.tabControl_calibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.tabControl_calibration.Location = new System.Drawing.Point(-4, 0);
-            this.tabControl_calibration.Name = "tabControl_calibration";
-            this.tabControl_calibration.SelectedIndex = 0;
-            this.tabControl_calibration.Size = new System.Drawing.Size(1088, 494);
-            this.tabControl_calibration.TabIndex = 20;
-            // 
-            // tabPage_sCurves
-            // 
-            this.tabPage_sCurves.BackColor = System.Drawing.Color.White;
-            this.tabPage_sCurves.Controls.Add(this.label110);
-            this.tabPage_sCurves.Controls.Add(this.comboBox_sCurvesClock);
-            this.tabPage_sCurves.Controls.Add(this.checkBox_ScurvesTorQ);
-            this.tabPage_sCurves.Controls.Add(this.label134);
-            this.tabPage_sCurves.Controls.Add(this.button_ScurvesUncheckAll);
-            this.tabPage_sCurves.Controls.Add(this.button_ScurvesCheckAll);
-            this.tabPage_sCurves.Controls.Add(this.button_channelSelectionScurves);
-            this.tabPage_sCurves.Controls.Add(this.groupBox_channelSelectionScurves);
-            this.tabPage_sCurves.Controls.Add(this.checkBox_ScurvesChoice);
-            this.tabPage_sCurves.Controls.Add(this.textBox_stepScurves);
-            this.tabPage_sCurves.Controls.Add(this.textBox_maxCodeScurves);
-            this.tabPage_sCurves.Controls.Add(this.textBox_minCodeScurves);
-            this.tabPage_sCurves.Controls.Add(this.checkBox_useMaskScurves);
-            this.tabPage_sCurves.Controls.Add(this.button_autocalibration);
-            this.tabPage_sCurves.Controls.Add(this.button_Scurves);
-            this.tabPage_sCurves.Controls.Add(this.button_resetZoomScurves);
-            this.tabPage_sCurves.Controls.Add(this.label102);
-            this.tabPage_sCurves.Controls.Add(this.progressBar_Scurves);
-            this.tabPage_sCurves.Controls.Add(this.label103);
-            this.tabPage_sCurves.Controls.Add(this.label109);
-            this.tabPage_sCurves.Controls.Add(this.label104);
-            this.tabPage_sCurves.Controls.Add(this.button_sCurveSavePath);
-            this.tabPage_sCurves.Controls.Add(this.textBox_sCurveSavePath);
-            this.tabPage_sCurves.Controls.Add(this.chart_Scurves);
-            this.tabPage_sCurves.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.tabPage_sCurves.Location = new System.Drawing.Point(4, 34);
-            this.tabPage_sCurves.Name = "tabPage_sCurves";
-            this.tabPage_sCurves.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_sCurves.Size = new System.Drawing.Size(1080, 456);
-            this.tabPage_sCurves.TabIndex = 0;
-            this.tabPage_sCurves.Text = "     S-curves    ";
-            // 
-            // label110
-            // 
-            this.label110.AutoSize = true;
-            this.label110.Location = new System.Drawing.Point(528, 10);
-            this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(57, 24);
-            this.label110.TabIndex = 41;
-            this.label110.Text = "Clock";
-            // 
-            // comboBox_sCurvesClock
-            // 
-            this.comboBox_sCurvesClock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_sCurvesClock.FormattingEnabled = true;
-            this.comboBox_sCurvesClock.Items.AddRange(new object[] {
-            "1 kHz",
-            "10 kHz",
-            "50 kHz",
-            "100 kHz"});
-            this.comboBox_sCurvesClock.Location = new System.Drawing.Point(579, 6);
-            this.comboBox_sCurvesClock.Name = "comboBox_sCurvesClock";
-            this.comboBox_sCurvesClock.Size = new System.Drawing.Size(121, 32);
-            this.comboBox_sCurvesClock.TabIndex = 40;
-            this.comboBox_sCurvesClock.MouseEnter += new System.EventHandler(this.comboBox_sCurveClock_MouseEnter);
-            this.comboBox_sCurvesClock.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // label134
-            // 
-            this.label134.Location = new System.Drawing.Point(820, 0);
-            this.label134.Name = "label134";
-            this.label134.Size = new System.Drawing.Size(180, 6);
-            this.label134.TabIndex = 29;
-            // 
-            // button_ScurvesUncheckAll
-            // 
-            this.button_ScurvesUncheckAll.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_ScurvesUncheckAll.FlatAppearance.BorderSize = 0;
-            this.button_ScurvesUncheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_ScurvesUncheckAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button_ScurvesUncheckAll.Location = new System.Drawing.Point(910, 36);
-            this.button_ScurvesUncheckAll.Name = "button_ScurvesUncheckAll";
-            this.button_ScurvesUncheckAll.Size = new System.Drawing.Size(90, 27);
-            this.button_ScurvesUncheckAll.TabIndex = 31;
-            this.button_ScurvesUncheckAll.Text = "Uncheck all";
-            this.button_ScurvesUncheckAll.UseVisualStyleBackColor = false;
-            this.button_ScurvesUncheckAll.Visible = false;
-            this.button_ScurvesUncheckAll.Click += new System.EventHandler(this.button_ScurvesUncheckAll_Click);
-            this.button_ScurvesUncheckAll.MouseEnter += new System.EventHandler(this.channelSelectionScurves_MouseEnter);
-            this.button_ScurvesUncheckAll.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // button_ScurvesCheckAll
-            // 
-            this.button_ScurvesCheckAll.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_ScurvesCheckAll.FlatAppearance.BorderSize = 0;
-            this.button_ScurvesCheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_ScurvesCheckAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button_ScurvesCheckAll.Location = new System.Drawing.Point(820, 36);
-            this.button_ScurvesCheckAll.Name = "button_ScurvesCheckAll";
-            this.button_ScurvesCheckAll.Size = new System.Drawing.Size(90, 27);
-            this.button_ScurvesCheckAll.TabIndex = 30;
-            this.button_ScurvesCheckAll.Text = "Check all";
-            this.button_ScurvesCheckAll.UseVisualStyleBackColor = false;
-            this.button_ScurvesCheckAll.Visible = false;
-            this.button_ScurvesCheckAll.Click += new System.EventHandler(this.button_ScurvesCheckAll_Click);
-            this.button_ScurvesCheckAll.MouseEnter += new System.EventHandler(this.channelSelectionScurves_MouseEnter);
-            this.button_ScurvesCheckAll.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // button_channelSelectionScurves
-            // 
-            this.button_channelSelectionScurves.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_channelSelectionScurves.FlatAppearance.BorderSize = 0;
-            this.button_channelSelectionScurves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_channelSelectionScurves.Location = new System.Drawing.Point(820, 6);
-            this.button_channelSelectionScurves.Name = "button_channelSelectionScurves";
-            this.button_channelSelectionScurves.Size = new System.Drawing.Size(180, 30);
-            this.button_channelSelectionScurves.TabIndex = 28;
-            this.button_channelSelectionScurves.Text = "v   Channel selection   v";
-            this.button_channelSelectionScurves.UseVisualStyleBackColor = false;
-            this.button_channelSelectionScurves.Click += new System.EventHandler(this.button_channelSelectionScurves_Click);
-            this.button_channelSelectionScurves.MouseEnter += new System.EventHandler(this.channelSelectionScurves_MouseEnter);
-            this.button_channelSelectionScurves.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // groupBox_channelSelectionScurves
-            // 
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn31);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn30);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn29);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn28);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn27);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn26);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn25);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn24);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn23);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn22);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn21);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn20);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn19);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn18);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn17);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn16);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn15);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn14);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn13);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn12);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn11);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn10);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn9);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn8);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn7);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn6);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn5);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn4);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn3);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn2);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn1);
-            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn0);
-            this.groupBox_channelSelectionScurves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox_channelSelectionScurves.Location = new System.Drawing.Point(820, -390);
-            this.groupBox_channelSelectionScurves.Name = "groupBox_channelSelectionScurves";
-            this.groupBox_channelSelectionScurves.Size = new System.Drawing.Size(180, 410);
-            this.groupBox_channelSelectionScurves.TabIndex = 32;
-            this.groupBox_channelSelectionScurves.TabStop = false;
-            this.groupBox_channelSelectionScurves.Visible = false;
-            this.groupBox_channelSelectionScurves.MouseEnter += new System.EventHandler(this.channelSelectionScurves_MouseEnter);
-            this.groupBox_channelSelectionScurves.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // button_autocalibration
-            // 
-            this.button_autocalibration.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_autocalibration.FlatAppearance.BorderSize = 0;
-            this.button_autocalibration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_autocalibration.Location = new System.Drawing.Point(773, 6);
-            this.button_autocalibration.Name = "button_autocalibration";
-            this.button_autocalibration.Size = new System.Drawing.Size(41, 30);
-            this.button_autocalibration.TabIndex = 17;
-            this.button_autocalibration.Text = "Auto-calibration";
-            this.button_autocalibration.UseVisualStyleBackColor = false;
-            this.button_autocalibration.Visible = false;
-            // 
-            // button_Scurves
-            // 
-            this.button_Scurves.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_Scurves.FlatAppearance.BorderSize = 0;
-            this.button_Scurves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Scurves.Location = new System.Drawing.Point(6, 6);
-            this.button_Scurves.Name = "button_Scurves";
-            this.button_Scurves.Size = new System.Drawing.Size(160, 30);
-            this.button_Scurves.TabIndex = 1;
-            this.button_Scurves.Text = "Start S-curves";
-            this.button_Scurves.UseVisualStyleBackColor = false;
-            this.button_Scurves.Click += new System.EventHandler(this.button_Scurves_Click);
-            this.button_Scurves.MouseEnter += new System.EventHandler(this.button_Scurves_MouseEnter);
-            this.button_Scurves.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // button_resetZoomScurves
-            // 
-            this.button_resetZoomScurves.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_resetZoomScurves.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_resetZoomScurves.BackgroundImage")));
-            this.button_resetZoomScurves.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_resetZoomScurves.FlatAppearance.BorderSize = 0;
-            this.button_resetZoomScurves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_resetZoomScurves.Location = new System.Drawing.Point(1037, 6);
-            this.button_resetZoomScurves.Name = "button_resetZoomScurves";
-            this.button_resetZoomScurves.Size = new System.Drawing.Size(30, 30);
-            this.button_resetZoomScurves.TabIndex = 16;
-            this.button_resetZoomScurves.UseVisualStyleBackColor = false;
-            this.button_resetZoomScurves.Click += new System.EventHandler(this.button_resetZoom_Click);
-            // 
-            // label102
-            // 
-            this.label102.AutoSize = true;
-            this.label102.Location = new System.Drawing.Point(172, 10);
-            this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(41, 24);
-            this.label102.TabIndex = 5;
-            this.label102.Text = "Min";
-            // 
-            // progressBar_Scurves
-            // 
-            this.progressBar_Scurves.Location = new System.Drawing.Point(12, 433);
-            this.progressBar_Scurves.Name = "progressBar_Scurves";
-            this.progressBar_Scurves.Size = new System.Drawing.Size(1057, 18);
-            this.progressBar_Scurves.TabIndex = 11;
-            // 
-            // label103
-            // 
-            this.label103.AutoSize = true;
-            this.label103.Location = new System.Drawing.Point(289, 10);
-            this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(46, 24);
-            this.label103.TabIndex = 6;
-            this.label103.Text = "Max";
-            // 
-            // label109
-            // 
-            this.label109.AutoSize = true;
-            this.label109.Location = new System.Drawing.Point(408, 45);
-            this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(72, 24);
-            this.label109.TabIndex = 10;
-            this.label109.Text = "Save to";
-            // 
-            // label104
-            // 
-            this.label104.AutoSize = true;
-            this.label104.Location = new System.Drawing.Point(408, 10);
-            this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(48, 24);
-            this.label104.TabIndex = 7;
-            this.label104.Text = "Step";
-            // 
-            // button_sCurveSavePath
-            // 
-            this.button_sCurveSavePath.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_sCurveSavePath.FlatAppearance.BorderSize = 0;
-            this.button_sCurveSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_sCurveSavePath.Location = new System.Drawing.Point(1037, 42);
-            this.button_sCurveSavePath.Name = "button_sCurveSavePath";
-            this.button_sCurveSavePath.Size = new System.Drawing.Size(30, 29);
-            this.button_sCurveSavePath.TabIndex = 9;
-            this.button_sCurveSavePath.Text = "...";
-            this.button_sCurveSavePath.UseVisualStyleBackColor = false;
-            this.button_sCurveSavePath.Click += new System.EventHandler(this.button_sCurveSavePath_Click);
-            // 
-            // textBox_sCurveSavePath
-            // 
-            this.textBox_sCurveSavePath.Location = new System.Drawing.Point(471, 42);
-            this.textBox_sCurveSavePath.MinimumSize = new System.Drawing.Size(180, 26);
-            this.textBox_sCurveSavePath.Name = "textBox_sCurveSavePath";
-            this.textBox_sCurveSavePath.Size = new System.Drawing.Size(560, 29);
-            this.textBox_sCurveSavePath.TabIndex = 8;
-            // 
-            // chart_Scurves
-            // 
-            chartArea1.AxisX.IsLabelAutoFit = false;
-            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea1.AxisX.LabelStyle.Format = "0";
-            chartArea1.AxisX.Title = "Threshold (DACu)";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea1.AxisY.LabelStyle.Format = "0";
-            chartArea1.AxisY.Title = "Trigger efficiency (%)";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea1.Name = "ChartArea1";
-            this.chart_Scurves.ChartAreas.Add(chartArea1);
-            this.chart_Scurves.Location = new System.Drawing.Point(12, 77);
-            this.chart_Scurves.Name = "chart_Scurves";
-            series1.ChartArea = "ChartArea1";
-            series1.Name = "Series1";
-            this.chart_Scurves.Series.Add(series1);
-            this.chart_Scurves.Size = new System.Drawing.Size(1057, 350);
-            this.chart_Scurves.TabIndex = 34;
-            this.chart_Scurves.Text = "chart1";
-            this.chart_Scurves.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
-            this.chart_Scurves.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
-            this.chart_Scurves.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
-            this.chart_Scurves.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
-            // 
-            // tabPage_holdScan
-            // 
-            this.tabPage_holdScan.BackColor = System.Drawing.Color.White;
-            this.tabPage_holdScan.Controls.Add(this.button_refreshHoldScan);
-            this.tabPage_holdScan.Controls.Add(this.button_scatterToPng);
-            this.tabPage_holdScan.Controls.Add(this.label_holdScanMaxGradient);
-            this.tabPage_holdScan.Controls.Add(this.label135);
-            this.tabPage_holdScan.Controls.Add(this.button_loadHoldScan);
-            this.tabPage_holdScan.Controls.Add(this.pictureBox1);
-            this.tabPage_holdScan.Controls.Add(this.label105);
-            this.tabPage_holdScan.Controls.Add(this.button_holdScanSavePath);
-            this.tabPage_holdScan.Controls.Add(this.textBox_holdScanSavePath);
-            this.tabPage_holdScan.Controls.Add(this.label124);
-            this.tabPage_holdScan.Controls.Add(this.label122);
-            this.tabPage_holdScan.Controls.Add(this.label121);
-            this.tabPage_holdScan.Controls.Add(this.label114);
-            this.tabPage_holdScan.Controls.Add(this.label113);
-            this.tabPage_holdScan.Controls.Add(this.numericUpDown_channelHoldScan);
-            this.tabPage_holdScan.Controls.Add(this.chart_holdScan);
-            this.tabPage_holdScan.Controls.Add(this.button_holdScan);
-            this.tabPage_holdScan.Controls.Add(this.checkBox_showScatterPlot);
-            this.tabPage_holdScan.Controls.Add(this.textBox_granularity);
-            this.tabPage_holdScan.Controls.Add(this.textBox_holdScanMinGradient);
-            this.tabPage_holdScan.Controls.Add(this.textBox_holdScanMaxGradient);
-            this.tabPage_holdScan.Controls.Add(this.textBox_holdScanNbAcq);
-            this.tabPage_holdScan.Controls.Add(this.checkBox_holdScanChoice);
-            this.tabPage_holdScan.Controls.Add(this.textBox_stepCodeHoldScan);
-            this.tabPage_holdScan.Controls.Add(this.textBox_maxCodeHoldScan);
-            this.tabPage_holdScan.Controls.Add(this.textBox_minCodeHoldScan);
-            this.tabPage_holdScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.tabPage_holdScan.Location = new System.Drawing.Point(4, 34);
-            this.tabPage_holdScan.Name = "tabPage_holdScan";
-            this.tabPage_holdScan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_holdScan.Size = new System.Drawing.Size(1080, 456);
-            this.tabPage_holdScan.TabIndex = 3;
-            this.tabPage_holdScan.Text = "   Hold scan   ";
-            // 
-            // button_refreshHoldScan
-            // 
-            this.button_refreshHoldScan.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_refreshHoldScan.FlatAppearance.BorderSize = 0;
-            this.button_refreshHoldScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_refreshHoldScan.Location = new System.Drawing.Point(845, 381);
-            this.button_refreshHoldScan.Name = "button_refreshHoldScan";
-            this.button_refreshHoldScan.Size = new System.Drawing.Size(110, 32);
-            this.button_refreshHoldScan.TabIndex = 44;
-            this.button_refreshHoldScan.Text = "Refresh";
-            this.button_refreshHoldScan.UseVisualStyleBackColor = false;
-            this.button_refreshHoldScan.Click += new System.EventHandler(this.button_refreshHoldScan_Click);
-            // 
-            // button_scatterToPng
-            // 
-            this.button_scatterToPng.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_scatterToPng.FlatAppearance.BorderSize = 0;
-            this.button_scatterToPng.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_scatterToPng.Location = new System.Drawing.Point(845, 419);
-            this.button_scatterToPng.Name = "button_scatterToPng";
-            this.button_scatterToPng.Size = new System.Drawing.Size(110, 32);
-            this.button_scatterToPng.TabIndex = 43;
-            this.button_scatterToPng.Text = "Plot to png";
-            this.button_scatterToPng.UseVisualStyleBackColor = false;
-            this.button_scatterToPng.Click += new System.EventHandler(this.button_scatterToPng_Click);
-            // 
-            // label_holdScanMaxGradient
-            // 
-            this.label_holdScanMaxGradient.AutoSize = true;
-            this.label_holdScanMaxGradient.Location = new System.Drawing.Point(1006, 129);
-            this.label_holdScanMaxGradient.Name = "label_holdScanMaxGradient";
-            this.label_holdScanMaxGradient.Size = new System.Drawing.Size(42, 24);
-            this.label_holdScanMaxGradient.TabIndex = 41;
-            this.label_holdScanMaxGradient.Text = "(10)";
-            // 
-            // label135
-            // 
-            this.label135.AutoSize = true;
-            this.label135.Location = new System.Drawing.Point(191, 43);
-            this.label135.Name = "label135";
-            this.label135.Size = new System.Drawing.Size(99, 24);
-            this.label135.TabIndex = 39;
-            this.label135.Text = "Granularity";
-            // 
-            // button_loadHoldScan
-            // 
-            this.button_loadHoldScan.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_loadHoldScan.FlatAppearance.BorderSize = 0;
-            this.button_loadHoldScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_loadHoldScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.button_loadHoldScan.Location = new System.Drawing.Point(974, 42);
-            this.button_loadHoldScan.Name = "button_loadHoldScan";
-            this.button_loadHoldScan.Size = new System.Drawing.Size(94, 29);
-            this.button_loadHoldScan.TabIndex = 38;
-            this.button_loadHoldScan.Text = "Load data";
-            this.button_loadHoldScan.UseVisualStyleBackColor = false;
-            this.button_loadHoldScan.Click += new System.EventHandler(this.button_loadHoldScan_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(974, 97);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 335);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 35;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label105
-            // 
-            this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(367, 43);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(72, 24);
-            this.label105.TabIndex = 34;
-            this.label105.Text = "Save to";
-            // 
-            // button_holdScanSavePath
-            // 
-            this.button_holdScanSavePath.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_holdScanSavePath.FlatAppearance.BorderSize = 0;
-            this.button_holdScanSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_holdScanSavePath.Location = new System.Drawing.Point(938, 42);
-            this.button_holdScanSavePath.Name = "button_holdScanSavePath";
-            this.button_holdScanSavePath.Size = new System.Drawing.Size(30, 29);
-            this.button_holdScanSavePath.TabIndex = 33;
-            this.button_holdScanSavePath.Text = "...";
-            this.button_holdScanSavePath.UseVisualStyleBackColor = false;
-            this.button_holdScanSavePath.Click += new System.EventHandler(this.button_holdScanSavePath_Click);
-            // 
-            // textBox_holdScanSavePath
-            // 
-            this.textBox_holdScanSavePath.Location = new System.Drawing.Point(430, 42);
-            this.textBox_holdScanSavePath.MinimumSize = new System.Drawing.Size(180, 26);
-            this.textBox_holdScanSavePath.Name = "textBox_holdScanSavePath";
-            this.textBox_holdScanSavePath.Size = new System.Drawing.Size(502, 29);
-            this.textBox_holdScanSavePath.TabIndex = 32;
-            // 
-            // label124
-            // 
-            this.label124.AutoSize = true;
-            this.label124.Location = new System.Drawing.Point(633, 10);
-            this.label124.Name = "label124";
-            this.label124.Size = new System.Drawing.Size(217, 24);
-            this.label124.TabIndex = 30;
-            this.label124.Text = "Nb acquisitions per point";
-            // 
-            // label122
-            // 
-            this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(496, 10);
-            this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(81, 24);
-            this.label122.TabIndex = 27;
-            this.label122.Text = "Channel";
-            // 
-            // label121
-            // 
-            this.label121.AutoSize = true;
-            this.label121.Location = new System.Drawing.Point(386, 10);
-            this.label121.Name = "label121";
-            this.label121.Size = new System.Drawing.Size(48, 24);
-            this.label121.TabIndex = 26;
-            this.label121.Text = "Step";
-            // 
-            // label114
-            // 
-            this.label114.AutoSize = true;
-            this.label114.Location = new System.Drawing.Point(279, 10);
-            this.label114.Name = "label114";
-            this.label114.Size = new System.Drawing.Size(46, 24);
-            this.label114.TabIndex = 25;
-            this.label114.Text = "Max";
-            // 
-            // label113
-            // 
-            this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(172, 10);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(41, 24);
-            this.label113.TabIndex = 24;
-            this.label113.Text = "Min";
-            // 
-            // numericUpDown_channelHoldScan
-            // 
-            this.numericUpDown_channelHoldScan.Location = new System.Drawing.Point(567, 7);
-            this.numericUpDown_channelHoldScan.Name = "numericUpDown_channelHoldScan";
-            this.numericUpDown_channelHoldScan.Size = new System.Drawing.Size(60, 29);
-            this.numericUpDown_channelHoldScan.TabIndex = 23;
-            // 
-            // chart_holdScan
-            // 
-            chartArea2.AxisX.IsLabelAutoFit = false;
-            chartArea2.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea2.AxisX.Title = "Time (ns)";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea2.AxisY.IsLabelAutoFit = false;
-            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea2.AxisY.Title = "Charge (ADCu)";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea2.Name = "ChartArea1";
-            this.chart_holdScan.ChartAreas.Add(chartArea2);
-            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chart_holdScan.Legends.Add(legend1);
-            this.chart_holdScan.Location = new System.Drawing.Point(6, 77);
-            this.chart_holdScan.Name = "chart_holdScan";
-            this.chart_holdScan.Size = new System.Drawing.Size(962, 374);
-            this.chart_holdScan.TabIndex = 22;
-            this.chart_holdScan.Text = "chart1";
-            this.chart_holdScan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
-            this.chart_holdScan.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
-            this.chart_holdScan.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
-            this.chart_holdScan.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
-            // 
-            // button_holdScan
-            // 
-            this.button_holdScan.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_holdScan.FlatAppearance.BorderSize = 0;
-            this.button_holdScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_holdScan.Location = new System.Drawing.Point(6, 6);
-            this.button_holdScan.Name = "button_holdScan";
-            this.button_holdScan.Size = new System.Drawing.Size(160, 30);
-            this.button_holdScan.TabIndex = 18;
-            this.button_holdScan.Text = "Start scan";
-            this.button_holdScan.UseVisualStyleBackColor = false;
-            this.button_holdScan.Click += new System.EventHandler(this.button_holdScan_Click);
-            this.button_holdScan.MouseEnter += new System.EventHandler(this.button_holdScan_MouseEnter);
-            this.button_holdScan.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // tabPage_staircase
-            // 
-            this.tabPage_staircase.BackColor = System.Drawing.Color.White;
-            this.tabPage_staircase.Controls.Add(this.checkBox_staircaseLogScale);
-            this.tabPage_staircase.Controls.Add(this.textBox_staircaseTimeWindow);
-            this.tabPage_staircase.Controls.Add(this.label123);
-            this.tabPage_staircase.Controls.Add(this.label120);
-            this.tabPage_staircase.Controls.Add(this.button_staircaseUncheckAll);
-            this.tabPage_staircase.Controls.Add(this.button_staircaseCheckAll);
-            this.tabPage_staircase.Controls.Add(this.button_channelSelectionStaircase);
-            this.tabPage_staircase.Controls.Add(this.groupBox_channelSelectionStaircase);
-            this.tabPage_staircase.Controls.Add(this.label129);
-            this.tabPage_staircase.Controls.Add(this.label130);
-            this.tabPage_staircase.Controls.Add(this.label131);
-            this.tabPage_staircase.Controls.Add(this.label132);
-            this.tabPage_staircase.Controls.Add(this.button_staircaseSavePath);
-            this.tabPage_staircase.Controls.Add(this.textBox_staircaseSavePath);
-            this.tabPage_staircase.Controls.Add(this.progressBar_staircase);
-            this.tabPage_staircase.Controls.Add(this.button_startStaircase);
-            this.tabPage_staircase.Controls.Add(this.button_resetZoomStaircase);
-            this.tabPage_staircase.Controls.Add(this.chart_staircase);
-            this.tabPage_staircase.Controls.Add(this.checkBox_staircaseTorQ);
-            this.tabPage_staircase.Controls.Add(this.checkBox_useMaskStaircase);
-            this.tabPage_staircase.Controls.Add(this.textBox_stepStaircase);
-            this.tabPage_staircase.Controls.Add(this.textBox_maxStaircase);
-            this.tabPage_staircase.Controls.Add(this.textBox_minStaircase);
-            this.tabPage_staircase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.tabPage_staircase.Location = new System.Drawing.Point(4, 34);
-            this.tabPage_staircase.Name = "tabPage_staircase";
-            this.tabPage_staircase.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_staircase.Size = new System.Drawing.Size(1080, 456);
-            this.tabPage_staircase.TabIndex = 2;
-            this.tabPage_staircase.Text = "    SiPM staircase    ";
-            // 
-            // label123
-            // 
-            this.label123.AutoSize = true;
-            this.label123.Location = new System.Drawing.Point(299, 7);
-            this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(254, 24);
-            this.label123.TabIndex = 49;
-            this.label123.Text = "Acquisition time window (ms)";
-            // 
-            // label120
-            // 
-            this.label120.Location = new System.Drawing.Point(820, 0);
-            this.label120.Name = "label120";
-            this.label120.Size = new System.Drawing.Size(180, 6);
-            this.label120.TabIndex = 44;
-            // 
-            // button_staircaseUncheckAll
-            // 
-            this.button_staircaseUncheckAll.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_staircaseUncheckAll.FlatAppearance.BorderSize = 0;
-            this.button_staircaseUncheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_staircaseUncheckAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button_staircaseUncheckAll.Location = new System.Drawing.Point(910, 36);
-            this.button_staircaseUncheckAll.Name = "button_staircaseUncheckAll";
-            this.button_staircaseUncheckAll.Size = new System.Drawing.Size(90, 27);
-            this.button_staircaseUncheckAll.TabIndex = 46;
-            this.button_staircaseUncheckAll.Text = "Uncheck all";
-            this.button_staircaseUncheckAll.UseVisualStyleBackColor = false;
-            this.button_staircaseUncheckAll.Visible = false;
-            this.button_staircaseUncheckAll.Click += new System.EventHandler(this.button_staircaseUncheckAll_Click);
-            // 
-            // button_staircaseCheckAll
-            // 
-            this.button_staircaseCheckAll.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_staircaseCheckAll.FlatAppearance.BorderSize = 0;
-            this.button_staircaseCheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_staircaseCheckAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button_staircaseCheckAll.Location = new System.Drawing.Point(820, 36);
-            this.button_staircaseCheckAll.Name = "button_staircaseCheckAll";
-            this.button_staircaseCheckAll.Size = new System.Drawing.Size(90, 27);
-            this.button_staircaseCheckAll.TabIndex = 45;
-            this.button_staircaseCheckAll.Text = "Check all";
-            this.button_staircaseCheckAll.UseVisualStyleBackColor = false;
-            this.button_staircaseCheckAll.Visible = false;
-            this.button_staircaseCheckAll.Click += new System.EventHandler(this.button_staircaseCheckAll_Click);
-            // 
-            // button_channelSelectionStaircase
-            // 
-            this.button_channelSelectionStaircase.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_channelSelectionStaircase.FlatAppearance.BorderSize = 0;
-            this.button_channelSelectionStaircase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_channelSelectionStaircase.Location = new System.Drawing.Point(820, 6);
-            this.button_channelSelectionStaircase.Name = "button_channelSelectionStaircase";
-            this.button_channelSelectionStaircase.Size = new System.Drawing.Size(180, 30);
-            this.button_channelSelectionStaircase.TabIndex = 43;
-            this.button_channelSelectionStaircase.Text = "v   Channel selection   v";
-            this.button_channelSelectionStaircase.UseVisualStyleBackColor = false;
-            this.button_channelSelectionStaircase.Click += new System.EventHandler(this.button_channelSelectionStaircase_Click);
-            // 
-            // groupBox_channelSelectionStaircase
-            // 
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh31);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh30);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh29);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh28);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh27);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh26);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh25);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh24);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh23);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh22);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh21);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh20);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh19);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh18);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh17);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh16);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh15);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh14);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh13);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh12);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh11);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh10);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh9);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh8);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh7);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh6);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh5);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh4);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh3);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh2);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh1);
-            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh0);
-            this.groupBox_channelSelectionStaircase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox_channelSelectionStaircase.Location = new System.Drawing.Point(820, -390);
-            this.groupBox_channelSelectionStaircase.Name = "groupBox_channelSelectionStaircase";
-            this.groupBox_channelSelectionStaircase.Size = new System.Drawing.Size(180, 410);
-            this.groupBox_channelSelectionStaircase.TabIndex = 47;
-            this.groupBox_channelSelectionStaircase.TabStop = false;
-            this.groupBox_channelSelectionStaircase.Visible = false;
-            // 
-            // label129
-            // 
-            this.label129.AutoSize = true;
-            this.label129.Location = new System.Drawing.Point(631, 425);
-            this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(41, 24);
-            this.label129.TabIndex = 17;
-            this.label129.Text = "Min";
-            // 
-            // label130
-            // 
-            this.label130.AutoSize = true;
-            this.label130.Location = new System.Drawing.Point(748, 425);
-            this.label130.Name = "label130";
-            this.label130.Size = new System.Drawing.Size(46, 24);
-            this.label130.TabIndex = 18;
-            this.label130.Text = "Max";
-            // 
-            // label131
-            // 
-            this.label131.AutoSize = true;
-            this.label131.Location = new System.Drawing.Point(6, 425);
-            this.label131.Name = "label131";
-            this.label131.Size = new System.Drawing.Size(72, 24);
-            this.label131.TabIndex = 22;
-            this.label131.Text = "Save to";
-            // 
-            // label132
-            // 
-            this.label132.AutoSize = true;
-            this.label132.Location = new System.Drawing.Point(867, 425);
-            this.label132.Name = "label132";
-            this.label132.Size = new System.Drawing.Size(48, 24);
-            this.label132.TabIndex = 19;
-            this.label132.Text = "Step";
-            // 
-            // button_staircaseSavePath
-            // 
-            this.button_staircaseSavePath.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_staircaseSavePath.FlatAppearance.BorderSize = 0;
-            this.button_staircaseSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_staircaseSavePath.Location = new System.Drawing.Point(595, 422);
-            this.button_staircaseSavePath.Name = "button_staircaseSavePath";
-            this.button_staircaseSavePath.Size = new System.Drawing.Size(30, 29);
-            this.button_staircaseSavePath.TabIndex = 21;
-            this.button_staircaseSavePath.Text = "...";
-            this.button_staircaseSavePath.UseVisualStyleBackColor = false;
-            this.button_staircaseSavePath.Click += new System.EventHandler(this.button_staircaseSavePath_Click);
-            // 
-            // textBox_staircaseSavePath
-            // 
-            this.textBox_staircaseSavePath.Location = new System.Drawing.Point(69, 422);
-            this.textBox_staircaseSavePath.MinimumSize = new System.Drawing.Size(180, 26);
-            this.textBox_staircaseSavePath.Name = "textBox_staircaseSavePath";
-            this.textBox_staircaseSavePath.Size = new System.Drawing.Size(520, 29);
-            this.textBox_staircaseSavePath.TabIndex = 20;
-            // 
-            // progressBar_staircase
-            // 
-            this.progressBar_staircase.Location = new System.Drawing.Point(10, 397);
-            this.progressBar_staircase.Name = "progressBar_staircase";
-            this.progressBar_staircase.Size = new System.Drawing.Size(1057, 18);
-            this.progressBar_staircase.TabIndex = 12;
-            // 
-            // button_startStaircase
-            // 
-            this.button_startStaircase.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_startStaircase.FlatAppearance.BorderSize = 0;
-            this.button_startStaircase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_startStaircase.Location = new System.Drawing.Point(988, 421);
-            this.button_startStaircase.Name = "button_startStaircase";
-            this.button_startStaircase.Size = new System.Drawing.Size(80, 30);
-            this.button_startStaircase.TabIndex = 0;
-            this.button_startStaircase.Text = "Start";
-            this.button_startStaircase.UseVisualStyleBackColor = false;
-            this.button_startStaircase.Click += new System.EventHandler(this.button_startStaircase_Click);
-            // 
-            // button_resetZoomStaircase
-            // 
-            this.button_resetZoomStaircase.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_resetZoomStaircase.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_resetZoomStaircase.BackgroundImage")));
-            this.button_resetZoomStaircase.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_resetZoomStaircase.FlatAppearance.BorderSize = 0;
-            this.button_resetZoomStaircase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_resetZoomStaircase.Location = new System.Drawing.Point(1037, 6);
-            this.button_resetZoomStaircase.Name = "button_resetZoomStaircase";
-            this.button_resetZoomStaircase.Size = new System.Drawing.Size(30, 30);
-            this.button_resetZoomStaircase.TabIndex = 26;
-            this.button_resetZoomStaircase.UseVisualStyleBackColor = false;
-            this.button_resetZoomStaircase.Click += new System.EventHandler(this.button_resetZoom_Click);
-            // 
-            // chart_staircase
-            // 
-            chartArea3.AxisX.IsLabelAutoFit = false;
-            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea3.AxisX.LabelStyle.Format = "0";
-            chartArea3.AxisX.Title = "Threshold (DACu)";
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.IsLogarithmic = true;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea3.AxisY.LabelStyle.Format = "0E0";
-            chartArea3.AxisY.Title = "Trigger frequency (Hz)";
-            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea3.Name = "ChartArea1";
-            this.chart_staircase.ChartAreas.Add(chartArea3);
-            this.chart_staircase.Location = new System.Drawing.Point(10, 43);
-            this.chart_staircase.Name = "chart_staircase";
-            series2.ChartArea = "ChartArea1";
-            series2.Name = "Series1";
-            this.chart_staircase.Series.Add(series2);
-            this.chart_staircase.Size = new System.Drawing.Size(1057, 348);
-            this.chart_staircase.TabIndex = 41;
-            this.chart_staircase.Text = "chart1";
-            this.chart_staircase.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
-            this.chart_staircase.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
-            this.chart_staircase.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
-            this.chart_staircase.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
-            // 
-            // tabPage_dataAcquisition
-            // 
-            this.tabPage_dataAcquisition.BackColor = System.Drawing.Color.White;
-            this.tabPage_dataAcquisition.Controls.Add(this.label_acquisitionTime);
-            this.tabPage_dataAcquisition.Controls.Add(this.textBox_acquisitionTime);
-            this.tabPage_dataAcquisition.Controls.Add(this.progressBar_acquisition);
-            this.tabPage_dataAcquisition.Controls.Add(this.label_acqTime);
-            this.tabPage_dataAcquisition.Controls.Add(this.label_elapsedTimeAcquisition);
-            this.tabPage_dataAcquisition.Controls.Add(this.tabControl_dataAcquisition);
-            this.tabPage_dataAcquisition.Controls.Add(this.button_loadData);
-            this.tabPage_dataAcquisition.Controls.Add(this.button_dataSavePath);
-            this.tabPage_dataAcquisition.Controls.Add(this.textBox_dataSavePath);
-            this.tabPage_dataAcquisition.Controls.Add(this.button_startAcquisition);
-            this.tabPage_dataAcquisition.Controls.Add(this.label106);
-            this.tabPage_dataAcquisition.Controls.Add(this.label_numData);
-            this.tabPage_dataAcquisition.Controls.Add(this.textBox_numData);
-            this.tabPage_dataAcquisition.Controls.Add(this.switchBox_acquisitionMode);
-            this.tabPage_dataAcquisition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.tabPage_dataAcquisition.Location = new System.Drawing.Point(14, 4);
-            this.tabPage_dataAcquisition.Name = "tabPage_dataAcquisition";
-            this.tabPage_dataAcquisition.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_dataAcquisition.Size = new System.Drawing.Size(1062, 482);
-            this.tabPage_dataAcquisition.TabIndex = 2;
-            this.tabPage_dataAcquisition.Text = "Data acquisition";
-            // 
-            // label_acquisitionTime
-            // 
-            this.label_acquisitionTime.AutoSize = true;
-            this.label_acquisitionTime.Enabled = false;
-            this.label_acquisitionTime.Location = new System.Drawing.Point(461, 9);
-            this.label_acquisitionTime.Name = "label_acquisitionTime";
-            this.label_acquisitionTime.Size = new System.Drawing.Size(241, 24);
-            this.label_acquisitionTime.TabIndex = 21;
-            this.label_acquisitionTime.Text = "Acquisition time (hh:mm:ss)";
-            // 
-            // textBox_acquisitionTime
-            // 
-            this.textBox_acquisitionTime.Enabled = false;
-            this.textBox_acquisitionTime.Location = new System.Drawing.Point(667, 6);
-            this.textBox_acquisitionTime.Mask = "00:00:00";
-            this.textBox_acquisitionTime.Name = "textBox_acquisitionTime";
-            this.textBox_acquisitionTime.Size = new System.Drawing.Size(80, 29);
-            this.textBox_acquisitionTime.TabIndex = 20;
-            this.textBox_acquisitionTime.Text = "000005";
-            this.textBox_acquisitionTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox_acquisitionTime.Leave += new System.EventHandler(this.textBox_acquisitionTime_Leave);
-            this.textBox_acquisitionTime.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_acquisitionTime_PreviewKeyDown);
-            // 
-            // progressBar_acquisition
-            // 
-            this.progressBar_acquisition.Location = new System.Drawing.Point(6, 459);
-            this.progressBar_acquisition.Name = "progressBar_acquisition";
-            this.progressBar_acquisition.Size = new System.Drawing.Size(1062, 23);
-            this.progressBar_acquisition.TabIndex = 4;
-            this.progressBar_acquisition.Visible = false;
-            // 
-            // label_acqTime
-            // 
-            this.label_acqTime.AutoSize = true;
-            this.label_acqTime.Enabled = false;
-            this.label_acqTime.Location = new System.Drawing.Point(753, 44);
-            this.label_acqTime.Name = "label_acqTime";
-            this.label_acqTime.Size = new System.Drawing.Size(148, 24);
-            this.label_acqTime.TabIndex = 16;
-            this.label_acqTime.Text = "Actual acq. time:";
-            // 
-            // label_elapsedTimeAcquisition
-            // 
-            this.label_elapsedTimeAcquisition.AutoSize = true;
-            this.label_elapsedTimeAcquisition.Enabled = false;
-            this.label_elapsedTimeAcquisition.Location = new System.Drawing.Point(753, 9);
-            this.label_elapsedTimeAcquisition.Name = "label_elapsedTimeAcquisition";
-            this.label_elapsedTimeAcquisition.Size = new System.Drawing.Size(124, 24);
-            this.label_elapsedTimeAcquisition.TabIndex = 16;
-            this.label_elapsedTimeAcquisition.Text = "Elapsed time:";
-            // 
-            // tabControl_dataAcquisition
-            // 
-            this.tabControl_dataAcquisition.Controls.Add(this.tabPage_perChannelCharge);
-            this.tabControl_dataAcquisition.Controls.Add(this.tabPage3);
-            this.tabControl_dataAcquisition.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.tabControl_dataAcquisition.Location = new System.Drawing.Point(6, 76);
-            this.tabControl_dataAcquisition.Name = "tabControl_dataAcquisition";
-            this.tabControl_dataAcquisition.SelectedIndex = 0;
-            this.tabControl_dataAcquisition.Size = new System.Drawing.Size(1062, 408);
-            this.tabControl_dataAcquisition.TabIndex = 19;
-            // 
-            // tabPage_perChannelCharge
-            // 
-            this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutLow);
-            this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutHigh);
-            this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutLow);
-            this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutHigh);
-            this.tabPage_perChannelCharge.Controls.Add(this.label128);
-            this.tabPage_perChannelCharge.Controls.Add(this.label133);
-            this.tabPage_perChannelCharge.Controls.Add(this.label127);
-            this.tabPage_perChannelCharge.Controls.Add(this.label126);
-            this.tabPage_perChannelCharge.Controls.Add(this.chart_perChannelChargeLG);
-            this.tabPage_perChannelCharge.Controls.Add(this.label107);
-            this.tabPage_perChannelCharge.Controls.Add(this.label_nbHit);
-            this.tabPage_perChannelCharge.Controls.Add(this.chart_perChannelChargeHG);
-            this.tabPage_perChannelCharge.Controls.Add(this.numericUpDown_loadCh);
-            this.tabPage_perChannelCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.tabPage_perChannelCharge.Location = new System.Drawing.Point(4, 34);
-            this.tabPage_perChannelCharge.Name = "tabPage_perChannelCharge";
-            this.tabPage_perChannelCharge.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_perChannelCharge.Size = new System.Drawing.Size(1054, 370);
-            this.tabPage_perChannelCharge.TabIndex = 0;
-            this.tabPage_perChannelCharge.Text = "   Per channel   ";
-            this.tabPage_perChannelCharge.UseVisualStyleBackColor = true;
-            // 
-            // label128
-            // 
-            this.label128.AutoSize = true;
-            this.label128.Location = new System.Drawing.Point(933, 39);
-            this.label128.Name = "label128";
-            this.label128.Size = new System.Drawing.Size(60, 24);
-            this.label128.TabIndex = 26;
-            this.label128.Text = "High :";
-            // 
-            // label133
-            // 
-            this.label133.AutoSize = true;
-            this.label133.Location = new System.Drawing.Point(739, 39);
-            this.label133.Name = "label133";
-            this.label133.Size = new System.Drawing.Size(162, 24);
-            this.label133.TabIndex = 25;
-            this.label133.Text = "Energy cut - Low :";
-            // 
-            // label127
-            // 
-            this.label127.AutoSize = true;
-            this.label127.Location = new System.Drawing.Point(411, 39);
-            this.label127.Name = "label127";
-            this.label127.Size = new System.Drawing.Size(60, 24);
-            this.label127.TabIndex = 22;
-            this.label127.Text = "High :";
-            // 
-            // label126
-            // 
-            this.label126.AutoSize = true;
-            this.label126.Location = new System.Drawing.Point(217, 39);
-            this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(162, 24);
-            this.label126.TabIndex = 21;
-            this.label126.Text = "Energy cut - Low :";
-            // 
-            // chart_perChannelChargeLG
-            // 
-            chartArea4.AxisX.IsLabelAutoFit = false;
-            chartArea4.AxisX.IsStartedFromZero = false;
-            chartArea4.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea4.AxisX.LabelStyle.Format = "0";
-            chartArea4.AxisX.Title = "Low gain charge (ADCu)";
-            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea4.AxisY.IsLabelAutoFit = false;
-            chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea4.AxisY.LabelStyle.Format = "0";
-            chartArea4.AxisY.Title = "Data count";
-            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea4.Name = "ChartArea1";
-            this.chart_perChannelChargeLG.ChartAreas.Add(chartArea4);
-            this.chart_perChannelChargeLG.Location = new System.Drawing.Point(528, 60);
-            this.chart_perChannelChargeLG.Name = "chart_perChannelChargeLG";
-            series3.ChartArea = "ChartArea1";
-            series3.Name = "Series1";
-            this.chart_perChannelChargeLG.Series.Add(series3);
-            this.chart_perChannelChargeLG.Size = new System.Drawing.Size(520, 305);
-            this.chart_perChannelChargeLG.TabIndex = 15;
-            this.chart_perChannelChargeLG.Text = "chart1";
-            this.chart_perChannelChargeLG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
-            this.chart_perChannelChargeLG.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
-            this.chart_perChannelChargeLG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
-            this.chart_perChannelChargeLG.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
-            // 
-            // label107
-            // 
-            this.label107.AutoSize = true;
-            this.label107.Location = new System.Drawing.Point(3, 8);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(81, 24);
-            this.label107.TabIndex = 0;
-            this.label107.Text = "Channel";
-            // 
-            // label_nbHit
-            // 
-            this.label_nbHit.AutoSize = true;
-            this.label_nbHit.Location = new System.Drawing.Point(155, 8);
-            this.label_nbHit.Name = "label_nbHit";
-            this.label_nbHit.Size = new System.Drawing.Size(0, 24);
-            this.label_nbHit.TabIndex = 13;
-            // 
-            // chart_perChannelChargeHG
-            // 
-            chartArea5.AxisX.IsLabelAutoFit = false;
-            chartArea5.AxisX.IsStartedFromZero = false;
-            chartArea5.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea5.AxisX.LabelStyle.Format = "0";
-            chartArea5.AxisX.Title = "High gain charge (ADCu)";
-            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea5.AxisY.IsLabelAutoFit = false;
-            chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea5.AxisY.LabelStyle.Format = "0";
-            chartArea5.AxisY.Title = "Data count";
-            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea5.Name = "ChartArea1";
-            this.chart_perChannelChargeHG.ChartAreas.Add(chartArea5);
-            this.chart_perChannelChargeHG.Location = new System.Drawing.Point(6, 60);
-            this.chart_perChannelChargeHG.Name = "chart_perChannelChargeHG";
-            series4.ChartArea = "ChartArea1";
-            series4.Name = "Series1";
-            this.chart_perChannelChargeHG.Series.Add(series4);
-            this.chart_perChannelChargeHG.Size = new System.Drawing.Size(520, 305);
-            this.chart_perChannelChargeHG.TabIndex = 14;
-            this.chart_perChannelChargeHG.Text = "chart1";
-            this.chart_perChannelChargeHG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
-            this.chart_perChannelChargeHG.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
-            this.chart_perChannelChargeHG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
-            this.chart_perChannelChargeHG.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
-            // 
-            // numericUpDown_loadCh
-            // 
-            this.numericUpDown_loadCh.Location = new System.Drawing.Point(74, 6);
-            this.numericUpDown_loadCh.Maximum = new decimal(new int[] {
-            31,
-            0,
-            0,
-            0});
-            this.numericUpDown_loadCh.MinimumSize = new System.Drawing.Size(75, 0);
-            this.numericUpDown_loadCh.Name = "numericUpDown_loadCh";
-            this.numericUpDown_loadCh.Size = new System.Drawing.Size(75, 29);
-            this.numericUpDown_loadCh.TabIndex = 5;
-            this.numericUpDown_loadCh.ValueChanged += new System.EventHandler(this.numericUpDown_loadCh_ValueChanged);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.chart_perAcqChargeLG);
-            this.tabPage3.Controls.Add(this.chart_perAcqChargeHG);
-            this.tabPage3.Controls.Add(this.label125);
-            this.tabPage3.Controls.Add(this.numericUpDown_acquisitionNumber);
-            this.tabPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.tabPage3.Location = new System.Drawing.Point(4, 34);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1054, 370);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "   Per acquisition   ";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // chart_perAcqChargeLG
-            // 
-            chartArea6.AxisX.IsLabelAutoFit = false;
-            chartArea6.AxisX.IsStartedFromZero = false;
-            chartArea6.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea6.AxisX.LabelStyle.Format = "0";
-            chartArea6.AxisX.Title = "Channel";
-            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea6.AxisY.IsLabelAutoFit = false;
-            chartArea6.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea6.AxisY.LabelStyle.Format = "0";
-            chartArea6.AxisY.Title = "Low gain charge (ADCu)";
-            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea6.Name = "ChartArea1";
-            this.chart_perAcqChargeLG.ChartAreas.Add(chartArea6);
-            this.chart_perAcqChargeLG.Location = new System.Drawing.Point(528, 35);
-            this.chart_perAcqChargeLG.Name = "chart_perAcqChargeLG";
-            series5.ChartArea = "ChartArea1";
-            series5.Name = "Series1";
-            this.chart_perAcqChargeLG.Series.Add(series5);
-            this.chart_perAcqChargeLG.Size = new System.Drawing.Size(520, 330);
-            this.chart_perAcqChargeLG.TabIndex = 17;
-            this.chart_perAcqChargeLG.Text = "chart1";
-            this.chart_perAcqChargeLG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
-            this.chart_perAcqChargeLG.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
-            this.chart_perAcqChargeLG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
-            this.chart_perAcqChargeLG.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
-            // 
-            // chart_perAcqChargeHG
-            // 
-            chartArea7.AxisX.IsLabelAutoFit = false;
-            chartArea7.AxisX.IsStartedFromZero = false;
-            chartArea7.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea7.AxisX.LabelStyle.Format = "0";
-            chartArea7.AxisX.Title = "Channel";
-            chartArea7.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea7.AxisY.IsLabelAutoFit = false;
-            chartArea7.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea7.AxisY.LabelStyle.Format = "0";
-            chartArea7.AxisY.Title = "High gain charge (ADCu)";
-            chartArea7.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea7.Name = "ChartArea1";
-            this.chart_perAcqChargeHG.ChartAreas.Add(chartArea7);
-            this.chart_perAcqChargeHG.Location = new System.Drawing.Point(6, 35);
-            this.chart_perAcqChargeHG.Name = "chart_perAcqChargeHG";
-            series6.ChartArea = "ChartArea1";
-            series6.Name = "Series1";
-            this.chart_perAcqChargeHG.Series.Add(series6);
-            this.chart_perAcqChargeHG.Size = new System.Drawing.Size(520, 330);
-            this.chart_perAcqChargeHG.TabIndex = 16;
-            this.chart_perAcqChargeHG.Text = "chart1";
-            this.chart_perAcqChargeHG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
-            this.chart_perAcqChargeHG.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
-            this.chart_perAcqChargeHG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
-            this.chart_perAcqChargeHG.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
-            // 
-            // label125
-            // 
-            this.label125.AutoSize = true;
-            this.label125.Location = new System.Drawing.Point(6, 8);
-            this.label125.Name = "label125";
-            this.label125.Size = new System.Drawing.Size(102, 24);
-            this.label125.TabIndex = 7;
-            this.label125.Text = "Acquisition";
-            // 
-            // numericUpDown_acquisitionNumber
-            // 
-            this.numericUpDown_acquisitionNumber.Location = new System.Drawing.Point(96, 6);
-            this.numericUpDown_acquisitionNumber.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown_acquisitionNumber.Name = "numericUpDown_acquisitionNumber";
-            this.numericUpDown_acquisitionNumber.Size = new System.Drawing.Size(75, 29);
-            this.numericUpDown_acquisitionNumber.TabIndex = 8;
-            this.numericUpDown_acquisitionNumber.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown_acquisitionNumber.ValueChanged += new System.EventHandler(this.numericUpDown_acquisitionNumber_ValueChanged);
-            // 
-            // button_loadData
-            // 
-            this.button_loadData.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_loadData.FlatAppearance.BorderSize = 0;
-            this.button_loadData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_loadData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.button_loadData.Location = new System.Drawing.Point(653, 42);
-            this.button_loadData.Name = "button_loadData";
-            this.button_loadData.Size = new System.Drawing.Size(94, 29);
-            this.button_loadData.TabIndex = 10;
-            this.button_loadData.Text = "Load data";
-            this.button_loadData.UseVisualStyleBackColor = false;
-            this.button_loadData.Click += new System.EventHandler(this.button_loadData_Click);
-            // 
-            // button_dataSavePath
-            // 
-            this.button_dataSavePath.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_dataSavePath.FlatAppearance.BorderSize = 0;
-            this.button_dataSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_dataSavePath.Location = new System.Drawing.Point(617, 42);
-            this.button_dataSavePath.Name = "button_dataSavePath";
-            this.button_dataSavePath.Size = new System.Drawing.Size(30, 29);
-            this.button_dataSavePath.TabIndex = 7;
-            this.button_dataSavePath.Text = "...";
-            this.button_dataSavePath.UseVisualStyleBackColor = false;
-            this.button_dataSavePath.Click += new System.EventHandler(this.button_dataSavePath_Click);
-            // 
-            // textBox_dataSavePath
-            // 
-            this.textBox_dataSavePath.Location = new System.Drawing.Point(136, 41);
-            this.textBox_dataSavePath.MinimumSize = new System.Drawing.Size(310, 26);
-            this.textBox_dataSavePath.Name = "textBox_dataSavePath";
-            this.textBox_dataSavePath.Size = new System.Drawing.Size(475, 29);
-            this.textBox_dataSavePath.TabIndex = 5;
-            // 
-            // button_startAcquisition
-            // 
-            this.button_startAcquisition.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_startAcquisition.FlatAppearance.BorderSize = 0;
-            this.button_startAcquisition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_startAcquisition.Location = new System.Drawing.Point(6, 6);
-            this.button_startAcquisition.Name = "button_startAcquisition";
-            this.button_startAcquisition.Size = new System.Drawing.Size(140, 29);
-            this.button_startAcquisition.TabIndex = 0;
-            this.button_startAcquisition.Text = "Start acquisition";
-            this.button_startAcquisition.UseVisualStyleBackColor = false;
-            this.button_startAcquisition.Click += new System.EventHandler(this.button_startAcquisition_Click);
-            // 
-            // label106
-            // 
-            this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(6, 44);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(129, 24);
-            this.label106.TabIndex = 6;
-            this.label106.Text = "Save to folder:";
-            this.label106.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label_numData
-            // 
-            this.label_numData.AutoSize = true;
-            this.label_numData.Location = new System.Drawing.Point(152, 9);
-            this.label_numData.Name = "label_numData";
-            this.label_numData.Size = new System.Drawing.Size(207, 24);
-            this.label_numData.TabIndex = 3;
-            this.label_numData.Text = "Number of acquisitions:";
-            this.label_numData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.comboBox_triggerPreset);
-            this.tabPage1.Controls.Add(this.label136);
-            this.tabPage1.Controls.Add(this.groupBox_timeTriggerMask);
-            this.tabPage1.Controls.Add(this.textBox_word5);
-            this.tabPage1.Controls.Add(this.textBox_word3);
-            this.tabPage1.Controls.Add(this.textBox_word2);
-            this.tabPage1.Controls.Add(this.textBox_word1);
-            this.tabPage1.Controls.Add(this.textBox_word0);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.checkBox_timeOutHold);
-            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.tabPage1.Location = new System.Drawing.Point(14, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1062, 482);
-            this.tabPage1.TabIndex = 5;
-            this.tabPage1.Text = "tabPage_FPGA";
-            // 
-            // comboBox_triggerPreset
-            // 
-            this.comboBox_triggerPreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_triggerPreset.FormattingEnabled = true;
-            this.comboBox_triggerPreset.Items.AddRange(new object[] {
-            "ASIC OR32 charge trigger",
-            "Firmware OR32 time trigger",
-            "Dual testboard coincidence trigger",
-            "Firmware OR32 time trigger as external trigger",
-            "IO_FPGA6 as external trigger",
-            "Software checkbox as external trigger"});
-            this.comboBox_triggerPreset.Location = new System.Drawing.Point(300, 381);
-            this.comboBox_triggerPreset.Name = "comboBox_triggerPreset";
-            this.comboBox_triggerPreset.Size = new System.Drawing.Size(353, 32);
-            this.comboBox_triggerPreset.TabIndex = 165;
-            this.comboBox_triggerPreset.SelectedIndexChanged += new System.EventHandler(this.comboBox_triggerPreset_SelectedIndexChanged);
-            // 
-            // label136
-            // 
-            this.label136.AutoSize = true;
-            this.label136.Location = new System.Drawing.Point(198, 384);
-            this.label136.Name = "label136";
-            this.label136.Size = new System.Drawing.Size(128, 24);
-            this.label136.TabIndex = 164;
-            this.label136.Text = "Trigger preset";
-            // 
-            // groupBox_timeTriggerMask
-            // 
-            this.groupBox_timeTriggerMask.Controls.Add(this.button_sendMaskTime);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask0);
-            this.groupBox_timeTriggerMask.Controls.Add(this.button_unmaskAllTime);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask13);
-            this.groupBox_timeTriggerMask.Controls.Add(this.button_maskAllTime);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask14);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask12);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask15);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask11);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask16);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask10);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask17);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask9);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask18);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask8);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask19);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask7);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask20);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask6);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask21);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask5);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask31);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask22);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask30);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask4);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask29);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask23);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask28);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask3);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask27);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask24);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask26);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask2);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask1);
-            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask25);
-            this.groupBox_timeTriggerMask.Location = new System.Drawing.Point(822, 34);
-            this.groupBox_timeTriggerMask.Name = "groupBox_timeTriggerMask";
-            this.groupBox_timeTriggerMask.Size = new System.Drawing.Size(160, 428);
-            this.groupBox_timeTriggerMask.TabIndex = 163;
-            this.groupBox_timeTriggerMask.TabStop = false;
-            this.groupBox_timeTriggerMask.Text = "Time trigger mask";
-            // 
-            // button_sendMaskTime
-            // 
-            this.button_sendMaskTime.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_sendMaskTime.FlatAppearance.BorderSize = 0;
-            this.button_sendMaskTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_sendMaskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button_sendMaskTime.Location = new System.Drawing.Point(11, 28);
-            this.button_sendMaskTime.Name = "button_sendMaskTime";
-            this.button_sendMaskTime.Size = new System.Drawing.Size(138, 30);
-            this.button_sendMaskTime.TabIndex = 164;
-            this.button_sendMaskTime.Text = "Send";
-            this.button_sendMaskTime.UseVisualStyleBackColor = false;
-            this.button_sendMaskTime.Click += new System.EventHandler(this.button_sendMaskTime_Click);
-            // 
-            // button_unmaskAllTime
-            // 
-            this.button_unmaskAllTime.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_unmaskAllTime.FlatAppearance.BorderSize = 0;
-            this.button_unmaskAllTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_unmaskAllTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button_unmaskAllTime.Location = new System.Drawing.Point(11, 388);
-            this.button_unmaskAllTime.Name = "button_unmaskAllTime";
-            this.button_unmaskAllTime.Size = new System.Drawing.Size(138, 30);
-            this.button_unmaskAllTime.TabIndex = 77;
-            this.button_unmaskAllTime.Text = "Unmask all";
-            this.button_unmaskAllTime.UseVisualStyleBackColor = false;
-            this.button_unmaskAllTime.Click += new System.EventHandler(this.button_unmaskAllTime_Click);
-            // 
-            // button_maskAllTime
-            // 
-            this.button_maskAllTime.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_maskAllTime.FlatAppearance.BorderSize = 0;
-            this.button_maskAllTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_maskAllTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button_maskAllTime.Location = new System.Drawing.Point(11, 352);
-            this.button_maskAllTime.Name = "button_maskAllTime";
-            this.button_maskAllTime.Size = new System.Drawing.Size(138, 30);
-            this.button_maskAllTime.TabIndex = 76;
-            this.button_maskAllTime.Text = "Mask all";
-            this.button_maskAllTime.UseVisualStyleBackColor = false;
-            this.button_maskAllTime.Click += new System.EventHandler(this.button_maskAllTime_Click);
-            // 
-            // textBox_word5
-            // 
-            this.textBox_word5.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word5.Location = new System.Drawing.Point(591, 437);
-            this.textBox_word5.Name = "textBox_word5";
-            this.textBox_word5.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word5.TabIndex = 28;
-            this.textBox_word5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_word3
-            // 
-            this.textBox_word3.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word3.Location = new System.Drawing.Point(485, 437);
-            this.textBox_word3.Name = "textBox_word3";
-            this.textBox_word3.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word3.TabIndex = 27;
-            this.textBox_word3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_word2
-            // 
-            this.textBox_word2.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word2.Location = new System.Drawing.Point(379, 437);
-            this.textBox_word2.Name = "textBox_word2";
-            this.textBox_word2.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word2.TabIndex = 26;
-            this.textBox_word2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_word1
-            // 
-            this.textBox_word1.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word1.Location = new System.Drawing.Point(273, 437);
-            this.textBox_word1.Name = "textBox_word1";
-            this.textBox_word1.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word1.TabIndex = 25;
-            this.textBox_word1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_word0
-            // 
-            this.textBox_word0.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word0.Location = new System.Drawing.Point(167, 437);
-            this.textBox_word0.Name = "textBox_word0";
-            this.textBox_word0.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word0.TabIndex = 24;
-            this.textBox_word0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.checkBox_OR32polarity);
-            this.groupBox2.Controls.Add(this.checkBox_triggerTorQ);
-            this.groupBox2.Controls.Add(this.checkBox_selHold);
-            this.groupBox2.Controls.Add(this.checkBox_selTrigToHold);
-            this.groupBox2.Controls.Add(this.checkBox_ADC2);
-            this.groupBox2.Controls.Add(this.checkBox_ADC1);
-            this.groupBox2.Controls.Add(this.checkBox_readOutSpeed);
-            this.groupBox2.Controls.Add(this.checkBox_disReadAdc);
-            this.groupBox2.Location = new System.Drawing.Point(418, 34);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(395, 341);
-            this.groupBox2.TabIndex = 21;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "External ADC configuration";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox_softwareTrigger);
-            this.groupBox1.Controls.Add(this.checkBox_iofpgaOr32t);
-            this.groupBox1.Controls.Add(this.checkBox_PSGlobalTrigger);
-            this.groupBox1.Controls.Add(this.checkBox_PSMode);
-            this.groupBox1.Controls.Add(this.checkBox_razChn);
-            this.groupBox1.Controls.Add(this.checkBox_valEvt);
-            this.groupBox1.Controls.Add(this.checkBox_selValEvt);
-            this.groupBox1.Controls.Add(this.checkBox_selRazChn);
-            this.groupBox1.Controls.Add(this.checkBox_pwrOn);
-            this.groupBox1.Controls.Add(this.checkBox_enSerialLink);
-            this.groupBox1.Controls.Add(this.checkBox_rstbPS);
-            this.groupBox1.Controls.Add(this.checkBox_selPSMode);
-            this.groupBox1.Controls.Add(this.checkBox_rstbPa);
-            this.groupBox1.Controls.Add(this.checkBox_selPSGlobalTrigger);
-            this.groupBox1.Location = new System.Drawing.Point(76, 34);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 341);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ASIC configuration";
-            // 
-            // groupBox_HV
-            // 
-            this.groupBox_HV.Controls.Add(this.numUpDown_HV);
-            this.groupBox_HV.Controls.Add(this.checkBox_HVON);
-            this.groupBox_HV.Controls.Add(this.button_HVPS);
-            this.groupBox_HV.Controls.Add(this.label140);
-            this.groupBox_HV.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_HV.Location = new System.Drawing.Point(6, 231);
-            this.groupBox_HV.Name = "groupBox_HV";
-            this.groupBox_HV.Size = new System.Drawing.Size(433, 45);
-            this.groupBox_HV.TabIndex = 13;
-            this.groupBox_HV.TabStop = false;
-            this.groupBox_HV.Text = "HV settings";
-            // 
-            // numUpDown_HV
-            // 
-            this.numUpDown_HV.DecimalPlaces = 3;
-            this.numUpDown_HV.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numUpDown_HV.Location = new System.Drawing.Point(212, 16);
-            this.numUpDown_HV.Maximum = new decimal(new int[] {
-            55,
-            0,
-            0,
-            0});
-            this.numUpDown_HV.Minimum = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-            this.numUpDown_HV.Name = "numUpDown_HV";
-            this.numUpDown_HV.Size = new System.Drawing.Size(73, 24);
-            this.numUpDown_HV.TabIndex = 4;
-            this.numUpDown_HV.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-            // 
-            // checkBox_HVON
-            // 
-            this.checkBox_HVON.AutoSize = true;
-            this.checkBox_HVON.Checked = true;
-            this.checkBox_HVON.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_HVON.Location = new System.Drawing.Point(11, 17);
-            this.checkBox_HVON.Name = "checkBox_HVON";
-            this.checkBox_HVON.Size = new System.Drawing.Size(74, 22);
-            this.checkBox_HVON.TabIndex = 3;
-            this.checkBox_HVON.Text = "HV ON";
-            this.checkBox_HVON.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox_HVON.UseVisualStyleBackColor = true;
-            // 
-            // button_HVPS
-            // 
-            this.button_HVPS.Location = new System.Drawing.Point(328, 13);
-            this.button_HVPS.Name = "button_HVPS";
-            this.button_HVPS.Size = new System.Drawing.Size(99, 29);
-            this.button_HVPS.TabIndex = 2;
-            this.button_HVPS.Text = "Send HV";
-            this.button_HVPS.UseVisualStyleBackColor = true;
-            this.button_HVPS.Click += new System.EventHandler(this.button_HVPS_Click);
-            // 
-            // label140
-            // 
-            this.label140.AutoSize = true;
-            this.label140.Location = new System.Drawing.Point(106, 18);
-            this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(88, 18);
-            this.label140.TabIndex = 0;
-            this.label140.Text = "Voltage (V) :";
-            // 
-            // button_readTelemetry
-            // 
-            this.button_readTelemetry.Location = new System.Drawing.Point(17, 21);
-            this.button_readTelemetry.Name = "button_readTelemetry";
-            this.button_readTelemetry.Size = new System.Drawing.Size(422, 30);
-            this.button_readTelemetry.TabIndex = 12;
-            this.button_readTelemetry.Text = "&Read Telemetry";
-            this.button_readTelemetry.UseVisualStyleBackColor = true;
-            this.button_readTelemetry.Click += new System.EventHandler(this.button_readTelemetry_Click);
-            // 
-            // label_tempOnBoard
-            // 
-            this.label_tempOnBoard.AutoSize = true;
-            this.label_tempOnBoard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.label_tempOnBoard.ForeColor = System.Drawing.Color.White;
-            this.label_tempOnBoard.Location = new System.Drawing.Point(1053, 4);
-            this.label_tempOnBoard.Name = "label_tempOnBoard";
-            this.label_tempOnBoard.Size = new System.Drawing.Size(0, 24);
-            this.label_tempOnBoard.TabIndex = 37;
-            // 
-            // backgroundWorker_Scurves
-            // 
-            this.backgroundWorker_Scurves.WorkerReportsProgress = true;
-            this.backgroundWorker_Scurves.WorkerSupportsCancellation = true;
-            this.backgroundWorker_Scurves.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Scurves_DoWork);
-            this.backgroundWorker_Scurves.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Scurves_ProgressChanged);
-            this.backgroundWorker_Scurves.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_Scurves_RunWorkerCompleted);
-            // 
-            // backgroundWorker_staircase
-            // 
-            this.backgroundWorker_staircase.WorkerReportsProgress = true;
-            this.backgroundWorker_staircase.WorkerSupportsCancellation = true;
-            this.backgroundWorker_staircase.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_staircase_DoWork);
-            this.backgroundWorker_staircase.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_staircase_ProgressChanged);
-            this.backgroundWorker_staircase.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_staircase_RunWorkerCompleted);
-            // 
-            // backgroundWorker_dataAcquisition
-            // 
-            this.backgroundWorker_dataAcquisition.WorkerReportsProgress = true;
-            this.backgroundWorker_dataAcquisition.WorkerSupportsCancellation = true;
-            this.backgroundWorker_dataAcquisition.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_dataAcquisition_DoWork);
-            this.backgroundWorker_dataAcquisition.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_dataAcquisition_ProgressChanged);
-            this.backgroundWorker_dataAcquisition.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_dataAcquisition_RunWorkerCompleted);
-            // 
-            // pictureBox_logoWeeroc
-            // 
-            this.pictureBox_logoWeeroc.BackColor = System.Drawing.Color.White;
-            this.pictureBox_logoWeeroc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_logoWeeroc.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_logoWeeroc.Image")));
-            this.pictureBox_logoWeeroc.Location = new System.Drawing.Point(0, 520);
-            this.pictureBox_logoWeeroc.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox_logoWeeroc.Name = "pictureBox_logoWeeroc";
-            this.pictureBox_logoWeeroc.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox_logoWeeroc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_logoWeeroc.TabIndex = 24;
-            this.pictureBox_logoWeeroc.TabStop = false;
-            // 
-            // backgroundWorker_holdScan
-            // 
-            this.backgroundWorker_holdScan.WorkerReportsProgress = true;
-            this.backgroundWorker_holdScan.WorkerSupportsCancellation = true;
-            this.backgroundWorker_holdScan.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_holdScan_DoWork);
-            this.backgroundWorker_holdScan.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_holdScan_ProgressChanged);
-            this.backgroundWorker_holdScan.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_holdScan_RunWorkerCompleted);
-            // 
-            // button_screenshot
-            // 
-            this.button_screenshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.button_screenshot.BackgroundImage = global::CitirocUI.Properties.Resources.Screenshot_icon;
-            this.button_screenshot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_screenshot.FlatAppearance.BorderSize = 0;
-            this.button_screenshot.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(151)))), ((int)(((byte)(174)))));
-            this.button_screenshot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_screenshot.ForeColor = System.Drawing.Color.White;
-            this.button_screenshot.Location = new System.Drawing.Point(0, 1);
-            this.button_screenshot.Name = "button_screenshot";
-            this.button_screenshot.Size = new System.Drawing.Size(60, 30);
-            this.button_screenshot.TabIndex = 28;
-            this.button_screenshot.UseVisualStyleBackColor = false;
-            this.button_screenshot.Click += new System.EventHandler(this.button_screenshot_Click);
-            // 
-            // tblPnlMain
-            // 
-            this.tblPnlMain.BackColor = System.Drawing.SystemColors.Control;
-            this.tblPnlMain.ColumnCount = 3;
-            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1080F));
-            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 457F));
-            this.tblPnlMain.Controls.Add(this.panel1, 0, 1);
-            this.tblPnlMain.Controls.Add(this.pnlTopBar, 1, 0);
-            this.tblPnlMain.Controls.Add(this.tabControl_top, 1, 1);
-            this.tblPnlMain.Controls.Add(this.pictureBox_logoWeeroc, 0, 2);
-            this.tblPnlMain.Controls.Add(this.label_help, 1, 2);
-            this.tblPnlMain.Controls.Add(this.label_weerocDotCom, 0, 0);
-            this.tblPnlMain.Controls.Add(this.panel_CubesMonitor, 2, 0);
-            this.tblPnlMain.Location = new System.Drawing.Point(0, 0);
-            this.tblPnlMain.Margin = new System.Windows.Forms.Padding(0);
-            this.tblPnlMain.Name = "tblPnlMain";
-            this.tblPnlMain.RowCount = 3;
-            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblPnlMain.Size = new System.Drawing.Size(1737, 720);
-            this.tblPnlMain.TabIndex = 38;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.roundButton_connectSmall);
-            this.panel1.Controls.Add(this.radioButton_connect);
-            this.panel1.Controls.Add(this.radioButton_slowControl);
-            this.panel1.Controls.Add(this.radioButton_probes);
-            this.panel1.Controls.Add(this.radioButton_firmware);
-            this.panel1.Controls.Add(this.radioButton_dataAcquisition);
-            this.panel1.Controls.Add(this.radioButton_calibration);
-            this.panel1.Controls.Add(this.label_rectangleFill);
-            this.panel1.Location = new System.Drawing.Point(0, 30);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 490);
-            this.panel1.TabIndex = 39;
-            // 
-            // pnlTopBar
-            // 
-            this.pnlTopBar.Controls.Add(this.pnlTools);
-            this.pnlTopBar.Controls.Add(this.label_titleBar);
-            this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTopBar.Location = new System.Drawing.Point(200, 0);
-            this.pnlTopBar.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(1080, 30);
-            this.pnlTopBar.TabIndex = 39;
-            // 
-            // pnlTools
-            // 
-            this.pnlTools.Controls.Add(this.button_screenshot);
-            this.pnlTools.Controls.Add(this.btn_minimize);
-            this.pnlTools.Controls.Add(this.button_UIScale);
-            this.pnlTools.Controls.Add(this.btn_close);
-            this.pnlTools.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlTools.Location = new System.Drawing.Point(941, 0);
-            this.pnlTools.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlTools.Name = "pnlTools";
-            this.pnlTools.Size = new System.Drawing.Size(139, 30);
-            this.pnlTools.TabIndex = 40;
-            // 
-            // panel_CubesMonitor
-            // 
-            this.panel_CubesMonitor.BackColor = System.Drawing.Color.White;
-            this.panel_CubesMonitor.Controls.Add(this.groupBox_telemetry);
-            this.panel_CubesMonitor.Controls.Add(this.rtxtMonitor);
-            this.panel_CubesMonitor.Controls.Add(this.panel_clearSerialMonitor);
-            this.panel_CubesMonitor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_CubesMonitor.Location = new System.Drawing.Point(1280, 0);
-            this.panel_CubesMonitor.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_CubesMonitor.Name = "panel_CubesMonitor";
-            this.tblPnlMain.SetRowSpan(this.panel_CubesMonitor, 3);
-            this.panel_CubesMonitor.Size = new System.Drawing.Size(457, 720);
-            this.panel_CubesMonitor.TabIndex = 40;
-            // 
-            // groupBox_telemetry
-            // 
-            this.groupBox_telemetry.BackColor = System.Drawing.Color.White;
-            this.groupBox_telemetry.Controls.Add(this.groupBox_HV);
-            this.groupBox_telemetry.Controls.Add(this.groupBox_HitRates);
-            this.groupBox_telemetry.Controls.Add(this.button_readTelemetry);
-            this.groupBox_telemetry.Controls.Add(this.groupBox_HvpsTelemetry);
-            this.groupBox_telemetry.Controls.Add(this.textBox_timestamp);
-            this.groupBox_telemetry.Controls.Add(this.label_timestamp);
-            this.groupBox_telemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_telemetry.Location = new System.Drawing.Point(3, 7);
-            this.groupBox_telemetry.Name = "groupBox_telemetry";
-            this.groupBox_telemetry.Size = new System.Drawing.Size(448, 283);
-            this.groupBox_telemetry.TabIndex = 23;
-            this.groupBox_telemetry.TabStop = false;
-            this.groupBox_telemetry.Text = "Proto-CUBES Telemetry";
-            // 
-            // groupBox_HitRates
-            // 
-            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC1);
-            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountOR32);
-            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC2);
-            this.groupBox_HitRates.Controls.Add(this.label_hitCountOR32);
-            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC1);
-            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC3);
-            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC2);
-            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC3);
-            this.groupBox_HitRates.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_HitRates.Location = new System.Drawing.Point(6, 87);
-            this.groupBox_HitRates.Name = "groupBox_HitRates";
-            this.groupBox_HitRates.Size = new System.Drawing.Size(206, 145);
-            this.groupBox_HitRates.TabIndex = 40;
-            this.groupBox_HitRates.TabStop = false;
-            this.groupBox_HitRates.Text = "Channel Hit Rates";
-            // 
-            // label_hitCountMPPC1
-            // 
-            this.label_hitCountMPPC1.AutoSize = true;
-            this.label_hitCountMPPC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_hitCountMPPC1.Location = new System.Drawing.Point(8, 26);
-            this.label_hitCountMPPC1.Name = "label_hitCountMPPC1";
-            this.label_hitCountMPPC1.Size = new System.Drawing.Size(64, 18);
-            this.label_hitCountMPPC1.TabIndex = 20;
-            this.label_hitCountMPPC1.Text = "MPPC1:";
-            // 
-            // textBox_hitCountOR32
-            // 
-            this.textBox_hitCountOR32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_hitCountOR32.Location = new System.Drawing.Point(109, 110);
-            this.textBox_hitCountOR32.Name = "textBox_hitCountOR32";
-            this.textBox_hitCountOR32.ReadOnly = true;
-            this.textBox_hitCountOR32.Size = new System.Drawing.Size(83, 24);
-            this.textBox_hitCountOR32.TabIndex = 11;
-            // 
-            // textBox_hitCountMPPC2
-            // 
-            this.textBox_hitCountMPPC2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_hitCountMPPC2.Location = new System.Drawing.Point(109, 52);
-            this.textBox_hitCountMPPC2.Name = "textBox_hitCountMPPC2";
-            this.textBox_hitCountMPPC2.ReadOnly = true;
-            this.textBox_hitCountMPPC2.Size = new System.Drawing.Size(83, 24);
-            this.textBox_hitCountMPPC2.TabIndex = 23;
-            // 
-            // label_hitCountOR32
-            // 
-            this.label_hitCountOR32.AutoSize = true;
-            this.label_hitCountOR32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_hitCountOR32.Location = new System.Drawing.Point(8, 113);
-            this.label_hitCountOR32.Name = "label_hitCountOR32";
-            this.label_hitCountOR32.Size = new System.Drawing.Size(80, 18);
-            this.label_hitCountOR32.TabIndex = 10;
-            this.label_hitCountOR32.Text = "All (OR32):";
-            // 
-            // textBox_hitCountMPPC1
-            // 
-            this.textBox_hitCountMPPC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_hitCountMPPC1.Location = new System.Drawing.Point(109, 23);
-            this.textBox_hitCountMPPC1.Name = "textBox_hitCountMPPC1";
-            this.textBox_hitCountMPPC1.ReadOnly = true;
-            this.textBox_hitCountMPPC1.Size = new System.Drawing.Size(83, 24);
-            this.textBox_hitCountMPPC1.TabIndex = 21;
-            // 
-            // textBox_hitCountMPPC3
-            // 
-            this.textBox_hitCountMPPC3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_hitCountMPPC3.Location = new System.Drawing.Point(109, 81);
-            this.textBox_hitCountMPPC3.Name = "textBox_hitCountMPPC3";
-            this.textBox_hitCountMPPC3.ReadOnly = true;
-            this.textBox_hitCountMPPC3.Size = new System.Drawing.Size(83, 24);
-            this.textBox_hitCountMPPC3.TabIndex = 7;
-            // 
-            // label_hitCountMPPC2
-            // 
-            this.label_hitCountMPPC2.AutoSize = true;
-            this.label_hitCountMPPC2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_hitCountMPPC2.Location = new System.Drawing.Point(8, 55);
-            this.label_hitCountMPPC2.Name = "label_hitCountMPPC2";
-            this.label_hitCountMPPC2.Size = new System.Drawing.Size(64, 18);
-            this.label_hitCountMPPC2.TabIndex = 22;
-            this.label_hitCountMPPC2.Text = "MPPC2:";
-            // 
-            // label_hitCountMPPC3
-            // 
-            this.label_hitCountMPPC3.AutoSize = true;
-            this.label_hitCountMPPC3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_hitCountMPPC3.Location = new System.Drawing.Point(8, 84);
-            this.label_hitCountMPPC3.Name = "label_hitCountMPPC3";
-            this.label_hitCountMPPC3.Size = new System.Drawing.Size(64, 18);
-            this.label_hitCountMPPC3.TabIndex = 6;
-            this.label_hitCountMPPC3.Text = "MPPC3:";
-            // 
-            // groupBox_HvpsTelemetry
-            // 
-            this.groupBox_HvpsTelemetry.Controls.Add(this.label_NoteOnHVPSTelem);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Voltage);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Temperature);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_tempFromHVPS);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_voltageFromHVPS);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Current);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_currentFromHVPS);
-            this.groupBox_HvpsTelemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_HvpsTelemetry.Location = new System.Drawing.Point(218, 87);
-            this.groupBox_HvpsTelemetry.Name = "groupBox_HvpsTelemetry";
-            this.groupBox_HvpsTelemetry.Size = new System.Drawing.Size(221, 145);
-            this.groupBox_HvpsTelemetry.TabIndex = 39;
-            this.groupBox_HvpsTelemetry.TabStop = false;
-            this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry";
-            // 
-            // label_NoteOnHVPSTelem
-            // 
-            this.label_NoteOnHVPSTelem.AutoSize = true;
-            this.label_NoteOnHVPSTelem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_NoteOnHVPSTelem.Location = new System.Drawing.Point(6, 113);
-            this.label_NoteOnHVPSTelem.Name = "label_NoteOnHVPSTelem";
-            this.label_NoteOnHVPSTelem.Size = new System.Drawing.Size(248, 18);
-            this.label_NoteOnHVPSTelem.TabIndex = 19;
-            this.label_NoteOnHVPSTelem.Text = "NB: Read by hardware every 5s!";
-            // 
-            // label_Voltage
-            // 
-            this.label_Voltage.AutoSize = true;
-            this.label_Voltage.Location = new System.Drawing.Point(6, 32);
-            this.label_Voltage.Name = "label_Voltage";
-            this.label_Voltage.Size = new System.Drawing.Size(84, 18);
-            this.label_Voltage.TabIndex = 15;
-            this.label_Voltage.Text = "Voltage (V):";
-            // 
-            // label_Temperature
-            // 
-            this.label_Temperature.AutoSize = true;
-            this.label_Temperature.Location = new System.Drawing.Point(6, 84);
-            this.label_Temperature.Name = "label_Temperature";
-            this.label_Temperature.Size = new System.Drawing.Size(127, 18);
-            this.label_Temperature.TabIndex = 2;
-            this.label_Temperature.Text = "Temperature (°C):";
-            // 
-            // textBox_tempFromHVPS
-            // 
-            this.textBox_tempFromHVPS.Location = new System.Drawing.Point(132, 81);
-            this.textBox_tempFromHVPS.Name = "textBox_tempFromHVPS";
-            this.textBox_tempFromHVPS.ReadOnly = true;
-            this.textBox_tempFromHVPS.Size = new System.Drawing.Size(83, 24);
-            this.textBox_tempFromHVPS.TabIndex = 3;
-            // 
-            // textBox_voltageFromHVPS
-            // 
-            this.textBox_voltageFromHVPS.Location = new System.Drawing.Point(132, 23);
-            this.textBox_voltageFromHVPS.Name = "textBox_voltageFromHVPS";
-            this.textBox_voltageFromHVPS.ReadOnly = true;
-            this.textBox_voltageFromHVPS.Size = new System.Drawing.Size(83, 24);
-            this.textBox_voltageFromHVPS.TabIndex = 16;
-            // 
-            // label_Current
-            // 
-            this.label_Current.AutoSize = true;
-            this.label_Current.Location = new System.Drawing.Point(6, 58);
-            this.label_Current.Name = "label_Current";
-            this.label_Current.Size = new System.Drawing.Size(97, 18);
-            this.label_Current.TabIndex = 17;
-            this.label_Current.Text = "Current (mA):";
-            // 
-            // textBox_currentFromHVPS
-            // 
-            this.textBox_currentFromHVPS.Location = new System.Drawing.Point(132, 52);
-            this.textBox_currentFromHVPS.Name = "textBox_currentFromHVPS";
-            this.textBox_currentFromHVPS.ReadOnly = true;
-            this.textBox_currentFromHVPS.Size = new System.Drawing.Size(83, 24);
-            this.textBox_currentFromHVPS.TabIndex = 18;
-            // 
-            // textBox_timestamp
-            // 
-            this.textBox_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_timestamp.Location = new System.Drawing.Point(266, 56);
-            this.textBox_timestamp.Name = "textBox_timestamp";
-            this.textBox_timestamp.ReadOnly = true;
-            this.textBox_timestamp.Size = new System.Drawing.Size(173, 24);
-            this.textBox_timestamp.TabIndex = 1;
-            this.textBox_timestamp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label_timestamp
-            // 
-            this.label_timestamp.AutoSize = true;
-            this.label_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_timestamp.Location = new System.Drawing.Point(6, 60);
-            this.label_timestamp.Name = "label_timestamp";
-            this.label_timestamp.Size = new System.Drawing.Size(277, 18);
-            this.label_timestamp.TabIndex = 0;
-            this.label_timestamp.Text = "Timestamp of last telemetry packet:";
-            // 
-            // rtxtMonitor
-            // 
-            this.rtxtMonitor.BackColor = System.Drawing.SystemColors.InfoText;
-            this.rtxtMonitor.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtMonitor.ForeColor = System.Drawing.SystemColors.Info;
-            this.rtxtMonitor.Location = new System.Drawing.Point(3, 289);
-            this.rtxtMonitor.Name = "rtxtMonitor";
-            this.rtxtMonitor.ReadOnly = true;
-            this.rtxtMonitor.Size = new System.Drawing.Size(448, 391);
-            this.rtxtMonitor.TabIndex = 22;
-            this.rtxtMonitor.Text = "";
-            // 
-            // panel_clearSerialMonitor
-            // 
-            this.panel_clearSerialMonitor.Controls.Add(this.label_ConnStatus);
-            this.panel_clearSerialMonitor.Controls.Add(this.buttonHelp);
-            this.panel_clearSerialMonitor.Controls.Add(this.button_Clear);
-            this.panel_clearSerialMonitor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_clearSerialMonitor.Location = new System.Drawing.Point(0, 683);
-            this.panel_clearSerialMonitor.Name = "panel_clearSerialMonitor";
-            this.panel_clearSerialMonitor.Size = new System.Drawing.Size(457, 37);
-            this.panel_clearSerialMonitor.TabIndex = 21;
-            // 
-            // label_ConnStatus
-            // 
-            this.label_ConnStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ConnStatus.Location = new System.Drawing.Point(3, 8);
-            this.label_ConnStatus.Name = "label_ConnStatus";
-            this.label_ConnStatus.Size = new System.Drawing.Size(316, 23);
-            this.label_ConnStatus.TabIndex = 2;
-            this.label_ConnStatus.Text = "label_ConnStatus";
-            this.label_ConnStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // buttonHelp
-            // 
-            this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.buttonHelp.Location = new System.Drawing.Point(325, 3);
-            this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(29, 32);
-            this.buttonHelp.TabIndex = 1;
-            this.buttonHelp.Text = "?";
-            this.buttonHelp.UseVisualStyleBackColor = true;
-            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
-            // 
-            // button_Clear
-            // 
-            this.button_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Clear.Location = new System.Drawing.Point(360, 3);
-            this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(85, 32);
-            this.button_Clear.TabIndex = 1;
-            this.button_Clear.Text = "Clear";
-            this.button_Clear.UseVisualStyleBackColor = true;
-            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
-            // 
-            // tmrButtonColor
-            // 
-            this.tmrButtonColor.Interval = 500;
-            this.tmrButtonColor.Tick += new System.EventHandler(this.tmrButtonColor_Tick);
-            // 
-            // roundButton_connectSmall
-            // 
-            this.roundButton_connectSmall.BackColor = System.Drawing.Color.Gainsboro;
-            this.roundButton_connectSmall.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButton_connectSmall.BackgroundImage")));
-            this.roundButton_connectSmall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.roundButton_connectSmall.FlatAppearance.BorderSize = 0;
-            this.roundButton_connectSmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButton_connectSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.roundButton_connectSmall.Location = new System.Drawing.Point(22, 15);
-            this.roundButton_connectSmall.Name = "roundButton_connectSmall";
-            this.roundButton_connectSmall.Size = new System.Drawing.Size(40, 40);
-            this.roundButton_connectSmall.TabIndex = 7;
-            this.roundButton_connectSmall.UseVisualStyleBackColor = false;
-            this.roundButton_connectSmall.Click += new System.EventHandler(this.roundButton_connect_Click);
-            this.roundButton_connectSmall.MouseEnter += new System.EventHandler(this.roundButton_connect_MouseEnter);
-            this.roundButton_connectSmall.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // roundButton_connect
-            // 
-            this.roundButton_connect.BackColor = System.Drawing.Color.Gainsboro;
-            this.roundButton_connect.FlatAppearance.BorderSize = 0;
-            this.roundButton_connect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButton_connect.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
-            this.roundButton_connect.Location = new System.Drawing.Point(470, 169);
-            this.roundButton_connect.Name = "roundButton_connect";
-            this.roundButton_connect.Size = new System.Drawing.Size(150, 150);
-            this.roundButton_connect.TabIndex = 6;
-            this.roundButton_connect.Text = "CONNECT";
-            this.roundButton_connect.UseVisualStyleBackColor = false;
-            this.roundButton_connect.Click += new System.EventHandler(this.roundButton_connect_Click);
-            this.roundButton_connect.MouseEnter += new System.EventHandler(this.roundButton_connect_MouseEnter);
-            this.roundButton_connect.MouseLeave += new System.EventHandler(this.object_MouseLeave);
-            // 
-            // checkBox_CtestLg0
-            // 
-            this.checkBox_CtestLg0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg0.Location = new System.Drawing.Point(11, 28);
-            this.checkBox_CtestLg0.Name = "checkBox_CtestLg0";
-            this.checkBox_CtestLg0.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg0.TabIndex = 64;
-            this.checkBox_CtestLg0.Text = "0";
-            this.checkBox_CtestLg0.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg0.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg1
-            // 
-            this.checkBox_CtestLg1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg1.Location = new System.Drawing.Point(11, 64);
-            this.checkBox_CtestLg1.Name = "checkBox_CtestLg1";
-            this.checkBox_CtestLg1.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg1.TabIndex = 65;
-            this.checkBox_CtestLg1.Text = "1";
-            this.checkBox_CtestLg1.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg1.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg2
-            // 
-            this.checkBox_CtestLg2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg2.Location = new System.Drawing.Point(11, 100);
-            this.checkBox_CtestLg2.Name = "checkBox_CtestLg2";
-            this.checkBox_CtestLg2.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg2.TabIndex = 66;
-            this.checkBox_CtestLg2.Text = "2";
-            this.checkBox_CtestLg2.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg2.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg3
-            // 
-            this.checkBox_CtestLg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg3.Location = new System.Drawing.Point(11, 136);
-            this.checkBox_CtestLg3.Name = "checkBox_CtestLg3";
-            this.checkBox_CtestLg3.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg3.TabIndex = 67;
-            this.checkBox_CtestLg3.Text = "3";
-            this.checkBox_CtestLg3.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg3.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg4
-            // 
-            this.checkBox_CtestLg4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg4.Location = new System.Drawing.Point(11, 172);
-            this.checkBox_CtestLg4.Name = "checkBox_CtestLg4";
-            this.checkBox_CtestLg4.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg4.TabIndex = 68;
-            this.checkBox_CtestLg4.Text = "4";
-            this.checkBox_CtestLg4.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg4.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg5
-            // 
-            this.checkBox_CtestLg5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg5.Location = new System.Drawing.Point(11, 208);
-            this.checkBox_CtestLg5.Name = "checkBox_CtestLg5";
-            this.checkBox_CtestLg5.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg5.TabIndex = 69;
-            this.checkBox_CtestLg5.Text = "5";
-            this.checkBox_CtestLg5.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg5.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg6
-            // 
-            this.checkBox_CtestLg6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg6.Location = new System.Drawing.Point(11, 244);
-            this.checkBox_CtestLg6.Name = "checkBox_CtestLg6";
-            this.checkBox_CtestLg6.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg6.TabIndex = 70;
-            this.checkBox_CtestLg6.Text = "6";
-            this.checkBox_CtestLg6.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg6.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg7
-            // 
-            this.checkBox_CtestLg7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg7.Location = new System.Drawing.Point(11, 280);
-            this.checkBox_CtestLg7.Name = "checkBox_CtestLg7";
-            this.checkBox_CtestLg7.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg7.TabIndex = 71;
-            this.checkBox_CtestLg7.Text = "7";
-            this.checkBox_CtestLg7.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg7.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg8
-            // 
-            this.checkBox_CtestLg8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg8.Location = new System.Drawing.Point(47, 28);
-            this.checkBox_CtestLg8.Name = "checkBox_CtestLg8";
-            this.checkBox_CtestLg8.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg8.TabIndex = 72;
-            this.checkBox_CtestLg8.Text = "8";
-            this.checkBox_CtestLg8.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg8.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg9
-            // 
-            this.checkBox_CtestLg9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg9.Location = new System.Drawing.Point(47, 64);
-            this.checkBox_CtestLg9.Name = "checkBox_CtestLg9";
-            this.checkBox_CtestLg9.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg9.TabIndex = 73;
-            this.checkBox_CtestLg9.Text = "9";
-            this.checkBox_CtestLg9.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg9.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg10
-            // 
-            this.checkBox_CtestLg10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg10.Location = new System.Drawing.Point(47, 100);
-            this.checkBox_CtestLg10.Name = "checkBox_CtestLg10";
-            this.checkBox_CtestLg10.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg10.TabIndex = 74;
-            this.checkBox_CtestLg10.Text = "10";
-            this.checkBox_CtestLg10.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg10.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg11
-            // 
-            this.checkBox_CtestLg11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg11.Location = new System.Drawing.Point(47, 136);
-            this.checkBox_CtestLg11.Name = "checkBox_CtestLg11";
-            this.checkBox_CtestLg11.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg11.TabIndex = 75;
-            this.checkBox_CtestLg11.Text = "11";
-            this.checkBox_CtestLg11.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg11.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg12
-            // 
-            this.checkBox_CtestLg12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg12.Location = new System.Drawing.Point(47, 172);
-            this.checkBox_CtestLg12.Name = "checkBox_CtestLg12";
-            this.checkBox_CtestLg12.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg12.TabIndex = 76;
-            this.checkBox_CtestLg12.Text = "12";
-            this.checkBox_CtestLg12.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg12.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg13
-            // 
-            this.checkBox_CtestLg13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg13.Location = new System.Drawing.Point(47, 208);
-            this.checkBox_CtestLg13.Name = "checkBox_CtestLg13";
-            this.checkBox_CtestLg13.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg13.TabIndex = 77;
-            this.checkBox_CtestLg13.Text = "13";
-            this.checkBox_CtestLg13.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg13.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg14
-            // 
-            this.checkBox_CtestLg14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg14.Location = new System.Drawing.Point(47, 244);
-            this.checkBox_CtestLg14.Name = "checkBox_CtestLg14";
-            this.checkBox_CtestLg14.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg14.TabIndex = 78;
-            this.checkBox_CtestLg14.Text = "14";
-            this.checkBox_CtestLg14.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg14.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg15
-            // 
-            this.checkBox_CtestLg15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg15.Location = new System.Drawing.Point(47, 280);
-            this.checkBox_CtestLg15.Name = "checkBox_CtestLg15";
-            this.checkBox_CtestLg15.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg15.TabIndex = 79;
-            this.checkBox_CtestLg15.Text = "15";
-            this.checkBox_CtestLg15.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg15.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg16
-            // 
-            this.checkBox_CtestLg16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg16.Location = new System.Drawing.Point(83, 28);
-            this.checkBox_CtestLg16.Name = "checkBox_CtestLg16";
-            this.checkBox_CtestLg16.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg16.TabIndex = 80;
-            this.checkBox_CtestLg16.Text = "16";
-            this.checkBox_CtestLg16.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg16.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg17
-            // 
-            this.checkBox_CtestLg17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg17.Location = new System.Drawing.Point(83, 64);
-            this.checkBox_CtestLg17.Name = "checkBox_CtestLg17";
-            this.checkBox_CtestLg17.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg17.TabIndex = 81;
-            this.checkBox_CtestLg17.Text = "17";
-            this.checkBox_CtestLg17.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg17.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg18
-            // 
-            this.checkBox_CtestLg18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg18.Location = new System.Drawing.Point(83, 100);
-            this.checkBox_CtestLg18.Name = "checkBox_CtestLg18";
-            this.checkBox_CtestLg18.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg18.TabIndex = 82;
-            this.checkBox_CtestLg18.Text = "18";
-            this.checkBox_CtestLg18.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg18.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg19
-            // 
-            this.checkBox_CtestLg19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg19.Location = new System.Drawing.Point(83, 136);
-            this.checkBox_CtestLg19.Name = "checkBox_CtestLg19";
-            this.checkBox_CtestLg19.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg19.TabIndex = 83;
-            this.checkBox_CtestLg19.Text = "19";
-            this.checkBox_CtestLg19.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg19.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg20
-            // 
-            this.checkBox_CtestLg20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg20.Location = new System.Drawing.Point(83, 172);
-            this.checkBox_CtestLg20.Name = "checkBox_CtestLg20";
-            this.checkBox_CtestLg20.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg20.TabIndex = 84;
-            this.checkBox_CtestLg20.Text = "20";
-            this.checkBox_CtestLg20.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg20.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg21
-            // 
-            this.checkBox_CtestLg21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg21.Location = new System.Drawing.Point(83, 208);
-            this.checkBox_CtestLg21.Name = "checkBox_CtestLg21";
-            this.checkBox_CtestLg21.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg21.TabIndex = 85;
-            this.checkBox_CtestLg21.Text = "21";
-            this.checkBox_CtestLg21.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg21.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg22
-            // 
-            this.checkBox_CtestLg22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg22.Location = new System.Drawing.Point(83, 244);
-            this.checkBox_CtestLg22.Name = "checkBox_CtestLg22";
-            this.checkBox_CtestLg22.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg22.TabIndex = 86;
-            this.checkBox_CtestLg22.Text = "22";
-            this.checkBox_CtestLg22.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg22.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg23
-            // 
-            this.checkBox_CtestLg23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg23.Location = new System.Drawing.Point(83, 280);
-            this.checkBox_CtestLg23.Name = "checkBox_CtestLg23";
-            this.checkBox_CtestLg23.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg23.TabIndex = 87;
-            this.checkBox_CtestLg23.Text = "23";
-            this.checkBox_CtestLg23.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg23.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg24
-            // 
-            this.checkBox_CtestLg24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg24.Location = new System.Drawing.Point(119, 28);
-            this.checkBox_CtestLg24.Name = "checkBox_CtestLg24";
-            this.checkBox_CtestLg24.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg24.TabIndex = 88;
-            this.checkBox_CtestLg24.Text = "24";
-            this.checkBox_CtestLg24.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg24.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg25
-            // 
-            this.checkBox_CtestLg25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg25.Location = new System.Drawing.Point(119, 64);
-            this.checkBox_CtestLg25.Name = "checkBox_CtestLg25";
-            this.checkBox_CtestLg25.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg25.TabIndex = 89;
-            this.checkBox_CtestLg25.Text = "25";
-            this.checkBox_CtestLg25.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg25.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg26
-            // 
-            this.checkBox_CtestLg26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg26.Location = new System.Drawing.Point(119, 100);
-            this.checkBox_CtestLg26.Name = "checkBox_CtestLg26";
-            this.checkBox_CtestLg26.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg26.TabIndex = 90;
-            this.checkBox_CtestLg26.Text = "26";
-            this.checkBox_CtestLg26.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg26.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg27
-            // 
-            this.checkBox_CtestLg27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg27.Location = new System.Drawing.Point(119, 136);
-            this.checkBox_CtestLg27.Name = "checkBox_CtestLg27";
-            this.checkBox_CtestLg27.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg27.TabIndex = 91;
-            this.checkBox_CtestLg27.Text = "27";
-            this.checkBox_CtestLg27.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg27.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg28
-            // 
-            this.checkBox_CtestLg28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg28.Location = new System.Drawing.Point(119, 172);
-            this.checkBox_CtestLg28.Name = "checkBox_CtestLg28";
-            this.checkBox_CtestLg28.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg28.TabIndex = 92;
-            this.checkBox_CtestLg28.Text = "28";
-            this.checkBox_CtestLg28.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg28.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg29
-            // 
-            this.checkBox_CtestLg29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg29.Location = new System.Drawing.Point(119, 208);
-            this.checkBox_CtestLg29.Name = "checkBox_CtestLg29";
-            this.checkBox_CtestLg29.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg29.TabIndex = 93;
-            this.checkBox_CtestLg29.Text = "29";
-            this.checkBox_CtestLg29.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg29.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg30
-            // 
-            this.checkBox_CtestLg30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg30.Location = new System.Drawing.Point(119, 244);
-            this.checkBox_CtestLg30.Name = "checkBox_CtestLg30";
-            this.checkBox_CtestLg30.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg30.TabIndex = 94;
-            this.checkBox_CtestLg30.Text = "30";
-            this.checkBox_CtestLg30.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg30.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // checkBox_CtestLg31
-            // 
-            this.checkBox_CtestLg31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestLg31.Location = new System.Drawing.Point(119, 280);
-            this.checkBox_CtestLg31.Name = "checkBox_CtestLg31";
-            this.checkBox_CtestLg31.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestLg31.TabIndex = 95;
-            this.checkBox_CtestLg31.Text = "31";
-            this.checkBox_CtestLg31.UseVisualStyleBackColor = true;
-            this.checkBox_CtestLg31.CheckedChanged += new System.EventHandler(this.checkBox_CtestLg_CheckedChanged);
-            // 
-            // textBox_delay
-            // 
-            this.textBox_delay.enableNegative = false;
-            this.textBox_delay.Location = new System.Drawing.Point(464, 358);
-            this.textBox_delay.Name = "textBox_delay";
-            this.textBox_delay.Size = new System.Drawing.Size(43, 29);
-            this.textBox_delay.TabIndex = 175;
-            this.textBox_delay.Text = "60";
-            this.textBox_delay.TextChanged += new System.EventHandler(this.textBox_delay_TextChanged);
-            // 
-            // checkBox_paLgBias
-            // 
-            this.checkBox_paLgBias.AutoSize = true;
-            this.checkBox_paLgBias.Location = new System.Drawing.Point(234, 192);
-            this.checkBox_paLgBias.Name = "checkBox_paLgBias";
-            this.checkBox_paLgBias.Size = new System.Drawing.Size(294, 28);
-            this.checkBox_paLgBias.TabIndex = 174;
-            this.checkBox_paLgBias.Text = "Weak low gain preamplifier bias";
-            this.checkBox_paLgBias.UseVisualStyleBackColor = true;
-            this.checkBox_paLgBias.CheckedChanged += new System.EventHandler(this.checkBox_paLgBias_CheckedChanged);
-            // 
-            // checkBox_testBitOtaQ
-            // 
-            this.checkBox_testBitOtaQ.AutoSize = true;
-            this.checkBox_testBitOtaQ.Location = new System.Drawing.Point(485, 128);
-            this.checkBox_testBitOtaQ.Name = "checkBox_testBitOtaQ";
-            this.checkBox_testBitOtaQ.Size = new System.Drawing.Size(137, 28);
-            this.checkBox_testBitOtaQ.TabIndex = 173;
-            this.checkBox_testBitOtaQ.Text = "OTAq test bit";
-            this.checkBox_testBitOtaQ.UseVisualStyleBackColor = true;
-            this.checkBox_testBitOtaQ.CheckedChanged += new System.EventHandler(this.checkBox_testBitOtaQ_CheckedChanged);
-            // 
-            // checkBox_fshOnLg
-            // 
-            this.checkBox_fshOnLg.AutoSize = true;
-            this.checkBox_fshOnLg.Location = new System.Drawing.Point(485, 96);
-            this.checkBox_fshOnLg.Name = "checkBox_fshOnLg";
-            this.checkBox_fshOnLg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.checkBox_fshOnLg.Size = new System.Drawing.Size(231, 28);
-            this.checkBox_fshOnLg.TabIndex = 172;
-            this.checkBox_fshOnLg.Text = "Low gain to fast shaper";
-            this.checkBox_fshOnLg.UseVisualStyleBackColor = true;
-            this.checkBox_fshOnLg.CheckedChanged += new System.EventHandler(this.checkBox_fshOnLg_CheckedChanged);
-            // 
-            // checkBox_triggerPolarity
-            // 
-            this.checkBox_triggerPolarity.AutoSize = true;
-            this.checkBox_triggerPolarity.Location = new System.Drawing.Point(234, 96);
-            this.checkBox_triggerPolarity.Name = "checkBox_triggerPolarity";
-            this.checkBox_triggerPolarity.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.checkBox_triggerPolarity.Size = new System.Drawing.Size(172, 28);
-            this.checkBox_triggerPolarity.TabIndex = 170;
-            this.checkBox_triggerPolarity.Text = "Negative trigger";
-            this.checkBox_triggerPolarity.UseVisualStyleBackColor = true;
-            this.checkBox_triggerPolarity.CheckedChanged += new System.EventHandler(this.checkBox_triggerPolarity_CheckedChanged);
-            // 
-            // checkBox_dacRef
-            // 
-            this.checkBox_dacRef.AutoSize = true;
-            this.checkBox_dacRef.Location = new System.Drawing.Point(234, 128);
-            this.checkBox_dacRef.Name = "checkBox_dacRef";
-            this.checkBox_dacRef.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.checkBox_dacRef.Size = new System.Drawing.Size(275, 28);
-            this.checkBox_dacRef.TabIndex = 169;
-            this.checkBox_dacRef.Text = "Input DAC reference = 2.5 V";
-            this.checkBox_dacRef.UseVisualStyleBackColor = true;
-            this.checkBox_dacRef.CheckedChanged += new System.EventHandler(this.checkBox_dacRef_CheckedChanged);
-            // 
-            // checkBox_biasSca
-            // 
-            this.checkBox_biasSca.AutoSize = true;
-            this.checkBox_biasSca.Location = new System.Drawing.Point(234, 64);
-            this.checkBox_biasSca.Name = "checkBox_biasSca";
-            this.checkBox_biasSca.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.checkBox_biasSca.Size = new System.Drawing.Size(117, 28);
-            this.checkBox_biasSca.TabIndex = 168;
-            this.checkBox_biasSca.Text = "SCA bias";
-            this.checkBox_biasSca.UseVisualStyleBackColor = true;
-            this.checkBox_biasSca.CheckedChanged += new System.EventHandler(this.checkBox_biasSca_CheckedChanged);
-            // 
-            // checkBox_latchDiscri
-            // 
-            this.checkBox_latchDiscri.AutoSize = true;
-            this.checkBox_latchDiscri.Location = new System.Drawing.Point(234, 32);
-            this.checkBox_latchDiscri.Name = "checkBox_latchDiscri";
-            this.checkBox_latchDiscri.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.checkBox_latchDiscri.Size = new System.Drawing.Size(143, 28);
-            this.checkBox_latchDiscri.TabIndex = 167;
-            this.checkBox_latchDiscri.Text = "Latch trigger";
-            this.checkBox_latchDiscri.UseVisualStyleBackColor = true;
-            this.checkBox_latchDiscri.CheckedChanged += new System.EventHandler(this.checkBox_latch_CheckedChanged);
-            // 
-            // checkBox_scaOrPdLg
-            // 
-            this.checkBox_scaOrPdLg.AutoSize = true;
-            this.checkBox_scaOrPdLg.Location = new System.Drawing.Point(485, 64);
-            this.checkBox_scaOrPdLg.Name = "checkBox_scaOrPdLg";
-            this.checkBox_scaOrPdLg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.checkBox_scaOrPdLg.Size = new System.Drawing.Size(277, 28);
-            this.checkBox_scaOrPdLg.TabIndex = 166;
-            this.checkBox_scaOrPdLg.Text = "Use peak sensing (low gain)";
-            this.checkBox_scaOrPdLg.UseVisualStyleBackColor = true;
-            this.checkBox_scaOrPdLg.CheckedChanged += new System.EventHandler(this.checkBox_scaOrPdLg_CheckedChanged);
-            // 
-            // checkBox_scaOrPdHg
-            // 
-            this.checkBox_scaOrPdHg.AutoSize = true;
-            this.checkBox_scaOrPdHg.Location = new System.Drawing.Point(485, 32);
-            this.checkBox_scaOrPdHg.Name = "checkBox_scaOrPdHg";
-            this.checkBox_scaOrPdHg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.checkBox_scaOrPdHg.Size = new System.Drawing.Size(285, 28);
-            this.checkBox_scaOrPdHg.TabIndex = 165;
-            this.checkBox_scaOrPdHg.Text = "Use peak sensing (high gain)";
-            this.checkBox_scaOrPdHg.UseVisualStyleBackColor = true;
-            this.checkBox_scaOrPdHg.CheckedChanged += new System.EventHandler(this.checkBox_scaOrPdHg_CheckedChanged);
-            // 
-            // checkBox_mask0
-            // 
-            this.checkBox_mask0.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask0.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask0.Location = new System.Drawing.Point(11, 28);
-            this.checkBox_mask0.Name = "checkBox_mask0";
-            this.checkBox_mask0.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask0.TabIndex = 32;
-            this.checkBox_mask0.Text = "0";
-            this.checkBox_mask0.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask0.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask0.UseVisualStyleBackColor = true;
-            this.checkBox_mask0.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask13
-            // 
-            this.checkBox_mask13.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask13.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask13.Location = new System.Drawing.Point(47, 208);
-            this.checkBox_mask13.Name = "checkBox_mask13";
-            this.checkBox_mask13.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask13.TabIndex = 45;
-            this.checkBox_mask13.Text = "13";
-            this.checkBox_mask13.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask13.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask13.UseVisualStyleBackColor = true;
-            this.checkBox_mask13.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask14
-            // 
-            this.checkBox_mask14.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask14.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask14.Location = new System.Drawing.Point(47, 244);
-            this.checkBox_mask14.Name = "checkBox_mask14";
-            this.checkBox_mask14.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask14.TabIndex = 46;
-            this.checkBox_mask14.Text = "14";
-            this.checkBox_mask14.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask14.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask14.UseVisualStyleBackColor = true;
-            this.checkBox_mask14.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask12
-            // 
-            this.checkBox_mask12.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask12.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask12.Location = new System.Drawing.Point(47, 172);
-            this.checkBox_mask12.Name = "checkBox_mask12";
-            this.checkBox_mask12.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask12.TabIndex = 44;
-            this.checkBox_mask12.Text = "12";
-            this.checkBox_mask12.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask12.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask12.UseVisualStyleBackColor = true;
-            this.checkBox_mask12.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask15
-            // 
-            this.checkBox_mask15.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask15.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask15.Location = new System.Drawing.Point(47, 280);
-            this.checkBox_mask15.Name = "checkBox_mask15";
-            this.checkBox_mask15.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask15.TabIndex = 47;
-            this.checkBox_mask15.Text = "15";
-            this.checkBox_mask15.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask15.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask15.UseVisualStyleBackColor = true;
-            this.checkBox_mask15.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask11
-            // 
-            this.checkBox_mask11.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask11.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask11.Location = new System.Drawing.Point(47, 136);
-            this.checkBox_mask11.Name = "checkBox_mask11";
-            this.checkBox_mask11.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask11.TabIndex = 43;
-            this.checkBox_mask11.Text = "11";
-            this.checkBox_mask11.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask11.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask11.UseVisualStyleBackColor = true;
-            this.checkBox_mask11.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask16
-            // 
-            this.checkBox_mask16.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask16.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask16.Location = new System.Drawing.Point(83, 28);
-            this.checkBox_mask16.Name = "checkBox_mask16";
-            this.checkBox_mask16.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask16.TabIndex = 48;
-            this.checkBox_mask16.Text = "16";
-            this.checkBox_mask16.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask16.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask16.UseVisualStyleBackColor = true;
-            this.checkBox_mask16.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask10
-            // 
-            this.checkBox_mask10.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask10.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask10.Location = new System.Drawing.Point(47, 100);
-            this.checkBox_mask10.Name = "checkBox_mask10";
-            this.checkBox_mask10.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask10.TabIndex = 42;
-            this.checkBox_mask10.Text = "10";
-            this.checkBox_mask10.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask10.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask10.UseVisualStyleBackColor = true;
-            this.checkBox_mask10.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask17
-            // 
-            this.checkBox_mask17.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask17.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask17.Location = new System.Drawing.Point(83, 64);
-            this.checkBox_mask17.Name = "checkBox_mask17";
-            this.checkBox_mask17.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask17.TabIndex = 49;
-            this.checkBox_mask17.Text = "17";
-            this.checkBox_mask17.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask17.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask17.UseVisualStyleBackColor = true;
-            this.checkBox_mask17.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask9
-            // 
-            this.checkBox_mask9.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask9.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask9.Location = new System.Drawing.Point(47, 64);
-            this.checkBox_mask9.Name = "checkBox_mask9";
-            this.checkBox_mask9.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask9.TabIndex = 41;
-            this.checkBox_mask9.Text = "9";
-            this.checkBox_mask9.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask9.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask9.UseVisualStyleBackColor = true;
-            this.checkBox_mask9.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask18
-            // 
-            this.checkBox_mask18.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask18.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask18.Location = new System.Drawing.Point(83, 100);
-            this.checkBox_mask18.Name = "checkBox_mask18";
-            this.checkBox_mask18.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask18.TabIndex = 50;
-            this.checkBox_mask18.Text = "18";
-            this.checkBox_mask18.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask18.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask18.UseVisualStyleBackColor = true;
-            this.checkBox_mask18.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask8
-            // 
-            this.checkBox_mask8.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask8.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask8.Location = new System.Drawing.Point(47, 28);
-            this.checkBox_mask8.Name = "checkBox_mask8";
-            this.checkBox_mask8.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask8.TabIndex = 40;
-            this.checkBox_mask8.Text = "8";
-            this.checkBox_mask8.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask8.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask8.UseVisualStyleBackColor = true;
-            this.checkBox_mask8.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask19
-            // 
-            this.checkBox_mask19.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask19.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask19.Location = new System.Drawing.Point(83, 136);
-            this.checkBox_mask19.Name = "checkBox_mask19";
-            this.checkBox_mask19.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask19.TabIndex = 51;
-            this.checkBox_mask19.Text = "19";
-            this.checkBox_mask19.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask19.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask19.UseVisualStyleBackColor = true;
-            this.checkBox_mask19.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask7
-            // 
-            this.checkBox_mask7.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask7.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask7.Location = new System.Drawing.Point(11, 280);
-            this.checkBox_mask7.Name = "checkBox_mask7";
-            this.checkBox_mask7.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask7.TabIndex = 39;
-            this.checkBox_mask7.Text = "7";
-            this.checkBox_mask7.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask7.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask7.UseVisualStyleBackColor = true;
-            this.checkBox_mask7.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask20
-            // 
-            this.checkBox_mask20.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask20.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask20.Location = new System.Drawing.Point(83, 172);
-            this.checkBox_mask20.Name = "checkBox_mask20";
-            this.checkBox_mask20.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask20.TabIndex = 52;
-            this.checkBox_mask20.Text = "20";
-            this.checkBox_mask20.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask20.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask20.UseVisualStyleBackColor = true;
-            this.checkBox_mask20.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask6
-            // 
-            this.checkBox_mask6.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask6.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask6.Location = new System.Drawing.Point(11, 244);
-            this.checkBox_mask6.Name = "checkBox_mask6";
-            this.checkBox_mask6.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask6.TabIndex = 38;
-            this.checkBox_mask6.Text = "6";
-            this.checkBox_mask6.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask6.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask6.UseVisualStyleBackColor = true;
-            this.checkBox_mask6.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask21
-            // 
-            this.checkBox_mask21.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask21.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask21.Location = new System.Drawing.Point(83, 208);
-            this.checkBox_mask21.Name = "checkBox_mask21";
-            this.checkBox_mask21.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask21.TabIndex = 53;
-            this.checkBox_mask21.Text = "21";
-            this.checkBox_mask21.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask21.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask21.UseVisualStyleBackColor = true;
-            this.checkBox_mask21.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask5
-            // 
-            this.checkBox_mask5.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask5.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask5.Location = new System.Drawing.Point(11, 208);
-            this.checkBox_mask5.Name = "checkBox_mask5";
-            this.checkBox_mask5.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask5.TabIndex = 37;
-            this.checkBox_mask5.Text = "5";
-            this.checkBox_mask5.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask5.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask5.UseVisualStyleBackColor = true;
-            this.checkBox_mask5.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask31
-            // 
-            this.checkBox_mask31.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask31.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask31.Location = new System.Drawing.Point(119, 280);
-            this.checkBox_mask31.Name = "checkBox_mask31";
-            this.checkBox_mask31.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask31.TabIndex = 63;
-            this.checkBox_mask31.Text = "31";
-            this.checkBox_mask31.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask31.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask31.UseVisualStyleBackColor = true;
-            this.checkBox_mask31.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask22
-            // 
-            this.checkBox_mask22.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask22.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask22.Location = new System.Drawing.Point(83, 244);
-            this.checkBox_mask22.Name = "checkBox_mask22";
-            this.checkBox_mask22.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask22.TabIndex = 54;
-            this.checkBox_mask22.Text = "22";
-            this.checkBox_mask22.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask22.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask22.UseVisualStyleBackColor = true;
-            this.checkBox_mask22.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask30
-            // 
-            this.checkBox_mask30.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask30.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask30.Location = new System.Drawing.Point(119, 244);
-            this.checkBox_mask30.Name = "checkBox_mask30";
-            this.checkBox_mask30.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask30.TabIndex = 62;
-            this.checkBox_mask30.Text = "30";
-            this.checkBox_mask30.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask30.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask30.UseVisualStyleBackColor = true;
-            this.checkBox_mask30.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask4
-            // 
-            this.checkBox_mask4.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask4.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask4.Location = new System.Drawing.Point(11, 172);
-            this.checkBox_mask4.Name = "checkBox_mask4";
-            this.checkBox_mask4.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask4.TabIndex = 36;
-            this.checkBox_mask4.Text = "4";
-            this.checkBox_mask4.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask4.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask4.UseVisualStyleBackColor = true;
-            this.checkBox_mask4.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask29
-            // 
-            this.checkBox_mask29.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask29.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask29.Location = new System.Drawing.Point(119, 208);
-            this.checkBox_mask29.Name = "checkBox_mask29";
-            this.checkBox_mask29.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask29.TabIndex = 61;
-            this.checkBox_mask29.Text = "29";
-            this.checkBox_mask29.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask29.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask29.UseVisualStyleBackColor = true;
-            this.checkBox_mask29.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask23
-            // 
-            this.checkBox_mask23.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask23.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask23.Location = new System.Drawing.Point(83, 280);
-            this.checkBox_mask23.Name = "checkBox_mask23";
-            this.checkBox_mask23.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask23.TabIndex = 55;
-            this.checkBox_mask23.Text = "23";
-            this.checkBox_mask23.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask23.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask23.UseVisualStyleBackColor = true;
-            this.checkBox_mask23.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask28
-            // 
-            this.checkBox_mask28.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask28.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask28.Location = new System.Drawing.Point(119, 172);
-            this.checkBox_mask28.Name = "checkBox_mask28";
-            this.checkBox_mask28.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask28.TabIndex = 60;
-            this.checkBox_mask28.Text = "28";
-            this.checkBox_mask28.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask28.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask28.UseVisualStyleBackColor = true;
-            this.checkBox_mask28.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask3
-            // 
-            this.checkBox_mask3.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask3.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask3.Location = new System.Drawing.Point(11, 136);
-            this.checkBox_mask3.Name = "checkBox_mask3";
-            this.checkBox_mask3.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask3.TabIndex = 35;
-            this.checkBox_mask3.Text = "3";
-            this.checkBox_mask3.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask3.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask3.UseVisualStyleBackColor = true;
-            this.checkBox_mask3.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask27
-            // 
-            this.checkBox_mask27.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask27.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask27.Location = new System.Drawing.Point(119, 136);
-            this.checkBox_mask27.Name = "checkBox_mask27";
-            this.checkBox_mask27.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask27.TabIndex = 59;
-            this.checkBox_mask27.Text = "27";
-            this.checkBox_mask27.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask27.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask27.UseVisualStyleBackColor = true;
-            this.checkBox_mask27.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask24
-            // 
-            this.checkBox_mask24.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask24.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask24.Location = new System.Drawing.Point(119, 28);
-            this.checkBox_mask24.Name = "checkBox_mask24";
-            this.checkBox_mask24.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask24.TabIndex = 56;
-            this.checkBox_mask24.Text = "24";
-            this.checkBox_mask24.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask24.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask24.UseVisualStyleBackColor = true;
-            this.checkBox_mask24.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask26
-            // 
-            this.checkBox_mask26.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask26.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask26.Location = new System.Drawing.Point(119, 100);
-            this.checkBox_mask26.Name = "checkBox_mask26";
-            this.checkBox_mask26.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask26.TabIndex = 58;
-            this.checkBox_mask26.Text = "26";
-            this.checkBox_mask26.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask26.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask26.UseVisualStyleBackColor = true;
-            this.checkBox_mask26.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask2
-            // 
-            this.checkBox_mask2.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask2.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask2.Location = new System.Drawing.Point(11, 100);
-            this.checkBox_mask2.Name = "checkBox_mask2";
-            this.checkBox_mask2.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask2.TabIndex = 34;
-            this.checkBox_mask2.Text = "2";
-            this.checkBox_mask2.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask2.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask2.UseVisualStyleBackColor = true;
-            this.checkBox_mask2.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask1
-            // 
-            this.checkBox_mask1.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask1.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask1.Location = new System.Drawing.Point(11, 64);
-            this.checkBox_mask1.Name = "checkBox_mask1";
-            this.checkBox_mask1.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask1.TabIndex = 33;
-            this.checkBox_mask1.Text = "1";
-            this.checkBox_mask1.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask1.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask1.UseVisualStyleBackColor = true;
-            this.checkBox_mask1.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // checkBox_mask25
-            // 
-            this.checkBox_mask25.checkedBackColor = System.Drawing.Color.White;
-            this.checkBox_mask25.checkedForeColor = System.Drawing.Color.Black;
-            this.checkBox_mask25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_mask25.Location = new System.Drawing.Point(119, 64);
-            this.checkBox_mask25.Name = "checkBox_mask25";
-            this.checkBox_mask25.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_mask25.TabIndex = 57;
-            this.checkBox_mask25.Text = "25";
-            this.checkBox_mask25.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
-            this.checkBox_mask25.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_mask25.UseVisualStyleBackColor = true;
-            this.checkBox_mask25.CheckedChanged += new System.EventHandler(this.checkBox_mask_CheckedChanged);
-            // 
-            // textBox_threshold2
-            // 
-            this.textBox_threshold2.enableNegative = false;
-            this.textBox_threshold2.Location = new System.Drawing.Point(575, 307);
-            this.textBox_threshold2.Name = "textBox_threshold2";
-            this.textBox_threshold2.Size = new System.Drawing.Size(80, 29);
-            this.textBox_threshold2.TabIndex = 73;
-            this.textBox_threshold2.Leave += new System.EventHandler(this.textBox_threshold2_Leave);
-            this.textBox_threshold2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_threshold2_PreviewKeyDown);
-            // 
-            // textBox_threshold1
-            // 
-            this.textBox_threshold1.enableNegative = false;
-            this.textBox_threshold1.Location = new System.Drawing.Point(345, 307);
-            this.textBox_threshold1.Name = "textBox_threshold1";
-            this.textBox_threshold1.Size = new System.Drawing.Size(80, 29);
-            this.textBox_threshold1.TabIndex = 72;
-            this.textBox_threshold1.Leave += new System.EventHandler(this.textBox_threshold1_Leave);
-            this.textBox_threshold1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_threshold1_PreviewKeyDown);
-            // 
-            // checkBox_CtestHg0
-            // 
-            this.checkBox_CtestHg0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg0.Location = new System.Drawing.Point(11, 28);
-            this.checkBox_CtestHg0.Name = "checkBox_CtestHg0";
-            this.checkBox_CtestHg0.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg0.TabIndex = 96;
-            this.checkBox_CtestHg0.Text = "0";
-            this.checkBox_CtestHg0.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg0.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg1
-            // 
-            this.checkBox_CtestHg1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg1.Location = new System.Drawing.Point(11, 64);
-            this.checkBox_CtestHg1.Name = "checkBox_CtestHg1";
-            this.checkBox_CtestHg1.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg1.TabIndex = 97;
-            this.checkBox_CtestHg1.Text = "1";
-            this.checkBox_CtestHg1.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg1.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg2
-            // 
-            this.checkBox_CtestHg2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg2.Location = new System.Drawing.Point(11, 100);
-            this.checkBox_CtestHg2.Name = "checkBox_CtestHg2";
-            this.checkBox_CtestHg2.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg2.TabIndex = 98;
-            this.checkBox_CtestHg2.Text = "2";
-            this.checkBox_CtestHg2.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg2.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg3
-            // 
-            this.checkBox_CtestHg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg3.Location = new System.Drawing.Point(11, 136);
-            this.checkBox_CtestHg3.Name = "checkBox_CtestHg3";
-            this.checkBox_CtestHg3.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg3.TabIndex = 99;
-            this.checkBox_CtestHg3.Text = "3";
-            this.checkBox_CtestHg3.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg3.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg4
-            // 
-            this.checkBox_CtestHg4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg4.Location = new System.Drawing.Point(11, 172);
-            this.checkBox_CtestHg4.Name = "checkBox_CtestHg4";
-            this.checkBox_CtestHg4.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg4.TabIndex = 100;
-            this.checkBox_CtestHg4.Text = "4";
-            this.checkBox_CtestHg4.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg4.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg5
-            // 
-            this.checkBox_CtestHg5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg5.Location = new System.Drawing.Point(11, 208);
-            this.checkBox_CtestHg5.Name = "checkBox_CtestHg5";
-            this.checkBox_CtestHg5.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg5.TabIndex = 101;
-            this.checkBox_CtestHg5.Text = "5";
-            this.checkBox_CtestHg5.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg5.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg6
-            // 
-            this.checkBox_CtestHg6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg6.Location = new System.Drawing.Point(11, 244);
-            this.checkBox_CtestHg6.Name = "checkBox_CtestHg6";
-            this.checkBox_CtestHg6.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg6.TabIndex = 102;
-            this.checkBox_CtestHg6.Text = "6";
-            this.checkBox_CtestHg6.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg6.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg7
-            // 
-            this.checkBox_CtestHg7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg7.Location = new System.Drawing.Point(11, 280);
-            this.checkBox_CtestHg7.Name = "checkBox_CtestHg7";
-            this.checkBox_CtestHg7.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg7.TabIndex = 103;
-            this.checkBox_CtestHg7.Text = "7";
-            this.checkBox_CtestHg7.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg7.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg8
-            // 
-            this.checkBox_CtestHg8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg8.Location = new System.Drawing.Point(47, 28);
-            this.checkBox_CtestHg8.Name = "checkBox_CtestHg8";
-            this.checkBox_CtestHg8.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg8.TabIndex = 104;
-            this.checkBox_CtestHg8.Text = "8";
-            this.checkBox_CtestHg8.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg8.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg9
-            // 
-            this.checkBox_CtestHg9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg9.Location = new System.Drawing.Point(47, 64);
-            this.checkBox_CtestHg9.Name = "checkBox_CtestHg9";
-            this.checkBox_CtestHg9.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg9.TabIndex = 105;
-            this.checkBox_CtestHg9.Text = "9";
-            this.checkBox_CtestHg9.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg9.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg10
-            // 
-            this.checkBox_CtestHg10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg10.Location = new System.Drawing.Point(47, 100);
-            this.checkBox_CtestHg10.Name = "checkBox_CtestHg10";
-            this.checkBox_CtestHg10.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg10.TabIndex = 106;
-            this.checkBox_CtestHg10.Text = "10";
-            this.checkBox_CtestHg10.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg10.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg11
-            // 
-            this.checkBox_CtestHg11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg11.Location = new System.Drawing.Point(47, 136);
-            this.checkBox_CtestHg11.Name = "checkBox_CtestHg11";
-            this.checkBox_CtestHg11.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg11.TabIndex = 107;
-            this.checkBox_CtestHg11.Text = "11";
-            this.checkBox_CtestHg11.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg11.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg12
-            // 
-            this.checkBox_CtestHg12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg12.Location = new System.Drawing.Point(47, 172);
-            this.checkBox_CtestHg12.Name = "checkBox_CtestHg12";
-            this.checkBox_CtestHg12.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg12.TabIndex = 108;
-            this.checkBox_CtestHg12.Text = "12";
-            this.checkBox_CtestHg12.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg12.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg13
-            // 
-            this.checkBox_CtestHg13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg13.Location = new System.Drawing.Point(47, 208);
-            this.checkBox_CtestHg13.Name = "checkBox_CtestHg13";
-            this.checkBox_CtestHg13.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg13.TabIndex = 109;
-            this.checkBox_CtestHg13.Text = "13";
-            this.checkBox_CtestHg13.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg13.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg14
-            // 
-            this.checkBox_CtestHg14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg14.Location = new System.Drawing.Point(47, 244);
-            this.checkBox_CtestHg14.Name = "checkBox_CtestHg14";
-            this.checkBox_CtestHg14.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg14.TabIndex = 110;
-            this.checkBox_CtestHg14.Text = "14";
-            this.checkBox_CtestHg14.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg14.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg15
-            // 
-            this.checkBox_CtestHg15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg15.Location = new System.Drawing.Point(47, 280);
-            this.checkBox_CtestHg15.Name = "checkBox_CtestHg15";
-            this.checkBox_CtestHg15.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg15.TabIndex = 111;
-            this.checkBox_CtestHg15.Text = "15";
-            this.checkBox_CtestHg15.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg15.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg16
-            // 
-            this.checkBox_CtestHg16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg16.Location = new System.Drawing.Point(83, 28);
-            this.checkBox_CtestHg16.Name = "checkBox_CtestHg16";
-            this.checkBox_CtestHg16.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg16.TabIndex = 112;
-            this.checkBox_CtestHg16.Text = "16";
-            this.checkBox_CtestHg16.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg16.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg17
-            // 
-            this.checkBox_CtestHg17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg17.Location = new System.Drawing.Point(83, 64);
-            this.checkBox_CtestHg17.Name = "checkBox_CtestHg17";
-            this.checkBox_CtestHg17.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg17.TabIndex = 113;
-            this.checkBox_CtestHg17.Text = "17";
-            this.checkBox_CtestHg17.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg17.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg18
-            // 
-            this.checkBox_CtestHg18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg18.Location = new System.Drawing.Point(83, 100);
-            this.checkBox_CtestHg18.Name = "checkBox_CtestHg18";
-            this.checkBox_CtestHg18.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg18.TabIndex = 114;
-            this.checkBox_CtestHg18.Text = "18";
-            this.checkBox_CtestHg18.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg18.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg19
-            // 
-            this.checkBox_CtestHg19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg19.Location = new System.Drawing.Point(83, 136);
-            this.checkBox_CtestHg19.Name = "checkBox_CtestHg19";
-            this.checkBox_CtestHg19.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg19.TabIndex = 115;
-            this.checkBox_CtestHg19.Text = "19";
-            this.checkBox_CtestHg19.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg19.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg20
-            // 
-            this.checkBox_CtestHg20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg20.Location = new System.Drawing.Point(83, 172);
-            this.checkBox_CtestHg20.Name = "checkBox_CtestHg20";
-            this.checkBox_CtestHg20.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg20.TabIndex = 116;
-            this.checkBox_CtestHg20.Text = "20";
-            this.checkBox_CtestHg20.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg20.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg21
-            // 
-            this.checkBox_CtestHg21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg21.Location = new System.Drawing.Point(83, 208);
-            this.checkBox_CtestHg21.Name = "checkBox_CtestHg21";
-            this.checkBox_CtestHg21.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg21.TabIndex = 117;
-            this.checkBox_CtestHg21.Text = "21";
-            this.checkBox_CtestHg21.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg21.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg22
-            // 
-            this.checkBox_CtestHg22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg22.Location = new System.Drawing.Point(83, 244);
-            this.checkBox_CtestHg22.Name = "checkBox_CtestHg22";
-            this.checkBox_CtestHg22.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg22.TabIndex = 118;
-            this.checkBox_CtestHg22.Text = "22";
-            this.checkBox_CtestHg22.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg22.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg23
-            // 
-            this.checkBox_CtestHg23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg23.Location = new System.Drawing.Point(83, 280);
-            this.checkBox_CtestHg23.Name = "checkBox_CtestHg23";
-            this.checkBox_CtestHg23.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg23.TabIndex = 119;
-            this.checkBox_CtestHg23.Text = "23";
-            this.checkBox_CtestHg23.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg23.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg24
-            // 
-            this.checkBox_CtestHg24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg24.Location = new System.Drawing.Point(119, 28);
-            this.checkBox_CtestHg24.Name = "checkBox_CtestHg24";
-            this.checkBox_CtestHg24.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg24.TabIndex = 120;
-            this.checkBox_CtestHg24.Text = "24";
-            this.checkBox_CtestHg24.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg24.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg25
-            // 
-            this.checkBox_CtestHg25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg25.Location = new System.Drawing.Point(119, 64);
-            this.checkBox_CtestHg25.Name = "checkBox_CtestHg25";
-            this.checkBox_CtestHg25.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg25.TabIndex = 121;
-            this.checkBox_CtestHg25.Text = "25";
-            this.checkBox_CtestHg25.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg25.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg26
-            // 
-            this.checkBox_CtestHg26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg26.Location = new System.Drawing.Point(119, 100);
-            this.checkBox_CtestHg26.Name = "checkBox_CtestHg26";
-            this.checkBox_CtestHg26.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg26.TabIndex = 122;
-            this.checkBox_CtestHg26.Text = "26";
-            this.checkBox_CtestHg26.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg26.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg27
-            // 
-            this.checkBox_CtestHg27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg27.Location = new System.Drawing.Point(119, 136);
-            this.checkBox_CtestHg27.Name = "checkBox_CtestHg27";
-            this.checkBox_CtestHg27.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg27.TabIndex = 123;
-            this.checkBox_CtestHg27.Text = "27";
-            this.checkBox_CtestHg27.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg27.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg28
-            // 
-            this.checkBox_CtestHg28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg28.Location = new System.Drawing.Point(119, 172);
-            this.checkBox_CtestHg28.Name = "checkBox_CtestHg28";
-            this.checkBox_CtestHg28.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg28.TabIndex = 124;
-            this.checkBox_CtestHg28.Text = "28";
-            this.checkBox_CtestHg28.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg28.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg29
-            // 
-            this.checkBox_CtestHg29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg29.Location = new System.Drawing.Point(119, 208);
-            this.checkBox_CtestHg29.Name = "checkBox_CtestHg29";
-            this.checkBox_CtestHg29.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg29.TabIndex = 125;
-            this.checkBox_CtestHg29.Text = "29";
-            this.checkBox_CtestHg29.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg29.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg30
-            // 
-            this.checkBox_CtestHg30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg30.Location = new System.Drawing.Point(119, 244);
-            this.checkBox_CtestHg30.Name = "checkBox_CtestHg30";
-            this.checkBox_CtestHg30.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg30.TabIndex = 126;
-            this.checkBox_CtestHg30.Text = "30";
-            this.checkBox_CtestHg30.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg30.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // checkBox_CtestHg31
-            // 
-            this.checkBox_CtestHg31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_CtestHg31.Location = new System.Drawing.Point(119, 280);
-            this.checkBox_CtestHg31.Name = "checkBox_CtestHg31";
-            this.checkBox_CtestHg31.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_CtestHg31.TabIndex = 127;
-            this.checkBox_CtestHg31.Text = "31";
-            this.checkBox_CtestHg31.UseVisualStyleBackColor = true;
-            this.checkBox_CtestHg31.CheckedChanged += new System.EventHandler(this.checkBox_CtestHg_CheckedChanged);
-            // 
-            // textBox_shapingTimeHg
-            // 
-            this.textBox_shapingTimeHg.enableNegative = false;
-            this.textBox_shapingTimeHg.Location = new System.Drawing.Point(575, 240);
-            this.textBox_shapingTimeHg.Name = "textBox_shapingTimeHg";
-            this.textBox_shapingTimeHg.Size = new System.Drawing.Size(80, 29);
-            this.textBox_shapingTimeHg.TabIndex = 71;
-            this.textBox_shapingTimeHg.Leave += new System.EventHandler(this.textBox_shapingTimeHg_Leave);
-            this.textBox_shapingTimeHg.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_shapingTimeHg_PreviewKeyDown);
-            // 
-            // textBox_shapingTimeLg
-            // 
-            this.textBox_shapingTimeLg.enableNegative = false;
-            this.textBox_shapingTimeLg.Location = new System.Drawing.Point(345, 240);
-            this.textBox_shapingTimeLg.Name = "textBox_shapingTimeLg";
-            this.textBox_shapingTimeLg.Size = new System.Drawing.Size(80, 29);
-            this.textBox_shapingTimeLg.TabIndex = 70;
-            this.textBox_shapingTimeLg.Leave += new System.EventHandler(this.textBox_shapingTimeLg_Leave);
-            this.textBox_shapingTimeLg.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_shapingTimeLg_PreviewKeyDown);
-            // 
-            // checkBox_selTrigExtPd
-            // 
-            this.checkBox_selTrigExtPd.AutoSize = true;
-            this.checkBox_selTrigExtPd.Location = new System.Drawing.Point(485, 160);
-            this.checkBox_selTrigExtPd.Name = "checkBox_selTrigExtPd";
-            this.checkBox_selTrigExtPd.Size = new System.Drawing.Size(192, 28);
-            this.checkBox_selTrigExtPd.TabIndex = 69;
-            this.checkBox_selTrigExtPd.Text = "Use external trigger";
-            this.checkBox_selTrigExtPd.UseVisualStyleBackColor = true;
-            this.checkBox_selTrigExtPd.CheckedChanged += new System.EventHandler(this.checkBox_selTrigExtPd_CheckedChanged);
-            // 
-            // checkBox_bypassPd
-            // 
-            this.checkBox_bypassPd.AutoSize = true;
-            this.checkBox_bypassPd.Location = new System.Drawing.Point(234, 160);
-            this.checkBox_bypassPd.Name = "checkBox_bypassPd";
-            this.checkBox_bypassPd.Size = new System.Drawing.Size(206, 28);
-            this.checkBox_bypassPd.TabIndex = 68;
-            this.checkBox_bypassPd.Text = "Bypass peak sensing";
-            this.checkBox_bypassPd.UseVisualStyleBackColor = true;
-            this.checkBox_bypassPd.CheckedChanged += new System.EventHandler(this.checkBox_bypassPd_CheckedChanged);
-            // 
-            // textBox_setAllPaHg
-            // 
-            this.textBox_setAllPaHg.enableNegative = false;
-            this.textBox_setAllPaHg.Location = new System.Drawing.Point(987, 10);
-            this.textBox_setAllPaHg.Name = "textBox_setAllPaHg";
-            this.textBox_setAllPaHg.Size = new System.Drawing.Size(80, 29);
-            this.textBox_setAllPaHg.TabIndex = 238;
-            this.textBox_setAllPaHg.Text = "8";
-            // 
-            // textBox_setAllPaLg
-            // 
-            this.textBox_setAllPaLg.enableNegative = false;
-            this.textBox_setAllPaLg.Location = new System.Drawing.Point(745, 10);
-            this.textBox_setAllPaLg.Name = "textBox_setAllPaLg";
-            this.textBox_setAllPaLg.Size = new System.Drawing.Size(80, 29);
-            this.textBox_setAllPaLg.TabIndex = 234;
-            this.textBox_setAllPaLg.Text = "0";
-            // 
-            // textBox_paHgGain31
-            // 
-            this.textBox_paHgGain31.enableNegative = false;
-            this.textBox_paHgGain31.Location = new System.Drawing.Point(900, 345);
-            this.textBox_paHgGain31.Name = "textBox_paHgGain31";
-            this.textBox_paHgGain31.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain31.TabIndex = 225;
-            this.textBox_paHgGain31.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain31.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain30
-            // 
-            this.textBox_paHgGain30.enableNegative = false;
-            this.textBox_paHgGain30.Location = new System.Drawing.Point(900, 310);
-            this.textBox_paHgGain30.Name = "textBox_paHgGain30";
-            this.textBox_paHgGain30.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain30.TabIndex = 224;
-            this.textBox_paHgGain30.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain30.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain29
-            // 
-            this.textBox_paHgGain29.enableNegative = false;
-            this.textBox_paHgGain29.Location = new System.Drawing.Point(900, 275);
-            this.textBox_paHgGain29.Name = "textBox_paHgGain29";
-            this.textBox_paHgGain29.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain29.TabIndex = 223;
-            this.textBox_paHgGain29.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain29.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain28
-            // 
-            this.textBox_paHgGain28.enableNegative = false;
-            this.textBox_paHgGain28.Location = new System.Drawing.Point(900, 240);
-            this.textBox_paHgGain28.Name = "textBox_paHgGain28";
-            this.textBox_paHgGain28.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain28.TabIndex = 222;
-            this.textBox_paHgGain28.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain28.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain27
-            // 
-            this.textBox_paHgGain27.enableNegative = false;
-            this.textBox_paHgGain27.Location = new System.Drawing.Point(900, 205);
-            this.textBox_paHgGain27.Name = "textBox_paHgGain27";
-            this.textBox_paHgGain27.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain27.TabIndex = 221;
-            this.textBox_paHgGain27.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain27.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain26
-            // 
-            this.textBox_paHgGain26.enableNegative = false;
-            this.textBox_paHgGain26.Location = new System.Drawing.Point(900, 170);
-            this.textBox_paHgGain26.Name = "textBox_paHgGain26";
-            this.textBox_paHgGain26.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain26.TabIndex = 220;
-            this.textBox_paHgGain26.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain26.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain25
-            // 
-            this.textBox_paHgGain25.enableNegative = false;
-            this.textBox_paHgGain25.Location = new System.Drawing.Point(900, 135);
-            this.textBox_paHgGain25.Name = "textBox_paHgGain25";
-            this.textBox_paHgGain25.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain25.TabIndex = 219;
-            this.textBox_paHgGain25.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain25.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain24
-            // 
-            this.textBox_paHgGain24.enableNegative = false;
-            this.textBox_paHgGain24.Location = new System.Drawing.Point(900, 100);
-            this.textBox_paHgGain24.Name = "textBox_paHgGain24";
-            this.textBox_paHgGain24.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain24.TabIndex = 218;
-            this.textBox_paHgGain24.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain24.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain31
-            // 
-            this.textBox_paLgGain31.enableNegative = false;
-            this.textBox_paLgGain31.Location = new System.Drawing.Point(814, 345);
-            this.textBox_paLgGain31.Name = "textBox_paLgGain31";
-            this.textBox_paLgGain31.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain31.TabIndex = 217;
-            this.textBox_paLgGain31.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain31.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain30
-            // 
-            this.textBox_paLgGain30.enableNegative = false;
-            this.textBox_paLgGain30.Location = new System.Drawing.Point(814, 310);
-            this.textBox_paLgGain30.Name = "textBox_paLgGain30";
-            this.textBox_paLgGain30.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain30.TabIndex = 216;
-            this.textBox_paLgGain30.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain30.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain29
-            // 
-            this.textBox_paLgGain29.enableNegative = false;
-            this.textBox_paLgGain29.Location = new System.Drawing.Point(814, 275);
-            this.textBox_paLgGain29.Name = "textBox_paLgGain29";
-            this.textBox_paLgGain29.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain29.TabIndex = 215;
-            this.textBox_paLgGain29.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain29.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain28
-            // 
-            this.textBox_paLgGain28.enableNegative = false;
-            this.textBox_paLgGain28.Location = new System.Drawing.Point(814, 240);
-            this.textBox_paLgGain28.Name = "textBox_paLgGain28";
-            this.textBox_paLgGain28.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain28.TabIndex = 214;
-            this.textBox_paLgGain28.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain28.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain27
-            // 
-            this.textBox_paLgGain27.enableNegative = false;
-            this.textBox_paLgGain27.Location = new System.Drawing.Point(814, 205);
-            this.textBox_paLgGain27.Name = "textBox_paLgGain27";
-            this.textBox_paLgGain27.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain27.TabIndex = 213;
-            this.textBox_paLgGain27.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain27.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain26
-            // 
-            this.textBox_paLgGain26.enableNegative = false;
-            this.textBox_paLgGain26.Location = new System.Drawing.Point(814, 170);
-            this.textBox_paLgGain26.Name = "textBox_paLgGain26";
-            this.textBox_paLgGain26.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain26.TabIndex = 212;
-            this.textBox_paLgGain26.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain26.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain25
-            // 
-            this.textBox_paLgGain25.enableNegative = false;
-            this.textBox_paLgGain25.Location = new System.Drawing.Point(814, 135);
-            this.textBox_paLgGain25.Name = "textBox_paLgGain25";
-            this.textBox_paLgGain25.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain25.TabIndex = 211;
-            this.textBox_paLgGain25.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain25.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain24
-            // 
-            this.textBox_paLgGain24.enableNegative = false;
-            this.textBox_paLgGain24.Location = new System.Drawing.Point(814, 100);
-            this.textBox_paLgGain24.Name = "textBox_paLgGain24";
-            this.textBox_paLgGain24.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain24.TabIndex = 210;
-            this.textBox_paLgGain24.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain24.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain23
-            // 
-            this.textBox_paHgGain23.enableNegative = false;
-            this.textBox_paHgGain23.Location = new System.Drawing.Point(672, 345);
-            this.textBox_paHgGain23.Name = "textBox_paHgGain23";
-            this.textBox_paHgGain23.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain23.TabIndex = 209;
-            this.textBox_paHgGain23.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain23.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain22
-            // 
-            this.textBox_paHgGain22.enableNegative = false;
-            this.textBox_paHgGain22.Location = new System.Drawing.Point(672, 310);
-            this.textBox_paHgGain22.Name = "textBox_paHgGain22";
-            this.textBox_paHgGain22.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain22.TabIndex = 208;
-            this.textBox_paHgGain22.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain22.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain21
-            // 
-            this.textBox_paHgGain21.enableNegative = false;
-            this.textBox_paHgGain21.Location = new System.Drawing.Point(672, 275);
-            this.textBox_paHgGain21.Name = "textBox_paHgGain21";
-            this.textBox_paHgGain21.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain21.TabIndex = 207;
-            this.textBox_paHgGain21.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain21.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain20
-            // 
-            this.textBox_paHgGain20.enableNegative = false;
-            this.textBox_paHgGain20.Location = new System.Drawing.Point(672, 240);
-            this.textBox_paHgGain20.Name = "textBox_paHgGain20";
-            this.textBox_paHgGain20.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain20.TabIndex = 206;
-            this.textBox_paHgGain20.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain20.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain19
-            // 
-            this.textBox_paHgGain19.enableNegative = false;
-            this.textBox_paHgGain19.Location = new System.Drawing.Point(672, 205);
-            this.textBox_paHgGain19.Name = "textBox_paHgGain19";
-            this.textBox_paHgGain19.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain19.TabIndex = 205;
-            this.textBox_paHgGain19.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain19.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain18
-            // 
-            this.textBox_paHgGain18.enableNegative = false;
-            this.textBox_paHgGain18.Location = new System.Drawing.Point(672, 170);
-            this.textBox_paHgGain18.Name = "textBox_paHgGain18";
-            this.textBox_paHgGain18.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain18.TabIndex = 204;
-            this.textBox_paHgGain18.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain18.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain17
-            // 
-            this.textBox_paHgGain17.enableNegative = false;
-            this.textBox_paHgGain17.Location = new System.Drawing.Point(672, 135);
-            this.textBox_paHgGain17.Name = "textBox_paHgGain17";
-            this.textBox_paHgGain17.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain17.TabIndex = 203;
-            this.textBox_paHgGain17.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain17.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain16
-            // 
-            this.textBox_paHgGain16.enableNegative = false;
-            this.textBox_paHgGain16.Location = new System.Drawing.Point(672, 100);
-            this.textBox_paHgGain16.Name = "textBox_paHgGain16";
-            this.textBox_paHgGain16.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain16.TabIndex = 202;
-            this.textBox_paHgGain16.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain16.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain23
-            // 
-            this.textBox_paLgGain23.enableNegative = false;
-            this.textBox_paLgGain23.Location = new System.Drawing.Point(586, 345);
-            this.textBox_paLgGain23.Name = "textBox_paLgGain23";
-            this.textBox_paLgGain23.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain23.TabIndex = 201;
-            this.textBox_paLgGain23.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain23.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain22
-            // 
-            this.textBox_paLgGain22.enableNegative = false;
-            this.textBox_paLgGain22.Location = new System.Drawing.Point(586, 310);
-            this.textBox_paLgGain22.Name = "textBox_paLgGain22";
-            this.textBox_paLgGain22.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain22.TabIndex = 200;
-            this.textBox_paLgGain22.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain22.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain21
-            // 
-            this.textBox_paLgGain21.enableNegative = false;
-            this.textBox_paLgGain21.Location = new System.Drawing.Point(586, 275);
-            this.textBox_paLgGain21.Name = "textBox_paLgGain21";
-            this.textBox_paLgGain21.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain21.TabIndex = 199;
-            this.textBox_paLgGain21.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain21.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain20
-            // 
-            this.textBox_paLgGain20.enableNegative = false;
-            this.textBox_paLgGain20.Location = new System.Drawing.Point(586, 240);
-            this.textBox_paLgGain20.Name = "textBox_paLgGain20";
-            this.textBox_paLgGain20.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain20.TabIndex = 198;
-            this.textBox_paLgGain20.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain20.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain19
-            // 
-            this.textBox_paLgGain19.enableNegative = false;
-            this.textBox_paLgGain19.Location = new System.Drawing.Point(586, 205);
-            this.textBox_paLgGain19.Name = "textBox_paLgGain19";
-            this.textBox_paLgGain19.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain19.TabIndex = 197;
-            this.textBox_paLgGain19.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain19.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain18
-            // 
-            this.textBox_paLgGain18.enableNegative = false;
-            this.textBox_paLgGain18.Location = new System.Drawing.Point(586, 170);
-            this.textBox_paLgGain18.Name = "textBox_paLgGain18";
-            this.textBox_paLgGain18.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain18.TabIndex = 196;
-            this.textBox_paLgGain18.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain18.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain17
-            // 
-            this.textBox_paLgGain17.enableNegative = false;
-            this.textBox_paLgGain17.Location = new System.Drawing.Point(586, 135);
-            this.textBox_paLgGain17.Name = "textBox_paLgGain17";
-            this.textBox_paLgGain17.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain17.TabIndex = 195;
-            this.textBox_paLgGain17.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain17.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain16
-            // 
-            this.textBox_paLgGain16.enableNegative = false;
-            this.textBox_paLgGain16.Location = new System.Drawing.Point(586, 100);
-            this.textBox_paLgGain16.Name = "textBox_paLgGain16";
-            this.textBox_paLgGain16.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain16.TabIndex = 194;
-            this.textBox_paLgGain16.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain16.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain15
-            // 
-            this.textBox_paHgGain15.enableNegative = false;
-            this.textBox_paHgGain15.Location = new System.Drawing.Point(444, 345);
-            this.textBox_paHgGain15.Name = "textBox_paHgGain15";
-            this.textBox_paHgGain15.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain15.TabIndex = 193;
-            this.textBox_paHgGain15.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain15.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain14
-            // 
-            this.textBox_paHgGain14.enableNegative = false;
-            this.textBox_paHgGain14.Location = new System.Drawing.Point(444, 310);
-            this.textBox_paHgGain14.Name = "textBox_paHgGain14";
-            this.textBox_paHgGain14.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain14.TabIndex = 192;
-            this.textBox_paHgGain14.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain14.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain13
-            // 
-            this.textBox_paHgGain13.enableNegative = false;
-            this.textBox_paHgGain13.Location = new System.Drawing.Point(444, 275);
-            this.textBox_paHgGain13.Name = "textBox_paHgGain13";
-            this.textBox_paHgGain13.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain13.TabIndex = 191;
-            this.textBox_paHgGain13.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain13.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain12
-            // 
-            this.textBox_paHgGain12.enableNegative = false;
-            this.textBox_paHgGain12.Location = new System.Drawing.Point(444, 240);
-            this.textBox_paHgGain12.Name = "textBox_paHgGain12";
-            this.textBox_paHgGain12.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain12.TabIndex = 190;
-            this.textBox_paHgGain12.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain12.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain11
-            // 
-            this.textBox_paHgGain11.enableNegative = false;
-            this.textBox_paHgGain11.Location = new System.Drawing.Point(444, 205);
-            this.textBox_paHgGain11.Name = "textBox_paHgGain11";
-            this.textBox_paHgGain11.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain11.TabIndex = 189;
-            this.textBox_paHgGain11.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain11.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain10
-            // 
-            this.textBox_paHgGain10.enableNegative = false;
-            this.textBox_paHgGain10.Location = new System.Drawing.Point(444, 170);
-            this.textBox_paHgGain10.Name = "textBox_paHgGain10";
-            this.textBox_paHgGain10.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain10.TabIndex = 188;
-            this.textBox_paHgGain10.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain10.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain9
-            // 
-            this.textBox_paHgGain9.enableNegative = false;
-            this.textBox_paHgGain9.Location = new System.Drawing.Point(444, 135);
-            this.textBox_paHgGain9.Name = "textBox_paHgGain9";
-            this.textBox_paHgGain9.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain9.TabIndex = 187;
-            this.textBox_paHgGain9.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain9.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain8
-            // 
-            this.textBox_paHgGain8.enableNegative = false;
-            this.textBox_paHgGain8.Location = new System.Drawing.Point(444, 100);
-            this.textBox_paHgGain8.Name = "textBox_paHgGain8";
-            this.textBox_paHgGain8.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain8.TabIndex = 186;
-            this.textBox_paHgGain8.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain8.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain15
-            // 
-            this.textBox_paLgGain15.enableNegative = false;
-            this.textBox_paLgGain15.Location = new System.Drawing.Point(358, 345);
-            this.textBox_paLgGain15.Name = "textBox_paLgGain15";
-            this.textBox_paLgGain15.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain15.TabIndex = 185;
-            this.textBox_paLgGain15.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain15.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain14
-            // 
-            this.textBox_paLgGain14.enableNegative = false;
-            this.textBox_paLgGain14.Location = new System.Drawing.Point(358, 310);
-            this.textBox_paLgGain14.Name = "textBox_paLgGain14";
-            this.textBox_paLgGain14.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain14.TabIndex = 184;
-            this.textBox_paLgGain14.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain14.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain13
-            // 
-            this.textBox_paLgGain13.enableNegative = false;
-            this.textBox_paLgGain13.Location = new System.Drawing.Point(358, 275);
-            this.textBox_paLgGain13.Name = "textBox_paLgGain13";
-            this.textBox_paLgGain13.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain13.TabIndex = 183;
-            this.textBox_paLgGain13.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain13.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain12
-            // 
-            this.textBox_paLgGain12.enableNegative = false;
-            this.textBox_paLgGain12.Location = new System.Drawing.Point(358, 240);
-            this.textBox_paLgGain12.Name = "textBox_paLgGain12";
-            this.textBox_paLgGain12.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain12.TabIndex = 182;
-            this.textBox_paLgGain12.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain12.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain11
-            // 
-            this.textBox_paLgGain11.enableNegative = false;
-            this.textBox_paLgGain11.Location = new System.Drawing.Point(358, 205);
-            this.textBox_paLgGain11.Name = "textBox_paLgGain11";
-            this.textBox_paLgGain11.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain11.TabIndex = 181;
-            this.textBox_paLgGain11.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain11.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain10
-            // 
-            this.textBox_paLgGain10.enableNegative = false;
-            this.textBox_paLgGain10.Location = new System.Drawing.Point(358, 170);
-            this.textBox_paLgGain10.Name = "textBox_paLgGain10";
-            this.textBox_paLgGain10.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain10.TabIndex = 180;
-            this.textBox_paLgGain10.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain10.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain9
-            // 
-            this.textBox_paLgGain9.enableNegative = false;
-            this.textBox_paLgGain9.Location = new System.Drawing.Point(358, 135);
-            this.textBox_paLgGain9.Name = "textBox_paLgGain9";
-            this.textBox_paLgGain9.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain9.TabIndex = 179;
-            this.textBox_paLgGain9.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain9.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain8
-            // 
-            this.textBox_paLgGain8.enableNegative = false;
-            this.textBox_paLgGain8.Location = new System.Drawing.Point(358, 100);
-            this.textBox_paLgGain8.Name = "textBox_paLgGain8";
-            this.textBox_paLgGain8.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain8.TabIndex = 178;
-            this.textBox_paLgGain8.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain8.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain7
-            // 
-            this.textBox_paHgGain7.enableNegative = false;
-            this.textBox_paHgGain7.Location = new System.Drawing.Point(216, 345);
-            this.textBox_paHgGain7.Name = "textBox_paHgGain7";
-            this.textBox_paHgGain7.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain7.TabIndex = 177;
-            this.textBox_paHgGain7.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain7.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain6
-            // 
-            this.textBox_paHgGain6.enableNegative = false;
-            this.textBox_paHgGain6.Location = new System.Drawing.Point(216, 310);
-            this.textBox_paHgGain6.Name = "textBox_paHgGain6";
-            this.textBox_paHgGain6.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain6.TabIndex = 176;
-            this.textBox_paHgGain6.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain6.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain5
-            // 
-            this.textBox_paHgGain5.enableNegative = false;
-            this.textBox_paHgGain5.Location = new System.Drawing.Point(216, 275);
-            this.textBox_paHgGain5.Name = "textBox_paHgGain5";
-            this.textBox_paHgGain5.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain5.TabIndex = 175;
-            this.textBox_paHgGain5.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain5.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain4
-            // 
-            this.textBox_paHgGain4.enableNegative = false;
-            this.textBox_paHgGain4.Location = new System.Drawing.Point(216, 240);
-            this.textBox_paHgGain4.Name = "textBox_paHgGain4";
-            this.textBox_paHgGain4.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain4.TabIndex = 174;
-            this.textBox_paHgGain4.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain4.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain3
-            // 
-            this.textBox_paHgGain3.enableNegative = false;
-            this.textBox_paHgGain3.Location = new System.Drawing.Point(216, 205);
-            this.textBox_paHgGain3.Name = "textBox_paHgGain3";
-            this.textBox_paHgGain3.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain3.TabIndex = 173;
-            this.textBox_paHgGain3.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain2
-            // 
-            this.textBox_paHgGain2.enableNegative = false;
-            this.textBox_paHgGain2.Location = new System.Drawing.Point(216, 170);
-            this.textBox_paHgGain2.Name = "textBox_paHgGain2";
-            this.textBox_paHgGain2.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain2.TabIndex = 172;
-            this.textBox_paHgGain2.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain1
-            // 
-            this.textBox_paHgGain1.enableNegative = false;
-            this.textBox_paHgGain1.Location = new System.Drawing.Point(216, 135);
-            this.textBox_paHgGain1.Name = "textBox_paHgGain1";
-            this.textBox_paHgGain1.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain1.TabIndex = 171;
-            this.textBox_paHgGain1.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paHgGain0
-            // 
-            this.textBox_paHgGain0.enableNegative = false;
-            this.textBox_paHgGain0.Location = new System.Drawing.Point(216, 100);
-            this.textBox_paHgGain0.Name = "textBox_paHgGain0";
-            this.textBox_paHgGain0.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paHgGain0.TabIndex = 170;
-            this.textBox_paHgGain0.Leave += new System.EventHandler(this.textBox_paHgGain_Leave);
-            this.textBox_paHgGain0.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paHgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain7
-            // 
-            this.textBox_paLgGain7.enableNegative = false;
-            this.textBox_paLgGain7.Location = new System.Drawing.Point(130, 345);
-            this.textBox_paLgGain7.Name = "textBox_paLgGain7";
-            this.textBox_paLgGain7.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain7.TabIndex = 169;
-            this.textBox_paLgGain7.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain7.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain6
-            // 
-            this.textBox_paLgGain6.enableNegative = false;
-            this.textBox_paLgGain6.Location = new System.Drawing.Point(130, 310);
-            this.textBox_paLgGain6.Name = "textBox_paLgGain6";
-            this.textBox_paLgGain6.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain6.TabIndex = 168;
-            this.textBox_paLgGain6.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain6.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain5
-            // 
-            this.textBox_paLgGain5.enableNegative = false;
-            this.textBox_paLgGain5.Location = new System.Drawing.Point(130, 275);
-            this.textBox_paLgGain5.Name = "textBox_paLgGain5";
-            this.textBox_paLgGain5.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain5.TabIndex = 167;
-            this.textBox_paLgGain5.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain5.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain4
-            // 
-            this.textBox_paLgGain4.enableNegative = false;
-            this.textBox_paLgGain4.Location = new System.Drawing.Point(130, 240);
-            this.textBox_paLgGain4.Name = "textBox_paLgGain4";
-            this.textBox_paLgGain4.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain4.TabIndex = 166;
-            this.textBox_paLgGain4.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain4.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain3
-            // 
-            this.textBox_paLgGain3.enableNegative = false;
-            this.textBox_paLgGain3.Location = new System.Drawing.Point(130, 205);
-            this.textBox_paLgGain3.Name = "textBox_paLgGain3";
-            this.textBox_paLgGain3.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain3.TabIndex = 165;
-            this.textBox_paLgGain3.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain2
-            // 
-            this.textBox_paLgGain2.enableNegative = false;
-            this.textBox_paLgGain2.Location = new System.Drawing.Point(130, 170);
-            this.textBox_paLgGain2.Name = "textBox_paLgGain2";
-            this.textBox_paLgGain2.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain2.TabIndex = 164;
-            this.textBox_paLgGain2.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain1
-            // 
-            this.textBox_paLgGain1.enableNegative = false;
-            this.textBox_paLgGain1.Location = new System.Drawing.Point(130, 135);
-            this.textBox_paLgGain1.Name = "textBox_paLgGain1";
-            this.textBox_paLgGain1.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain1.TabIndex = 163;
-            this.textBox_paLgGain1.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // textBox_paLgGain0
-            // 
-            this.textBox_paLgGain0.enableNegative = false;
-            this.textBox_paLgGain0.Location = new System.Drawing.Point(130, 100);
-            this.textBox_paLgGain0.Name = "textBox_paLgGain0";
-            this.textBox_paLgGain0.Size = new System.Drawing.Size(80, 29);
-            this.textBox_paLgGain0.TabIndex = 162;
-            this.textBox_paLgGain0.Leave += new System.EventHandler(this.textBox_paLgGain_Leave);
-            this.textBox_paLgGain0.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_paLgGain_PreviewKeyDown);
-            // 
-            // checkBox_enPa31
-            // 
-            this.checkBox_enPa31.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa31.Location = new System.Drawing.Point(778, 344);
-            this.checkBox_enPa31.Name = "checkBox_enPa31";
-            this.checkBox_enPa31.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa31.TabIndex = 159;
-            this.checkBox_enPa31.Text = "31";
-            this.checkBox_enPa31.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa31.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa31.UseVisualStyleBackColor = true;
-            this.checkBox_enPa31.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa30
-            // 
-            this.checkBox_enPa30.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa30.Location = new System.Drawing.Point(778, 309);
-            this.checkBox_enPa30.Name = "checkBox_enPa30";
-            this.checkBox_enPa30.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa30.TabIndex = 158;
-            this.checkBox_enPa30.Text = "30";
-            this.checkBox_enPa30.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa30.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa30.UseVisualStyleBackColor = true;
-            this.checkBox_enPa30.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa29
-            // 
-            this.checkBox_enPa29.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa29.Location = new System.Drawing.Point(778, 274);
-            this.checkBox_enPa29.Name = "checkBox_enPa29";
-            this.checkBox_enPa29.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa29.TabIndex = 157;
-            this.checkBox_enPa29.Text = "29";
-            this.checkBox_enPa29.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa29.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa29.UseVisualStyleBackColor = true;
-            this.checkBox_enPa29.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa28
-            // 
-            this.checkBox_enPa28.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa28.Location = new System.Drawing.Point(778, 239);
-            this.checkBox_enPa28.Name = "checkBox_enPa28";
-            this.checkBox_enPa28.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa28.TabIndex = 156;
-            this.checkBox_enPa28.Text = "28";
-            this.checkBox_enPa28.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa28.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa28.UseVisualStyleBackColor = true;
-            this.checkBox_enPa28.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa27
-            // 
-            this.checkBox_enPa27.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa27.Location = new System.Drawing.Point(778, 204);
-            this.checkBox_enPa27.Name = "checkBox_enPa27";
-            this.checkBox_enPa27.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa27.TabIndex = 155;
-            this.checkBox_enPa27.Text = "27";
-            this.checkBox_enPa27.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa27.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa27.UseVisualStyleBackColor = true;
-            this.checkBox_enPa27.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa26
-            // 
-            this.checkBox_enPa26.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa26.Location = new System.Drawing.Point(778, 169);
-            this.checkBox_enPa26.Name = "checkBox_enPa26";
-            this.checkBox_enPa26.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa26.TabIndex = 154;
-            this.checkBox_enPa26.Text = "26";
-            this.checkBox_enPa26.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa26.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa26.UseVisualStyleBackColor = true;
-            this.checkBox_enPa26.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa25
-            // 
-            this.checkBox_enPa25.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa25.Location = new System.Drawing.Point(778, 134);
-            this.checkBox_enPa25.Name = "checkBox_enPa25";
-            this.checkBox_enPa25.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa25.TabIndex = 153;
-            this.checkBox_enPa25.Text = "25";
-            this.checkBox_enPa25.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa25.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa25.UseVisualStyleBackColor = true;
-            this.checkBox_enPa25.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa24
-            // 
-            this.checkBox_enPa24.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa24.Location = new System.Drawing.Point(778, 99);
-            this.checkBox_enPa24.Name = "checkBox_enPa24";
-            this.checkBox_enPa24.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa24.TabIndex = 152;
-            this.checkBox_enPa24.Text = "24";
-            this.checkBox_enPa24.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa24.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa24.UseVisualStyleBackColor = true;
-            this.checkBox_enPa24.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa23
-            // 
-            this.checkBox_enPa23.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa23.Location = new System.Drawing.Point(550, 344);
-            this.checkBox_enPa23.Name = "checkBox_enPa23";
-            this.checkBox_enPa23.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa23.TabIndex = 151;
-            this.checkBox_enPa23.Text = "23";
-            this.checkBox_enPa23.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa23.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa23.UseVisualStyleBackColor = true;
-            this.checkBox_enPa23.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa22
-            // 
-            this.checkBox_enPa22.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa22.Location = new System.Drawing.Point(550, 309);
-            this.checkBox_enPa22.Name = "checkBox_enPa22";
-            this.checkBox_enPa22.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa22.TabIndex = 150;
-            this.checkBox_enPa22.Text = "22";
-            this.checkBox_enPa22.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa22.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa22.UseVisualStyleBackColor = true;
-            this.checkBox_enPa22.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa21
-            // 
-            this.checkBox_enPa21.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa21.Location = new System.Drawing.Point(550, 274);
-            this.checkBox_enPa21.Name = "checkBox_enPa21";
-            this.checkBox_enPa21.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa21.TabIndex = 149;
-            this.checkBox_enPa21.Text = "21";
-            this.checkBox_enPa21.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa21.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa21.UseVisualStyleBackColor = true;
-            this.checkBox_enPa21.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa20
-            // 
-            this.checkBox_enPa20.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa20.Location = new System.Drawing.Point(550, 239);
-            this.checkBox_enPa20.Name = "checkBox_enPa20";
-            this.checkBox_enPa20.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa20.TabIndex = 148;
-            this.checkBox_enPa20.Text = "20";
-            this.checkBox_enPa20.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa20.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa20.UseVisualStyleBackColor = true;
-            this.checkBox_enPa20.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa19
-            // 
-            this.checkBox_enPa19.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa19.Location = new System.Drawing.Point(550, 204);
-            this.checkBox_enPa19.Name = "checkBox_enPa19";
-            this.checkBox_enPa19.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa19.TabIndex = 147;
-            this.checkBox_enPa19.Text = "19";
-            this.checkBox_enPa19.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa19.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa19.UseVisualStyleBackColor = true;
-            this.checkBox_enPa19.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa18
-            // 
-            this.checkBox_enPa18.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa18.Location = new System.Drawing.Point(550, 169);
-            this.checkBox_enPa18.Name = "checkBox_enPa18";
-            this.checkBox_enPa18.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa18.TabIndex = 146;
-            this.checkBox_enPa18.Text = "18";
-            this.checkBox_enPa18.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa18.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa18.UseVisualStyleBackColor = true;
-            this.checkBox_enPa18.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa17
-            // 
-            this.checkBox_enPa17.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa17.Location = new System.Drawing.Point(550, 134);
-            this.checkBox_enPa17.Name = "checkBox_enPa17";
-            this.checkBox_enPa17.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa17.TabIndex = 145;
-            this.checkBox_enPa17.Text = "17";
-            this.checkBox_enPa17.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa17.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa17.UseVisualStyleBackColor = true;
-            this.checkBox_enPa17.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa16
-            // 
-            this.checkBox_enPa16.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa16.Location = new System.Drawing.Point(550, 99);
-            this.checkBox_enPa16.Name = "checkBox_enPa16";
-            this.checkBox_enPa16.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa16.TabIndex = 144;
-            this.checkBox_enPa16.Text = "16";
-            this.checkBox_enPa16.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa16.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa16.UseVisualStyleBackColor = true;
-            this.checkBox_enPa16.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa15
-            // 
-            this.checkBox_enPa15.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa15.Location = new System.Drawing.Point(322, 344);
-            this.checkBox_enPa15.Name = "checkBox_enPa15";
-            this.checkBox_enPa15.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa15.TabIndex = 143;
-            this.checkBox_enPa15.Text = "15";
-            this.checkBox_enPa15.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa15.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa15.UseVisualStyleBackColor = true;
-            this.checkBox_enPa15.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa14
-            // 
-            this.checkBox_enPa14.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa14.Location = new System.Drawing.Point(322, 309);
-            this.checkBox_enPa14.Name = "checkBox_enPa14";
-            this.checkBox_enPa14.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa14.TabIndex = 142;
-            this.checkBox_enPa14.Text = "14";
-            this.checkBox_enPa14.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa14.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa14.UseVisualStyleBackColor = true;
-            this.checkBox_enPa14.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa13
-            // 
-            this.checkBox_enPa13.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa13.Location = new System.Drawing.Point(322, 274);
-            this.checkBox_enPa13.Name = "checkBox_enPa13";
-            this.checkBox_enPa13.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa13.TabIndex = 141;
-            this.checkBox_enPa13.Text = "13";
-            this.checkBox_enPa13.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa13.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa13.UseVisualStyleBackColor = true;
-            this.checkBox_enPa13.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa12
-            // 
-            this.checkBox_enPa12.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa12.Location = new System.Drawing.Point(322, 239);
-            this.checkBox_enPa12.Name = "checkBox_enPa12";
-            this.checkBox_enPa12.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa12.TabIndex = 140;
-            this.checkBox_enPa12.Text = "12";
-            this.checkBox_enPa12.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa12.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa12.UseVisualStyleBackColor = true;
-            this.checkBox_enPa12.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa11
-            // 
-            this.checkBox_enPa11.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa11.Location = new System.Drawing.Point(322, 204);
-            this.checkBox_enPa11.Name = "checkBox_enPa11";
-            this.checkBox_enPa11.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa11.TabIndex = 139;
-            this.checkBox_enPa11.Text = "11";
-            this.checkBox_enPa11.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa11.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa11.UseVisualStyleBackColor = true;
-            this.checkBox_enPa11.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa10
-            // 
-            this.checkBox_enPa10.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa10.Location = new System.Drawing.Point(322, 169);
-            this.checkBox_enPa10.Name = "checkBox_enPa10";
-            this.checkBox_enPa10.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa10.TabIndex = 138;
-            this.checkBox_enPa10.Text = "10";
-            this.checkBox_enPa10.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa10.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa10.UseVisualStyleBackColor = true;
-            this.checkBox_enPa10.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa9
-            // 
-            this.checkBox_enPa9.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa9.Location = new System.Drawing.Point(322, 134);
-            this.checkBox_enPa9.Name = "checkBox_enPa9";
-            this.checkBox_enPa9.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa9.TabIndex = 137;
-            this.checkBox_enPa9.Text = "9";
-            this.checkBox_enPa9.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa9.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa9.UseVisualStyleBackColor = true;
-            this.checkBox_enPa9.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa8
-            // 
-            this.checkBox_enPa8.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa8.Location = new System.Drawing.Point(322, 99);
-            this.checkBox_enPa8.Name = "checkBox_enPa8";
-            this.checkBox_enPa8.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa8.TabIndex = 136;
-            this.checkBox_enPa8.Text = "8";
-            this.checkBox_enPa8.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa8.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa8.UseVisualStyleBackColor = true;
-            this.checkBox_enPa8.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa7
-            // 
-            this.checkBox_enPa7.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa7.Location = new System.Drawing.Point(94, 344);
-            this.checkBox_enPa7.Name = "checkBox_enPa7";
-            this.checkBox_enPa7.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa7.TabIndex = 135;
-            this.checkBox_enPa7.Text = "7";
-            this.checkBox_enPa7.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa7.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa7.UseVisualStyleBackColor = true;
-            this.checkBox_enPa7.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa6
-            // 
-            this.checkBox_enPa6.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa6.Location = new System.Drawing.Point(94, 309);
-            this.checkBox_enPa6.Name = "checkBox_enPa6";
-            this.checkBox_enPa6.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa6.TabIndex = 134;
-            this.checkBox_enPa6.Text = "6";
-            this.checkBox_enPa6.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa6.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa6.UseVisualStyleBackColor = true;
-            this.checkBox_enPa6.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa5
-            // 
-            this.checkBox_enPa5.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa5.Location = new System.Drawing.Point(94, 274);
-            this.checkBox_enPa5.Name = "checkBox_enPa5";
-            this.checkBox_enPa5.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa5.TabIndex = 133;
-            this.checkBox_enPa5.Text = "5";
-            this.checkBox_enPa5.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa5.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa5.UseVisualStyleBackColor = true;
-            this.checkBox_enPa5.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa4
-            // 
-            this.checkBox_enPa4.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa4.Location = new System.Drawing.Point(94, 239);
-            this.checkBox_enPa4.Name = "checkBox_enPa4";
-            this.checkBox_enPa4.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa4.TabIndex = 132;
-            this.checkBox_enPa4.Text = "4";
-            this.checkBox_enPa4.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa4.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa4.UseVisualStyleBackColor = true;
-            this.checkBox_enPa4.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa3
-            // 
-            this.checkBox_enPa3.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa3.Location = new System.Drawing.Point(94, 204);
-            this.checkBox_enPa3.Name = "checkBox_enPa3";
-            this.checkBox_enPa3.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa3.TabIndex = 131;
-            this.checkBox_enPa3.Text = "3";
-            this.checkBox_enPa3.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa3.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa3.UseVisualStyleBackColor = true;
-            this.checkBox_enPa3.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa2
-            // 
-            this.checkBox_enPa2.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa2.Location = new System.Drawing.Point(94, 169);
-            this.checkBox_enPa2.Name = "checkBox_enPa2";
-            this.checkBox_enPa2.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa2.TabIndex = 130;
-            this.checkBox_enPa2.Text = "2";
-            this.checkBox_enPa2.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa2.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa2.UseVisualStyleBackColor = true;
-            this.checkBox_enPa2.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa1
-            // 
-            this.checkBox_enPa1.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa1.Location = new System.Drawing.Point(94, 134);
-            this.checkBox_enPa1.Name = "checkBox_enPa1";
-            this.checkBox_enPa1.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa1.TabIndex = 129;
-            this.checkBox_enPa1.Text = "1";
-            this.checkBox_enPa1.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa1.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa1.UseVisualStyleBackColor = true;
-            this.checkBox_enPa1.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
-            // checkBox_enPa0
-            // 
-            this.checkBox_enPa0.checkedBackColor = System.Drawing.Color.IndianRed;
-            this.checkBox_enPa0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox_enPa0.Location = new System.Drawing.Point(94, 99);
-            this.checkBox_enPa0.Name = "checkBox_enPa0";
-            this.checkBox_enPa0.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_enPa0.TabIndex = 128;
-            this.checkBox_enPa0.Text = "0";
-            this.checkBox_enPa0.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(121)))), ((int)(((byte)(104)))));
-            this.checkBox_enPa0.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_enPa0.UseVisualStyleBackColor = true;
-            this.checkBox_enPa0.CheckedChanged += new System.EventHandler(this.checkBox_enPa_CheckedChanged);
-            // 
             // textBox_setAllInputDac
             // 
             this.textBox_setAllInputDac.enableNegative = false;
@@ -9524,6 +6612,94 @@
             this.textBox_inputDac21.Leave += new System.EventHandler(this.textBox_inputDac_Leave);
             this.textBox_inputDac21.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_inputDac_PreviewKeyDown);
             // 
+            // groupBox_DacT
+            // 
+            this.groupBox_DacT.Controls.Add(this.button_setAllDacT);
+            this.groupBox_DacT.Controls.Add(this.textBox_setAllDacT);
+            this.groupBox_DacT.Controls.Add(this.label1);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT31);
+            this.groupBox_DacT.Controls.Add(this.label2);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT30);
+            this.groupBox_DacT.Controls.Add(this.label3);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT29);
+            this.groupBox_DacT.Controls.Add(this.label4);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT28);
+            this.groupBox_DacT.Controls.Add(this.label5);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT27);
+            this.groupBox_DacT.Controls.Add(this.label6);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT26);
+            this.groupBox_DacT.Controls.Add(this.label7);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT25);
+            this.groupBox_DacT.Controls.Add(this.label8);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT24);
+            this.groupBox_DacT.Controls.Add(this.label10);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT23);
+            this.groupBox_DacT.Controls.Add(this.label11);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT22);
+            this.groupBox_DacT.Controls.Add(this.label12);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT21);
+            this.groupBox_DacT.Controls.Add(this.label13);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT20);
+            this.groupBox_DacT.Controls.Add(this.label14);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT19);
+            this.groupBox_DacT.Controls.Add(this.label15);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT18);
+            this.groupBox_DacT.Controls.Add(this.label16);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT17);
+            this.groupBox_DacT.Controls.Add(this.label17);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT16);
+            this.groupBox_DacT.Controls.Add(this.label18);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT15);
+            this.groupBox_DacT.Controls.Add(this.label19);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT14);
+            this.groupBox_DacT.Controls.Add(this.label20);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT13);
+            this.groupBox_DacT.Controls.Add(this.label21);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT12);
+            this.groupBox_DacT.Controls.Add(this.label22);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT11);
+            this.groupBox_DacT.Controls.Add(this.label23);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT10);
+            this.groupBox_DacT.Controls.Add(this.label24);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT9);
+            this.groupBox_DacT.Controls.Add(this.label25);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT8);
+            this.groupBox_DacT.Controls.Add(this.label26);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT7);
+            this.groupBox_DacT.Controls.Add(this.label27);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT6);
+            this.groupBox_DacT.Controls.Add(this.label29);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT5);
+            this.groupBox_DacT.Controls.Add(this.label30);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT4);
+            this.groupBox_DacT.Controls.Add(this.label31);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT3);
+            this.groupBox_DacT.Controls.Add(this.label32);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT2);
+            this.groupBox_DacT.Controls.Add(this.label33);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT1);
+            this.groupBox_DacT.Controls.Add(this.label34);
+            this.groupBox_DacT.Controls.Add(this.textBox_calibDacT0);
+            this.groupBox_DacT.Location = new System.Drawing.Point(327, 11);
+            this.groupBox_DacT.Name = "groupBox_DacT";
+            this.groupBox_DacT.Size = new System.Drawing.Size(300, 383);
+            this.groupBox_DacT.TabIndex = 162;
+            this.groupBox_DacT.TabStop = false;
+            this.groupBox_DacT.Text = "DAC time";
+            // 
+            // button_setAllDacT
+            // 
+            this.button_setAllDacT.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_setAllDacT.FlatAppearance.BorderSize = 0;
+            this.button_setAllDacT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_setAllDacT.Location = new System.Drawing.Point(142, 337);
+            this.button_setAllDacT.Name = "button_setAllDacT";
+            this.button_setAllDacT.Size = new System.Drawing.Size(80, 29);
+            this.button_setAllDacT.TabIndex = 163;
+            this.button_setAllDacT.Text = "Set all to";
+            this.button_setAllDacT.UseVisualStyleBackColor = false;
+            this.button_setAllDacT.Click += new System.EventHandler(this.button_setAllDacT_Click);
+            // 
             // textBox_setAllDacT
             // 
             this.textBox_setAllDacT.enableNegative = false;
@@ -9532,6 +6708,15 @@
             this.textBox_setAllDacT.Size = new System.Drawing.Size(60, 29);
             this.textBox_setAllDacT.TabIndex = 162;
             this.textBox_setAllDacT.Text = "7";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 30);
+            this.label1.TabIndex = 104;
+            this.label1.Text = "0";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT31
             // 
@@ -9543,6 +6728,15 @@
             this.textBox_calibDacT31.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT31.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(6, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 30);
+            this.label2.TabIndex = 97;
+            this.label2.Text = "1";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT30
             // 
             this.textBox_calibDacT30.enableNegative = false;
@@ -9552,6 +6746,15 @@
             this.textBox_calibDacT30.TabIndex = 159;
             this.textBox_calibDacT30.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT30.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(6, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 30);
+            this.label3.TabIndex = 98;
+            this.label3.Text = "2";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT29
             // 
@@ -9563,6 +6766,15 @@
             this.textBox_calibDacT29.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT29.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(6, 145);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 30);
+            this.label4.TabIndex = 99;
+            this.label4.Text = "3";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT28
             // 
             this.textBox_calibDacT28.enableNegative = false;
@@ -9572,6 +6784,15 @@
             this.textBox_calibDacT28.TabIndex = 157;
             this.textBox_calibDacT28.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT28.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(6, 180);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 30);
+            this.label5.TabIndex = 100;
+            this.label5.Text = "4";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT27
             // 
@@ -9583,6 +6804,15 @@
             this.textBox_calibDacT27.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT27.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(6, 215);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 30);
+            this.label6.TabIndex = 101;
+            this.label6.Text = "5";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT26
             // 
             this.textBox_calibDacT26.enableNegative = false;
@@ -9592,6 +6822,15 @@
             this.textBox_calibDacT26.TabIndex = 155;
             this.textBox_calibDacT26.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT26.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(6, 250);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 30);
+            this.label7.TabIndex = 102;
+            this.label7.Text = "6";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT25
             // 
@@ -9603,6 +6842,15 @@
             this.textBox_calibDacT25.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT25.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(6, 285);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(30, 30);
+            this.label8.TabIndex = 103;
+            this.label8.Text = "7";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT24
             // 
             this.textBox_calibDacT24.enableNegative = false;
@@ -9612,6 +6860,15 @@
             this.textBox_calibDacT24.TabIndex = 153;
             this.textBox_calibDacT24.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT24.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(78, 75);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 30);
+            this.label10.TabIndex = 105;
+            this.label10.Text = "9";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT23
             // 
@@ -9623,6 +6880,15 @@
             this.textBox_calibDacT23.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT23.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(78, 110);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(30, 30);
+            this.label11.TabIndex = 106;
+            this.label11.Text = "10";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT22
             // 
             this.textBox_calibDacT22.enableNegative = false;
@@ -9632,6 +6898,15 @@
             this.textBox_calibDacT22.TabIndex = 151;
             this.textBox_calibDacT22.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT22.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(78, 145);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(30, 30);
+            this.label12.TabIndex = 107;
+            this.label12.Text = "11";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT21
             // 
@@ -9643,6 +6918,15 @@
             this.textBox_calibDacT21.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT21.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(78, 180);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 30);
+            this.label13.TabIndex = 108;
+            this.label13.Text = "12";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT20
             // 
             this.textBox_calibDacT20.enableNegative = false;
@@ -9652,6 +6936,15 @@
             this.textBox_calibDacT20.TabIndex = 149;
             this.textBox_calibDacT20.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT20.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label14
+            // 
+            this.label14.Location = new System.Drawing.Point(78, 215);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(30, 30);
+            this.label14.TabIndex = 109;
+            this.label14.Text = "13";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT19
             // 
@@ -9663,6 +6956,15 @@
             this.textBox_calibDacT19.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT19.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(78, 250);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(30, 30);
+            this.label15.TabIndex = 110;
+            this.label15.Text = "14";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT18
             // 
             this.textBox_calibDacT18.enableNegative = false;
@@ -9672,6 +6974,15 @@
             this.textBox_calibDacT18.TabIndex = 147;
             this.textBox_calibDacT18.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT18.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label16
+            // 
+            this.label16.Location = new System.Drawing.Point(78, 285);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(30, 30);
+            this.label16.TabIndex = 111;
+            this.label16.Text = "15";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT17
             // 
@@ -9683,6 +6994,15 @@
             this.textBox_calibDacT17.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT17.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(78, 40);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(30, 30);
+            this.label17.TabIndex = 112;
+            this.label17.Text = "8";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT16
             // 
             this.textBox_calibDacT16.enableNegative = false;
@@ -9692,6 +7012,15 @@
             this.textBox_calibDacT16.TabIndex = 145;
             this.textBox_calibDacT16.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT16.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label18
+            // 
+            this.label18.Location = new System.Drawing.Point(150, 75);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(30, 30);
+            this.label18.TabIndex = 113;
+            this.label18.Text = "17";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT15
             // 
@@ -9703,6 +7032,15 @@
             this.textBox_calibDacT15.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT15.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label19
+            // 
+            this.label19.Location = new System.Drawing.Point(150, 110);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(30, 30);
+            this.label19.TabIndex = 114;
+            this.label19.Text = "18";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT14
             // 
             this.textBox_calibDacT14.enableNegative = false;
@@ -9712,6 +7050,15 @@
             this.textBox_calibDacT14.TabIndex = 143;
             this.textBox_calibDacT14.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT14.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label20
+            // 
+            this.label20.Location = new System.Drawing.Point(150, 145);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(30, 30);
+            this.label20.TabIndex = 115;
+            this.label20.Text = "19";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT13
             // 
@@ -9723,6 +7070,15 @@
             this.textBox_calibDacT13.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT13.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label21
+            // 
+            this.label21.Location = new System.Drawing.Point(150, 180);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(30, 30);
+            this.label21.TabIndex = 116;
+            this.label21.Text = "20";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT12
             // 
             this.textBox_calibDacT12.enableNegative = false;
@@ -9732,6 +7088,15 @@
             this.textBox_calibDacT12.TabIndex = 141;
             this.textBox_calibDacT12.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT12.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label22
+            // 
+            this.label22.Location = new System.Drawing.Point(150, 215);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(30, 30);
+            this.label22.TabIndex = 117;
+            this.label22.Text = "21";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT11
             // 
@@ -9743,6 +7108,15 @@
             this.textBox_calibDacT11.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT11.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label23
+            // 
+            this.label23.Location = new System.Drawing.Point(150, 250);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(30, 30);
+            this.label23.TabIndex = 118;
+            this.label23.Text = "22";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT10
             // 
             this.textBox_calibDacT10.enableNegative = false;
@@ -9752,6 +7126,15 @@
             this.textBox_calibDacT10.TabIndex = 139;
             this.textBox_calibDacT10.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT10.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label24
+            // 
+            this.label24.Location = new System.Drawing.Point(150, 285);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(30, 30);
+            this.label24.TabIndex = 119;
+            this.label24.Text = "23";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT9
             // 
@@ -9763,6 +7146,15 @@
             this.textBox_calibDacT9.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT9.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label25
+            // 
+            this.label25.Location = new System.Drawing.Point(150, 40);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(30, 30);
+            this.label25.TabIndex = 120;
+            this.label25.Text = "16";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT8
             // 
             this.textBox_calibDacT8.enableNegative = false;
@@ -9772,6 +7164,15 @@
             this.textBox_calibDacT8.TabIndex = 137;
             this.textBox_calibDacT8.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT8.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label26
+            // 
+            this.label26.Location = new System.Drawing.Point(222, 75);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(30, 30);
+            this.label26.TabIndex = 121;
+            this.label26.Text = "25";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT7
             // 
@@ -9783,6 +7184,15 @@
             this.textBox_calibDacT7.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT7.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label27
+            // 
+            this.label27.Location = new System.Drawing.Point(222, 110);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(30, 30);
+            this.label27.TabIndex = 122;
+            this.label27.Text = "26";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT6
             // 
             this.textBox_calibDacT6.enableNegative = false;
@@ -9792,6 +7202,15 @@
             this.textBox_calibDacT6.TabIndex = 135;
             this.textBox_calibDacT6.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT6.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label29
+            // 
+            this.label29.Location = new System.Drawing.Point(222, 145);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(30, 30);
+            this.label29.TabIndex = 123;
+            this.label29.Text = "27";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT5
             // 
@@ -9803,6 +7222,15 @@
             this.textBox_calibDacT5.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT5.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label30
+            // 
+            this.label30.Location = new System.Drawing.Point(222, 180);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(30, 30);
+            this.label30.TabIndex = 124;
+            this.label30.Text = "28";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT4
             // 
             this.textBox_calibDacT4.enableNegative = false;
@@ -9812,6 +7240,15 @@
             this.textBox_calibDacT4.TabIndex = 133;
             this.textBox_calibDacT4.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT4.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label31
+            // 
+            this.label31.Location = new System.Drawing.Point(222, 215);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(30, 30);
+            this.label31.TabIndex = 125;
+            this.label31.Text = "29";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT3
             // 
@@ -9823,6 +7260,15 @@
             this.textBox_calibDacT3.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label32
+            // 
+            this.label32.Location = new System.Drawing.Point(222, 250);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(30, 30);
+            this.label32.TabIndex = 126;
+            this.label32.Text = "30";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT2
             // 
             this.textBox_calibDacT2.enableNegative = false;
@@ -9832,6 +7278,15 @@
             this.textBox_calibDacT2.TabIndex = 131;
             this.textBox_calibDacT2.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
+            // 
+            // label33
+            // 
+            this.label33.Location = new System.Drawing.Point(222, 285);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(30, 30);
+            this.label33.TabIndex = 127;
+            this.label33.Text = "31";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDacT1
             // 
@@ -9843,6 +7298,15 @@
             this.textBox_calibDacT1.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // label34
+            // 
+            this.label34.Location = new System.Drawing.Point(222, 40);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(30, 30);
+            this.label34.TabIndex = 128;
+            this.label34.Text = "24";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDacT0
             // 
             this.textBox_calibDacT0.enableNegative = false;
@@ -9853,6 +7317,94 @@
             this.textBox_calibDacT0.Leave += new System.EventHandler(this.textBox_calibDacT_Leave);
             this.textBox_calibDacT0.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDacT_PreviewKeyDown);
             // 
+            // groupBox_DacQ
+            // 
+            this.groupBox_DacQ.Controls.Add(this.button_setAllDac);
+            this.groupBox_DacQ.Controls.Add(this.textBox_setAllDac);
+            this.groupBox_DacQ.Controls.Add(this.label90);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac31);
+            this.groupBox_DacQ.Controls.Add(this.label97);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac30);
+            this.groupBox_DacQ.Controls.Add(this.label96);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac29);
+            this.groupBox_DacQ.Controls.Add(this.label95);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac28);
+            this.groupBox_DacQ.Controls.Add(this.label94);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac27);
+            this.groupBox_DacQ.Controls.Add(this.label93);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac26);
+            this.groupBox_DacQ.Controls.Add(this.label92);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac25);
+            this.groupBox_DacQ.Controls.Add(this.label91);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac24);
+            this.groupBox_DacQ.Controls.Add(this.label89);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac23);
+            this.groupBox_DacQ.Controls.Add(this.label88);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac22);
+            this.groupBox_DacQ.Controls.Add(this.label87);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac21);
+            this.groupBox_DacQ.Controls.Add(this.label86);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac20);
+            this.groupBox_DacQ.Controls.Add(this.label85);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac19);
+            this.groupBox_DacQ.Controls.Add(this.label84);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac18);
+            this.groupBox_DacQ.Controls.Add(this.label83);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac17);
+            this.groupBox_DacQ.Controls.Add(this.label82);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac16);
+            this.groupBox_DacQ.Controls.Add(this.label81);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac15);
+            this.groupBox_DacQ.Controls.Add(this.label80);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac14);
+            this.groupBox_DacQ.Controls.Add(this.label79);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac13);
+            this.groupBox_DacQ.Controls.Add(this.label78);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac12);
+            this.groupBox_DacQ.Controls.Add(this.label77);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac11);
+            this.groupBox_DacQ.Controls.Add(this.label76);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac10);
+            this.groupBox_DacQ.Controls.Add(this.label75);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac9);
+            this.groupBox_DacQ.Controls.Add(this.label74);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac8);
+            this.groupBox_DacQ.Controls.Add(this.label73);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac7);
+            this.groupBox_DacQ.Controls.Add(this.label72);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac6);
+            this.groupBox_DacQ.Controls.Add(this.label71);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac5);
+            this.groupBox_DacQ.Controls.Add(this.label70);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac4);
+            this.groupBox_DacQ.Controls.Add(this.label69);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac3);
+            this.groupBox_DacQ.Controls.Add(this.label68);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac2);
+            this.groupBox_DacQ.Controls.Add(this.label66);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac1);
+            this.groupBox_DacQ.Controls.Add(this.label65);
+            this.groupBox_DacQ.Controls.Add(this.textBox_calibDac0);
+            this.groupBox_DacQ.Location = new System.Drawing.Point(19, 11);
+            this.groupBox_DacQ.Name = "groupBox_DacQ";
+            this.groupBox_DacQ.Size = new System.Drawing.Size(300, 383);
+            this.groupBox_DacQ.TabIndex = 161;
+            this.groupBox_DacQ.TabStop = false;
+            this.groupBox_DacQ.Text = "DAC charge";
+            // 
+            // button_setAllDac
+            // 
+            this.button_setAllDac.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_setAllDac.FlatAppearance.BorderSize = 0;
+            this.button_setAllDac.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_setAllDac.Location = new System.Drawing.Point(142, 337);
+            this.button_setAllDac.Name = "button_setAllDac";
+            this.button_setAllDac.Size = new System.Drawing.Size(80, 29);
+            this.button_setAllDac.TabIndex = 162;
+            this.button_setAllDac.Text = "Set all to";
+            this.button_setAllDac.UseVisualStyleBackColor = false;
+            this.button_setAllDac.Click += new System.EventHandler(this.button_setAllDac_Click);
+            // 
             // textBox_setAllDac
             // 
             this.textBox_setAllDac.enableNegative = false;
@@ -9861,6 +7413,15 @@
             this.textBox_setAllDac.Size = new System.Drawing.Size(60, 29);
             this.textBox_setAllDac.TabIndex = 161;
             this.textBox_setAllDac.Text = "7";
+            // 
+            // label90
+            // 
+            this.label90.Location = new System.Drawing.Point(6, 40);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(30, 30);
+            this.label90.TabIndex = 104;
+            this.label90.Text = "0";
+            this.label90.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac31
             // 
@@ -9872,6 +7433,15 @@
             this.textBox_calibDac31.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac31.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label97
+            // 
+            this.label97.Location = new System.Drawing.Point(6, 75);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(30, 30);
+            this.label97.TabIndex = 97;
+            this.label97.Text = "1";
+            this.label97.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac30
             // 
             this.textBox_calibDac30.enableNegative = false;
@@ -9881,6 +7451,15 @@
             this.textBox_calibDac30.TabIndex = 159;
             this.textBox_calibDac30.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac30.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label96
+            // 
+            this.label96.Location = new System.Drawing.Point(6, 110);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(30, 30);
+            this.label96.TabIndex = 98;
+            this.label96.Text = "2";
+            this.label96.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac29
             // 
@@ -9892,6 +7471,15 @@
             this.textBox_calibDac29.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac29.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label95
+            // 
+            this.label95.Location = new System.Drawing.Point(6, 145);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(30, 30);
+            this.label95.TabIndex = 99;
+            this.label95.Text = "3";
+            this.label95.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac28
             // 
             this.textBox_calibDac28.enableNegative = false;
@@ -9901,6 +7489,15 @@
             this.textBox_calibDac28.TabIndex = 157;
             this.textBox_calibDac28.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac28.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label94
+            // 
+            this.label94.Location = new System.Drawing.Point(6, 180);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(30, 30);
+            this.label94.TabIndex = 100;
+            this.label94.Text = "4";
+            this.label94.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac27
             // 
@@ -9912,6 +7509,15 @@
             this.textBox_calibDac27.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac27.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label93
+            // 
+            this.label93.Location = new System.Drawing.Point(6, 215);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(30, 30);
+            this.label93.TabIndex = 101;
+            this.label93.Text = "5";
+            this.label93.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac26
             // 
             this.textBox_calibDac26.enableNegative = false;
@@ -9921,6 +7527,15 @@
             this.textBox_calibDac26.TabIndex = 155;
             this.textBox_calibDac26.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac26.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label92
+            // 
+            this.label92.Location = new System.Drawing.Point(6, 250);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(30, 30);
+            this.label92.TabIndex = 102;
+            this.label92.Text = "6";
+            this.label92.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac25
             // 
@@ -9932,6 +7547,15 @@
             this.textBox_calibDac25.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac25.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label91
+            // 
+            this.label91.Location = new System.Drawing.Point(6, 285);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(30, 30);
+            this.label91.TabIndex = 103;
+            this.label91.Text = "7";
+            this.label91.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac24
             // 
             this.textBox_calibDac24.enableNegative = false;
@@ -9941,6 +7565,15 @@
             this.textBox_calibDac24.TabIndex = 153;
             this.textBox_calibDac24.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac24.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label89
+            // 
+            this.label89.Location = new System.Drawing.Point(78, 75);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(30, 30);
+            this.label89.TabIndex = 105;
+            this.label89.Text = "9";
+            this.label89.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac23
             // 
@@ -9952,6 +7585,15 @@
             this.textBox_calibDac23.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac23.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label88
+            // 
+            this.label88.Location = new System.Drawing.Point(78, 110);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(30, 30);
+            this.label88.TabIndex = 106;
+            this.label88.Text = "10";
+            this.label88.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac22
             // 
             this.textBox_calibDac22.enableNegative = false;
@@ -9961,6 +7603,15 @@
             this.textBox_calibDac22.TabIndex = 151;
             this.textBox_calibDac22.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac22.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label87
+            // 
+            this.label87.Location = new System.Drawing.Point(78, 145);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(30, 30);
+            this.label87.TabIndex = 107;
+            this.label87.Text = "11";
+            this.label87.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac21
             // 
@@ -9972,6 +7623,15 @@
             this.textBox_calibDac21.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac21.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label86
+            // 
+            this.label86.Location = new System.Drawing.Point(78, 180);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(30, 30);
+            this.label86.TabIndex = 108;
+            this.label86.Text = "12";
+            this.label86.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac20
             // 
             this.textBox_calibDac20.enableNegative = false;
@@ -9981,6 +7641,15 @@
             this.textBox_calibDac20.TabIndex = 149;
             this.textBox_calibDac20.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac20.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label85
+            // 
+            this.label85.Location = new System.Drawing.Point(78, 215);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(30, 30);
+            this.label85.TabIndex = 109;
+            this.label85.Text = "13";
+            this.label85.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac19
             // 
@@ -9992,6 +7661,15 @@
             this.textBox_calibDac19.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac19.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label84
+            // 
+            this.label84.Location = new System.Drawing.Point(78, 250);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(30, 30);
+            this.label84.TabIndex = 110;
+            this.label84.Text = "14";
+            this.label84.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac18
             // 
             this.textBox_calibDac18.enableNegative = false;
@@ -10001,6 +7679,15 @@
             this.textBox_calibDac18.TabIndex = 147;
             this.textBox_calibDac18.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac18.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label83
+            // 
+            this.label83.Location = new System.Drawing.Point(78, 285);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(30, 30);
+            this.label83.TabIndex = 111;
+            this.label83.Text = "15";
+            this.label83.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac17
             // 
@@ -10012,6 +7699,15 @@
             this.textBox_calibDac17.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac17.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label82
+            // 
+            this.label82.Location = new System.Drawing.Point(78, 40);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(30, 30);
+            this.label82.TabIndex = 112;
+            this.label82.Text = "8";
+            this.label82.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac16
             // 
             this.textBox_calibDac16.enableNegative = false;
@@ -10021,6 +7717,15 @@
             this.textBox_calibDac16.TabIndex = 145;
             this.textBox_calibDac16.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac16.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label81
+            // 
+            this.label81.Location = new System.Drawing.Point(150, 75);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(30, 30);
+            this.label81.TabIndex = 113;
+            this.label81.Text = "17";
+            this.label81.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac15
             // 
@@ -10032,6 +7737,15 @@
             this.textBox_calibDac15.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac15.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label80
+            // 
+            this.label80.Location = new System.Drawing.Point(150, 110);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(30, 30);
+            this.label80.TabIndex = 114;
+            this.label80.Text = "18";
+            this.label80.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac14
             // 
             this.textBox_calibDac14.enableNegative = false;
@@ -10041,6 +7755,15 @@
             this.textBox_calibDac14.TabIndex = 143;
             this.textBox_calibDac14.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac14.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label79
+            // 
+            this.label79.Location = new System.Drawing.Point(150, 145);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(30, 30);
+            this.label79.TabIndex = 115;
+            this.label79.Text = "19";
+            this.label79.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac13
             // 
@@ -10052,6 +7775,15 @@
             this.textBox_calibDac13.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac13.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label78
+            // 
+            this.label78.Location = new System.Drawing.Point(150, 180);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(30, 30);
+            this.label78.TabIndex = 116;
+            this.label78.Text = "20";
+            this.label78.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac12
             // 
             this.textBox_calibDac12.enableNegative = false;
@@ -10061,6 +7793,15 @@
             this.textBox_calibDac12.TabIndex = 141;
             this.textBox_calibDac12.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac12.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label77
+            // 
+            this.label77.Location = new System.Drawing.Point(150, 215);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(30, 30);
+            this.label77.TabIndex = 117;
+            this.label77.Text = "21";
+            this.label77.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac11
             // 
@@ -10072,6 +7813,15 @@
             this.textBox_calibDac11.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac11.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label76
+            // 
+            this.label76.Location = new System.Drawing.Point(150, 250);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(30, 30);
+            this.label76.TabIndex = 118;
+            this.label76.Text = "22";
+            this.label76.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac10
             // 
             this.textBox_calibDac10.enableNegative = false;
@@ -10081,6 +7831,15 @@
             this.textBox_calibDac10.TabIndex = 139;
             this.textBox_calibDac10.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac10.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label75
+            // 
+            this.label75.Location = new System.Drawing.Point(150, 285);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(30, 30);
+            this.label75.TabIndex = 119;
+            this.label75.Text = "23";
+            this.label75.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac9
             // 
@@ -10092,6 +7851,15 @@
             this.textBox_calibDac9.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac9.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label74
+            // 
+            this.label74.Location = new System.Drawing.Point(150, 40);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(30, 30);
+            this.label74.TabIndex = 120;
+            this.label74.Text = "16";
+            this.label74.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac8
             // 
             this.textBox_calibDac8.enableNegative = false;
@@ -10101,6 +7869,15 @@
             this.textBox_calibDac8.TabIndex = 137;
             this.textBox_calibDac8.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac8.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label73
+            // 
+            this.label73.Location = new System.Drawing.Point(222, 75);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(30, 30);
+            this.label73.TabIndex = 121;
+            this.label73.Text = "25";
+            this.label73.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac7
             // 
@@ -10112,6 +7889,15 @@
             this.textBox_calibDac7.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac7.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label72
+            // 
+            this.label72.Location = new System.Drawing.Point(222, 110);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(30, 30);
+            this.label72.TabIndex = 122;
+            this.label72.Text = "26";
+            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac6
             // 
             this.textBox_calibDac6.enableNegative = false;
@@ -10121,6 +7907,15 @@
             this.textBox_calibDac6.TabIndex = 135;
             this.textBox_calibDac6.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac6.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label71
+            // 
+            this.label71.Location = new System.Drawing.Point(222, 145);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(30, 30);
+            this.label71.TabIndex = 123;
+            this.label71.Text = "27";
+            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac5
             // 
@@ -10132,6 +7927,15 @@
             this.textBox_calibDac5.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac5.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label70
+            // 
+            this.label70.Location = new System.Drawing.Point(222, 180);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(30, 30);
+            this.label70.TabIndex = 124;
+            this.label70.Text = "28";
+            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac4
             // 
             this.textBox_calibDac4.enableNegative = false;
@@ -10141,6 +7945,15 @@
             this.textBox_calibDac4.TabIndex = 133;
             this.textBox_calibDac4.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac4.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label69
+            // 
+            this.label69.Location = new System.Drawing.Point(222, 215);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(30, 30);
+            this.label69.TabIndex = 125;
+            this.label69.Text = "29";
+            this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac3
             // 
@@ -10152,6 +7965,15 @@
             this.textBox_calibDac3.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label68
+            // 
+            this.label68.Location = new System.Drawing.Point(222, 250);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(30, 30);
+            this.label68.TabIndex = 126;
+            this.label68.Text = "30";
+            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac2
             // 
             this.textBox_calibDac2.enableNegative = false;
@@ -10161,6 +7983,15 @@
             this.textBox_calibDac2.TabIndex = 131;
             this.textBox_calibDac2.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
+            // 
+            // label66
+            // 
+            this.label66.Location = new System.Drawing.Point(222, 285);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(30, 30);
+            this.label66.TabIndex = 127;
+            this.label66.Text = "31";
+            this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_calibDac1
             // 
@@ -10172,6 +8003,15 @@
             this.textBox_calibDac1.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // label65
+            // 
+            this.label65.Location = new System.Drawing.Point(222, 40);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(30, 30);
+            this.label65.TabIndex = 128;
+            this.label65.Text = "24";
+            this.label65.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBox_calibDac0
             // 
             this.textBox_calibDac0.enableNegative = false;
@@ -10182,15 +8022,321 @@
             this.textBox_calibDac0.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac0.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
+            // tabPage_probes
+            // 
+            this.tabPage_probes.BackColor = System.Drawing.Color.White;
+            this.tabPage_probes.Controls.Add(this.button_sendReadRegister);
+            this.tabPage_probes.Controls.Add(this.numericUpDown_rr);
+            this.tabPage_probes.Controls.Add(this.groupBox_digitalProbe);
+            this.tabPage_probes.Controls.Add(this.groupBox_analogueProbe);
+            this.tabPage_probes.Controls.Add(this.button_sendProbes);
+            this.tabPage_probes.Controls.Add(this.checkBox_rr);
+            this.tabPage_probes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tabPage_probes.Location = new System.Drawing.Point(14, 4);
+            this.tabPage_probes.Name = "tabPage_probes";
+            this.tabPage_probes.Size = new System.Drawing.Size(1062, 482);
+            this.tabPage_probes.TabIndex = 3;
+            this.tabPage_probes.Text = "Probes";
+            this.tabPage_probes.MouseEnter += new System.EventHandler(this.tabPage_probes_MouseEnter);
+            this.tabPage_probes.MouseLeave += new System.EventHandler(this.object_MouseLeave);
+            // 
+            // button_sendReadRegister
+            // 
+            this.button_sendReadRegister.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_sendReadRegister.FlatAppearance.BorderSize = 0;
+            this.button_sendReadRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_sendReadRegister.Location = new System.Drawing.Point(650, 55);
+            this.button_sendReadRegister.Name = "button_sendReadRegister";
+            this.button_sendReadRegister.Size = new System.Drawing.Size(160, 35);
+            this.button_sendReadRegister.TabIndex = 2;
+            this.button_sendReadRegister.Text = "Send Read Register";
+            this.button_sendReadRegister.UseVisualStyleBackColor = false;
+            this.button_sendReadRegister.Click += new System.EventHandler(this.button_sendReadRegister_Click);
+            // 
+            // numericUpDown_rr
+            // 
+            this.numericUpDown_rr.Location = new System.Drawing.Point(567, 55);
+            this.numericUpDown_rr.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.numericUpDown_rr.Name = "numericUpDown_rr";
+            this.numericUpDown_rr.Size = new System.Drawing.Size(52, 29);
+            this.numericUpDown_rr.TabIndex = 1;
+            // 
+            // groupBox_digitalProbe
+            // 
+            this.groupBox_digitalProbe.Controls.Add(this.radioButton_noDProbe);
+            this.groupBox_digitalProbe.Controls.Add(this.label119);
+            this.groupBox_digitalProbe.Controls.Add(this.numericUpDown_probeDChannel);
+            this.groupBox_digitalProbe.Controls.Add(this.radioButton_probePDLG);
+            this.groupBox_digitalProbe.Controls.Add(this.radioButton_probePDHG);
+            this.groupBox_digitalProbe.Location = new System.Drawing.Point(543, 106);
+            this.groupBox_digitalProbe.Name = "groupBox_digitalProbe";
+            this.groupBox_digitalProbe.Size = new System.Drawing.Size(267, 210);
+            this.groupBox_digitalProbe.TabIndex = 4;
+            this.groupBox_digitalProbe.TabStop = false;
+            this.groupBox_digitalProbe.Text = "Digital probe";
+            // 
+            // radioButton_noDProbe
+            // 
+            this.radioButton_noDProbe.AutoSize = true;
+            this.radioButton_noDProbe.Checked = true;
+            this.radioButton_noDProbe.Location = new System.Drawing.Point(24, 39);
+            this.radioButton_noDProbe.Name = "radioButton_noDProbe";
+            this.radioButton_noDProbe.Size = new System.Drawing.Size(161, 28);
+            this.radioButton_noDProbe.TabIndex = 0;
+            this.radioButton_noDProbe.TabStop = true;
+            this.radioButton_noDProbe.Text = "No digital probe";
+            this.radioButton_noDProbe.UseVisualStyleBackColor = true;
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.Location = new System.Drawing.Point(106, 156);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(81, 24);
+            this.label119.TabIndex = 23;
+            this.label119.Text = "Channel";
+            // 
+            // numericUpDown_probeDChannel
+            // 
+            this.numericUpDown_probeDChannel.Location = new System.Drawing.Point(177, 154);
+            this.numericUpDown_probeDChannel.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.numericUpDown_probeDChannel.Name = "numericUpDown_probeDChannel";
+            this.numericUpDown_probeDChannel.Size = new System.Drawing.Size(70, 29);
+            this.numericUpDown_probeDChannel.TabIndex = 3;
+            // 
+            // radioButton_probePDLG
+            // 
+            this.radioButton_probePDLG.AutoSize = true;
+            this.radioButton_probePDLG.Location = new System.Drawing.Point(24, 103);
+            this.radioButton_probePDLG.Name = "radioButton_probePDLG";
+            this.radioButton_probePDLG.Size = new System.Drawing.Size(277, 28);
+            this.radioButton_probePDLG.TabIndex = 2;
+            this.radioButton_probePDLG.Text = "Low gain peak detector mode";
+            this.radioButton_probePDLG.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_probePDHG
+            // 
+            this.radioButton_probePDHG.AutoSize = true;
+            this.radioButton_probePDHG.Location = new System.Drawing.Point(24, 71);
+            this.radioButton_probePDHG.Name = "radioButton_probePDHG";
+            this.radioButton_probePDHG.Size = new System.Drawing.Size(282, 28);
+            this.radioButton_probePDHG.TabIndex = 1;
+            this.radioButton_probePDHG.Text = "High gain peak detector mode";
+            this.radioButton_probePDHG.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_analogueProbe
+            // 
+            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probePaLG);
+            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probePaHG);
+            this.groupBox_analogueProbe.Controls.Add(this.label118);
+            this.groupBox_analogueProbe.Controls.Add(this.radioButton_noAProbe);
+            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probeSshHG);
+            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probeSshLG);
+            this.groupBox_analogueProbe.Controls.Add(this.radioButton_probeFsh);
+            this.groupBox_analogueProbe.Controls.Add(this.numericUpDown_probeAChannel);
+            this.groupBox_analogueProbe.Location = new System.Drawing.Point(242, 106);
+            this.groupBox_analogueProbe.Name = "groupBox_analogueProbe";
+            this.groupBox_analogueProbe.Size = new System.Drawing.Size(251, 305);
+            this.groupBox_analogueProbe.TabIndex = 0;
+            this.groupBox_analogueProbe.TabStop = false;
+            this.groupBox_analogueProbe.Text = "Analogue probe";
+            // 
+            // radioButton_probePaLG
+            // 
+            this.radioButton_probePaLG.AutoSize = true;
+            this.radioButton_probePaLG.Location = new System.Drawing.Point(19, 71);
+            this.radioButton_probePaLG.Name = "radioButton_probePaLG";
+            this.radioButton_probePaLG.Size = new System.Drawing.Size(264, 28);
+            this.radioButton_probePaLG.TabIndex = 2;
+            this.radioButton_probePaLG.Text = "Low gain preamplifier output";
+            this.radioButton_probePaLG.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_probePaHG
+            // 
+            this.radioButton_probePaHG.AutoSize = true;
+            this.radioButton_probePaHG.Location = new System.Drawing.Point(19, 135);
+            this.radioButton_probePaHG.Name = "radioButton_probePaHG";
+            this.radioButton_probePaHG.Size = new System.Drawing.Size(269, 28);
+            this.radioButton_probePaHG.TabIndex = 4;
+            this.radioButton_probePaHG.Text = "High gain preamplifier output";
+            this.radioButton_probePaHG.UseVisualStyleBackColor = true;
+            // 
+            // label118
+            // 
+            this.label118.AutoSize = true;
+            this.label118.Location = new System.Drawing.Point(92, 252);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(81, 24);
+            this.label118.TabIndex = 21;
+            this.label118.Text = "Channel";
+            // 
+            // radioButton_noAProbe
+            // 
+            this.radioButton_noAProbe.AutoSize = true;
+            this.radioButton_noAProbe.Checked = true;
+            this.radioButton_noAProbe.Location = new System.Drawing.Point(19, 39);
+            this.radioButton_noAProbe.Name = "radioButton_noAProbe";
+            this.radioButton_noAProbe.Size = new System.Drawing.Size(192, 28);
+            this.radioButton_noAProbe.TabIndex = 1;
+            this.radioButton_noAProbe.TabStop = true;
+            this.radioButton_noAProbe.Text = "No analogue probe";
+            this.radioButton_noAProbe.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_probeSshHG
+            // 
+            this.radioButton_probeSshHG.AutoSize = true;
+            this.radioButton_probeSshHG.Location = new System.Drawing.Point(19, 167);
+            this.radioButton_probeSshHG.Name = "radioButton_probeSshHG";
+            this.radioButton_probeSshHG.Size = new System.Drawing.Size(272, 28);
+            this.radioButton_probeSshHG.TabIndex = 5;
+            this.radioButton_probeSshHG.Text = "High gain slow shaper output";
+            this.radioButton_probeSshHG.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_probeSshLG
+            // 
+            this.radioButton_probeSshLG.AutoSize = true;
+            this.radioButton_probeSshLG.Location = new System.Drawing.Point(19, 103);
+            this.radioButton_probeSshLG.Name = "radioButton_probeSshLG";
+            this.radioButton_probeSshLG.Size = new System.Drawing.Size(267, 28);
+            this.radioButton_probeSshLG.TabIndex = 3;
+            this.radioButton_probeSshLG.Text = "Low gain slow shaper output";
+            this.radioButton_probeSshLG.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_probeFsh
+            // 
+            this.radioButton_probeFsh.AutoSize = true;
+            this.radioButton_probeFsh.Location = new System.Drawing.Point(19, 199);
+            this.radioButton_probeFsh.Name = "radioButton_probeFsh";
+            this.radioButton_probeFsh.Size = new System.Drawing.Size(183, 28);
+            this.radioButton_probeFsh.TabIndex = 6;
+            this.radioButton_probeFsh.Text = "Fast shaper output";
+            this.radioButton_probeFsh.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown_probeAChannel
+            // 
+            this.numericUpDown_probeAChannel.Location = new System.Drawing.Point(163, 250);
+            this.numericUpDown_probeAChannel.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.numericUpDown_probeAChannel.Name = "numericUpDown_probeAChannel";
+            this.numericUpDown_probeAChannel.Size = new System.Drawing.Size(70, 29);
+            this.numericUpDown_probeAChannel.TabIndex = 0;
+            // 
+            // button_sendProbes
+            // 
+            this.button_sendProbes.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_sendProbes.FlatAppearance.BorderSize = 0;
+            this.button_sendProbes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_sendProbes.Location = new System.Drawing.Point(650, 376);
+            this.button_sendProbes.Name = "button_sendProbes";
+            this.button_sendProbes.Size = new System.Drawing.Size(160, 35);
+            this.button_sendProbes.TabIndex = 5;
+            this.button_sendProbes.Text = "Send probes";
+            this.button_sendProbes.UseVisualStyleBackColor = false;
+            this.button_sendProbes.Click += new System.EventHandler(this.button_sendProbes_Click);
+            // 
             // checkBox_rr
             // 
             this.checkBox_rr.AutoSize = true;
             this.checkBox_rr.Location = new System.Drawing.Point(281, 56);
             this.checkBox_rr.Name = "checkBox_rr";
             this.checkBox_rr.Size = new System.Drawing.Size(356, 28);
-            this.checkBox_rr.TabIndex = 19;
+            this.checkBox_rr.TabIndex = 0;
             this.checkBox_rr.Text = "Enable output read register on channel";
             this.checkBox_rr.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_calibration
+            // 
+            this.tabPage_calibration.BackColor = System.Drawing.Color.White;
+            this.tabPage_calibration.Controls.Add(this.tabControl_calibration);
+            this.tabPage_calibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tabPage_calibration.Location = new System.Drawing.Point(14, 4);
+            this.tabPage_calibration.Name = "tabPage_calibration";
+            this.tabPage_calibration.Size = new System.Drawing.Size(1062, 482);
+            this.tabPage_calibration.TabIndex = 4;
+            this.tabPage_calibration.Text = "S-curves";
+            // 
+            // tabControl_calibration
+            // 
+            this.tabControl_calibration.Controls.Add(this.tabPage_sCurves);
+            this.tabControl_calibration.Controls.Add(this.tabPage_holdScan);
+            this.tabControl_calibration.Controls.Add(this.tabPage_staircase);
+            this.tabControl_calibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.tabControl_calibration.Location = new System.Drawing.Point(-4, 0);
+            this.tabControl_calibration.Name = "tabControl_calibration";
+            this.tabControl_calibration.SelectedIndex = 0;
+            this.tabControl_calibration.Size = new System.Drawing.Size(1088, 494);
+            this.tabControl_calibration.TabIndex = 0;
+            // 
+            // tabPage_sCurves
+            // 
+            this.tabPage_sCurves.BackColor = System.Drawing.Color.White;
+            this.tabPage_sCurves.Controls.Add(this.label110);
+            this.tabPage_sCurves.Controls.Add(this.comboBox_sCurvesClock);
+            this.tabPage_sCurves.Controls.Add(this.checkBox_ScurvesTorQ);
+            this.tabPage_sCurves.Controls.Add(this.label134);
+            this.tabPage_sCurves.Controls.Add(this.button_ScurvesUncheckAll);
+            this.tabPage_sCurves.Controls.Add(this.button_ScurvesCheckAll);
+            this.tabPage_sCurves.Controls.Add(this.button_channelSelectionScurves);
+            this.tabPage_sCurves.Controls.Add(this.groupBox_channelSelectionScurves);
+            this.tabPage_sCurves.Controls.Add(this.checkBox_ScurvesChoice);
+            this.tabPage_sCurves.Controls.Add(this.textBox_stepScurves);
+            this.tabPage_sCurves.Controls.Add(this.textBox_maxCodeScurves);
+            this.tabPage_sCurves.Controls.Add(this.textBox_minCodeScurves);
+            this.tabPage_sCurves.Controls.Add(this.checkBox_useMaskScurves);
+            this.tabPage_sCurves.Controls.Add(this.button_autocalibration);
+            this.tabPage_sCurves.Controls.Add(this.button_Scurves);
+            this.tabPage_sCurves.Controls.Add(this.button_resetZoomScurves);
+            this.tabPage_sCurves.Controls.Add(this.label102);
+            this.tabPage_sCurves.Controls.Add(this.progressBar_Scurves);
+            this.tabPage_sCurves.Controls.Add(this.label103);
+            this.tabPage_sCurves.Controls.Add(this.label109);
+            this.tabPage_sCurves.Controls.Add(this.label104);
+            this.tabPage_sCurves.Controls.Add(this.button_sCurveSavePath);
+            this.tabPage_sCurves.Controls.Add(this.textBox_sCurveSavePath);
+            this.tabPage_sCurves.Controls.Add(this.chart_Scurves);
+            this.tabPage_sCurves.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tabPage_sCurves.Location = new System.Drawing.Point(4, 34);
+            this.tabPage_sCurves.Name = "tabPage_sCurves";
+            this.tabPage_sCurves.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_sCurves.Size = new System.Drawing.Size(1080, 456);
+            this.tabPage_sCurves.TabIndex = 0;
+            this.tabPage_sCurves.Text = "     S-curves    ";
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(528, 10);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(57, 24);
+            this.label110.TabIndex = 41;
+            this.label110.Text = "Clock";
+            // 
+            // comboBox_sCurvesClock
+            // 
+            this.comboBox_sCurvesClock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_sCurvesClock.FormattingEnabled = true;
+            this.comboBox_sCurvesClock.Items.AddRange(new object[] {
+            "1 kHz",
+            "10 kHz",
+            "50 kHz",
+            "100 kHz"});
+            this.comboBox_sCurvesClock.Location = new System.Drawing.Point(579, 6);
+            this.comboBox_sCurvesClock.Name = "comboBox_sCurvesClock";
+            this.comboBox_sCurvesClock.Size = new System.Drawing.Size(121, 32);
+            this.comboBox_sCurvesClock.TabIndex = 4;
+            this.comboBox_sCurvesClock.MouseEnter += new System.EventHandler(this.comboBox_sCurveClock_MouseEnter);
+            this.comboBox_sCurvesClock.MouseLeave += new System.EventHandler(this.object_MouseLeave);
             // 
             // checkBox_ScurvesTorQ
             // 
@@ -10203,6 +8349,106 @@
             this.checkBox_ScurvesTorQ.Text = "Charge S-curves";
             this.checkBox_ScurvesTorQ.UseVisualStyleBackColor = true;
             this.checkBox_ScurvesTorQ.CheckedChanged += new System.EventHandler(this.checkBox_ScurvesTorQ_CheckedChanged);
+            // 
+            // label134
+            // 
+            this.label134.Location = new System.Drawing.Point(820, 0);
+            this.label134.Name = "label134";
+            this.label134.Size = new System.Drawing.Size(180, 6);
+            this.label134.TabIndex = 29;
+            // 
+            // button_ScurvesUncheckAll
+            // 
+            this.button_ScurvesUncheckAll.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_ScurvesUncheckAll.FlatAppearance.BorderSize = 0;
+            this.button_ScurvesUncheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_ScurvesUncheckAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button_ScurvesUncheckAll.Location = new System.Drawing.Point(910, 36);
+            this.button_ScurvesUncheckAll.Name = "button_ScurvesUncheckAll";
+            this.button_ScurvesUncheckAll.Size = new System.Drawing.Size(90, 27);
+            this.button_ScurvesUncheckAll.TabIndex = 31;
+            this.button_ScurvesUncheckAll.Text = "Uncheck all";
+            this.button_ScurvesUncheckAll.UseVisualStyleBackColor = false;
+            this.button_ScurvesUncheckAll.Visible = false;
+            this.button_ScurvesUncheckAll.Click += new System.EventHandler(this.button_ScurvesUncheckAll_Click);
+            this.button_ScurvesUncheckAll.MouseEnter += new System.EventHandler(this.channelSelectionScurves_MouseEnter);
+            this.button_ScurvesUncheckAll.MouseLeave += new System.EventHandler(this.object_MouseLeave);
+            // 
+            // button_ScurvesCheckAll
+            // 
+            this.button_ScurvesCheckAll.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_ScurvesCheckAll.FlatAppearance.BorderSize = 0;
+            this.button_ScurvesCheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_ScurvesCheckAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button_ScurvesCheckAll.Location = new System.Drawing.Point(820, 36);
+            this.button_ScurvesCheckAll.Name = "button_ScurvesCheckAll";
+            this.button_ScurvesCheckAll.Size = new System.Drawing.Size(90, 27);
+            this.button_ScurvesCheckAll.TabIndex = 30;
+            this.button_ScurvesCheckAll.Text = "Check all";
+            this.button_ScurvesCheckAll.UseVisualStyleBackColor = false;
+            this.button_ScurvesCheckAll.Visible = false;
+            this.button_ScurvesCheckAll.Click += new System.EventHandler(this.button_ScurvesCheckAll_Click);
+            this.button_ScurvesCheckAll.MouseEnter += new System.EventHandler(this.channelSelectionScurves_MouseEnter);
+            this.button_ScurvesCheckAll.MouseLeave += new System.EventHandler(this.object_MouseLeave);
+            // 
+            // button_channelSelectionScurves
+            // 
+            this.button_channelSelectionScurves.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_channelSelectionScurves.FlatAppearance.BorderSize = 0;
+            this.button_channelSelectionScurves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_channelSelectionScurves.Location = new System.Drawing.Point(820, 6);
+            this.button_channelSelectionScurves.Name = "button_channelSelectionScurves";
+            this.button_channelSelectionScurves.Size = new System.Drawing.Size(180, 30);
+            this.button_channelSelectionScurves.TabIndex = 5;
+            this.button_channelSelectionScurves.Text = "v   Channel selection   v";
+            this.button_channelSelectionScurves.UseVisualStyleBackColor = false;
+            this.button_channelSelectionScurves.Click += new System.EventHandler(this.button_channelSelectionScurves_Click);
+            this.button_channelSelectionScurves.MouseEnter += new System.EventHandler(this.channelSelectionScurves_MouseEnter);
+            this.button_channelSelectionScurves.MouseLeave += new System.EventHandler(this.object_MouseLeave);
+            // 
+            // groupBox_channelSelectionScurves
+            // 
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn31);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn30);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn29);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn28);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn27);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn26);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn25);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn24);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn23);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn22);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn21);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn20);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn19);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn18);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn17);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn16);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn15);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn14);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn13);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn12);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn11);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn10);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn9);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn8);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn7);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn6);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn5);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn4);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn3);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn2);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn1);
+            this.groupBox_channelSelectionScurves.Controls.Add(this.checkBox_selChn0);
+            this.groupBox_channelSelectionScurves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox_channelSelectionScurves.Location = new System.Drawing.Point(820, -390);
+            this.groupBox_channelSelectionScurves.Name = "groupBox_channelSelectionScurves";
+            this.groupBox_channelSelectionScurves.Size = new System.Drawing.Size(180, 410);
+            this.groupBox_channelSelectionScurves.TabIndex = 32;
+            this.groupBox_channelSelectionScurves.TabStop = false;
+            this.groupBox_channelSelectionScurves.Visible = false;
+            this.groupBox_channelSelectionScurves.MouseEnter += new System.EventHandler(this.channelSelectionScurves_MouseEnter);
+            this.groupBox_channelSelectionScurves.MouseLeave += new System.EventHandler(this.object_MouseLeave);
             // 
             // checkBox_selChn31
             // 
@@ -10608,7 +8854,7 @@
             this.textBox_stepScurves.Location = new System.Drawing.Point(452, 7);
             this.textBox_stepScurves.Name = "textBox_stepScurves";
             this.textBox_stepScurves.Size = new System.Drawing.Size(70, 29);
-            this.textBox_stepScurves.TabIndex = 37;
+            this.textBox_stepScurves.TabIndex = 3;
             this.textBox_stepScurves.Text = "10";
             this.textBox_stepScurves.MouseEnter += new System.EventHandler(this.textBox_stepScurves_MouseEnter);
             this.textBox_stepScurves.MouseLeave += new System.EventHandler(this.object_MouseLeave);
@@ -10619,7 +8865,7 @@
             this.textBox_maxCodeScurves.Location = new System.Drawing.Point(332, 7);
             this.textBox_maxCodeScurves.Name = "textBox_maxCodeScurves";
             this.textBox_maxCodeScurves.Size = new System.Drawing.Size(70, 29);
-            this.textBox_maxCodeScurves.TabIndex = 36;
+            this.textBox_maxCodeScurves.TabIndex = 2;
             this.textBox_maxCodeScurves.Text = "250";
             this.textBox_maxCodeScurves.Leave += new System.EventHandler(this.textBox_maxCodeScurves_Leave);
             // 
@@ -10629,7 +8875,7 @@
             this.textBox_minCodeScurves.Location = new System.Drawing.Point(213, 7);
             this.textBox_minCodeScurves.Name = "textBox_minCodeScurves";
             this.textBox_minCodeScurves.Size = new System.Drawing.Size(70, 29);
-            this.textBox_minCodeScurves.TabIndex = 35;
+            this.textBox_minCodeScurves.TabIndex = 1;
             this.textBox_minCodeScurves.Text = "150";
             this.textBox_minCodeScurves.Leave += new System.EventHandler(this.textBox_minCodeScurves_Leave);
             // 
@@ -10646,6 +8892,367 @@
             this.checkBox_useMaskScurves.UseVisualStyleBackColor = true;
             this.checkBox_useMaskScurves.MouseEnter += new System.EventHandler(this.checkBox_useMaskScurves_MouseEnter);
             this.checkBox_useMaskScurves.MouseLeave += new System.EventHandler(this.object_MouseLeave);
+            // 
+            // button_autocalibration
+            // 
+            this.button_autocalibration.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_autocalibration.FlatAppearance.BorderSize = 0;
+            this.button_autocalibration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_autocalibration.Location = new System.Drawing.Point(773, 6);
+            this.button_autocalibration.Name = "button_autocalibration";
+            this.button_autocalibration.Size = new System.Drawing.Size(41, 30);
+            this.button_autocalibration.TabIndex = 17;
+            this.button_autocalibration.Text = "Auto-calibration";
+            this.button_autocalibration.UseVisualStyleBackColor = false;
+            this.button_autocalibration.Visible = false;
+            // 
+            // button_Scurves
+            // 
+            this.button_Scurves.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_Scurves.FlatAppearance.BorderSize = 0;
+            this.button_Scurves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Scurves.Location = new System.Drawing.Point(6, 6);
+            this.button_Scurves.Name = "button_Scurves";
+            this.button_Scurves.Size = new System.Drawing.Size(160, 30);
+            this.button_Scurves.TabIndex = 1;
+            this.button_Scurves.Text = "Start S-curves";
+            this.button_Scurves.UseVisualStyleBackColor = false;
+            this.button_Scurves.Click += new System.EventHandler(this.button_Scurves_Click);
+            this.button_Scurves.MouseEnter += new System.EventHandler(this.button_Scurves_MouseEnter);
+            this.button_Scurves.MouseLeave += new System.EventHandler(this.object_MouseLeave);
+            // 
+            // button_resetZoomScurves
+            // 
+            this.button_resetZoomScurves.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_resetZoomScurves.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_resetZoomScurves.BackgroundImage")));
+            this.button_resetZoomScurves.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_resetZoomScurves.FlatAppearance.BorderSize = 0;
+            this.button_resetZoomScurves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_resetZoomScurves.Location = new System.Drawing.Point(1037, 6);
+            this.button_resetZoomScurves.Name = "button_resetZoomScurves";
+            this.button_resetZoomScurves.Size = new System.Drawing.Size(30, 30);
+            this.button_resetZoomScurves.TabIndex = 16;
+            this.button_resetZoomScurves.UseVisualStyleBackColor = false;
+            this.button_resetZoomScurves.Click += new System.EventHandler(this.button_resetZoom_Click);
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Location = new System.Drawing.Point(172, 10);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(41, 24);
+            this.label102.TabIndex = 5;
+            this.label102.Text = "Min";
+            // 
+            // progressBar_Scurves
+            // 
+            this.progressBar_Scurves.Location = new System.Drawing.Point(12, 433);
+            this.progressBar_Scurves.Name = "progressBar_Scurves";
+            this.progressBar_Scurves.Size = new System.Drawing.Size(1057, 18);
+            this.progressBar_Scurves.TabIndex = 11;
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Location = new System.Drawing.Point(289, 10);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(46, 24);
+            this.label103.TabIndex = 6;
+            this.label103.Text = "Max";
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Location = new System.Drawing.Point(408, 45);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(72, 24);
+            this.label109.TabIndex = 10;
+            this.label109.Text = "Save to";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Location = new System.Drawing.Point(408, 10);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(48, 24);
+            this.label104.TabIndex = 7;
+            this.label104.Text = "Step";
+            // 
+            // button_sCurveSavePath
+            // 
+            this.button_sCurveSavePath.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_sCurveSavePath.FlatAppearance.BorderSize = 0;
+            this.button_sCurveSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_sCurveSavePath.Location = new System.Drawing.Point(1037, 42);
+            this.button_sCurveSavePath.Name = "button_sCurveSavePath";
+            this.button_sCurveSavePath.Size = new System.Drawing.Size(30, 29);
+            this.button_sCurveSavePath.TabIndex = 9;
+            this.button_sCurveSavePath.Text = "...";
+            this.button_sCurveSavePath.UseVisualStyleBackColor = false;
+            this.button_sCurveSavePath.Click += new System.EventHandler(this.button_sCurveSavePath_Click);
+            // 
+            // textBox_sCurveSavePath
+            // 
+            this.textBox_sCurveSavePath.Location = new System.Drawing.Point(471, 42);
+            this.textBox_sCurveSavePath.MinimumSize = new System.Drawing.Size(180, 26);
+            this.textBox_sCurveSavePath.Name = "textBox_sCurveSavePath";
+            this.textBox_sCurveSavePath.Size = new System.Drawing.Size(560, 29);
+            this.textBox_sCurveSavePath.TabIndex = 8;
+            // 
+            // chart_Scurves
+            // 
+            chartArea15.AxisX.IsLabelAutoFit = false;
+            chartArea15.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea15.AxisX.LabelStyle.Format = "0";
+            chartArea15.AxisX.Title = "Threshold (DACu)";
+            chartArea15.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea15.AxisY.IsLabelAutoFit = false;
+            chartArea15.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea15.AxisY.LabelStyle.Format = "0";
+            chartArea15.AxisY.Title = "Trigger efficiency (%)";
+            chartArea15.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea15.Name = "ChartArea1";
+            this.chart_Scurves.ChartAreas.Add(chartArea15);
+            this.chart_Scurves.Location = new System.Drawing.Point(12, 77);
+            this.chart_Scurves.Name = "chart_Scurves";
+            series13.ChartArea = "ChartArea1";
+            series13.Name = "Series1";
+            this.chart_Scurves.Series.Add(series13);
+            this.chart_Scurves.Size = new System.Drawing.Size(1057, 350);
+            this.chart_Scurves.TabIndex = 34;
+            this.chart_Scurves.Text = "chart1";
+            this.chart_Scurves.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
+            this.chart_Scurves.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
+            this.chart_Scurves.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
+            this.chart_Scurves.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
+            // 
+            // tabPage_holdScan
+            // 
+            this.tabPage_holdScan.BackColor = System.Drawing.Color.White;
+            this.tabPage_holdScan.Controls.Add(this.button_refreshHoldScan);
+            this.tabPage_holdScan.Controls.Add(this.button_scatterToPng);
+            this.tabPage_holdScan.Controls.Add(this.label_holdScanMaxGradient);
+            this.tabPage_holdScan.Controls.Add(this.label135);
+            this.tabPage_holdScan.Controls.Add(this.button_loadHoldScan);
+            this.tabPage_holdScan.Controls.Add(this.pictureBox1);
+            this.tabPage_holdScan.Controls.Add(this.label105);
+            this.tabPage_holdScan.Controls.Add(this.button_holdScanSavePath);
+            this.tabPage_holdScan.Controls.Add(this.textBox_holdScanSavePath);
+            this.tabPage_holdScan.Controls.Add(this.label124);
+            this.tabPage_holdScan.Controls.Add(this.label122);
+            this.tabPage_holdScan.Controls.Add(this.label121);
+            this.tabPage_holdScan.Controls.Add(this.label114);
+            this.tabPage_holdScan.Controls.Add(this.label113);
+            this.tabPage_holdScan.Controls.Add(this.numericUpDown_channelHoldScan);
+            this.tabPage_holdScan.Controls.Add(this.chart_holdScan);
+            this.tabPage_holdScan.Controls.Add(this.button_holdScan);
+            this.tabPage_holdScan.Controls.Add(this.checkBox_showScatterPlot);
+            this.tabPage_holdScan.Controls.Add(this.textBox_granularity);
+            this.tabPage_holdScan.Controls.Add(this.textBox_holdScanMinGradient);
+            this.tabPage_holdScan.Controls.Add(this.textBox_holdScanMaxGradient);
+            this.tabPage_holdScan.Controls.Add(this.textBox_holdScanNbAcq);
+            this.tabPage_holdScan.Controls.Add(this.checkBox_holdScanChoice);
+            this.tabPage_holdScan.Controls.Add(this.textBox_stepCodeHoldScan);
+            this.tabPage_holdScan.Controls.Add(this.textBox_maxCodeHoldScan);
+            this.tabPage_holdScan.Controls.Add(this.textBox_minCodeHoldScan);
+            this.tabPage_holdScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tabPage_holdScan.Location = new System.Drawing.Point(4, 34);
+            this.tabPage_holdScan.Name = "tabPage_holdScan";
+            this.tabPage_holdScan.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_holdScan.Size = new System.Drawing.Size(1080, 456);
+            this.tabPage_holdScan.TabIndex = 3;
+            this.tabPage_holdScan.Text = "   Hold scan   ";
+            // 
+            // button_refreshHoldScan
+            // 
+            this.button_refreshHoldScan.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_refreshHoldScan.FlatAppearance.BorderSize = 0;
+            this.button_refreshHoldScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_refreshHoldScan.Location = new System.Drawing.Point(845, 381);
+            this.button_refreshHoldScan.Name = "button_refreshHoldScan";
+            this.button_refreshHoldScan.Size = new System.Drawing.Size(110, 32);
+            this.button_refreshHoldScan.TabIndex = 44;
+            this.button_refreshHoldScan.Text = "Refresh";
+            this.button_refreshHoldScan.UseVisualStyleBackColor = false;
+            this.button_refreshHoldScan.Click += new System.EventHandler(this.button_refreshHoldScan_Click);
+            // 
+            // button_scatterToPng
+            // 
+            this.button_scatterToPng.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_scatterToPng.FlatAppearance.BorderSize = 0;
+            this.button_scatterToPng.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_scatterToPng.Location = new System.Drawing.Point(845, 419);
+            this.button_scatterToPng.Name = "button_scatterToPng";
+            this.button_scatterToPng.Size = new System.Drawing.Size(110, 32);
+            this.button_scatterToPng.TabIndex = 43;
+            this.button_scatterToPng.Text = "Plot to png";
+            this.button_scatterToPng.UseVisualStyleBackColor = false;
+            this.button_scatterToPng.Click += new System.EventHandler(this.button_scatterToPng_Click);
+            // 
+            // label_holdScanMaxGradient
+            // 
+            this.label_holdScanMaxGradient.AutoSize = true;
+            this.label_holdScanMaxGradient.Location = new System.Drawing.Point(1006, 129);
+            this.label_holdScanMaxGradient.Name = "label_holdScanMaxGradient";
+            this.label_holdScanMaxGradient.Size = new System.Drawing.Size(42, 24);
+            this.label_holdScanMaxGradient.TabIndex = 41;
+            this.label_holdScanMaxGradient.Text = "(10)";
+            // 
+            // label135
+            // 
+            this.label135.AutoSize = true;
+            this.label135.Location = new System.Drawing.Point(191, 43);
+            this.label135.Name = "label135";
+            this.label135.Size = new System.Drawing.Size(99, 24);
+            this.label135.TabIndex = 39;
+            this.label135.Text = "Granularity";
+            // 
+            // button_loadHoldScan
+            // 
+            this.button_loadHoldScan.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_loadHoldScan.FlatAppearance.BorderSize = 0;
+            this.button_loadHoldScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_loadHoldScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.button_loadHoldScan.Location = new System.Drawing.Point(974, 42);
+            this.button_loadHoldScan.Name = "button_loadHoldScan";
+            this.button_loadHoldScan.Size = new System.Drawing.Size(94, 29);
+            this.button_loadHoldScan.TabIndex = 38;
+            this.button_loadHoldScan.Text = "Load data";
+            this.button_loadHoldScan.UseVisualStyleBackColor = false;
+            this.button_loadHoldScan.Click += new System.EventHandler(this.button_loadHoldScan_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(974, 97);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 335);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Location = new System.Drawing.Point(367, 43);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(72, 24);
+            this.label105.TabIndex = 34;
+            this.label105.Text = "Save to";
+            // 
+            // button_holdScanSavePath
+            // 
+            this.button_holdScanSavePath.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_holdScanSavePath.FlatAppearance.BorderSize = 0;
+            this.button_holdScanSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_holdScanSavePath.Location = new System.Drawing.Point(938, 42);
+            this.button_holdScanSavePath.Name = "button_holdScanSavePath";
+            this.button_holdScanSavePath.Size = new System.Drawing.Size(30, 29);
+            this.button_holdScanSavePath.TabIndex = 33;
+            this.button_holdScanSavePath.Text = "...";
+            this.button_holdScanSavePath.UseVisualStyleBackColor = false;
+            this.button_holdScanSavePath.Click += new System.EventHandler(this.button_holdScanSavePath_Click);
+            // 
+            // textBox_holdScanSavePath
+            // 
+            this.textBox_holdScanSavePath.Location = new System.Drawing.Point(430, 42);
+            this.textBox_holdScanSavePath.MinimumSize = new System.Drawing.Size(180, 26);
+            this.textBox_holdScanSavePath.Name = "textBox_holdScanSavePath";
+            this.textBox_holdScanSavePath.Size = new System.Drawing.Size(502, 29);
+            this.textBox_holdScanSavePath.TabIndex = 32;
+            // 
+            // label124
+            // 
+            this.label124.AutoSize = true;
+            this.label124.Location = new System.Drawing.Point(633, 10);
+            this.label124.Name = "label124";
+            this.label124.Size = new System.Drawing.Size(217, 24);
+            this.label124.TabIndex = 30;
+            this.label124.Text = "Nb acquisitions per point";
+            // 
+            // label122
+            // 
+            this.label122.AutoSize = true;
+            this.label122.Location = new System.Drawing.Point(496, 10);
+            this.label122.Name = "label122";
+            this.label122.Size = new System.Drawing.Size(81, 24);
+            this.label122.TabIndex = 27;
+            this.label122.Text = "Channel";
+            // 
+            // label121
+            // 
+            this.label121.AutoSize = true;
+            this.label121.Location = new System.Drawing.Point(386, 10);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(48, 24);
+            this.label121.TabIndex = 26;
+            this.label121.Text = "Step";
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.Location = new System.Drawing.Point(279, 10);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(46, 24);
+            this.label114.TabIndex = 25;
+            this.label114.Text = "Max";
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(172, 10);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(41, 24);
+            this.label113.TabIndex = 24;
+            this.label113.Text = "Min";
+            // 
+            // numericUpDown_channelHoldScan
+            // 
+            this.numericUpDown_channelHoldScan.Location = new System.Drawing.Point(567, 7);
+            this.numericUpDown_channelHoldScan.Name = "numericUpDown_channelHoldScan";
+            this.numericUpDown_channelHoldScan.Size = new System.Drawing.Size(60, 29);
+            this.numericUpDown_channelHoldScan.TabIndex = 23;
+            // 
+            // chart_holdScan
+            // 
+            chartArea16.AxisX.IsLabelAutoFit = false;
+            chartArea16.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea16.AxisX.Title = "Time (ns)";
+            chartArea16.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea16.AxisY.IsLabelAutoFit = false;
+            chartArea16.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea16.AxisY.Title = "Charge (ADCu)";
+            chartArea16.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea16.Name = "ChartArea1";
+            this.chart_holdScan.ChartAreas.Add(chartArea16);
+            legend3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            legend3.IsTextAutoFit = false;
+            legend3.Name = "Legend1";
+            this.chart_holdScan.Legends.Add(legend3);
+            this.chart_holdScan.Location = new System.Drawing.Point(6, 77);
+            this.chart_holdScan.Name = "chart_holdScan";
+            this.chart_holdScan.Size = new System.Drawing.Size(962, 374);
+            this.chart_holdScan.TabIndex = 22;
+            this.chart_holdScan.Text = "chart1";
+            this.chart_holdScan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
+            this.chart_holdScan.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
+            this.chart_holdScan.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
+            this.chart_holdScan.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
+            // 
+            // button_holdScan
+            // 
+            this.button_holdScan.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_holdScan.FlatAppearance.BorderSize = 0;
+            this.button_holdScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_holdScan.Location = new System.Drawing.Point(6, 6);
+            this.button_holdScan.Name = "button_holdScan";
+            this.button_holdScan.Size = new System.Drawing.Size(160, 30);
+            this.button_holdScan.TabIndex = 18;
+            this.button_holdScan.Text = "Start scan";
+            this.button_holdScan.UseVisualStyleBackColor = false;
+            this.button_holdScan.Click += new System.EventHandler(this.button_holdScan_Click);
+            this.button_holdScan.MouseEnter += new System.EventHandler(this.button_holdScan_MouseEnter);
+            this.button_holdScan.MouseLeave += new System.EventHandler(this.object_MouseLeave);
             // 
             // checkBox_showScatterPlot
             // 
@@ -10734,6 +9341,40 @@
             this.textBox_minCodeHoldScan.TabIndex = 19;
             this.textBox_minCodeHoldScan.Text = "0";
             // 
+            // tabPage_staircase
+            // 
+            this.tabPage_staircase.BackColor = System.Drawing.Color.White;
+            this.tabPage_staircase.Controls.Add(this.checkBox_staircaseLogScale);
+            this.tabPage_staircase.Controls.Add(this.textBox_staircaseTimeWindow);
+            this.tabPage_staircase.Controls.Add(this.label123);
+            this.tabPage_staircase.Controls.Add(this.label120);
+            this.tabPage_staircase.Controls.Add(this.button_staircaseUncheckAll);
+            this.tabPage_staircase.Controls.Add(this.button_staircaseCheckAll);
+            this.tabPage_staircase.Controls.Add(this.button_channelSelectionStaircase);
+            this.tabPage_staircase.Controls.Add(this.groupBox_channelSelectionStaircase);
+            this.tabPage_staircase.Controls.Add(this.label129);
+            this.tabPage_staircase.Controls.Add(this.label130);
+            this.tabPage_staircase.Controls.Add(this.label131);
+            this.tabPage_staircase.Controls.Add(this.label132);
+            this.tabPage_staircase.Controls.Add(this.button_staircaseSavePath);
+            this.tabPage_staircase.Controls.Add(this.textBox_staircaseSavePath);
+            this.tabPage_staircase.Controls.Add(this.progressBar_staircase);
+            this.tabPage_staircase.Controls.Add(this.button_startStaircase);
+            this.tabPage_staircase.Controls.Add(this.button_resetZoomStaircase);
+            this.tabPage_staircase.Controls.Add(this.chart_staircase);
+            this.tabPage_staircase.Controls.Add(this.checkBox_staircaseTorQ);
+            this.tabPage_staircase.Controls.Add(this.checkBox_useMaskStaircase);
+            this.tabPage_staircase.Controls.Add(this.textBox_stepStaircase);
+            this.tabPage_staircase.Controls.Add(this.textBox_maxStaircase);
+            this.tabPage_staircase.Controls.Add(this.textBox_minStaircase);
+            this.tabPage_staircase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tabPage_staircase.Location = new System.Drawing.Point(4, 34);
+            this.tabPage_staircase.Name = "tabPage_staircase";
+            this.tabPage_staircase.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_staircase.Size = new System.Drawing.Size(1080, 456);
+            this.tabPage_staircase.TabIndex = 2;
+            this.tabPage_staircase.Text = "    SiPM staircase    ";
+            // 
             // checkBox_staircaseLogScale
             // 
             this.checkBox_staircaseLogScale.AutoSize = true;
@@ -10756,6 +9397,107 @@
             this.textBox_staircaseTimeWindow.Size = new System.Drawing.Size(100, 29);
             this.textBox_staircaseTimeWindow.TabIndex = 50;
             this.textBox_staircaseTimeWindow.Text = "1000";
+            // 
+            // label123
+            // 
+            this.label123.AutoSize = true;
+            this.label123.Location = new System.Drawing.Point(299, 7);
+            this.label123.Name = "label123";
+            this.label123.Size = new System.Drawing.Size(254, 24);
+            this.label123.TabIndex = 49;
+            this.label123.Text = "Acquisition time window (ms)";
+            // 
+            // label120
+            // 
+            this.label120.Location = new System.Drawing.Point(820, 0);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(180, 6);
+            this.label120.TabIndex = 44;
+            // 
+            // button_staircaseUncheckAll
+            // 
+            this.button_staircaseUncheckAll.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_staircaseUncheckAll.FlatAppearance.BorderSize = 0;
+            this.button_staircaseUncheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_staircaseUncheckAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button_staircaseUncheckAll.Location = new System.Drawing.Point(910, 36);
+            this.button_staircaseUncheckAll.Name = "button_staircaseUncheckAll";
+            this.button_staircaseUncheckAll.Size = new System.Drawing.Size(90, 27);
+            this.button_staircaseUncheckAll.TabIndex = 46;
+            this.button_staircaseUncheckAll.Text = "Uncheck all";
+            this.button_staircaseUncheckAll.UseVisualStyleBackColor = false;
+            this.button_staircaseUncheckAll.Visible = false;
+            this.button_staircaseUncheckAll.Click += new System.EventHandler(this.button_staircaseUncheckAll_Click);
+            // 
+            // button_staircaseCheckAll
+            // 
+            this.button_staircaseCheckAll.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_staircaseCheckAll.FlatAppearance.BorderSize = 0;
+            this.button_staircaseCheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_staircaseCheckAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button_staircaseCheckAll.Location = new System.Drawing.Point(820, 36);
+            this.button_staircaseCheckAll.Name = "button_staircaseCheckAll";
+            this.button_staircaseCheckAll.Size = new System.Drawing.Size(90, 27);
+            this.button_staircaseCheckAll.TabIndex = 45;
+            this.button_staircaseCheckAll.Text = "Check all";
+            this.button_staircaseCheckAll.UseVisualStyleBackColor = false;
+            this.button_staircaseCheckAll.Visible = false;
+            this.button_staircaseCheckAll.Click += new System.EventHandler(this.button_staircaseCheckAll_Click);
+            // 
+            // button_channelSelectionStaircase
+            // 
+            this.button_channelSelectionStaircase.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_channelSelectionStaircase.FlatAppearance.BorderSize = 0;
+            this.button_channelSelectionStaircase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_channelSelectionStaircase.Location = new System.Drawing.Point(820, 6);
+            this.button_channelSelectionStaircase.Name = "button_channelSelectionStaircase";
+            this.button_channelSelectionStaircase.Size = new System.Drawing.Size(180, 30);
+            this.button_channelSelectionStaircase.TabIndex = 43;
+            this.button_channelSelectionStaircase.Text = "v   Channel selection   v";
+            this.button_channelSelectionStaircase.UseVisualStyleBackColor = false;
+            this.button_channelSelectionStaircase.Click += new System.EventHandler(this.button_channelSelectionStaircase_Click);
+            // 
+            // groupBox_channelSelectionStaircase
+            // 
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh31);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh30);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh29);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh28);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh27);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh26);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh25);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh24);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh23);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh22);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh21);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh20);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh19);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh18);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh17);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh16);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh15);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh14);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh13);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh12);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh11);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh10);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh9);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh8);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh7);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh6);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh5);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh4);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh3);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh2);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh1);
+            this.groupBox_channelSelectionStaircase.Controls.Add(this.checkBox_selStaircaseCh0);
+            this.groupBox_channelSelectionStaircase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox_channelSelectionStaircase.Location = new System.Drawing.Point(820, -390);
+            this.groupBox_channelSelectionStaircase.Name = "groupBox_channelSelectionStaircase";
+            this.groupBox_channelSelectionStaircase.Size = new System.Drawing.Size(180, 410);
+            this.groupBox_channelSelectionStaircase.TabIndex = 47;
+            this.groupBox_channelSelectionStaircase.TabStop = false;
+            this.groupBox_channelSelectionStaircase.Visible = false;
             // 
             // checkBox_selStaircaseCh31
             // 
@@ -11141,6 +9883,125 @@
             this.checkBox_selStaircaseCh0.Text = "Chn 0";
             this.checkBox_selStaircaseCh0.UseVisualStyleBackColor = true;
             // 
+            // label129
+            // 
+            this.label129.AutoSize = true;
+            this.label129.Location = new System.Drawing.Point(631, 425);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(41, 24);
+            this.label129.TabIndex = 17;
+            this.label129.Text = "Min";
+            // 
+            // label130
+            // 
+            this.label130.AutoSize = true;
+            this.label130.Location = new System.Drawing.Point(748, 425);
+            this.label130.Name = "label130";
+            this.label130.Size = new System.Drawing.Size(46, 24);
+            this.label130.TabIndex = 18;
+            this.label130.Text = "Max";
+            // 
+            // label131
+            // 
+            this.label131.AutoSize = true;
+            this.label131.Location = new System.Drawing.Point(6, 425);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(72, 24);
+            this.label131.TabIndex = 22;
+            this.label131.Text = "Save to";
+            // 
+            // label132
+            // 
+            this.label132.AutoSize = true;
+            this.label132.Location = new System.Drawing.Point(867, 425);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(48, 24);
+            this.label132.TabIndex = 19;
+            this.label132.Text = "Step";
+            // 
+            // button_staircaseSavePath
+            // 
+            this.button_staircaseSavePath.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_staircaseSavePath.FlatAppearance.BorderSize = 0;
+            this.button_staircaseSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_staircaseSavePath.Location = new System.Drawing.Point(595, 422);
+            this.button_staircaseSavePath.Name = "button_staircaseSavePath";
+            this.button_staircaseSavePath.Size = new System.Drawing.Size(30, 29);
+            this.button_staircaseSavePath.TabIndex = 21;
+            this.button_staircaseSavePath.Text = "...";
+            this.button_staircaseSavePath.UseVisualStyleBackColor = false;
+            this.button_staircaseSavePath.Click += new System.EventHandler(this.button_staircaseSavePath_Click);
+            // 
+            // textBox_staircaseSavePath
+            // 
+            this.textBox_staircaseSavePath.Location = new System.Drawing.Point(69, 422);
+            this.textBox_staircaseSavePath.MinimumSize = new System.Drawing.Size(180, 26);
+            this.textBox_staircaseSavePath.Name = "textBox_staircaseSavePath";
+            this.textBox_staircaseSavePath.Size = new System.Drawing.Size(520, 29);
+            this.textBox_staircaseSavePath.TabIndex = 20;
+            // 
+            // progressBar_staircase
+            // 
+            this.progressBar_staircase.Location = new System.Drawing.Point(10, 397);
+            this.progressBar_staircase.Name = "progressBar_staircase";
+            this.progressBar_staircase.Size = new System.Drawing.Size(1057, 18);
+            this.progressBar_staircase.TabIndex = 12;
+            // 
+            // button_startStaircase
+            // 
+            this.button_startStaircase.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_startStaircase.FlatAppearance.BorderSize = 0;
+            this.button_startStaircase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_startStaircase.Location = new System.Drawing.Point(988, 421);
+            this.button_startStaircase.Name = "button_startStaircase";
+            this.button_startStaircase.Size = new System.Drawing.Size(80, 30);
+            this.button_startStaircase.TabIndex = 0;
+            this.button_startStaircase.Text = "Start";
+            this.button_startStaircase.UseVisualStyleBackColor = false;
+            this.button_startStaircase.Click += new System.EventHandler(this.button_startStaircase_Click);
+            // 
+            // button_resetZoomStaircase
+            // 
+            this.button_resetZoomStaircase.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_resetZoomStaircase.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_resetZoomStaircase.BackgroundImage")));
+            this.button_resetZoomStaircase.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_resetZoomStaircase.FlatAppearance.BorderSize = 0;
+            this.button_resetZoomStaircase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_resetZoomStaircase.Location = new System.Drawing.Point(1037, 6);
+            this.button_resetZoomStaircase.Name = "button_resetZoomStaircase";
+            this.button_resetZoomStaircase.Size = new System.Drawing.Size(30, 30);
+            this.button_resetZoomStaircase.TabIndex = 26;
+            this.button_resetZoomStaircase.UseVisualStyleBackColor = false;
+            this.button_resetZoomStaircase.Click += new System.EventHandler(this.button_resetZoom_Click);
+            // 
+            // chart_staircase
+            // 
+            chartArea17.AxisX.IsLabelAutoFit = false;
+            chartArea17.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea17.AxisX.LabelStyle.Format = "0";
+            chartArea17.AxisX.Title = "Threshold (DACu)";
+            chartArea17.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea17.AxisY.IsLabelAutoFit = false;
+            chartArea17.AxisY.IsLogarithmic = true;
+            chartArea17.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea17.AxisY.LabelStyle.Format = "0E0";
+            chartArea17.AxisY.Title = "Trigger frequency (Hz)";
+            chartArea17.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea17.Name = "ChartArea1";
+            this.chart_staircase.ChartAreas.Add(chartArea17);
+            this.chart_staircase.Location = new System.Drawing.Point(10, 43);
+            this.chart_staircase.Name = "chart_staircase";
+            series14.ChartArea = "ChartArea1";
+            series14.Name = "Series1";
+            this.chart_staircase.Series.Add(series14);
+            this.chart_staircase.Size = new System.Drawing.Size(1057, 348);
+            this.chart_staircase.TabIndex = 41;
+            this.chart_staircase.Text = "chart1";
+            this.chart_staircase.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
+            this.chart_staircase.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
+            this.chart_staircase.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
+            this.chart_staircase.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
+            // 
             // checkBox_staircaseTorQ
             // 
             this.checkBox_staircaseTorQ.AutoSize = true;
@@ -11192,6 +10053,117 @@
             this.textBox_minStaircase.TabIndex = 38;
             this.textBox_minStaircase.Text = "150";
             // 
+            // tabPage_dataAcquisition
+            // 
+            this.tabPage_dataAcquisition.BackColor = System.Drawing.Color.White;
+            this.tabPage_dataAcquisition.Controls.Add(this.label_acquisitionTime);
+            this.tabPage_dataAcquisition.Controls.Add(this.textBox_acquisitionTime);
+            this.tabPage_dataAcquisition.Controls.Add(this.progressBar_acquisition);
+            this.tabPage_dataAcquisition.Controls.Add(this.label_acqTime);
+            this.tabPage_dataAcquisition.Controls.Add(this.label_elapsedTimeAcquisition);
+            this.tabPage_dataAcquisition.Controls.Add(this.tabControl_dataAcquisition);
+            this.tabPage_dataAcquisition.Controls.Add(this.button_loadData);
+            this.tabPage_dataAcquisition.Controls.Add(this.button_dataSavePath);
+            this.tabPage_dataAcquisition.Controls.Add(this.textBox_dataSavePath);
+            this.tabPage_dataAcquisition.Controls.Add(this.button_startAcquisition);
+            this.tabPage_dataAcquisition.Controls.Add(this.label106);
+            this.tabPage_dataAcquisition.Controls.Add(this.label_numData);
+            this.tabPage_dataAcquisition.Controls.Add(this.textBox_numData);
+            this.tabPage_dataAcquisition.Controls.Add(this.switchBox_acquisitionMode);
+            this.tabPage_dataAcquisition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tabPage_dataAcquisition.Location = new System.Drawing.Point(14, 4);
+            this.tabPage_dataAcquisition.Name = "tabPage_dataAcquisition";
+            this.tabPage_dataAcquisition.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_dataAcquisition.Size = new System.Drawing.Size(1062, 482);
+            this.tabPage_dataAcquisition.TabIndex = 2;
+            this.tabPage_dataAcquisition.Text = "Data acquisition";
+            // 
+            // label_acquisitionTime
+            // 
+            this.label_acquisitionTime.AutoSize = true;
+            this.label_acquisitionTime.Enabled = false;
+            this.label_acquisitionTime.Location = new System.Drawing.Point(461, 9);
+            this.label_acquisitionTime.Name = "label_acquisitionTime";
+            this.label_acquisitionTime.Size = new System.Drawing.Size(241, 24);
+            this.label_acquisitionTime.TabIndex = 21;
+            this.label_acquisitionTime.Text = "Acquisition time (hh:mm:ss)";
+            // 
+            // textBox_acquisitionTime
+            // 
+            this.textBox_acquisitionTime.Enabled = false;
+            this.textBox_acquisitionTime.Location = new System.Drawing.Point(667, 6);
+            this.textBox_acquisitionTime.Mask = "00:00:00";
+            this.textBox_acquisitionTime.Name = "textBox_acquisitionTime";
+            this.textBox_acquisitionTime.Size = new System.Drawing.Size(80, 29);
+            this.textBox_acquisitionTime.TabIndex = 20;
+            this.textBox_acquisitionTime.Text = "000005";
+            this.textBox_acquisitionTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_acquisitionTime.Leave += new System.EventHandler(this.textBox_acquisitionTime_Leave);
+            this.textBox_acquisitionTime.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_acquisitionTime_PreviewKeyDown);
+            // 
+            // progressBar_acquisition
+            // 
+            this.progressBar_acquisition.Location = new System.Drawing.Point(6, 459);
+            this.progressBar_acquisition.Name = "progressBar_acquisition";
+            this.progressBar_acquisition.Size = new System.Drawing.Size(1062, 23);
+            this.progressBar_acquisition.TabIndex = 4;
+            this.progressBar_acquisition.Visible = false;
+            // 
+            // label_acqTime
+            // 
+            this.label_acqTime.AutoSize = true;
+            this.label_acqTime.Enabled = false;
+            this.label_acqTime.Location = new System.Drawing.Point(753, 44);
+            this.label_acqTime.Name = "label_acqTime";
+            this.label_acqTime.Size = new System.Drawing.Size(148, 24);
+            this.label_acqTime.TabIndex = 16;
+            this.label_acqTime.Text = "Actual acq. time:";
+            // 
+            // label_elapsedTimeAcquisition
+            // 
+            this.label_elapsedTimeAcquisition.AutoSize = true;
+            this.label_elapsedTimeAcquisition.Enabled = false;
+            this.label_elapsedTimeAcquisition.Location = new System.Drawing.Point(753, 9);
+            this.label_elapsedTimeAcquisition.Name = "label_elapsedTimeAcquisition";
+            this.label_elapsedTimeAcquisition.Size = new System.Drawing.Size(124, 24);
+            this.label_elapsedTimeAcquisition.TabIndex = 16;
+            this.label_elapsedTimeAcquisition.Text = "Elapsed time:";
+            // 
+            // tabControl_dataAcquisition
+            // 
+            this.tabControl_dataAcquisition.Controls.Add(this.tabPage_perChannelCharge);
+            this.tabControl_dataAcquisition.Controls.Add(this.tabPage3);
+            this.tabControl_dataAcquisition.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.tabControl_dataAcquisition.Location = new System.Drawing.Point(6, 76);
+            this.tabControl_dataAcquisition.Name = "tabControl_dataAcquisition";
+            this.tabControl_dataAcquisition.SelectedIndex = 0;
+            this.tabControl_dataAcquisition.Size = new System.Drawing.Size(1062, 408);
+            this.tabControl_dataAcquisition.TabIndex = 19;
+            // 
+            // tabPage_perChannelCharge
+            // 
+            this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutLow);
+            this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutHigh);
+            this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutLow);
+            this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutHigh);
+            this.tabPage_perChannelCharge.Controls.Add(this.label128);
+            this.tabPage_perChannelCharge.Controls.Add(this.label133);
+            this.tabPage_perChannelCharge.Controls.Add(this.label127);
+            this.tabPage_perChannelCharge.Controls.Add(this.label126);
+            this.tabPage_perChannelCharge.Controls.Add(this.chart_perChannelChargeLG);
+            this.tabPage_perChannelCharge.Controls.Add(this.label107);
+            this.tabPage_perChannelCharge.Controls.Add(this.label_nbHit);
+            this.tabPage_perChannelCharge.Controls.Add(this.chart_perChannelChargeHG);
+            this.tabPage_perChannelCharge.Controls.Add(this.numericUpDown_loadCh);
+            this.tabPage_perChannelCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tabPage_perChannelCharge.Location = new System.Drawing.Point(4, 34);
+            this.tabPage_perChannelCharge.Name = "tabPage_perChannelCharge";
+            this.tabPage_perChannelCharge.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_perChannelCharge.Size = new System.Drawing.Size(1054, 370);
+            this.tabPage_perChannelCharge.TabIndex = 0;
+            this.tabPage_perChannelCharge.Text = "   Per channel   ";
+            this.tabPage_perChannelCharge.UseVisualStyleBackColor = true;
+            // 
             // textBox_LgCutLow
             // 
             this.textBox_LgCutLow.enableNegative = false;
@@ -11236,6 +10208,295 @@
             this.textBox_HgCutHigh.Leave += new System.EventHandler(this.loadData_Leave);
             this.textBox_HgCutHigh.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.loadData_PreviewKeyDown);
             // 
+            // label128
+            // 
+            this.label128.AutoSize = true;
+            this.label128.Location = new System.Drawing.Point(933, 39);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(60, 24);
+            this.label128.TabIndex = 26;
+            this.label128.Text = "High :";
+            // 
+            // label133
+            // 
+            this.label133.AutoSize = true;
+            this.label133.Location = new System.Drawing.Point(739, 39);
+            this.label133.Name = "label133";
+            this.label133.Size = new System.Drawing.Size(162, 24);
+            this.label133.TabIndex = 25;
+            this.label133.Text = "Energy cut - Low :";
+            // 
+            // label127
+            // 
+            this.label127.AutoSize = true;
+            this.label127.Location = new System.Drawing.Point(411, 39);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(60, 24);
+            this.label127.TabIndex = 22;
+            this.label127.Text = "High :";
+            // 
+            // label126
+            // 
+            this.label126.AutoSize = true;
+            this.label126.Location = new System.Drawing.Point(217, 39);
+            this.label126.Name = "label126";
+            this.label126.Size = new System.Drawing.Size(162, 24);
+            this.label126.TabIndex = 21;
+            this.label126.Text = "Energy cut - Low :";
+            // 
+            // chart_perChannelChargeLG
+            // 
+            chartArea18.AxisX.IsLabelAutoFit = false;
+            chartArea18.AxisX.IsStartedFromZero = false;
+            chartArea18.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea18.AxisX.LabelStyle.Format = "0";
+            chartArea18.AxisX.Title = "Low gain charge (ADCu)";
+            chartArea18.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea18.AxisY.IsLabelAutoFit = false;
+            chartArea18.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea18.AxisY.LabelStyle.Format = "0";
+            chartArea18.AxisY.Title = "Data count";
+            chartArea18.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea18.Name = "ChartArea1";
+            this.chart_perChannelChargeLG.ChartAreas.Add(chartArea18);
+            this.chart_perChannelChargeLG.Location = new System.Drawing.Point(528, 60);
+            this.chart_perChannelChargeLG.Name = "chart_perChannelChargeLG";
+            series15.ChartArea = "ChartArea1";
+            series15.Name = "Series1";
+            this.chart_perChannelChargeLG.Series.Add(series15);
+            this.chart_perChannelChargeLG.Size = new System.Drawing.Size(520, 305);
+            this.chart_perChannelChargeLG.TabIndex = 15;
+            this.chart_perChannelChargeLG.Text = "chart1";
+            this.chart_perChannelChargeLG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
+            this.chart_perChannelChargeLG.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
+            this.chart_perChannelChargeLG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
+            this.chart_perChannelChargeLG.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(3, 8);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(81, 24);
+            this.label107.TabIndex = 0;
+            this.label107.Text = "Channel";
+            // 
+            // label_nbHit
+            // 
+            this.label_nbHit.AutoSize = true;
+            this.label_nbHit.Location = new System.Drawing.Point(155, 8);
+            this.label_nbHit.Name = "label_nbHit";
+            this.label_nbHit.Size = new System.Drawing.Size(0, 24);
+            this.label_nbHit.TabIndex = 13;
+            // 
+            // chart_perChannelChargeHG
+            // 
+            chartArea19.AxisX.IsLabelAutoFit = false;
+            chartArea19.AxisX.IsStartedFromZero = false;
+            chartArea19.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea19.AxisX.LabelStyle.Format = "0";
+            chartArea19.AxisX.Title = "High gain charge (ADCu)";
+            chartArea19.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea19.AxisY.IsLabelAutoFit = false;
+            chartArea19.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea19.AxisY.LabelStyle.Format = "0";
+            chartArea19.AxisY.Title = "Data count";
+            chartArea19.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea19.Name = "ChartArea1";
+            this.chart_perChannelChargeHG.ChartAreas.Add(chartArea19);
+            this.chart_perChannelChargeHG.Location = new System.Drawing.Point(6, 60);
+            this.chart_perChannelChargeHG.Name = "chart_perChannelChargeHG";
+            series16.ChartArea = "ChartArea1";
+            series16.Name = "Series1";
+            this.chart_perChannelChargeHG.Series.Add(series16);
+            this.chart_perChannelChargeHG.Size = new System.Drawing.Size(520, 305);
+            this.chart_perChannelChargeHG.TabIndex = 14;
+            this.chart_perChannelChargeHG.Text = "chart1";
+            this.chart_perChannelChargeHG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
+            this.chart_perChannelChargeHG.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
+            this.chart_perChannelChargeHG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
+            this.chart_perChannelChargeHG.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
+            // 
+            // numericUpDown_loadCh
+            // 
+            this.numericUpDown_loadCh.Location = new System.Drawing.Point(74, 6);
+            this.numericUpDown_loadCh.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.numericUpDown_loadCh.MinimumSize = new System.Drawing.Size(75, 0);
+            this.numericUpDown_loadCh.Name = "numericUpDown_loadCh";
+            this.numericUpDown_loadCh.Size = new System.Drawing.Size(75, 29);
+            this.numericUpDown_loadCh.TabIndex = 5;
+            this.numericUpDown_loadCh.ValueChanged += new System.EventHandler(this.numericUpDown_loadCh_ValueChanged);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.chart_perAcqChargeLG);
+            this.tabPage3.Controls.Add(this.chart_perAcqChargeHG);
+            this.tabPage3.Controls.Add(this.label125);
+            this.tabPage3.Controls.Add(this.numericUpDown_acquisitionNumber);
+            this.tabPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1054, 370);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "   Per acquisition   ";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // chart_perAcqChargeLG
+            // 
+            chartArea20.AxisX.IsLabelAutoFit = false;
+            chartArea20.AxisX.IsStartedFromZero = false;
+            chartArea20.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea20.AxisX.LabelStyle.Format = "0";
+            chartArea20.AxisX.Title = "Channel";
+            chartArea20.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea20.AxisY.IsLabelAutoFit = false;
+            chartArea20.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea20.AxisY.LabelStyle.Format = "0";
+            chartArea20.AxisY.Title = "Low gain charge (ADCu)";
+            chartArea20.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea20.Name = "ChartArea1";
+            this.chart_perAcqChargeLG.ChartAreas.Add(chartArea20);
+            this.chart_perAcqChargeLG.Location = new System.Drawing.Point(528, 35);
+            this.chart_perAcqChargeLG.Name = "chart_perAcqChargeLG";
+            series17.ChartArea = "ChartArea1";
+            series17.Name = "Series1";
+            this.chart_perAcqChargeLG.Series.Add(series17);
+            this.chart_perAcqChargeLG.Size = new System.Drawing.Size(520, 330);
+            this.chart_perAcqChargeLG.TabIndex = 17;
+            this.chart_perAcqChargeLG.Text = "chart1";
+            this.chart_perAcqChargeLG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
+            this.chart_perAcqChargeLG.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
+            this.chart_perAcqChargeLG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
+            this.chart_perAcqChargeLG.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
+            // 
+            // chart_perAcqChargeHG
+            // 
+            chartArea21.AxisX.IsLabelAutoFit = false;
+            chartArea21.AxisX.IsStartedFromZero = false;
+            chartArea21.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea21.AxisX.LabelStyle.Format = "0";
+            chartArea21.AxisX.Title = "Channel";
+            chartArea21.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea21.AxisY.IsLabelAutoFit = false;
+            chartArea21.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea21.AxisY.LabelStyle.Format = "0";
+            chartArea21.AxisY.Title = "High gain charge (ADCu)";
+            chartArea21.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea21.Name = "ChartArea1";
+            this.chart_perAcqChargeHG.ChartAreas.Add(chartArea21);
+            this.chart_perAcqChargeHG.Location = new System.Drawing.Point(6, 35);
+            this.chart_perAcqChargeHG.Name = "chart_perAcqChargeHG";
+            series18.ChartArea = "ChartArea1";
+            series18.Name = "Series1";
+            this.chart_perAcqChargeHG.Series.Add(series18);
+            this.chart_perAcqChargeHG.Size = new System.Drawing.Size(520, 330);
+            this.chart_perAcqChargeHG.TabIndex = 16;
+            this.chart_perAcqChargeHG.Text = "chart1";
+            this.chart_perAcqChargeHG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart_MouseDown);
+            this.chart_perAcqChargeHG.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart_MouseMove);
+            this.chart_perAcqChargeHG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart_MouseUp);
+            this.chart_perAcqChargeHG.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart_MouseWheel);
+            // 
+            // label125
+            // 
+            this.label125.AutoSize = true;
+            this.label125.Location = new System.Drawing.Point(6, 8);
+            this.label125.Name = "label125";
+            this.label125.Size = new System.Drawing.Size(102, 24);
+            this.label125.TabIndex = 7;
+            this.label125.Text = "Acquisition";
+            // 
+            // numericUpDown_acquisitionNumber
+            // 
+            this.numericUpDown_acquisitionNumber.Location = new System.Drawing.Point(96, 6);
+            this.numericUpDown_acquisitionNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_acquisitionNumber.Name = "numericUpDown_acquisitionNumber";
+            this.numericUpDown_acquisitionNumber.Size = new System.Drawing.Size(75, 29);
+            this.numericUpDown_acquisitionNumber.TabIndex = 8;
+            this.numericUpDown_acquisitionNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_acquisitionNumber.ValueChanged += new System.EventHandler(this.numericUpDown_acquisitionNumber_ValueChanged);
+            // 
+            // button_loadData
+            // 
+            this.button_loadData.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_loadData.FlatAppearance.BorderSize = 0;
+            this.button_loadData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_loadData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.button_loadData.Location = new System.Drawing.Point(653, 42);
+            this.button_loadData.Name = "button_loadData";
+            this.button_loadData.Size = new System.Drawing.Size(94, 29);
+            this.button_loadData.TabIndex = 10;
+            this.button_loadData.Text = "Load data";
+            this.button_loadData.UseVisualStyleBackColor = false;
+            this.button_loadData.Click += new System.EventHandler(this.button_loadData_Click);
+            // 
+            // button_dataSavePath
+            // 
+            this.button_dataSavePath.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_dataSavePath.FlatAppearance.BorderSize = 0;
+            this.button_dataSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_dataSavePath.Location = new System.Drawing.Point(617, 42);
+            this.button_dataSavePath.Name = "button_dataSavePath";
+            this.button_dataSavePath.Size = new System.Drawing.Size(30, 29);
+            this.button_dataSavePath.TabIndex = 7;
+            this.button_dataSavePath.Text = "...";
+            this.button_dataSavePath.UseVisualStyleBackColor = false;
+            this.button_dataSavePath.Click += new System.EventHandler(this.button_dataSavePath_Click);
+            // 
+            // textBox_dataSavePath
+            // 
+            this.textBox_dataSavePath.Location = new System.Drawing.Point(136, 41);
+            this.textBox_dataSavePath.MinimumSize = new System.Drawing.Size(310, 26);
+            this.textBox_dataSavePath.Name = "textBox_dataSavePath";
+            this.textBox_dataSavePath.Size = new System.Drawing.Size(475, 29);
+            this.textBox_dataSavePath.TabIndex = 5;
+            // 
+            // button_startAcquisition
+            // 
+            this.button_startAcquisition.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_startAcquisition.FlatAppearance.BorderSize = 0;
+            this.button_startAcquisition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_startAcquisition.Location = new System.Drawing.Point(6, 6);
+            this.button_startAcquisition.Name = "button_startAcquisition";
+            this.button_startAcquisition.Size = new System.Drawing.Size(140, 29);
+            this.button_startAcquisition.TabIndex = 0;
+            this.button_startAcquisition.Text = "Start acquisition";
+            this.button_startAcquisition.UseVisualStyleBackColor = false;
+            this.button_startAcquisition.Click += new System.EventHandler(this.button_startAcquisition_Click);
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Location = new System.Drawing.Point(6, 44);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(129, 24);
+            this.label106.TabIndex = 6;
+            this.label106.Text = "Save to folder:";
+            this.label106.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_numData
+            // 
+            this.label_numData.AutoSize = true;
+            this.label_numData.Location = new System.Drawing.Point(152, 9);
+            this.label_numData.Name = "label_numData";
+            this.label_numData.Size = new System.Drawing.Size(207, 24);
+            this.label_numData.TabIndex = 3;
+            this.label_numData.Text = "Number of acquisitions:";
+            this.label_numData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // textBox_numData
             // 
             this.textBox_numData.enableNegative = false;
@@ -11261,6 +10522,112 @@
             this.switchBox_acquisitionMode.UseVisualStyleBackColor = true;
             this.switchBox_acquisitionMode.CheckedChanged += new System.EventHandler(this.switchBox_acquisitionMode_CheckedChanged);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.comboBox_triggerPreset);
+            this.tabPage1.Controls.Add(this.label136);
+            this.tabPage1.Controls.Add(this.groupBox_timeTriggerMask);
+            this.tabPage1.Controls.Add(this.textBox_word5);
+            this.tabPage1.Controls.Add(this.textBox_word3);
+            this.tabPage1.Controls.Add(this.textBox_word2);
+            this.tabPage1.Controls.Add(this.textBox_word1);
+            this.tabPage1.Controls.Add(this.textBox_word0);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.checkBox_timeOutHold);
+            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tabPage1.Location = new System.Drawing.Point(14, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1062, 482);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "tabPage_FPGA";
+            // 
+            // comboBox_triggerPreset
+            // 
+            this.comboBox_triggerPreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_triggerPreset.FormattingEnabled = true;
+            this.comboBox_triggerPreset.Items.AddRange(new object[] {
+            "ASIC OR32 charge trigger",
+            "Firmware OR32 time trigger",
+            "Dual testboard coincidence trigger",
+            "Firmware OR32 time trigger as external trigger",
+            "IO_FPGA6 as external trigger",
+            "Software checkbox as external trigger"});
+            this.comboBox_triggerPreset.Location = new System.Drawing.Point(300, 381);
+            this.comboBox_triggerPreset.Name = "comboBox_triggerPreset";
+            this.comboBox_triggerPreset.Size = new System.Drawing.Size(353, 32);
+            this.comboBox_triggerPreset.TabIndex = 3;
+            this.comboBox_triggerPreset.SelectedIndexChanged += new System.EventHandler(this.comboBox_triggerPreset_SelectedIndexChanged);
+            // 
+            // label136
+            // 
+            this.label136.AutoSize = true;
+            this.label136.Location = new System.Drawing.Point(198, 384);
+            this.label136.Name = "label136";
+            this.label136.Size = new System.Drawing.Size(128, 24);
+            this.label136.TabIndex = 164;
+            this.label136.Text = "Trigger preset";
+            // 
+            // groupBox_timeTriggerMask
+            // 
+            this.groupBox_timeTriggerMask.Controls.Add(this.button_sendMaskTime);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask0);
+            this.groupBox_timeTriggerMask.Controls.Add(this.button_unmaskAllTime);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask13);
+            this.groupBox_timeTriggerMask.Controls.Add(this.button_maskAllTime);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask14);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask12);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask15);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask11);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask16);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask10);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask17);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask9);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask18);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask8);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask19);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask7);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask20);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask6);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask21);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask5);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask31);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask22);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask30);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask4);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask29);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask23);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask28);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask3);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask27);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask24);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask26);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask2);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask1);
+            this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask25);
+            this.groupBox_timeTriggerMask.Location = new System.Drawing.Point(822, 34);
+            this.groupBox_timeTriggerMask.Name = "groupBox_timeTriggerMask";
+            this.groupBox_timeTriggerMask.Size = new System.Drawing.Size(160, 428);
+            this.groupBox_timeTriggerMask.TabIndex = 2;
+            this.groupBox_timeTriggerMask.TabStop = false;
+            this.groupBox_timeTriggerMask.Text = "Time trigger mask";
+            // 
+            // button_sendMaskTime
+            // 
+            this.button_sendMaskTime.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_sendMaskTime.FlatAppearance.BorderSize = 0;
+            this.button_sendMaskTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_sendMaskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button_sendMaskTime.Location = new System.Drawing.Point(11, 28);
+            this.button_sendMaskTime.Name = "button_sendMaskTime";
+            this.button_sendMaskTime.Size = new System.Drawing.Size(138, 30);
+            this.button_sendMaskTime.TabIndex = 0;
+            this.button_sendMaskTime.Text = "Send";
+            this.button_sendMaskTime.UseVisualStyleBackColor = false;
+            this.button_sendMaskTime.Click += new System.EventHandler(this.button_sendMaskTime_Click);
+            // 
             // checkBox_timeTriggerMask0
             // 
             this.checkBox_timeTriggerMask0.checkedBackColor = System.Drawing.Color.White;
@@ -11269,12 +10636,26 @@
             this.checkBox_timeTriggerMask0.Location = new System.Drawing.Point(11, 64);
             this.checkBox_timeTriggerMask0.Name = "checkBox_timeTriggerMask0";
             this.checkBox_timeTriggerMask0.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask0.TabIndex = 32;
+            this.checkBox_timeTriggerMask0.TabIndex = 1;
             this.checkBox_timeTriggerMask0.Text = "0";
             this.checkBox_timeTriggerMask0.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask0.uncheckedForeColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask0.UseVisualStyleBackColor = true;
             this.checkBox_timeTriggerMask0.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            // 
+            // button_unmaskAllTime
+            // 
+            this.button_unmaskAllTime.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_unmaskAllTime.FlatAppearance.BorderSize = 0;
+            this.button_unmaskAllTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_unmaskAllTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button_unmaskAllTime.Location = new System.Drawing.Point(11, 388);
+            this.button_unmaskAllTime.Name = "button_unmaskAllTime";
+            this.button_unmaskAllTime.Size = new System.Drawing.Size(138, 30);
+            this.button_unmaskAllTime.TabIndex = 34;
+            this.button_unmaskAllTime.Text = "Unmask all";
+            this.button_unmaskAllTime.UseVisualStyleBackColor = false;
+            this.button_unmaskAllTime.Click += new System.EventHandler(this.button_unmaskAllTime_Click);
             // 
             // checkBox_timeTriggerMask13
             // 
@@ -11284,12 +10665,26 @@
             this.checkBox_timeTriggerMask13.Location = new System.Drawing.Point(47, 244);
             this.checkBox_timeTriggerMask13.Name = "checkBox_timeTriggerMask13";
             this.checkBox_timeTriggerMask13.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask13.TabIndex = 45;
+            this.checkBox_timeTriggerMask13.TabIndex = 22;
             this.checkBox_timeTriggerMask13.Text = "13";
             this.checkBox_timeTriggerMask13.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask13.uncheckedForeColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask13.UseVisualStyleBackColor = true;
             this.checkBox_timeTriggerMask13.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            // 
+            // button_maskAllTime
+            // 
+            this.button_maskAllTime.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_maskAllTime.FlatAppearance.BorderSize = 0;
+            this.button_maskAllTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_maskAllTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button_maskAllTime.Location = new System.Drawing.Point(11, 352);
+            this.button_maskAllTime.Name = "button_maskAllTime";
+            this.button_maskAllTime.Size = new System.Drawing.Size(138, 30);
+            this.button_maskAllTime.TabIndex = 33;
+            this.button_maskAllTime.Text = "Mask all";
+            this.button_maskAllTime.UseVisualStyleBackColor = false;
+            this.button_maskAllTime.Click += new System.EventHandler(this.button_maskAllTime_Click);
             // 
             // checkBox_timeTriggerMask14
             // 
@@ -11299,7 +10694,7 @@
             this.checkBox_timeTriggerMask14.Location = new System.Drawing.Point(47, 280);
             this.checkBox_timeTriggerMask14.Name = "checkBox_timeTriggerMask14";
             this.checkBox_timeTriggerMask14.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask14.TabIndex = 46;
+            this.checkBox_timeTriggerMask14.TabIndex = 26;
             this.checkBox_timeTriggerMask14.Text = "14";
             this.checkBox_timeTriggerMask14.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask14.uncheckedForeColor = System.Drawing.Color.White;
@@ -11314,7 +10709,7 @@
             this.checkBox_timeTriggerMask12.Location = new System.Drawing.Point(47, 208);
             this.checkBox_timeTriggerMask12.Name = "checkBox_timeTriggerMask12";
             this.checkBox_timeTriggerMask12.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask12.TabIndex = 44;
+            this.checkBox_timeTriggerMask12.TabIndex = 18;
             this.checkBox_timeTriggerMask12.Text = "12";
             this.checkBox_timeTriggerMask12.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask12.uncheckedForeColor = System.Drawing.Color.White;
@@ -11329,7 +10724,7 @@
             this.checkBox_timeTriggerMask15.Location = new System.Drawing.Point(47, 316);
             this.checkBox_timeTriggerMask15.Name = "checkBox_timeTriggerMask15";
             this.checkBox_timeTriggerMask15.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask15.TabIndex = 47;
+            this.checkBox_timeTriggerMask15.TabIndex = 30;
             this.checkBox_timeTriggerMask15.Text = "15";
             this.checkBox_timeTriggerMask15.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask15.uncheckedForeColor = System.Drawing.Color.White;
@@ -11344,7 +10739,7 @@
             this.checkBox_timeTriggerMask11.Location = new System.Drawing.Point(47, 172);
             this.checkBox_timeTriggerMask11.Name = "checkBox_timeTriggerMask11";
             this.checkBox_timeTriggerMask11.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask11.TabIndex = 43;
+            this.checkBox_timeTriggerMask11.TabIndex = 14;
             this.checkBox_timeTriggerMask11.Text = "11";
             this.checkBox_timeTriggerMask11.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask11.uncheckedForeColor = System.Drawing.Color.White;
@@ -11359,7 +10754,7 @@
             this.checkBox_timeTriggerMask16.Location = new System.Drawing.Point(83, 64);
             this.checkBox_timeTriggerMask16.Name = "checkBox_timeTriggerMask16";
             this.checkBox_timeTriggerMask16.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask16.TabIndex = 48;
+            this.checkBox_timeTriggerMask16.TabIndex = 3;
             this.checkBox_timeTriggerMask16.Text = "16";
             this.checkBox_timeTriggerMask16.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask16.uncheckedForeColor = System.Drawing.Color.White;
@@ -11374,7 +10769,7 @@
             this.checkBox_timeTriggerMask10.Location = new System.Drawing.Point(47, 136);
             this.checkBox_timeTriggerMask10.Name = "checkBox_timeTriggerMask10";
             this.checkBox_timeTriggerMask10.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask10.TabIndex = 42;
+            this.checkBox_timeTriggerMask10.TabIndex = 10;
             this.checkBox_timeTriggerMask10.Text = "10";
             this.checkBox_timeTriggerMask10.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask10.uncheckedForeColor = System.Drawing.Color.White;
@@ -11389,7 +10784,7 @@
             this.checkBox_timeTriggerMask17.Location = new System.Drawing.Point(83, 100);
             this.checkBox_timeTriggerMask17.Name = "checkBox_timeTriggerMask17";
             this.checkBox_timeTriggerMask17.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask17.TabIndex = 49;
+            this.checkBox_timeTriggerMask17.TabIndex = 7;
             this.checkBox_timeTriggerMask17.Text = "17";
             this.checkBox_timeTriggerMask17.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask17.uncheckedForeColor = System.Drawing.Color.White;
@@ -11404,7 +10799,7 @@
             this.checkBox_timeTriggerMask9.Location = new System.Drawing.Point(47, 100);
             this.checkBox_timeTriggerMask9.Name = "checkBox_timeTriggerMask9";
             this.checkBox_timeTriggerMask9.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask9.TabIndex = 41;
+            this.checkBox_timeTriggerMask9.TabIndex = 6;
             this.checkBox_timeTriggerMask9.Text = "9";
             this.checkBox_timeTriggerMask9.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask9.uncheckedForeColor = System.Drawing.Color.White;
@@ -11419,7 +10814,7 @@
             this.checkBox_timeTriggerMask18.Location = new System.Drawing.Point(83, 136);
             this.checkBox_timeTriggerMask18.Name = "checkBox_timeTriggerMask18";
             this.checkBox_timeTriggerMask18.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask18.TabIndex = 50;
+            this.checkBox_timeTriggerMask18.TabIndex = 11;
             this.checkBox_timeTriggerMask18.Text = "18";
             this.checkBox_timeTriggerMask18.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask18.uncheckedForeColor = System.Drawing.Color.White;
@@ -11434,7 +10829,7 @@
             this.checkBox_timeTriggerMask8.Location = new System.Drawing.Point(47, 64);
             this.checkBox_timeTriggerMask8.Name = "checkBox_timeTriggerMask8";
             this.checkBox_timeTriggerMask8.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask8.TabIndex = 40;
+            this.checkBox_timeTriggerMask8.TabIndex = 2;
             this.checkBox_timeTriggerMask8.Text = "8";
             this.checkBox_timeTriggerMask8.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask8.uncheckedForeColor = System.Drawing.Color.White;
@@ -11449,7 +10844,7 @@
             this.checkBox_timeTriggerMask19.Location = new System.Drawing.Point(83, 172);
             this.checkBox_timeTriggerMask19.Name = "checkBox_timeTriggerMask19";
             this.checkBox_timeTriggerMask19.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask19.TabIndex = 51;
+            this.checkBox_timeTriggerMask19.TabIndex = 15;
             this.checkBox_timeTriggerMask19.Text = "19";
             this.checkBox_timeTriggerMask19.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask19.uncheckedForeColor = System.Drawing.Color.White;
@@ -11464,7 +10859,7 @@
             this.checkBox_timeTriggerMask7.Location = new System.Drawing.Point(11, 316);
             this.checkBox_timeTriggerMask7.Name = "checkBox_timeTriggerMask7";
             this.checkBox_timeTriggerMask7.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask7.TabIndex = 39;
+            this.checkBox_timeTriggerMask7.TabIndex = 29;
             this.checkBox_timeTriggerMask7.Text = "7";
             this.checkBox_timeTriggerMask7.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask7.uncheckedForeColor = System.Drawing.Color.White;
@@ -11479,7 +10874,7 @@
             this.checkBox_timeTriggerMask20.Location = new System.Drawing.Point(83, 208);
             this.checkBox_timeTriggerMask20.Name = "checkBox_timeTriggerMask20";
             this.checkBox_timeTriggerMask20.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask20.TabIndex = 52;
+            this.checkBox_timeTriggerMask20.TabIndex = 19;
             this.checkBox_timeTriggerMask20.Text = "20";
             this.checkBox_timeTriggerMask20.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask20.uncheckedForeColor = System.Drawing.Color.White;
@@ -11494,7 +10889,7 @@
             this.checkBox_timeTriggerMask6.Location = new System.Drawing.Point(11, 280);
             this.checkBox_timeTriggerMask6.Name = "checkBox_timeTriggerMask6";
             this.checkBox_timeTriggerMask6.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask6.TabIndex = 38;
+            this.checkBox_timeTriggerMask6.TabIndex = 25;
             this.checkBox_timeTriggerMask6.Text = "6";
             this.checkBox_timeTriggerMask6.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask6.uncheckedForeColor = System.Drawing.Color.White;
@@ -11509,7 +10904,7 @@
             this.checkBox_timeTriggerMask21.Location = new System.Drawing.Point(83, 244);
             this.checkBox_timeTriggerMask21.Name = "checkBox_timeTriggerMask21";
             this.checkBox_timeTriggerMask21.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask21.TabIndex = 53;
+            this.checkBox_timeTriggerMask21.TabIndex = 23;
             this.checkBox_timeTriggerMask21.Text = "21";
             this.checkBox_timeTriggerMask21.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask21.uncheckedForeColor = System.Drawing.Color.White;
@@ -11524,7 +10919,7 @@
             this.checkBox_timeTriggerMask5.Location = new System.Drawing.Point(11, 244);
             this.checkBox_timeTriggerMask5.Name = "checkBox_timeTriggerMask5";
             this.checkBox_timeTriggerMask5.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask5.TabIndex = 37;
+            this.checkBox_timeTriggerMask5.TabIndex = 21;
             this.checkBox_timeTriggerMask5.Text = "5";
             this.checkBox_timeTriggerMask5.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask5.uncheckedForeColor = System.Drawing.Color.White;
@@ -11539,7 +10934,7 @@
             this.checkBox_timeTriggerMask31.Location = new System.Drawing.Point(119, 316);
             this.checkBox_timeTriggerMask31.Name = "checkBox_timeTriggerMask31";
             this.checkBox_timeTriggerMask31.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask31.TabIndex = 63;
+            this.checkBox_timeTriggerMask31.TabIndex = 32;
             this.checkBox_timeTriggerMask31.Text = "31";
             this.checkBox_timeTriggerMask31.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask31.uncheckedForeColor = System.Drawing.Color.White;
@@ -11554,7 +10949,7 @@
             this.checkBox_timeTriggerMask22.Location = new System.Drawing.Point(83, 280);
             this.checkBox_timeTriggerMask22.Name = "checkBox_timeTriggerMask22";
             this.checkBox_timeTriggerMask22.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask22.TabIndex = 54;
+            this.checkBox_timeTriggerMask22.TabIndex = 27;
             this.checkBox_timeTriggerMask22.Text = "22";
             this.checkBox_timeTriggerMask22.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask22.uncheckedForeColor = System.Drawing.Color.White;
@@ -11569,7 +10964,7 @@
             this.checkBox_timeTriggerMask30.Location = new System.Drawing.Point(119, 280);
             this.checkBox_timeTriggerMask30.Name = "checkBox_timeTriggerMask30";
             this.checkBox_timeTriggerMask30.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask30.TabIndex = 62;
+            this.checkBox_timeTriggerMask30.TabIndex = 28;
             this.checkBox_timeTriggerMask30.Text = "30";
             this.checkBox_timeTriggerMask30.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask30.uncheckedForeColor = System.Drawing.Color.White;
@@ -11584,7 +10979,7 @@
             this.checkBox_timeTriggerMask4.Location = new System.Drawing.Point(11, 208);
             this.checkBox_timeTriggerMask4.Name = "checkBox_timeTriggerMask4";
             this.checkBox_timeTriggerMask4.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask4.TabIndex = 36;
+            this.checkBox_timeTriggerMask4.TabIndex = 17;
             this.checkBox_timeTriggerMask4.Text = "4";
             this.checkBox_timeTriggerMask4.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask4.uncheckedForeColor = System.Drawing.Color.White;
@@ -11599,7 +10994,7 @@
             this.checkBox_timeTriggerMask29.Location = new System.Drawing.Point(119, 244);
             this.checkBox_timeTriggerMask29.Name = "checkBox_timeTriggerMask29";
             this.checkBox_timeTriggerMask29.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask29.TabIndex = 61;
+            this.checkBox_timeTriggerMask29.TabIndex = 24;
             this.checkBox_timeTriggerMask29.Text = "29";
             this.checkBox_timeTriggerMask29.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask29.uncheckedForeColor = System.Drawing.Color.White;
@@ -11614,7 +11009,7 @@
             this.checkBox_timeTriggerMask23.Location = new System.Drawing.Point(83, 316);
             this.checkBox_timeTriggerMask23.Name = "checkBox_timeTriggerMask23";
             this.checkBox_timeTriggerMask23.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask23.TabIndex = 55;
+            this.checkBox_timeTriggerMask23.TabIndex = 31;
             this.checkBox_timeTriggerMask23.Text = "23";
             this.checkBox_timeTriggerMask23.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask23.uncheckedForeColor = System.Drawing.Color.White;
@@ -11629,7 +11024,7 @@
             this.checkBox_timeTriggerMask28.Location = new System.Drawing.Point(119, 208);
             this.checkBox_timeTriggerMask28.Name = "checkBox_timeTriggerMask28";
             this.checkBox_timeTriggerMask28.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask28.TabIndex = 60;
+            this.checkBox_timeTriggerMask28.TabIndex = 20;
             this.checkBox_timeTriggerMask28.Text = "28";
             this.checkBox_timeTriggerMask28.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask28.uncheckedForeColor = System.Drawing.Color.White;
@@ -11644,7 +11039,7 @@
             this.checkBox_timeTriggerMask3.Location = new System.Drawing.Point(11, 172);
             this.checkBox_timeTriggerMask3.Name = "checkBox_timeTriggerMask3";
             this.checkBox_timeTriggerMask3.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask3.TabIndex = 35;
+            this.checkBox_timeTriggerMask3.TabIndex = 13;
             this.checkBox_timeTriggerMask3.Text = "3";
             this.checkBox_timeTriggerMask3.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask3.uncheckedForeColor = System.Drawing.Color.White;
@@ -11659,7 +11054,7 @@
             this.checkBox_timeTriggerMask27.Location = new System.Drawing.Point(119, 172);
             this.checkBox_timeTriggerMask27.Name = "checkBox_timeTriggerMask27";
             this.checkBox_timeTriggerMask27.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask27.TabIndex = 59;
+            this.checkBox_timeTriggerMask27.TabIndex = 16;
             this.checkBox_timeTriggerMask27.Text = "27";
             this.checkBox_timeTriggerMask27.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask27.uncheckedForeColor = System.Drawing.Color.White;
@@ -11674,7 +11069,7 @@
             this.checkBox_timeTriggerMask24.Location = new System.Drawing.Point(119, 64);
             this.checkBox_timeTriggerMask24.Name = "checkBox_timeTriggerMask24";
             this.checkBox_timeTriggerMask24.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask24.TabIndex = 56;
+            this.checkBox_timeTriggerMask24.TabIndex = 4;
             this.checkBox_timeTriggerMask24.Text = "24";
             this.checkBox_timeTriggerMask24.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask24.uncheckedForeColor = System.Drawing.Color.White;
@@ -11689,7 +11084,7 @@
             this.checkBox_timeTriggerMask26.Location = new System.Drawing.Point(119, 136);
             this.checkBox_timeTriggerMask26.Name = "checkBox_timeTriggerMask26";
             this.checkBox_timeTriggerMask26.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask26.TabIndex = 58;
+            this.checkBox_timeTriggerMask26.TabIndex = 12;
             this.checkBox_timeTriggerMask26.Text = "26";
             this.checkBox_timeTriggerMask26.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask26.uncheckedForeColor = System.Drawing.Color.White;
@@ -11704,7 +11099,7 @@
             this.checkBox_timeTriggerMask2.Location = new System.Drawing.Point(11, 136);
             this.checkBox_timeTriggerMask2.Name = "checkBox_timeTriggerMask2";
             this.checkBox_timeTriggerMask2.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask2.TabIndex = 34;
+            this.checkBox_timeTriggerMask2.TabIndex = 9;
             this.checkBox_timeTriggerMask2.Text = "2";
             this.checkBox_timeTriggerMask2.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask2.uncheckedForeColor = System.Drawing.Color.White;
@@ -11719,7 +11114,7 @@
             this.checkBox_timeTriggerMask1.Location = new System.Drawing.Point(11, 100);
             this.checkBox_timeTriggerMask1.Name = "checkBox_timeTriggerMask1";
             this.checkBox_timeTriggerMask1.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask1.TabIndex = 33;
+            this.checkBox_timeTriggerMask1.TabIndex = 5;
             this.checkBox_timeTriggerMask1.Text = "1";
             this.checkBox_timeTriggerMask1.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask1.uncheckedForeColor = System.Drawing.Color.White;
@@ -11734,12 +11129,74 @@
             this.checkBox_timeTriggerMask25.Location = new System.Drawing.Point(119, 100);
             this.checkBox_timeTriggerMask25.Name = "checkBox_timeTriggerMask25";
             this.checkBox_timeTriggerMask25.Size = new System.Drawing.Size(30, 30);
-            this.checkBox_timeTriggerMask25.TabIndex = 57;
+            this.checkBox_timeTriggerMask25.TabIndex = 8;
             this.checkBox_timeTriggerMask25.Text = "25";
             this.checkBox_timeTriggerMask25.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask25.uncheckedForeColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask25.UseVisualStyleBackColor = true;
             this.checkBox_timeTriggerMask25.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            // 
+            // textBox_word5
+            // 
+            this.textBox_word5.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_word5.Location = new System.Drawing.Point(591, 437);
+            this.textBox_word5.Name = "textBox_word5";
+            this.textBox_word5.Size = new System.Drawing.Size(100, 25);
+            this.textBox_word5.TabIndex = 8;
+            this.textBox_word5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_word3
+            // 
+            this.textBox_word3.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_word3.Location = new System.Drawing.Point(485, 437);
+            this.textBox_word3.Name = "textBox_word3";
+            this.textBox_word3.Size = new System.Drawing.Size(100, 25);
+            this.textBox_word3.TabIndex = 7;
+            this.textBox_word3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_word2
+            // 
+            this.textBox_word2.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_word2.Location = new System.Drawing.Point(379, 437);
+            this.textBox_word2.Name = "textBox_word2";
+            this.textBox_word2.Size = new System.Drawing.Size(100, 25);
+            this.textBox_word2.TabIndex = 6;
+            this.textBox_word2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_word1
+            // 
+            this.textBox_word1.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_word1.Location = new System.Drawing.Point(273, 437);
+            this.textBox_word1.Name = "textBox_word1";
+            this.textBox_word1.Size = new System.Drawing.Size(100, 25);
+            this.textBox_word1.TabIndex = 5;
+            this.textBox_word1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_word0
+            // 
+            this.textBox_word0.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_word0.Location = new System.Drawing.Point(167, 437);
+            this.textBox_word0.Name = "textBox_word0";
+            this.textBox_word0.Size = new System.Drawing.Size(100, 25);
+            this.textBox_word0.TabIndex = 4;
+            this.textBox_word0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBox_OR32polarity);
+            this.groupBox2.Controls.Add(this.checkBox_triggerTorQ);
+            this.groupBox2.Controls.Add(this.checkBox_selHold);
+            this.groupBox2.Controls.Add(this.checkBox_selTrigToHold);
+            this.groupBox2.Controls.Add(this.checkBox_ADC2);
+            this.groupBox2.Controls.Add(this.checkBox_ADC1);
+            this.groupBox2.Controls.Add(this.checkBox_readOutSpeed);
+            this.groupBox2.Controls.Add(this.checkBox_disReadAdc);
+            this.groupBox2.Location = new System.Drawing.Point(418, 34);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(395, 341);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "External ADC configuration";
             // 
             // checkBox_OR32polarity
             // 
@@ -11750,7 +11207,7 @@
             this.checkBox_OR32polarity.Name = "checkBox_OR32polarity";
             this.checkBox_OR32polarity.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_OR32polarity.Size = new System.Drawing.Size(280, 28);
-            this.checkBox_OR32polarity.TabIndex = 29;
+            this.checkBox_OR32polarity.TabIndex = 2;
             this.checkBox_OR32polarity.Text = "Output NOR32 (IO_FPGA11)";
             this.checkBox_OR32polarity.UseVisualStyleBackColor = true;
             this.checkBox_OR32polarity.CheckedChanged += new System.EventHandler(this.checkBox_OR32polarity_CheckedChanged);
@@ -11762,7 +11219,7 @@
             this.checkBox_triggerTorQ.Name = "checkBox_triggerTorQ";
             this.checkBox_triggerTorQ.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_triggerTorQ.Size = new System.Drawing.Size(456, 28);
-            this.checkBox_triggerTorQ.TabIndex = 30;
+            this.checkBox_triggerTorQ.TabIndex = 1;
             this.checkBox_triggerTorQ.Text = "Trigger acquisition on ASIC OR32 (charge trigger)";
             this.checkBox_triggerTorQ.UseVisualStyleBackColor = true;
             this.checkBox_triggerTorQ.CheckedChanged += new System.EventHandler(this.checkBox_triggerTorQ_CheckedChanged);
@@ -11776,7 +11233,7 @@
             this.checkBox_selHold.Name = "checkBox_selHold";
             this.checkBox_selHold.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selHold.Size = new System.Drawing.Size(226, 28);
-            this.checkBox_selHold.TabIndex = 24;
+            this.checkBox_selHold.TabIndex = 3;
             this.checkBox_selHold.Text = "OR32 delayed as hold";
             this.checkBox_selHold.UseVisualStyleBackColor = true;
             this.checkBox_selHold.CheckedChanged += new System.EventHandler(this.checkBox_selHold_CheckedChanged);
@@ -11788,7 +11245,7 @@
             this.checkBox_selTrigToHold.Name = "checkBox_selTrigToHold";
             this.checkBox_selTrigToHold.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selTrigToHold.Size = new System.Drawing.Size(356, 28);
-            this.checkBox_selTrigToHold.TabIndex = 23;
+            this.checkBox_selTrigToHold.TabIndex = 0;
             this.checkBox_selTrigToHold.Text = "Hold on OR32 (charge or time trigger)";
             this.checkBox_selTrigToHold.UseVisualStyleBackColor = true;
             this.checkBox_selTrigToHold.CheckedChanged += new System.EventHandler(this.checkBox_selTrigToHold_CheckedChanged);
@@ -11800,7 +11257,7 @@
             this.checkBox_ADC2.Name = "checkBox_ADC2";
             this.checkBox_ADC2.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_ADC2.Size = new System.Drawing.Size(244, 28);
-            this.checkBox_ADC2.TabIndex = 22;
+            this.checkBox_ADC2.TabIndex = 7;
             this.checkBox_ADC2.Text = "ADC2: High gain charge";
             this.checkBox_ADC2.UseVisualStyleBackColor = true;
             this.checkBox_ADC2.CheckedChanged += new System.EventHandler(this.checkBox_ADC2_CheckedChanged);
@@ -11812,7 +11269,7 @@
             this.checkBox_ADC1.Name = "checkBox_ADC1";
             this.checkBox_ADC1.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_ADC1.Size = new System.Drawing.Size(239, 28);
-            this.checkBox_ADC1.TabIndex = 21;
+            this.checkBox_ADC1.TabIndex = 6;
             this.checkBox_ADC1.Text = "ADC1: Low gain charge";
             this.checkBox_ADC1.UseVisualStyleBackColor = true;
             this.checkBox_ADC1.CheckedChanged += new System.EventHandler(this.checkBox_ADC1_CheckedChanged);
@@ -11824,7 +11281,7 @@
             this.checkBox_readOutSpeed.Name = "checkBox_readOutSpeed";
             this.checkBox_readOutSpeed.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_readOutSpeed.Size = new System.Drawing.Size(265, 28);
-            this.checkBox_readOutSpeed.TabIndex = 15;
+            this.checkBox_readOutSpeed.TabIndex = 5;
             this.checkBox_readOutSpeed.Text = "Read-out speed = 2.5 MHz";
             this.checkBox_readOutSpeed.UseVisualStyleBackColor = true;
             this.checkBox_readOutSpeed.CheckedChanged += new System.EventHandler(this.checkBox_readOutSpeed_CheckedChanged);
@@ -11838,10 +11295,33 @@
             this.checkBox_disReadAdc.Name = "checkBox_disReadAdc";
             this.checkBox_disReadAdc.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_disReadAdc.Size = new System.Drawing.Size(226, 28);
-            this.checkBox_disReadAdc.TabIndex = 14;
+            this.checkBox_disReadAdc.TabIndex = 4;
             this.checkBox_disReadAdc.Text = "Read register enabled";
             this.checkBox_disReadAdc.UseVisualStyleBackColor = true;
             this.checkBox_disReadAdc.CheckedChanged += new System.EventHandler(this.checkBox_disReadAdc_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBox_softwareTrigger);
+            this.groupBox1.Controls.Add(this.checkBox_iofpgaOr32t);
+            this.groupBox1.Controls.Add(this.checkBox_PSGlobalTrigger);
+            this.groupBox1.Controls.Add(this.checkBox_PSMode);
+            this.groupBox1.Controls.Add(this.checkBox_razChn);
+            this.groupBox1.Controls.Add(this.checkBox_valEvt);
+            this.groupBox1.Controls.Add(this.checkBox_selValEvt);
+            this.groupBox1.Controls.Add(this.checkBox_selRazChn);
+            this.groupBox1.Controls.Add(this.checkBox_pwrOn);
+            this.groupBox1.Controls.Add(this.checkBox_enSerialLink);
+            this.groupBox1.Controls.Add(this.checkBox_rstbPS);
+            this.groupBox1.Controls.Add(this.checkBox_selPSMode);
+            this.groupBox1.Controls.Add(this.checkBox_rstbPa);
+            this.groupBox1.Controls.Add(this.checkBox_selPSGlobalTrigger);
+            this.groupBox1.Location = new System.Drawing.Point(76, 34);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(333, 341);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "ASIC configuration";
             // 
             // checkBox_softwareTrigger
             // 
@@ -11850,7 +11330,7 @@
             this.checkBox_softwareTrigger.Name = "checkBox_softwareTrigger";
             this.checkBox_softwareTrigger.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_softwareTrigger.Size = new System.Drawing.Size(177, 28);
-            this.checkBox_softwareTrigger.TabIndex = 24;
+            this.checkBox_softwareTrigger.TabIndex = 8;
             this.checkBox_softwareTrigger.Text = "Firmware trigger";
             this.checkBox_softwareTrigger.UseVisualStyleBackColor = true;
             this.checkBox_softwareTrigger.Visible = false;
@@ -11863,7 +11343,7 @@
             this.checkBox_iofpgaOr32t.Name = "checkBox_iofpgaOr32t";
             this.checkBox_iofpgaOr32t.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_iofpgaOr32t.Size = new System.Drawing.Size(284, 28);
-            this.checkBox_iofpgaOr32t.TabIndex = 23;
+            this.checkBox_iofpgaOr32t.TabIndex = 9;
             this.checkBox_iofpgaOr32t.Text = "IO_FPGA6 as external trigger";
             this.checkBox_iofpgaOr32t.UseVisualStyleBackColor = true;
             this.checkBox_iofpgaOr32t.Visible = false;
@@ -11889,7 +11369,7 @@
             this.checkBox_PSMode.Location = new System.Drawing.Point(197, 128);
             this.checkBox_PSMode.Name = "checkBox_PSMode";
             this.checkBox_PSMode.Size = new System.Drawing.Size(130, 28);
-            this.checkBox_PSMode.TabIndex = 9;
+            this.checkBox_PSMode.TabIndex = 6;
             this.checkBox_PSMode.Text = "Track mode";
             this.checkBox_PSMode.UseVisualStyleBackColor = true;
             this.checkBox_PSMode.CheckedChanged += new System.EventHandler(this.checkBox_PSMode_CheckedChanged);
@@ -11900,7 +11380,7 @@
             this.checkBox_razChn.Location = new System.Drawing.Point(185, 64);
             this.checkBox_razChn.Name = "checkBox_razChn";
             this.checkBox_razChn.Size = new System.Drawing.Size(100, 28);
-            this.checkBox_razChn.TabIndex = 6;
+            this.checkBox_razChn.TabIndex = 3;
             this.checkBox_razChn.Text = "No reset";
             this.checkBox_razChn.UseVisualStyleBackColor = true;
             this.checkBox_razChn.CheckedChanged += new System.EventHandler(this.checkBox_razChn_CheckedChanged);
@@ -11913,7 +11393,7 @@
             this.checkBox_valEvt.Location = new System.Drawing.Point(142, 33);
             this.checkBox_valEvt.Name = "checkBox_valEvt";
             this.checkBox_valEvt.Size = new System.Drawing.Size(67, 28);
-            this.checkBox_valEvt.TabIndex = 5;
+            this.checkBox_valEvt.TabIndex = 1;
             this.checkBox_valEvt.Text = "valid";
             this.checkBox_valEvt.UseVisualStyleBackColor = true;
             this.checkBox_valEvt.CheckedChanged += new System.EventHandler(this.checkBox_valEvt_CheckedChanged);
@@ -11937,7 +11417,7 @@
             this.checkBox_selRazChn.Name = "checkBox_selRazChn";
             this.checkBox_selRazChn.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selRazChn.Size = new System.Drawing.Size(191, 28);
-            this.checkBox_selRazChn.TabIndex = 1;
+            this.checkBox_selRazChn.TabIndex = 2;
             this.checkBox_selRazChn.Text = "Reset analog part:";
             this.checkBox_selRazChn.UseVisualStyleBackColor = true;
             this.checkBox_selRazChn.CheckedChanged += new System.EventHandler(this.checkBox_selRazChn_CheckedChanged);
@@ -11951,7 +11431,7 @@
             this.checkBox_pwrOn.Name = "checkBox_pwrOn";
             this.checkBox_pwrOn.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_pwrOn.Size = new System.Drawing.Size(291, 28);
-            this.checkBox_pwrOn.TabIndex = 2;
+            this.checkBox_pwrOn.TabIndex = 4;
             this.checkBox_pwrOn.Text = "Power ON (no power pulsing)";
             this.checkBox_pwrOn.UseVisualStyleBackColor = true;
             this.checkBox_pwrOn.CheckedChanged += new System.EventHandler(this.checkBox_pwrOn_CheckedChanged);
@@ -11964,7 +11444,7 @@
             this.checkBox_enSerialLink.Location = new System.Drawing.Point(187, 303);
             this.checkBox_enSerialLink.Name = "checkBox_enSerialLink";
             this.checkBox_enSerialLink.Size = new System.Drawing.Size(171, 28);
-            this.checkBox_enSerialLink.TabIndex = 22;
+            this.checkBox_enSerialLink.TabIndex = 12;
             this.checkBox_enSerialLink.Text = "Enable serial link";
             this.checkBox_enSerialLink.UseVisualStyleBackColor = true;
             this.checkBox_enSerialLink.CheckedChanged += new System.EventHandler(this.checkBox_enSerialLink_CheckedChanged);
@@ -11977,7 +11457,7 @@
             this.checkBox_rstbPS.Location = new System.Drawing.Point(13, 303);
             this.checkBox_rstbPS.Name = "checkBox_rstbPS";
             this.checkBox_rstbPS.Size = new System.Drawing.Size(206, 28);
-            this.checkBox_rstbPS.TabIndex = 8;
+            this.checkBox_rstbPS.TabIndex = 11;
             this.checkBox_rstbPS.Text = "Enable peak sensing";
             this.checkBox_rstbPS.UseVisualStyleBackColor = true;
             this.checkBox_rstbPS.CheckedChanged += new System.EventHandler(this.checkBox_rstbPS_CheckedChanged);
@@ -11989,7 +11469,7 @@
             this.checkBox_selPSMode.Name = "checkBox_selPSMode";
             this.checkBox_selPSMode.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selPSMode.Size = new System.Drawing.Size(212, 28);
-            this.checkBox_selPSMode.TabIndex = 3;
+            this.checkBox_selPSMode.TabIndex = 5;
             this.checkBox_selPSMode.Text = "Peak sensing mode:";
             this.checkBox_selPSMode.UseVisualStyleBackColor = true;
             this.checkBox_selPSMode.CheckedChanged += new System.EventHandler(this.checkBox_selPSMode_CheckedChanged);
@@ -12002,7 +11482,7 @@
             this.checkBox_rstbPa.Location = new System.Drawing.Point(13, 271);
             this.checkBox_rstbPa.Name = "checkBox_rstbPa";
             this.checkBox_rstbPa.Size = new System.Drawing.Size(201, 28);
-            this.checkBox_rstbPa.TabIndex = 7;
+            this.checkBox_rstbPa.TabIndex = 10;
             this.checkBox_rstbPa.Text = "Enable preamplifiers";
             this.checkBox_rstbPa.UseVisualStyleBackColor = true;
             this.checkBox_rstbPa.CheckedChanged += new System.EventHandler(this.checkBox_rstbPa_CheckedChanged);
@@ -12014,7 +11494,7 @@
             this.checkBox_selPSGlobalTrigger.Name = "checkBox_selPSGlobalTrigger";
             this.checkBox_selPSGlobalTrigger.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selPSGlobalTrigger.Size = new System.Drawing.Size(159, 28);
-            this.checkBox_selPSGlobalTrigger.TabIndex = 4;
+            this.checkBox_selPSGlobalTrigger.TabIndex = 7;
             this.checkBox_selPSGlobalTrigger.Text = "Internal trigger";
             this.checkBox_selPSGlobalTrigger.UseVisualStyleBackColor = true;
             this.checkBox_selPSGlobalTrigger.CheckedChanged += new System.EventHandler(this.checkBox_selPSGlobalTrigger_CheckedChanged);
@@ -12027,11 +11507,531 @@
             this.checkBox_timeOutHold.Location = new System.Drawing.Point(788, 464);
             this.checkBox_timeOutHold.Name = "checkBox_timeOutHold";
             this.checkBox_timeOutHold.Size = new System.Drawing.Size(284, 28);
-            this.checkBox_timeOutHold.TabIndex = 20;
+            this.checkBox_timeOutHold.TabIndex = 3;
             this.checkBox_timeOutHold.Text = "Enable time-out on hold signal";
             this.checkBox_timeOutHold.UseVisualStyleBackColor = true;
             this.checkBox_timeOutHold.Visible = false;
             this.checkBox_timeOutHold.CheckedChanged += new System.EventHandler(this.checkBox_timeOutHold_CheckedChanged);
+            // 
+            // groupBox_HV
+            // 
+            this.groupBox_HV.Controls.Add(this.numUpDown_HV);
+            this.groupBox_HV.Controls.Add(this.checkBox_HVON);
+            this.groupBox_HV.Controls.Add(this.button_HVPS);
+            this.groupBox_HV.Controls.Add(this.label140);
+            this.groupBox_HV.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_HV.Location = new System.Drawing.Point(6, 231);
+            this.groupBox_HV.Name = "groupBox_HV";
+            this.groupBox_HV.Size = new System.Drawing.Size(433, 45);
+            this.groupBox_HV.TabIndex = 13;
+            this.groupBox_HV.TabStop = false;
+            this.groupBox_HV.Text = "HV settings";
+            // 
+            // numUpDown_HV
+            // 
+            this.numUpDown_HV.DecimalPlaces = 3;
+            this.numUpDown_HV.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numUpDown_HV.Location = new System.Drawing.Point(212, 16);
+            this.numUpDown_HV.Maximum = new decimal(new int[] {
+            55,
+            0,
+            0,
+            0});
+            this.numUpDown_HV.Minimum = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            this.numUpDown_HV.Name = "numUpDown_HV";
+            this.numUpDown_HV.Size = new System.Drawing.Size(73, 24);
+            this.numUpDown_HV.TabIndex = 4;
+            this.numUpDown_HV.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            // 
+            // checkBox_HVON
+            // 
+            this.checkBox_HVON.AutoSize = true;
+            this.checkBox_HVON.Checked = true;
+            this.checkBox_HVON.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_HVON.Location = new System.Drawing.Point(11, 17);
+            this.checkBox_HVON.Name = "checkBox_HVON";
+            this.checkBox_HVON.Size = new System.Drawing.Size(74, 22);
+            this.checkBox_HVON.TabIndex = 3;
+            this.checkBox_HVON.Text = "HV ON";
+            this.checkBox_HVON.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox_HVON.UseVisualStyleBackColor = true;
+            // 
+            // button_HVPS
+            // 
+            this.button_HVPS.Location = new System.Drawing.Point(328, 13);
+            this.button_HVPS.Name = "button_HVPS";
+            this.button_HVPS.Size = new System.Drawing.Size(99, 29);
+            this.button_HVPS.TabIndex = 2;
+            this.button_HVPS.Text = "Send HV";
+            this.button_HVPS.UseVisualStyleBackColor = true;
+            this.button_HVPS.Click += new System.EventHandler(this.button_HVPS_Click);
+            // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.Location = new System.Drawing.Point(106, 18);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(88, 18);
+            this.label140.TabIndex = 0;
+            this.label140.Text = "Voltage (V) :";
+            // 
+            // button_readTelemetry
+            // 
+            this.button_readTelemetry.Location = new System.Drawing.Point(17, 21);
+            this.button_readTelemetry.Name = "button_readTelemetry";
+            this.button_readTelemetry.Size = new System.Drawing.Size(422, 30);
+            this.button_readTelemetry.TabIndex = 0;
+            this.button_readTelemetry.Text = "&Read Telemetry";
+            this.button_readTelemetry.UseVisualStyleBackColor = true;
+            this.button_readTelemetry.Click += new System.EventHandler(this.button_readTelemetry_Click);
+            // 
+            // label_tempOnBoard
+            // 
+            this.label_tempOnBoard.AutoSize = true;
+            this.label_tempOnBoard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.label_tempOnBoard.ForeColor = System.Drawing.Color.White;
+            this.label_tempOnBoard.Location = new System.Drawing.Point(1053, 4);
+            this.label_tempOnBoard.Name = "label_tempOnBoard";
+            this.label_tempOnBoard.Size = new System.Drawing.Size(0, 24);
+            this.label_tempOnBoard.TabIndex = 37;
+            // 
+            // backgroundWorker_Scurves
+            // 
+            this.backgroundWorker_Scurves.WorkerReportsProgress = true;
+            this.backgroundWorker_Scurves.WorkerSupportsCancellation = true;
+            this.backgroundWorker_Scurves.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Scurves_DoWork);
+            this.backgroundWorker_Scurves.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Scurves_ProgressChanged);
+            this.backgroundWorker_Scurves.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_Scurves_RunWorkerCompleted);
+            // 
+            // backgroundWorker_staircase
+            // 
+            this.backgroundWorker_staircase.WorkerReportsProgress = true;
+            this.backgroundWorker_staircase.WorkerSupportsCancellation = true;
+            this.backgroundWorker_staircase.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_staircase_DoWork);
+            this.backgroundWorker_staircase.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_staircase_ProgressChanged);
+            this.backgroundWorker_staircase.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_staircase_RunWorkerCompleted);
+            // 
+            // backgroundWorker_dataAcquisition
+            // 
+            this.backgroundWorker_dataAcquisition.WorkerReportsProgress = true;
+            this.backgroundWorker_dataAcquisition.WorkerSupportsCancellation = true;
+            this.backgroundWorker_dataAcquisition.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_dataAcquisition_DoWork);
+            this.backgroundWorker_dataAcquisition.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_dataAcquisition_ProgressChanged);
+            this.backgroundWorker_dataAcquisition.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_dataAcquisition_RunWorkerCompleted);
+            // 
+            // pictureBox_logoWeeroc
+            // 
+            this.pictureBox_logoWeeroc.BackColor = System.Drawing.Color.White;
+            this.pictureBox_logoWeeroc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_logoWeeroc.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_logoWeeroc.Image")));
+            this.pictureBox_logoWeeroc.Location = new System.Drawing.Point(0, 520);
+            this.pictureBox_logoWeeroc.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox_logoWeeroc.Name = "pictureBox_logoWeeroc";
+            this.pictureBox_logoWeeroc.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox_logoWeeroc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_logoWeeroc.TabIndex = 24;
+            this.pictureBox_logoWeeroc.TabStop = false;
+            // 
+            // backgroundWorker_holdScan
+            // 
+            this.backgroundWorker_holdScan.WorkerReportsProgress = true;
+            this.backgroundWorker_holdScan.WorkerSupportsCancellation = true;
+            this.backgroundWorker_holdScan.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_holdScan_DoWork);
+            this.backgroundWorker_holdScan.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_holdScan_ProgressChanged);
+            this.backgroundWorker_holdScan.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_holdScan_RunWorkerCompleted);
+            // 
+            // button_screenshot
+            // 
+            this.button_screenshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.button_screenshot.BackgroundImage = global::CitirocUI.Properties.Resources.Screenshot_icon;
+            this.button_screenshot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_screenshot.FlatAppearance.BorderSize = 0;
+            this.button_screenshot.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(151)))), ((int)(((byte)(174)))));
+            this.button_screenshot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_screenshot.ForeColor = System.Drawing.Color.White;
+            this.button_screenshot.Location = new System.Drawing.Point(0, 1);
+            this.button_screenshot.Name = "button_screenshot";
+            this.button_screenshot.Size = new System.Drawing.Size(60, 30);
+            this.button_screenshot.TabIndex = 28;
+            this.button_screenshot.UseVisualStyleBackColor = false;
+            this.button_screenshot.Click += new System.EventHandler(this.button_screenshot_Click);
+            // 
+            // tblPnlMain
+            // 
+            this.tblPnlMain.BackColor = System.Drawing.SystemColors.Control;
+            this.tblPnlMain.ColumnCount = 3;
+            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1080F));
+            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 457F));
+            this.tblPnlMain.Controls.Add(this.panel1, 0, 1);
+            this.tblPnlMain.Controls.Add(this.pnlTopBar, 1, 0);
+            this.tblPnlMain.Controls.Add(this.tabControl_top, 1, 1);
+            this.tblPnlMain.Controls.Add(this.pictureBox_logoWeeroc, 0, 2);
+            this.tblPnlMain.Controls.Add(this.label_help, 1, 2);
+            this.tblPnlMain.Controls.Add(this.label_weerocDotCom, 0, 0);
+            this.tblPnlMain.Controls.Add(this.panel_CubesMonitor, 2, 0);
+            this.tblPnlMain.Location = new System.Drawing.Point(0, 0);
+            this.tblPnlMain.Margin = new System.Windows.Forms.Padding(0);
+            this.tblPnlMain.Name = "tblPnlMain";
+            this.tblPnlMain.RowCount = 3;
+            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblPnlMain.Size = new System.Drawing.Size(1737, 720);
+            this.tblPnlMain.TabIndex = 38;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.roundButton_connectSmall);
+            this.panel1.Controls.Add(this.radioButton_connect);
+            this.panel1.Controls.Add(this.radioButton_slowControl);
+            this.panel1.Controls.Add(this.radioButton_probes);
+            this.panel1.Controls.Add(this.radioButton_firmware);
+            this.panel1.Controls.Add(this.radioButton_dataAcquisition);
+            this.panel1.Controls.Add(this.radioButton_calibration);
+            this.panel1.Controls.Add(this.label_rectangleFill);
+            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 490);
+            this.panel1.TabIndex = 39;
+            // 
+            // roundButton_connectSmall
+            // 
+            this.roundButton_connectSmall.BackColor = System.Drawing.Color.Gainsboro;
+            this.roundButton_connectSmall.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButton_connectSmall.BackgroundImage")));
+            this.roundButton_connectSmall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.roundButton_connectSmall.FlatAppearance.BorderSize = 0;
+            this.roundButton_connectSmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButton_connectSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.roundButton_connectSmall.Location = new System.Drawing.Point(22, 15);
+            this.roundButton_connectSmall.Name = "roundButton_connectSmall";
+            this.roundButton_connectSmall.Size = new System.Drawing.Size(40, 40);
+            this.roundButton_connectSmall.TabIndex = 7;
+            this.roundButton_connectSmall.UseVisualStyleBackColor = false;
+            this.roundButton_connectSmall.Click += new System.EventHandler(this.roundButton_connect_Click);
+            this.roundButton_connectSmall.MouseEnter += new System.EventHandler(this.roundButton_connect_MouseEnter);
+            this.roundButton_connectSmall.MouseLeave += new System.EventHandler(this.object_MouseLeave);
+            // 
+            // pnlTopBar
+            // 
+            this.pnlTopBar.Controls.Add(this.pnlTools);
+            this.pnlTopBar.Controls.Add(this.label_titleBar);
+            this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTopBar.Location = new System.Drawing.Point(200, 0);
+            this.pnlTopBar.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlTopBar.Name = "pnlTopBar";
+            this.pnlTopBar.Size = new System.Drawing.Size(1080, 30);
+            this.pnlTopBar.TabIndex = 39;
+            // 
+            // pnlTools
+            // 
+            this.pnlTools.Controls.Add(this.button_screenshot);
+            this.pnlTools.Controls.Add(this.btn_minimize);
+            this.pnlTools.Controls.Add(this.button_UIScale);
+            this.pnlTools.Controls.Add(this.btn_close);
+            this.pnlTools.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlTools.Location = new System.Drawing.Point(941, 0);
+            this.pnlTools.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlTools.Name = "pnlTools";
+            this.pnlTools.Size = new System.Drawing.Size(139, 30);
+            this.pnlTools.TabIndex = 40;
+            // 
+            // panel_CubesMonitor
+            // 
+            this.panel_CubesMonitor.BackColor = System.Drawing.Color.White;
+            this.panel_CubesMonitor.Controls.Add(this.groupBox_telemetry);
+            this.panel_CubesMonitor.Controls.Add(this.rtxtMonitor);
+            this.panel_CubesMonitor.Controls.Add(this.panel_clearSerialMonitor);
+            this.panel_CubesMonitor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_CubesMonitor.Location = new System.Drawing.Point(1280, 0);
+            this.panel_CubesMonitor.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_CubesMonitor.Name = "panel_CubesMonitor";
+            this.tblPnlMain.SetRowSpan(this.panel_CubesMonitor, 3);
+            this.panel_CubesMonitor.Size = new System.Drawing.Size(457, 720);
+            this.panel_CubesMonitor.TabIndex = 40;
+            // 
+            // groupBox_telemetry
+            // 
+            this.groupBox_telemetry.BackColor = System.Drawing.Color.White;
+            this.groupBox_telemetry.Controls.Add(this.groupBox_HV);
+            this.groupBox_telemetry.Controls.Add(this.groupBox_HitRates);
+            this.groupBox_telemetry.Controls.Add(this.button_readTelemetry);
+            this.groupBox_telemetry.Controls.Add(this.groupBox_HvpsTelemetry);
+            this.groupBox_telemetry.Controls.Add(this.textBox_timestamp);
+            this.groupBox_telemetry.Controls.Add(this.label_timestamp);
+            this.groupBox_telemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_telemetry.Location = new System.Drawing.Point(3, 7);
+            this.groupBox_telemetry.Name = "groupBox_telemetry";
+            this.groupBox_telemetry.Size = new System.Drawing.Size(448, 283);
+            this.groupBox_telemetry.TabIndex = 23;
+            this.groupBox_telemetry.TabStop = false;
+            this.groupBox_telemetry.Text = "Proto-CUBES Telemetry";
+            // 
+            // groupBox_HitRates
+            // 
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC1);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountOR32);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC2);
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountOR32);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC1);
+            this.groupBox_HitRates.Controls.Add(this.textBox_hitCountMPPC3);
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC2);
+            this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC3);
+            this.groupBox_HitRates.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_HitRates.Location = new System.Drawing.Point(6, 87);
+            this.groupBox_HitRates.Name = "groupBox_HitRates";
+            this.groupBox_HitRates.Size = new System.Drawing.Size(206, 145);
+            this.groupBox_HitRates.TabIndex = 40;
+            this.groupBox_HitRates.TabStop = false;
+            this.groupBox_HitRates.Text = "Channel Hit Rates";
+            // 
+            // label_hitCountMPPC1
+            // 
+            this.label_hitCountMPPC1.AutoSize = true;
+            this.label_hitCountMPPC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_hitCountMPPC1.Location = new System.Drawing.Point(8, 26);
+            this.label_hitCountMPPC1.Name = "label_hitCountMPPC1";
+            this.label_hitCountMPPC1.Size = new System.Drawing.Size(64, 18);
+            this.label_hitCountMPPC1.TabIndex = 20;
+            this.label_hitCountMPPC1.Text = "MPPC1:";
+            // 
+            // textBox_hitCountOR32
+            // 
+            this.textBox_hitCountOR32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_hitCountOR32.Location = new System.Drawing.Point(109, 110);
+            this.textBox_hitCountOR32.Name = "textBox_hitCountOR32";
+            this.textBox_hitCountOR32.ReadOnly = true;
+            this.textBox_hitCountOR32.Size = new System.Drawing.Size(83, 24);
+            this.textBox_hitCountOR32.TabIndex = 11;
+            // 
+            // textBox_hitCountMPPC2
+            // 
+            this.textBox_hitCountMPPC2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_hitCountMPPC2.Location = new System.Drawing.Point(109, 52);
+            this.textBox_hitCountMPPC2.Name = "textBox_hitCountMPPC2";
+            this.textBox_hitCountMPPC2.ReadOnly = true;
+            this.textBox_hitCountMPPC2.Size = new System.Drawing.Size(83, 24);
+            this.textBox_hitCountMPPC2.TabIndex = 23;
+            // 
+            // label_hitCountOR32
+            // 
+            this.label_hitCountOR32.AutoSize = true;
+            this.label_hitCountOR32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_hitCountOR32.Location = new System.Drawing.Point(8, 113);
+            this.label_hitCountOR32.Name = "label_hitCountOR32";
+            this.label_hitCountOR32.Size = new System.Drawing.Size(80, 18);
+            this.label_hitCountOR32.TabIndex = 10;
+            this.label_hitCountOR32.Text = "All (OR32):";
+            // 
+            // textBox_hitCountMPPC1
+            // 
+            this.textBox_hitCountMPPC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_hitCountMPPC1.Location = new System.Drawing.Point(109, 23);
+            this.textBox_hitCountMPPC1.Name = "textBox_hitCountMPPC1";
+            this.textBox_hitCountMPPC1.ReadOnly = true;
+            this.textBox_hitCountMPPC1.Size = new System.Drawing.Size(83, 24);
+            this.textBox_hitCountMPPC1.TabIndex = 21;
+            // 
+            // textBox_hitCountMPPC3
+            // 
+            this.textBox_hitCountMPPC3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_hitCountMPPC3.Location = new System.Drawing.Point(109, 81);
+            this.textBox_hitCountMPPC3.Name = "textBox_hitCountMPPC3";
+            this.textBox_hitCountMPPC3.ReadOnly = true;
+            this.textBox_hitCountMPPC3.Size = new System.Drawing.Size(83, 24);
+            this.textBox_hitCountMPPC3.TabIndex = 7;
+            // 
+            // label_hitCountMPPC2
+            // 
+            this.label_hitCountMPPC2.AutoSize = true;
+            this.label_hitCountMPPC2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_hitCountMPPC2.Location = new System.Drawing.Point(8, 55);
+            this.label_hitCountMPPC2.Name = "label_hitCountMPPC2";
+            this.label_hitCountMPPC2.Size = new System.Drawing.Size(64, 18);
+            this.label_hitCountMPPC2.TabIndex = 22;
+            this.label_hitCountMPPC2.Text = "MPPC2:";
+            // 
+            // label_hitCountMPPC3
+            // 
+            this.label_hitCountMPPC3.AutoSize = true;
+            this.label_hitCountMPPC3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_hitCountMPPC3.Location = new System.Drawing.Point(8, 84);
+            this.label_hitCountMPPC3.Name = "label_hitCountMPPC3";
+            this.label_hitCountMPPC3.Size = new System.Drawing.Size(64, 18);
+            this.label_hitCountMPPC3.TabIndex = 6;
+            this.label_hitCountMPPC3.Text = "MPPC3:";
+            // 
+            // groupBox_HvpsTelemetry
+            // 
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_NoteOnHVPSTelem);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Voltage);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Temperature);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_tempFromHVPS);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_voltageFromHVPS);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_Current);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_currentFromHVPS);
+            this.groupBox_HvpsTelemetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_HvpsTelemetry.Location = new System.Drawing.Point(218, 87);
+            this.groupBox_HvpsTelemetry.Name = "groupBox_HvpsTelemetry";
+            this.groupBox_HvpsTelemetry.Size = new System.Drawing.Size(221, 145);
+            this.groupBox_HvpsTelemetry.TabIndex = 39;
+            this.groupBox_HvpsTelemetry.TabStop = false;
+            this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry";
+            // 
+            // label_NoteOnHVPSTelem
+            // 
+            this.label_NoteOnHVPSTelem.AutoSize = true;
+            this.label_NoteOnHVPSTelem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_NoteOnHVPSTelem.Location = new System.Drawing.Point(6, 113);
+            this.label_NoteOnHVPSTelem.Name = "label_NoteOnHVPSTelem";
+            this.label_NoteOnHVPSTelem.Size = new System.Drawing.Size(248, 18);
+            this.label_NoteOnHVPSTelem.TabIndex = 19;
+            this.label_NoteOnHVPSTelem.Text = "NB: Read by hardware every 5s!";
+            // 
+            // label_Voltage
+            // 
+            this.label_Voltage.AutoSize = true;
+            this.label_Voltage.Location = new System.Drawing.Point(6, 32);
+            this.label_Voltage.Name = "label_Voltage";
+            this.label_Voltage.Size = new System.Drawing.Size(84, 18);
+            this.label_Voltage.TabIndex = 15;
+            this.label_Voltage.Text = "Voltage (V):";
+            // 
+            // label_Temperature
+            // 
+            this.label_Temperature.AutoSize = true;
+            this.label_Temperature.Location = new System.Drawing.Point(6, 84);
+            this.label_Temperature.Name = "label_Temperature";
+            this.label_Temperature.Size = new System.Drawing.Size(127, 18);
+            this.label_Temperature.TabIndex = 2;
+            this.label_Temperature.Text = "Temperature (°C):";
+            // 
+            // textBox_tempFromHVPS
+            // 
+            this.textBox_tempFromHVPS.Location = new System.Drawing.Point(132, 81);
+            this.textBox_tempFromHVPS.Name = "textBox_tempFromHVPS";
+            this.textBox_tempFromHVPS.ReadOnly = true;
+            this.textBox_tempFromHVPS.Size = new System.Drawing.Size(83, 24);
+            this.textBox_tempFromHVPS.TabIndex = 3;
+            // 
+            // textBox_voltageFromHVPS
+            // 
+            this.textBox_voltageFromHVPS.Location = new System.Drawing.Point(132, 23);
+            this.textBox_voltageFromHVPS.Name = "textBox_voltageFromHVPS";
+            this.textBox_voltageFromHVPS.ReadOnly = true;
+            this.textBox_voltageFromHVPS.Size = new System.Drawing.Size(83, 24);
+            this.textBox_voltageFromHVPS.TabIndex = 16;
+            // 
+            // label_Current
+            // 
+            this.label_Current.AutoSize = true;
+            this.label_Current.Location = new System.Drawing.Point(6, 58);
+            this.label_Current.Name = "label_Current";
+            this.label_Current.Size = new System.Drawing.Size(97, 18);
+            this.label_Current.TabIndex = 17;
+            this.label_Current.Text = "Current (mA):";
+            // 
+            // textBox_currentFromHVPS
+            // 
+            this.textBox_currentFromHVPS.Location = new System.Drawing.Point(132, 52);
+            this.textBox_currentFromHVPS.Name = "textBox_currentFromHVPS";
+            this.textBox_currentFromHVPS.ReadOnly = true;
+            this.textBox_currentFromHVPS.Size = new System.Drawing.Size(83, 24);
+            this.textBox_currentFromHVPS.TabIndex = 18;
+            // 
+            // textBox_timestamp
+            // 
+            this.textBox_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_timestamp.Location = new System.Drawing.Point(266, 56);
+            this.textBox_timestamp.Name = "textBox_timestamp";
+            this.textBox_timestamp.ReadOnly = true;
+            this.textBox_timestamp.Size = new System.Drawing.Size(173, 24);
+            this.textBox_timestamp.TabIndex = 1;
+            this.textBox_timestamp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label_timestamp
+            // 
+            this.label_timestamp.AutoSize = true;
+            this.label_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_timestamp.Location = new System.Drawing.Point(6, 60);
+            this.label_timestamp.Name = "label_timestamp";
+            this.label_timestamp.Size = new System.Drawing.Size(277, 18);
+            this.label_timestamp.TabIndex = 0;
+            this.label_timestamp.Text = "Timestamp of last telemetry packet:";
+            // 
+            // rtxtMonitor
+            // 
+            this.rtxtMonitor.BackColor = System.Drawing.SystemColors.InfoText;
+            this.rtxtMonitor.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtMonitor.ForeColor = System.Drawing.SystemColors.Info;
+            this.rtxtMonitor.Location = new System.Drawing.Point(3, 289);
+            this.rtxtMonitor.Name = "rtxtMonitor";
+            this.rtxtMonitor.ReadOnly = true;
+            this.rtxtMonitor.Size = new System.Drawing.Size(448, 391);
+            this.rtxtMonitor.TabIndex = 22;
+            this.rtxtMonitor.Text = "";
+            // 
+            // panel_clearSerialMonitor
+            // 
+            this.panel_clearSerialMonitor.Controls.Add(this.label_ConnStatus);
+            this.panel_clearSerialMonitor.Controls.Add(this.buttonHelp);
+            this.panel_clearSerialMonitor.Controls.Add(this.button_Clear);
+            this.panel_clearSerialMonitor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel_clearSerialMonitor.Location = new System.Drawing.Point(0, 683);
+            this.panel_clearSerialMonitor.Name = "panel_clearSerialMonitor";
+            this.panel_clearSerialMonitor.Size = new System.Drawing.Size(457, 37);
+            this.panel_clearSerialMonitor.TabIndex = 21;
+            // 
+            // label_ConnStatus
+            // 
+            this.label_ConnStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ConnStatus.Location = new System.Drawing.Point(3, 8);
+            this.label_ConnStatus.Name = "label_ConnStatus";
+            this.label_ConnStatus.Size = new System.Drawing.Size(316, 23);
+            this.label_ConnStatus.TabIndex = 2;
+            this.label_ConnStatus.Text = "label_ConnStatus";
+            this.label_ConnStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonHelp.Location = new System.Drawing.Point(325, 3);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(29, 32);
+            this.buttonHelp.TabIndex = 1;
+            this.buttonHelp.Text = "?";
+            this.buttonHelp.UseVisualStyleBackColor = true;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            // 
+            // button_Clear
+            // 
+            this.button_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Clear.Location = new System.Drawing.Point(360, 3);
+            this.button_Clear.Name = "button_Clear";
+            this.button_Clear.Size = new System.Drawing.Size(85, 32);
+            this.button_Clear.TabIndex = 0;
+            this.button_Clear.Text = "Clear";
+            this.button_Clear.UseVisualStyleBackColor = true;
+            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
+            // 
+            // tmrButtonColor
+            // 
+            this.tmrButtonColor.Interval = 500;
+            this.tmrButtonColor.Tick += new System.EventHandler(this.tmrButtonColor_Tick);
             // 
             // Citiroc
             // 
