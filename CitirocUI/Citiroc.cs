@@ -1800,7 +1800,7 @@ namespace CitirocUI
             if (panel_CubesMonitor.Visible == false)
             {
                 CubesMonitorVisible(true);
-
+                mySerialComm.MonitorActive = true;
                 mySerialComm.DataReadyEvent += CubesMonitor_DataReady;
                 btn_CubesMonitor.Text = "CUBES Monitor <<<";
             }
@@ -1808,7 +1808,7 @@ namespace CitirocUI
             {
                 // already visible, will be closed
                 CubesMonitorVisible(false);
-
+                mySerialComm.MonitorActive = false;
                 mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
                 btn_CubesMonitor.Text = "CUBES Monitor >>>";
             }
@@ -1946,7 +1946,7 @@ namespace CitirocUI
         private void CubesMonitorVisible(bool mode)
         {
             panel_CubesMonitor.Visible = mode;
-
+   
             tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
             if (mode)
             {

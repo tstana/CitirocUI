@@ -260,7 +260,6 @@ namespace CitirocUI
                     mySerialComm.RtsEnable = true;
 
                     mySerialComm.DisplayWindow = rtxtMonitor;
-                    mySerialComm.MonitorActive = true;
 
                     //// Set the read/write timeouts
                     mySerialComm.ReadTimeout = 500;
