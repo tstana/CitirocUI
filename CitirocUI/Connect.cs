@@ -499,11 +499,7 @@ namespace CitirocUI
                 label_numData.Text = "Number of acquisitions:";
                 textBox_numData.Text = "100";
                 switchBox_acquisitionMode_CheckedChanged(switchBox_acquisitionMode, EventArgs.Empty);
-
-                // Disable the read register controls in the Probes tab
-                button_sendReadRegister.Enabled = false;
-                checkBox_rr.Enabled = false;
-                numericUpDown_rr.Enabled = false;
+                 
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
@@ -513,12 +509,7 @@ namespace CitirocUI
                 AddCurrentComPortsToComboBox();
                 comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
 
-                // Disable the read register controls in the Probes tab
-                button_sendReadRegister.Enabled = false;
-                checkBox_rr.Enabled = false;
-                numericUpDown_rr.Enabled = false;
-
-                // Use the number of acquisitions box as the individual DAQ timer
+                  // Use the number of acquisitions box as the individual DAQ timer
                 // setting for Proto-CUBES...
                 switchBox_acquisitionMode.Visible = false;
                 label_numData.Enabled = true;
