@@ -60,6 +60,7 @@ namespace CitirocUI
             SendHVPSConf        = 'H',
             SendHVPSTmpVolt     = 'V',
             SendDAQDur          = 'D',
+            SendReadReg         = 'R',
             DAQStart            = 'S',
             DAQStop             = 'T',
             ReqHK               = 'h',

@@ -152,13 +152,37 @@ namespace CitirocUI
         {
             bool result = false;
 
-            // Test if software can read firmware version. If not, the board is not connected.
-            if (Firmware.readWord(100, usbDevId) != "00000000")
+            if((comboBox_SelectConnection.SelectedIndex == 0))
             {
-                result = sendReadRegister(usbDevId);
-                if (result) button_sendReadRegister.BackColor = WeerocGreen;
-                else button_sendReadRegister.BackColor = Color.LightCoral;
-                button_sendReadRegister.ForeColor = Color.White;
+                // Test if software can read firmware version. If not, the board is not connected.
+                if (Firmware.readWord(100, usbDevId) != "00000000")
+                {
+                    result = sendReadRegister(usbDevId);
+                    if (result) button_sendReadRegister.BackColor = WeerocGreen;
+                    else button_sendReadRegister.BackColor = Color.LightCoral;
+                    button_sendReadRegister.ForeColor = Color.White;
+                }
+            }
+            // Test if serial connection is active
+            else if((comboBox_SelectConnection.SelectedIndex == 1) && (connectStatus ==1))
+            {
+                byte[] bytSC = new byte[2];
+                bytSC[0] = Convert.ToByte('R');
+
+                byte tmpB = 0;
+
+                if (checkBox_rr.Checked)
+                    tmpB = 0x20;
+                tmpB += Convert.ToByte(numericUpDown_rr.Value);
+
+                try
+                {
+                    mySerialComm.WriteData(bytSC, 2);
+                 }
+                catch
+                {
+                    
+                }
             }
             else
             {
@@ -170,7 +194,7 @@ namespace CitirocUI
                 label_boardStatus.Text = "Board status\n" + "No board connected";
                 button_loadFw.Visible = false;
                 progressBar_loadFw.Visible = false;
-                MessageBox.Show("No USB Devices found.", "Warning", MessageBoxButtons.OKCancel);
+                MessageBox.Show("No Device found.", "Warning", MessageBoxButtons.OKCancel);
             }
         }
 
