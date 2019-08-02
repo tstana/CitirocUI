@@ -174,6 +174,7 @@ namespace CitirocUI
                 if (checkBox_rr.Checked)
                     tmpB = 0x20;
                 tmpB += Convert.ToByte(numericUpDown_rr.Value);
+                bytSC[1] = tmpB;
 
                 try
                 {
