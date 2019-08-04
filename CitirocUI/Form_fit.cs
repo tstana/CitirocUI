@@ -104,7 +104,6 @@ namespace CitirocUI
             dragging = false;
         }
 
-        bool formClosed = false;
         private void btn_close_Click(object sender, EventArgs e)
         {
             fitResult[3] = 0;

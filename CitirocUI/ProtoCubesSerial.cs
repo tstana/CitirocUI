@@ -88,8 +88,7 @@ namespace CitirocUI
         private byte[] _comBuffer;
 
         private byte[] _daqDataArray = new byte[25000];
-        private byte[] _hkDataArray = new byte[53];
-
+ 
         private bool _retrievingDaqData = false;
         private int _numBytesRetrieved = 0;
         private int _numBins;       // TODO: Remove me (replace with expectedNumBytes or equiv.)
@@ -416,65 +415,51 @@ namespace CitirocUI
             
             if(_monvisible)
                 DisplayData(dataBytes);
+            /*
+                * Store DAQ data to a byte array when it arrives. When the
+                * number of bytes expected as part of one DAQ run has been
+                * received, store it to the file selected by the user in
+                * the UI.
+                */
 
+            int dataLength = 53;
             if (_retrievingDaqData)
+                dataLength = 22 + 256 + 6 * (_numBins * 2);
+
+            try
             {
-                /*
-                    * Store DAQ data to a byte array when it arrives. When the
-                    * number of bytes expected as part of one DAQ run has been
-                    * received, store it to the file selected by the user in
-                    * the UI.
-                    */
-                try
+                dataBytes.CopyTo(_daqDataArray, _numBytesRetrieved);
+                _numBytesRetrieved += numBytesRead;
+                if (_numBytesRetrieved >= dataLength)      // TODO: Replace me with "end-of-DAQ-data" marker...
                 {
-                    dataBytes.CopyTo(_daqDataArray, _numBytesRetrieved);
-                    _numBytesRetrieved += numBytesRead;
-                    if (_numBytesRetrieved >= 22 + 256 + 6*(_numBins*2))      // TODO: Replace me with "end-of-DAQ-data" marker...
+                    if (_retrievingDaqData)
                     {
                         DataReadyEvent(this, new DataReadyEventArgs(Command.ReqPayload, _daqDataArray));
                         _retrievingDaqData = false;
-                        _numBytesRetrieved = 0;
                     }
-                }
-                catch (ArgumentException)
-                {
-                    MessageBox.Show("Attempting to write too many bytes to _hkDataArray:\n" +
-                        "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
-                        "dataB.Length = " + dataBytes.Length + "\n", "Exception");
+                       
+                    else
+                    {
+                        DataReadyEvent(this, new DataReadyEventArgs(Command.ReqHK, _daqDataArray));
+                    }
+                        
+                    
                     _numBytesRetrieved = 0;
                 }
-                catch (Exception excep)
-                {
-                    MessageBox.Show(excep.Message, "Error");
-                    _numBytesRetrieved = 0;
-                }
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Attempting to write too many bytes to _hkDataArray:\n" +
+                    "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
+                    "dataB.Length = " + dataBytes.Length + "\n", "Exception");
+                _numBytesRetrieved = 0;
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message, "Error");
+                _numBytesRetrieved = 0;
             }
 
-            else
-            {
-                try
-                {
-                    dataBytes.CopyTo(_hkDataArray, _numBytesRetrieved);
-                    _numBytesRetrieved += numBytesRead;
-                    if (_numBytesRetrieved == _hkDataArray.Length)      // TODO: Replace me with "end-of-DAQ-data" marker...
-                    {
-                        DataReadyEvent(this, new DataReadyEventArgs(Command.ReqHK, _hkDataArray));
-                        _numBytesRetrieved = 0;
-                    }
-                }
-                catch (ArgumentException)
-                {
-                    MessageBox.Show("Attempting to write too many bytes to _hkDataArray:\n" +
-                        "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
-                        "dataB.Length = " + dataBytes.Length + "\n", "Exception");
-                    _numBytesRetrieved = 0;
-                }
-                catch (Exception excep)
-                {
-                    MessageBox.Show(excep.Message, "Error");
-                    _numBytesRetrieved = 0;
-                }
-            }
         }
         #endregion
     }
