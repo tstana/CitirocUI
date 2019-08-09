@@ -61,6 +61,7 @@ namespace CitirocUI
             SendHVPSTmpVolt     = 'V',
             SendDAQDur          = 'D',
             SendReadReg         = 'R',
+            SendResets          = 'E',
             DAQStart            = 'S',
             DAQStop             = 'T',
             ReqHK               = 'h',
@@ -415,17 +416,30 @@ namespace CitirocUI
             
             if(_monvisible)
                 DisplayData(dataBytes);
-            /*
-                * Store DAQ data to a byte array when it arrives. When the
-                * number of bytes expected as part of one DAQ run has been
-                * received, store it to the file selected by the user in
-                * the UI.
-                */
 
-            int dataLength = 53;
+            /*
+             * Expected number of bytes:
+             *      HK:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Data (32 bytes)
+             *          \r\n (2 bytes)
+             *          ---
+             *          Total: 57
+             *      DAQ:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Histo header (256 bytes)
+             *          Bins data (variable)
+             *          ---
+             *          Total: calculated below
+             */
+            int dataLength = 57;
             if (_retrievingDaqData)
                 dataLength = 22 + 256 + 6 * (_numBins * 2);
 
+            /*
+             * Buffer received data as it arrives until required number of
+             * bytes have been received
+             */
             try
             {
                 dataBytes.CopyTo(_daqDataArray, _numBytesRetrieved);

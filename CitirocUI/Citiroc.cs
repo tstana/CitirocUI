@@ -1856,6 +1856,10 @@ namespace CitirocUI
             UInt32 hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_count, 0);
             UInt32 hitCountOR32 = BitConverter.ToUInt32(ch21_hit_count, 0);
 
+            byte[] reset_count = new byte[4];
+            Array.Copy(e.DataBytes, 51, reset_count, 0, 4);
+            UInt32 resetCount = BitConverter.ToUInt32(reset_count, 0);
+
             // 2. Now for the HVPS stuff... It is presented as ASCII characters
             // by the HVPS, placed at particular offsets in the HK data stream.
             // These characters need to be converted to a string, which then needs
@@ -1938,6 +1942,12 @@ namespace CitirocUI
                 delegate
                 {
                     textBox_tempFromHVPS.Text = tempFromHVPS.ToString("N3");
+                }
+            ));
+            textBox_ResetCount.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_ResetCount.Text = resetCount.ToString();
                 }
             ));
         }
@@ -2049,6 +2059,42 @@ namespace CitirocUI
             tmrButtonColor.Enabled = true;
         }
 
+        void button_SendResets_Click(object sender, EventArgs e)
+        {
+            byte[] cmd = new byte[2];
+            cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendResets);
+
+            cmd[1] = (byte)(
+                ((checkBox_RstResetCounters.Checked ? 0b1 : 0b0)    << 0) |
+                ((checkBox_RstHCR.Checked ? 0b1 : 0b0)              << 1) |
+                ((checkBox_RstHisto.Checked ? 0b1 : 0b0)            << 2) |
+                ((checkBox_RstPSC.Checked ? 0b1 : 0b0)              << 3) |
+                ((checkBox_RstSR.Checked ? 0b1 : 0b0)               << 4) |
+                ((checkBox_RstPA.Checked ? 0b1 : 0b0)               << 5) |
+                ((checkBox_RstASICTrigs.Checked ? 0b1 : 0b0)        << 6));
+
+            try
+            {
+                if (connectStatus == 1)
+                {
+                    mySerialComm.WriteData(cmd, cmd.Length);
+                    button_SendResets.BackColor = WeerocGreen;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch
+            {
+                label_help.Text = "ERROR: Failed to send resets command to Proto-CUBES! " +
+                    "Please check the connection...";
+                button_SendResets.BackColor = Color.IndianRed;
+            }
+            tmrButtonColor.Enabled = true;
+        }
+
         #endregion
 
         private void tmrButtonColor_Tick(object sender, EventArgs e)
@@ -2066,6 +2112,8 @@ namespace CitirocUI
             button_sendProbes.BackColor = Color.Gainsboro;
             button_sendProbes.ForeColor = SystemColors.ControlText;
 
+            button_SendResets.BackColor = SystemColors.Control;
+            button_SendResets.ForeColor = SystemColors.ControlText;
         }
 
     }
