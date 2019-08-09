@@ -1851,13 +1851,24 @@ namespace CitirocUI
             Array.Copy(e.DataBytes, 31, ch31_hit_count, 0, 4);
             Array.Copy(e.DataBytes, 35, ch21_hit_count, 0, 4);
 
+            byte[] reset_count = new byte[4];
+            Array.Copy(e.DataBytes, 51, reset_count, 0, 4);
+
+            // Reverse arrays before conversion if on a little-endian machine
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(ch0_hit_count);
+                Array.Reverse(ch16_hit_count);
+                Array.Reverse(ch31_hit_count);
+                Array.Reverse(ch21_hit_count);
+                Array.Reverse(reset_count);
+            }
+
             UInt32 hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_count, 0);
             UInt32 hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_count, 0);
             UInt32 hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_count, 0);
             UInt32 hitCountOR32 = BitConverter.ToUInt32(ch21_hit_count, 0);
 
-            byte[] reset_count = new byte[4];
-            Array.Copy(e.DataBytes, 51, reset_count, 0, 4);
             UInt32 resetCount = BitConverter.ToUInt32(reset_count, 0);
 
             // 2. Now for the HVPS stuff... It is presented as ASCII characters
