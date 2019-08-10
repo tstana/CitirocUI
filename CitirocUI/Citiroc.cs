@@ -78,6 +78,11 @@ namespace CitirocUI
 
         private void btn_close_Click(object sender, EventArgs e)
         {
+            // Send DAQ_STOP command
+            byte[] cmd = new byte[1];
+            cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStop);
+            mySerialComm.WriteData(cmd, cmd.Length);
+
             Application.Exit();
 
             try
