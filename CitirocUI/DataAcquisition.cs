@@ -488,6 +488,10 @@ namespace CitirocUI
 
         private void SendReqPayload()
         {
+            /* TODO check textBox_NumBins limits !
+             */
+            int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
+
             byte[] reqData = new byte[1];
             reqData[0] = Convert.ToByte(ProtoCubesSerial.Command.ReqPayload);
 
@@ -496,8 +500,7 @@ namespace CitirocUI
              * and GO!
              */
             mySerialComm.RetrievingDaqData = true;
-            mySerialComm.NumBins = 2048;        // TODO: Replace with ProtoCubesSerial.Command parameter
-                                                //       and number from WinForms control.
+            mySerialComm.NumBins = noOfBins;
             mySerialComm.WriteData(reqData, reqData.Length);
         }
 
