@@ -766,6 +766,7 @@
             this.textBox_maxStaircase = new CitirocUI.intTextBox();
             this.textBox_minStaircase = new CitirocUI.intTextBox();
             this.tabPage_dataAcquisition = new System.Windows.Forms.TabPage();
+            this.label141 = new System.Windows.Forms.Label();
             this.textBox_NumBins = new CitirocUI.intTextBox();
             this.label_acquisitionTime = new System.Windows.Forms.Label();
             this.textBox_acquisitionTime = new System.Windows.Forms.MaskedTextBox();
@@ -774,6 +775,7 @@
             this.label_elapsedTimeAcquisition = new System.Windows.Forms.Label();
             this.tabControl_dataAcquisition = new System.Windows.Forms.TabControl();
             this.tabPage_perChannelCharge = new System.Windows.Forms.TabPage();
+            this.label_DataFile = new System.Windows.Forms.Label();
             this.textBox_LgCutLow = new CitirocUI.intTextBox();
             this.textBox_LgCutHigh = new CitirocUI.intTextBox();
             this.textBox_HgCutLow = new CitirocUI.intTextBox();
@@ -914,7 +916,6 @@
             this.buttonHelp = new System.Windows.Forms.Button();
             this.button_Clear = new System.Windows.Forms.Button();
             this.tmrButtonColor = new System.Windows.Forms.Timer(this.components);
-            this.label141 = new System.Windows.Forms.Label();
             this.tabControl_top.SuspendLayout();
             this.tabPage_main.SuspendLayout();
             this.groupBox_SerialPortSettings.SuspendLayout();
@@ -10085,6 +10086,15 @@
             this.tabPage_dataAcquisition.TabIndex = 2;
             this.tabPage_dataAcquisition.Text = "Data acquisition";
             // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.Location = new System.Drawing.Point(877, 8);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(101, 24);
+            this.label141.TabIndex = 24;
+            this.label141.Text = "No. of Bins";
+            // 
             // textBox_NumBins
             // 
             this.textBox_NumBins.enableNegative = false;
@@ -10159,6 +10169,7 @@
             // 
             // tabPage_perChannelCharge
             // 
+            this.tabPage_perChannelCharge.Controls.Add(this.label_DataFile);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutLow);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutHigh);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutLow);
@@ -10180,6 +10191,17 @@
             this.tabPage_perChannelCharge.TabIndex = 0;
             this.tabPage_perChannelCharge.Text = "   Per channel   ";
             this.tabPage_perChannelCharge.UseVisualStyleBackColor = true;
+            // 
+            // label_DataFile
+            // 
+            this.label_DataFile.AutoSize = true;
+            this.label_DataFile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_DataFile.Location = new System.Drawing.Point(3, 343);
+            this.label_DataFile.Name = "label_DataFile";
+            this.label_DataFile.Size = new System.Drawing.Size(78, 24);
+            this.label_DataFile.TabIndex = 26;
+            this.label_DataFile.Text = "data_file";
+            this.label_DataFile.Visible = false;
             // 
             // textBox_LgCutLow
             // 
@@ -12060,15 +12082,6 @@
             this.tmrButtonColor.Interval = 500;
             this.tmrButtonColor.Tick += new System.EventHandler(this.tmrButtonColor_Tick);
             // 
-            // label141
-            // 
-            this.label141.AutoSize = true;
-            this.label141.Location = new System.Drawing.Point(877, 8);
-            this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(101, 24);
-            this.label141.TabIndex = 24;
-            this.label141.Text = "No. of Bins";
-            // 
             // Citiroc
             // 
             this.AllowDrop = true;
@@ -13046,6 +13059,7 @@
         private System.Windows.Forms.Timer tmrButtonColor;
         private intTextBox textBox_NumBins;
         private System.Windows.Forms.Label label141;
+        private System.Windows.Forms.Label label_DataFile;
     }
 }
 

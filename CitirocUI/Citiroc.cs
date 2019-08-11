@@ -1729,6 +1729,26 @@ namespace CitirocUI
 
         private void numericUpDown_loadCh_ValueChanged(object sender, EventArgs e)
         {
+            if(selectedConnectionMode == 1)
+            {
+                NumericUpDown num = (NumericUpDown)sender;
+                if ((num.Text == "31") && (num.Value <= 30))
+                {
+                    num.Value = 16;
+                }
+                else if (num.Text == "16")
+                {
+                    if (num.Value <= 16)
+                        num.Value = 0;
+                    else
+                        num.Value = 31;
+                }
+                else if ((num.Text == "0") && (num.Value > 0))
+                {
+                    num.Value = 16;
+                }
+                   
+            }
             refreshDataChart();
         }
 

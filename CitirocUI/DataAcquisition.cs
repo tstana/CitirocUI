@@ -545,8 +545,7 @@ namespace CitirocUI
             if (DataArrayListCount <= 1) return;
 
             string[] DataArray = new string[DataArrayListCount];
-            DataArrayList.CopyTo(DataArray);
-
+  
             Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
             Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
             Array.Clear(Hit, 0, Hit.Length);
@@ -620,7 +619,11 @@ namespace CitirocUI
 
             for (int i = HgCutLow; i < HgCutHigh + 1; i++) if (PerChannelChargeHG[chNum, i] != 0) chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
 
-            ulong numTimeTrigs = (Convert.ToUInt64(Firmware.readWord(120, usbDevId), 2)) |
+            ulong numTimeTrigs = 0;
+
+            if(selectedConnectionMode == 0)
+            {
+                numTimeTrigs=(Convert.ToUInt64(Firmware.readWord(120, usbDevId), 2)) |
                                  (Convert.ToUInt64(Firmware.readWord(121, usbDevId), 2) <<  8) |
                                  (Convert.ToUInt64(Firmware.readWord(122, usbDevId), 2) << 16) |
                                  (Convert.ToUInt64(Firmware.readWord(123, usbDevId), 2) << 24) |
@@ -628,6 +631,7 @@ namespace CitirocUI
                                  (Convert.ToUInt64(Firmware.readWord(125, usbDevId), 2) << 40) |
                                  (Convert.ToUInt64(Firmware.readWord(126, usbDevId), 2) << 48) |
                                  (Convert.ToUInt64(Firmware.readWord(127, usbDevId), 2) << 56);
+            }
 
             label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + Hit[chNum] +
                                " / Total time hits on all channels during actual acq. time = " + numTimeTrigs;
@@ -654,6 +658,8 @@ namespace CitirocUI
             #endregion
 
             #region per acquisition
+
+            if (selectedConnectionMode == 1) return;
 
             if (DataLoadFile == null) return;
 
@@ -758,6 +764,77 @@ namespace CitirocUI
 
             return 0;
         }
+
+        private void loadProtocubesData()
+        {
+            if (DataLoadFile == null) return;
+
+            byte[] bytes = File.ReadAllBytes(DataLoadFile);
+            PlotProtoCubesData(DataLoadFile, bytes);
+        }
+
+        private void PlotProtoCubesData(string dataFile,byte[] his_data)
+        {
+            label_DataFile.Text = Path.GetFileName(dataFile);
+            label_DataFile.Visible = true;
+
+            try
+            {
+                string u_time = System.Text.Encoding.UTF8.GetString(his_data, 0, 21);
+
+                if((his_data[21]!=0x0d) || (his_data[22] != 0x0a)
+                    || (u_time.IndexOf("Unix time:") !=0))
+                {
+                    label_help.Text ="Invalid data file format!";
+                    return;
+                }
+
+                label_DataFile.Text = "file: " +Path.GetFileName(dataFile) +
+                    "  " + u_time;
+                label_DataFile.Visible = true;
+
+                // Header data
+                /*
+                string histoid      = System.Text.Encoding.UTF8.GetString(his_data, 23, 2);
+                int time_reg        = BitConverter.ToInt32(his_data,25);
+                byte[] cfg_ram      = new byte[156];
+                Array.Copy(his_data, 29, cfg_ram, 0, 156);
+                int temp_hvpsS      = BitConverter.ToUInt16(his_data, 185);
+                int temp_citirocS   = BitConverter.ToUInt16(his_data, 187);
+                int temp_hvpsE      = BitConverter.ToUInt16(his_data, 189);
+                int temp_citirocE   = BitConverter.ToUInt16(his_data, 191);
+                int daq_dur         = BitConverter.ToUInt16(his_data, 193);
+                int daq_time        = BitConverter.ToUInt16(his_data, 195);
+                int nrBins          = BitConverter.ToUInt16(his_data, 277);
+                */
+
+                Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
+                Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
+                Array.Clear(Hit, 0, Hit.Length);
+                
+                // BIN data
+                int start = 280;
+                int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
+
+                for (int i=0; i<noOfBins; i++)
+                {
+                    int start0 = start + 2*i;
+                    PerChannelChargeHG[0,i]=  BitConverter.ToUInt16(his_data,start0 );
+                    PerChannelChargeLG[0,i] = BitConverter.ToUInt16(his_data, start0+4096);
+                    PerChannelChargeHG[16,i] = BitConverter.ToUInt16(his_data, start0 + 8192);
+                    PerChannelChargeLG[16,i] = BitConverter.ToUInt16(his_data, start0 + 12288);
+                    PerChannelChargeHG[31,i] = BitConverter.ToUInt16(his_data, start0 + 16384);
+                    PerChannelChargeLG[31,i] = BitConverter.ToUInt16(his_data, start0 + 20480);
+                }
+
+                refreshDataChart();
+            }
+            catch (Exception ex)
+            {
+                label_help.Text = "Invalid .dat file format :" + ex.Message;
+            }
+
+        }
         #endregion
 
         #region Serial Data Ready Event Handler
@@ -776,6 +853,13 @@ namespace CitirocUI
 
                 using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
                 {
+                    // display data if tab is active
+                    if ((tabControl_top.SelectedTab.Name == "tabControl_dataAcquisition")
+                        && (tabControl_dataAcquisition.SelectedTab.Name== "tabPage_perChannelCharge"))
+                    {
+                        PlotProtoCubesData(fileName,e.DataBytes);
+                    }
+
                     dataFile.Write(e.DataBytes);
                 }
             }
@@ -817,7 +901,10 @@ namespace CitirocUI
             // Open dialog box
             OpenFileDialog DataLoadDialog = new OpenFileDialog();
             DataLoadDialog.Title = "Specify Data file";
-            //DataLDialog.Filter = "TxT files|*.txt";
+
+            if(selectedConnectionMode == 1)     // Serial
+                DataLoadDialog.Filter = "ProtoCubes files|*.dat";
+
             DataLoadDialog.RestoreDirectory = true;
 
             if (DataLoadDialog.ShowDialog() == DialogResult.OK && DataLoadDialog.FileName != null)
@@ -832,7 +919,17 @@ namespace CitirocUI
                     chart_perChannelChargeLG.Series.Clear();
                     return;
                 }
-                else loadData();
+                else
+                {
+                    if (selectedConnectionMode == 1)
+                    {
+                        loadProtocubesData();
+                    }
+                        
+                    else
+                        loadData();
+                }
+                    
             }
             else return;
         }
