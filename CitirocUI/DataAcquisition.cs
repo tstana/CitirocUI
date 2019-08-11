@@ -8,6 +8,7 @@ using System.Linq;
 using System.Collections;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CitirocUI
 {
@@ -651,7 +652,7 @@ namespace CitirocUI
             chart_perChannelChargeLG.Series[0].BorderColor = WeerocPaleBlue;
             chart_perChannelChargeLG.Series[0].BorderWidth = 0;
             chart_perChannelChargeLG.Series[0]["PointWidth"] = "1";
-
+         
             for (int i = LgCutLow; i < LgCutHigh + 1; i++) if (PerChannelChargeLG[chNum, i] != 0) chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
 
             resetZoom(chart_perChannelChargeLG);
@@ -828,6 +829,8 @@ namespace CitirocUI
                 }
 
                 refreshDataChart();
+
+                DrawChartImage();
             }
             catch (Exception ex)
             {
@@ -838,6 +841,15 @@ namespace CitirocUI
         #endregion
 
         #region Serial Data Ready Event Handler
+        private void sendDatatoChart(string fName, byte[] fValues)
+        {
+            if ((tabControl_top.SelectedTab.Name == "tabControl_dataAcquisition")
+                   && (tabControl_dataAcquisition.SelectedTab.Name == "tabPage_perChannelCharge"))
+            {
+                PlotProtoCubesData(fName, fValues);
+            }
+        }
+
         private void mySerialComm_DataReady(object sender, DataReadyEventArgs e)
         {
             if ((e.Command == ProtoCubesSerial.Command.ReqPayload) &&
@@ -850,16 +862,11 @@ namespace CitirocUI
                 string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
 
                 UpdatingLabel("Writing DAQ data to " + fileName, label_help);
+                // display data if tab is active
+                displayDataFunction(fileName, e.DataBytes);
 
                 using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
                 {
-                    // display data if tab is active
-                    if ((tabControl_top.SelectedTab.Name == "tabControl_dataAcquisition")
-                        && (tabControl_dataAcquisition.SelectedTab.Name== "tabPage_perChannelCharge"))
-                    {
-                        PlotProtoCubesData(fileName,e.DataBytes);
-                    }
-
                     dataFile.Write(e.DataBytes);
                 }
             }
@@ -1055,6 +1062,92 @@ namespace CitirocUI
             }
 
             AdjustAcquisitionTime();
+        }
+        #endregion
+
+        #region Chart Image
+        private void DrawChartImage()
+        {
+            Chart tmpChart = new Chart();
+            tmpChart.Size = new Size(1800, 1200);
+
+            // save to a bitmap
+            Bitmap bmp = new Bitmap(3800, 3800);
+            string[] chan_name = { "CH0 High ","CH0 Low ", "CH16 High ", "CH16 Low ", "CH31 High ", "CH31 Low " };
+            Point[] P = new Point[]
+            {
+                new Point { X = 0, Y = 0 },
+                new Point { X = 1900, Y = 0 },
+                new Point { X = 0, Y = 1300 },
+                new Point { X = 1900, Y = 1300 },
+                new Point { X = 0, Y = 2600 },
+                new Point { X = 1900, Y = 2600 },
+            };
+
+            Font chtXFont = new Font("Arial", 42);
+            Font chtYFont = new Font("Arial", 32);
+            var chartArea = new ChartArea();
+            chartArea.AxisX.MajorGrid.LineColor = Color.Gray;
+            chartArea.AxisY.MajorGrid.LineColor = Color.Gray;
+            chartArea.AxisX.LabelStyle.Font = new Font("Consolas", 32);
+            chartArea.AxisY.LabelStyle.Font = new Font("Consolas", 32);
+            chartArea.AxisX.IsStartedFromZero = false;
+            chartArea.AxisX.TitleFont = chtXFont;
+            chartArea.AxisY.TitleFont = chtYFont;
+            chartArea.AxisY.Title = "Data count";
+            tmpChart.BorderlineColor = Color.Red;
+            tmpChart.BorderlineWidth = 4;
+            tmpChart.ChartAreas.Add(chartArea);
+
+
+
+            for (int chart_idx = 0; chart_idx < 6; chart_idx++)
+            {
+                tmpChart.Series.Clear();
+                tmpChart.ResetAutoValues();
+                tmpChart.Series.Add("Charge");
+                tmpChart.ChartAreas[0].AxisX.Title = chan_name[chart_idx] + "gain charge (ADCu)";
+                //tmpChart.Series[0].Color = WeerocPaleBlue;
+                //tmpChart.Series[0].BorderColor = Color.Red;
+                tmpChart.Series[0].BorderWidth = 1;
+                tmpChart.Series[0]["PointWidth"] = "1";
+
+            int value = 0;
+            for (int i = 0; i < 2048; i++)
+            {
+                 switch (chart_idx)
+                {
+                    case 0:
+                        value = PerChannelChargeHG[0, i];
+                        break;
+                    case 1:
+                        value = PerChannelChargeLG[0, i];
+                        break;
+                    case 2:
+                        value = PerChannelChargeHG[16, i];
+                        break;
+                    case 3:
+                        value = PerChannelChargeLG[16, i];
+                        break;
+                    case 4:
+                        value = PerChannelChargeHG[31, i];
+                        break;
+                    case 5:
+                        value = PerChannelChargeLG[31, i];
+                        break;
+                }
+
+                if(value != 0) tmpChart.Series[0].Points.AddXY(i, value);
+            }
+
+                tmpChart.DrawToBitmap(bmp, new Rectangle(P[chart_idx].X, P[chart_idx].Y,1800,1200));
+           }
+           
+            bmp.Save(@"C:\Temp\test.png");
+
+  
+
+
         }
         #endregion
     }
