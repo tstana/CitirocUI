@@ -340,6 +340,9 @@ namespace CitirocUI
             // Create serial comm object and attach event to local function
             mySerialComm = new ProtoCubesSerial();
             mySerialComm.DataReadyEvent += this.mySerialComm_DataReady;
+
+            // Prep. the user in Proto-CUBES mode
+            comboBox_SelectConnection.SelectedIndex = 1;
         }
 
         #region fancy tabControl
