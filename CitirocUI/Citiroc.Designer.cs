@@ -874,6 +874,7 @@
             this.groupbox_CubesResets = new System.Windows.Forms.GroupBox();
             this.checkBox_RstSR = new CitirocUI.checkBox();
             this.checkBox_RstPA = new CitirocUI.checkBox();
+            this.checkBox_RstReadReg = new CitirocUI.checkBox();
             this.checkBox_RstASICTrigs = new CitirocUI.checkBox();
             this.checkBox_RstHisto = new CitirocUI.checkBox();
             this.checkBox_RstHCR = new CitirocUI.checkBox();
@@ -11566,6 +11567,7 @@
             // 
             this.groupbox_CubesResets.Controls.Add(this.checkBox_RstSR);
             this.groupbox_CubesResets.Controls.Add(this.checkBox_RstPA);
+            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstReadReg);
             this.groupbox_CubesResets.Controls.Add(this.checkBox_RstASICTrigs);
             this.groupbox_CubesResets.Controls.Add(this.checkBox_RstHisto);
             this.groupbox_CubesResets.Controls.Add(this.checkBox_RstHCR);
@@ -11602,6 +11604,17 @@
             this.checkBox_RstPA.TabIndex = 4;
             this.checkBox_RstPA.Text = "Preamps";
             this.checkBox_RstPA.UseVisualStyleBackColor = false;
+            // 
+            // checkBox_RstReadReg
+            // 
+            this.checkBox_RstReadReg.AutoSize = true;
+            this.checkBox_RstReadReg.BackColor = System.Drawing.Color.White;
+            this.checkBox_RstReadReg.Location = new System.Drawing.Point(452, 49);
+            this.checkBox_RstReadReg.Name = "checkBox_RstReadReg";
+            this.checkBox_RstReadReg.Size = new System.Drawing.Size(97, 22);
+            this.checkBox_RstReadReg.TabIndex = 4;
+            this.checkBox_RstReadReg.Text = "Read Reg.";
+            this.checkBox_RstReadReg.UseVisualStyleBackColor = false;
             // 
             // checkBox_RstASICTrigs
             // 
@@ -13219,6 +13232,7 @@
         private switchBox checkBox_selPSGlobalTrigger;
         private checkBox checkBox_timeOutHold;
         private System.Windows.Forms.TabPage tabPage_firmwareProtoCUBES;
+        private checkBox checkBox_RstReadReg;
     }
 }
 

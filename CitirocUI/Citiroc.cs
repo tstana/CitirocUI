@@ -2085,7 +2085,8 @@ namespace CitirocUI
                 ((checkBox_RstPSC.Checked ? 0b1 : 0b0)              << 3) |
                 ((checkBox_RstSR.Checked ? 0b1 : 0b0)               << 4) |
                 ((checkBox_RstPA.Checked ? 0b1 : 0b0)               << 5) |
-                ((checkBox_RstASICTrigs.Checked ? 0b1 : 0b0)        << 6));
+                ((checkBox_RstASICTrigs.Checked ? 0b1 : 0b0)        << 6) |
+                ((checkBox_RstReadReg.Checked ? 0b1 : 0b0)          << 7));
 
             try
             {
@@ -2129,7 +2130,6 @@ namespace CitirocUI
             button_SendResets.BackColor = SystemColors.Control;
             button_SendResets.ForeColor = SystemColors.ControlText;
         }
-
     }
 }
            
