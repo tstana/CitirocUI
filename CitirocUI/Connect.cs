@@ -484,7 +484,6 @@ namespace CitirocUI
             {
                 groupBox_SerialPortSettings.Visible = false;
 
-
                 if (panel_CubesMonitor.Visible)
                 {
                     // already visible, will be closed
@@ -498,7 +497,7 @@ namespace CitirocUI
                 label_numData.Text = "Number of acquisitions:";
                 textBox_numData.Text = "100";
                 switchBox_acquisitionMode_CheckedChanged(switchBox_acquisitionMode, EventArgs.Empty);
-                 
+
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
@@ -517,6 +516,23 @@ namespace CitirocUI
                 textBox_numData.Text = "60";
 
                 AdjustAcquisitionTime();
+            }
+
+            /// Select the appropriate tab page in the tab control under "Firmware", enable its
+            /// controls and disable the controls of the other.
+            Control.ControlCollection controls;
+            tabControl_firmware.SelectedIndex = (comboBox_SelectConnection.SelectedIndex + 1) % 2;
+            controls = tabControl_firmware.SelectedTab.Controls;
+            foreach (Control control in controls)
+            {
+                control.Enabled = false;
+            }
+
+            tabControl_firmware.SelectedIndex = comboBox_SelectConnection.SelectedIndex;
+            controls = tabControl_firmware.SelectedTab.Controls;
+            foreach (Control control in controls)
+            {
+                control.Enabled = true;
             }
         }
 

@@ -800,6 +800,8 @@
             this.textBox_numData = new CitirocUI.intTextBox();
             this.switchBox_acquisitionMode = new CitirocUI.switchBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControl_firmware = new System.Windows.Forms.TabControl();
+            this.tabPage_firmwareWeerocEvalKit = new System.Windows.Forms.TabPage();
             this.comboBox_triggerPreset = new System.Windows.Forms.ComboBox();
             this.label136 = new System.Windows.Forms.Label();
             this.groupBox_timeTriggerMask = new System.Windows.Forms.GroupBox();
@@ -863,11 +865,21 @@
             this.checkBox_selRazChn = new CitirocUI.switchBox();
             this.checkBox_pwrOn = new CitirocUI.switchBox();
             this.checkBox_enSerialLink = new CitirocUI.checkBox();
+            this.checkBox_timeOutHold = new CitirocUI.checkBox();
             this.checkBox_rstbPS = new CitirocUI.checkBox();
             this.checkBox_selPSMode = new CitirocUI.switchBox();
             this.checkBox_rstbPa = new CitirocUI.checkBox();
             this.checkBox_selPSGlobalTrigger = new CitirocUI.switchBox();
-            this.checkBox_timeOutHold = new CitirocUI.checkBox();
+            this.tabPage_firmwareProtoCUBES = new System.Windows.Forms.TabPage();
+            this.groupbox_CubesResets = new System.Windows.Forms.GroupBox();
+            this.checkBox_RstSR = new CitirocUI.checkBox();
+            this.checkBox_RstPA = new CitirocUI.checkBox();
+            this.checkBox_RstASICTrigs = new CitirocUI.checkBox();
+            this.checkBox_RstHisto = new CitirocUI.checkBox();
+            this.checkBox_RstHCR = new CitirocUI.checkBox();
+            this.checkBox_RstResetCounters = new CitirocUI.checkBox();
+            this.checkBox_RstPSC = new CitirocUI.checkBox();
+            this.button_SendResets = new System.Windows.Forms.Button();
             this.groupBox_HV = new System.Windows.Forms.GroupBox();
             this.numUpDown_HV = new System.Windows.Forms.NumericUpDown();
             this.checkBox_HVON = new System.Windows.Forms.CheckBox();
@@ -887,15 +899,6 @@
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.pnlTools = new System.Windows.Forms.Panel();
             this.panel_CubesMonitor = new System.Windows.Forms.Panel();
-            this.groupbox_CubesResets = new System.Windows.Forms.GroupBox();
-            this.checkBox_RstSR = new CitirocUI.checkBox();
-            this.checkBox_RstPA = new CitirocUI.checkBox();
-            this.checkBox_RstASICTrigs = new CitirocUI.checkBox();
-            this.checkBox_RstHisto = new CitirocUI.checkBox();
-            this.checkBox_RstHCR = new CitirocUI.checkBox();
-            this.checkBox_RstResetCounters = new CitirocUI.checkBox();
-            this.checkBox_RstPSC = new CitirocUI.checkBox();
-            this.button_SendResets = new System.Windows.Forms.Button();
             this.groupBox_telemetry = new System.Windows.Forms.GroupBox();
             this.groupBox_HitRates = new System.Windows.Forms.GroupBox();
             this.label_hitCountMPPC1 = new System.Windows.Forms.Label();
@@ -968,9 +971,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart_perAcqChargeHG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_acquisitionNumber)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.tabControl_firmware.SuspendLayout();
+            this.tabPage_firmwareWeerocEvalKit.SuspendLayout();
             this.groupBox_timeTriggerMask.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage_firmwareProtoCUBES.SuspendLayout();
+            this.groupbox_CubesResets.SuspendLayout();
             this.groupBox_HV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_HV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logoWeeroc)).BeginInit();
@@ -979,7 +986,6 @@
             this.pnlTopBar.SuspendLayout();
             this.pnlTools.SuspendLayout();
             this.panel_CubesMonitor.SuspendLayout();
-            this.groupbox_CubesResets.SuspendLayout();
             this.groupBox_telemetry.SuspendLayout();
             this.groupBox_HitRates.SuspendLayout();
             this.groupBox_HvpsTelemetry.SuspendLayout();
@@ -10540,17 +10546,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.comboBox_triggerPreset);
-            this.tabPage1.Controls.Add(this.label136);
-            this.tabPage1.Controls.Add(this.groupBox_timeTriggerMask);
-            this.tabPage1.Controls.Add(this.textBox_word5);
-            this.tabPage1.Controls.Add(this.textBox_word3);
-            this.tabPage1.Controls.Add(this.textBox_word2);
-            this.tabPage1.Controls.Add(this.textBox_word1);
-            this.tabPage1.Controls.Add(this.textBox_word0);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.checkBox_timeOutHold);
+            this.tabPage1.Controls.Add(this.tabControl_firmware);
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage1.Location = new System.Drawing.Point(14, 4);
             this.tabPage1.Name = "tabPage1";
@@ -10558,6 +10554,36 @@
             this.tabPage1.Size = new System.Drawing.Size(1062, 482);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "tabPage_FPGA";
+            // 
+            // tabControl_firmware
+            // 
+            this.tabControl_firmware.Controls.Add(this.tabPage_firmwareWeerocEvalKit);
+            this.tabControl_firmware.Controls.Add(this.tabPage_firmwareProtoCUBES);
+            this.tabControl_firmware.Location = new System.Drawing.Point(6, 6);
+            this.tabControl_firmware.Name = "tabControl_firmware";
+            this.tabControl_firmware.SelectedIndex = 0;
+            this.tabControl_firmware.Size = new System.Drawing.Size(1053, 480);
+            this.tabControl_firmware.TabIndex = 0;
+            // 
+            // tabPage_firmwareWeerocEvalKit
+            // 
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.comboBox_triggerPreset);
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.label136);
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.groupBox_timeTriggerMask);
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.textBox_word5);
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.textBox_word3);
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.textBox_word2);
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.textBox_word1);
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.textBox_word0);
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.groupBox2);
+            this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.groupBox1);
+            this.tabPage_firmwareWeerocEvalKit.Location = new System.Drawing.Point(4, 33);
+            this.tabPage_firmwareWeerocEvalKit.Name = "tabPage_firmwareWeerocEvalKit";
+            this.tabPage_firmwareWeerocEvalKit.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_firmwareWeerocEvalKit.Size = new System.Drawing.Size(1045, 443);
+            this.tabPage_firmwareWeerocEvalKit.TabIndex = 0;
+            this.tabPage_firmwareWeerocEvalKit.Text = "Weeroc Eval. Kit";
+            this.tabPage_firmwareWeerocEvalKit.UseVisualStyleBackColor = true;
             // 
             // comboBox_triggerPreset
             // 
@@ -10570,20 +10596,19 @@
             "Firmware OR32 time trigger as external trigger",
             "IO_FPGA6 as external trigger",
             "Software checkbox as external trigger"});
-            this.comboBox_triggerPreset.Location = new System.Drawing.Point(300, 381);
+            this.comboBox_triggerPreset.Location = new System.Drawing.Point(264, 357);
             this.comboBox_triggerPreset.Name = "comboBox_triggerPreset";
             this.comboBox_triggerPreset.Size = new System.Drawing.Size(353, 32);
-            this.comboBox_triggerPreset.TabIndex = 3;
-            this.comboBox_triggerPreset.SelectedIndexChanged += new System.EventHandler(this.comboBox_triggerPreset_SelectedIndexChanged);
+            this.comboBox_triggerPreset.TabIndex = 168;
             // 
             // label136
             // 
             this.label136.AutoSize = true;
-            this.label136.Location = new System.Drawing.Point(198, 384);
+            this.label136.Location = new System.Drawing.Point(87, 360);
             this.label136.Name = "label136";
-            this.label136.Size = new System.Drawing.Size(128, 24);
-            this.label136.TabIndex = 164;
-            this.label136.Text = "Trigger preset";
+            this.label136.Size = new System.Drawing.Size(133, 24);
+            this.label136.TabIndex = 175;
+            this.label136.Text = "Trigger preset:";
             // 
             // groupBox_timeTriggerMask
             // 
@@ -10622,10 +10647,10 @@
             this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask2);
             this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask1);
             this.groupBox_timeTriggerMask.Controls.Add(this.checkBox_timeTriggerMask25);
-            this.groupBox_timeTriggerMask.Location = new System.Drawing.Point(822, 34);
+            this.groupBox_timeTriggerMask.Location = new System.Drawing.Point(879, 6);
             this.groupBox_timeTriggerMask.Name = "groupBox_timeTriggerMask";
             this.groupBox_timeTriggerMask.Size = new System.Drawing.Size(160, 428);
-            this.groupBox_timeTriggerMask.TabIndex = 2;
+            this.groupBox_timeTriggerMask.TabIndex = 166;
             this.groupBox_timeTriggerMask.TabStop = false;
             this.groupBox_timeTriggerMask.Text = "Time trigger mask";
             // 
@@ -10641,10 +10666,10 @@
             this.button_sendMaskTime.TabIndex = 0;
             this.button_sendMaskTime.Text = "Send";
             this.button_sendMaskTime.UseVisualStyleBackColor = false;
-            this.button_sendMaskTime.Click += new System.EventHandler(this.button_sendMaskTime_Click);
             // 
             // checkBox_timeTriggerMask0
             // 
+            this.checkBox_timeTriggerMask0.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask0.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask0.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10655,8 +10680,7 @@
             this.checkBox_timeTriggerMask0.Text = "0";
             this.checkBox_timeTriggerMask0.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask0.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask0.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask0.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask0.UseVisualStyleBackColor = false;
             // 
             // button_unmaskAllTime
             // 
@@ -10670,10 +10694,10 @@
             this.button_unmaskAllTime.TabIndex = 34;
             this.button_unmaskAllTime.Text = "Unmask all";
             this.button_unmaskAllTime.UseVisualStyleBackColor = false;
-            this.button_unmaskAllTime.Click += new System.EventHandler(this.button_unmaskAllTime_Click);
             // 
             // checkBox_timeTriggerMask13
             // 
+            this.checkBox_timeTriggerMask13.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask13.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask13.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10684,8 +10708,7 @@
             this.checkBox_timeTriggerMask13.Text = "13";
             this.checkBox_timeTriggerMask13.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask13.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask13.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask13.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask13.UseVisualStyleBackColor = false;
             // 
             // button_maskAllTime
             // 
@@ -10699,10 +10722,10 @@
             this.button_maskAllTime.TabIndex = 33;
             this.button_maskAllTime.Text = "Mask all";
             this.button_maskAllTime.UseVisualStyleBackColor = false;
-            this.button_maskAllTime.Click += new System.EventHandler(this.button_maskAllTime_Click);
             // 
             // checkBox_timeTriggerMask14
             // 
+            this.checkBox_timeTriggerMask14.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask14.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask14.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10713,11 +10736,11 @@
             this.checkBox_timeTriggerMask14.Text = "14";
             this.checkBox_timeTriggerMask14.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask14.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask14.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask14.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask14.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask12
             // 
+            this.checkBox_timeTriggerMask12.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask12.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask12.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10728,11 +10751,11 @@
             this.checkBox_timeTriggerMask12.Text = "12";
             this.checkBox_timeTriggerMask12.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask12.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask12.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask12.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask12.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask15
             // 
+            this.checkBox_timeTriggerMask15.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask15.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask15.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10743,11 +10766,11 @@
             this.checkBox_timeTriggerMask15.Text = "15";
             this.checkBox_timeTriggerMask15.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask15.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask15.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask15.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask15.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask11
             // 
+            this.checkBox_timeTriggerMask11.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask11.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask11.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10758,11 +10781,11 @@
             this.checkBox_timeTriggerMask11.Text = "11";
             this.checkBox_timeTriggerMask11.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask11.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask11.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask11.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask11.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask16
             // 
+            this.checkBox_timeTriggerMask16.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask16.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask16.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10773,11 +10796,11 @@
             this.checkBox_timeTriggerMask16.Text = "16";
             this.checkBox_timeTriggerMask16.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask16.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask16.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask16.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask16.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask10
             // 
+            this.checkBox_timeTriggerMask10.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask10.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask10.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10788,11 +10811,11 @@
             this.checkBox_timeTriggerMask10.Text = "10";
             this.checkBox_timeTriggerMask10.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask10.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask10.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask10.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask10.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask17
             // 
+            this.checkBox_timeTriggerMask17.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask17.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask17.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10803,11 +10826,11 @@
             this.checkBox_timeTriggerMask17.Text = "17";
             this.checkBox_timeTriggerMask17.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask17.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask17.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask17.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask17.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask9
             // 
+            this.checkBox_timeTriggerMask9.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask9.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask9.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10818,11 +10841,11 @@
             this.checkBox_timeTriggerMask9.Text = "9";
             this.checkBox_timeTriggerMask9.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask9.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask9.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask9.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask9.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask18
             // 
+            this.checkBox_timeTriggerMask18.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask18.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask18.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10833,11 +10856,11 @@
             this.checkBox_timeTriggerMask18.Text = "18";
             this.checkBox_timeTriggerMask18.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask18.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask18.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask18.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask18.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask8
             // 
+            this.checkBox_timeTriggerMask8.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask8.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask8.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10848,11 +10871,11 @@
             this.checkBox_timeTriggerMask8.Text = "8";
             this.checkBox_timeTriggerMask8.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask8.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask8.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask8.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask8.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask19
             // 
+            this.checkBox_timeTriggerMask19.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask19.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask19.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10863,11 +10886,11 @@
             this.checkBox_timeTriggerMask19.Text = "19";
             this.checkBox_timeTriggerMask19.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask19.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask19.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask19.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask19.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask7
             // 
+            this.checkBox_timeTriggerMask7.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask7.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask7.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10878,11 +10901,11 @@
             this.checkBox_timeTriggerMask7.Text = "7";
             this.checkBox_timeTriggerMask7.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask7.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask7.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask7.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask7.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask20
             // 
+            this.checkBox_timeTriggerMask20.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask20.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask20.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10893,11 +10916,11 @@
             this.checkBox_timeTriggerMask20.Text = "20";
             this.checkBox_timeTriggerMask20.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask20.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask20.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask20.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask20.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask6
             // 
+            this.checkBox_timeTriggerMask6.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask6.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask6.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10908,11 +10931,11 @@
             this.checkBox_timeTriggerMask6.Text = "6";
             this.checkBox_timeTriggerMask6.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask6.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask6.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask6.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask6.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask21
             // 
+            this.checkBox_timeTriggerMask21.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask21.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask21.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10923,11 +10946,11 @@
             this.checkBox_timeTriggerMask21.Text = "21";
             this.checkBox_timeTriggerMask21.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask21.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask21.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask21.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask21.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask5
             // 
+            this.checkBox_timeTriggerMask5.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask5.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask5.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10938,11 +10961,11 @@
             this.checkBox_timeTriggerMask5.Text = "5";
             this.checkBox_timeTriggerMask5.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask5.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask5.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask5.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask5.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask31
             // 
+            this.checkBox_timeTriggerMask31.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask31.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask31.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10953,11 +10976,11 @@
             this.checkBox_timeTriggerMask31.Text = "31";
             this.checkBox_timeTriggerMask31.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask31.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask31.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask31.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask31.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask22
             // 
+            this.checkBox_timeTriggerMask22.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask22.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask22.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10968,11 +10991,11 @@
             this.checkBox_timeTriggerMask22.Text = "22";
             this.checkBox_timeTriggerMask22.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask22.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask22.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask22.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask22.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask30
             // 
+            this.checkBox_timeTriggerMask30.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask30.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask30.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10983,11 +11006,11 @@
             this.checkBox_timeTriggerMask30.Text = "30";
             this.checkBox_timeTriggerMask30.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask30.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask30.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask30.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask30.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask4
             // 
+            this.checkBox_timeTriggerMask4.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask4.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask4.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -10998,11 +11021,11 @@
             this.checkBox_timeTriggerMask4.Text = "4";
             this.checkBox_timeTriggerMask4.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask4.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask4.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask4.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask4.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask29
             // 
+            this.checkBox_timeTriggerMask29.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask29.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask29.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11013,11 +11036,11 @@
             this.checkBox_timeTriggerMask29.Text = "29";
             this.checkBox_timeTriggerMask29.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask29.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask29.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask29.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask29.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask23
             // 
+            this.checkBox_timeTriggerMask23.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask23.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask23.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11028,11 +11051,11 @@
             this.checkBox_timeTriggerMask23.Text = "23";
             this.checkBox_timeTriggerMask23.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask23.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask23.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask23.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask23.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask28
             // 
+            this.checkBox_timeTriggerMask28.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask28.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask28.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11043,11 +11066,11 @@
             this.checkBox_timeTriggerMask28.Text = "28";
             this.checkBox_timeTriggerMask28.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask28.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask28.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask28.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask28.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask3
             // 
+            this.checkBox_timeTriggerMask3.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask3.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask3.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11058,11 +11081,11 @@
             this.checkBox_timeTriggerMask3.Text = "3";
             this.checkBox_timeTriggerMask3.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask3.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask3.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask3.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask3.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask27
             // 
+            this.checkBox_timeTriggerMask27.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask27.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask27.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11073,11 +11096,11 @@
             this.checkBox_timeTriggerMask27.Text = "27";
             this.checkBox_timeTriggerMask27.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask27.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask27.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask27.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask27.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask24
             // 
+            this.checkBox_timeTriggerMask24.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask24.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask24.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11088,11 +11111,11 @@
             this.checkBox_timeTriggerMask24.Text = "24";
             this.checkBox_timeTriggerMask24.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask24.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask24.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask24.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask24.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask26
             // 
+            this.checkBox_timeTriggerMask26.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask26.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask26.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11103,11 +11126,11 @@
             this.checkBox_timeTriggerMask26.Text = "26";
             this.checkBox_timeTriggerMask26.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask26.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask26.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask26.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask26.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask2
             // 
+            this.checkBox_timeTriggerMask2.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask2.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask2.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11118,11 +11141,11 @@
             this.checkBox_timeTriggerMask2.Text = "2";
             this.checkBox_timeTriggerMask2.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask2.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask2.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask2.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask2.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask1
             // 
+            this.checkBox_timeTriggerMask1.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask1.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask1.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11133,11 +11156,11 @@
             this.checkBox_timeTriggerMask1.Text = "1";
             this.checkBox_timeTriggerMask1.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask1.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask1.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask1.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask1.UseVisualStyleBackColor = false;
             // 
             // checkBox_timeTriggerMask25
             // 
+            this.checkBox_timeTriggerMask25.BackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask25.checkedBackColor = System.Drawing.Color.White;
             this.checkBox_timeTriggerMask25.checkedForeColor = System.Drawing.Color.Black;
             this.checkBox_timeTriggerMask25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -11148,52 +11171,51 @@
             this.checkBox_timeTriggerMask25.Text = "25";
             this.checkBox_timeTriggerMask25.uncheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.checkBox_timeTriggerMask25.uncheckedForeColor = System.Drawing.Color.White;
-            this.checkBox_timeTriggerMask25.UseVisualStyleBackColor = true;
-            this.checkBox_timeTriggerMask25.CheckedChanged += new System.EventHandler(this.checkBox_timeTriggerMask_CheckedChanged);
+            this.checkBox_timeTriggerMask25.UseVisualStyleBackColor = false;
             // 
             // textBox_word5
             // 
             this.textBox_word5.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word5.Location = new System.Drawing.Point(591, 437);
+            this.textBox_word5.Location = new System.Drawing.Point(517, 394);
             this.textBox_word5.Name = "textBox_word5";
             this.textBox_word5.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word5.TabIndex = 8;
+            this.textBox_word5.TabIndex = 174;
             this.textBox_word5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_word3
             // 
             this.textBox_word3.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word3.Location = new System.Drawing.Point(485, 437);
+            this.textBox_word3.Location = new System.Drawing.Point(411, 394);
             this.textBox_word3.Name = "textBox_word3";
             this.textBox_word3.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word3.TabIndex = 7;
+            this.textBox_word3.TabIndex = 173;
             this.textBox_word3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_word2
             // 
             this.textBox_word2.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word2.Location = new System.Drawing.Point(379, 437);
+            this.textBox_word2.Location = new System.Drawing.Point(305, 394);
             this.textBox_word2.Name = "textBox_word2";
             this.textBox_word2.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word2.TabIndex = 6;
+            this.textBox_word2.TabIndex = 172;
             this.textBox_word2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_word1
             // 
             this.textBox_word1.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word1.Location = new System.Drawing.Point(273, 437);
+            this.textBox_word1.Location = new System.Drawing.Point(199, 394);
             this.textBox_word1.Name = "textBox_word1";
             this.textBox_word1.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word1.TabIndex = 5;
+            this.textBox_word1.TabIndex = 171;
             this.textBox_word1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_word0
             // 
             this.textBox_word0.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_word0.Location = new System.Drawing.Point(167, 437);
+            this.textBox_word0.Location = new System.Drawing.Point(93, 394);
             this.textBox_word0.Name = "textBox_word0";
             this.textBox_word0.Size = new System.Drawing.Size(100, 25);
-            this.textBox_word0.TabIndex = 4;
+            this.textBox_word0.TabIndex = 170;
             this.textBox_word0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox2
@@ -11206,114 +11228,114 @@
             this.groupBox2.Controls.Add(this.checkBox_ADC1);
             this.groupBox2.Controls.Add(this.checkBox_readOutSpeed);
             this.groupBox2.Controls.Add(this.checkBox_disReadAdc);
-            this.groupBox2.Location = new System.Drawing.Point(418, 34);
+            this.groupBox2.Location = new System.Drawing.Point(429, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(395, 341);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.Size = new System.Drawing.Size(444, 341);
+            this.groupBox2.TabIndex = 167;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "External ADC configuration";
             // 
             // checkBox_OR32polarity
             // 
             this.checkBox_OR32polarity.AutoSize = true;
+            this.checkBox_OR32polarity.BackColor = System.Drawing.Color.White;
             this.checkBox_OR32polarity.Checked = true;
             this.checkBox_OR32polarity.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_OR32polarity.Location = new System.Drawing.Point(26, 118);
+            this.checkBox_OR32polarity.Location = new System.Drawing.Point(6, 97);
             this.checkBox_OR32polarity.Name = "checkBox_OR32polarity";
             this.checkBox_OR32polarity.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_OR32polarity.Size = new System.Drawing.Size(280, 28);
             this.checkBox_OR32polarity.TabIndex = 2;
             this.checkBox_OR32polarity.Text = "Output NOR32 (IO_FPGA11)";
-            this.checkBox_OR32polarity.UseVisualStyleBackColor = true;
-            this.checkBox_OR32polarity.CheckedChanged += new System.EventHandler(this.checkBox_OR32polarity_CheckedChanged);
+            this.checkBox_OR32polarity.UseVisualStyleBackColor = false;
             // 
             // checkBox_triggerTorQ
             // 
             this.checkBox_triggerTorQ.AutoSize = true;
-            this.checkBox_triggerTorQ.Location = new System.Drawing.Point(26, 86);
+            this.checkBox_triggerTorQ.BackColor = System.Drawing.Color.White;
+            this.checkBox_triggerTorQ.Location = new System.Drawing.Point(6, 65);
             this.checkBox_triggerTorQ.Name = "checkBox_triggerTorQ";
             this.checkBox_triggerTorQ.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_triggerTorQ.Size = new System.Drawing.Size(456, 28);
             this.checkBox_triggerTorQ.TabIndex = 1;
             this.checkBox_triggerTorQ.Text = "Trigger acquisition on ASIC OR32 (charge trigger)";
-            this.checkBox_triggerTorQ.UseVisualStyleBackColor = true;
-            this.checkBox_triggerTorQ.CheckedChanged += new System.EventHandler(this.checkBox_triggerTorQ_CheckedChanged);
+            this.checkBox_triggerTorQ.UseVisualStyleBackColor = false;
             // 
             // checkBox_selHold
             // 
             this.checkBox_selHold.AutoSize = true;
+            this.checkBox_selHold.BackColor = System.Drawing.Color.White;
             this.checkBox_selHold.Checked = true;
             this.checkBox_selHold.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_selHold.Location = new System.Drawing.Point(26, 150);
+            this.checkBox_selHold.Location = new System.Drawing.Point(6, 129);
             this.checkBox_selHold.Name = "checkBox_selHold";
             this.checkBox_selHold.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selHold.Size = new System.Drawing.Size(226, 28);
             this.checkBox_selHold.TabIndex = 3;
             this.checkBox_selHold.Text = "OR32 delayed as hold";
-            this.checkBox_selHold.UseVisualStyleBackColor = true;
-            this.checkBox_selHold.CheckedChanged += new System.EventHandler(this.checkBox_selHold_CheckedChanged);
+            this.checkBox_selHold.UseVisualStyleBackColor = false;
             // 
             // checkBox_selTrigToHold
             // 
             this.checkBox_selTrigToHold.AutoSize = true;
-            this.checkBox_selTrigToHold.Location = new System.Drawing.Point(26, 54);
+            this.checkBox_selTrigToHold.BackColor = System.Drawing.Color.White;
+            this.checkBox_selTrigToHold.Location = new System.Drawing.Point(6, 33);
             this.checkBox_selTrigToHold.Name = "checkBox_selTrigToHold";
             this.checkBox_selTrigToHold.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selTrigToHold.Size = new System.Drawing.Size(356, 28);
             this.checkBox_selTrigToHold.TabIndex = 0;
             this.checkBox_selTrigToHold.Text = "Hold on OR32 (charge or time trigger)";
-            this.checkBox_selTrigToHold.UseVisualStyleBackColor = true;
-            this.checkBox_selTrigToHold.CheckedChanged += new System.EventHandler(this.checkBox_selTrigToHold_CheckedChanged);
+            this.checkBox_selTrigToHold.UseVisualStyleBackColor = false;
             // 
             // checkBox_ADC2
             // 
             this.checkBox_ADC2.AutoSize = true;
-            this.checkBox_ADC2.Location = new System.Drawing.Point(26, 278);
+            this.checkBox_ADC2.BackColor = System.Drawing.Color.White;
+            this.checkBox_ADC2.Location = new System.Drawing.Point(6, 257);
             this.checkBox_ADC2.Name = "checkBox_ADC2";
             this.checkBox_ADC2.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_ADC2.Size = new System.Drawing.Size(244, 28);
             this.checkBox_ADC2.TabIndex = 7;
             this.checkBox_ADC2.Text = "ADC2: High gain charge";
-            this.checkBox_ADC2.UseVisualStyleBackColor = true;
-            this.checkBox_ADC2.CheckedChanged += new System.EventHandler(this.checkBox_ADC2_CheckedChanged);
+            this.checkBox_ADC2.UseVisualStyleBackColor = false;
             // 
             // checkBox_ADC1
             // 
             this.checkBox_ADC1.AutoSize = true;
-            this.checkBox_ADC1.Location = new System.Drawing.Point(26, 246);
+            this.checkBox_ADC1.BackColor = System.Drawing.Color.White;
+            this.checkBox_ADC1.Location = new System.Drawing.Point(6, 225);
             this.checkBox_ADC1.Name = "checkBox_ADC1";
             this.checkBox_ADC1.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_ADC1.Size = new System.Drawing.Size(239, 28);
             this.checkBox_ADC1.TabIndex = 6;
             this.checkBox_ADC1.Text = "ADC1: Low gain charge";
-            this.checkBox_ADC1.UseVisualStyleBackColor = true;
-            this.checkBox_ADC1.CheckedChanged += new System.EventHandler(this.checkBox_ADC1_CheckedChanged);
+            this.checkBox_ADC1.UseVisualStyleBackColor = false;
             // 
             // checkBox_readOutSpeed
             // 
             this.checkBox_readOutSpeed.AutoSize = true;
-            this.checkBox_readOutSpeed.Location = new System.Drawing.Point(26, 214);
+            this.checkBox_readOutSpeed.BackColor = System.Drawing.Color.White;
+            this.checkBox_readOutSpeed.Location = new System.Drawing.Point(6, 193);
             this.checkBox_readOutSpeed.Name = "checkBox_readOutSpeed";
             this.checkBox_readOutSpeed.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_readOutSpeed.Size = new System.Drawing.Size(265, 28);
             this.checkBox_readOutSpeed.TabIndex = 5;
             this.checkBox_readOutSpeed.Text = "Read-out speed = 2.5 MHz";
-            this.checkBox_readOutSpeed.UseVisualStyleBackColor = true;
-            this.checkBox_readOutSpeed.CheckedChanged += new System.EventHandler(this.checkBox_readOutSpeed_CheckedChanged);
+            this.checkBox_readOutSpeed.UseVisualStyleBackColor = false;
             // 
             // checkBox_disReadAdc
             // 
             this.checkBox_disReadAdc.AutoSize = true;
+            this.checkBox_disReadAdc.BackColor = System.Drawing.Color.White;
             this.checkBox_disReadAdc.Checked = true;
             this.checkBox_disReadAdc.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_disReadAdc.Location = new System.Drawing.Point(26, 182);
+            this.checkBox_disReadAdc.Location = new System.Drawing.Point(6, 161);
             this.checkBox_disReadAdc.Name = "checkBox_disReadAdc";
             this.checkBox_disReadAdc.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_disReadAdc.Size = new System.Drawing.Size(226, 28);
             this.checkBox_disReadAdc.TabIndex = 4;
             this.checkBox_disReadAdc.Text = "Read register enabled";
-            this.checkBox_disReadAdc.UseVisualStyleBackColor = true;
-            this.checkBox_disReadAdc.CheckedChanged += new System.EventHandler(this.checkBox_disReadAdc_CheckedChanged);
+            this.checkBox_disReadAdc.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -11327,206 +11349,326 @@
             this.groupBox1.Controls.Add(this.checkBox_selRazChn);
             this.groupBox1.Controls.Add(this.checkBox_pwrOn);
             this.groupBox1.Controls.Add(this.checkBox_enSerialLink);
+            this.groupBox1.Controls.Add(this.checkBox_timeOutHold);
             this.groupBox1.Controls.Add(this.checkBox_rstbPS);
             this.groupBox1.Controls.Add(this.checkBox_selPSMode);
             this.groupBox1.Controls.Add(this.checkBox_rstbPa);
             this.groupBox1.Controls.Add(this.checkBox_selPSGlobalTrigger);
-            this.groupBox1.Location = new System.Drawing.Point(76, 34);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 341);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.Size = new System.Drawing.Size(417, 341);
+            this.groupBox1.TabIndex = 165;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ASIC configuration";
             // 
             // checkBox_softwareTrigger
             // 
             this.checkBox_softwareTrigger.AutoSize = true;
-            this.checkBox_softwareTrigger.Location = new System.Drawing.Point(64, 192);
+            this.checkBox_softwareTrigger.BackColor = System.Drawing.Color.White;
+            this.checkBox_softwareTrigger.Location = new System.Drawing.Point(44, 189);
             this.checkBox_softwareTrigger.Name = "checkBox_softwareTrigger";
             this.checkBox_softwareTrigger.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_softwareTrigger.Size = new System.Drawing.Size(177, 28);
             this.checkBox_softwareTrigger.TabIndex = 8;
             this.checkBox_softwareTrigger.Text = "Firmware trigger";
-            this.checkBox_softwareTrigger.UseVisualStyleBackColor = true;
+            this.checkBox_softwareTrigger.UseVisualStyleBackColor = false;
             this.checkBox_softwareTrigger.Visible = false;
-            this.checkBox_softwareTrigger.CheckedChanged += new System.EventHandler(this.checkBox_softwareTrigger_CheckedChanged);
             // 
             // checkBox_iofpgaOr32t
             // 
             this.checkBox_iofpgaOr32t.AutoSize = true;
-            this.checkBox_iofpgaOr32t.Location = new System.Drawing.Point(64, 224);
+            this.checkBox_iofpgaOr32t.BackColor = System.Drawing.Color.White;
+            this.checkBox_iofpgaOr32t.Location = new System.Drawing.Point(44, 221);
             this.checkBox_iofpgaOr32t.Name = "checkBox_iofpgaOr32t";
             this.checkBox_iofpgaOr32t.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_iofpgaOr32t.Size = new System.Drawing.Size(284, 28);
             this.checkBox_iofpgaOr32t.TabIndex = 9;
             this.checkBox_iofpgaOr32t.Text = "IO_FPGA6 as external trigger";
-            this.checkBox_iofpgaOr32t.UseVisualStyleBackColor = true;
+            this.checkBox_iofpgaOr32t.UseVisualStyleBackColor = false;
             this.checkBox_iofpgaOr32t.Visible = false;
-            this.checkBox_iofpgaOr32t.CheckedChanged += new System.EventHandler(this.checkBox_iofpgaOr32t_CheckedChanged);
             // 
             // checkBox_PSGlobalTrigger
             // 
             this.checkBox_PSGlobalTrigger.AutoSize = true;
-            this.checkBox_PSGlobalTrigger.Location = new System.Drawing.Point(211, 192);
+            this.checkBox_PSGlobalTrigger.BackColor = System.Drawing.Color.White;
+            this.checkBox_PSGlobalTrigger.Location = new System.Drawing.Point(191, 189);
             this.checkBox_PSGlobalTrigger.Name = "checkBox_PSGlobalTrigger";
             this.checkBox_PSGlobalTrigger.Size = new System.Drawing.Size(39, 28);
             this.checkBox_PSGlobalTrigger.TabIndex = 10;
             this.checkBox_PSGlobalTrigger.Text = "0";
-            this.checkBox_PSGlobalTrigger.UseVisualStyleBackColor = true;
+            this.checkBox_PSGlobalTrigger.UseVisualStyleBackColor = false;
             this.checkBox_PSGlobalTrigger.Visible = false;
-            this.checkBox_PSGlobalTrigger.CheckedChanged += new System.EventHandler(this.checkBox_PSGlobalTrigger_CheckedChanged);
             // 
             // checkBox_PSMode
             // 
             this.checkBox_PSMode.AutoSize = true;
+            this.checkBox_PSMode.BackColor = System.Drawing.Color.White;
             this.checkBox_PSMode.Checked = true;
             this.checkBox_PSMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_PSMode.Location = new System.Drawing.Point(197, 128);
+            this.checkBox_PSMode.Location = new System.Drawing.Point(177, 125);
             this.checkBox_PSMode.Name = "checkBox_PSMode";
             this.checkBox_PSMode.Size = new System.Drawing.Size(130, 28);
             this.checkBox_PSMode.TabIndex = 6;
             this.checkBox_PSMode.Text = "Track mode";
-            this.checkBox_PSMode.UseVisualStyleBackColor = true;
-            this.checkBox_PSMode.CheckedChanged += new System.EventHandler(this.checkBox_PSMode_CheckedChanged);
+            this.checkBox_PSMode.UseVisualStyleBackColor = false;
             // 
             // checkBox_razChn
             // 
             this.checkBox_razChn.AutoSize = true;
-            this.checkBox_razChn.Location = new System.Drawing.Point(185, 64);
+            this.checkBox_razChn.BackColor = System.Drawing.Color.White;
+            this.checkBox_razChn.Location = new System.Drawing.Point(165, 61);
             this.checkBox_razChn.Name = "checkBox_razChn";
             this.checkBox_razChn.Size = new System.Drawing.Size(100, 28);
             this.checkBox_razChn.TabIndex = 3;
             this.checkBox_razChn.Text = "No reset";
-            this.checkBox_razChn.UseVisualStyleBackColor = true;
-            this.checkBox_razChn.CheckedChanged += new System.EventHandler(this.checkBox_razChn_CheckedChanged);
+            this.checkBox_razChn.UseVisualStyleBackColor = false;
             // 
             // checkBox_valEvt
             // 
             this.checkBox_valEvt.AutoSize = true;
+            this.checkBox_valEvt.BackColor = System.Drawing.Color.White;
             this.checkBox_valEvt.Checked = true;
             this.checkBox_valEvt.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_valEvt.Location = new System.Drawing.Point(142, 33);
+            this.checkBox_valEvt.Location = new System.Drawing.Point(122, 30);
             this.checkBox_valEvt.Name = "checkBox_valEvt";
             this.checkBox_valEvt.Size = new System.Drawing.Size(67, 28);
             this.checkBox_valEvt.TabIndex = 1;
             this.checkBox_valEvt.Text = "valid";
-            this.checkBox_valEvt.UseVisualStyleBackColor = true;
-            this.checkBox_valEvt.CheckedChanged += new System.EventHandler(this.checkBox_valEvt_CheckedChanged);
+            this.checkBox_valEvt.UseVisualStyleBackColor = false;
             // 
             // checkBox_selValEvt
             // 
             this.checkBox_selValEvt.AutoSize = true;
-            this.checkBox_selValEvt.Location = new System.Drawing.Point(33, 33);
+            this.checkBox_selValEvt.BackColor = System.Drawing.Color.White;
+            this.checkBox_selValEvt.Location = new System.Drawing.Point(13, 30);
             this.checkBox_selValEvt.Name = "checkBox_selValEvt";
             this.checkBox_selValEvt.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selValEvt.Size = new System.Drawing.Size(138, 28);
             this.checkBox_selValEvt.TabIndex = 0;
             this.checkBox_selValEvt.Text = "Valid event:";
-            this.checkBox_selValEvt.UseVisualStyleBackColor = true;
-            this.checkBox_selValEvt.CheckedChanged += new System.EventHandler(this.checkBox_selValEvt_CheckedChanged);
+            this.checkBox_selValEvt.UseVisualStyleBackColor = false;
             // 
             // checkBox_selRazChn
             // 
             this.checkBox_selRazChn.AutoSize = true;
-            this.checkBox_selRazChn.Location = new System.Drawing.Point(33, 64);
+            this.checkBox_selRazChn.BackColor = System.Drawing.Color.White;
+            this.checkBox_selRazChn.Location = new System.Drawing.Point(13, 61);
             this.checkBox_selRazChn.Name = "checkBox_selRazChn";
             this.checkBox_selRazChn.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selRazChn.Size = new System.Drawing.Size(191, 28);
             this.checkBox_selRazChn.TabIndex = 2;
             this.checkBox_selRazChn.Text = "Reset analog part:";
-            this.checkBox_selRazChn.UseVisualStyleBackColor = true;
-            this.checkBox_selRazChn.CheckedChanged += new System.EventHandler(this.checkBox_selRazChn_CheckedChanged);
+            this.checkBox_selRazChn.UseVisualStyleBackColor = false;
             // 
             // checkBox_pwrOn
             // 
             this.checkBox_pwrOn.AutoSize = true;
+            this.checkBox_pwrOn.BackColor = System.Drawing.Color.White;
             this.checkBox_pwrOn.Checked = true;
             this.checkBox_pwrOn.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_pwrOn.Location = new System.Drawing.Point(33, 96);
+            this.checkBox_pwrOn.Location = new System.Drawing.Point(13, 93);
             this.checkBox_pwrOn.Name = "checkBox_pwrOn";
             this.checkBox_pwrOn.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_pwrOn.Size = new System.Drawing.Size(291, 28);
             this.checkBox_pwrOn.TabIndex = 4;
             this.checkBox_pwrOn.Text = "Power ON (no power pulsing)";
-            this.checkBox_pwrOn.UseVisualStyleBackColor = true;
-            this.checkBox_pwrOn.CheckedChanged += new System.EventHandler(this.checkBox_pwrOn_CheckedChanged);
+            this.checkBox_pwrOn.UseVisualStyleBackColor = false;
             // 
             // checkBox_enSerialLink
             // 
             this.checkBox_enSerialLink.AutoSize = true;
+            this.checkBox_enSerialLink.BackColor = System.Drawing.Color.White;
             this.checkBox_enSerialLink.Checked = true;
             this.checkBox_enSerialLink.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_enSerialLink.Location = new System.Drawing.Point(187, 303);
+            this.checkBox_enSerialLink.Location = new System.Drawing.Point(240, 307);
             this.checkBox_enSerialLink.Name = "checkBox_enSerialLink";
             this.checkBox_enSerialLink.Size = new System.Drawing.Size(171, 28);
             this.checkBox_enSerialLink.TabIndex = 12;
             this.checkBox_enSerialLink.Text = "Enable serial link";
-            this.checkBox_enSerialLink.UseVisualStyleBackColor = true;
-            this.checkBox_enSerialLink.CheckedChanged += new System.EventHandler(this.checkBox_enSerialLink_CheckedChanged);
+            this.checkBox_enSerialLink.UseVisualStyleBackColor = false;
+            // 
+            // checkBox_timeOutHold
+            // 
+            this.checkBox_timeOutHold.AutoSize = true;
+            this.checkBox_timeOutHold.BackColor = System.Drawing.Color.White;
+            this.checkBox_timeOutHold.Checked = true;
+            this.checkBox_timeOutHold.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_timeOutHold.Location = new System.Drawing.Point(13, 252);
+            this.checkBox_timeOutHold.Name = "checkBox_timeOutHold";
+            this.checkBox_timeOutHold.Size = new System.Drawing.Size(284, 28);
+            this.checkBox_timeOutHold.TabIndex = 169;
+            this.checkBox_timeOutHold.Text = "Enable time-out on hold signal";
+            this.checkBox_timeOutHold.UseVisualStyleBackColor = false;
+            this.checkBox_timeOutHold.Visible = false;
             // 
             // checkBox_rstbPS
             // 
             this.checkBox_rstbPS.AutoSize = true;
+            this.checkBox_rstbPS.BackColor = System.Drawing.Color.White;
             this.checkBox_rstbPS.Checked = true;
             this.checkBox_rstbPS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_rstbPS.Location = new System.Drawing.Point(13, 303);
+            this.checkBox_rstbPS.Location = new System.Drawing.Point(13, 307);
             this.checkBox_rstbPS.Name = "checkBox_rstbPS";
             this.checkBox_rstbPS.Size = new System.Drawing.Size(206, 28);
             this.checkBox_rstbPS.TabIndex = 11;
             this.checkBox_rstbPS.Text = "Enable peak sensing";
-            this.checkBox_rstbPS.UseVisualStyleBackColor = true;
-            this.checkBox_rstbPS.CheckedChanged += new System.EventHandler(this.checkBox_rstbPS_CheckedChanged);
+            this.checkBox_rstbPS.UseVisualStyleBackColor = false;
             // 
             // checkBox_selPSMode
             // 
             this.checkBox_selPSMode.AutoSize = true;
-            this.checkBox_selPSMode.Location = new System.Drawing.Point(33, 128);
+            this.checkBox_selPSMode.BackColor = System.Drawing.Color.White;
+            this.checkBox_selPSMode.Location = new System.Drawing.Point(13, 125);
             this.checkBox_selPSMode.Name = "checkBox_selPSMode";
             this.checkBox_selPSMode.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selPSMode.Size = new System.Drawing.Size(212, 28);
             this.checkBox_selPSMode.TabIndex = 5;
             this.checkBox_selPSMode.Text = "Peak sensing mode:";
-            this.checkBox_selPSMode.UseVisualStyleBackColor = true;
-            this.checkBox_selPSMode.CheckedChanged += new System.EventHandler(this.checkBox_selPSMode_CheckedChanged);
+            this.checkBox_selPSMode.UseVisualStyleBackColor = false;
             // 
             // checkBox_rstbPa
             // 
             this.checkBox_rstbPa.AutoSize = true;
+            this.checkBox_rstbPa.BackColor = System.Drawing.Color.White;
             this.checkBox_rstbPa.Checked = true;
             this.checkBox_rstbPa.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_rstbPa.Location = new System.Drawing.Point(13, 271);
+            this.checkBox_rstbPa.Location = new System.Drawing.Point(13, 280);
             this.checkBox_rstbPa.Name = "checkBox_rstbPa";
             this.checkBox_rstbPa.Size = new System.Drawing.Size(201, 28);
             this.checkBox_rstbPa.TabIndex = 10;
             this.checkBox_rstbPa.Text = "Enable preamplifiers";
-            this.checkBox_rstbPa.UseVisualStyleBackColor = true;
-            this.checkBox_rstbPa.CheckedChanged += new System.EventHandler(this.checkBox_rstbPa_CheckedChanged);
+            this.checkBox_rstbPa.UseVisualStyleBackColor = false;
             // 
             // checkBox_selPSGlobalTrigger
             // 
             this.checkBox_selPSGlobalTrigger.AutoSize = true;
-            this.checkBox_selPSGlobalTrigger.Location = new System.Drawing.Point(33, 160);
+            this.checkBox_selPSGlobalTrigger.BackColor = System.Drawing.Color.White;
+            this.checkBox_selPSGlobalTrigger.Location = new System.Drawing.Point(13, 157);
             this.checkBox_selPSGlobalTrigger.Name = "checkBox_selPSGlobalTrigger";
             this.checkBox_selPSGlobalTrigger.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
             this.checkBox_selPSGlobalTrigger.Size = new System.Drawing.Size(159, 28);
             this.checkBox_selPSGlobalTrigger.TabIndex = 7;
             this.checkBox_selPSGlobalTrigger.Text = "Internal trigger";
-            this.checkBox_selPSGlobalTrigger.UseVisualStyleBackColor = true;
-            this.checkBox_selPSGlobalTrigger.CheckedChanged += new System.EventHandler(this.checkBox_selPSGlobalTrigger_CheckedChanged);
+            this.checkBox_selPSGlobalTrigger.UseVisualStyleBackColor = false;
             // 
-            // checkBox_timeOutHold
+            // tabPage_firmwareProtoCUBES
             // 
-            this.checkBox_timeOutHold.AutoSize = true;
-            this.checkBox_timeOutHold.Checked = true;
-            this.checkBox_timeOutHold.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_timeOutHold.Location = new System.Drawing.Point(788, 464);
-            this.checkBox_timeOutHold.Name = "checkBox_timeOutHold";
-            this.checkBox_timeOutHold.Size = new System.Drawing.Size(284, 28);
-            this.checkBox_timeOutHold.TabIndex = 3;
-            this.checkBox_timeOutHold.Text = "Enable time-out on hold signal";
-            this.checkBox_timeOutHold.UseVisualStyleBackColor = true;
-            this.checkBox_timeOutHold.Visible = false;
-            this.checkBox_timeOutHold.CheckedChanged += new System.EventHandler(this.checkBox_timeOutHold_CheckedChanged);
+            this.tabPage_firmwareProtoCUBES.Controls.Add(this.groupbox_CubesResets);
+            this.tabPage_firmwareProtoCUBES.Location = new System.Drawing.Point(4, 33);
+            this.tabPage_firmwareProtoCUBES.Name = "tabPage_firmwareProtoCUBES";
+            this.tabPage_firmwareProtoCUBES.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_firmwareProtoCUBES.Size = new System.Drawing.Size(1045, 443);
+            this.tabPage_firmwareProtoCUBES.TabIndex = 1;
+            this.tabPage_firmwareProtoCUBES.Text = "Proto-CUBES";
+            this.tabPage_firmwareProtoCUBES.UseVisualStyleBackColor = true;
+            // 
+            // groupbox_CubesResets
+            // 
+            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstSR);
+            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstPA);
+            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstASICTrigs);
+            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstHisto);
+            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstHCR);
+            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstResetCounters);
+            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstPSC);
+            this.groupbox_CubesResets.Controls.Add(this.button_SendResets);
+            this.groupbox_CubesResets.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.groupbox_CubesResets.Location = new System.Drawing.Point(6, 10);
+            this.groupbox_CubesResets.Name = "groupbox_CubesResets";
+            this.groupbox_CubesResets.Size = new System.Drawing.Size(1033, 116);
+            this.groupbox_CubesResets.TabIndex = 3;
+            this.groupbox_CubesResets.TabStop = false;
+            this.groupbox_CubesResets.Text = "Manual Resets";
+            // 
+            // checkBox_RstSR
+            // 
+            this.checkBox_RstSR.AutoSize = true;
+            this.checkBox_RstSR.BackColor = System.Drawing.Color.White;
+            this.checkBox_RstSR.Enabled = false;
+            this.checkBox_RstSR.Location = new System.Drawing.Point(218, 49);
+            this.checkBox_RstSR.Name = "checkBox_RstSR";
+            this.checkBox_RstSR.Size = new System.Drawing.Size(116, 22);
+            this.checkBox_RstSR.TabIndex = 4;
+            this.checkBox_RstSR.Text = "SC Shift Reg.";
+            this.checkBox_RstSR.UseVisualStyleBackColor = false;
+            // 
+            // checkBox_RstPA
+            // 
+            this.checkBox_RstPA.AutoSize = true;
+            this.checkBox_RstPA.BackColor = System.Drawing.Color.White;
+            this.checkBox_RstPA.Location = new System.Drawing.Point(115, 49);
+            this.checkBox_RstPA.Name = "checkBox_RstPA";
+            this.checkBox_RstPA.Size = new System.Drawing.Size(87, 22);
+            this.checkBox_RstPA.TabIndex = 4;
+            this.checkBox_RstPA.Text = "Preamps";
+            this.checkBox_RstPA.UseVisualStyleBackColor = false;
+            // 
+            // checkBox_RstASICTrigs
+            // 
+            this.checkBox_RstASICTrigs.AutoSize = true;
+            this.checkBox_RstASICTrigs.BackColor = System.Drawing.Color.White;
+            this.checkBox_RstASICTrigs.Enabled = false;
+            this.checkBox_RstASICTrigs.Location = new System.Drawing.Point(334, 49);
+            this.checkBox_RstASICTrigs.Name = "checkBox_RstASICTrigs";
+            this.checkBox_RstASICTrigs.Size = new System.Drawing.Size(112, 22);
+            this.checkBox_RstASICTrigs.TabIndex = 4;
+            this.checkBox_RstASICTrigs.Text = "Trig. Latches";
+            this.checkBox_RstASICTrigs.UseVisualStyleBackColor = false;
+            // 
+            // checkBox_RstHisto
+            // 
+            this.checkBox_RstHisto.AutoSize = true;
+            this.checkBox_RstHisto.BackColor = System.Drawing.Color.White;
+            this.checkBox_RstHisto.Location = new System.Drawing.Point(115, 21);
+            this.checkBox_RstHisto.Name = "checkBox_RstHisto";
+            this.checkBox_RstHisto.Size = new System.Drawing.Size(100, 22);
+            this.checkBox_RstHisto.TabIndex = 4;
+            this.checkBox_RstHisto.Text = "Histo-RAM";
+            this.checkBox_RstHisto.UseVisualStyleBackColor = false;
+            // 
+            // checkBox_RstHCR
+            // 
+            this.checkBox_RstHCR.AutoSize = true;
+            this.checkBox_RstHCR.BackColor = System.Drawing.Color.White;
+            this.checkBox_RstHCR.Location = new System.Drawing.Point(218, 21);
+            this.checkBox_RstHCR.Name = "checkBox_RstHCR";
+            this.checkBox_RstHCR.Size = new System.Drawing.Size(68, 22);
+            this.checkBox_RstHCR.TabIndex = 4;
+            this.checkBox_RstHCR.Text = "HCRs";
+            this.checkBox_RstHCR.UseVisualStyleBackColor = false;
+            // 
+            // checkBox_RstResetCounters
+            // 
+            this.checkBox_RstResetCounters.AutoSize = true;
+            this.checkBox_RstResetCounters.BackColor = System.Drawing.Color.White;
+            this.checkBox_RstResetCounters.Location = new System.Drawing.Point(5, 21);
+            this.checkBox_RstResetCounters.Name = "checkBox_RstResetCounters";
+            this.checkBox_RstResetCounters.Size = new System.Drawing.Size(131, 22);
+            this.checkBox_RstResetCounters.TabIndex = 4;
+            this.checkBox_RstResetCounters.Text = "Reset Counters";
+            this.checkBox_RstResetCounters.UseVisualStyleBackColor = false;
+            // 
+            // checkBox_RstPSC
+            // 
+            this.checkBox_RstPSC.AutoSize = true;
+            this.checkBox_RstPSC.BackColor = System.Drawing.Color.White;
+            this.checkBox_RstPSC.Location = new System.Drawing.Point(5, 49);
+            this.checkBox_RstPSC.Name = "checkBox_RstPSC";
+            this.checkBox_RstPSC.Size = new System.Drawing.Size(58, 22);
+            this.checkBox_RstPSC.TabIndex = 3;
+            this.checkBox_RstPSC.Text = "PSC";
+            this.checkBox_RstPSC.UseVisualStyleBackColor = false;
+            // 
+            // button_SendResets
+            // 
+            this.button_SendResets.BackColor = System.Drawing.SystemColors.Control;
+            this.button_SendResets.Location = new System.Drawing.Point(877, 82);
+            this.button_SendResets.Name = "button_SendResets";
+            this.button_SendResets.Size = new System.Drawing.Size(150, 28);
+            this.button_SendResets.TabIndex = 2;
+            this.button_SendResets.Text = "Send Resets";
+            this.button_SendResets.UseVisualStyleBackColor = false;
+            this.button_SendResets.Click += new System.EventHandler(this.button_SendResets_Click);
             // 
             // groupBox_HV
             // 
@@ -11771,7 +11913,6 @@
             // panel_CubesMonitor
             // 
             this.panel_CubesMonitor.BackColor = System.Drawing.Color.White;
-            this.panel_CubesMonitor.Controls.Add(this.groupbox_CubesResets);
             this.panel_CubesMonitor.Controls.Add(this.groupBox_telemetry);
             this.panel_CubesMonitor.Controls.Add(this.rtxtMonitor);
             this.panel_CubesMonitor.Controls.Add(this.panel_clearSerialMonitor);
@@ -11782,107 +11923,6 @@
             this.tblPnlMain.SetRowSpan(this.panel_CubesMonitor, 3);
             this.panel_CubesMonitor.Size = new System.Drawing.Size(457, 720);
             this.panel_CubesMonitor.TabIndex = 40;
-            // 
-            // groupbox_CubesResets
-            // 
-            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstSR);
-            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstPA);
-            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstASICTrigs);
-            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstHisto);
-            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstHCR);
-            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstResetCounters);
-            this.groupbox_CubesResets.Controls.Add(this.checkBox_RstPSC);
-            this.groupbox_CubesResets.Controls.Add(this.button_SendResets);
-            this.groupbox_CubesResets.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.groupbox_CubesResets.Location = new System.Drawing.Point(3, 331);
-            this.groupbox_CubesResets.Name = "groupbox_CubesResets";
-            this.groupbox_CubesResets.Size = new System.Drawing.Size(448, 116);
-            this.groupbox_CubesResets.TabIndex = 3;
-            this.groupbox_CubesResets.TabStop = false;
-            this.groupbox_CubesResets.Text = "Manual Resets";
-            // 
-            // checkBox_RstSR
-            // 
-            this.checkBox_RstSR.AutoSize = true;
-            this.checkBox_RstSR.Enabled = false;
-            this.checkBox_RstSR.Location = new System.Drawing.Point(218, 49);
-            this.checkBox_RstSR.Name = "checkBox_RstSR";
-            this.checkBox_RstSR.Size = new System.Drawing.Size(116, 22);
-            this.checkBox_RstSR.TabIndex = 4;
-            this.checkBox_RstSR.Text = "SC Shift Reg.";
-            this.checkBox_RstSR.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_RstPA
-            // 
-            this.checkBox_RstPA.AutoSize = true;
-            this.checkBox_RstPA.Location = new System.Drawing.Point(115, 49);
-            this.checkBox_RstPA.Name = "checkBox_RstPA";
-            this.checkBox_RstPA.Size = new System.Drawing.Size(87, 22);
-            this.checkBox_RstPA.TabIndex = 4;
-            this.checkBox_RstPA.Text = "Preamps";
-            this.checkBox_RstPA.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_RstASICTrigs
-            // 
-            this.checkBox_RstASICTrigs.AutoSize = true;
-            this.checkBox_RstASICTrigs.Enabled = false;
-            this.checkBox_RstASICTrigs.Location = new System.Drawing.Point(334, 49);
-            this.checkBox_RstASICTrigs.Name = "checkBox_RstASICTrigs";
-            this.checkBox_RstASICTrigs.Size = new System.Drawing.Size(112, 22);
-            this.checkBox_RstASICTrigs.TabIndex = 4;
-            this.checkBox_RstASICTrigs.Text = "Trig. Latches";
-            this.checkBox_RstASICTrigs.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_RstHisto
-            // 
-            this.checkBox_RstHisto.AutoSize = true;
-            this.checkBox_RstHisto.Location = new System.Drawing.Point(115, 21);
-            this.checkBox_RstHisto.Name = "checkBox_RstHisto";
-            this.checkBox_RstHisto.Size = new System.Drawing.Size(100, 22);
-            this.checkBox_RstHisto.TabIndex = 4;
-            this.checkBox_RstHisto.Text = "Histo-RAM";
-            this.checkBox_RstHisto.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_RstHCR
-            // 
-            this.checkBox_RstHCR.AutoSize = true;
-            this.checkBox_RstHCR.Location = new System.Drawing.Point(218, 21);
-            this.checkBox_RstHCR.Name = "checkBox_RstHCR";
-            this.checkBox_RstHCR.Size = new System.Drawing.Size(68, 22);
-            this.checkBox_RstHCR.TabIndex = 4;
-            this.checkBox_RstHCR.Text = "HCRs";
-            this.checkBox_RstHCR.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_RstResetCounters
-            // 
-            this.checkBox_RstResetCounters.AutoSize = true;
-            this.checkBox_RstResetCounters.Location = new System.Drawing.Point(5, 21);
-            this.checkBox_RstResetCounters.Name = "checkBox_RstResetCounters";
-            this.checkBox_RstResetCounters.Size = new System.Drawing.Size(131, 22);
-            this.checkBox_RstResetCounters.TabIndex = 4;
-            this.checkBox_RstResetCounters.Text = "Reset Counters";
-            this.checkBox_RstResetCounters.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_RstPSC
-            // 
-            this.checkBox_RstPSC.AutoSize = true;
-            this.checkBox_RstPSC.Location = new System.Drawing.Point(5, 49);
-            this.checkBox_RstPSC.Name = "checkBox_RstPSC";
-            this.checkBox_RstPSC.Size = new System.Drawing.Size(58, 22);
-            this.checkBox_RstPSC.TabIndex = 3;
-            this.checkBox_RstPSC.Text = "PSC";
-            this.checkBox_RstPSC.UseVisualStyleBackColor = true;
-            // 
-            // button_SendResets
-            // 
-            this.button_SendResets.BackColor = System.Drawing.SystemColors.Control;
-            this.button_SendResets.Location = new System.Drawing.Point(334, 77);
-            this.button_SendResets.Name = "button_SendResets";
-            this.button_SendResets.Size = new System.Drawing.Size(99, 28);
-            this.button_SendResets.TabIndex = 2;
-            this.button_SendResets.Text = "Send Resets";
-            this.button_SendResets.UseVisualStyleBackColor = false;
-            this.button_SendResets.Click += new System.EventHandler(this.button_SendResets_Click);
             // 
             // groupBox_telemetry
             // 
@@ -12129,10 +12169,10 @@
             this.rtxtMonitor.BackColor = System.Drawing.SystemColors.InfoText;
             this.rtxtMonitor.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtMonitor.ForeColor = System.Drawing.SystemColors.Info;
-            this.rtxtMonitor.Location = new System.Drawing.Point(3, 453);
+            this.rtxtMonitor.Location = new System.Drawing.Point(3, 331);
             this.rtxtMonitor.Name = "rtxtMonitor";
             this.rtxtMonitor.ReadOnly = true;
-            this.rtxtMonitor.Size = new System.Drawing.Size(448, 227);
+            this.rtxtMonitor.Size = new System.Drawing.Size(448, 349);
             this.rtxtMonitor.TabIndex = 22;
             this.rtxtMonitor.TabStop = false;
             this.rtxtMonitor.Text = "";
@@ -12262,12 +12302,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart_perAcqChargeHG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_acquisitionNumber)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabControl_firmware.ResumeLayout(false);
+            this.tabPage_firmwareWeerocEvalKit.ResumeLayout(false);
+            this.tabPage_firmwareWeerocEvalKit.PerformLayout();
             this.groupBox_timeTriggerMask.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage_firmwareProtoCUBES.ResumeLayout(false);
+            this.groupbox_CubesResets.ResumeLayout(false);
+            this.groupbox_CubesResets.PerformLayout();
             this.groupBox_HV.ResumeLayout(false);
             this.groupBox_HV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_HV)).EndInit();
@@ -12277,8 +12322,6 @@
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTools.ResumeLayout(false);
             this.panel_CubesMonitor.ResumeLayout(false);
-            this.groupbox_CubesResets.ResumeLayout(false);
-            this.groupbox_CubesResets.PerformLayout();
             this.groupBox_telemetry.ResumeLayout(false);
             this.groupBox_telemetry.PerformLayout();
             this.groupBox_HitRates.ResumeLayout(false);
@@ -12991,35 +13034,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_perAcqChargeHG;
         private System.Windows.Forms.Label label115;
         private intTextBox textBox_delay;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private switchBox checkBox_selValEvt;
-        private checkBox checkBox_PSGlobalTrigger;
-        private switchBox checkBox_selRazChn;
-        private checkBox checkBox_PSMode;
-        private switchBox checkBox_pwrOn;
-        private checkBox checkBox_rstbPS;
-        private switchBox checkBox_selPSMode;
-        private checkBox checkBox_rstbPa;
-        private switchBox checkBox_selPSGlobalTrigger;
-        private checkBox checkBox_razChn;
-        private checkBox checkBox_valEvt;
         private System.Windows.Forms.Label label112;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private checkBox checkBox_timeOutHold;
-        private switchBox checkBox_readOutSpeed;
-        private switchBox checkBox_disReadAdc;
-        private switchBox checkBox_ADC2;
-        private switchBox checkBox_ADC1;
-        private switchBox checkBox_selHold;
-        private switchBox checkBox_selTrigToHold;
-        private checkBox checkBox_enSerialLink;
-        private System.Windows.Forms.TextBox textBox_word5;
-        private System.Windows.Forms.TextBox textBox_word3;
-        private System.Windows.Forms.TextBox textBox_word2;
-        private System.Windows.Forms.TextBox textBox_word1;
-        private System.Windows.Forms.TextBox textBox_word0;
         private switchBox checkBox_staircaseTorQ;
-        private switchBox checkBox_OR32polarity;
         private System.Windows.Forms.TabControl tabControl_dataAcquisition;
         private System.Windows.Forms.TabPage tabPage_perChannelCharge;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_perChannelChargeLG;
@@ -13042,7 +13058,6 @@
         private System.Windows.Forms.ComboBox comboBox_sCurvesClock;
         private System.Windows.Forms.NumericUpDown numericUpDown_rr;
         private checkBox checkBox_rr;
-        private switchBox checkBox_triggerTorQ;
         private System.Windows.Forms.Button button_sendReadRegister;
         private System.Windows.Forms.Label label_tauHg;
         private System.Windows.Forms.Label label_tauLg;
@@ -13051,42 +13066,6 @@
         private checkBox checkBox_staircaseLogScale;
         private System.Windows.Forms.Label label124;
         private intTextBox textBox_holdScanNbAcq;
-        private System.Windows.Forms.GroupBox groupBox_timeTriggerMask;
-        private maskCheckBox checkBox_timeTriggerMask0;
-        private System.Windows.Forms.Button button_unmaskAllTime;
-        private maskCheckBox checkBox_timeTriggerMask13;
-        private System.Windows.Forms.Button button_maskAllTime;
-        private maskCheckBox checkBox_timeTriggerMask14;
-        private maskCheckBox checkBox_timeTriggerMask12;
-        private maskCheckBox checkBox_timeTriggerMask15;
-        private maskCheckBox checkBox_timeTriggerMask11;
-        private maskCheckBox checkBox_timeTriggerMask16;
-        private maskCheckBox checkBox_timeTriggerMask10;
-        private maskCheckBox checkBox_timeTriggerMask17;
-        private maskCheckBox checkBox_timeTriggerMask9;
-        private maskCheckBox checkBox_timeTriggerMask18;
-        private maskCheckBox checkBox_timeTriggerMask8;
-        private maskCheckBox checkBox_timeTriggerMask19;
-        private maskCheckBox checkBox_timeTriggerMask7;
-        private maskCheckBox checkBox_timeTriggerMask20;
-        private maskCheckBox checkBox_timeTriggerMask6;
-        private maskCheckBox checkBox_timeTriggerMask21;
-        private maskCheckBox checkBox_timeTriggerMask5;
-        private maskCheckBox checkBox_timeTriggerMask31;
-        private maskCheckBox checkBox_timeTriggerMask22;
-        private maskCheckBox checkBox_timeTriggerMask30;
-        private maskCheckBox checkBox_timeTriggerMask4;
-        private maskCheckBox checkBox_timeTriggerMask29;
-        private maskCheckBox checkBox_timeTriggerMask23;
-        private maskCheckBox checkBox_timeTriggerMask28;
-        private maskCheckBox checkBox_timeTriggerMask3;
-        private maskCheckBox checkBox_timeTriggerMask27;
-        private maskCheckBox checkBox_timeTriggerMask24;
-        private maskCheckBox checkBox_timeTriggerMask26;
-        private maskCheckBox checkBox_timeTriggerMask2;
-        private maskCheckBox checkBox_timeTriggerMask1;
-        private maskCheckBox checkBox_timeTriggerMask25;
-        private System.Windows.Forms.Button button_sendMaskTime;
         private System.Windows.Forms.Label label128;
         private System.Windows.Forms.Label label133;
         private intTextBox textBox_LgCutLow;
@@ -13110,10 +13089,6 @@
         private System.Windows.Forms.Label label_holdScanMaxGradient;
         private checkBox checkBox_showScatterPlot;
         private System.Windows.Forms.Button button_scatterToPng;
-        private System.Windows.Forms.ComboBox comboBox_triggerPreset;
-        private System.Windows.Forms.Label label136;
-        private switchBox checkBox_iofpgaOr32t;
-        private switchBox checkBox_softwareTrigger;
         private System.Windows.Forms.Button button_screenshot;
         private System.Windows.Forms.Button button_refreshHoldScan;
         private System.Windows.Forms.Label label_acqTime;
@@ -13173,6 +13148,77 @@
         private checkBox checkBox_RstASICTrigs;
         private checkBox checkBox_RstHisto;
         private checkBox checkBox_RstHCR;
+        private System.Windows.Forms.TabControl tabControl_firmware;
+        private System.Windows.Forms.TabPage tabPage_firmwareWeerocEvalKit;
+        private System.Windows.Forms.ComboBox comboBox_triggerPreset;
+        private System.Windows.Forms.Label label136;
+        private System.Windows.Forms.GroupBox groupBox_timeTriggerMask;
+        private System.Windows.Forms.Button button_sendMaskTime;
+        private maskCheckBox checkBox_timeTriggerMask0;
+        private System.Windows.Forms.Button button_unmaskAllTime;
+        private maskCheckBox checkBox_timeTriggerMask13;
+        private System.Windows.Forms.Button button_maskAllTime;
+        private maskCheckBox checkBox_timeTriggerMask14;
+        private maskCheckBox checkBox_timeTriggerMask12;
+        private maskCheckBox checkBox_timeTriggerMask15;
+        private maskCheckBox checkBox_timeTriggerMask11;
+        private maskCheckBox checkBox_timeTriggerMask16;
+        private maskCheckBox checkBox_timeTriggerMask10;
+        private maskCheckBox checkBox_timeTriggerMask17;
+        private maskCheckBox checkBox_timeTriggerMask9;
+        private maskCheckBox checkBox_timeTriggerMask18;
+        private maskCheckBox checkBox_timeTriggerMask8;
+        private maskCheckBox checkBox_timeTriggerMask19;
+        private maskCheckBox checkBox_timeTriggerMask7;
+        private maskCheckBox checkBox_timeTriggerMask20;
+        private maskCheckBox checkBox_timeTriggerMask6;
+        private maskCheckBox checkBox_timeTriggerMask21;
+        private maskCheckBox checkBox_timeTriggerMask5;
+        private maskCheckBox checkBox_timeTriggerMask31;
+        private maskCheckBox checkBox_timeTriggerMask22;
+        private maskCheckBox checkBox_timeTriggerMask30;
+        private maskCheckBox checkBox_timeTriggerMask4;
+        private maskCheckBox checkBox_timeTriggerMask29;
+        private maskCheckBox checkBox_timeTriggerMask23;
+        private maskCheckBox checkBox_timeTriggerMask28;
+        private maskCheckBox checkBox_timeTriggerMask3;
+        private maskCheckBox checkBox_timeTriggerMask27;
+        private maskCheckBox checkBox_timeTriggerMask24;
+        private maskCheckBox checkBox_timeTriggerMask26;
+        private maskCheckBox checkBox_timeTriggerMask2;
+        private maskCheckBox checkBox_timeTriggerMask1;
+        private maskCheckBox checkBox_timeTriggerMask25;
+        private System.Windows.Forms.TextBox textBox_word5;
+        private System.Windows.Forms.TextBox textBox_word3;
+        private System.Windows.Forms.TextBox textBox_word2;
+        private System.Windows.Forms.TextBox textBox_word1;
+        private System.Windows.Forms.TextBox textBox_word0;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private switchBox checkBox_OR32polarity;
+        private switchBox checkBox_triggerTorQ;
+        private switchBox checkBox_selHold;
+        private switchBox checkBox_selTrigToHold;
+        private switchBox checkBox_ADC2;
+        private switchBox checkBox_ADC1;
+        private switchBox checkBox_readOutSpeed;
+        private switchBox checkBox_disReadAdc;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private switchBox checkBox_softwareTrigger;
+        private switchBox checkBox_iofpgaOr32t;
+        private checkBox checkBox_PSGlobalTrigger;
+        private checkBox checkBox_PSMode;
+        private checkBox checkBox_razChn;
+        private checkBox checkBox_valEvt;
+        private switchBox checkBox_selValEvt;
+        private switchBox checkBox_selRazChn;
+        private switchBox checkBox_pwrOn;
+        private checkBox checkBox_enSerialLink;
+        private checkBox checkBox_rstbPS;
+        private switchBox checkBox_selPSMode;
+        private checkBox checkBox_rstbPa;
+        private switchBox checkBox_selPSGlobalTrigger;
+        private checkBox checkBox_timeOutHold;
+        private System.Windows.Forms.TabPage tabPage_firmwareProtoCUBES;
     }
 }
 
