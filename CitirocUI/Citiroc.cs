@@ -2076,7 +2076,7 @@ namespace CitirocUI
         void button_SendResets_Click(object sender, EventArgs e)
         {
             byte[] cmd = new byte[2];
-            cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendResets);
+            cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendGatewareConf);
 
             cmd[1] = (byte)(
                 ((checkBox_RstResetCounters.Checked ? 0b1 : 0b0)    << 0) |
