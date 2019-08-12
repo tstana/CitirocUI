@@ -27,14 +27,9 @@ namespace CitirocUI
 
         ProtoCubesSerial mySerialComm;
 
-        private delegate void displayDataDelegate(string x,byte[] values);
-        displayDataDelegate displayDataFunction;
-
         public Citiroc()
         {
             InitializeComponent();
-
-            displayDataFunction = sendDatatoChart;
 
             try
             {

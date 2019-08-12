@@ -766,33 +766,17 @@ namespace CitirocUI
             return 0;
         }
 
-        private void loadProtocubesData()
+        private string UpdateDataArrays(byte[] adata)
         {
-            if (DataLoadFile == null) return;
-
-            byte[] bytes = File.ReadAllBytes(DataLoadFile);
-            PlotProtoCubesData(DataLoadFile, bytes);
-        }
-
-        private void PlotProtoCubesData(string dataFile,byte[] his_data)
-        {
-            label_DataFile.Text = Path.GetFileName(dataFile);
-            label_DataFile.Visible = true;
-
             try
             {
-                string u_time = System.Text.Encoding.UTF8.GetString(his_data, 0, 21);
+                string u_time = System.Text.Encoding.UTF8.GetString(adata, 0, 21);
 
-                if((his_data[21]!=0x0d) || (his_data[22] != 0x0a)
-                    || (u_time.IndexOf("Unix time:") !=0))
+                if ((adata[21] != 0x0d) || (adata[22] != 0x0a)
+                    || (u_time.IndexOf("Unix time:") != 0))
                 {
-                    label_help.Text ="Invalid data file format!";
-                    return;
+                    return("Invalid data file format!");
                 }
-
-                label_DataFile.Text = "file: " +Path.GetFileName(dataFile) +
-                    "  " + u_time;
-                label_DataFile.Visible = true;
 
                 // Header data
                 /*
@@ -812,43 +796,50 @@ namespace CitirocUI
                 Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
                 Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
                 Array.Clear(Hit, 0, Hit.Length);
-                
+
                 // BIN data
                 int start = 280;
                 int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
 
-                for (int i=0; i<noOfBins; i++)
+                for (int i = 0; i < noOfBins; i++)
                 {
-                    int start0 = start + 2*i;
-                    PerChannelChargeHG[0,i]=  BitConverter.ToUInt16(his_data,start0 );
-                    PerChannelChargeLG[0,i] = BitConverter.ToUInt16(his_data, start0+4096);
-                    PerChannelChargeHG[16,i] = BitConverter.ToUInt16(his_data, start0 + 8192);
-                    PerChannelChargeLG[16,i] = BitConverter.ToUInt16(his_data, start0 + 12288);
-                    PerChannelChargeHG[31,i] = BitConverter.ToUInt16(his_data, start0 + 16384);
-                    PerChannelChargeLG[31,i] = BitConverter.ToUInt16(his_data, start0 + 20480);
+                    int start0 = start + 2 * i;
+                    PerChannelChargeHG[0, i] = BitConverter.ToUInt16(adata, start0);
+                    PerChannelChargeLG[0, i] = BitConverter.ToUInt16(adata, start0 + 4096);
+                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, start0 + 8192);
+                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, start0 + 12288);
+                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, start0 + 16384);
+                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, start0 + 20480);
                 }
-
-                refreshDataChart();
-
-                DrawChartImage();
             }
             catch (Exception ex)
             {
-                label_help.Text = "Invalid .dat file format :" + ex.Message;
+                return("Invalid .dat file format :" + ex.Message);
             }
 
+            return ("");
+        }
+
+        private void loadProtocubesData()
+        {
+            if (DataLoadFile == null) return;
+
+            byte[] bytes = File.ReadAllBytes(DataLoadFile);
+            PlotProtoCubesData(DataLoadFile, bytes);
+        }
+
+        private void PlotProtoCubesData(string dataFile,byte[] his_data)
+        {
+            label_DataFile.Text = Path.GetFileName(dataFile);
+            label_DataFile.Visible = true;
+
+            string upString = UpdateDataArrays(his_data);
+
+            refreshDataChart();
         }
         #endregion
 
         #region Serial Data Ready Event Handler
-        private void sendDatatoChart(string fName, byte[] fValues)
-        {
-            if ((tabControl_top.SelectedTab.Name == "tabControl_dataAcquisition")
-                   && (tabControl_dataAcquisition.SelectedTab.Name == "tabPage_perChannelCharge"))
-            {
-                PlotProtoCubesData(fName, fValues);
-            }
-        }
 
         private void mySerialComm_DataReady(object sender, DataReadyEventArgs e)
         {
@@ -861,17 +852,33 @@ namespace CitirocUI
                 date = date.Replace('/', '-');
                 string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
 
-                UpdatingLabel("Writing DAQ data to " + fileName, label_help);
-                // display data if tab is active
-                displayDataFunction(fileName, e.DataBytes);
+                string update=UpdateDataArrays(e.DataBytes);
 
-                using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+                if (update == "")
                 {
-                    dataFile.Write(e.DataBytes);
+                    UpdatingLabel("Writing DAQ data to " + fileName, label_help);
+                    // display data if tab is active
+                    // displayDataFunction(fileName, e.DataBytes);
+                
+                    using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+                    {
+                        dataFile.Write(e.DataBytes);
+                    }
+
+                    UpdatingLabel( "file: " + Path.GetFileName(fileName),label_DataFile);
+                }
+                else
+                {
+                    UpdatingLabel(update, label_help);
                 }
             }
         }
         #endregion
+
+        private void label_DataFile_TextChanged(object sender, EventArgs e)
+        {
+            refreshDataChart();
+        }
 
         #region Other UI Event Handlers
         private void button_dataSavePath_Click(object sender, EventArgs e)

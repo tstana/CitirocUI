@@ -10194,14 +10194,15 @@
             // 
             // label_DataFile
             // 
-            this.label_DataFile.AutoSize = true;
             this.label_DataFile.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_DataFile.Location = new System.Drawing.Point(3, 343);
+            this.label_DataFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label_DataFile.Location = new System.Drawing.Point(3, 349);
             this.label_DataFile.Name = "label_DataFile";
-            this.label_DataFile.Size = new System.Drawing.Size(78, 24);
+            this.label_DataFile.Size = new System.Drawing.Size(1048, 18);
             this.label_DataFile.TabIndex = 26;
             this.label_DataFile.Text = "data_file";
-            this.label_DataFile.Visible = false;
+            this.label_DataFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_DataFile.TextChanged += new System.EventHandler(this.label_DataFile_TextChanged);
             // 
             // textBox_LgCutLow
             // 
