@@ -10195,13 +10195,12 @@
             // 
             // label_DataFile
             // 
-            this.label_DataFile.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label_DataFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label_DataFile.Location = new System.Drawing.Point(3, 343);
+            this.label_DataFile.Location = new System.Drawing.Point(412, 343);
             this.label_DataFile.Name = "label_DataFile";
-            this.label_DataFile.Size = new System.Drawing.Size(1048, 24);
+            this.label_DataFile.Size = new System.Drawing.Size(304, 24);
             this.label_DataFile.TabIndex = 28;
-            this.label_DataFile.Text = "Data File:";
+            this.label_DataFile.Text = "file:";
             this.label_DataFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label141

@@ -846,7 +846,7 @@ namespace CitirocUI
 
         private void PlotProtoCubesData(string dataFile,byte[] his_data)
         {
-            label_DataFile.Text = Path.GetFileName(dataFile);
+            label_DataFile.Text = "file:" + Path.GetFileName(dataFile);
             label_DataFile.Visible = true;
 
             string upString = UpdateDataArrays(his_data);
