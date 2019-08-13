@@ -794,27 +794,28 @@ namespace CitirocUI
 
                 int start = 23;
                 // Header data
-                /*
-                string histoid      = System.Text.Encoding.UTF8.GetString(adata, start, 2);
-                ulong time_reg      = BitConverter.ToUInt64(adata,start+2);
-                int temp_citiS      = BitConverter.ToUInt16(adata, start + 6);
-                int temp_hvpsS      = BitConverter.ToUInt16(adata, start + 8);
-                int temp_voltS      = BitConverter.ToUInt16(adata, start + 10);
-                int temp_currS      = BitConverter.ToUInt16(adata, start + 12);
-                int temp_hvpsE      = BitConverter.ToUInt16(adata, start + 14);
-                int temp_voltE      = BitConverter.ToUInt16(adata, start + 16);
-                int temp_currE      = BitConverter.ToUInt16(adata, start + 18);
-                int temp_citiE      = BitConverter.ToUInt16(adata, start + 20);
-                */
-                daqTimeTotal = BitConverter.ToUInt16(adata, start + 22);
-                daqTimeActual = BitConverter.ToUInt16(adata, start + 24);
-                HitCK[0] = BitConverter.ToUInt32(adata, start + 26);
-                HitCK[16] = BitConverter.ToUInt32(adata, start + 30);
-                HitCK[31] = BitConverter.ToUInt32(adata, start + 34);
+                
+                //string boardId      = System.Text.Encoding.UTF8.GetString(adata, start, 2);
+                //ulong time_reg      = BitConverter.ToUInt64(adata,start+2);
+                //int temp_citiS      = BitConverter.ToUInt16(adata, start + 6);
+                //int temp_hvpsS      = BitConverter.ToUInt16(adata, start + 8);
+                //int hvps_voltS      = BitConverter.ToUInt16(adata, start + 10);
+                //int hvps_currS      = BitConverter.ToUInt16(adata, start + 12);
+                 
+                daqTimeTotal = BitConverter.ToUInt16(adata, start + 128);
+                daqTimeActual = BitConverter.ToUInt16(adata, start + 130);
+                HitCK[0] = BitConverter.ToUInt32(adata, start + 132);
+                HitCK[16] = BitConverter.ToUInt32(adata, start + 136);
+                HitCK[31] = BitConverter.ToUInt32(adata, start + 140);
+                
+                //int temp_citiE      = BitConverter.ToUInt16(adata, start + 148);
+                //int temp_hvpsE      = BitConverter.ToUInt16(adata, start + 150);
+                //int hvps_voltE      = BitConverter.ToUInt16(adata, start + 152);
+                //int hvps_currE      = BitConverter.ToUInt16(adata, start + 154);
                 //int nrBins          = BitConverter.ToUInt16(adata, start + 254);
 
                 // BIN data
-                start = 280;
+                start = 279;
                 int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
 
                 for (int i = 0; i < noOfBins; i++)
