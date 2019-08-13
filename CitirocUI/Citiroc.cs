@@ -2166,6 +2166,17 @@ namespace CitirocUI
             }
             catch { /* Blindly close... */}
         }
+
+        private void label_help_TextChanged(object sender, EventArgs e)
+        {
+            /// Use the writing to label_help in Proto-CUBES mode to refresh the
+            /// data chart. This is needed to avoid threading issues.
+            if ((selectedConnectionMode == 1) && 
+                    label_help.Text.Contains("Writing DAQ data to"))
+            {
+                refreshDataChart();
+            }
+        }
     }
 }
            

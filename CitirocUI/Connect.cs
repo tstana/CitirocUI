@@ -498,6 +498,7 @@ namespace CitirocUI
                 textBox_numData.Text = "100";
                 switchBox_acquisitionMode_CheckedChanged(switchBox_acquisitionMode, EventArgs.Empty);
 
+                label_DataFile.Visible = false;
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
@@ -507,7 +508,7 @@ namespace CitirocUI
                 AddCurrentComPortsToComboBox();
                 comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
 
-                  // Use the number of acquisitions box as the individual DAQ timer
+                // Use the number of acquisitions box as the individual DAQ timer
                 // setting for Proto-CUBES...
                 switchBox_acquisitionMode.Visible = false;
                 label_numData.Enabled = true;
@@ -516,6 +517,8 @@ namespace CitirocUI
                 textBox_numData.Text = "60";
 
                 AdjustAcquisitionTime();
+
+                label_DataFile.Visible = true;
             }
 
             /// Select the appropriate tab page in the tab control under "Firmware", enable its

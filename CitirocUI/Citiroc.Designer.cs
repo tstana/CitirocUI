@@ -773,7 +773,10 @@
             this.label_elapsedTimeAcquisition = new System.Windows.Forms.Label();
             this.tabControl_dataAcquisition = new System.Windows.Forms.TabControl();
             this.tabPage_perChannelCharge = new System.Windows.Forms.TabPage();
+            this.label_DataFile = new System.Windows.Forms.Label();
+            this.label141 = new System.Windows.Forms.Label();
             this.textBox_LgCutLow = new CitirocUI.intTextBox();
+            this.textBox_NumBins = new CitirocUI.intTextBox();
             this.textBox_LgCutHigh = new CitirocUI.intTextBox();
             this.textBox_HgCutLow = new CitirocUI.intTextBox();
             this.textBox_HgCutHigh = new CitirocUI.intTextBox();
@@ -928,9 +931,6 @@
             this.buttonHelp = new System.Windows.Forms.Button();
             this.button_Clear = new System.Windows.Forms.Button();
             this.tmrButtonColor = new System.Windows.Forms.Timer(this.components);
-            this.label141 = new System.Windows.Forms.Label();
-            this.textBox_NumBins = new CitirocUI.intTextBox();
-            this.label_DataFile = new System.Windows.Forms.Label();
             this.tabControl_top.SuspendLayout();
             this.tabPage_main.SuspendLayout();
             this.groupBox_SerialPortSettings.SuspendLayout();
@@ -1024,6 +1024,7 @@
             this.label_help.Size = new System.Drawing.Size(1080, 200);
             this.label_help.TabIndex = 3;
             this.label_help.Text = "Welcome to the Citiroc User Interface";
+            this.label_help.TextChanged += new System.EventHandler(this.label_help_TextChanged);
             // 
             // btn_minimize
             // 
@@ -10192,6 +10193,27 @@
             this.tabPage_perChannelCharge.Text = "   Per channel   ";
             this.tabPage_perChannelCharge.UseVisualStyleBackColor = true;
             // 
+            // label_DataFile
+            // 
+            this.label_DataFile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_DataFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label_DataFile.Location = new System.Drawing.Point(3, 343);
+            this.label_DataFile.Name = "label_DataFile";
+            this.label_DataFile.Size = new System.Drawing.Size(1048, 24);
+            this.label_DataFile.TabIndex = 28;
+            this.label_DataFile.Text = "Data File:";
+            this.label_DataFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.Enabled = false;
+            this.label141.Location = new System.Drawing.Point(876, 8);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(106, 24);
+            this.label141.TabIndex = 27;
+            this.label141.Text = "No. of Bins:";
+            // 
             // textBox_LgCutLow
             // 
             this.textBox_LgCutLow.enableNegative = false;
@@ -10202,6 +10224,18 @@
             this.textBox_LgCutLow.Text = "0";
             this.textBox_LgCutLow.Leave += new System.EventHandler(this.loadData_Leave);
             this.textBox_LgCutLow.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.loadData_PreviewKeyDown);
+            // 
+            // textBox_NumBins
+            // 
+            this.textBox_NumBins.Enabled = false;
+            this.textBox_NumBins.enableNegative = false;
+            this.textBox_NumBins.Location = new System.Drawing.Point(988, 5);
+            this.textBox_NumBins.Name = "textBox_NumBins";
+            this.textBox_NumBins.Size = new System.Drawing.Size(56, 29);
+            this.textBox_NumBins.TabIndex = 23;
+            this.textBox_NumBins.Text = "2048";
+            this.textBox_NumBins.Leave += new System.EventHandler(this.loadData_Leave);
+            this.textBox_NumBins.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.loadData_PreviewKeyDown);
             // 
             // textBox_LgCutHigh
             // 
@@ -12245,39 +12279,6 @@
             this.tmrButtonColor.Interval = 500;
             this.tmrButtonColor.Tick += new System.EventHandler(this.tmrButtonColor_Tick);
             // 
-            // label141
-            // 
-            this.label141.AutoSize = true;
-            this.label141.Enabled = false;
-            this.label141.Location = new System.Drawing.Point(876, 8);
-            this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(106, 24);
-            this.label141.TabIndex = 27;
-            this.label141.Text = "No. of Bins:";
-            // 
-            // textBox_NumBins
-            // 
-            this.textBox_NumBins.Enabled = false;
-            this.textBox_NumBins.enableNegative = false;
-            this.textBox_NumBins.Location = new System.Drawing.Point(988, 5);
-            this.textBox_NumBins.Name = "textBox_NumBins";
-            this.textBox_NumBins.Size = new System.Drawing.Size(56, 29);
-            this.textBox_NumBins.TabIndex = 23;
-            this.textBox_NumBins.Text = "2048";
-            this.textBox_NumBins.Leave += new System.EventHandler(this.loadData_Leave);
-            this.textBox_NumBins.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.loadData_PreviewKeyDown);
-            // 
-            // label_DataFile
-            // 
-            this.label_DataFile.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_DataFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label_DataFile.Location = new System.Drawing.Point(3, 343);
-            this.label_DataFile.Name = "label_DataFile";
-            this.label_DataFile.Size = new System.Drawing.Size(1048, 24);
-            this.label_DataFile.TabIndex = 28;
-            this.label_DataFile.Text = "Data File:";
-            this.label_DataFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
             // Citiroc
             // 
             this.AllowDrop = true;
@@ -12291,6 +12292,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Citiroc";
             this.Text = "Citiroc User Interface";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Citiroc_FormClosing);
             this.Load += new System.EventHandler(this.Citiroc_Load);
             this.tabControl_top.ResumeLayout(false);
             this.tabPage_main.ResumeLayout(false);
