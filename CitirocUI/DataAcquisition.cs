@@ -8,6 +8,7 @@ using System.Linq;
 using System.Collections;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CitirocUI
 {
@@ -18,6 +19,9 @@ namespace CitirocUI
         int[,] PerChannelChargeHG = new int[NbChannels + 1, 4096];
         int[,] PerChannelChargeLG = new int[NbChannels + 1, 4096];
         int[] Hit = new int[NbChannels + 1];
+        UInt32[] HitCK = new UInt32[NbChannels + 1];
+        UInt16 daqTimeTotal;
+        UInt16 daqTimeActual;
         int nbAcq = 100;
         bool timeAcquisitionMode = true;
 
@@ -488,6 +492,10 @@ namespace CitirocUI
 
         private void SendReqPayload()
         {
+            /* TODO check textBox_NumBins limits !
+             */
+            int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
+
             byte[] reqData = new byte[1];
             reqData[0] = Convert.ToByte(ProtoCubesSerial.Command.ReqPayload);
 
@@ -496,8 +504,7 @@ namespace CitirocUI
              * and GO!
              */
             mySerialComm.RetrievingDaqData = true;
-            mySerialComm.NumBins = 2048;        // TODO: Replace with ProtoCubesSerial.Command parameter
-                                                //       and number from WinForms control.
+            mySerialComm.NumBins = noOfBins;
             mySerialComm.WriteData(reqData, reqData.Length);
         }
 
@@ -542,8 +549,7 @@ namespace CitirocUI
             if (DataArrayListCount <= 1) return;
 
             string[] DataArray = new string[DataArrayListCount];
-            DataArrayList.CopyTo(DataArray);
-
+  
             Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
             Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
             Array.Clear(Hit, 0, Hit.Length);
@@ -617,7 +623,11 @@ namespace CitirocUI
 
             for (int i = HgCutLow; i < HgCutHigh + 1; i++) if (PerChannelChargeHG[chNum, i] != 0) chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
 
-            ulong numTimeTrigs = (Convert.ToUInt64(Firmware.readWord(120, usbDevId), 2)) |
+            ulong numTimeTrigs = 0;
+
+            if(selectedConnectionMode == 0)
+            {
+                numTimeTrigs=(Convert.ToUInt64(Firmware.readWord(120, usbDevId), 2)) |
                                  (Convert.ToUInt64(Firmware.readWord(121, usbDevId), 2) <<  8) |
                                  (Convert.ToUInt64(Firmware.readWord(122, usbDevId), 2) << 16) |
                                  (Convert.ToUInt64(Firmware.readWord(123, usbDevId), 2) << 24) |
@@ -626,10 +636,17 @@ namespace CitirocUI
                                  (Convert.ToUInt64(Firmware.readWord(126, usbDevId), 2) << 48) |
                                  (Convert.ToUInt64(Firmware.readWord(127, usbDevId), 2) << 56);
 
-            label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + Hit[chNum] +
-                               " / Total time hits on all channels during actual acq. time = " + numTimeTrigs;
-            if (numTimeTrigs == 0)
-                label_nbHit.Text += " (TimeTrig masked?)";
+                label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + Hit[chNum] +
+                                   " / Total time hits on all channels during actual acq. time = " + numTimeTrigs;
+                if (numTimeTrigs == 0)
+                    label_nbHit.Text += " (TimeTrig masked?)";
+            }
+            else
+            {
+                label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + HitCK[chNum];
+                label_elapsedTimeAcquisition.Text = "Elapsed time: " + daqTimeTotal + "ms";
+                label_acqTime.Text = "Actual acq. time: " + daqTimeActual + "ms";
+            }
 
             resetZoom(chart_perChannelChargeHG);
 
@@ -644,13 +661,15 @@ namespace CitirocUI
             chart_perChannelChargeLG.Series[0].BorderColor = WeerocPaleBlue;
             chart_perChannelChargeLG.Series[0].BorderWidth = 0;
             chart_perChannelChargeLG.Series[0]["PointWidth"] = "1";
-
+         
             for (int i = LgCutLow; i < LgCutHigh + 1; i++) if (PerChannelChargeLG[chNum, i] != 0) chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
 
             resetZoom(chart_perChannelChargeLG);
             #endregion
 
             #region per acquisition
+
+            if (selectedConnectionMode == 1) return;
 
             if (DataLoadFile == null) return;
 
@@ -755,9 +774,89 @@ namespace CitirocUI
 
             return 0;
         }
+
+        private string UpdateDataArrays(byte[] adata)
+        {
+            try
+            {
+                string u_time = System.Text.Encoding.UTF8.GetString(adata, 0, 21);
+
+                if ((adata[21] != 0x0d) || (adata[22] != 0x0a)
+                    || (u_time.IndexOf("Unix time:") != 0))
+                {
+                    return("Invalid data file format!");
+                }
+
+                Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
+                Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
+                Array.Clear(Hit, 0, Hit.Length);
+                Array.Clear(HitCK, 0, HitCK.Length);
+
+                int start = 23;
+                // Header data
+                /*
+                string histoid      = System.Text.Encoding.UTF8.GetString(adata, start, 2);
+                ulong time_reg      = BitConverter.ToUInt64(adata,start+2);
+                int temp_citiS      = BitConverter.ToUInt16(adata, start + 6);
+                int temp_hvpsS      = BitConverter.ToUInt16(adata, start + 8);
+                int temp_voltS      = BitConverter.ToUInt16(adata, start + 10);
+                int temp_currS      = BitConverter.ToUInt16(adata, start + 12);
+                int temp_hvpsE      = BitConverter.ToUInt16(adata, start + 14);
+                int temp_voltE      = BitConverter.ToUInt16(adata, start + 16);
+                int temp_currE      = BitConverter.ToUInt16(adata, start + 18);
+                int temp_citiE      = BitConverter.ToUInt16(adata, start + 20);
+                */
+                daqTimeTotal = BitConverter.ToUInt16(adata, start + 22);
+                daqTimeActual = BitConverter.ToUInt16(adata, start + 24);
+                HitCK[0] = BitConverter.ToUInt32(adata, start + 26);
+                HitCK[16] = BitConverter.ToUInt32(adata, start + 30);
+                HitCK[31] = BitConverter.ToUInt32(adata, start + 34);
+                //int nrBins          = BitConverter.ToUInt16(adata, start + 254);
+
+                // BIN data
+                start = 280;
+                int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
+
+                for (int i = 0; i < noOfBins; i++)
+                {
+                    int start0 = start + 2 * i;
+                    PerChannelChargeHG[0, i] = BitConverter.ToUInt16(adata, start0);
+                    PerChannelChargeLG[0, i] = BitConverter.ToUInt16(adata, start0 + 4096);
+                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, start0 + 8192);
+                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, start0 + 12288);
+                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, start0 + 16384);
+                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, start0 + 20480);
+                }
+            }
+            catch (Exception ex)
+            {
+                return("Invalid .dat file format :" + ex.Message);
+            }
+
+            return ("");
+        }
+
+        private void loadProtocubesData()
+        {
+            if (DataLoadFile == null) return;
+
+            byte[] bytes = File.ReadAllBytes(DataLoadFile);
+            PlotProtoCubesData(DataLoadFile, bytes);
+        }
+
+        private void PlotProtoCubesData(string dataFile,byte[] his_data)
+        {
+            label_DataFile.Text = Path.GetFileName(dataFile);
+            label_DataFile.Visible = true;
+
+            string upString = UpdateDataArrays(his_data);
+
+            refreshDataChart();
+        }
         #endregion
 
         #region Serial Data Ready Event Handler
+
         private void mySerialComm_DataReady(object sender, DataReadyEventArgs e)
         {
             if ((e.Command == ProtoCubesSerial.Command.ReqPayload) &&
@@ -769,15 +868,33 @@ namespace CitirocUI
                 date = date.Replace('/', '-');
                 string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
 
-                UpdatingLabel("Writing DAQ data to " + fileName, label_help);
+                string update=UpdateDataArrays(e.DataBytes);
 
-                using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+                if (update == "")
                 {
-                    dataFile.Write(e.DataBytes);
+                    UpdatingLabel("Writing DAQ data to " + fileName, label_help);
+                    // display data if tab is active
+                    // displayDataFunction(fileName, e.DataBytes);
+                
+                    using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+                    {
+                        dataFile.Write(e.DataBytes);
+                    }
+
+                    UpdatingLabel( "file: " + Path.GetFileName(fileName),label_DataFile);
+                }
+                else
+                {
+                    UpdatingLabel(update, label_help);
                 }
             }
         }
         #endregion
+
+        private void label_DataFile_TextChanged(object sender, EventArgs e)
+        {
+            refreshDataChart();
+        }
 
         #region Other UI Event Handlers
         private void button_dataSavePath_Click(object sender, EventArgs e)
@@ -814,7 +931,10 @@ namespace CitirocUI
             // Open dialog box
             OpenFileDialog DataLoadDialog = new OpenFileDialog();
             DataLoadDialog.Title = "Specify Data file";
-            //DataLDialog.Filter = "TxT files|*.txt";
+
+            if(selectedConnectionMode == 1)     // Serial
+                DataLoadDialog.Filter = "ProtoCubes files|*.dat";
+
             DataLoadDialog.RestoreDirectory = true;
 
             if (DataLoadDialog.ShowDialog() == DialogResult.OK && DataLoadDialog.FileName != null)
@@ -829,7 +949,17 @@ namespace CitirocUI
                     chart_perChannelChargeLG.Series.Clear();
                     return;
                 }
-                else loadData();
+                else
+                {
+                    if (selectedConnectionMode == 1)
+                    {
+                        loadProtocubesData();
+                    }
+                        
+                    else
+                        loadData();
+                }
+                    
             }
             else return;
         }
@@ -955,6 +1085,92 @@ namespace CitirocUI
             }
 
             AdjustAcquisitionTime();
+        }
+        #endregion
+
+        #region Chart Image
+        private void DrawChartImage()
+        {
+            Chart tmpChart = new Chart();
+            tmpChart.Size = new Size(1800, 1200);
+
+            // save to a bitmap
+            Bitmap bmp = new Bitmap(3800, 3800);
+            string[] chan_name = { "CH0 High ","CH0 Low ", "CH16 High ", "CH16 Low ", "CH31 High ", "CH31 Low " };
+            Point[] P = new Point[]
+            {
+                new Point { X = 0, Y = 0 },
+                new Point { X = 1900, Y = 0 },
+                new Point { X = 0, Y = 1300 },
+                new Point { X = 1900, Y = 1300 },
+                new Point { X = 0, Y = 2600 },
+                new Point { X = 1900, Y = 2600 },
+            };
+
+            Font chtXFont = new Font("Arial", 42);
+            Font chtYFont = new Font("Arial", 32);
+            var chartArea = new ChartArea();
+            chartArea.AxisX.MajorGrid.LineColor = Color.Gray;
+            chartArea.AxisY.MajorGrid.LineColor = Color.Gray;
+            chartArea.AxisX.LabelStyle.Font = new Font("Consolas", 32);
+            chartArea.AxisY.LabelStyle.Font = new Font("Consolas", 32);
+            chartArea.AxisX.IsStartedFromZero = false;
+            chartArea.AxisX.TitleFont = chtXFont;
+            chartArea.AxisY.TitleFont = chtYFont;
+            chartArea.AxisY.Title = "Data count";
+            tmpChart.BorderlineColor = Color.Red;
+            tmpChart.BorderlineWidth = 4;
+            tmpChart.ChartAreas.Add(chartArea);
+
+
+
+            for (int chart_idx = 0; chart_idx < 6; chart_idx++)
+            {
+                tmpChart.Series.Clear();
+                tmpChart.ResetAutoValues();
+                tmpChart.Series.Add("Charge");
+                tmpChart.ChartAreas[0].AxisX.Title = chan_name[chart_idx] + "gain charge (ADCu)";
+                //tmpChart.Series[0].Color = WeerocPaleBlue;
+                //tmpChart.Series[0].BorderColor = Color.Red;
+                tmpChart.Series[0].BorderWidth = 1;
+                tmpChart.Series[0]["PointWidth"] = "1";
+
+            int value = 0;
+            for (int i = 0; i < 2048; i++)
+            {
+                 switch (chart_idx)
+                {
+                    case 0:
+                        value = PerChannelChargeHG[0, i];
+                        break;
+                    case 1:
+                        value = PerChannelChargeLG[0, i];
+                        break;
+                    case 2:
+                        value = PerChannelChargeHG[16, i];
+                        break;
+                    case 3:
+                        value = PerChannelChargeLG[16, i];
+                        break;
+                    case 4:
+                        value = PerChannelChargeHG[31, i];
+                        break;
+                    case 5:
+                        value = PerChannelChargeLG[31, i];
+                        break;
+                }
+
+                if(value != 0) tmpChart.Series[0].Points.AddXY(i, value);
+            }
+
+                tmpChart.DrawToBitmap(bmp, new Rectangle(P[chart_idx].X, P[chart_idx].Y,1800,1200));
+           }
+           
+            bmp.Save(@"C:\Temp\test.png");
+
+  
+
+
         }
         #endregion
     }

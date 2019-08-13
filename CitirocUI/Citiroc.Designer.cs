@@ -928,6 +928,9 @@
             this.buttonHelp = new System.Windows.Forms.Button();
             this.button_Clear = new System.Windows.Forms.Button();
             this.tmrButtonColor = new System.Windows.Forms.Timer(this.components);
+            this.label141 = new System.Windows.Forms.Label();
+            this.textBox_NumBins = new CitirocUI.intTextBox();
+            this.label_DataFile = new System.Windows.Forms.Label();
             this.tabControl_top.SuspendLayout();
             this.tabPage_main.SuspendLayout();
             this.groupBox_SerialPortSettings.SuspendLayout();
@@ -10164,7 +10167,10 @@
             // 
             // tabPage_perChannelCharge
             // 
+            this.tabPage_perChannelCharge.Controls.Add(this.label_DataFile);
+            this.tabPage_perChannelCharge.Controls.Add(this.label141);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutLow);
+            this.tabPage_perChannelCharge.Controls.Add(this.textBox_NumBins);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutHigh);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutLow);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutHigh);
@@ -10308,8 +10314,9 @@
             this.label_nbHit.AutoSize = true;
             this.label_nbHit.Location = new System.Drawing.Point(155, 8);
             this.label_nbHit.Name = "label_nbHit";
-            this.label_nbHit.Size = new System.Drawing.Size(0, 24);
+            this.label_nbHit.Size = new System.Drawing.Size(104, 24);
             this.label_nbHit.TabIndex = 13;
+            this.label_nbHit.Text = "label_nbHit";
             // 
             // chart_perChannelChargeHG
             // 
@@ -12238,6 +12245,39 @@
             this.tmrButtonColor.Interval = 500;
             this.tmrButtonColor.Tick += new System.EventHandler(this.tmrButtonColor_Tick);
             // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.Enabled = false;
+            this.label141.Location = new System.Drawing.Point(876, 8);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(106, 24);
+            this.label141.TabIndex = 27;
+            this.label141.Text = "No. of Bins:";
+            // 
+            // textBox_NumBins
+            // 
+            this.textBox_NumBins.Enabled = false;
+            this.textBox_NumBins.enableNegative = false;
+            this.textBox_NumBins.Location = new System.Drawing.Point(988, 5);
+            this.textBox_NumBins.Name = "textBox_NumBins";
+            this.textBox_NumBins.Size = new System.Drawing.Size(56, 29);
+            this.textBox_NumBins.TabIndex = 23;
+            this.textBox_NumBins.Text = "2048";
+            this.textBox_NumBins.Leave += new System.EventHandler(this.loadData_Leave);
+            this.textBox_NumBins.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.loadData_PreviewKeyDown);
+            // 
+            // label_DataFile
+            // 
+            this.label_DataFile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_DataFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label_DataFile.Location = new System.Drawing.Point(3, 343);
+            this.label_DataFile.Name = "label_DataFile";
+            this.label_DataFile.Size = new System.Drawing.Size(1048, 24);
+            this.label_DataFile.TabIndex = 28;
+            this.label_DataFile.Text = "Data File:";
+            this.label_DataFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // Citiroc
             // 
             this.AllowDrop = true;
@@ -13233,6 +13273,9 @@
         private checkBox checkBox_timeOutHold;
         private System.Windows.Forms.TabPage tabPage_firmwareProtoCUBES;
         private checkBox checkBox_RstReadReg;
+        private System.Windows.Forms.Label label_DataFile;
+        private System.Windows.Forms.Label label141;
+        private intTextBox textBox_NumBins;
     }
 }
 

@@ -79,12 +79,6 @@ namespace CitirocUI
         private void btn_close_Click(object sender, EventArgs e)
         {
             Application.Exit();
-
-            try
-            {
-                  mySerialComm.ClosePort();
-            }
-            catch { /* Blindly close... */}
         }
 
         private void btn_minimize_Click(object sender, EventArgs e)
@@ -340,6 +334,10 @@ namespace CitirocUI
             // Create serial comm object and attach event to local function
             mySerialComm = new ProtoCubesSerial();
             mySerialComm.DataReadyEvent += this.mySerialComm_DataReady;
+
+            // Ckear text in some labels
+            label_nbHit.Text = "";
+            label_DataFile.Text = "";
 
             // Prep. the user in Proto-CUBES mode
             comboBox_SelectConnection.SelectedIndex = 1;
@@ -1727,6 +1725,26 @@ namespace CitirocUI
 
         private void numericUpDown_loadCh_ValueChanged(object sender, EventArgs e)
         {
+            if(selectedConnectionMode == 1)
+            {
+                NumericUpDown num = (NumericUpDown)sender;
+                if ((num.Text == "31") && (num.Value <= 30))
+                {
+                    num.Value = 16;
+                }
+                else if (num.Text == "16")
+                {
+                    if (num.Value <= 16)
+                        num.Value = 0;
+                    else
+                        num.Value = 31;
+                }
+                else if ((num.Text == "0") && (num.Value > 0))
+                {
+                    num.Value = 16;
+                }
+                   
+            }
             refreshDataChart();
         }
 
@@ -2129,6 +2147,20 @@ namespace CitirocUI
 
             button_SendResets.BackColor = SystemColors.Control;
             button_SendResets.ForeColor = SystemColors.ControlText;
+        }
+
+        private void Citiroc_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Send DAQ_STOP command
+            byte[] cmd = new byte[1];
+
+            try
+            {
+                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStop);
+                mySerialComm.WriteData(cmd, cmd.Length);
+                mySerialComm.ClosePort();
+            }
+            catch { /* Blindly close... */}
         }
     }
 }
