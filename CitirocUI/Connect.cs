@@ -499,6 +499,9 @@ namespace CitirocUI
                 switchBox_acquisitionMode_CheckedChanged(switchBox_acquisitionMode, EventArgs.Empty);
 
                 label_DataFile.Visible = false;
+
+                textBox_HgCutHigh.Text = "4095";
+                textBox_LgCutHigh.Text = "4095";
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
@@ -519,6 +522,9 @@ namespace CitirocUI
                 AdjustAcquisitionTime();
 
                 label_DataFile.Visible = true;
+
+                textBox_HgCutHigh.Text = textBox_NumBins.Text;
+                textBox_LgCutHigh.Text = textBox_NumBins.Text;
             }
 
             /// Select the appropriate tab page in the tab control under "Firmware", enable its
