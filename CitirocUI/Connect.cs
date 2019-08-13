@@ -498,7 +498,10 @@ namespace CitirocUI
                 textBox_numData.Text = "100";
                 switchBox_acquisitionMode_CheckedChanged(switchBox_acquisitionMode, EventArgs.Empty);
 
+                // Adjust other controls
                 label_DataFile.Visible = false;
+                label141.Visible = false;
+                textBox_NumBins.Visible = false;
 
                 textBox_HgCutHigh.Text = "4095";
                 textBox_LgCutHigh.Text = "4095";
@@ -521,7 +524,10 @@ namespace CitirocUI
 
                 AdjustAcquisitionTime();
 
+                // Adjust other controls
                 label_DataFile.Visible = true;
+                label141.Visible = true;
+                textBox_NumBins.Visible = true;
 
                 textBox_HgCutHigh.Text = textBox_NumBins.Text;
                 textBox_LgCutHigh.Text = textBox_NumBins.Text;
