@@ -2097,15 +2097,15 @@ namespace CitirocUI
             byte[] cmd = new byte[2];
             cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendGatewareConf);
 
-            cmd[1] = (byte)(
-                ((checkBox_RstResetCounters.Checked ? 0b1 : 0b0)    << 0) |
-                ((checkBox_RstHCR.Checked ? 0b1 : 0b0)              << 1) |
-                ((checkBox_RstHisto.Checked ? 0b1 : 0b0)            << 2) |
-                ((checkBox_RstPSC.Checked ? 0b1 : 0b0)              << 3) |
-                ((checkBox_RstSR.Checked ? 0b1 : 0b0)               << 4) |
-                ((checkBox_RstPA.Checked ? 0b1 : 0b0)               << 5) |
-                ((checkBox_RstASICTrigs.Checked ? 0b1 : 0b0)        << 6) |
-                ((checkBox_RstReadReg.Checked ? 0b1 : 0b0)          << 7));
+            //cmd[1] = (byte)(
+            //    ((checkBox_RstResetCounters.Checked ? 0b1 : 0b0)    << 0) |
+            //    ((checkBox_RstHCR.Checked ? 0b1 : 0b0)              << 1) |
+            //    ((checkBox_RstHisto.Checked ? 0b1 : 0b0)            << 2) |
+            //    ((checkBox_RstPSC.Checked ? 0b1 : 0b0)              << 3) |
+            //    ((checkBox_RstSR.Checked ? 0b1 : 0b0)               << 4) |
+            //    ((checkBox_RstPA.Checked ? 0b1 : 0b0)               << 5) |
+            //    ((checkBox_RstASICTrigs.Checked ? 0b1 : 0b0)        << 6) |
+            //    ((checkBox_RstReadReg.Checked ? 0b1 : 0b0)          << 7));
 
             try
             {
