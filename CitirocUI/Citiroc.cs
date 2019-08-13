@@ -1860,6 +1860,10 @@ namespace CitirocUI
 
         private void CubesMonitor_DataReady(object sender, DataReadyEventArgs e)
         {
+            // Quit early if command is not REQ_HK!
+            if (e.Command != ProtoCubesSerial.Command.ReqHK)
+                return;
+
             // 1. Handle the simple ones: the hit counts...
             UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(e.DataBytes, 11, 10));
 
