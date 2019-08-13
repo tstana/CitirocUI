@@ -12099,6 +12099,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Citiroc";
             this.Text = "Citiroc User Interface";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Citiroc_FormClosing);
             this.Load += new System.EventHandler(this.Citiroc_Load);
             this.tabControl_top.ResumeLayout(false);
             this.tabPage_main.ResumeLayout(false);
