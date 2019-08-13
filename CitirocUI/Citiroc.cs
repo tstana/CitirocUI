@@ -83,13 +83,15 @@ namespace CitirocUI
             cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStop);
             mySerialComm.WriteData(cmd, cmd.Length);
 
-            Application.Exit();
-
             try
             {
                   mySerialComm.ClosePort();
             }
             catch { /* Blindly close... */}
+            finally
+            {
+                Application.Exit();
+            }
         }
 
         private void btn_minimize_Click(object sender, EventArgs e)
