@@ -19,6 +19,7 @@ namespace CitirocUI
         int[,] PerChannelChargeHG = new int[NbChannels + 1, 4096];
         int[,] PerChannelChargeLG = new int[NbChannels + 1, 4096];
         int[] Hit = new int[NbChannels + 1];
+        ulong[] HitCK = new ulong[NbChannels + 1];
         int nbAcq = 100;
         bool timeAcquisitionMode = true;
 
@@ -632,12 +633,18 @@ namespace CitirocUI
                                  (Convert.ToUInt64(Firmware.readWord(125, usbDevId), 2) << 40) |
                                  (Convert.ToUInt64(Firmware.readWord(126, usbDevId), 2) << 48) |
                                  (Convert.ToUInt64(Firmware.readWord(127, usbDevId), 2) << 56);
-            }
 
-            label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + Hit[chNum] +
-                               " / Total time hits on all channels during actual acq. time = " + numTimeTrigs;
-            if (numTimeTrigs == 0)
-                label_nbHit.Text += " (TimeTrig masked?)";
+                label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + Hit[chNum] +
+                                   " / Total time hits on all channels during actual acq. time = " + numTimeTrigs;
+                if (numTimeTrigs == 0)
+                    label_nbHit.Text += " (TimeTrig masked?)";
+            }
+            else
+            {
+                label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + HitCK[chNum];
+                label_elapsedTimeAcquisition.Text = "Elapsed time: " + HitCK[1] + "ms";
+                label_acqTime.Text = "Actual acq. time: " + HitCK[2] + "ms";
+            }
 
             resetZoom(chart_perChannelChargeHG);
 
@@ -778,27 +785,34 @@ namespace CitirocUI
                     return("Invalid data file format!");
                 }
 
-                // Header data
-                /*
-                string histoid      = System.Text.Encoding.UTF8.GetString(his_data, 23, 2);
-                int time_reg        = BitConverter.ToInt32(his_data,25);
-                byte[] cfg_ram      = new byte[156];
-                Array.Copy(his_data, 29, cfg_ram, 0, 156);
-                int temp_hvpsS      = BitConverter.ToUInt16(his_data, 185);
-                int temp_citirocS   = BitConverter.ToUInt16(his_data, 187);
-                int temp_hvpsE      = BitConverter.ToUInt16(his_data, 189);
-                int temp_citirocE   = BitConverter.ToUInt16(his_data, 191);
-                int daq_dur         = BitConverter.ToUInt16(his_data, 193);
-                int daq_time        = BitConverter.ToUInt16(his_data, 195);
-                int nrBins          = BitConverter.ToUInt16(his_data, 277);
-                */
-
                 Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
                 Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
                 Array.Clear(Hit, 0, Hit.Length);
+                Array.Clear(HitCK, 0, HitCK.Length);
+
+                int start = 23;
+                // Header data
+                /*
+                string histoid      = System.Text.Encoding.UTF8.GetString(adata, start, 2);
+                ulong time_reg      = BitConverter.ToUInt64(adata,start+2);
+                int temp_citiS      = BitConverter.ToUInt16(adata, start + 6);
+                int temp_hvpsS      = BitConverter.ToUInt16(adata, start + 8);
+                int temp_voltS      = BitConverter.ToUInt16(adata, start + 10);
+                int temp_currS      = BitConverter.ToUInt16(adata, start + 12);
+                int temp_hvpsE      = BitConverter.ToUInt16(adata, start + 14);
+                int temp_voltE      = BitConverter.ToUInt16(adata, start + 16);
+                int temp_currE      = BitConverter.ToUInt16(adata, start + 18);
+                int temp_citiE      = BitConverter.ToUInt16(adata, start + 20);
+                */
+                HitCK[1] = BitConverter.ToUInt16(adata, start + 22);
+                HitCK[2] = BitConverter.ToUInt16(adata, start + 24);
+                HitCK[0] = BitConverter.ToUInt32(adata, start + 26);
+                HitCK[16] = BitConverter.ToUInt32(adata, start + 30);
+                HitCK[31] = BitConverter.ToUInt32(adata, start + 34);
+                //int nrBins          = BitConverter.ToUInt16(adata, start + 254);
 
                 // BIN data
-                int start = 280;
+                start = 280;
                 int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
 
                 for (int i = 0; i < noOfBins; i++)

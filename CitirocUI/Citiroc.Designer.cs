@@ -766,8 +766,6 @@
             this.textBox_maxStaircase = new CitirocUI.intTextBox();
             this.textBox_minStaircase = new CitirocUI.intTextBox();
             this.tabPage_dataAcquisition = new System.Windows.Forms.TabPage();
-            this.label141 = new System.Windows.Forms.Label();
-            this.textBox_NumBins = new CitirocUI.intTextBox();
             this.label_acquisitionTime = new System.Windows.Forms.Label();
             this.textBox_acquisitionTime = new System.Windows.Forms.MaskedTextBox();
             this.progressBar_acquisition = new System.Windows.Forms.ProgressBar();
@@ -775,7 +773,9 @@
             this.label_elapsedTimeAcquisition = new System.Windows.Forms.Label();
             this.tabControl_dataAcquisition = new System.Windows.Forms.TabControl();
             this.tabPage_perChannelCharge = new System.Windows.Forms.TabPage();
+            this.label141 = new System.Windows.Forms.Label();
             this.label_DataFile = new System.Windows.Forms.Label();
+            this.textBox_NumBins = new CitirocUI.intTextBox();
             this.textBox_LgCutLow = new CitirocUI.intTextBox();
             this.textBox_LgCutHigh = new CitirocUI.intTextBox();
             this.textBox_HgCutLow = new CitirocUI.intTextBox();
@@ -10062,8 +10062,6 @@
             // tabPage_dataAcquisition
             // 
             this.tabPage_dataAcquisition.BackColor = System.Drawing.Color.White;
-            this.tabPage_dataAcquisition.Controls.Add(this.label141);
-            this.tabPage_dataAcquisition.Controls.Add(this.textBox_NumBins);
             this.tabPage_dataAcquisition.Controls.Add(this.label_acquisitionTime);
             this.tabPage_dataAcquisition.Controls.Add(this.textBox_acquisitionTime);
             this.tabPage_dataAcquisition.Controls.Add(this.progressBar_acquisition);
@@ -10085,25 +10083,6 @@
             this.tabPage_dataAcquisition.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_dataAcquisition.TabIndex = 2;
             this.tabPage_dataAcquisition.Text = "Data acquisition";
-            // 
-            // label141
-            // 
-            this.label141.AutoSize = true;
-            this.label141.Location = new System.Drawing.Point(877, 8);
-            this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(101, 24);
-            this.label141.TabIndex = 24;
-            this.label141.Text = "No. of Bins";
-            // 
-            // textBox_NumBins
-            // 
-            this.textBox_NumBins.enableNegative = false;
-            this.textBox_NumBins.Location = new System.Drawing.Point(983, 6);
-            this.textBox_NumBins.MaxLength = 4;
-            this.textBox_NumBins.Name = "textBox_NumBins";
-            this.textBox_NumBins.Size = new System.Drawing.Size(64, 29);
-            this.textBox_NumBins.TabIndex = 23;
-            this.textBox_NumBins.Text = "2048";
             // 
             // label_acquisitionTime
             // 
@@ -10169,7 +10148,9 @@
             // 
             // tabPage_perChannelCharge
             // 
+            this.tabPage_perChannelCharge.Controls.Add(this.label141);
             this.tabPage_perChannelCharge.Controls.Add(this.label_DataFile);
+            this.tabPage_perChannelCharge.Controls.Add(this.textBox_NumBins);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutLow);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutHigh);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutLow);
@@ -10192,6 +10173,15 @@
             this.tabPage_perChannelCharge.Text = "   Per channel   ";
             this.tabPage_perChannelCharge.UseVisualStyleBackColor = true;
             // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.Location = new System.Drawing.Point(877, 8);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(101, 24);
+            this.label141.TabIndex = 24;
+            this.label141.Text = "No. of Bins";
+            // 
             // label_DataFile
             // 
             this.label_DataFile.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -10203,6 +10193,18 @@
             this.label_DataFile.Text = "data_file";
             this.label_DataFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label_DataFile.TextChanged += new System.EventHandler(this.label_DataFile_TextChanged);
+            // 
+            // textBox_NumBins
+            // 
+            this.textBox_NumBins.Enabled = false;
+            this.textBox_NumBins.enableNegative = false;
+            this.textBox_NumBins.Location = new System.Drawing.Point(984, 3);
+            this.textBox_NumBins.MaxLength = 4;
+            this.textBox_NumBins.Name = "textBox_NumBins";
+            this.textBox_NumBins.Size = new System.Drawing.Size(64, 29);
+            this.textBox_NumBins.TabIndex = 23;
+            this.textBox_NumBins.TabStop = false;
+            this.textBox_NumBins.Text = "2048";
             // 
             // textBox_LgCutLow
             // 
@@ -10326,8 +10328,9 @@
             this.label_nbHit.AutoSize = true;
             this.label_nbHit.Location = new System.Drawing.Point(155, 8);
             this.label_nbHit.Name = "label_nbHit";
-            this.label_nbHit.Size = new System.Drawing.Size(0, 24);
+            this.label_nbHit.Size = new System.Drawing.Size(109, 24);
             this.label_nbHit.TabIndex = 13;
+            this.label_nbHit.Text = "label _nbHit";
             // 
             // chart_perChannelChargeHG
             // 
