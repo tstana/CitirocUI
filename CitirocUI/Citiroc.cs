@@ -2049,23 +2049,20 @@ namespace CitirocUI
 
         private void button_HVPS_Click(object sender, EventArgs e)
         {
-            if (comboBox_SelectConnection.SelectedIndex == 1)
+            bool result = false;
+            result = sendHV();
+            if (result)
             {
-                bool result = false;
-                result = sendHV();
-                if (result)
-                {
-                    button_HVPS.BackColor = WeerocGreen;
-                }
-                else
-                {
-                    button_HVPS.BackColor = Color.IndianRed;
-                    label_help.Text = "ERROR: Failed to send HVPS settings to Proto-CUBES! " +
-                        "Please check the connection...";
-                }
-                button_HVPS.ForeColor = Color.White;
-                tmrButtonColor.Enabled = true;
+                button_HVPS.BackColor = WeerocGreen;
             }
+            else
+            {
+                button_HVPS.BackColor = Color.IndianRed;
+                label_help.Text = "ERROR: Failed to send HVPS settings to Proto-CUBES! " +
+                    "Please check the connection...";
+            }
+            button_HVPS.ForeColor = Color.White;
+            tmrButtonColor.Enabled = true;
         }
 
         private void button_readTelemetry_Click(object sender, EventArgs e)
@@ -2121,7 +2118,6 @@ namespace CitirocUI
                 {
                     throw new Exception();
                 }
-
             }
             catch
             {
@@ -2151,6 +2147,9 @@ namespace CitirocUI
 
             button_SendResets.BackColor = SystemColors.Control;
             button_SendResets.ForeColor = SystemColors.ControlText;
+
+            button_hvSendPersistent.BackColor = SystemColors.Control;
+            button_hvSendPersistent.ForeColor = SystemColors.ControlText;
         }
 
         private void Citiroc_FormClosing(object sender, FormClosingEventArgs e)
@@ -2177,6 +2176,52 @@ namespace CitirocUI
                 refreshDataChart();
             }
         }
+
+        private void button_hvSendPersistent_Click(object sender, EventArgs e)
+        {
+            byte[] cmd = new byte[14];
+            Int16 dtp1 = Convert.ToInt16((double)numUpDown_dtp1.Value / 1.507e-3);
+            Int16 dtp2 = Convert.ToInt16((double)numUpDown_dtp2.Value / 1.507e-3);
+            UInt16 dt1 = Convert.ToUInt16((double)numUpDown_dt1.Value / 5.225e-2);
+            UInt16 dt2 = Convert.ToUInt16((double)numUpDown_dt2.Value / 5.225e-2);
+            UInt16 v = Convert.ToUInt16((double)numUpDown_refVolt.Value / 1.812e-3);
+            UInt16 t = Convert.ToUInt16((((double)(numUpDown_refTemp.Value))*(-5.5e-3) + 1.035) / 1.907e-5);
+
+            cmd[ 0] = Convert.ToByte(ProtoCubesSerial.Command.SendHVPSConf);
+            cmd[ 1] = (byte)(checkBox_hvOnPersistent.Checked ? 0x01 : 0x00);
+            cmd[ 2] = (byte)((dtp1 & 0xff00) >> 8);
+            cmd[ 3] = (byte)((dtp1 & 0x00ff));
+            cmd[ 4] = (byte)((dtp2 & 0xff00) >> 8);
+            cmd[ 5] = (byte)((dtp2 & 0x00ff));
+            cmd[ 6] = (byte)((dt1 & 0xff00) >> 8);
+            cmd[ 7] = (byte)((dt1 & 0x00ff));
+            cmd[ 8] = (byte)((dt2 & 0xff00) >> 8);
+            cmd[ 9] = (byte)((dt2 & 0x00ff));
+            cmd[10] = (byte)((v & 0xff00) >> 8);
+            cmd[11] = (byte)((v & 0x00ff));
+            cmd[12] = (byte)((t & 0xff00) >> 8);
+            cmd[13] = (byte)((t & 0x00ff));
+
+            try
+            {
+                if (connectStatus == 1)
+                {
+                    mySerialComm.WriteData(cmd, cmd.Length);
+                    button_hvSendPersistent.BackColor = WeerocGreen;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch
+            {
+                label_help.Text = "ERROR: Failed to send HVPS settings to Proto-CUBES! " +
+                    "Please check the connection...";
+                button_hvSendPersistent.BackColor = Color.IndianRed;
+            }
+
+            tmrButtonColor.Enabled = true;
+        }
     }
 }
-           
