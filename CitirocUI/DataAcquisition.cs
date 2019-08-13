@@ -19,7 +19,9 @@ namespace CitirocUI
         int[,] PerChannelChargeHG = new int[NbChannels + 1, 4096];
         int[,] PerChannelChargeLG = new int[NbChannels + 1, 4096];
         int[] Hit = new int[NbChannels + 1];
-        ulong[] HitCK = new ulong[NbChannels + 1];
+        UInt32[] HitCK = new UInt32[NbChannels + 1];
+        UInt16 daqTimeTotal;
+        UInt16 daqTimeActual;
         int nbAcq = 100;
         bool timeAcquisitionMode = true;
 
@@ -642,8 +644,8 @@ namespace CitirocUI
             else
             {
                 label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + HitCK[chNum];
-                label_elapsedTimeAcquisition.Text = "Elapsed time: " + HitCK[1] + "ms";
-                label_acqTime.Text = "Actual acq. time: " + HitCK[2] + "ms";
+                label_elapsedTimeAcquisition.Text = "Elapsed time: " + daqTimeTotal + "ms";
+                label_acqTime.Text = "Actual acq. time: " + daqTimeActual + "ms";
             }
 
             resetZoom(chart_perChannelChargeHG);
@@ -804,8 +806,8 @@ namespace CitirocUI
                 int temp_currE      = BitConverter.ToUInt16(adata, start + 18);
                 int temp_citiE      = BitConverter.ToUInt16(adata, start + 20);
                 */
-                HitCK[1] = BitConverter.ToUInt16(adata, start + 22);
-                HitCK[2] = BitConverter.ToUInt16(adata, start + 24);
+                daqTimeTotal = BitConverter.ToUInt16(adata, start + 22);
+                daqTimeActual = BitConverter.ToUInt16(adata, start + 24);
                 HitCK[0] = BitConverter.ToUInt32(adata, start + 26);
                 HitCK[16] = BitConverter.ToUInt32(adata, start + 30);
                 HitCK[31] = BitConverter.ToUInt32(adata, start + 34);
