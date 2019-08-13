@@ -505,6 +505,10 @@ namespace CitirocUI
 
                 textBox_HgCutHigh.Text = "4095";
                 textBox_LgCutHigh.Text = "4095";
+
+                label115.Enabled = true;
+                textBox_delay.Enabled = true;
+                label112.Enabled = true;
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
@@ -531,6 +535,10 @@ namespace CitirocUI
 
                 textBox_HgCutHigh.Text = textBox_NumBins.Text;
                 textBox_LgCutHigh.Text = textBox_NumBins.Text;
+
+                label115.Enabled = false;
+                textBox_delay.Enabled = false;
+                label112.Enabled = false;
             }
 
             /// Select the appropriate tab page in the tab control under "Firmware", enable its
