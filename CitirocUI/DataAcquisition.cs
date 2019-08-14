@@ -672,10 +672,17 @@ namespace CitirocUI
             if (selectedConnectionMode == 1)
             {
                 // TODO remove write label_InfoTemp
+                double tempHS = ((double)HitCK[3] * 1.907e-5 - 1.035) / (-5.5e-3);
+                double tempHE = ((double)HitCK[7] * 1.907e-5 - 1.035) / (-5.5e-3);
+                double voltHS = (double)HitCK[4] * 1.812e-3;
+                double voltHE = (double)HitCK[8] * 1.812e-3;
+                double currHS = (double)HitCK[5] * 5.194e-3;
+                double currHE = (double)HitCK[9] * 5.194e-3;
+
                 string tmpStr = "temp-C:" + Convert.ToString(HitCK[2]) + "/" + Convert.ToString(HitCK[6]) + Environment.NewLine +
-                     "temp-H:" + Convert.ToString(HitCK[3]) + "/" + Convert.ToString(HitCK[7]) + Environment.NewLine +
-                     "volt-H:" + Convert.ToString(HitCK[4]) + "/" + Convert.ToString(HitCK[8]) + Environment.NewLine +
-                     "curr-H:" + Convert.ToString(HitCK[5]) + "/" + Convert.ToString(HitCK[9]) + Environment.NewLine;
+                     "temp-H:" + Convert.ToString(tempHS) + "/" + Convert.ToString(tempHE) + Environment.NewLine +
+                     "volt-H:" + Convert.ToString(voltHS) + "/" + Convert.ToString(voltHE) + Environment.NewLine +
+                     "curr-H:" + Convert.ToString(currHS) + "/" + Convert.ToString(currHE) + Environment.NewLine;
 
                 MessageBox.Show(tmpStr);
                 // until HERE (& label_infoTemp control)
