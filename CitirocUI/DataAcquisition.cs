@@ -815,34 +815,34 @@ namespace CitirocUI
 
                 // Reverse individual fields to avoid BitConverter endianness issues...
                 // TODO: Remove or uncomment me...
-                //if (BitConverter.IsLittleEndian)
-                //{
-                //    Array.Reverse(adata, start +  2, 4);
-                //    Array.Reverse(adata, start +  6, 2);
-                //    Array.Reverse(adata, start +  8, 2);
-                //    Array.Reverse(adata, start + 10, 2);
-                //    Array.Reverse(adata, start + 12, 2);
-                    
-                //    // Hit data         
-                //    Array.Reverse(adata, start + 128, 2);
-                //    Array.Reverse(adata, start + 130, 2);
-                //    Array.Reverse(adata, start + 132, 4);
-                //    Array.Reverse(adata, start + 136, 4);
-                //    Array.Reverse(adata, start + 140, 4);
+                if (BitConverter.IsLittleEndian)
+                {
+                    Array.Reverse(adata, start + 2, 4);
+                    Array.Reverse(adata, start + 6, 2);
+                    Array.Reverse(adata, start + 8, 2);
+                    Array.Reverse(adata, start + 10, 2);
+                    Array.Reverse(adata, start + 12, 2);
 
-                //    Array.Reverse(adata, start + 148, 2);
-                //    Array.Reverse(adata, start + 150, 2);
-                //    Array.Reverse(adata, start + 152, 2);
-                //    Array.Reverse(adata, start + 154, 2);
-                //    Array.Reverse(adata, start + 254, 2);
+                    // Hit data         
+                    Array.Reverse(adata, start + 128, 2);
+                    Array.Reverse(adata, start + 130, 2);
+                    Array.Reverse(adata, start + 132, 4);
+                    Array.Reverse(adata, start + 136, 4);
+                    Array.Reverse(adata, start + 140, 4);
 
-                //    // histogram values
-                //    for(int i=0; i < 12288 ; i++)
-                //    {
-                //        Array.Reverse(adata, 279 + 2*i, 2);
-                //    }
+                    Array.Reverse(adata, start + 148, 2);
+                    Array.Reverse(adata, start + 150, 2);
+                    Array.Reverse(adata, start + 152, 2);
+                    Array.Reverse(adata, start + 154, 2);
+                    Array.Reverse(adata, start + 254, 2);
 
-                //}
+                    //    // histogram values
+                    //    for(int i=0; i < 12288 ; i++)
+                    //    {
+                    //        Array.Reverse(adata, 279 + 2*i, 2);
+                    //    }
+
+                }
 
                 string boardId = System.Text.Encoding.UTF8.GetString(adata, start, 2);
                 UInt64 time_reg = BitConverter.ToUInt64(adata, start + 2);      HitCK[1] = (UInt32)time_reg;
