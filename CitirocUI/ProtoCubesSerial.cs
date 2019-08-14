@@ -434,7 +434,7 @@ namespace CitirocUI
              */
             int dataLength = 57;
             if (_retrievingDaqData)
-                dataLength = 22 + 256 + 6 * (_numBins * 2);
+                dataLength = 23 + 256 + 6 * (_numBins * 2);
 
             /*
              * Buffer received data as it arrives until required number of
