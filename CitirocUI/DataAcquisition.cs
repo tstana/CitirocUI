@@ -836,12 +836,11 @@ namespace CitirocUI
                     Array.Reverse(adata, start + 154, 2);
                     Array.Reverse(adata, start + 254, 2);
 
-                    //    // histogram values
-                    //    for(int i=0; i < 12288 ; i++)
-                    //    {
-                    //        Array.Reverse(adata, 279 + 2*i, 2);
-                    //    }
-
+                    // histogram values
+                    for (int i = 0; i < 12288; i++)
+                    {
+                        Array.Reverse(adata, 279 + 2 * i, 2);
+                    }
                 }
 
                 string boardId = System.Text.Encoding.UTF8.GetString(adata, start, 2);
