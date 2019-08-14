@@ -794,20 +794,30 @@ namespace CitirocUI
 
                 int start = 23;
                 // Header data
-                
+
+                // Reverse individual fields to avoid BitConverter endianness issues...
+                // TODO: Remove or uncomment me...
+                if (BitConverter.IsLittleEndian)
+                {
+                    Array.Reverse(adata,  2, 4);
+                    Array.Reverse(adata,  6, 2);
+                    Array.Reverse(adata,  8, 2);
+                    Array.Reverse(adata, 10, 2);
+                }
+
                 //string boardId      = System.Text.Encoding.UTF8.GetString(adata, start, 2);
                 //ulong time_reg      = BitConverter.ToUInt64(adata,start+2);
-                //int temp_citiS      = BitConverter.ToUInt16(adata, start + 6);
-                //int temp_hvpsS      = BitConverter.ToUInt16(adata, start + 8);
+                //UInt16 temp_citiS      = BitConverter.ToUInt16(adata, start + 6);
+                //int... temp_hvpsS      = BitConverter.ToUInt16(adata, start + 8);
                 //int hvps_voltS      = BitConverter.ToUInt16(adata, start + 10);
                 //int hvps_currS      = BitConverter.ToUInt16(adata, start + 12);
-                 
+
                 daqTimeTotal = BitConverter.ToUInt16(adata, start + 128);
                 daqTimeActual = BitConverter.ToUInt16(adata, start + 130);
                 HitCK[0] = BitConverter.ToUInt32(adata, start + 132);
                 HitCK[16] = BitConverter.ToUInt32(adata, start + 136);
                 HitCK[31] = BitConverter.ToUInt32(adata, start + 140);
-                
+
                 //int temp_citiE      = BitConverter.ToUInt16(adata, start + 148);
                 //int temp_hvpsE      = BitConverter.ToUInt16(adata, start + 150);
                 //int hvps_voltE      = BitConverter.ToUInt16(adata, start + 152);
