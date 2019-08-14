@@ -679,10 +679,10 @@ namespace CitirocUI
                 double currHS = (double)HitCK[5] * 5.194e-3;
                 double currHE = (double)HitCK[9] * 5.194e-3;
 
-                string tmpStr = "temp-C:" + Convert.ToString(HitCK[2]) + "/" + Convert.ToString(HitCK[6]) + Environment.NewLine +
-                     "temp-H:" + Convert.ToString(tempHS) + "/" + Convert.ToString(tempHE) + Environment.NewLine +
-                     "volt-H:" + Convert.ToString(voltHS) + "/" + Convert.ToString(voltHE) + Environment.NewLine +
-                     "curr-H:" + Convert.ToString(currHS) + "/" + Convert.ToString(currHE) + Environment.NewLine;
+                string tmpStr = "temp-C: " + Convert.ToString(HitCK[2]) + " / " + Convert.ToString(HitCK[6]) + Environment.NewLine +
+                     "temp-H: " + Convert.ToString(tempHS) + " / " + Convert.ToString(tempHE) + Environment.NewLine +
+                     "volt-H: " + Convert.ToString(voltHS) + " / " + Convert.ToString(voltHE) + Environment.NewLine +
+                     "curr-H: " + Convert.ToString(currHS) + " / " + Convert.ToString(currHE) + Environment.NewLine;
 
                 MessageBox.Show(tmpStr);
                 // until HERE (& label_infoTemp control)
