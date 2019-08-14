@@ -797,20 +797,41 @@ namespace CitirocUI
 
                 // Reverse individual fields to avoid BitConverter endianness issues...
                 // TODO: Remove or uncomment me...
-                if (BitConverter.IsLittleEndian)
-                {
-                    Array.Reverse(adata,  2, 4);
-                    Array.Reverse(adata,  6, 2);
-                    Array.Reverse(adata,  8, 2);
-                    Array.Reverse(adata, 10, 2);
-                }
+                //if (BitConverter.IsLittleEndian)
+                //{
+                //    Array.Reverse(adata, start +  2, 4);
+                //    Array.Reverse(adata, start +  6, 2);
+                //    Array.Reverse(adata, start +  8, 2);
+                //    Array.Reverse(adata, start + 10, 2);
+                //    Array.Reverse(adata, start + 12, 2);
+                    
+                //    // Hit data         
+                //    Array.Reverse(adata, start + 128, 2);
+                //    Array.Reverse(adata, start + 130, 2);
+                //    Array.Reverse(adata, start + 132, 4);
+                //    Array.Reverse(adata, start + 136, 4);
+                //    Array.Reverse(adata, start + 140, 4);
 
-                //string boardId      = System.Text.Encoding.UTF8.GetString(adata, start, 2);
-                //ulong time_reg      = BitConverter.ToUInt64(adata,start+2);
-                //UInt16 temp_citiS      = BitConverter.ToUInt16(adata, start + 6);
-                //int... temp_hvpsS      = BitConverter.ToUInt16(adata, start + 8);
-                //int hvps_voltS      = BitConverter.ToUInt16(adata, start + 10);
-                //int hvps_currS      = BitConverter.ToUInt16(adata, start + 12);
+                //    Array.Reverse(adata, start + 148, 2);
+                //    Array.Reverse(adata, start + 150, 2);
+                //    Array.Reverse(adata, start + 152, 2);
+                //    Array.Reverse(adata, start + 154, 2);
+                //    Array.Reverse(adata, start + 254, 2);
+
+                //    // histogram values
+                //    for(int i=0; i < 12288 ; i++)
+                //    {
+                //        Array.Reverse(adata, 279 + 2*i, 2);
+                //    }
+
+                //}
+
+                string boardId = System.Text.Encoding.UTF8.GetString(adata, start, 2);
+                UInt64 time_reg = BitConverter.ToUInt64(adata, start + 2);      HitCK[1] = (UInt32)time_reg;
+                UInt16 temp_citiS = BitConverter.ToUInt16(adata, start + 6);    HitCK[2] = temp_citiS;
+                UInt16 temp_hvpsS = BitConverter.ToUInt16(adata, start + 8);    HitCK[3] = temp_hvpsS;
+                UInt16 hvps_voltS = BitConverter.ToUInt16(adata, start + 10);   HitCK[4] = hvps_voltS;
+                UInt16 hvps_currS = BitConverter.ToUInt16(adata, start + 12);   HitCK[5] = hvps_currS;
 
                 daqTimeTotal = BitConverter.ToUInt16(adata, start + 128);
                 daqTimeActual = BitConverter.ToUInt16(adata, start + 130);
@@ -818,11 +839,11 @@ namespace CitirocUI
                 HitCK[16] = BitConverter.ToUInt32(adata, start + 136);
                 HitCK[31] = BitConverter.ToUInt32(adata, start + 140);
 
-                //int temp_citiE      = BitConverter.ToUInt16(adata, start + 148);
-                //int temp_hvpsE      = BitConverter.ToUInt16(adata, start + 150);
-                //int hvps_voltE      = BitConverter.ToUInt16(adata, start + 152);
-                //int hvps_currE      = BitConverter.ToUInt16(adata, start + 154);
-                //int nrBins          = BitConverter.ToUInt16(adata, start + 254);
+                UInt16 temp_citiE = BitConverter.ToUInt16(adata, start + 148);  HitCK[6] = temp_citiE;
+                UInt16 temp_hvpsE = BitConverter.ToUInt16(adata, start + 150);  HitCK[7] = temp_hvpsE;
+                UInt16 hvps_voltE = BitConverter.ToUInt16(adata, start + 152);  HitCK[8] = hvps_voltE;
+                UInt16 hvps_currE = BitConverter.ToUInt16(adata, start + 154);  HitCK[9] = hvps_currE; 
+                UInt16 nrBins = BitConverter.ToUInt16(adata, start + 254);      HitCK[10] = nrBins;
 
                 // BIN data
                 start = 279;
