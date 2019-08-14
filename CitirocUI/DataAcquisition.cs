@@ -677,7 +677,7 @@ namespace CitirocUI
                      "volt-H:" + Convert.ToString(HitCK[4]) + "/" + Convert.ToString(HitCK[8]) + Environment.NewLine +
                      "curr-H:" + Convert.ToString(HitCK[5]) + "/" + Convert.ToString(HitCK[9]) + Environment.NewLine;
 
-                label_infoTemp.Text = tmpStr;
+                MessageBox.Show(tmpStr);
                 // until HERE (& label_infoTemp control)
                 return;
             }
