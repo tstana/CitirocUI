@@ -669,7 +669,18 @@ namespace CitirocUI
 
             #region per acquisition
 
-            if (selectedConnectionMode == 1) return;
+            if (selectedConnectionMode == 1)
+            {
+                // TODO remove write label_InfoTemp
+                string tmpStr = "temp-C:" + Convert.ToString(HitCK[2]) + "/" + Convert.ToString(HitCK[6]) + Environment.NewLine +
+                     "temp-H:" + Convert.ToString(HitCK[3]) + "/" + Convert.ToString(HitCK[7]) + Environment.NewLine +
+                     "volt-H:" + Convert.ToString(HitCK[4]) + "/" + Convert.ToString(HitCK[8]) + Environment.NewLine +
+                     "curr-H:" + Convert.ToString(HitCK[5]) + "/" + Convert.ToString(HitCK[9]) + Environment.NewLine;
+
+                label_infoTemp.Text = tmpStr;
+                // until HERE (& label_infoTemp control)
+                return;
+            }
 
             if (DataLoadFile == null) return;
 
