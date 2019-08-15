@@ -421,7 +421,7 @@ namespace CitirocUI
              * Expected number of bytes:
              *      HK:
              *          Unix time: 0123456789\r\n (23 bytes)
-             *          Data (32 bytes)
+             *          Data (38 bytes)
              *          \r\n (2 bytes)
              *          ---
              *          Total: 57
@@ -432,7 +432,7 @@ namespace CitirocUI
              *          ---
              *          Total: calculated below
              */
-            int dataLength = 57;
+            int dataLength = 63;
             if (_retrievingDaqData)
                 dataLength = 23 + 256 + 6 * (_numBins * 2);
 

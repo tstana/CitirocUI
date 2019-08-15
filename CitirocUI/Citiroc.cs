@@ -312,7 +312,6 @@ namespace CitirocUI
             label_ConnStatus.Font = new Font(label_ConnStatus.Font, FontStyle.Bold);
             label_ConnStatus.ForeColor = Color.IndianRed;
             label_ConnStatus.Text = "Not connected";
-            label_NoteOnHVPSTelem.Font = new Font(label_NoteOnHVPSTelem.Font, FontStyle.Bold);
 
             // Adjust enable state of labels in Data Acquisition tab
             if (switchBox_acquisitionMode.Checked == true)
@@ -1880,6 +1879,13 @@ namespace CitirocUI
             byte[] reset_count = new byte[4];
             Array.Copy(e.DataBytes, 51, reset_count, 0, 4);
 
+            byte[] hvps_cmds_sent = new byte[2];
+            Array.Copy(e.DataBytes, 55, hvps_cmds_sent, 0, 2);
+            byte[] hvps_cmds_acked = new byte[2];
+            Array.Copy(e.DataBytes, 57, hvps_cmds_acked, 0, 2);
+            byte[] hvps_cmds_rej = new byte[2];
+            Array.Copy(e.DataBytes, 59, hvps_cmds_rej, 0, 2);
+
             // Reverse arrays before conversion if on a little-endian machine
             if (BitConverter.IsLittleEndian)
             {
@@ -1888,6 +1894,9 @@ namespace CitirocUI
                 Array.Reverse(ch31_hit_count);
                 Array.Reverse(ch21_hit_count);
                 Array.Reverse(reset_count);
+                Array.Reverse(hvps_cmds_sent);
+                Array.Reverse(hvps_cmds_acked);
+                Array.Reverse(hvps_cmds_rej);
             }
 
             UInt32 hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_count, 0);
@@ -1896,6 +1905,10 @@ namespace CitirocUI
             UInt32 hitCountOR32 = BitConverter.ToUInt32(ch21_hit_count, 0);
 
             UInt32 resetCount = BitConverter.ToUInt32(reset_count, 0);
+
+            UInt16 hvpsCmdsSent = BitConverter.ToUInt16(hvps_cmds_sent, 0);
+            UInt16 hvpsCmdsAcked = BitConverter.ToUInt16(hvps_cmds_acked, 0);
+            UInt16 hvpsCmdsRej = BitConverter.ToUInt16(hvps_cmds_rej, 0);
 
             // 2. Now for the HVPS stuff... It is presented as ASCII characters
             // by the HVPS, placed at particular offsets in the HK data stream.
@@ -1985,6 +1998,24 @@ namespace CitirocUI
                 delegate
                 {
                     textBox_ResetCount.Text = resetCount.ToString();
+                }
+            ));
+            textBox_hvpsCmdsSent.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hvpsCmdsSent.Text = hvpsCmdsSent.ToString();
+                }
+            ));
+            textBox_hvpsCmdsAcked.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hvpsCmdsAcked.Text = hvpsCmdsAcked.ToString();
+                }
+            ));
+            textBox_hvpsCmdsRej.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hvpsCmdsRej.Text = hvpsCmdsRej.ToString();
                 }
             ));
         }
@@ -2196,6 +2227,11 @@ namespace CitirocUI
                 "All other persistent settings will not be sent to the HVPS.";
         }
 
+        private void checkBox_hvReset_MouseLeave(object sender, EventArgs e)
+        {
+            label_help.Text = "";
+        }
+
         private void checkBox_hvReset_CheckedChanged(object sender, EventArgs e)
         {
             label_refTemp.Enabled = !(checkBox_hvReset.Checked);
@@ -2210,6 +2246,37 @@ namespace CitirocUI
             numUpDown_dtp2.Enabled = !(checkBox_hvReset.Checked);
             numUpDown_dt1.Enabled = !(checkBox_hvReset.Checked);
             numUpDown_dt2.Enabled = !(checkBox_hvReset.Checked);
+        }
+
+        private void textBox_hvpsCmdsSent_MouseHover(object sender, EventArgs e)
+        {
+            label_help.Text = "Number of HVPS commands sent.";
+        }
+
+        private void textBox_hvpsCmdsSent_MouseLeave(object sender, EventArgs e)
+        {
+            label_help.Text = "";
+        }
+
+        private void textBox_hvpsCmdsAcked_MouseHover(object sender, EventArgs e)
+        {
+            label_help.Text = "Number of HVPS commands acknowledged.";
+        }
+
+        private void textBox_hvpsCmdsAcked_MouseLeave(object sender, EventArgs e)
+        {
+            label_help.Text = "";
+        }
+
+        private void textBox_hvpsCmdsRej_MouseHover(object sender, EventArgs e)
+        {
+            label_help.Text = "Number of HVPS commands rejected (HVPS replied " +
+                "with \"hxx\")";
+        }
+
+        private void textBox_hvpsCmdsRej_MouseLeave(object sender, EventArgs e)
+        {
+            label_help.Text = "";
         }
         #endregion
 
@@ -2235,6 +2302,17 @@ namespace CitirocUI
             button_hvSendPersistent.ForeColor = SystemColors.ControlText;
         }
 
+        private void label_help_TextChanged(object sender, EventArgs e)
+        {
+            /// Use the writing to label_help in Proto-CUBES mode to refresh the
+            /// data chart. This is needed to avoid threading issues.
+            if ((selectedConnectionMode == 1) &&
+                    label_help.Text.Contains("Writing DAQ data to"))
+            {
+                refreshDataChart();
+            }
+        }
+
         private void Citiroc_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Send DAQ_STOP command
@@ -2247,17 +2325,6 @@ namespace CitirocUI
                 mySerialComm.ClosePort();
             }
             catch { /* Blindly close... */}
-        }
-
-        private void label_help_TextChanged(object sender, EventArgs e)
-        {
-            /// Use the writing to label_help in Proto-CUBES mode to refresh the
-            /// data chart. This is needed to avoid threading issues.
-            if ((selectedConnectionMode == 1) &&
-                    label_help.Text.Contains("Writing DAQ data to"))
-            {
-                refreshDataChart();
-            }
         }
     }
 }
