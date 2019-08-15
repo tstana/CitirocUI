@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Citiroc));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.button_UIScale = new System.Windows.Forms.Button();
             this.label_help = new System.Windows.Forms.Label();
             this.btn_minimize = new System.Windows.Forms.Button();
@@ -904,17 +904,17 @@
             this.numUpDown_dt2 = new System.Windows.Forms.NumericUpDown();
             this.numUpDown_dt1 = new System.Windows.Forms.NumericUpDown();
             this.numUpDown_refVolt = new System.Windows.Forms.NumericUpDown();
-            this.label146 = new System.Windows.Forms.Label();
-            this.label142 = new System.Windows.Forms.Label();
-            this.label147 = new System.Windows.Forms.Label();
+            this.label_dt2 = new System.Windows.Forms.Label();
+            this.label_refVolt = new System.Windows.Forms.Label();
+            this.label_dt1 = new System.Windows.Forms.Label();
             this.numUpDown_dtp2 = new System.Windows.Forms.NumericUpDown();
             this.numUpDown_dtp1 = new System.Windows.Forms.NumericUpDown();
-            this.label145 = new System.Windows.Forms.Label();
-            this.label144 = new System.Windows.Forms.Label();
+            this.label_dtp2 = new System.Windows.Forms.Label();
+            this.label_dtp1 = new System.Windows.Forms.Label();
             this.button_hvSendPersistent = new System.Windows.Forms.Button();
             this.numUpDown_refTemp = new System.Windows.Forms.NumericUpDown();
-            this.label143 = new System.Windows.Forms.Label();
-            this.checkBox_hvOnPersistent = new System.Windows.Forms.CheckBox();
+            this.label_refTemp = new System.Windows.Forms.Label();
+            this.checkBox_hvReset = new System.Windows.Forms.CheckBox();
             this.groupBox_hvTemporary = new System.Windows.Forms.GroupBox();
             this.button_HVPS = new System.Windows.Forms.Button();
             this.numUpDown_HV = new System.Windows.Forms.NumericUpDown();
@@ -9051,23 +9051,23 @@
             // 
             // chart_Scurves
             // 
-            chartArea1.AxisX.IsLabelAutoFit = false;
-            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea1.AxisX.LabelStyle.Format = "0";
-            chartArea1.AxisX.Title = "Threshold (DACu)";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea1.AxisY.LabelStyle.Format = "0";
-            chartArea1.AxisY.Title = "Trigger efficiency (%)";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea1.Name = "ChartArea1";
-            this.chart_Scurves.ChartAreas.Add(chartArea1);
+            chartArea8.AxisX.IsLabelAutoFit = false;
+            chartArea8.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea8.AxisX.LabelStyle.Format = "0";
+            chartArea8.AxisX.Title = "Threshold (DACu)";
+            chartArea8.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea8.AxisY.IsLabelAutoFit = false;
+            chartArea8.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea8.AxisY.LabelStyle.Format = "0";
+            chartArea8.AxisY.Title = "Trigger efficiency (%)";
+            chartArea8.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea8.Name = "ChartArea1";
+            this.chart_Scurves.ChartAreas.Add(chartArea8);
             this.chart_Scurves.Location = new System.Drawing.Point(12, 77);
             this.chart_Scurves.Name = "chart_Scurves";
-            series1.ChartArea = "ChartArea1";
-            series1.Name = "Series1";
-            this.chart_Scurves.Series.Add(series1);
+            series7.ChartArea = "ChartArea1";
+            series7.Name = "Series1";
+            this.chart_Scurves.Series.Add(series7);
             this.chart_Scurves.Size = new System.Drawing.Size(1057, 350);
             this.chart_Scurves.TabIndex = 34;
             this.chart_Scurves.Text = "chart1";
@@ -9265,20 +9265,20 @@
             // 
             // chart_holdScan
             // 
-            chartArea2.AxisX.IsLabelAutoFit = false;
-            chartArea2.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea2.AxisX.Title = "Time (ns)";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea2.AxisY.IsLabelAutoFit = false;
-            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea2.AxisY.Title = "Charge (ADCu)";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            chartArea2.Name = "ChartArea1";
-            this.chart_holdScan.ChartAreas.Add(chartArea2);
-            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chart_holdScan.Legends.Add(legend1);
+            chartArea9.AxisX.IsLabelAutoFit = false;
+            chartArea9.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea9.AxisX.Title = "Time (ns)";
+            chartArea9.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea9.AxisY.IsLabelAutoFit = false;
+            chartArea9.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea9.AxisY.Title = "Charge (ADCu)";
+            chartArea9.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            chartArea9.Name = "ChartArea1";
+            this.chart_holdScan.ChartAreas.Add(chartArea9);
+            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            legend2.IsTextAutoFit = false;
+            legend2.Name = "Legend1";
+            this.chart_holdScan.Legends.Add(legend2);
             this.chart_holdScan.Location = new System.Drawing.Point(6, 77);
             this.chart_holdScan.Name = "chart_holdScan";
             this.chart_holdScan.Size = new System.Drawing.Size(962, 374);
@@ -10026,24 +10026,24 @@
             // 
             // chart_staircase
             // 
-            chartArea3.AxisX.IsLabelAutoFit = false;
-            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea3.AxisX.LabelStyle.Format = "0";
-            chartArea3.AxisX.Title = "Threshold (DACu)";
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.IsLogarithmic = true;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea3.AxisY.LabelStyle.Format = "0E0";
-            chartArea3.AxisY.Title = "Trigger frequency (Hz)";
-            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea3.Name = "ChartArea1";
-            this.chart_staircase.ChartAreas.Add(chartArea3);
+            chartArea10.AxisX.IsLabelAutoFit = false;
+            chartArea10.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea10.AxisX.LabelStyle.Format = "0";
+            chartArea10.AxisX.Title = "Threshold (DACu)";
+            chartArea10.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea10.AxisY.IsLabelAutoFit = false;
+            chartArea10.AxisY.IsLogarithmic = true;
+            chartArea10.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea10.AxisY.LabelStyle.Format = "0E0";
+            chartArea10.AxisY.Title = "Trigger frequency (Hz)";
+            chartArea10.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea10.Name = "ChartArea1";
+            this.chart_staircase.ChartAreas.Add(chartArea10);
             this.chart_staircase.Location = new System.Drawing.Point(10, 43);
             this.chart_staircase.Name = "chart_staircase";
-            series2.ChartArea = "ChartArea1";
-            series2.Name = "Series1";
-            this.chart_staircase.Series.Add(series2);
+            series8.ChartArea = "ChartArea1";
+            series8.Name = "Series1";
+            this.chart_staircase.Series.Add(series8);
             this.chart_staircase.Size = new System.Drawing.Size(1057, 348);
             this.chart_staircase.TabIndex = 41;
             this.chart_staircase.Text = "chart1";
@@ -10331,24 +10331,24 @@
             // 
             // chart_perChannelChargeLG
             // 
-            chartArea4.AxisX.IsLabelAutoFit = false;
-            chartArea4.AxisX.IsStartedFromZero = false;
-            chartArea4.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea4.AxisX.LabelStyle.Format = "0";
-            chartArea4.AxisX.Title = "Low gain charge (ADCu)";
-            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea4.AxisY.IsLabelAutoFit = false;
-            chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea4.AxisY.LabelStyle.Format = "0";
-            chartArea4.AxisY.Title = "Data count";
-            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea4.Name = "ChartArea1";
-            this.chart_perChannelChargeLG.ChartAreas.Add(chartArea4);
+            chartArea11.AxisX.IsLabelAutoFit = false;
+            chartArea11.AxisX.IsStartedFromZero = false;
+            chartArea11.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea11.AxisX.LabelStyle.Format = "0";
+            chartArea11.AxisX.Title = "Low gain charge (ADCu)";
+            chartArea11.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea11.AxisY.IsLabelAutoFit = false;
+            chartArea11.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea11.AxisY.LabelStyle.Format = "0";
+            chartArea11.AxisY.Title = "Data count";
+            chartArea11.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea11.Name = "ChartArea1";
+            this.chart_perChannelChargeLG.ChartAreas.Add(chartArea11);
             this.chart_perChannelChargeLG.Location = new System.Drawing.Point(528, 60);
             this.chart_perChannelChargeLG.Name = "chart_perChannelChargeLG";
-            series3.ChartArea = "ChartArea1";
-            series3.Name = "Series1";
-            this.chart_perChannelChargeLG.Series.Add(series3);
+            series9.ChartArea = "ChartArea1";
+            series9.Name = "Series1";
+            this.chart_perChannelChargeLG.Series.Add(series9);
             this.chart_perChannelChargeLG.Size = new System.Drawing.Size(520, 305);
             this.chart_perChannelChargeLG.TabIndex = 15;
             this.chart_perChannelChargeLG.Text = "chart1";
@@ -10377,24 +10377,24 @@
             // 
             // chart_perChannelChargeHG
             // 
-            chartArea5.AxisX.IsLabelAutoFit = false;
-            chartArea5.AxisX.IsStartedFromZero = false;
-            chartArea5.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea5.AxisX.LabelStyle.Format = "0";
-            chartArea5.AxisX.Title = "High gain charge (ADCu)";
-            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea5.AxisY.IsLabelAutoFit = false;
-            chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea5.AxisY.LabelStyle.Format = "0";
-            chartArea5.AxisY.Title = "Data count";
-            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea5.Name = "ChartArea1";
-            this.chart_perChannelChargeHG.ChartAreas.Add(chartArea5);
+            chartArea12.AxisX.IsLabelAutoFit = false;
+            chartArea12.AxisX.IsStartedFromZero = false;
+            chartArea12.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea12.AxisX.LabelStyle.Format = "0";
+            chartArea12.AxisX.Title = "High gain charge (ADCu)";
+            chartArea12.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea12.AxisY.IsLabelAutoFit = false;
+            chartArea12.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea12.AxisY.LabelStyle.Format = "0";
+            chartArea12.AxisY.Title = "Data count";
+            chartArea12.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea12.Name = "ChartArea1";
+            this.chart_perChannelChargeHG.ChartAreas.Add(chartArea12);
             this.chart_perChannelChargeHG.Location = new System.Drawing.Point(6, 60);
             this.chart_perChannelChargeHG.Name = "chart_perChannelChargeHG";
-            series4.ChartArea = "ChartArea1";
-            series4.Name = "Series1";
-            this.chart_perChannelChargeHG.Series.Add(series4);
+            series10.ChartArea = "ChartArea1";
+            series10.Name = "Series1";
+            this.chart_perChannelChargeHG.Series.Add(series10);
             this.chart_perChannelChargeHG.Size = new System.Drawing.Size(520, 305);
             this.chart_perChannelChargeHG.TabIndex = 14;
             this.chart_perChannelChargeHG.Text = "chart1";
@@ -10434,24 +10434,24 @@
             // 
             // chart_perAcqChargeLG
             // 
-            chartArea6.AxisX.IsLabelAutoFit = false;
-            chartArea6.AxisX.IsStartedFromZero = false;
-            chartArea6.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea6.AxisX.LabelStyle.Format = "0";
-            chartArea6.AxisX.Title = "Channel";
-            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea6.AxisY.IsLabelAutoFit = false;
-            chartArea6.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea6.AxisY.LabelStyle.Format = "0";
-            chartArea6.AxisY.Title = "Low gain charge (ADCu)";
-            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea6.Name = "ChartArea1";
-            this.chart_perAcqChargeLG.ChartAreas.Add(chartArea6);
+            chartArea13.AxisX.IsLabelAutoFit = false;
+            chartArea13.AxisX.IsStartedFromZero = false;
+            chartArea13.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea13.AxisX.LabelStyle.Format = "0";
+            chartArea13.AxisX.Title = "Channel";
+            chartArea13.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea13.AxisY.IsLabelAutoFit = false;
+            chartArea13.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea13.AxisY.LabelStyle.Format = "0";
+            chartArea13.AxisY.Title = "Low gain charge (ADCu)";
+            chartArea13.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea13.Name = "ChartArea1";
+            this.chart_perAcqChargeLG.ChartAreas.Add(chartArea13);
             this.chart_perAcqChargeLG.Location = new System.Drawing.Point(528, 35);
             this.chart_perAcqChargeLG.Name = "chart_perAcqChargeLG";
-            series5.ChartArea = "ChartArea1";
-            series5.Name = "Series1";
-            this.chart_perAcqChargeLG.Series.Add(series5);
+            series11.ChartArea = "ChartArea1";
+            series11.Name = "Series1";
+            this.chart_perAcqChargeLG.Series.Add(series11);
             this.chart_perAcqChargeLG.Size = new System.Drawing.Size(520, 330);
             this.chart_perAcqChargeLG.TabIndex = 17;
             this.chart_perAcqChargeLG.Text = "chart1";
@@ -10462,24 +10462,24 @@
             // 
             // chart_perAcqChargeHG
             // 
-            chartArea7.AxisX.IsLabelAutoFit = false;
-            chartArea7.AxisX.IsStartedFromZero = false;
-            chartArea7.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea7.AxisX.LabelStyle.Format = "0";
-            chartArea7.AxisX.Title = "Channel";
-            chartArea7.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea7.AxisY.IsLabelAutoFit = false;
-            chartArea7.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea7.AxisY.LabelStyle.Format = "0";
-            chartArea7.AxisY.Title = "High gain charge (ADCu)";
-            chartArea7.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            chartArea7.Name = "ChartArea1";
-            this.chart_perAcqChargeHG.ChartAreas.Add(chartArea7);
+            chartArea14.AxisX.IsLabelAutoFit = false;
+            chartArea14.AxisX.IsStartedFromZero = false;
+            chartArea14.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea14.AxisX.LabelStyle.Format = "0";
+            chartArea14.AxisX.Title = "Channel";
+            chartArea14.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea14.AxisY.IsLabelAutoFit = false;
+            chartArea14.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea14.AxisY.LabelStyle.Format = "0";
+            chartArea14.AxisY.Title = "High gain charge (ADCu)";
+            chartArea14.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chartArea14.Name = "ChartArea1";
+            this.chart_perAcqChargeHG.ChartAreas.Add(chartArea14);
             this.chart_perAcqChargeHG.Location = new System.Drawing.Point(6, 35);
             this.chart_perAcqChargeHG.Name = "chart_perAcqChargeHG";
-            series6.ChartArea = "ChartArea1";
-            series6.Name = "Series1";
-            this.chart_perAcqChargeHG.Series.Add(series6);
+            series12.ChartArea = "ChartArea1";
+            series12.Name = "Series1";
+            this.chart_perAcqChargeHG.Series.Add(series12);
             this.chart_perAcqChargeHG.Size = new System.Drawing.Size(520, 330);
             this.chart_perAcqChargeHG.TabIndex = 16;
             this.chart_perAcqChargeHG.Text = "chart1";
@@ -11962,17 +11962,17 @@
             this.groupBox_hvPersistent.Controls.Add(this.numUpDown_dt2);
             this.groupBox_hvPersistent.Controls.Add(this.numUpDown_dt1);
             this.groupBox_hvPersistent.Controls.Add(this.numUpDown_refVolt);
-            this.groupBox_hvPersistent.Controls.Add(this.label146);
-            this.groupBox_hvPersistent.Controls.Add(this.label142);
-            this.groupBox_hvPersistent.Controls.Add(this.label147);
+            this.groupBox_hvPersistent.Controls.Add(this.label_dt2);
+            this.groupBox_hvPersistent.Controls.Add(this.label_refVolt);
+            this.groupBox_hvPersistent.Controls.Add(this.label_dt1);
             this.groupBox_hvPersistent.Controls.Add(this.numUpDown_dtp2);
             this.groupBox_hvPersistent.Controls.Add(this.numUpDown_dtp1);
-            this.groupBox_hvPersistent.Controls.Add(this.label145);
-            this.groupBox_hvPersistent.Controls.Add(this.label144);
+            this.groupBox_hvPersistent.Controls.Add(this.label_dtp2);
+            this.groupBox_hvPersistent.Controls.Add(this.label_dtp1);
             this.groupBox_hvPersistent.Controls.Add(this.button_hvSendPersistent);
             this.groupBox_hvPersistent.Controls.Add(this.numUpDown_refTemp);
-            this.groupBox_hvPersistent.Controls.Add(this.label143);
-            this.groupBox_hvPersistent.Controls.Add(this.checkBox_hvOnPersistent);
+            this.groupBox_hvPersistent.Controls.Add(this.label_refTemp);
+            this.groupBox_hvPersistent.Controls.Add(this.checkBox_hvReset);
             this.groupBox_hvPersistent.Location = new System.Drawing.Point(6, 95);
             this.groupBox_hvPersistent.Name = "groupBox_hvPersistent";
             this.groupBox_hvPersistent.Size = new System.Drawing.Size(421, 133);
@@ -12044,32 +12044,32 @@
             0,
             0});
             // 
-            // label146
+            // label_dt2
             // 
-            this.label146.AutoSize = true;
-            this.label146.Location = new System.Drawing.Point(146, 105);
-            this.label146.Name = "label146";
-            this.label146.Size = new System.Drawing.Size(90, 18);
-            this.label146.TabIndex = 12;
-            this.label146.Text = "dT2 (mV/°C)";
+            this.label_dt2.AutoSize = true;
+            this.label_dt2.Location = new System.Drawing.Point(146, 105);
+            this.label_dt2.Name = "label_dt2";
+            this.label_dt2.Size = new System.Drawing.Size(90, 18);
+            this.label_dt2.TabIndex = 12;
+            this.label_dt2.Text = "dT2 (mV/°C)";
             // 
-            // label142
+            // label_refVolt
             // 
-            this.label142.AutoSize = true;
-            this.label142.Location = new System.Drawing.Point(271, 32);
-            this.label142.Name = "label142";
-            this.label142.Size = new System.Drawing.Size(99, 18);
-            this.label142.TabIndex = 0;
-            this.label142.Text = "Ref. Volt. (V) :";
+            this.label_refVolt.AutoSize = true;
+            this.label_refVolt.Location = new System.Drawing.Point(271, 32);
+            this.label_refVolt.Name = "label_refVolt";
+            this.label_refVolt.Size = new System.Drawing.Size(99, 18);
+            this.label_refVolt.TabIndex = 0;
+            this.label_refVolt.Text = "Ref. Volt. (V) :";
             // 
-            // label147
+            // label_dt1
             // 
-            this.label147.AutoSize = true;
-            this.label147.Location = new System.Drawing.Point(146, 75);
-            this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(90, 18);
-            this.label147.TabIndex = 13;
-            this.label147.Text = "dT1 (mV/°C)";
+            this.label_dt1.AutoSize = true;
+            this.label_dt1.Location = new System.Drawing.Point(146, 75);
+            this.label_dt1.Name = "label_dt1";
+            this.label_dt1.Size = new System.Drawing.Size(90, 18);
+            this.label_dt1.TabIndex = 13;
+            this.label_dt1.Text = "dT1 (mV/°C)";
             // 
             // numUpDown_dtp2
             // 
@@ -12117,23 +12117,23 @@
             this.numUpDown_dtp1.Size = new System.Drawing.Size(50, 24);
             this.numUpDown_dtp1.TabIndex = 3;
             // 
-            // label145
+            // label_dtp2
             // 
-            this.label145.AutoSize = true;
-            this.label145.Location = new System.Drawing.Point(5, 105);
-            this.label145.Name = "label145";
-            this.label145.Size = new System.Drawing.Size(108, 18);
-            this.label145.TabIndex = 2;
-            this.label145.Text = "dT\'2 (mV/°C^2)";
+            this.label_dtp2.AutoSize = true;
+            this.label_dtp2.Location = new System.Drawing.Point(5, 105);
+            this.label_dtp2.Name = "label_dtp2";
+            this.label_dtp2.Size = new System.Drawing.Size(108, 18);
+            this.label_dtp2.TabIndex = 2;
+            this.label_dtp2.Text = "dT\'2 (mV/°C^2)";
             // 
-            // label144
+            // label_dtp1
             // 
-            this.label144.AutoSize = true;
-            this.label144.Location = new System.Drawing.Point(5, 75);
-            this.label144.Name = "label144";
-            this.label144.Size = new System.Drawing.Size(108, 18);
-            this.label144.TabIndex = 0;
-            this.label144.Text = "dT\'1 (mV/°C^2)";
+            this.label_dtp1.AutoSize = true;
+            this.label_dtp1.Location = new System.Drawing.Point(5, 75);
+            this.label_dtp1.Name = "label_dtp1";
+            this.label_dtp1.Size = new System.Drawing.Size(108, 18);
+            this.label_dtp1.TabIndex = 0;
+            this.label_dtp1.Text = "dT\'1 (mV/°C^2)";
             // 
             // button_hvSendPersistent
             // 
@@ -12174,28 +12174,28 @@
             0,
             0});
             // 
-            // label143
+            // label_refTemp
             // 
-            this.label143.AutoSize = true;
-            this.label143.Location = new System.Drawing.Point(88, 32);
-            this.label143.Name = "label143";
-            this.label143.Size = new System.Drawing.Size(120, 18);
-            this.label143.TabIndex = 0;
-            this.label143.Text = "Ref. Temp. (°C) :";
+            this.label_refTemp.AutoSize = true;
+            this.label_refTemp.Location = new System.Drawing.Point(88, 32);
+            this.label_refTemp.Name = "label_refTemp";
+            this.label_refTemp.Size = new System.Drawing.Size(120, 18);
+            this.label_refTemp.TabIndex = 0;
+            this.label_refTemp.Text = "Ref. Temp. (°C) :";
             // 
-            // checkBox_hvOnPersistent
+            // checkBox_hvReset
             // 
-            this.checkBox_hvOnPersistent.AutoSize = true;
-            this.checkBox_hvOnPersistent.Checked = true;
-            this.checkBox_hvOnPersistent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_hvOnPersistent.Location = new System.Drawing.Point(8, 31);
-            this.checkBox_hvOnPersistent.Name = "checkBox_hvOnPersistent";
-            this.checkBox_hvOnPersistent.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox_hvOnPersistent.Size = new System.Drawing.Size(74, 22);
-            this.checkBox_hvOnPersistent.TabIndex = 0;
-            this.checkBox_hvOnPersistent.Text = "HV ON";
-            this.checkBox_hvOnPersistent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox_hvOnPersistent.UseVisualStyleBackColor = true;
+            this.checkBox_hvReset.AutoSize = true;
+            this.checkBox_hvReset.Location = new System.Drawing.Point(8, 31);
+            this.checkBox_hvReset.Name = "checkBox_hvReset";
+            this.checkBox_hvReset.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBox_hvReset.Size = new System.Drawing.Size(66, 22);
+            this.checkBox_hvReset.TabIndex = 0;
+            this.checkBox_hvReset.Text = "Reset";
+            this.checkBox_hvReset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox_hvReset.UseVisualStyleBackColor = true;
+            this.checkBox_hvReset.CheckedChanged += new System.EventHandler(this.checkBox_hvReset_CheckedChanged);
+            this.checkBox_hvReset.MouseHover += new System.EventHandler(this.checkBox_hvReset_MouseHover);
             // 
             // groupBox_hvTemporary
             // 
@@ -13561,18 +13561,18 @@
         private System.Windows.Forms.GroupBox groupBox_hvPersistent;
         private System.Windows.Forms.NumericUpDown numUpDown_dt2;
         private System.Windows.Forms.NumericUpDown numUpDown_dt1;
-        private System.Windows.Forms.Label label146;
-        private System.Windows.Forms.Label label147;
+        private System.Windows.Forms.Label label_dt2;
+        private System.Windows.Forms.Label label_dt1;
         private System.Windows.Forms.NumericUpDown numUpDown_dtp2;
         private System.Windows.Forms.NumericUpDown numUpDown_dtp1;
-        private System.Windows.Forms.Label label145;
-        private System.Windows.Forms.Label label144;
+        private System.Windows.Forms.Label label_dtp2;
+        private System.Windows.Forms.Label label_dtp1;
         private System.Windows.Forms.Button button_hvSendPersistent;
         private System.Windows.Forms.NumericUpDown numUpDown_refTemp;
         private System.Windows.Forms.NumericUpDown numUpDown_refVolt;
-        private System.Windows.Forms.Label label143;
-        private System.Windows.Forms.Label label142;
-        private System.Windows.Forms.CheckBox checkBox_hvOnPersistent;
+        private System.Windows.Forms.Label label_refTemp;
+        private System.Windows.Forms.Label label_refVolt;
+        private System.Windows.Forms.CheckBox checkBox_hvReset;
         private System.Windows.Forms.GroupBox groupBox_hvTemporary;
         private System.Windows.Forms.Button button_HVPS;
         private System.Windows.Forms.NumericUpDown numUpDown_HV;

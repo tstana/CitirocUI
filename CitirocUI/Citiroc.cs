@@ -106,7 +106,7 @@ namespace CitirocUI
                     extended = true;
                     CubesMonitorVisible(false);
                 }
-                
+
                 WindowState = FormWindowState.Maximized;
                 SizeF Scale = new SizeF(scaleF, scaleF);
                 ActiveForm.Scale(Scale);
@@ -186,7 +186,7 @@ namespace CitirocUI
         }
 
         static int NbChannels = 32;
-        
+
         private void Citiroc_Load(object sender, EventArgs e)
         {
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();
@@ -315,7 +315,8 @@ namespace CitirocUI
             label_NoteOnHVPSTelem.Font = new Font(label_NoteOnHVPSTelem.Font, FontStyle.Bold);
 
             // Adjust enable state of labels in Data Acquisition tab
-            if (switchBox_acquisitionMode.Checked == true) {
+            if (switchBox_acquisitionMode.Checked == true)
+            {
                 label_numData.Enabled = false;
                 textBox_numData.Enabled = false;
                 label_acquisitionTime.Enabled = true;
@@ -1394,7 +1395,7 @@ namespace CitirocUI
         }
 
         System.Threading.Timer tempTimer;
- 
+
         private void tempCallback(object state)
         {
             int index = 0;
@@ -1725,7 +1726,7 @@ namespace CitirocUI
 
         private void numericUpDown_loadCh_ValueChanged(object sender, EventArgs e)
         {
-            if(selectedConnectionMode == 1)
+            if (selectedConnectionMode == 1)
             {
                 NumericUpDown num = (NumericUpDown)sender;
                 if ((num.Text == "31") && (num.Value <= 30))
@@ -1743,7 +1744,7 @@ namespace CitirocUI
                 {
                     num.Value = 16;
                 }
-                   
+
             }
             refreshDataChart();
         }
@@ -1867,7 +1868,7 @@ namespace CitirocUI
             // 1. Handle the simple ones: the hit counts...
             UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(e.DataBytes, 11, 10));
 
-            byte[] ch0_hit_count  = new byte[4];
+            byte[] ch0_hit_count = new byte[4];
             byte[] ch16_hit_count = new byte[4];
             byte[] ch31_hit_count = new byte[4];
             byte[] ch21_hit_count = new byte[4];
@@ -1991,7 +1992,7 @@ namespace CitirocUI
         private void CubesMonitorVisible(bool mode)
         {
             panel_CubesMonitor.Visible = mode;
-   
+
             tblPnlMain.ColumnStyles[2].SizeType = SizeType.Absolute;
             if (mode)
             {
@@ -2128,6 +2129,88 @@ namespace CitirocUI
             tmrButtonColor.Enabled = true;
         }
 
+        private void button_hvSendPersistent_Click(object sender, EventArgs e)
+        {
+            byte[] cmd = new byte[14];
+
+            Int16 dtp1 = 0;
+            Int16 dtp2 = 0;
+            UInt16 dt1 = 0;
+            UInt16 dt2 = 0;
+            UInt16 v = 0;
+            UInt16 t = 0;
+
+            // Send zeros as temp. compensation factors if sending reset...
+            if (checkBox_hvReset.Checked == false)
+            {
+                dtp1 = Convert.ToInt16((double)numUpDown_dtp1.Value / 1.507e-3);
+                dtp2 = Convert.ToInt16((double)numUpDown_dtp2.Value / 1.507e-3);
+                dt1 = Convert.ToUInt16((double)numUpDown_dt1.Value / 5.225e-2);
+                dt2 = Convert.ToUInt16((double)numUpDown_dt2.Value / 5.225e-2);
+                v = Convert.ToUInt16((double)numUpDown_refVolt.Value / 1.812e-3);
+                t = Convert.ToUInt16((((double)(numUpDown_refTemp.Value)) * (-5.5e-3) + 1.035) / 1.907e-5);
+            }
+
+            cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendHVPSConf);
+            cmd[1] = (byte)(checkBox_hvReset.Checked ? 0x03 : 0x01);
+            cmd[2] = (byte)((dtp1 & 0xff00) >> 8);
+            cmd[3] = (byte)((dtp1 & 0x00ff));
+            cmd[4] = (byte)((dtp2 & 0xff00) >> 8);
+            cmd[5] = (byte)((dtp2 & 0x00ff));
+            cmd[6] = (byte)((dt1 & 0xff00) >> 8);
+            cmd[7] = (byte)((dt1 & 0x00ff));
+            cmd[8] = (byte)((dt2 & 0xff00) >> 8);
+            cmd[9] = (byte)((dt2 & 0x00ff));
+            cmd[10] = (byte)((v & 0xff00) >> 8);
+            cmd[11] = (byte)((v & 0x00ff));
+            cmd[12] = (byte)((t & 0xff00) >> 8);
+            cmd[13] = (byte)((t & 0x00ff));
+
+            try
+            {
+                if (connectStatus == 1)
+                {
+                    mySerialComm.WriteData(cmd, cmd.Length);
+                    button_hvSendPersistent.BackColor = WeerocGreen;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch
+            {
+                label_help.Text = "ERROR: Failed to send HVPS settings to Proto-CUBES! " +
+                    "Please check the connection...";
+                button_hvSendPersistent.BackColor = Color.IndianRed;
+            }
+
+            tmrButtonColor.Enabled = true;
+        }
+
+        private void checkBox_hvReset_MouseHover(object sender, EventArgs e)
+        {
+            label_help.Text = "Tick to send HVPS reset command. Will _not_ be " +
+                "persistent and _only_ send HV reset once." +
+                Environment.NewLine + Environment.NewLine +
+                "All other persistent settings will not be sent to the HVPS.";
+        }
+
+        private void checkBox_hvReset_CheckedChanged(object sender, EventArgs e)
+        {
+            label_refTemp.Enabled = !(checkBox_hvReset.Checked);
+            label_refVolt.Enabled = !(checkBox_hvReset.Checked);
+            label_dtp1.Enabled = !(checkBox_hvReset.Checked);
+            label_dtp2.Enabled = !(checkBox_hvReset.Checked);
+            label_dt1.Enabled = !(checkBox_hvReset.Checked);
+            label_dt2.Enabled = !(checkBox_hvReset.Checked);
+            numUpDown_refTemp.Enabled = !(checkBox_hvReset.Checked);
+            numUpDown_refVolt.Enabled = !(checkBox_hvReset.Checked);
+            numUpDown_dtp1.Enabled = !(checkBox_hvReset.Checked);
+            numUpDown_dtp2.Enabled = !(checkBox_hvReset.Checked);
+            numUpDown_dt1.Enabled = !(checkBox_hvReset.Checked);
+            numUpDown_dt2.Enabled = !(checkBox_hvReset.Checked);
+        }
         #endregion
 
         private void tmrButtonColor_Tick(object sender, EventArgs e)
@@ -2170,59 +2253,11 @@ namespace CitirocUI
         {
             /// Use the writing to label_help in Proto-CUBES mode to refresh the
             /// data chart. This is needed to avoid threading issues.
-            if ((selectedConnectionMode == 1) && 
+            if ((selectedConnectionMode == 1) &&
                     label_help.Text.Contains("Writing DAQ data to"))
             {
                 refreshDataChart();
             }
         }
-
-        private void button_hvSendPersistent_Click(object sender, EventArgs e)
-        {
-            byte[] cmd = new byte[14];
-            Int16 dtp1 = Convert.ToInt16((double)numUpDown_dtp1.Value / 1.507e-3);
-            Int16 dtp2 = Convert.ToInt16((double)numUpDown_dtp2.Value / 1.507e-3);
-            UInt16 dt1 = Convert.ToUInt16((double)numUpDown_dt1.Value / 5.225e-2);
-            UInt16 dt2 = Convert.ToUInt16((double)numUpDown_dt2.Value / 5.225e-2);
-            UInt16 v = Convert.ToUInt16((double)numUpDown_refVolt.Value / 1.812e-3);
-            UInt16 t = Convert.ToUInt16((((double)(numUpDown_refTemp.Value))*(-5.5e-3) + 1.035) / 1.907e-5);
-
-            cmd[ 0] = Convert.ToByte(ProtoCubesSerial.Command.SendHVPSConf);
-            cmd[ 1] = (byte)(checkBox_hvOnPersistent.Checked ? 0x01 : 0x00);
-            cmd[ 2] = (byte)((dtp1 & 0xff00) >> 8);
-            cmd[ 3] = (byte)((dtp1 & 0x00ff));
-            cmd[ 4] = (byte)((dtp2 & 0xff00) >> 8);
-            cmd[ 5] = (byte)((dtp2 & 0x00ff));
-            cmd[ 6] = (byte)((dt1 & 0xff00) >> 8);
-            cmd[ 7] = (byte)((dt1 & 0x00ff));
-            cmd[ 8] = (byte)((dt2 & 0xff00) >> 8);
-            cmd[ 9] = (byte)((dt2 & 0x00ff));
-            cmd[10] = (byte)((v & 0xff00) >> 8);
-            cmd[11] = (byte)((v & 0x00ff));
-            cmd[12] = (byte)((t & 0xff00) >> 8);
-            cmd[13] = (byte)((t & 0x00ff));
-
-            try
-            {
-                if (connectStatus == 1)
-                {
-                    mySerialComm.WriteData(cmd, cmd.Length);
-                    button_hvSendPersistent.BackColor = WeerocGreen;
-                }
-                else
-                {
-                    throw new Exception();
-                }
-            }
-            catch
-            {
-                label_help.Text = "ERROR: Failed to send HVPS settings to Proto-CUBES! " +
-                    "Please check the connection...";
-                button_hvSendPersistent.BackColor = Color.IndianRed;
-            }
-
-            tmrButtonColor.Enabled = true;
-        }
-
     }
 }
