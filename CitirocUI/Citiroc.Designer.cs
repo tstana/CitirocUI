@@ -10223,7 +10223,7 @@
             // label_DataFile
             // 
             this.label_DataFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label_DataFile.Location = new System.Drawing.Point(412, 343);
+            this.label_DataFile.Location = new System.Drawing.Point(412, 327);
             this.label_DataFile.Name = "label_DataFile";
             this.label_DataFile.Size = new System.Drawing.Size(304, 24);
             this.label_DataFile.TabIndex = 28;
