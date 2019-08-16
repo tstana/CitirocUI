@@ -167,7 +167,7 @@ namespace CitirocUI
             else if((comboBox_SelectConnection.SelectedIndex == 1) && (connectStatus ==1))
             {
                 byte[] bytSC = new byte[2];
-                bytSC[0] = Convert.ToByte('R');
+                bytSC[0] = Convert.ToByte(ProtoCubesSerial.Command.SendReadReg);
 
                 byte tmpB = 0;
 
@@ -182,7 +182,23 @@ namespace CitirocUI
                  }
                 catch
                 {
-                    
+                    /* Prevent a crash on exception... */
+                }
+
+                /* Reset the ASIC's read register, to put it back into normal operation */
+                if (!checkBox_rr.Checked)
+                {
+                    bytSC[0] = Convert.ToByte(ProtoCubesSerial.Command.SendGatewareConf);
+                    bytSC[1] = 0x80;
+
+                    try
+                    {
+                        mySerialComm.WriteData(bytSC, 2);
+                    }
+                    catch
+                    {
+                        /* Prevent a crash on exception... */
+                    }
                 }
             }
             else
