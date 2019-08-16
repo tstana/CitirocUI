@@ -20,6 +20,7 @@ namespace CitirocUI
         int[,] PerChannelChargeLG = new int[NbChannels + 1, 4096];
         int[] Hit = new int[NbChannels + 1];
         UInt32[] HitCK = new UInt32[NbChannels + 1];
+        UInt32[] cubesTelemetryArray = new UInt32[16];
         UInt16 daqTimeTotal;
         UInt16 daqTimeActual;
         int nbAcq = 100;
@@ -671,21 +672,6 @@ namespace CitirocUI
 
             if (selectedConnectionMode == 1)
             {
-                // TODO remove write label_InfoTemp
-                double tempHS = ((double)HitCK[3] * 1.907e-5 - 1.035) / (-5.5e-3);
-                double tempHE = ((double)HitCK[7] * 1.907e-5 - 1.035) / (-5.5e-3);
-                double voltHS = (double)HitCK[4] * 1.812e-3;
-                double voltHE = (double)HitCK[8] * 1.812e-3;
-                double currHS = (double)HitCK[5] * 5.194e-3;
-                double currHE = (double)HitCK[9] * 5.194e-3;
-
-                string tmpStr = "temp-C: " + Convert.ToString(HitCK[2]) + " / " + Convert.ToString(HitCK[6]) + Environment.NewLine +
-                     "temp-H: " + Convert.ToString(tempHS) + " / " + Convert.ToString(tempHE) + Environment.NewLine +
-                     "volt-H: " + Convert.ToString(voltHS) + " / " + Convert.ToString(voltHE) + Environment.NewLine +
-                     "curr-H: " + Convert.ToString(currHS) + " / " + Convert.ToString(currHE) + Environment.NewLine;
-
-                MessageBox.Show(tmpStr);
-                // until HERE (& label_infoTemp control)
                 return;
             }
 
@@ -809,6 +795,10 @@ namespace CitirocUI
                 Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
                 Array.Clear(Hit, 0, Hit.Length);
                 Array.Clear(HitCK, 0, HitCK.Length);
+                Array.Clear(cubesTelemetryArray, 0, cubesTelemetryArray.Length);
+
+                UInt32 unixTimeArduino = Convert.ToUInt32(u_time.Substring(11));
+                cubesTelemetryArray[0] = unixTimeArduino;
 
                 int start = 23;
                 // Header data
@@ -843,33 +833,34 @@ namespace CitirocUI
                 }
 
                 string boardId = System.Text.Encoding.UTF8.GetString(adata, start, 2);
-                UInt64 time_reg = BitConverter.ToUInt64(adata, start + 2);
+                UInt32 time_reg = BitConverter.ToUInt32(adata, start + 2);
                 UInt16 temp_citiS = BitConverter.ToUInt16(adata, start + 6);
                 UInt16 temp_hvpsS = BitConverter.ToUInt16(adata, start + 8);
                 UInt16 hvps_voltS = BitConverter.ToUInt16(adata, start + 10);
                 UInt16 hvps_currS = BitConverter.ToUInt16(adata, start + 12);
-                HitCK[1] = (UInt32)time_reg;
-                HitCK[2] = temp_citiS;
-                HitCK[3] = temp_hvpsS;
-                HitCK[4] = hvps_voltS;
-                HitCK[5] = hvps_currS;
+                cubesTelemetryArray[1] = time_reg;
+                cubesTelemetryArray[2] = temp_citiS;
+                cubesTelemetryArray[3] = temp_hvpsS;
+                cubesTelemetryArray[4] = hvps_voltS;
+                cubesTelemetryArray[5] = hvps_currS;
 
                 daqTimeTotal = BitConverter.ToUInt16(adata, start + 128);
                 daqTimeActual = BitConverter.ToUInt16(adata, start + 130);
                 HitCK[0] = BitConverter.ToUInt32(adata, start + 132);
                 HitCK[16] = BitConverter.ToUInt32(adata, start + 136);
                 HitCK[31] = BitConverter.ToUInt32(adata, start + 140);
+                HitCK[21] = BitConverter.ToUInt32(adata, start + 144);
 
                 UInt16 temp_citiE = BitConverter.ToUInt16(adata, start + 148);
                 UInt16 temp_hvpsE = BitConverter.ToUInt16(adata, start + 150);
                 UInt16 hvps_voltE = BitConverter.ToUInt16(adata, start + 152);
                 UInt16 hvps_currE = BitConverter.ToUInt16(adata, start + 154);
                 UInt16 nrBins = BitConverter.ToUInt16(adata, start + 254);
-                HitCK[6] = temp_citiE;
-                HitCK[7] = temp_hvpsE;
-                HitCK[8] = hvps_voltE;
-                HitCK[9] = hvps_currE;
-                HitCK[10] = nrBins;
+                cubesTelemetryArray[6] = temp_citiE;
+                cubesTelemetryArray[7] = temp_hvpsE;
+                cubesTelemetryArray[8] = hvps_voltE;
+                cubesTelemetryArray[9] = hvps_currE;
+                cubesTelemetryArray[10] = nrBins;
 
                 // BIN data
                 start = 279;
@@ -955,6 +946,7 @@ namespace CitirocUI
                 date = date.Replace(':', '-');
                 date = date.Replace('/', '-');
                 string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
+                string hkFileName = textBox_dataSavePath.Text + "_HK.dat";
 
                 string update=UpdateDataArrays(e.DataBytes);
 
@@ -964,12 +956,79 @@ namespace CitirocUI
                     // display data if tab is active
                     // displayDataFunction(fileName, e.DataBytes);
                 
+                    /* Write data file */
                     using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
                     {
                         dataFile.Write(e.DataBytes);
                     }
 
-                    UpdatingLabel( "file: " + Path.GetFileName(fileName),label_DataFile);
+                    /* 
+                     * Write header data to HK file if no such file exists
+                     * (and will thus be created)
+                     */
+                    if (!File.Exists(hkFileName))
+                    {
+                        using (FileStream hkFile = File.Open(hkFileName, FileMode.Append))
+                        {
+                            string s = "# <0>,<1>,<2>,<3>,<4>,<5>,<6>,<7>,<8>,<9>," +
+                                "<10>,<11>,<12>,<13>,<14>,<15>" + Environment.NewLine +
+                                "#\t < 0> = Unix Time (Arduino)" + Environment.NewLine +
+                                "#\t < 1> = Unix Time (Gateware)" + Environment.NewLine +
+                                "#\t < 2> = Citiroc Temp. (Start)" + Environment.NewLine +
+                                "#\t < 3> = HVPS Temp. (Start)" + Environment.NewLine +
+                                "#\t < 4> = HVPS Voltage (Start)" + Environment.NewLine +
+                                "#\t < 5> = HVPS Current (Start)" + Environment.NewLine +
+                                "#\t < 6> = Total DAQ Time" + Environment.NewLine +
+                                "#\t < 7> = Actual DAQ Time" + Environment.NewLine +
+                                "#\t < 8> = Trig. Count (Ch. 0)" + Environment.NewLine +
+                                "#\t < 9> = Trig. Count (Ch. 16)" + Environment.NewLine +
+                                "#\t <10> = Trig. Count (Ch. 31)" + Environment.NewLine +
+                                "#\t <11> = Trig. Count (OR32)" + Environment.NewLine +
+                                "#\t <12> = Citiroc Temp. (End)" + Environment.NewLine +
+                                "#\t <13> = HVPS Temp. (End)" + Environment.NewLine +
+                                "#\t <14> = HVPS Voltage (End)" + Environment.NewLine +
+                                "#\t <15> = HVPS Current (End)" + Environment.NewLine +
+                                Environment.NewLine;
+                            byte[] hdr = System.Text.Encoding.ASCII.GetBytes(s);
+                            hkFile.Write(hdr, 0, hdr.Length);
+                        }
+                    }
+
+                    using (FileStream hkFile = File.Open(hkFileName, FileMode.Append))
+                    {
+                        double tempCitiS = 0;
+                        double tempCitiE = 0;
+                        double tempHS = ((double)cubesTelemetryArray[3] * 1.907e-5 - 1.035) / (-5.5e-3);
+                        double tempHE = ((double)cubesTelemetryArray[7] * 1.907e-5 - 1.035) / (-5.5e-3);
+                        double voltHS = (double)cubesTelemetryArray[4] * 1.812e-3;
+                        double voltHE = (double)cubesTelemetryArray[8] * 1.812e-3;
+                        double currHS = (double)cubesTelemetryArray[5] * 5.194e-3;
+                        double currHE = (double)cubesTelemetryArray[9] * 5.194e-3;
+
+                        string tmpStr = cubesTelemetryArray[0].ToString() + "," +
+                            cubesTelemetryArray[1].ToString() + "," +
+                            tempCitiS.ToString("N3") + "," +
+                            tempHS.ToString("N3") + "," +
+                            voltHS.ToString("N3") + "," +
+                            currHS.ToString("N3") + "," +
+                            daqTimeTotal.ToString() + "," +
+                            daqTimeActual.ToString() + "," +
+                            HitCK[0].ToString() + "," +
+                            HitCK[16].ToString() + "," +
+                            HitCK[31].ToString() + "," +
+                            HitCK[21].ToString() + "," +
+                            tempCitiE.ToString("N3") + "," +
+                            tempHE.ToString("N3") + "," +
+                            voltHE.ToString("N3") + "," +
+                            currHE.ToString("N3") +
+                            Environment.NewLine;
+
+                        byte[] toSend = System.Text.Encoding.ASCII.GetBytes(tmpStr);
+
+                        hkFile.Write(toSend, 0, toSend.Length);
+                    }
+
+                    UpdatingLabel("file: " + Path.GetFileName(fileName), label_DataFile);
                 }
                 else
                 {
