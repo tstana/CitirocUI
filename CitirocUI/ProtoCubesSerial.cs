@@ -62,8 +62,11 @@ namespace CitirocUI
             SendDAQDur          = 'D',
             SendReadReg         = 'R',
             SendGatewareConf    = 'G',
+            SendTime            = 'Z',
+
             DAQStart            = 'S',
             DAQStop             = 'T',
+
             ReqHK               = 'h',
             ReqPayload          = 'p'
         }
