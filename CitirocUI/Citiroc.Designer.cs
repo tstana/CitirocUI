@@ -884,7 +884,7 @@
             this.checkBox_RstResetCounters = new CitirocUI.checkBox();
             this.checkBox_RstPSC = new CitirocUI.checkBox();
             this.button_SendResets = new System.Windows.Forms.Button();
-            this.button_readTelemetry = new System.Windows.Forms.Button();
+            this.button_readHK = new System.Windows.Forms.Button();
             this.label_tempOnBoard = new System.Windows.Forms.Label();
             this.backgroundWorker_Scurves = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker_staircase = new System.ComponentModel.BackgroundWorker();
@@ -11750,16 +11750,16 @@
             this.button_SendResets.UseVisualStyleBackColor = false;
             this.button_SendResets.Click += new System.EventHandler(this.button_SendResets_Click);
             // 
-            // button_readTelemetry
+            // button_readHK
             // 
-            this.button_readTelemetry.BackColor = System.Drawing.SystemColors.Control;
-            this.button_readTelemetry.Location = new System.Drawing.Point(17, 21);
-            this.button_readTelemetry.Name = "button_readTelemetry";
-            this.button_readTelemetry.Size = new System.Drawing.Size(422, 30);
-            this.button_readTelemetry.TabIndex = 1;
-            this.button_readTelemetry.Text = "&Read Telemetry";
-            this.button_readTelemetry.UseVisualStyleBackColor = false;
-            this.button_readTelemetry.Click += new System.EventHandler(this.button_readTelemetry_Click);
+            this.button_readHK.BackColor = System.Drawing.SystemColors.Control;
+            this.button_readHK.Location = new System.Drawing.Point(17, 21);
+            this.button_readHK.Name = "button_readHK";
+            this.button_readHK.Size = new System.Drawing.Size(422, 30);
+            this.button_readHK.TabIndex = 1;
+            this.button_readHK.Text = "&Read Telemetry";
+            this.button_readHK.UseVisualStyleBackColor = false;
+            this.button_readHK.Click += new System.EventHandler(this.button_readHK_Click);
             // 
             // label_tempOnBoard
             // 
@@ -11934,7 +11934,7 @@
             this.groupBox_telemetry.BackColor = System.Drawing.Color.White;
             this.groupBox_telemetry.Controls.Add(this.groupBox_HV);
             this.groupBox_telemetry.Controls.Add(this.groupBox_HitRates);
-            this.groupBox_telemetry.Controls.Add(this.button_readTelemetry);
+            this.groupBox_telemetry.Controls.Add(this.button_readHK);
             this.groupBox_telemetry.Controls.Add(this.groupBox_HvpsTelemetry);
             this.groupBox_telemetry.Controls.Add(this.textBox_ResetCount);
             this.groupBox_telemetry.Controls.Add(this.textBox_timestamp);
@@ -13481,7 +13481,7 @@
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.Label label138;
         private System.Windows.Forms.Button btn_CubesMonitor;
-        private System.Windows.Forms.Button button_readTelemetry;
+        private System.Windows.Forms.Button button_readHK;
         private System.Windows.Forms.TableLayoutPanel tblPnlMain;
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Panel pnlTools;

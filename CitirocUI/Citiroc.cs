@@ -2097,30 +2097,31 @@ namespace CitirocUI
             tmrButtonColor.Enabled = true;
         }
 
-        private void button_readTelemetry_Click(object sender, EventArgs e)
+        private void button_readHK_Click(object sender, EventArgs e)
         {
             /* Form open, time to send CMD_REQ_HK (if serial port connection allows) */
             byte[] telemetryParam = new byte[1];
-            telemetryParam[0] = Convert.ToByte('h');
+            telemetryParam[0] = Convert.ToByte(ProtoCubesSerial.Command.ReqHK);
+
             try
             {
                 if (connectStatus == 1)
                 {
                     mySerialComm.WriteData(telemetryParam, 1);
-                    button_readTelemetry.BackColor = WeerocGreen;
+                    button_readHK.BackColor = WeerocGreen;
                 }
                 else
                 {
                     throw new Exception();
                 }
-
             }
             catch
             {
                 label_help.Text = "ERROR: Failed to send telemetry fetch command to Proto-CUBES! " +
                     "Please check the connection...";
-                button_readTelemetry.BackColor = Color.IndianRed;
+                button_readHK.BackColor = Color.IndianRed;
             }
+
             tmrButtonColor.Enabled = true;
         }
 
@@ -2284,7 +2285,7 @@ namespace CitirocUI
         {
             tmrButtonColor.Enabled = false;
 
-            button_readTelemetry.BackColor = SystemColors.Control;
+            button_readHK.BackColor = SystemColors.Control;
 
             button_HVPS.BackColor = SystemColors.Control;
             button_HVPS.ForeColor = SystemColors.ControlText;
