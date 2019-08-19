@@ -806,6 +806,7 @@ namespace CitirocUI
                 // Reverse individual fields to avoid BitConverter endianness issues...
                 if (BitConverter.IsLittleEndian)
                 {
+                    // Start of DAQ HK data
                     Array.Reverse(adata, start + 2, 4);
                     Array.Reverse(adata, start + 6, 2);
                     Array.Reverse(adata, start + 8, 2);
@@ -818,7 +819,9 @@ namespace CitirocUI
                     Array.Reverse(adata, start + 132, 4);
                     Array.Reverse(adata, start + 136, 4);
                     Array.Reverse(adata, start + 140, 4);
+                    Array.Reverse(adata, start + 144, 4);
 
+                    // End of DAQ HK data
                     Array.Reverse(adata, start + 148, 2);
                     Array.Reverse(adata, start + 150, 2);
                     Array.Reverse(adata, start + 152, 2);
@@ -881,6 +884,7 @@ namespace CitirocUI
                 start = 23;
                 if (BitConverter.IsLittleEndian)
                 {
+                    // Start of DAQ HK data
                     Array.Reverse(adata, start + 2, 4);
                     Array.Reverse(adata, start + 6, 2);
                     Array.Reverse(adata, start + 8, 2);
@@ -893,7 +897,9 @@ namespace CitirocUI
                     Array.Reverse(adata, start + 132, 4);
                     Array.Reverse(adata, start + 136, 4);
                     Array.Reverse(adata, start + 140, 4);
+                    Array.Reverse(adata, start + 144, 4);
 
+                    // End of DAQ HK data
                     Array.Reverse(adata, start + 148, 2);
                     Array.Reverse(adata, start + 150, 2);
                     Array.Reverse(adata, start + 152, 2);
@@ -972,22 +978,22 @@ namespace CitirocUI
                         {
                             string s = "# <0>,<1>,<2>,<3>,<4>,<5>,<6>,<7>,<8>,<9>," +
                                 "<10>,<11>,<12>,<13>,<14>,<15>" + Environment.NewLine +
-                                "#\t < 0> = Unix Time (Arduino)" + Environment.NewLine +
-                                "#\t < 1> = Unix Time (Gateware)" + Environment.NewLine +
-                                "#\t < 2> = Citiroc Temp. (Start)" + Environment.NewLine +
-                                "#\t < 3> = HVPS Temp. (Start)" + Environment.NewLine +
-                                "#\t < 4> = HVPS Voltage (Start)" + Environment.NewLine +
-                                "#\t < 5> = HVPS Current (Start)" + Environment.NewLine +
+                                "#\t < 0> = Unix Time (Arduino, DAQ End)" + Environment.NewLine +
+                                "#\t < 1> = Unix Time (Gateware, DAQ Start)" + Environment.NewLine +
+                                "#\t < 2> = Citiroc Temp. (DAQ Start)" + Environment.NewLine +
+                                "#\t < 3> = HVPS Temp. (DAQ Start)" + Environment.NewLine +
+                                "#\t < 4> = HVPS Voltage (DAQ Start)" + Environment.NewLine +
+                                "#\t < 5> = HVPS Current (DAQ Start)" + Environment.NewLine +
                                 "#\t < 6> = Total DAQ Time" + Environment.NewLine +
                                 "#\t < 7> = Actual DAQ Time" + Environment.NewLine +
                                 "#\t < 8> = Trig. Count (Ch. 0)" + Environment.NewLine +
                                 "#\t < 9> = Trig. Count (Ch. 16)" + Environment.NewLine +
                                 "#\t <10> = Trig. Count (Ch. 31)" + Environment.NewLine +
                                 "#\t <11> = Trig. Count (OR32)" + Environment.NewLine +
-                                "#\t <12> = Citiroc Temp. (End)" + Environment.NewLine +
-                                "#\t <13> = HVPS Temp. (End)" + Environment.NewLine +
-                                "#\t <14> = HVPS Voltage (End)" + Environment.NewLine +
-                                "#\t <15> = HVPS Current (End)" + Environment.NewLine +
+                                "#\t <12> = Citiroc Temp. (DAQ End)" + Environment.NewLine +
+                                "#\t <13> = HVPS Temp. (DAQ End)" + Environment.NewLine +
+                                "#\t <14> = HVPS Voltage (DAQ End)" + Environment.NewLine +
+                                "#\t <15> = HVPS Current (DAQ End)" + Environment.NewLine +
                                 Environment.NewLine;
                             byte[] hdr = System.Text.Encoding.ASCII.GetBytes(s);
                             hkFile.Write(hdr, 0, hdr.Length);
