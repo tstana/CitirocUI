@@ -645,8 +645,8 @@ namespace CitirocUI
             else
             {
                 label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + HitCK[chNum];
-                label_elapsedTimeAcquisition.Text = "Elapsed time: " + daqTimeTotal + "ms";
-                label_acqTime.Text = "Actual acq. time: " + daqTimeActual + "ms";
+                label_elapsedTimeAcquisition.Text = "Elapsed time: " + ((double)(daqTimeTotal/256)).ToString("N3") + " s";
+                label_acqTime.Text = "Actual acq. time: " + ((double)(daqTimeActual/256)).ToString("N3") + " s";
             }
 
             resetZoom(chart_perChannelChargeHG);
@@ -984,8 +984,8 @@ namespace CitirocUI
                                 "#\t < 3> = HVPS Temp. (DAQ Start)" + Environment.NewLine +
                                 "#\t < 4> = HVPS Voltage (DAQ Start)" + Environment.NewLine +
                                 "#\t < 5> = HVPS Current (DAQ Start)" + Environment.NewLine +
-                                "#\t < 6> = Total DAQ Time" + Environment.NewLine +
-                                "#\t < 7> = Actual DAQ Time" + Environment.NewLine +
+                                "#\t < 6> = Total DAQ Time (1/256 seconds)" + Environment.NewLine +
+                                "#\t < 7> = Actual DAQ Time (1/256 seconds)" + Environment.NewLine +
                                 "#\t < 8> = Trig. Count (Ch. 0)" + Environment.NewLine +
                                 "#\t < 9> = Trig. Count (Ch. 16)" + Environment.NewLine +
                                 "#\t <10> = Trig. Count (Ch. 31)" + Environment.NewLine +
