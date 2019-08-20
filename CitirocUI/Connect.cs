@@ -281,30 +281,42 @@ namespace CitirocUI
                     roundButton_connectSmall.BackColor = WeerocGreen;
                     roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
                     label_help.Text = comboBox_SelectConnection.Text + " is connected. Click again if you wish to disconnect.";
-                    label_boardStatus.Text = "Board status\n" +
-                        comboBox_SelectConnection.Text + " is connected.";
 
                     // Send time on connection (Proto-CUBES)
-                    byte[] timeCmd = new byte[5];
+                    byte[] cmd = new byte[5];
 
-                    timeCmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendTime);
+                    cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendTime);
 
                     TimeSpan timeSinceEpoch = DateTime.UtcNow -
                         new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                     UInt32 unixTime = Convert.ToUInt32(timeSinceEpoch.TotalSeconds);
 
-                    timeCmd[1] = (byte)((unixTime >> 24) & 0xff);
-                    timeCmd[2] = (byte)((unixTime >> 16) & 0xff);
-                    timeCmd[3] = (byte)((unixTime >> 8) & 0xff);
-                    timeCmd[4] = (byte)((unixTime) & 0xff);
+                    cmd[1] = (byte)((unixTime >> 24) & 0xff);
+                    cmd[2] = (byte)((unixTime >> 16) & 0xff);
+                    cmd[3] = (byte)((unixTime >> 8) & 0xff);
+                    cmd[4] = (byte)((unixTime) & 0xff);
 
                     try
                     {
-                        mySerialComm.WriteData(timeCmd, timeCmd.Length);
+                        mySerialComm.WriteData(cmd, cmd.Length);
                     }
                     catch
                     {
                         label_help.Text = "Could not send time to Proto-CUBES!";
+                    }
+
+                    // Request Board ID on connect
+                    cmd = new byte[1];
+                    cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.ReqBoardID);
+
+                    try
+                    {
+                        mySerialComm.CurrentCommand = (ProtoCubesSerial.Command)cmd[0];
+                        mySerialComm.WriteData(cmd, cmd.Length);
+                    }
+                    catch
+                    {
+                        label_help.Text = "Could not send ID request to Proto-CUBES!";
                     }
                 }
                 catch
@@ -600,5 +612,17 @@ namespace CitirocUI
             }
         }
 
+        private void ReqBoardID_DataReady(object sender, DataReadyEventArgs e)
+        {
+            if (e.Command != ProtoCubesSerial.Command.ReqBoardID)
+                return;
+
+            string s = "Board status\n" +
+                "Proto-CUBES is connected.\n\n" +
+                "Firmware and gateware info:\n" +
+                System.Text.Encoding.ASCII.GetString(e.DataBytes, 0, e.DataBytes.Length);
+
+            UpdatingLabel(s, label_boardStatus);
+        }
     }
 }

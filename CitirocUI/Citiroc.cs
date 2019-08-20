@@ -334,6 +334,7 @@ namespace CitirocUI
             // Create serial comm object and attach event to local function
             mySerialComm = new ProtoCubesSerial();
             mySerialComm.DataReadyEvent += this.mySerialComm_DataReady;
+            mySerialComm.DataReadyEvent += this.ReqBoardID_DataReady;
 
             // Ckear text in some labels
             label_nbHit.Text = "";

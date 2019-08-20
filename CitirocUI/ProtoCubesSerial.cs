@@ -55,6 +55,8 @@ namespace CitirocUI
         /// </summary>
         public enum Command
         {
+            None                = '-',
+
             SendCitirocConf     = 'C',
             SendProbeConf       = 'P',
             SendHVPSConf        = 'H',
@@ -68,7 +70,8 @@ namespace CitirocUI
             DAQStop             = 'T',
 
             ReqHK               = 'h',
-            ReqPayload          = 'p'
+            ReqPayload          = 'p',
+            ReqBoardID          = 'i'
         }
         #endregion
 
@@ -100,6 +103,8 @@ namespace CitirocUI
          //global variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
         private SerialPort comPort = new SerialPort();
+
+        private Command currentCommand = Command.None;
         #endregion
 
         #region Events
@@ -228,6 +233,12 @@ namespace CitirocUI
         {
             get { return _displayWindow; }
             set { _displayWindow = value; }
+        }
+
+        public Command CurrentCommand
+        {
+            get { return currentCommand; }
+            set { currentCommand = value; }
         }
         #endregion
 
@@ -436,6 +447,8 @@ namespace CitirocUI
              *          Total: calculated below
              */
             int dataLength = 63;
+            if (currentCommand == Command.ReqBoardID)
+                dataLength = 55;
             if (_retrievingDaqData)
                 dataLength = 23 + 256 + 6 * (_numBins * 2);
 
@@ -454,13 +467,14 @@ namespace CitirocUI
                         DataReadyEvent(this, new DataReadyEventArgs(Command.ReqPayload, _daqDataArray));
                         _retrievingDaqData = false;
                     }
-                       
+                    else if (currentCommand == Command.ReqBoardID)
+                        DataReadyEvent(this, new DataReadyEventArgs(currentCommand, _daqDataArray));
                     else
                     {
                         DataReadyEvent(this, new DataReadyEventArgs(Command.ReqHK, _daqDataArray));
                     }
-                        
-                    
+
+                    currentCommand = Command.None;
                     _numBytesRetrieved = 0;
                 }
             }
