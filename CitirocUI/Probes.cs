@@ -87,7 +87,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialComm.WriteData(bytProbe, 1 + intLenProbeStream / 8);
+                    mySerialComm.SendData(bytProbe, 1 + intLenProbeStream / 8);
                     result = true;
                 }
                 catch (IOException)
@@ -178,7 +178,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialComm.WriteData(bytSC, 2);
+                    mySerialComm.SendData(bytSC, 2);
                  }
                 catch
                 {
@@ -193,7 +193,7 @@ namespace CitirocUI
 
                     try
                     {
-                        mySerialComm.WriteData(bytSC, 2);
+                        mySerialComm.SendData(bytSC, 2);
                     }
                     catch
                     {

@@ -128,11 +128,11 @@ namespace CitirocUI
                 cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendDAQDur);
                 cmd[1] = Convert.ToByte(individAcqTime);
 
-                mySerialComm.WriteData(cmd, cmd.Length);
+                mySerialComm.SendData(cmd, cmd.Length);
 
                 cmd = new byte[1];
                 cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStart);
-                mySerialComm.WriteData(cmd, cmd.Length);
+                mySerialComm.SendData(cmd, cmd.Length);
             }
 
             // No connection
@@ -447,7 +447,7 @@ namespace CitirocUI
                 // Send DAQ_STOP command
                 byte[] cmd = new byte[1];
                 cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStop);
-                mySerialComm.WriteData(cmd, cmd.Length);
+                mySerialComm.SendData(cmd, cmd.Length);
 
                 // Wait for 3 seconds and send REQ_PAYLOAD command
                 Stopwatch s = Stopwatch.StartNew();
@@ -506,7 +506,7 @@ namespace CitirocUI
              */
             mySerialComm.RetrievingDaqData = true;
             mySerialComm.NumBins = noOfBins;
-            mySerialComm.WriteData(reqData, reqData.Length);
+            mySerialComm.SendData(reqData, reqData.Length);
         }
 
         private void loadData()

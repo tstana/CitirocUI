@@ -624,7 +624,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialComm.WriteData(bytSC, 1 + SCLenght/8);
+                    mySerialComm.SendData(bytSC, 1 + SCLenght/8);
                     result = true;
                 }
                 catch

@@ -2069,7 +2069,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialComm.WriteData(cmd, cmd.Length);
+                    mySerialComm.SendData(cmd, cmd.Length);
                 }
                 catch (IOException ie)
                 {
@@ -2108,7 +2108,7 @@ namespace CitirocUI
             {
                 if (connectStatus == 1)
                 {
-                    mySerialComm.WriteData(telemetryParam, 1);
+                    mySerialComm.SendData(telemetryParam, 1);
                     button_readHK.BackColor = WeerocGreen;
                 }
                 else
@@ -2145,7 +2145,7 @@ namespace CitirocUI
             {
                 if (connectStatus == 1)
                 {
-                    mySerialComm.WriteData(cmd, cmd.Length);
+                    mySerialComm.SendData(cmd, cmd.Length);
                     button_SendResets.BackColor = WeerocGreen;
                 }
                 else
@@ -2203,7 +2203,7 @@ namespace CitirocUI
             {
                 if (connectStatus == 1)
                 {
-                    mySerialComm.WriteData(cmd, cmd.Length);
+                    mySerialComm.SendData(cmd, cmd.Length);
                     button_hvSendPersistent.BackColor = WeerocGreen;
                 }
                 else
@@ -2323,7 +2323,7 @@ namespace CitirocUI
             try
             {
                 cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStop);
-                mySerialComm.WriteData(cmd, cmd.Length);
+                mySerialComm.SendData(cmd, cmd.Length);
                 mySerialComm.ClosePort();
             }
             catch { /* Blindly close... */}

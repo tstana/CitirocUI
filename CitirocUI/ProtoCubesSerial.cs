@@ -285,10 +285,11 @@ namespace CitirocUI
         }
         #endregion
 
-        #region WriteData
-        public void WriteData(byte[] msg, int msg_length)
+        #region Send Data
+        public void SendData(byte[] msg, int msg_length)
         {
-            if (comPort.IsOpen == false) return;
+            if (comPort.IsOpen == false)
+                return;
 
             try
             {

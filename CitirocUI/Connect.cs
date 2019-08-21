@@ -298,7 +298,7 @@ namespace CitirocUI
 
                     try
                     {
-                        mySerialComm.WriteData(cmd, cmd.Length);
+                        mySerialComm.SendData(cmd, cmd.Length);
                     }
                     catch
                     {
@@ -312,7 +312,7 @@ namespace CitirocUI
                     try
                     {
                         mySerialComm.CurrentCommand = (ProtoCubesSerial.Command)cmd[0];
-                        mySerialComm.WriteData(cmd, cmd.Length);
+                        mySerialComm.SendData(cmd, cmd.Length);
                     }
                     catch
                     {
