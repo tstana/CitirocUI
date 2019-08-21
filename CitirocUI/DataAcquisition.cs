@@ -113,7 +113,7 @@ namespace CitirocUI
                 }
 
                 // Make sure serial port exists and is open:
-                if ((mySerialComm == null) || (mySerialComm.OpenPort() == false))
+                if ((protoCubes == null) || (protoCubes.OpenPort() == false))
                 {
                     MessageBox.Show("Please configure and open the serial port connection via the \"Connect\" tab.");
                     return;
@@ -128,7 +128,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendDAQDur, daqDur);
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendDAQDur, daqDur);
                 }
                 catch (Exception ex)
                 {
@@ -146,7 +146,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.DAQStart, null);
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.DAQStart, null);
                 }
                 catch (Exception ex)
                 {
@@ -475,7 +475,7 @@ namespace CitirocUI
                 // Send DAQ_STOP command
                 try
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.DAQStop, null);
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.DAQStop, null);
                 }
                 catch (Exception ex)
                 {
@@ -543,8 +543,8 @@ namespace CitirocUI
              */
             try
             {
-                mySerialComm.NumBins = noOfBins;
-                mySerialComm.SendCommand(ProtoCubesSerial.Command.ReqPayload, null);
+                protoCubes.NumBins = noOfBins;
+                protoCubes.SendCommand(ProtoCubesSerial.Command.ReqPayload, null);
             }
             catch (Exception ex)
             {

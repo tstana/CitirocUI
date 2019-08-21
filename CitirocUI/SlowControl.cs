@@ -667,7 +667,7 @@ namespace CitirocUI
             {
                 try
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendCitirocConf,
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendCitirocConf,
                         bytSC);
                     result = true;
                 }

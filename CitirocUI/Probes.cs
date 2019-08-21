@@ -124,7 +124,7 @@ namespace CitirocUI
             {
                 try
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendProbeConf,
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendProbeConf,
                         bytProbe);
                     result = true;
                 }
@@ -176,7 +176,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendReadReg, 
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendReadReg, 
                         param);
                  }
                 catch (Exception ex)
@@ -200,7 +200,7 @@ namespace CitirocUI
 
                     try
                     {
-                        mySerialComm.SendCommand(ProtoCubesSerial.Command.SendGatewareConf,
+                        protoCubes.SendCommand(ProtoCubesSerial.Command.SendGatewareConf,
                             param);
                     }
                     catch (Exception ex)

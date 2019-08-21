@@ -25,7 +25,7 @@ namespace CitirocUI
         FontFamily ffBryant = FontFamily.GenericSansSerif;
         private System.Drawing.Text.PrivateFontCollection pfcBryant = new System.Drawing.Text.PrivateFontCollection();
 
-        ProtoCubesSerial mySerialComm;
+        ProtoCubesSerial protoCubes;
 
         public Citiroc()
         {
@@ -332,9 +332,9 @@ namespace CitirocUI
             }
 
             // Create serial comm object and attach event to local function
-            mySerialComm = new ProtoCubesSerial();
-            mySerialComm.DataReadyEvent += this.mySerialComm_DataReady;
-            mySerialComm.DataReadyEvent += this.ReqBoardID_DataReady;
+            protoCubes = new ProtoCubesSerial();
+            protoCubes.DataReadyEvent += this.mySerialComm_DataReady;
+            protoCubes.DataReadyEvent += this.ReqBoardID_DataReady;
 
             // Ckear text in some labels
             label_nbHit.Text = "";
@@ -1821,16 +1821,16 @@ namespace CitirocUI
             if (panel_CubesMonitor.Visible == false)
             {
                 CubesMonitorVisible(true);
-                mySerialComm.MonitorActive = true;
-                mySerialComm.DataReadyEvent += CubesMonitor_DataReady;
+                protoCubes.MonitorActive = true;
+                protoCubes.DataReadyEvent += CubesMonitor_DataReady;
                 btn_CubesMonitor.Text = "CUBES Monitor <<<";
             }
             else
             {
                 // already visible, will be closed
                 CubesMonitorVisible(false);
-                mySerialComm.MonitorActive = false;
-                mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
+                protoCubes.MonitorActive = false;
+                protoCubes.DataReadyEvent -= CubesMonitor_DataReady;
                 btn_CubesMonitor.Text = "CUBES Monitor >>>";
             }
         }
@@ -2062,7 +2062,7 @@ namespace CitirocUI
 
                 try
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendHVPSTmpVolt, hvpsConf);
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendHVPSTmpVolt, hvpsConf);
                 }
                 catch (Exception ex)
                 {
@@ -2106,7 +2106,7 @@ namespace CitirocUI
             {
                 if (connectStatus == 1)
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.ReqHK, null);
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.ReqHK, null);
                     button_readHK.BackColor = WeerocGreen;
                 }
                 else
@@ -2149,7 +2149,7 @@ namespace CitirocUI
             {
                 if (connectStatus == 1)
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendGatewareConf,
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendGatewareConf,
                         gwConf);
                     button_SendResets.BackColor = WeerocGreen;
                 }
@@ -2215,7 +2215,7 @@ namespace CitirocUI
             {
                 if (connectStatus == 1)
                 {
-                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendHVPSConf,
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendHVPSConf,
                         hvpsConf);
                     button_hvSendPersistent.BackColor = WeerocGreen;
                 }
@@ -2348,8 +2348,8 @@ namespace CitirocUI
 
             try
             {
-                mySerialComm.SendCommand(ProtoCubesSerial.Command.DAQStop, null);
-                mySerialComm.ClosePort();
+                protoCubes.SendCommand(ProtoCubesSerial.Command.DAQStop, null);
+                protoCubes.ClosePort();
             }
             catch { /* Blindly close... */}
         }

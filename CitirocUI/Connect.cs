@@ -230,7 +230,7 @@ namespace CitirocUI
                 /* Disconnect and exit if we are already connected... */
                 if (connectStatus == 1)
                 {
-                    mySerialComm.ClosePort();
+                    protoCubes.ClosePort();
 
                     label_ConnStatus.Text = "Not connected.";
                     label_ConnStatus.ForeColor = Color.IndianRed;
@@ -247,31 +247,31 @@ namespace CitirocUI
                 /* Otherwise, connect to selected port, creating it on first run of the code */
                 try
                 {
-                    if (mySerialComm == null)
-                        mySerialComm = new ProtoCubesSerial();
+                    if (protoCubes == null)
+                        protoCubes = new ProtoCubesSerial();
 
-                    mySerialComm.PortName = comboBox_COMPortList.SelectedItem.ToString();
-                    mySerialComm.BaudRate = Convert.ToInt32(comboBox_Baudrate.SelectedItem.ToString());
+                    protoCubes.PortName = comboBox_COMPortList.SelectedItem.ToString();
+                    protoCubes.BaudRate = Convert.ToInt32(comboBox_Baudrate.SelectedItem.ToString());
 
-                    mySerialComm.Parity = Parity.None;
-                    mySerialComm.StopBits = StopBits.One;
-                    mySerialComm.DataBits = 8;
-                    mySerialComm.Handshake = Handshake.None;
-                    mySerialComm.RtsEnable = true;
+                    protoCubes.Parity = Parity.None;
+                    protoCubes.StopBits = StopBits.One;
+                    protoCubes.DataBits = 8;
+                    protoCubes.Handshake = Handshake.None;
+                    protoCubes.RtsEnable = true;
 
-                    mySerialComm.DisplayWindow = rtxtMonitor;
+                    protoCubes.DisplayWindow = rtxtMonitor;
 
                     //// Set the read/write timeouts
-                    mySerialComm.ReadTimeout = 500;
-                    mySerialComm.WriteTimeout = 500;
+                    protoCubes.ReadTimeout = 500;
+                    protoCubes.WriteTimeout = 500;
 
                     // Finally! Open serial port!
-                    if (!mySerialComm.OpenPort())
+                    if (!protoCubes.OpenPort())
                     {
                         throw new Exception();
                     }
 
-                    label_ConnStatus.Text = mySerialComm.info;
+                    label_ConnStatus.Text = protoCubes.info;
                     label_ConnStatus.ForeColor = WeerocGreen;
 
                     // Update connection indicators
@@ -296,7 +296,7 @@ namespace CitirocUI
 
                     try
                     {
-                        mySerialComm.SendCommand(ProtoCubesSerial.Command.SendTime, time);
+                        protoCubes.SendCommand(ProtoCubesSerial.Command.SendTime, time);
                     }
                     catch (Exception ex)
                     {
@@ -316,7 +316,7 @@ namespace CitirocUI
                     // Request Board ID on connect
                     try
                     {
-                        mySerialComm.SendCommand(ProtoCubesSerial.Command.ReqBoardID, null);
+                        protoCubes.SendCommand(ProtoCubesSerial.Command.ReqBoardID, null);
                     }
                     catch (Exception ex)
                     {
@@ -541,7 +541,7 @@ namespace CitirocUI
                     // already visible, will be closed
                     CubesMonitorVisible(false);
 
-                    mySerialComm.DataReadyEvent -= CubesMonitor_DataReady;
+                    protoCubes.DataReadyEvent -= CubesMonitor_DataReady;
                     btn_CubesMonitor.Text = "CUBES Monitor >>>";
                 }
 
