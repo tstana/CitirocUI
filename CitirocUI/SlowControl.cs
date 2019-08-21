@@ -591,71 +591,36 @@ namespace CitirocUI
 
         private bool sendSC(int usbDevId, string strSC)
         {
+            if (connectStatus != 1)
+                return false;
+
             // Initialize result as false
             bool result = false;
 
-            if (comboBox_SelectConnection.SelectedIndex == 1)
+            // Get standard length of slow control bitstream
+            int scLength = strDefSC.Length;
+            // Get length of current slow control bitstream
+            int intLenStrSC = strSC.Length;
+            byte[] bytSC = new byte[scLength / 8];
+
+            // If the length of the current bitstream is not OK, return false
+            // else store the slow control in byte array
+            if (intLenStrSC == scLength)
             {
-                if (connectStatus != 1)
-                    return false;
-                
-                // Get standard length of slow control bitstream
-                int SCLenght = strDefSC.Length;
-                // Get length of current slow control bitstream
-                int intLenStrSC = strSC.Length;
-                byte[] bytSC = new byte[1 + SCLenght/8];
-                // reverse slow control string before loading
-                //strSC = strRev(strSC);
-
-                // If the length of the current bitstream is not OK, return false
-                // else store the slow control in byte array
-                if (intLenStrSC == SCLenght)
+                for (int i = 0; i < (scLength / 8); i++)
                 {
-                    bytSC[0] = Convert.ToByte('C');
-                    for (int i = 0; i < (SCLenght / 8); i++)
-                    {
-                        string strScCmdTmp = strSC.Substring(i * 8, 8);
-                        strScCmdTmp = strRev(strScCmdTmp);
-                        uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
-                        bytSC[i+1] = Convert.ToByte(intCmdTmp);
-                    }
-                }
-                else return result;
-
-                try
-                {
-                    mySerialComm.SendData(bytSC, 1 + SCLenght/8);
-                    result = true;
-                }
-                catch
-                {
-                    result = false;
+                    string strScCmdTmp = strSC.Substring(i * 8, 8);
+                    strScCmdTmp = strRev(strScCmdTmp);
+                    uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
+                    bytSC[i] = Convert.ToByte(intCmdTmp);
                 }
             }
-            else if (comboBox_SelectConnection.SelectedIndex == 0)
+            else
+                return result;
+
+            // Send configuration to Weeroc board
+            if (comboBox_SelectConnection.SelectedIndex == 0)
             {
-                // Get standard length of slow control bitstream
-                int SCLenght = strDefSC.Length;
-                // Get length of current slow control bitstream
-                int intLenStrSC = strSC.Length;
-                byte[] bytSC = new byte[SCLenght / 8];
-                // reverse slow control string before loading
-                strSC = strRev(strSC);
-
-                // If the length of the current bitstream is not OK, return false
-                // else store the slow control in byte array
-                if (intLenStrSC == SCLenght)
-                {
-                    for (int i = 0; i < (SCLenght / 8); i++)
-                    {
-                        string strScCmdTmp = strSC.Substring(i * 8, 8);
-                        strScCmdTmp = strRev(strScCmdTmp);
-                        uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
-                        bytSC[i] = Convert.ToByte(intCmdTmp);
-                    }
-                }
-                else return result;
-
                 // Select slow control parameters to FPGA
                 Firmware.sendWord(1, "111" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
                 // Send slow control parameters to FPGA
@@ -697,6 +662,31 @@ namespace CitirocUI
             
                 result = true;
             }
+            // Proto-CUBES
+            else if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                try
+                {
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendCitirocConf,
+                        bytSC);
+                    result = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to send Citiroc configuration " +
+                        "to Proto-CUBES!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + "Error message:"
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    result = false;
+                }
+            }
+
             return result;
         }
 

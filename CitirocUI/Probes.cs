@@ -50,6 +50,12 @@ namespace CitirocUI
         private bool sendProbes(int usbDevId)
         {
             bool result = false;
+            if (connectStatus != 1)
+            {
+                label_help.Text = "Please configure your connection.";
+                return false;
+            }
+
             char[] tmpProbeStream = new char[256];
 
             for (int i = 0; i < 256; i++) tmpProbeStream[i] = '0';
@@ -66,50 +72,20 @@ namespace CitirocUI
 
             int intLenProbeStream = probeStream.Length;
 
-            if (comboBox_SelectConnection.SelectedIndex == 1)
+            byte[] bytProbe = new byte[intLenProbeStream / 8];
+
+            probeStream = strRev(probeStream);
+
+            for (int i = 0; i < (intLenProbeStream / 8); i++)
             {
-                if (connectStatus != 1)
-                {
-                    label_help.Text = "Please configure your connection.";
-                    return false;
-                }
-                    
-                byte[] bytProbe = new byte[1 + intLenProbeStream / 8];
-
-                bytProbe[0] = Convert.ToByte('P');
-                for (int i = 0; i < (intLenProbeStream / 8); i++)
-                {
-                    string strProbeCmdTmp = probeStream.Substring(i * 8, 8);
-                    strProbeCmdTmp = strRev(strProbeCmdTmp);
-                    UInt32 intCmdTmp = Convert.ToUInt32(strProbeCmdTmp, 2);
-                    bytProbe[i + 1] = Convert.ToByte(intCmdTmp);
-                }
-
-                try
-                {
-                    mySerialComm.SendData(bytProbe, 1 + intLenProbeStream / 8);
-                    result = true;
-                }
-                catch (IOException)
-                {
-                    return false;
-                }
+                string strProbeCmdTmp = probeStream.Substring(i * 8, 8);
+                strProbeCmdTmp = strRev(strProbeCmdTmp);
+                UInt32 intCmdTmp = Convert.ToUInt32(strProbeCmdTmp, 2);
+                bytProbe[i] = Convert.ToByte(intCmdTmp);
             }
-            else if (comboBox_SelectConnection.SelectedIndex == 0)
+
+            if (comboBox_SelectConnection.SelectedIndex == 0)
             {
-                byte[] bytProbe = new byte[intLenProbeStream / 8];
-
-                probeStream = strRev(probeStream);
-
-                bytProbe[0] = Convert.ToByte('P');
-                for (int i = 0; i < (intLenProbeStream / 8); i++)
-                {
-                    string strProbeCmdTmp = probeStream.Substring(i * 8, 8);
-                    strProbeCmdTmp = strRev(strProbeCmdTmp);
-                    UInt32 intCmdTmp = Convert.ToUInt32(strProbeCmdTmp, 2);
-                    bytProbe[i] = Convert.ToByte(intCmdTmp);
-                }
-
                 // Select probes parameters to FPGA
                 Firmware.sendWord(1, "110" + ((checkBox_rstbPa.Checked == true) ? "1" : "0") + ((checkBox_readOutSpeed.Checked == true) ? "1" : "0") + ((checkBox_OR32polarity.Checked == true) ? "1" : "0") + "00", usbDevId);
                 // Send probes parameters to FPGA
@@ -144,6 +120,29 @@ namespace CitirocUI
 
                 return true;
             }
+            else if (comboBox_SelectConnection.SelectedIndex == 1)
+            {
+                try
+                {
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendProbeConf,
+                        bytProbe);
+                    result = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to send probes configuration " +
+                        "to Proto-CUBES!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + "Error message:"
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return false;
+                }
+            }
 
             return result;
         }
@@ -166,38 +165,56 @@ namespace CitirocUI
             // Test if serial connection is active
             else if((comboBox_SelectConnection.SelectedIndex == 1) && (connectStatus ==1))
             {
-                byte[] bytSC = new byte[2];
-                bytSC[0] = Convert.ToByte(ProtoCubesSerial.Command.SendReadReg);
-
                 byte tmpB = 0;
 
                 if (checkBox_rr.Checked)
                     tmpB = 1;
                 tmpB += Convert.ToByte(numericUpDown_rr.Value *2);
-                bytSC[1] = tmpB;
+
+                byte[] param = new byte[1];
+                param[0] = tmpB;
 
                 try
                 {
-                    mySerialComm.SendData(bytSC, 2);
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendReadReg, 
+                        param);
                  }
-                catch
+                catch (Exception ex)
                 {
-                    /* Prevent a crash on exception... */
+                    MessageBox.Show("Failed to send RRD configuration " +
+                        "to Proto-CUBES!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + "Error message:"
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
 
                 /* Reset the ASIC's read register, to put it back into normal operation */
                 if (!checkBox_rr.Checked)
                 {
-                    bytSC[0] = Convert.ToByte(ProtoCubesSerial.Command.SendGatewareConf);
-                    bytSC[1] = 0x80;
+                    param[0] = 0x80;
 
                     try
                     {
-                        mySerialComm.SendData(bytSC, 2);
+                        mySerialComm.SendCommand(ProtoCubesSerial.Command.SendGatewareConf,
+                            param);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        /* Prevent a crash on exception... */
+                        MessageBox.Show("Failed to send gateware configuration " +
+                            "to Proto-CUBES!"
+                            + Environment.NewLine
+                            + Environment.NewLine
+                            + "Error message:"
+                            + Environment.NewLine
+                            + ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                 }
             }

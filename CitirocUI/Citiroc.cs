@@ -2049,31 +2049,33 @@ namespace CitirocUI
 
             if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                byte[] cmd = new byte[4];
-
-                // Prep command
-                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendHVPSTmpVolt);
-                for (int i = 1; i < cmd.Length; ++i)
-                    cmd[i] = 0;
-
-                cmd[1] = checkBox_HVON.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
-
                 // Set conversion factor from the command reference dcoument of C11204-02.
                 UInt16 volt = (UInt16)(Convert.ToDouble(numUpDown_HV.Text) / 1.812e-3);
                 byte[] voltBytes = BitConverter.GetBytes(volt);
                 if (BitConverter.IsLittleEndian)
                     Array.Reverse(voltBytes);
 
-                cmd[2] = voltBytes[0];
-                cmd[3] = voltBytes[1];
+                byte[] hvpsConf = new byte[3];
+                hvpsConf[0] = checkBox_HVON.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
+                hvpsConf[1] = voltBytes[0];
+                hvpsConf[2] = voltBytes[1];
 
                 try
                 {
-                    mySerialComm.SendData(cmd, cmd.Length);
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendHVPSTmpVolt, hvpsConf);
                 }
-                catch (IOException ie)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ie.Message);
+                    MessageBox.Show("Failed to send HVPS configuration " +
+                        "to Proto-CUBES!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + "Error message:"
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     return false;
                 }
             }
@@ -2100,15 +2102,11 @@ namespace CitirocUI
 
         private void button_readHK_Click(object sender, EventArgs e)
         {
-            /* Form open, time to send CMD_REQ_HK (if serial port connection allows) */
-            byte[] telemetryParam = new byte[1];
-            telemetryParam[0] = Convert.ToByte(ProtoCubesSerial.Command.ReqHK);
-
             try
             {
                 if (connectStatus == 1)
                 {
-                    mySerialComm.SendData(telemetryParam, 1);
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.ReqHK, null);
                     button_readHK.BackColor = WeerocGreen;
                 }
                 else
@@ -2116,10 +2114,18 @@ namespace CitirocUI
                     throw new Exception();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                label_help.Text = "ERROR: Failed to send telemetry fetch command to Proto-CUBES! " +
-                    "Please check the connection...";
+                MessageBox.Show("Failed to send HK request command " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 button_readHK.BackColor = Color.IndianRed;
             }
 
@@ -2128,10 +2134,8 @@ namespace CitirocUI
 
         void button_SendResets_Click(object sender, EventArgs e)
         {
-            byte[] cmd = new byte[2];
-            cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendGatewareConf);
-
-            cmd[1] = (byte)(
+            byte[] gwConf = new byte[1];
+            gwConf[0] = (byte)(
                 ((checkBox_RstResetCounters.Checked ? 1 : 0)    << 0) |
                 ((checkBox_RstHCR.Checked ? 1 : 0)              << 1) |
                 ((checkBox_RstHisto.Checked ? 1 : 0)            << 2) |
@@ -2145,7 +2149,8 @@ namespace CitirocUI
             {
                 if (connectStatus == 1)
                 {
-                    mySerialComm.SendData(cmd, cmd.Length);
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendGatewareConf,
+                        gwConf);
                     button_SendResets.BackColor = WeerocGreen;
                 }
                 else
@@ -2153,10 +2158,18 @@ namespace CitirocUI
                     throw new Exception();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                label_help.Text = "ERROR: Failed to send resets command to Proto-CUBES! " +
-                    "Please check the connection...";
+                MessageBox.Show("Failed to send gateware configuration " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 button_SendResets.BackColor = Color.IndianRed;
             }
             tmrButtonColor.Enabled = true;
@@ -2164,7 +2177,7 @@ namespace CitirocUI
 
         private void button_hvSendPersistent_Click(object sender, EventArgs e)
         {
-            byte[] cmd = new byte[14];
+            byte[] hvpsConf = new byte[13];
 
             Int16 dtp1 = 0;
             Int16 dtp2 = 0;
@@ -2184,26 +2197,26 @@ namespace CitirocUI
                 t = Convert.ToUInt16((((double)(numUpDown_refTemp.Value)) * (-5.5e-3) + 1.035) / 1.907e-5);
             }
 
-            cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendHVPSConf);
-            cmd[1] = (byte)(checkBox_hvReset.Checked ? 0x03 : 0x01);
-            cmd[2] = (byte)((dtp1 & 0xff00) >> 8);
-            cmd[3] = (byte)((dtp1 & 0x00ff));
-            cmd[4] = (byte)((dtp2 & 0xff00) >> 8);
-            cmd[5] = (byte)((dtp2 & 0x00ff));
-            cmd[6] = (byte)((dt1 & 0xff00) >> 8);
-            cmd[7] = (byte)((dt1 & 0x00ff));
-            cmd[8] = (byte)((dt2 & 0xff00) >> 8);
-            cmd[9] = (byte)((dt2 & 0x00ff));
-            cmd[10] = (byte)((v & 0xff00) >> 8);
-            cmd[11] = (byte)((v & 0x00ff));
-            cmd[12] = (byte)((t & 0xff00) >> 8);
-            cmd[13] = (byte)((t & 0x00ff));
+            hvpsConf[0] = (byte)(checkBox_hvReset.Checked ? 0x03 : 0x01);
+            hvpsConf[1] = (byte)((dtp1 & 0xff00) >> 8);
+            hvpsConf[2] = (byte)((dtp1 & 0x00ff));
+            hvpsConf[3] = (byte)((dtp2 & 0xff00) >> 8);
+            hvpsConf[4] = (byte)((dtp2 & 0x00ff));
+            hvpsConf[5] = (byte)((dt1 & 0xff00) >> 8);
+            hvpsConf[6] = (byte)((dt1 & 0x00ff));
+            hvpsConf[7] = (byte)((dt2 & 0xff00) >> 8);
+            hvpsConf[8] = (byte)((dt2 & 0x00ff));
+            hvpsConf[9] = (byte)((v & 0xff00) >> 8);
+            hvpsConf[10] = (byte)((v & 0x00ff));
+            hvpsConf[11] = (byte)((t & 0xff00) >> 8);
+            hvpsConf[12] = (byte)((t & 0x00ff));
 
             try
             {
                 if (connectStatus == 1)
                 {
-                    mySerialComm.SendData(cmd, cmd.Length);
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendHVPSConf,
+                        hvpsConf);
                     button_hvSendPersistent.BackColor = WeerocGreen;
                 }
                 else
@@ -2211,10 +2224,18 @@ namespace CitirocUI
                     throw new Exception();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                label_help.Text = "ERROR: Failed to send HVPS settings to Proto-CUBES! " +
-                    "Please check the connection...";
+                MessageBox.Show("Failed to send HVPS configuration " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 button_hvSendPersistent.BackColor = Color.IndianRed;
             }
 
@@ -2317,13 +2338,17 @@ namespace CitirocUI
 
         private void Citiroc_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Send DAQ_STOP command
-            byte[] cmd = new byte[1];
+            /// Send DAQ stop to Proto-CUBES on form close; quit early if
+            /// not Proto-CUBES or we're not connected...
+            if (selectedConnectionMode != 1 ||
+                connectStatus != 1)
+            {
+                return;
+            }
 
             try
             {
-                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStop);
-                mySerialComm.SendData(cmd, cmd.Length);
+                mySerialComm.SendCommand(ProtoCubesSerial.Command.DAQStop, null);
                 mySerialComm.ClosePort();
             }
             catch { /* Blindly close... */}

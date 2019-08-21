@@ -283,40 +283,54 @@ namespace CitirocUI
                     label_help.Text = comboBox_SelectConnection.Text + " is connected. Click again if you wish to disconnect.";
 
                     // Send time on connection (Proto-CUBES)
-                    byte[] cmd = new byte[5];
-
-                    cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendTime);
 
                     TimeSpan timeSinceEpoch = DateTime.UtcNow -
                         new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                     UInt32 unixTime = Convert.ToUInt32(timeSinceEpoch.TotalSeconds);
 
-                    cmd[1] = (byte)((unixTime >> 24) & 0xff);
-                    cmd[2] = (byte)((unixTime >> 16) & 0xff);
-                    cmd[3] = (byte)((unixTime >> 8) & 0xff);
-                    cmd[4] = (byte)((unixTime) & 0xff);
+                    byte[] time = new byte[4];
+                    time[0] = (byte)((unixTime >> 24) & 0xff);
+                    time[1] = (byte)((unixTime >> 16) & 0xff);
+                    time[2] = (byte)((unixTime >> 8) & 0xff);
+                    time[3] = (byte)((unixTime) & 0xff);
 
                     try
                     {
-                        mySerialComm.SendData(cmd, cmd.Length);
+                        mySerialComm.SendCommand(ProtoCubesSerial.Command.SendTime, time);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        label_help.Text = "Could not send time to Proto-CUBES!";
+                        MessageBox.Show("Failed to send time " +
+                            "to Proto-CUBES!"
+                            + Environment.NewLine
+                            + Environment.NewLine
+                            + "Error message:"
+                            + Environment.NewLine
+                            + ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        throw new Exception();
                     }
 
                     // Request Board ID on connect
-                    cmd = new byte[1];
-                    cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.ReqBoardID);
-
                     try
                     {
-                        mySerialComm.CurrentCommand = (ProtoCubesSerial.Command)cmd[0];
-                        mySerialComm.SendData(cmd, cmd.Length);
+                        mySerialComm.SendCommand(ProtoCubesSerial.Command.ReqBoardID, null);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        label_help.Text = "Could not send ID request to Proto-CUBES!";
+                        MessageBox.Show("Failed to send request board ID command " +
+                            "to Proto-CUBES!"
+                            + Environment.NewLine
+                            + Environment.NewLine
+                            + "Error message:"
+                            + Environment.NewLine
+                            + ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        throw new Exception();
                     }
                 }
                 catch
@@ -331,7 +345,10 @@ namespace CitirocUI
             }
             else
             {
-                MessageBox.Show("Please select an instrument to connect to via the drop-down.");
+                MessageBox.Show("Please select an instrument to connect to via the drop-down.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 connectStatus = -1;
                 roundButton_connect.BackColor = Color.IndianRed;
                 roundButton_connect.ForeColor = Color.White;

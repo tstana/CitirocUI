@@ -92,11 +92,8 @@ namespace CitirocUI
 
         private bool _monvisible = false;
 
-        private byte[] _comBuffer;
-
-        private byte[] _daqDataArray = new byte[25000];
+        private byte[] commandReplyBuffer = new byte[25000];
  
-        private bool _retrievingDaqData = false;
         private int _numBytesRetrieved = 0;
         private int _numBins;       // TODO: Remove me (replace with expectedNumBytes or equiv.)
 
@@ -197,18 +194,6 @@ namespace CitirocUI
             set { _monvisible = value; }
         }
 
-        public byte[] ComBuffer
-        {
-            get { return _comBuffer; }
-            set { /* Read-only buffer */ }
-        }
-
-        public bool RetrievingDaqData
-        {
-            get { return _retrievingDaqData; }
-            set { _retrievingDaqData = value;  }
-        }
-
         public int NumBins
         {
             get { return _numBins; }
@@ -260,7 +245,6 @@ namespace CitirocUI
             _portName = name;
             _displayWindow = rtb;
 
-            _comBuffer = new byte[comPort.ReadBufferSize];
             //now add an event handler
             comPort.DataReceived += new SerialDataReceivedEventHandler(comPort_DataReceived);
         }
@@ -279,7 +263,6 @@ namespace CitirocUI
             _displayWindow = null;
             _monvisible = false;
 
-            _comBuffer = new byte[comPort.ReadBufferSize];
             //add event handler
             comPort.DataReceived += new SerialDataReceivedEventHandler(comPort_DataReceived);
         }
@@ -308,6 +291,109 @@ namespace CitirocUI
             {
              //   _displayWindow.SelectAll();
             }
+        }
+
+        public void SendCommand(ProtoCubesSerial.Command cmd, byte[] cmdParam)
+        {
+            byte[] cmdBytes = new byte[1];
+
+            /* Check that we're getting the right number of bytes as param. */
+            switch (cmd) {
+                case Command.None:
+                    throw new ArgumentException("Cannot send Command.None!");
+
+                case Command.DAQStart:
+                case Command.DAQStop:
+                case Command.ReqBoardID:
+                case Command.ReqHK:
+                case Command.ReqPayload:
+                    if (cmdParam != null)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' does not accept any arguments.");
+                    }
+                    break;
+
+                case Command.SendCitirocConf:
+                    if (cmdParam.Length != 143)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 143 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[144];
+                    break;
+
+                case Command.SendProbeConf:
+                    if (cmdParam.Length != 32)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 32 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[33];
+                    break;
+
+                case Command.SendReadReg:
+                case Command.SendDAQDur:
+                case Command.SendGatewareConf:
+                    if (cmdParam.Length != 1)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 1 byte as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[2];
+                    break;
+
+                case Command.SendTime:
+                    if (cmdParam.Length != 4)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 4 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    break;
+
+                case Command.SendHVPSTmpVolt:
+                    if (cmdParam.Length != 3)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 2 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[4];
+                    break;
+
+                case Command.SendHVPSConf:
+                    if (cmdParam.Length != 13)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 13 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[14];
+                    break;
+
+                default:
+                    throw new ArgumentException("Unknown command '" +
+                        (char)cmd + "' received.");
+            }
+
+            /* Prep the array, send it and set the currently executing cmd. */
+            cmdBytes[0] = Convert.ToByte(cmd);
+            if (cmdParam != null)
+                Array.Copy(cmdParam, 0, cmdBytes, 1, cmdParam.Length);
+
+            this.SendData(cmdBytes, cmdBytes.Length);
+
+            currentCommand = cmd;
         }
         #endregion
 
@@ -434,12 +520,18 @@ namespace CitirocUI
 
             /*
              * Expected number of bytes:
+             *      ID:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Data (30 bytes)
+             *          \r\n (2 bytes)
+             *          ---
+             *          Total: 55
              *      HK:
              *          Unix time: 0123456789\r\n (23 bytes)
              *          Data (38 bytes)
              *          \r\n (2 bytes)
              *          ---
-             *          Total: 57
+             *          Total: 63
              *      DAQ:
              *          Unix time: 0123456789\r\n (23 bytes)
              *          Histo header (256 bytes)
@@ -447,43 +539,48 @@ namespace CitirocUI
              *          ---
              *          Total: calculated below
              */
-            int dataLength = 63;
-            if (currentCommand == Command.ReqBoardID)
-                dataLength = 55;
-            if (_retrievingDaqData)
-                dataLength = 23 + 256 + 6 * (_numBins * 2);
+            int dataLength;
+            switch (currentCommand) {
+                case Command.ReqBoardID:
+                    dataLength = 55;
+                    break;
+                case Command.ReqHK:
+                    dataLength = 63;
+                    break;
+                case Command.ReqPayload:
+                    dataLength = 23 + 256 + 6 * (_numBins * 2);
+                    break;
+                default:
+                    dataLength = 0;
+                    break;
+            }
 
             /*
-             * Buffer received data as it arrives until required number of
+             * Buffer received data as it arrives until the expected number of
              * bytes have been received
              */
             try
             {
-                dataBytes.CopyTo(_daqDataArray, _numBytesRetrieved);
+                dataBytes.CopyTo(commandReplyBuffer, _numBytesRetrieved);
                 _numBytesRetrieved += numBytesRead;
-                if (_numBytesRetrieved >= dataLength)      // TODO: Replace me with "end-of-DAQ-data" marker...
+                if (_numBytesRetrieved >= dataLength)
                 {
-                    if (_retrievingDaqData)
-                    {
-                        DataReadyEvent(this, new DataReadyEventArgs(Command.ReqPayload, _daqDataArray));
-                        _retrievingDaqData = false;
-                    }
-                    else if (currentCommand == Command.ReqBoardID)
-                        DataReadyEvent(this, new DataReadyEventArgs(currentCommand, _daqDataArray));
-                    else
-                    {
-                        DataReadyEvent(this, new DataReadyEventArgs(Command.ReqHK, _daqDataArray));
-                    }
-
+                    DataReadyEvent(this,
+                        new DataReadyEventArgs(currentCommand,
+                            commandReplyBuffer));
                     currentCommand = Command.None;
                     _numBytesRetrieved = 0;
                 }
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Attempting to write too many bytes to _hkDataArray:\n" +
+                MessageBox.Show("Attempting to write too many bytes to " +
+                    " command reply buffer:\n" +
                     "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
-                    "dataB.Length = " + dataBytes.Length + "\n", "Exception");
+                    "dataB.Length = " + dataBytes.Length + "\n",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 _numBytesRetrieved = 0;
             }
             catch (Exception excep)

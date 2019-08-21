@@ -122,17 +122,45 @@ namespace CitirocUI
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
                 AdjustAcquisitionTime();            // TODO: Remove?
 
-                byte[] cmd;
+                byte[] daqDur = new byte[1];
 
-                cmd = new byte[2];
-                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.SendDAQDur);
-                cmd[1] = Convert.ToByte(individAcqTime);
+                daqDur[0] = Convert.ToByte(individAcqTime);
 
-                mySerialComm.SendData(cmd, cmd.Length);
+                try
+                {
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.SendDAQDur, daqDur);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to send DAQ duration " +
+                        "to Proto-CUBES!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + "Error message:"
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
 
-                cmd = new byte[1];
-                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStart);
-                mySerialComm.SendData(cmd, cmd.Length);
+                try
+                {
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.DAQStart, null);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to send DAQ start command " +
+                        "to Proto-CUBES!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + "Error message:"
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
 
             // No connection
@@ -445,9 +473,21 @@ namespace CitirocUI
             else if (selectedConnectionMode == 1)
             {
                 // Send DAQ_STOP command
-                byte[] cmd = new byte[1];
-                cmd[0] = Convert.ToByte(ProtoCubesSerial.Command.DAQStop);
-                mySerialComm.SendData(cmd, cmd.Length);
+                try
+                {
+                    mySerialComm.SendCommand(ProtoCubesSerial.Command.DAQStop, null);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to send DAQ Stop command " +
+                        "to Proto-CUBES!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
 
                 // Wait for 3 seconds and send REQ_PAYLOAD command
                 Stopwatch s = Stopwatch.StartNew();
@@ -497,16 +537,28 @@ namespace CitirocUI
              */
             int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
 
-            byte[] reqData = new byte[1];
-            reqData[0] = Convert.ToByte(ProtoCubesSerial.Command.ReqPayload);
-
             /*
              * Prep the ProtoCubesSerial instance for DAQ data reception
              * and GO!
              */
-            mySerialComm.RetrievingDaqData = true;
-            mySerialComm.NumBins = noOfBins;
-            mySerialComm.SendData(reqData, reqData.Length);
+            try
+            {
+                mySerialComm.NumBins = noOfBins;
+                mySerialComm.SendCommand(ProtoCubesSerial.Command.ReqPayload, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send request payload command " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void loadData()
