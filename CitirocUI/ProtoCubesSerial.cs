@@ -357,6 +357,7 @@ namespace CitirocUI
                             "the parameter array consists of " +
                             cmdParam.Length.ToString() + " bytes instead!");
                     }
+                    cmdBytes = new byte[5];
                     break;
 
                 case Command.SendHVPSTmpVolt:
