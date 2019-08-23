@@ -2114,7 +2114,8 @@ namespace CitirocUI
                 }
                 else
                 {
-                    throw new Exception();
+                    throw new Exception("Please connect to an instrument " +
+                        "using the \"Connect\" tab.");
                 }
             }
             catch (Exception ex)
@@ -2158,7 +2159,9 @@ namespace CitirocUI
                 }
                 else
                 {
-                    throw new Exception();
+                    throw new Exception("Please connect to an instrument " +
+                        "using the \"Connect\" tab.");
+);
                 }
             }
             catch (Exception ex)
@@ -2224,7 +2227,8 @@ namespace CitirocUI
                 }
                 else
                 {
-                    throw new Exception();
+                    throw new Exception("Please connect to an instrument " +
+                        "using the \"Connect\" tab.");
                 }
             }
             catch (Exception ex)
