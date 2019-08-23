@@ -29,6 +29,26 @@ namespace CitirocUI
         #region Start Acquisition Button
         private void button_startAcquisition_Click(object sender, EventArgs e)
         {
+            /* Quit early if not connected to any board */
+            if (connectStatus == -1)
+            {
+                button_startAcquisition.BackColor = Color.IndianRed;
+                button_startAcquisition.ForeColor = Color.White;
+                tmrButtonColor.Enabled = true;
+                MessageBox.Show("Please connect to a board using the " +
+                    "\"Connect\" tab",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            /* Color button green otherwise */
+            button_startAcquisition.BackColor = WeerocGreen;
+            button_startAcquisition.ForeColor = Color.White;
+            tmrButtonColor.Enabled = true;
+
+            /* Cancel DAQ if any is running */
             if (backgroundWorker_dataAcquisition.IsBusy) {
                 backgroundWorker_dataAcquisition.CancelAsync();
                 return;

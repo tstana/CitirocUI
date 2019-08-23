@@ -2326,6 +2326,9 @@ namespace CitirocUI
 
             button_hvSendPersistent.BackColor = SystemColors.Control;
             button_hvSendPersistent.ForeColor = SystemColors.ControlText;
+
+            button_startAcquisition.BackColor = Color.Gainsboro;
+            button_startAcquisition.ForeColor = SystemColors.ControlText;
         }
 
         private void label_help_TextChanged(object sender, EventArgs e)
