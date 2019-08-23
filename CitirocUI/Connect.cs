@@ -257,7 +257,7 @@ namespace CitirocUI
                     protoCubes.StopBits = StopBits.One;
                     protoCubes.DataBits = 8;
                     protoCubes.Handshake = Handshake.None;
-                    protoCubes.RtsEnable = true;
+                    protoCubes.RtsEnable = false;
 
                     protoCubes.DisplayWindow = rtxtMonitor;
 
