@@ -1949,7 +1949,9 @@ namespace CitirocUI
             textBox_timestamp.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_timestamp.Text = timestamp.ToString();
+                    DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                    DateTime time = epoch.AddSeconds(Convert.ToDouble(timestamp));
+                    textBox_timestamp.Text = time.ToString();
                 }
             ));
 
