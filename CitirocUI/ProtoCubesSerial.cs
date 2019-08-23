@@ -537,6 +537,7 @@ namespace CitirocUI
              *          Unix time: 0123456789\r\n (23 bytes)
              *          Histo header (256 bytes)
              *          Bins data (variable)
+             *          \r\n
              *          ---
              *          Total: calculated below
              */
@@ -549,7 +550,7 @@ namespace CitirocUI
                     dataLength = 63;
                     break;
                 case Command.ReqPayload:
-                    dataLength = 23 + 256 + 6 * (_numBins * 2);
+                    dataLength = 23 + 256 + 6 * (_numBins * 2) + 2;
                     break;
                 default:
                     dataLength = 0;
