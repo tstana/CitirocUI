@@ -999,7 +999,7 @@ namespace CitirocUI
             if ((e.Command == ProtoCubesSerial.Command.ReqPayload) &&
                 (selectedConnectionMode == 1))
             {
-                string date = DateTime.Now.ToString(new System.Globalization.CultureInfo("se-SE"));
+                string date = DateTime.UtcNow.ToString(new System.Globalization.CultureInfo("se-SE"));
                 date = date.Replace(' ', '_');
                 date = date.Replace(':', '-');
                 date = date.Replace('/', '-');
