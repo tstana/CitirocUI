@@ -1951,7 +1951,8 @@ namespace CitirocUI
                 {
                     DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                     DateTime time = epoch.AddSeconds(Convert.ToDouble(timestamp));
-                    textBox_timestamp.Text = time.ToString();
+                    textBox_timestamp.Text = time.ToString("hh:mm:ss tt") + " on " +
+                        time.ToString("yyyy-MM-dd");
                 }
             ));
 

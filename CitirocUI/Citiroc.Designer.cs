@@ -12531,9 +12531,9 @@
             this.label_timestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_timestamp.Location = new System.Drawing.Point(6, 60);
             this.label_timestamp.Name = "label_timestamp";
-            this.label_timestamp.Size = new System.Drawing.Size(277, 18);
+            this.label_timestamp.Size = new System.Drawing.Size(311, 18);
             this.label_timestamp.TabIndex = 0;
-            this.label_timestamp.Text = "Timestamp of last telemetry packet:";
+            this.label_timestamp.Text = "UTC timestamp of last telemetry packet:";
             // 
             // rtxtMonitor
             // 
