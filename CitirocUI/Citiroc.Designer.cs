@@ -11757,7 +11757,7 @@
             this.button_readHK.Name = "button_readHK";
             this.button_readHK.Size = new System.Drawing.Size(422, 30);
             this.button_readHK.TabIndex = 1;
-            this.button_readHK.Text = "&Read Telemetry";
+            this.button_readHK.Text = "&Read HK";
             this.button_readHK.UseVisualStyleBackColor = false;
             this.button_readHK.Click += new System.EventHandler(this.button_readHK_Click);
             // 
@@ -11946,7 +11946,7 @@
             this.groupBox_telemetry.Size = new System.Drawing.Size(448, 507);
             this.groupBox_telemetry.TabIndex = 1;
             this.groupBox_telemetry.TabStop = false;
-            this.groupBox_telemetry.Text = "Proto-CUBES Telemetry";
+            this.groupBox_telemetry.Text = "Proto-CUBES House-Keeping";
             // 
             // groupBox_HV
             // 
@@ -12392,7 +12392,7 @@
             this.groupBox_HvpsTelemetry.Size = new System.Drawing.Size(221, 145);
             this.groupBox_HvpsTelemetry.TabIndex = 39;
             this.groupBox_HvpsTelemetry.TabStop = false;
-            this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry (read every 5 s)";
+            this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry (updated every 5 s)";
             // 
             // label_Voltage
             // 
