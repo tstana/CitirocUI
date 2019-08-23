@@ -994,7 +994,7 @@ namespace CitirocUI
 
         #region Serial Data Ready Event Handler
 
-        private void mySerialComm_DataReady(object sender, DataReadyEventArgs e)
+        private void DAQ_DataReady(object sender, DataReadyEventArgs e)
         {
             if ((e.Command == ProtoCubesSerial.Command.ReqPayload) &&
                 (selectedConnectionMode == 1))
