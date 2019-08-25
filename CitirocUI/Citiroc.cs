@@ -198,11 +198,9 @@ namespace CitirocUI
             tabControl_top.ItemSize = new Size(0, 1);
             tabControl_top.SizeMode = TabSizeMode.Fixed;
 
-            // TODO: Uncomment code below when revision fixed...
-            //label_titleBar.Text += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            //if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
-            //    label_titleBar.Text += " (KTH)";
-            label_titleBar.Text = "CitirocUI Proto-CUBES -- UNDER DEVELOPMENT...";
+            label_titleBar.Text += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
+                label_titleBar.Text += " (KTH)";
 
             // Set FTDI device count to 0
             ftdiDeviceCount = 0;

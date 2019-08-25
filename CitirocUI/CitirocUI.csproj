@@ -26,7 +26,7 @@
     <ProductName>CitirocUI</ProductName>
     <PublisherName>Weeroc</PublisherName>
     <ApplicationRevision>250</ApplicationRevision>
-    <ApplicationVersion>0.9.8.250</ApplicationVersion>
+    <ApplicationVersion>1.0.0.250</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -49,7 +49,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
