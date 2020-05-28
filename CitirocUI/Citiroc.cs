@@ -2178,6 +2178,45 @@ namespace CitirocUI
             tmrButtonColor.Enabled = true;
         }
 
+
+        private void button_ClearArduinoSD_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Please confirm that you want to delete all SD " +
+                "card files (and this button was not cliked in error).",
+                "Confirm SD card delete",
+                MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.Yes) {
+                try
+                {
+                    if (connectStatus == 1)
+                    {
+                        protoCubes.SendCommand(ProtoCubesSerial.Command.DelFiles, null);
+                        button_ClearArduinoSD.BackColor = WeerocGreen;
+                    }
+                    else
+                    {
+                        throw new Exception("Please connect to an instrument " +
+                            "using the \"Connect\" tab.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to send \"Delete SD Card Files\" command " +
+                        "to Proto-CUBES!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + "Error message:"
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    button_ClearArduinoSD.BackColor = Color.IndianRed;
+                }
+                tmrButtonColor.Enabled = true;
+            }
+        }
+
         private void button_hvSendPersistent_Click(object sender, EventArgs e)
         {
             byte[] hvpsConf = new byte[13];
@@ -2330,6 +2369,9 @@ namespace CitirocUI
 
             button_startAcquisition.BackColor = Color.Gainsboro;
             button_startAcquisition.ForeColor = SystemColors.ControlText;
+
+            button_ClearArduinoSD.BackColor = Color.Gainsboro;
+            button_ClearArduinoSD.ForeColor = SystemColors.ControlText;
         }
 
         private void label_help_TextChanged(object sender, EventArgs e)

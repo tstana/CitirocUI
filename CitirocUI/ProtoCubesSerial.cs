@@ -68,6 +68,7 @@ namespace CitirocUI
 
             DAQStart            = 'S',
             DAQStop             = 'T',
+            DelFiles            = 'Q',
 
             ReqHK               = 'h',
             ReqPayload          = 'p',
@@ -307,6 +308,7 @@ namespace CitirocUI
                 case Command.ReqBoardID:
                 case Command.ReqHK:
                 case Command.ReqPayload:
+                case Command.DelFiles:
                     if (cmdParam != null)
                     {
                         throw new ArgumentException("Command '" +
