@@ -589,18 +589,35 @@ namespace CitirocUI
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Attempting to write too many bytes to " +
-                    " command reply buffer:\n" +
-                    "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
-                    "dataB.Length = " + dataBytes.Length + "\n",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                using (FileStream f = File.Open("_ProtoCubesSerial_Excep.log",
+                    FileMode.Append))
+                {
+                    string s = "Attempting to write too many bytes to " +
+                        "command reply buffer:" +
+                        Environment.NewLine +
+                        "_numBytesRetrieved = " + _numBytesRetrieved +
+                        Environment.NewLine +
+                        "dataB.Length = " + dataBytes.Length +
+                        Environment.NewLine +
+                        Environment.NewLine;
+                    byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                    f.Write(bytes, 0, bytes.Length);
+                }
                 _numBytesRetrieved = 0;
             }
             catch (Exception excep)
             {
-                MessageBox.Show(excep.Message, "Error");
+                using (FileStream f = File.Open("_ProtoCubesSerial_Excep.log",
+                    FileMode.Append))
+                {
+                    string s = "Exception in comPort_DataReceived():" +
+                        Environment.NewLine +
+                        excep.Message +
+                        Environment.NewLine +
+                        Environment.NewLine;
+                    byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                    f.Write(bytes, 0, bytes.Length);
+                }
                 _numBytesRetrieved = 0;
             }
 
