@@ -25,6 +25,7 @@ namespace CitirocUI
         UInt16 daqTimeActual;
         int nbAcq = 100;
         bool timeAcquisitionMode = true;
+        byte arduinoStatus;
 
         #region Start Acquisition Button
         private void button_startAcquisition_Click(object sender, EventArgs e)
@@ -385,49 +386,34 @@ namespace CitirocUI
                 /// total DAQ time and the other for individual DAQs
                 /// (Proto-CUBES runs multiple DAQs and sends the file
                 /// corresponding to a single DAQ after the run is done).
-                /// 
-                /// TODO: Change stopwatchIndividualDaqRun with timer? (See below...)
                 var stopwatchTotalDaqRun = Stopwatch.StartNew();
                 var stopwatchIndividualDaqRun = Stopwatch.StartNew();
-                bool inhibitReqPayload = true;
-
-                /// Start by sleeping for 50 ms, to make sure we don't de-inhibit
-                /// the first REQ_PAYLOAD.
-                Thread.Sleep(50);
+                var individualDaqTimeMillisec = 3000 + 
+                    (Convert.ToInt32(textBox_numData.Text) * 1000);
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
-                    var individualDaqTimeMillisec = Convert.ToInt32(textBox_numData.Text) * 1000;      // TODO: Handle exception (???)
-
-                    /// TODO: This is very hardcoded and time-dependant -- make event-based or similar!
-
-                    /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                    /// Note: Can't use Control.Timer (or whatever the first hit when searching online
-                    /// for ".NET Timer" is), because that one is "optimized for WinForms", which can
-                    /// only run in UI thread -- and it is not the UART thread that this function works in.
-
-                    /// On every "DAQ_DUR + 3", send REQ_PAYLOAD command.
-                    /// Inhibit the REQ_PAYLOAD until next "DAQ_DUR+3"
-                    /// iteration.
-                    if (timeAcquisitionMode && (!inhibitReqPayload) &&
-                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000))
-                    {
-                        UpdatingLabel("Sending REQ_PAYLOAD to Proto-CUBES...", label_help);
-                        SendReqPayload();
-                        inhibitReqPayload = true;
-                    }
-
-                    // De-inhibit the REQ_PAYLOAD on "DAQ_DUR + 3" overflow.
+                    /// On every "DAQ_DUR + 3", stop the stopwatch and send the
+                    /// REQ_STATUS command. When REQ_STATUS tells us the
+                    /// Arduino has a new file available, the stopwatch can
+                    /// be restarted.
                     if (timeAcquisitionMode &&
-                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 0) &&
-                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) < 50))
+                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds) >
+                            individualDaqTimeMillisec))
                     {
-                        inhibitReqPayload = false;
+                        stopwatchIndividualDaqRun.Stop();
+                        SendReqStatus();
+                        while ((arduinoStatus & 0x02) == 0)
+                            Thread.Sleep(5);
+                            // TODO: Timeout on reading arduino status (?)
+                        arduinoStatus = 0;
+                        SendReqPayload();
+                        stopwatchIndividualDaqRun.Restart();
                     }
-                    /// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
                     // Stop the acquisition when on DAQ run "time-out"
-                    if (timeAcquisitionMode && stopwatchTotalDaqRun.ElapsedMilliseconds >= acqTimeMillisec)
+                    if (timeAcquisitionMode &&
+                        stopwatchTotalDaqRun.ElapsedMilliseconds >= acqTimeMillisec)
                     {
                         stopwatchTotalDaqRun.Stop();
                         stopwatchIndividualDaqRun.Stop();
@@ -511,10 +497,15 @@ namespace CitirocUI
 
                 // Wait for 3 seconds and send REQ_PAYLOAD command
                 Stopwatch s = Stopwatch.StartNew();
-                label_help.Text = "NOTE: Waiting 3 seconds until sending REQ_PAYLOAD...";
+                label_help.Text = "NOTE: Waiting 3 seconds until sending REQ_STATUS...";
                 while (s.ElapsedMilliseconds < 3000)
-                    ;
+                    Thread.Sleep(5);
                 label_help.Text = "";
+                SendReqStatus();
+                while ((arduinoStatus & 0x02) == 0)
+                    Thread.Sleep(5);
+                    // TODO: Timeout on Arduino status readout?
+                arduinoStatus = 0;
                 SendReqPayload();
             }
         }
@@ -551,12 +542,37 @@ namespace CitirocUI
             }
         }
 
+        private void SendReqStatus()
+        {
+            UpdatingLabel("Sending REQ_STATUS to Proto-CUBES...", label_help);
+
+            try
+            {
+                protoCubes.SendCommand(ProtoCubesSerial.Command.ReqStatus, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send request status command " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
         private void SendReqPayload()
         {
             /* TODO check textBox_NumBins limits !
              */
             int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
 
+            UpdatingLabel("Sending REQ_PAYLOAD to Proto-CUBES...", label_help);
+                       
             /*
              * Prep the ProtoCubesSerial instance for DAQ data reception
              * and GO!
@@ -1012,7 +1028,17 @@ namespace CitirocUI
         }
         #endregion
 
-        #region Serial Data Ready Event Handler
+        #region Serial Data Ready Event Handlers
+
+        private void ReqStatus_DataReady(object sender, DataReadyEventArgs e)
+        {
+            /* Quit early if not the right command... */
+            if (e.Command != ProtoCubesSerial.Command.ReqStatus)
+                return;
+
+            /* Set Arduino status variable */
+            arduinoStatus = e.DataBytes[0];
+        }
 
         private void DAQ_DataReady(object sender, DataReadyEventArgs e)
         {
