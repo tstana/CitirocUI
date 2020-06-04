@@ -388,24 +388,26 @@ namespace CitirocUI
                 /// corresponding to a single DAQ after the run is done).
                 var stopwatchTotalDaqRun = Stopwatch.StartNew();
                 var stopwatchIndividualDaqRun = Stopwatch.StartNew();
-                var individualDaqTimeMillisec = 3000 + 
+                var individualDaqTimeMillisec = 1000 + 
                     (Convert.ToInt32(textBox_numData.Text) * 1000);
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
-                    /// On every "DAQ_DUR + 3", stop the stopwatch and send the
-                    /// REQ_STATUS command. When REQ_STATUS tells us the
-                    /// Arduino has a new file available, the stopwatch can
-                    /// be restarted.
+                    /// On every "DAQ_DUR + 1", stop the stopwatch and send the
+                    /// REQ_STATUS command every 500 ms. When REQ_STATUS tells
+                    /// us the Arduino has a new file available, the stopwatch
+                    /// can be restarted.
                     if (timeAcquisitionMode &&
                         ((stopwatchIndividualDaqRun.ElapsedMilliseconds) >
                             individualDaqTimeMillisec))
                     {
                         stopwatchIndividualDaqRun.Stop();
-                        SendReqStatus();
-                        while ((arduinoStatus & 0x02) == 0)
-                            Thread.Sleep(5);
+                        while ((arduinoStatus & 0x02) == 0) {
+                            // Wait for Arduino to store data to SD card...
+                            Thread.Sleep(500);
+                            SendReqStatus();
                             // TODO: Timeout on reading arduino status (?)
+                        }
                         arduinoStatus = 0;
                         SendReqPayload();
                         stopwatchIndividualDaqRun.Restart();
@@ -421,7 +423,7 @@ namespace CitirocUI
                     }
                     Thread.Sleep(5);
 
-                    /* DAQ progess  */
+                    /* DAQ progess */
                     if (timeAcquisitionMode)
                     {
                         backgroundWorker_dataAcquisition.ReportProgress((int)(stopwatchTotalDaqRun.ElapsedMilliseconds * 100 / acqTimeMillisec));
@@ -495,16 +497,19 @@ namespace CitirocUI
                         MessageBoxIcon.Error);
                 }
 
-                // Wait for 3 seconds and send REQ_PAYLOAD command
+                // Wait for one second and send REQ_PAYLOAD command
                 Stopwatch s = Stopwatch.StartNew();
-                label_help.Text = "NOTE: Waiting 3 seconds until sending REQ_STATUS...";
-                while (s.ElapsedMilliseconds < 3000)
+                while (s.ElapsedMilliseconds < 1000)
                     Thread.Sleep(5);
                 label_help.Text = "";
                 SendReqStatus();
                 while ((arduinoStatus & 0x02) == 0)
-                    Thread.Sleep(5);
-                    // TODO: Timeout on Arduino status readout?
+                {
+                    // Wait for Arduino to store data to SD card...
+                    SendReqStatus();
+                    Thread.Sleep(500);
+                    // TODO: Timeout on reading arduino status (?)
+                }
                 arduinoStatus = 0;
                 SendReqPayload();
             }
