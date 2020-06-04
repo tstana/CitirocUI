@@ -331,11 +331,12 @@ namespace CitirocUI
 
             // Create serial comm object and attach event to local function
             protoCubes = new ProtoCubesSerial();
+            protoCubes.ExcepFileFolder = textBox_dataSavePath.Text;
             protoCubes.DataReadyEvent += this.ReqStatus_DataReady;
             protoCubes.DataReadyEvent += this.DAQ_DataReady;
             protoCubes.DataReadyEvent += this.ReqBoardID_DataReady;
 
-            // Ckear text in some labels
+            // Clear text in some labels
             label_nbHit.Text = "";
             label_DataFile.Text = "";
 
@@ -2383,6 +2384,13 @@ namespace CitirocUI
                     label_help.Text.Contains("Writing DAQ data to"))
             {
                 refreshDataChart();
+            }
+        }
+
+        private void textBox_dataSavePath_TextChanged(object sender, EventArgs e)
+        {
+            if (protoCubes != null) {
+                protoCubes.ExcepFileFolder = textBox_dataSavePath.Text;
             }
         }
 

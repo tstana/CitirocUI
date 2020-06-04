@@ -104,6 +104,8 @@ namespace CitirocUI
         private SerialPort comPort = new SerialPort();
 
         private Command currentCommand = Command.None;
+
+        private string excepFileFolder;
         #endregion
 
         #region Events
@@ -226,6 +228,12 @@ namespace CitirocUI
         {
             get { return currentCommand; }
             set { currentCommand = value; }
+        }
+
+        public string ExcepFileFolder
+        {
+            get { return excepFileFolder; }
+            set { excepFileFolder = value; }
         }
         #endregion
 
@@ -589,7 +597,8 @@ namespace CitirocUI
             }
             catch (ArgumentException)
             {
-                using (FileStream f = File.Open("_ProtoCubesSerial_Excep.log",
+                using (FileStream f = File.Open(
+                    excepFileFolder.TrimEnd('\\') + "\\_ProtoCubesSerial_Excep.log",
                     FileMode.Append))
                 {
                     string s = "Attempting to write too many bytes to " +
