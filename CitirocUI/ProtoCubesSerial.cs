@@ -71,6 +71,7 @@ namespace CitirocUI
             DelFiles            = 'Q',
 
             ReqHK               = 'h',
+            ReqStatus           = 's',
             ReqPayload          = 'p',
             ReqBoardID          = 'i'
         }
@@ -307,6 +308,7 @@ namespace CitirocUI
                 case Command.DAQStop:
                 case Command.ReqBoardID:
                 case Command.ReqHK:
+                case Command.ReqStatus:
                 case Command.ReqPayload:
                 case Command.DelFiles:
                     if (cmdParam != null)
@@ -529,6 +531,12 @@ namespace CitirocUI
              *          \r\n (2 bytes)
              *          ---
              *          Total: 55
+             *      Status:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Data (1 byte)
+             *          \r\n (2 bytes)
+             *          ---
+             *          Total: 26
              *      HK:
              *          Unix time: 0123456789\r\n (23 bytes)
              *          Data (38 bytes)
@@ -550,6 +558,9 @@ namespace CitirocUI
                     break;
                 case Command.ReqHK:
                     dataLength = 63;
+                    break;
+                case Command.ReqStatus:
+                    dataLength = 26;
                     break;
                 case Command.ReqPayload:
                     dataLength = 23 + 256 + 6 * (_numBins * 2) + 2;
