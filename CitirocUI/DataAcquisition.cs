@@ -402,14 +402,7 @@ namespace CitirocUI
                             individualDaqTimeMillisec))
                     {
                         stopwatchIndividualDaqRun.Stop();
-                        while ((arduinoStatus & 0x02) == 0) {
-                            // Wait for Arduino to store data to SD card...
-                            Thread.Sleep(500);
-                            SendReqStatus();
-                            // TODO: Timeout on reading arduino status (?)
-                        }
-                        arduinoStatus = 0;
-                        SendReqPayload();
+                        ReqPayloadProcedure();
                         stopwatchIndividualDaqRun.Restart();
                     }
 
@@ -502,16 +495,7 @@ namespace CitirocUI
                 while (s.ElapsedMilliseconds < 1000)
                     Thread.Sleep(5);
                 label_help.Text = "";
-                SendReqStatus();
-                while ((arduinoStatus & 0x02) == 0)
-                {
-                    // Wait for Arduino to store data to SD card...
-                    SendReqStatus();
-                    Thread.Sleep(500);
-                    // TODO: Timeout on reading arduino status (?)
-                }
-                arduinoStatus = 0;
-                SendReqPayload();
+                ReqPayloadProcedure();
             }
         }
         #endregion
@@ -600,6 +584,22 @@ namespace CitirocUI
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void ReqPayloadProcedure()
+        {
+            int i = 0;
+            do
+            {
+                /// Try to REQ_STATUS every 500 ms with an 8-try "timeout".
+                /// Break on new file available (bit 1 in status = '1').
+                Thread.Sleep(500);
+                SendReqStatus();
+                if ((arduinoStatus & 0x02) != 0)
+                    break;
+            } while (i++ < 8);
+            arduinoStatus = 0;
+            SendReqPayload();
         }
 
         private void loadData()
