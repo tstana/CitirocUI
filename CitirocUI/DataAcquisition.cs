@@ -593,8 +593,8 @@ namespace CitirocUI
             {
                 /// Try to REQ_STATUS every 500 ms with an 8-try "timeout".
                 /// Break on new file available (bit 1 in status = '1').
-                Thread.Sleep(500);
                 SendReqStatus();
+                Thread.Sleep(500);
                 if ((arduinoStatus & 0x02) != 0)
                     break;
             } while (i++ < 8);
@@ -1042,7 +1042,7 @@ namespace CitirocUI
                 return;
 
             /* Set Arduino status variable */
-            arduinoStatus = e.DataBytes[0];
+            arduinoStatus = e.DataBytes[23];
         }
 
         private void DAQ_DataReady(object sender, DataReadyEventArgs e)
