@@ -584,56 +584,15 @@ namespace CitirocUI
              */
             try
             {
-                using (FileStream f = File.Open(
-                    excepFileFolder.TrimEnd('\\') + "\\_ProtoCubesSerial_Excep.log",
-                    FileMode.Append))
+                dataBytes.CopyTo(commandReplyBuffer, _numBytesRetrieved);
+                _numBytesRetrieved += numBytesRead;
+                if (_numBytesRetrieved >= dataLength)
                 {
-                    string s;
-                    byte[] bytes;
-
-                    s = _numBytesRetrieved + Environment.NewLine;
-                    bytes = System.Text.Encoding.ASCII.GetBytes(s);
-                    f.Write(bytes, 0, bytes.Length);
-
-                    ///////////////////////////////
-                    dataBytes.CopyTo(commandReplyBuffer, _numBytesRetrieved);
-                    _numBytesRetrieved += numBytesRead;
-                    if (_numBytesRetrieved >= dataLength)
-                    {
-                        DataReadyEvent(this,
-                            new DataReadyEventArgs(currentCommand,
-                                commandReplyBuffer));
-                        ///////////////////////////////
-
-                        s = " >>>>>>> Pre: (" + currentCommand + "/" + _numBytesRetrieved + ")\r\n";
-                        bytes = System.Text.Encoding.ASCII.GetBytes(s);
-                        f.Write(bytes, 0, bytes.Length);
-
-                        s = "----" + Environment.NewLine +
-                            "DataReceived: " +
-                            Environment.NewLine +
-                            "  >> Cmd: " + currentCommand + ";" +
-                            Environment.NewLine +
-                            "  >> Data: " + System.Text.Encoding.ASCII.GetString(commandReplyBuffer) +
-                            Environment.NewLine +
-                            "----" + Environment.NewLine +
-                            Environment.NewLine;
-                        bytes = System.Text.Encoding.ASCII.GetBytes(s);
-                        f.Write(bytes, 0, bytes.Length);
-
-                        ///////////////////////////////////////////
-                        currentCommand = Command.None;
-                        _numBytesRetrieved = 0;
-                        // }    // <<< uncomment me!!!!!!!!!!!!!!!!
-                        ///////////////////////////////////////////
-
-                        s = " >>>>>>> Post: (" + currentCommand + "/" + _numBytesRetrieved + ")\r\n"
-                            + Environment.NewLine
-                            + Environment.NewLine
-                            ;
-                        bytes = System.Text.Encoding.ASCII.GetBytes(s);
-                        f.Write(bytes, 0, bytes.Length);
-                    }
+                    DataReadyEvent(this,
+                        new DataReadyEventArgs(currentCommand,
+                            commandReplyBuffer));
+                    currentCommand = Command.None;
+                    _numBytesRetrieved = 0;
                 }
             }
             catch (ArgumentException)
