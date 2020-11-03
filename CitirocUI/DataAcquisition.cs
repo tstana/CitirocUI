@@ -199,6 +199,18 @@ namespace CitirocUI
             label_elapsedTimeAcquisition.Enabled = true;
             label_acqTime.Enabled = true;
 
+            using (FileStream f = File.Open(
+                        textBox_dataSavePath.Text.TrimEnd('\\') +
+                        "\\_debug.log", FileMode.Append))
+            {
+                TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                    new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                "  Starting DAQ...\n";
+                byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                f.Write(bytes, 0, bytes.Length);
+            }
+
             backgroundWorker_dataAcquisition.RunWorkerAsync();
         }
         #endregion
@@ -401,9 +413,31 @@ namespace CitirocUI
                         ((stopwatchIndividualDaqRun.ElapsedMilliseconds) >
                             individualDaqTimeMillisec))
                     {
+                        using (FileStream f = File.Open(
+                            textBox_dataSavePath.Text.TrimEnd('\\') +
+                            "\\_debug.log", FileMode.Append))
+                        {
+                            TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                                new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                            string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                                                    "Stopping Individual DAQ Timer...\n";
+                            byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                            f.Write(bytes, 0, bytes.Length);
+                        }
                         stopwatchIndividualDaqRun.Stop();
                         ReqPayloadProcedure();
                         stopwatchIndividualDaqRun.Restart();
+                        using (FileStream f = File.Open(
+                            textBox_dataSavePath.Text.TrimEnd('\\') +
+                            "\\_debug.log", FileMode.Append))
+                        {
+                            TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                                new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                            string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                                                    "Restarting Individual DAQ Timer...\n";
+                            byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                            f.Write(bytes, 0, bytes.Length);
+                        }
                     }
 
                     // Stop the acquisition when on DAQ run "time-out"
@@ -412,6 +446,17 @@ namespace CitirocUI
                     {
                         stopwatchTotalDaqRun.Stop();
                         stopwatchIndividualDaqRun.Stop();
+                        using (FileStream f = File.Open(
+                            textBox_dataSavePath.Text.TrimEnd('\\') +
+                            "\\_debug.log", FileMode.Append))
+                        {
+                            TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                                new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                            string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                                                    "  Ending DAQ...\n";
+                            byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                            f.Write(bytes, 0, bytes.Length);
+                        }
                         break;
                     }
                     Thread.Sleep(5);
@@ -535,6 +580,18 @@ namespace CitirocUI
         {
             UpdatingLabel("Sending REQ_STATUS to Proto-CUBES...", label_help);
 
+            using (FileStream f = File.Open(
+                textBox_dataSavePath.Text.TrimEnd('\\') +
+                "\\_debug.log", FileMode.Append))
+            {
+                TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                    new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                        ">> Sending REQ_STATUS.\n";
+                byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                f.Write(bytes, 0, bytes.Length);
+            }
+
             try
             {
                 protoCubes.SendCommand(ProtoCubesSerial.Command.ReqStatus, null);
@@ -561,7 +618,21 @@ namespace CitirocUI
             int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
 
             UpdatingLabel("Sending REQ_PAYLOAD to Proto-CUBES...", label_help);
-                       
+
+            using (FileStream f = File.Open(
+                textBox_dataSavePath.Text.TrimEnd('\\') +
+                "\\_debug.log", FileMode.Append))
+            {
+                TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                    new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                        ">> Sending REQ_PAYLOAD.\n";
+                byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                f.Write(bytes, 0, bytes.Length);
+            }
+
+
+
             /*
              * Prep the ProtoCubesSerial instance for DAQ data reception
              * and GO!
@@ -1043,6 +1114,21 @@ namespace CitirocUI
 
             /* Set Arduino status variable */
             arduinoStatus = e.DataBytes[23];
+
+            using (FileStream f = File.Open(
+                textBox_dataSavePath.Text.TrimEnd('\\') +
+                "\\_debug.log", FileMode.Append))
+            {
+                TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                    new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                        "<< REQ_STATUS data received: " +
+                        arduinoStatus.ToString() + "\n";
+                byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                f.Write(bytes, 0, bytes.Length);
+            }
+
+
         }
 
         private void DAQ_DataReady(object sender, DataReadyEventArgs e)
@@ -1050,6 +1136,18 @@ namespace CitirocUI
             if ((e.Command == ProtoCubesSerial.Command.ReqPayload) &&
                 (selectedConnectionMode == 1))
             {
+                using (FileStream f = File.Open(
+                    textBox_dataSavePath.Text.TrimEnd('\\') +
+                    "\\_debug.log", FileMode.Append))
+                {
+                    TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                        new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                    string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                            "<< REQ_PAYLOAD data received!\n";
+                    byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
+                    f.Write(bytes, 0, bytes.Length);
+                }
+
                 string date = DateTime.UtcNow.ToString(new System.Globalization.CultureInfo("se-SE"));
                 date = date.Replace(' ', '_');
                 date = date.Replace(':', '-');
