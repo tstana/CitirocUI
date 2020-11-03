@@ -1016,7 +1016,7 @@ namespace CitirocUI
                 HitCK[0] = BitConverter.ToUInt32(adata, start + 132);
                 HitCK[16] = BitConverter.ToUInt32(adata, start + 136);
                 HitCK[31] = BitConverter.ToUInt32(adata, start + 140);
-                HitCK[21] = BitConverter.ToUInt32(adata, start + 144);
+                HitCK[32] = BitConverter.ToUInt32(adata, start + 144);
 
                 UInt16 temp_citiE = BitConverter.ToUInt16(adata, start + 148);
                 UInt16 temp_hvpsE = BitConverter.ToUInt16(adata, start + 150);
@@ -1223,7 +1223,7 @@ namespace CitirocUI
                             HitCK[0].ToString() + "," +
                             HitCK[16].ToString() + "," +
                             HitCK[31].ToString() + "," +
-                            HitCK[21].ToString() + "," +
+                            HitCK[32].ToString() + "," +
                             tempCitiE.ToString("N3") + "," +
                             tempHE.ToString("N3") + "," +
                             voltHE.ToString("N3") + "," +

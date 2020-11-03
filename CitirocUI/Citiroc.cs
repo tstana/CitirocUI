@@ -1871,11 +1871,11 @@ namespace CitirocUI
             byte[] ch0_hit_count = new byte[4];
             byte[] ch16_hit_count = new byte[4];
             byte[] ch31_hit_count = new byte[4];
-            byte[] ch21_hit_count = new byte[4];
+            byte[] or32_hit_count = new byte[4];
             Array.Copy(e.DataBytes, 23, ch0_hit_count, 0, 4);
             Array.Copy(e.DataBytes, 27, ch16_hit_count, 0, 4);
             Array.Copy(e.DataBytes, 31, ch31_hit_count, 0, 4);
-            Array.Copy(e.DataBytes, 35, ch21_hit_count, 0, 4);
+            Array.Copy(e.DataBytes, 35, or32_hit_count, 0, 4);
 
             byte[] reset_count = new byte[4];
             Array.Copy(e.DataBytes, 51, reset_count, 0, 4);
@@ -1893,7 +1893,7 @@ namespace CitirocUI
                 Array.Reverse(ch0_hit_count);
                 Array.Reverse(ch16_hit_count);
                 Array.Reverse(ch31_hit_count);
-                Array.Reverse(ch21_hit_count);
+                Array.Reverse(or32_hit_count);
                 Array.Reverse(reset_count);
                 Array.Reverse(hvps_cmds_sent);
                 Array.Reverse(hvps_cmds_acked);
@@ -1903,7 +1903,7 @@ namespace CitirocUI
             UInt32 hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_count, 0);
             UInt32 hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_count, 0);
             UInt32 hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_count, 0);
-            UInt32 hitCountOR32 = BitConverter.ToUInt32(ch21_hit_count, 0);
+            UInt32 hitCountOR32 = BitConverter.ToUInt32(or32_hit_count, 0);
 
             UInt32 resetCount = BitConverter.ToUInt32(reset_count, 0);
 
