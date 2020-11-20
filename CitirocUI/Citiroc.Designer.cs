@@ -12458,7 +12458,7 @@
             this.groupBox_HvpsTelemetry.Size = new System.Drawing.Size(221, 145);
             this.groupBox_HvpsTelemetry.TabIndex = 39;
             this.groupBox_HvpsTelemetry.TabStop = false;
-            this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry (updated every 5 s)";
+            this.groupBox_HvpsTelemetry.Text = "HVPS Telemetry";
             // 
             // label_Voltage
             // 
