@@ -194,6 +194,11 @@ namespace CitirocUI
             /* Finally, start the DAQ on the UI end... */
             button_startAcquisition.Text = "Stop Acquisition";
 
+            protoCubes.NumBins = Convert.ToInt32(comboBox_cubesDaqNumBins.Text);
+
+            comboBox_cubesDaqNumBins.Enabled = false;
+            label_cubesDaqNumBins.Enabled = false;
+
             tabControl_dataAcquisition.Enabled = false;
             progressBar_acquisition.Visible = true;
 
@@ -511,6 +516,8 @@ namespace CitirocUI
             tabControl_dataAcquisition.Enabled = true;
             progressBar_acquisition.Value = 0;
             progressBar_acquisition.Visible = false;
+            comboBox_cubesDaqNumBins.Enabled = true;
+            label_cubesDaqNumBins.Enabled = true;
 
             if (selectedConnectionMode == 0)
             {
@@ -614,10 +621,6 @@ namespace CitirocUI
 
         private void SendReqPayload()
         {
-            /* TODO check textBox_NumBins limits !
-             */
-            int numBins = Convert.ToUInt16(comboBox_cubesDaqNumBins.Text);
-
             UpdatingLabel("Sending REQ_PAYLOAD to Proto-CUBES...", label_help);
 
             using (FileStream f = File.Open(
@@ -640,7 +643,6 @@ namespace CitirocUI
              */
             try
             {
-                protoCubes.NumBins = numBins;
                 protoCubes.SendCommand(ProtoCubesSerial.Command.ReqPayload, null);
             }
             catch (Exception ex)
@@ -1032,9 +1034,8 @@ namespace CitirocUI
 
                 // Histogram data
                 start = 279;
-                int numBins = Convert.ToUInt16(comboBox_cubesDaqNumBins.Text);
 
-                for (int i = 0; i < numBins; i++)
+                for (int i = 0; i < protoCubes.NumBins; i++)
                 {
                     int start0 = start + 2 * i;
                     PerChannelChargeHG[0, i] = BitConverter.ToUInt16(adata, start0);
