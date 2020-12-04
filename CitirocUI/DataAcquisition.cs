@@ -143,13 +143,14 @@ namespace CitirocUI
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
                 AdjustAcquisitionTime();            // TODO: Remove?
 
-                byte[] daqDur = new byte[1];
+                byte[] daqConf = new byte[2];
 
-                daqDur[0] = Convert.ToByte(individAcqTime);
+                daqConf[0] = Convert.ToByte(individAcqTime);
+                daqConf[1] = (byte)comboBox_cubesDaqNumBins.SelectedIndex;
 
                 try
                 {
-                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendDAQDur, daqDur);
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendDAQConf, daqConf);
                 }
                 catch (Exception ex)
                 {
@@ -615,7 +616,7 @@ namespace CitirocUI
         {
             /* TODO check textBox_NumBins limits !
              */
-            int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
+            int numBins = Convert.ToUInt16(comboBox_cubesDaqNumBins.Text);
 
             UpdatingLabel("Sending REQ_PAYLOAD to Proto-CUBES...", label_help);
 
@@ -639,7 +640,7 @@ namespace CitirocUI
              */
             try
             {
-                protoCubes.NumBins = noOfBins;
+                protoCubes.NumBins = numBins;
                 protoCubes.SendCommand(ProtoCubesSerial.Command.ReqPayload, null);
             }
             catch (Exception ex)
@@ -1029,11 +1030,11 @@ namespace CitirocUI
                 cubesTelemetryArray[9] = hvps_currE;
                 cubesTelemetryArray[10] = nrBins;
 
-                // BIN data
+                // Histogram data
                 start = 279;
-                int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
+                int numBins = Convert.ToUInt16(comboBox_cubesDaqNumBins.Text);
 
-                for (int i = 0; i < noOfBins; i++)
+                for (int i = 0; i < numBins; i++)
                 {
                     int start0 = start + 2 * i;
                     PerChannelChargeHG[0, i] = BitConverter.ToUInt16(adata, start0);

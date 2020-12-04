@@ -773,10 +773,10 @@
             this.label_elapsedTimeAcquisition = new System.Windows.Forms.Label();
             this.tabControl_dataAcquisition = new System.Windows.Forms.TabControl();
             this.tabPage_perChannelCharge = new System.Windows.Forms.TabPage();
+            this.comboBox_cubesDaqNumBins = new System.Windows.Forms.ComboBox();
             this.label_DataFile = new System.Windows.Forms.Label();
-            this.label141 = new System.Windows.Forms.Label();
+            this.label_cubesDaqNumBins = new System.Windows.Forms.Label();
             this.textBox_LgCutLow = new CitirocUI.intTextBox();
-            this.textBox_NumBins = new CitirocUI.intTextBox();
             this.textBox_LgCutHigh = new CitirocUI.intTextBox();
             this.textBox_HgCutLow = new CitirocUI.intTextBox();
             this.textBox_HgCutHigh = new CitirocUI.intTextBox();
@@ -10199,10 +10199,10 @@
             // 
             // tabPage_perChannelCharge
             // 
+            this.tabPage_perChannelCharge.Controls.Add(this.comboBox_cubesDaqNumBins);
             this.tabPage_perChannelCharge.Controls.Add(this.label_DataFile);
-            this.tabPage_perChannelCharge.Controls.Add(this.label141);
+            this.tabPage_perChannelCharge.Controls.Add(this.label_cubesDaqNumBins);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutLow);
-            this.tabPage_perChannelCharge.Controls.Add(this.textBox_NumBins);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutHigh);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutLow);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutHigh);
@@ -10224,6 +10224,22 @@
             this.tabPage_perChannelCharge.Text = "   Per channel   ";
             this.tabPage_perChannelCharge.UseVisualStyleBackColor = true;
             // 
+            // comboBox_cubesDaqNumBins
+            // 
+            this.comboBox_cubesDaqNumBins.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox_cubesDaqNumBins.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox_cubesDaqNumBins.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_cubesDaqNumBins.FormattingEnabled = true;
+            this.comboBox_cubesDaqNumBins.Items.AddRange(new object[] {
+            "2048",
+            "1024",
+            "512",
+            "256"});
+            this.comboBox_cubesDaqNumBins.Location = new System.Drawing.Point(937, 0);
+            this.comboBox_cubesDaqNumBins.Name = "comboBox_cubesDaqNumBins";
+            this.comboBox_cubesDaqNumBins.Size = new System.Drawing.Size(107, 32);
+            this.comboBox_cubesDaqNumBins.TabIndex = 29;
+            // 
             // label_DataFile
             // 
             this.label_DataFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
@@ -10234,15 +10250,14 @@
             this.label_DataFile.Text = "file:";
             this.label_DataFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // label141
+            // label_cubesDaqNumBins
             // 
-            this.label141.AutoSize = true;
-            this.label141.Enabled = false;
-            this.label141.Location = new System.Drawing.Point(876, 8);
-            this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(106, 24);
-            this.label141.TabIndex = 27;
-            this.label141.Text = "No. of Bins:";
+            this.label_cubesDaqNumBins.AutoSize = true;
+            this.label_cubesDaqNumBins.Location = new System.Drawing.Point(782, 5);
+            this.label_cubesDaqNumBins.Name = "label_cubesDaqNumBins";
+            this.label_cubesDaqNumBins.Size = new System.Drawing.Size(145, 24);
+            this.label_cubesDaqNumBins.TabIndex = 27;
+            this.label_cubesDaqNumBins.Text = "Number of Bins:";
             // 
             // textBox_LgCutLow
             // 
@@ -10254,18 +10269,6 @@
             this.textBox_LgCutLow.Text = "0";
             this.textBox_LgCutLow.Leave += new System.EventHandler(this.loadData_Leave);
             this.textBox_LgCutLow.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.loadData_PreviewKeyDown);
-            // 
-            // textBox_NumBins
-            // 
-            this.textBox_NumBins.Enabled = false;
-            this.textBox_NumBins.enableNegative = false;
-            this.textBox_NumBins.Location = new System.Drawing.Point(988, 5);
-            this.textBox_NumBins.Name = "textBox_NumBins";
-            this.textBox_NumBins.Size = new System.Drawing.Size(56, 29);
-            this.textBox_NumBins.TabIndex = 23;
-            this.textBox_NumBins.Text = "2048";
-            this.textBox_NumBins.Leave += new System.EventHandler(this.loadData_Leave);
-            this.textBox_NumBins.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.loadData_PreviewKeyDown);
             // 
             // textBox_LgCutHigh
             // 
@@ -13664,8 +13667,7 @@
         private System.Windows.Forms.TabPage tabPage_firmwareProtoCUBES;
         private checkBox checkBox_RstReadReg;
         private System.Windows.Forms.Label label_DataFile;
-        private System.Windows.Forms.Label label141;
-        private intTextBox textBox_NumBins;
+        private System.Windows.Forms.Label label_cubesDaqNumBins;
         private System.Windows.Forms.GroupBox groupBox_HV;
         private System.Windows.Forms.GroupBox groupBox_hvPersistent;
         private System.Windows.Forms.NumericUpDown numUpDown_dt2;
@@ -13694,6 +13696,7 @@
         private System.Windows.Forms.GroupBox groupBox_clearArduinoSD;
         private System.Windows.Forms.Label label_WarnClearArduinoSD;
         private System.Windows.Forms.Button button_ClearArduinoSD;
+        private System.Windows.Forms.ComboBox comboBox_cubesDaqNumBins;
     }
 }
 

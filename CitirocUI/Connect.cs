@@ -552,8 +552,8 @@ namespace CitirocUI
 
                 // Adjust other controls
                 label_DataFile.Visible = false;
-                label141.Visible = false;
-                textBox_NumBins.Visible = false;
+                label_cubesDaqNumBins.Visible = false;
+                comboBox_cubesDaqNumBins.Visible = false;
 
                 textBox_HgCutHigh.Text = "4095";
                 textBox_LgCutHigh.Text = "4095";
@@ -582,11 +582,11 @@ namespace CitirocUI
 
                 // Adjust other controls
                 label_DataFile.Visible = true;
-                label141.Visible = true;
-                textBox_NumBins.Visible = true;
+                label_cubesDaqNumBins.Visible = true;
+                comboBox_cubesDaqNumBins.Visible = true;
 
-                textBox_HgCutHigh.Text = textBox_NumBins.Text;
-                textBox_LgCutHigh.Text = textBox_NumBins.Text;
+                textBox_HgCutHigh.Text = comboBox_cubesDaqNumBins.Text;
+                textBox_LgCutHigh.Text = comboBox_cubesDaqNumBins.Text;
 
                 label115.Enabled = false;
                 textBox_delay.Enabled = false;

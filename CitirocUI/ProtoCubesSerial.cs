@@ -61,7 +61,7 @@ namespace CitirocUI
             SendProbeConf       = 'P',
             SendHVPSConf        = 'H',
             SendHVPSTmpVolt     = 'V',
-            SendDAQDur          = 'D',
+            SendDAQConf         = 'D',
             SendReadReg         = 'R',
             SendGatewareConf    = 'G',
             SendTime            = 'Z',
@@ -348,8 +348,18 @@ namespace CitirocUI
                     cmdBytes = new byte[33];
                     break;
 
+                case Command.SendDAQConf:
+                    if (cmdParam.Length != 2)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 2 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[3];
+                    break;
+
                 case Command.SendReadReg:
-                case Command.SendDAQDur:
                 case Command.SendGatewareConf:
                     if (cmdParam.Length != 1)
                     {
