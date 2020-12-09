@@ -1073,7 +1073,7 @@ namespace CitirocUI
                     Array.Reverse(adata, start + 254, 2);
 
                     // histogram values
-                    for (int i = 0; i < 12288; i++)
+                    for (int i = 0; i < protoCubes.NumBins * 6; i++)
                     {
                         Array.Reverse(adata, 279 + 2 * i, 2);
                     }
