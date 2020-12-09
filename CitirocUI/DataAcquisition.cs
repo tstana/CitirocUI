@@ -1252,7 +1252,7 @@ namespace CitirocUI
             refreshDataChart();
         }
 
-        #region Other UI Event Handlers
+        #region UI Event Handlers
         private void button_dataSavePath_Click(object sender, EventArgs e)
         {
             String path = textBox_dataSavePath.Text;
@@ -1364,6 +1364,12 @@ namespace CitirocUI
             {
                 NumDataCheck();
             }
+        }
+
+        private void comboBox_cubesDaqNumBins_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox_HgCutHigh.Text = comboBox_cubesDaqNumBins.Text;
+            textBox_LgCutHigh.Text = comboBox_cubesDaqNumBins.Text;
         }
         #endregion
 

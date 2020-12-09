@@ -10239,6 +10239,7 @@
             this.comboBox_cubesDaqNumBins.Name = "comboBox_cubesDaqNumBins";
             this.comboBox_cubesDaqNumBins.Size = new System.Drawing.Size(107, 32);
             this.comboBox_cubesDaqNumBins.TabIndex = 29;
+            this.comboBox_cubesDaqNumBins.SelectedIndexChanged += new System.EventHandler(this.comboBox_cubesDaqNumBins_SelectedIndexChanged);
             // 
             // label_DataFile
             // 
