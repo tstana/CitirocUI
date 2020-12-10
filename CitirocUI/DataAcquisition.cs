@@ -993,12 +993,11 @@ namespace CitirocUI
                     Array.Reverse(adata, start + 150, 2);
                     Array.Reverse(adata, start + 152, 2);
                     Array.Reverse(adata, start + 154, 2);
-                    Array.Reverse(adata, start + 254, 2);
 
                     // histogram values
-                    for (int i = 0; i < 12288; i++)
+                    for (int i = 0; i < protoCubes.NumBins * 6; i++)
                     {
-                        Array.Reverse(adata, 279 + 2 * i, 2);
+                        Array.Reverse(adata, start + 256 + 2 * i, 2);
                     }
                 }
 
@@ -1032,22 +1031,23 @@ namespace CitirocUI
                 cubesTelemetryArray[9] = hvps_currE;
                 cubesTelemetryArray[10] = nrBins;
 
-                // Histogram data
-                start = 279;
+                // Display histogram data
+                start += 256;
 
                 for (int i = 0; i < protoCubes.NumBins; i++)
                 {
-                    int start0 = start + 2 * i;
-                    PerChannelChargeHG[0, i] = BitConverter.ToUInt16(adata, start0);
-                    PerChannelChargeLG[0, i] = BitConverter.ToUInt16(adata, start0 + 4096);
-                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, start0 + 8192);
-                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, start0 + 12288);
-                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, start0 + 16384);
-                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, start0 + 20480);
+                    int binOffset = start + i*2;
+                    PerChannelChargeHG[ 0, i] = BitConverter.ToUInt16(adata, binOffset);
+                    PerChannelChargeLG[ 0, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
+                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
+                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
+                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
+                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
                 }
 
                 // Reverse fields again for proper writing to file...
                 start = 23;
+
                 if (BitConverter.IsLittleEndian)
                 {
                     // Start of DAQ HK data
@@ -1073,9 +1073,11 @@ namespace CitirocUI
                     Array.Reverse(adata, start + 254, 2);
 
                     // histogram values
+                    start += 256;
+
                     for (int i = 0; i < protoCubes.NumBins * 6; i++)
                     {
-                        Array.Reverse(adata, 279 + 2 * i, 2);
+                        Array.Reverse(adata, start + 2 * i, 2);
                     }
                 }
             }
