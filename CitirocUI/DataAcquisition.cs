@@ -1106,7 +1106,7 @@ namespace CitirocUI
         }
         #endregion
 
-        #region Serial Data Ready Event Handlers
+        #region Proto-CUBES Data Ready Event Handlers
 
         private void ReqStatus_DataReady(object sender, DataReadyEventArgs e)
         {
@@ -1257,7 +1257,7 @@ namespace CitirocUI
         {
             String path = textBox_dataSavePath.Text;
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
-            folderDlg.Description = "Select folder to save to..";
+            folderDlg.Description = "Select folder to save to...";
             folderDlg.SelectedPath = path;
             if(folderDlg.ShowDialog() == DialogResult.OK)
             {
@@ -1364,12 +1364,6 @@ namespace CitirocUI
             {
                 NumDataCheck();
             }
-        }
-
-        private void comboBox_cubesDaqNumBins_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            textBox_HgCutHigh.Text = comboBox_cubesDaqNumBins.Text;
-            textBox_LgCutHigh.Text = comboBox_cubesDaqNumBins.Text;
         }
         #endregion
 
