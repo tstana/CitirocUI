@@ -995,9 +995,11 @@ namespace CitirocUI
                     Array.Reverse(adata, start + 154, 2);
 
                     // histogram values
+                    start += 256;
+
                     for (int i = 0; i < protoCubes.NumBins * 6; i++)
                     {
-                        Array.Reverse(adata, start + 256 + 2 * i, 2);
+                        Array.Reverse(adata, start + 2 * i, 2);
                     }
                 }
 
@@ -1009,7 +1011,7 @@ namespace CitirocUI
                 UInt16 hvps_currS = BitConverter.ToUInt16(adata, start + 12);
                 cubesTelemetryArray[1] = time_reg;
                 cubesTelemetryArray[2] = temp_citiS;
-                cubesTelemetryArray[3] = temp_hvpsS;
+                cubesTelemetryArray[3] = temp_hvpsS;    
                 cubesTelemetryArray[4] = hvps_voltS;
                 cubesTelemetryArray[5] = hvps_currS;
 
@@ -1024,12 +1026,12 @@ namespace CitirocUI
                 UInt16 temp_hvpsE = BitConverter.ToUInt16(adata, start + 150);
                 UInt16 hvps_voltE = BitConverter.ToUInt16(adata, start + 152);
                 UInt16 hvps_currE = BitConverter.ToUInt16(adata, start + 154);
-                UInt16 nrBins = BitConverter.ToUInt16(adata, start + 254);
+                byte bincfg = adata[255];
                 cubesTelemetryArray[6] = temp_citiE;
                 cubesTelemetryArray[7] = temp_hvpsE;
                 cubesTelemetryArray[8] = hvps_voltE;
                 cubesTelemetryArray[9] = hvps_currE;
-                cubesTelemetryArray[10] = nrBins;
+                cubesTelemetryArray[10] = bincfg;
 
                 // Display histogram data
                 start += 256;
