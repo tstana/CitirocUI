@@ -789,7 +789,9 @@ namespace CitirocUI
             chart_perChannelChargeHG.Series[0].BorderWidth = 0;
             chart_perChannelChargeHG.Series[0]["PointWidth"] = "1";
 
-            for (int i = HgCutLow; i < HgCutHigh + 1; i++) if (PerChannelChargeHG[chNum, i] != 0) chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
+            for (int i = HgCutLow; i < HgCutHigh + 1; i++)
+                if (PerChannelChargeHG[chNum, i] != 0)
+                    chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
 
             ulong numTimeTrigs = 0;
 
@@ -830,7 +832,9 @@ namespace CitirocUI
             chart_perChannelChargeLG.Series[0].BorderWidth = 0;
             chart_perChannelChargeLG.Series[0]["PointWidth"] = "1";
          
-            for (int i = LgCutLow; i < LgCutHigh + 1; i++) if (PerChannelChargeLG[chNum, i] != 0) chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
+            for (int i = LgCutLow; i < LgCutHigh + 1; i++)
+                if (PerChannelChargeLG[chNum, i] != 0)
+                    chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
 
             resetZoom(chart_perChannelChargeLG);
             #endregion
@@ -955,7 +959,7 @@ namespace CitirocUI
                 if ((adata[21] != 0x0d) || (adata[22] != 0x0a)
                     || (u_time.IndexOf("Unix time:") != 0))
                 {
-                    return("Invalid data file format!");
+                    return ("Invalid data file format!");
                 }
 
                 Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
@@ -1003,6 +1007,9 @@ namespace CitirocUI
                     }
                 }
 
+                // Back to start for data display...
+                start = 23;
+
                 string boardId = System.Text.Encoding.UTF8.GetString(adata, start, 2);
                 UInt32 time_reg = BitConverter.ToUInt32(adata, start + 2);
                 UInt16 temp_citiS = BitConverter.ToUInt16(adata, start + 6);
@@ -1011,7 +1018,7 @@ namespace CitirocUI
                 UInt16 hvps_currS = BitConverter.ToUInt16(adata, start + 12);
                 cubesTelemetryArray[1] = time_reg;
                 cubesTelemetryArray[2] = temp_citiS;
-                cubesTelemetryArray[3] = temp_hvpsS;    
+                cubesTelemetryArray[3] = temp_hvpsS;
                 cubesTelemetryArray[4] = hvps_voltS;
                 cubesTelemetryArray[5] = hvps_currS;
 
@@ -1036,16 +1043,26 @@ namespace CitirocUI
                 // Display histogram data
                 start += 256;
 
-                for (int i = 0; i < protoCubes.NumBins; i++)
+                /* Use the bin configuration setting in the data stream to find offsets in data */
+                int numBins = 2048 >> bincfg;
+                for (int i = 0; i < numBins; i++)
                 {
-                    int binOffset = start + i*2;
-                    PerChannelChargeHG[ 0, i] = BitConverter.ToUInt16(adata, binOffset);
-                    PerChannelChargeLG[ 0, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
-                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
-                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
-                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
-                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, binOffset + 2*protoCubes.NumBins);
+                    int binOffset = start + i * 2;
+                    PerChannelChargeHG[0, i] = BitConverter.ToUInt16(adata, binOffset);
+                    PerChannelChargeLG[0, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
+                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
+                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
+                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
+                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
                 }
+
+                string s = "TODO: Remove me!!!\n\n" +
+                    "Num. Bins: " + numBins + "\n" +
+                    "HitCK[0]: " + HitCK[0] + "\n" +
+                    "HitCK[16]: " + HitCK[16] + "\n" +
+                    "HitCK[31]: " + HitCK[31] + "\n" +
+                    "HitCK[32]: " + HitCK[32] + "\n";
+                MessageBox.Show(s);
 
                 // Reverse fields again for proper writing to file...
                 start = 23;
@@ -1077,7 +1094,7 @@ namespace CitirocUI
                     // histogram values
                     start += 256;
 
-                    for (int i = 0; i < protoCubes.NumBins * 6; i++)
+                    for (int i = 0; i < numBins * 6; i++)
                     {
                         Array.Reverse(adata, start + 2 * i, 2);
                     }
