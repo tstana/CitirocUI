@@ -971,8 +971,12 @@ namespace CitirocUI
                 UInt32 unixTimeArduino = Convert.ToUInt32(u_time.Substring(11));
                 cubesTelemetryArray[0] = unixTimeArduino;
 
-                int start = 23;
                 // Header data
+                int start = 23;
+
+                // Start by getting the number of bins setting from the file
+                byte bincfg = adata[start + 255];
+                int numBins = 2048 >> bincfg;
 
                 // Reverse individual fields to avoid BitConverter endianness issues...
                 if (BitConverter.IsLittleEndian)
@@ -998,10 +1002,10 @@ namespace CitirocUI
                     Array.Reverse(adata, start + 152, 2);
                     Array.Reverse(adata, start + 154, 2);
 
-                    // histogram values
+                    // Reverse histogram values for all six histo's
                     start += 256;
 
-                    for (int i = 0; i < protoCubes.NumBins * 6; i++)
+                    for (int i = 0; i < numBins*6; i++)
                     {
                         Array.Reverse(adata, start + 2 * i, 2);
                     }
@@ -1033,7 +1037,6 @@ namespace CitirocUI
                 UInt16 temp_hvpsE = BitConverter.ToUInt16(adata, start + 150);
                 UInt16 hvps_voltE = BitConverter.ToUInt16(adata, start + 152);
                 UInt16 hvps_currE = BitConverter.ToUInt16(adata, start + 154);
-                byte bincfg = adata[255];
                 cubesTelemetryArray[6] = temp_citiE;
                 cubesTelemetryArray[7] = temp_hvpsE;
                 cubesTelemetryArray[8] = hvps_voltE;
@@ -1043,26 +1046,16 @@ namespace CitirocUI
                 // Display histogram data
                 start += 256;
 
-                /* Use the bin configuration setting in the data stream to find offsets in data */
-                int numBins = 2048 >> bincfg;
                 for (int i = 0; i < numBins; i++)
                 {
                     int binOffset = start + i * 2;
                     PerChannelChargeHG[0, i] = BitConverter.ToUInt16(adata, binOffset);
-                    PerChannelChargeLG[0, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
-                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
-                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
-                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
-                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
+                    PerChannelChargeLG[0, i] = BitConverter.ToUInt16(adata, binOffset + 2*numBins);
+                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, binOffset + 4*numBins);
+                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, binOffset + 6*numBins);
+                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, binOffset + 8*numBins);
+                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, binOffset + 10*numBins);
                 }
-
-                string s = "TODO: Remove me!!!\n\n" +
-                    "Num. Bins: " + numBins + "\n" +
-                    "HitCK[0]: " + HitCK[0] + "\n" +
-                    "HitCK[16]: " + HitCK[16] + "\n" +
-                    "HitCK[31]: " + HitCK[31] + "\n" +
-                    "HitCK[32]: " + HitCK[32] + "\n";
-                MessageBox.Show(s);
 
                 // Reverse fields again for proper writing to file...
                 start = 23;
@@ -1089,7 +1082,6 @@ namespace CitirocUI
                     Array.Reverse(adata, start + 150, 2);
                     Array.Reverse(adata, start + 152, 2);
                     Array.Reverse(adata, start + 154, 2);
-                    Array.Reverse(adata, start + 254, 2);
 
                     // histogram values
                     start += 256;
