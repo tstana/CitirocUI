@@ -1049,12 +1049,16 @@ namespace CitirocUI
                 for (int i = 0; i < numBins; i++)
                 {
                     int binOffset = start + i * 2;
-                    PerChannelChargeHG[0, i] = BitConverter.ToUInt16(adata, binOffset);
-                    PerChannelChargeLG[0, i] = BitConverter.ToUInt16(adata, binOffset + 2*numBins);
-                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, binOffset + 4*numBins);
-                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, binOffset + 6*numBins);
-                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, binOffset + 8*numBins);
-                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, binOffset + 10*numBins);
+
+                    if (bincfg <= 3) {
+                        // Values for display with non-variable binning
+                        PerChannelChargeHG[ 0, i << bincfg] = BitConverter.ToUInt16(adata, binOffset);
+                        PerChannelChargeLG[ 0, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 2*numBins);
+                        PerChannelChargeHG[16, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 4*numBins);
+                        PerChannelChargeLG[16, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 6*numBins);
+                        PerChannelChargeHG[31, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 8*numBins);
+                        PerChannelChargeLG[31, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 10*numBins);
+                    }
                 }
 
                 // Reverse fields again for proper writing to file...
@@ -1100,20 +1104,16 @@ namespace CitirocUI
             return ("");
         }
 
-        private void loadProtocubesData()
+        private void loadCubesData()
         {
             if (DataLoadFile == null) return;
 
-            byte[] bytes = File.ReadAllBytes(DataLoadFile);
-            PlotProtoCubesData(DataLoadFile, bytes);
-        }
+            byte[] data = File.ReadAllBytes(DataLoadFile);
 
-        private void PlotProtoCubesData(string dataFile,byte[] his_data)
-        {
-            label_DataFile.Text = "file:" + Path.GetFileName(dataFile);
+            label_DataFile.Text = "file:" + Path.GetFileName(DataLoadFile);
             label_DataFile.Visible = true;
 
-            string upString = UpdateDataArrays(his_data);
+            string upString = UpdateDataArrays(data);
 
             refreshDataChart();
         }
@@ -1260,12 +1260,12 @@ namespace CitirocUI
         }
         #endregion
 
+        #region UI Event Handlers
         private void label_DataFile_TextChanged(object sender, EventArgs e)
         {
             refreshDataChart();
         }
 
-        #region UI Event Handlers
         private void button_dataSavePath_Click(object sender, EventArgs e)
         {
             String path = textBox_dataSavePath.Text;
@@ -1299,10 +1299,10 @@ namespace CitirocUI
 
             // Open dialog box
             OpenFileDialog DataLoadDialog = new OpenFileDialog();
-            DataLoadDialog.Title = "Specify Data file";
+            DataLoadDialog.Title = "Specify data file";
 
             if(selectedConnectionMode == 1)     // Serial
-                DataLoadDialog.Filter = "ProtoCubes files|*.dat";
+                DataLoadDialog.Filter = "CUBES files|*.dat";
 
             DataLoadDialog.RestoreDirectory = true;
 
@@ -1321,10 +1321,7 @@ namespace CitirocUI
                 else
                 {
                     if (selectedConnectionMode == 1)
-                    {
-                        loadProtocubesData();
-                    }
-                        
+                        loadCubesData();                        
                     else
                         loadData();
                 }
