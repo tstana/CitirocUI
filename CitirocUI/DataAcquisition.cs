@@ -534,6 +534,18 @@ namespace CitirocUI
                 // Send DAQ_STOP command
                 try
                 {
+                    int timeout = 0;
+                    /// Wait for max. 4s in case another command is on-going.
+                    /// This covers the case where a REQ_PAYLOAD is still
+                    /// receiving data. The REQ_PAYLOAD takes less than 4s to
+                    /// reply in even the largest amount of payload data sent.
+                    while (protoCubes.CurrentCommand != ProtoCubesSerial.Command.None)
+                    {
+                        Thread.Sleep(500);
+                        if (timeout++ >= 8)
+                            break;
+                    }
+                    /// Finally, send the DAQ_STOP.
                     protoCubes.SendCommand(ProtoCubesSerial.Command.DAQStop, null);
                 }
                 catch (Exception ex)
