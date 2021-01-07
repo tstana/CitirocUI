@@ -95,9 +95,10 @@ namespace CitirocUI
         private bool _monvisible = false;
 
         private byte[] commandReplyBuffer = new byte[25000];
- 
-        private int _numBytesRetrieved = 0;
-        private int _numBins;       // TODO: Remove me (replace with expectedNumBytes or equiv.)
+        private int commandReplyDataLen = 0;
+
+        private int commandReplyBytesRead = 0;
+        private int numBins;       // TODO: Remove me (replace with expectedNumBytes or equiv.)
 
          //global variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
@@ -200,8 +201,8 @@ namespace CitirocUI
 
         public int NumBins
         {
-            get { return _numBins; }
-            set { _numBins = value; }
+            get { return numBins; }
+            set { numBins = value; }
         }
 
         /// <summary>
@@ -430,6 +431,53 @@ namespace CitirocUI
             {
                 currentCommand = cmd;
             }
+
+            /*
+             * Expected number of bytes:
+             *      ID:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Data (30 bytes)
+             *          \r\n (2 bytes)
+             *          ---
+             *          Total: 55
+             *      Status:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Data (1 byte)
+             *          \r\n (2 bytes)
+             *          ---
+             *          Total: 26
+             *      HK:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Data (38 bytes)
+             *          \r\n (2 bytes)
+             *          ---
+             *          Total: 63
+             *      DAQ:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Histo header (256 bytes)
+             *          Bins data (variable)
+             *          \r\n
+             *          ---
+             *          Total: calculated below
+             */
+            switch (currentCommand)
+            {
+                case Command.ReqBoardID:
+                    commandReplyDataLen = 55;
+                    break;
+                case Command.ReqHK:
+                    commandReplyDataLen = 63;
+                    break;
+                case Command.ReqStatus:
+                    commandReplyDataLen = 26;
+                    break;
+                case Command.ReqPayload:
+                    commandReplyDataLen = 23 + 256 + 6 * (numBins * 2) + 2;
+                    break;
+                default:
+                    commandReplyDataLen = 0;
+                    break;
+            }
         }
         #endregion
 
@@ -555,67 +603,20 @@ namespace CitirocUI
                 DisplayData(dataBytes);
 
             /*
-             * Expected number of bytes:
-             *      ID:
-             *          Unix time: 0123456789\r\n (23 bytes)
-             *          Data (30 bytes)
-             *          \r\n (2 bytes)
-             *          ---
-             *          Total: 55
-             *      Status:
-             *          Unix time: 0123456789\r\n (23 bytes)
-             *          Data (1 byte)
-             *          \r\n (2 bytes)
-             *          ---
-             *          Total: 26
-             *      HK:
-             *          Unix time: 0123456789\r\n (23 bytes)
-             *          Data (38 bytes)
-             *          \r\n (2 bytes)
-             *          ---
-             *          Total: 63
-             *      DAQ:
-             *          Unix time: 0123456789\r\n (23 bytes)
-             *          Histo header (256 bytes)
-             *          Bins data (variable)
-             *          \r\n
-             *          ---
-             *          Total: calculated below
-             */
-            int dataLength;
-            switch (currentCommand) {
-                case Command.ReqBoardID:
-                    dataLength = 55;
-                    break;
-                case Command.ReqHK:
-                    dataLength = 63;
-                    break;
-                case Command.ReqStatus:
-                    dataLength = 26;
-                    break;
-                case Command.ReqPayload:
-                    dataLength = 23 + 256 + 6 * (_numBins * 2) + 2;
-                    break;
-                default:
-                    dataLength = 0;
-                    break;
-            }
-
-            /*
              * Buffer received data as it arrives until the expected number of
              * bytes have been received
              */
             try
             {
-                dataBytes.CopyTo(commandReplyBuffer, _numBytesRetrieved);
-                _numBytesRetrieved += numBytesRead;
-                if (_numBytesRetrieved >= dataLength)
+                dataBytes.CopyTo(commandReplyBuffer, commandReplyBytesRead);
+                commandReplyBytesRead += numBytesRead;
+                if (commandReplyBytesRead >= commandReplyDataLen)
                 {
                     DataReadyEvent(this,
                         new DataReadyEventArgs(currentCommand,
                             commandReplyBuffer));
                     currentCommand = Command.None;
-                    _numBytesRetrieved = 0;
+                    commandReplyBytesRead = 0;
                 }
             }
             catch (ArgumentException)
@@ -627,7 +628,7 @@ namespace CitirocUI
                     string s = "Attempting to write too many bytes to " +
                         "command reply buffer:" +
                         Environment.NewLine +
-                        "_numBytesRetrieved = " + _numBytesRetrieved +
+                        "commandReplyBytesRead = " + commandReplyBytesRead +
                         Environment.NewLine +
                         "dataB.Length = " + dataBytes.Length +
                         Environment.NewLine +
@@ -635,7 +636,7 @@ namespace CitirocUI
                     byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
                     f.Write(bytes, 0, bytes.Length);
                 }
-                _numBytesRetrieved = 0;
+                commandReplyBytesRead = 0;
             }
             catch (Exception excep)
             {
@@ -650,7 +651,7 @@ namespace CitirocUI
                     byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
                     f.Write(bytes, 0, bytes.Length);
                 }
-                _numBytesRetrieved = 0;
+                commandReplyBytesRead = 0;
             }
 
         }
