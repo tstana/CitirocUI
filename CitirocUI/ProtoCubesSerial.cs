@@ -416,7 +416,20 @@ namespace CitirocUI
 
             this.SendData(cmdBytes, cmdBytes.Length);
 
-            currentCommand = cmd;
+            /*
+             * Only request commands should be replied to, so set
+             * the `currentCommand` member only when such commands
+             * are sent. For all other commands, the member is not
+             * set to avoid issues during asynchronous serial data
+             * reception
+             */
+            if ((cmd == Command.ReqBoardID) ||
+                (cmd == Command.ReqHK) ||
+                (cmd == Command.ReqStatus) ||
+                (cmd == Command.ReqPayload))
+            {
+                currentCommand = cmd;
+            }
         }
         #endregion
 
