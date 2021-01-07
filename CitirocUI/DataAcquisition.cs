@@ -192,6 +192,9 @@ namespace CitirocUI
             }
 
             /* Finally, start the DAQ on the UI end... */
+            backgroundWorker_dataAcquisition.RunWorkerAsync();
+
+            /* ... and update UI elements to indicate this */
             button_startAcquisition.Text = "Stop Acquisition";
 
             protoCubes.NumBins = Convert.ToInt32(comboBox_cubesDaqNumBins.Text);
@@ -216,8 +219,6 @@ namespace CitirocUI
                 byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
                 f.Write(bytes, 0, bytes.Length);
             }
-
-            backgroundWorker_dataAcquisition.RunWorkerAsync();
         }
         #endregion
 
@@ -452,17 +453,6 @@ namespace CitirocUI
                     {
                         stopwatchTotalDaqRun.Stop();
                         stopwatchIndividualDaqRun.Stop();
-                        using (FileStream f = File.Open(
-                            textBox_dataSavePath.Text.TrimEnd('\\') +
-                            "\\_debug.log", FileMode.Append))
-                        {
-                            TimeSpan timeSinceEpoch = DateTime.UtcNow -
-                                new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                            string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
-                                                    "  Ending DAQ...\n";
-                            byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
-                            f.Write(bytes, 0, bytes.Length);
-                        }
                         break;
                     }
                     Thread.Sleep(5);
@@ -526,6 +516,21 @@ namespace CitirocUI
             }
             else if (selectedConnectionMode == 1)
             {
+
+
+                using (FileStream f = File.Open(
+                    textBox_dataSavePath.Text.TrimEnd('\\') +
+                    "\\_debug.log", FileMode.Append))
+                {
+                    TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                        new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                    string st = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                                            "  Ending DAQ...\n";
+                    byte[] bytes = System.Text.Encoding.ASCII.GetBytes(st);
+                    f.Write(bytes, 0, bytes.Length);
+                }
+
+
                 // Send DAQ_STOP command
                 try
                 {
@@ -595,7 +600,7 @@ namespace CitirocUI
                 TimeSpan timeSinceEpoch = DateTime.UtcNow -
                     new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
-                        ">> Sending REQ_STATUS.\n";
+                        ">> Sending REQ_STATUS. (stat = " + arduinoStatus + ")\n";
                 byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
                 f.Write(bytes, 0, bytes.Length);
             }
@@ -630,7 +635,7 @@ namespace CitirocUI
                 TimeSpan timeSinceEpoch = DateTime.UtcNow -
                     new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
-                        ">> Sending REQ_PAYLOAD.\n";
+                        ">> Sending REQ_PAYLOAD. (stat = " + arduinoStatus + ")\n";
                 byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
                 f.Write(bytes, 0, bytes.Length);
             }
@@ -669,11 +674,12 @@ namespace CitirocUI
                 /// Break on new file available (bit 1 in status = '1').
                 SendReqStatus();
                 Thread.Sleep(500);
-                if ((arduinoStatus & 0x02) != 0)
+                if ((arduinoStatus & 0x02) != 0) {
+                    SendReqPayload();
                     break;
+                }
             } while (i++ < 8);
             arduinoStatus = 0;
-            SendReqPayload();
         }
 
         private void loadData()
@@ -1123,6 +1129,15 @@ namespace CitirocUI
 
         private void ReqStatus_DataReady(object sender, DataReadyEventArgs e)
         {
+            using (FileStream f = File.Open(
+                textBox_dataSavePath.Text.TrimEnd('\\') +
+                "\\_debug.log", FileMode.Append))
+            {
+                string s = "\t\t ReqStatus_DataReady: " + protoCubes.CurrentCommand.ToString() + "\n";
+                byte[] b = System.Text.Encoding.ASCII.GetBytes(s);
+                f.Write(b, 0, b.Length);
+            }
+
             /* Quit early if not the right command... */
             if (e.Command != ProtoCubesSerial.Command.ReqStatus)
                 return;
@@ -1146,8 +1161,17 @@ namespace CitirocUI
 
         }
 
-        private void DAQ_DataReady(object sender, DataReadyEventArgs e)
+        private void ReqPayload_DataReady(object sender, DataReadyEventArgs e)
         {
+            using (FileStream f = File.Open(
+                textBox_dataSavePath.Text.TrimEnd('\\') +
+                "\\_debug.log", FileMode.Append))
+            {
+                string s = "\t\t ReqPayload_DataReady: " + protoCubes.CurrentCommand.ToString() + "\n";
+                byte[] b = System.Text.Encoding.ASCII.GetBytes(s);
+                f.Write(b, 0, b.Length);
+            }
+
             if ((e.Command == ProtoCubesSerial.Command.ReqPayload) &&
                 (selectedConnectionMode == 1))
             {
