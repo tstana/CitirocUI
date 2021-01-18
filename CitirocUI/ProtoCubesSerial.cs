@@ -104,7 +104,7 @@ namespace CitirocUI
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
         private SerialPort comPort = new SerialPort();
 
-        private Command currentCommand = Command.None;
+        private Command lastSentCommand = Command.None;
 
         private string excepFileFolder;
         #endregion
@@ -225,10 +225,10 @@ namespace CitirocUI
             set { _displayWindow = value; }
         }
 
-        public Command CurrentCommand
+        public Command LastSentCommand
         {
-            get { return currentCommand; }
-            set { currentCommand = value; }
+            get { return lastSentCommand; }
+            set { lastSentCommand = value; }
         }
 
         public string ExcepFileFolder
@@ -410,27 +410,7 @@ namespace CitirocUI
                         (char)cmd + "' received.");
             }
 
-            /* Prep the array, send it and set the currently executing cmd. */
-            cmdBytes[0] = Convert.ToByte(cmd);
-            if (cmdParam != null)
-                Array.Copy(cmdParam, 0, cmdBytes, 1, cmdParam.Length);
-
-            this.SendData(cmdBytes, cmdBytes.Length);
-
-            /*
-             * Only request commands should be replied to, so set
-             * the `currentCommand` member only when such commands
-             * are sent. For all other commands, the member is not
-             * set to avoid issues during asynchronous serial data
-             * reception
-             */
-            if ((cmd == Command.ReqBoardID) ||
-                (cmd == Command.ReqHK) ||
-                (cmd == Command.ReqStatus) ||
-                (cmd == Command.ReqPayload))
-            {
-                currentCommand = cmd;
-            }
+            lastSentCommand = cmd;
 
             /*
              * Expected number of bytes:
@@ -460,7 +440,7 @@ namespace CitirocUI
              *          ---
              *          Total: calculated below
              */
-            switch (currentCommand)
+            switch (lastSentCommand)
             {
                 case Command.ReqBoardID:
                     commandReplyDataLen = 55;
@@ -478,6 +458,31 @@ namespace CitirocUI
                     commandReplyDataLen = 0;
                     break;
             }
+
+
+            // TODO: REMOVE ME
+            // vvv
+            using (FileStream f = File.Open(
+                excepFileFolder.TrimEnd('\\') +
+                "\\_debug.log", FileMode.Append))
+            {
+                TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                    new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                string st = "@" + Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                                        "  Sending " + cmd + "...\n";
+                st += "\t\t lastSentCommand: " + lastSentCommand + "\n";
+                st += "\t\t commandReplyDataLen: " + commandReplyDataLen + "\n";
+                byte[] bytes = System.Text.Encoding.ASCII.GetBytes(st);
+                f.Write(bytes, 0, bytes.Length);
+            }
+            // ^^^
+
+            /* Prep the array, send it and set the currently executing cmd. */
+            cmdBytes[0] = Convert.ToByte(cmd);
+            if (cmdParam != null)
+                Array.Copy(cmdParam, 0, cmdBytes, 1, cmdParam.Length);
+
+            SendData(cmdBytes, cmdBytes.Length);
         }
         #endregion
 
@@ -612,10 +617,27 @@ namespace CitirocUI
                 commandReplyBytesRead += numBytesRead;
                 if (commandReplyBytesRead >= commandReplyDataLen)
                 {
+                    // TODO: REMOVE ME
+                    // vvv
+                    using (FileStream f = File.Open(
+                        excepFileFolder.TrimEnd('\\') +
+                        "\\_debug.log", FileMode.Append))
+                    {
+                        TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                            new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                        string st = "@" + Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
+                                                "  Reply from " + lastSentCommand + "...\n";
+                        st += "\t\t lastSentCommand: " + lastSentCommand + "\n";
+                        st += "\t\t commandReplyDataLen: " + commandReplyDataLen + "\n";
+                        byte[] bytes = System.Text.Encoding.ASCII.GetBytes(st);
+                        f.Write(bytes, 0, bytes.Length);
+                    }
+                    // ^^^
+
+
                     DataReadyEvent(this,
-                        new DataReadyEventArgs(currentCommand,
+                        new DataReadyEventArgs(lastSentCommand,
                             commandReplyBuffer));
-                    currentCommand = Command.None;
                     commandReplyBytesRead = 0;
                 }
             }

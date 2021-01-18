@@ -516,35 +516,9 @@ namespace CitirocUI
             }
             else if (selectedConnectionMode == 1)
             {
-
-
-                using (FileStream f = File.Open(
-                    textBox_dataSavePath.Text.TrimEnd('\\') +
-                    "\\_debug.log", FileMode.Append))
-                {
-                    TimeSpan timeSinceEpoch = DateTime.UtcNow -
-                        new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                    string st = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
-                                            "  Ending DAQ...\n";
-                    byte[] bytes = System.Text.Encoding.ASCII.GetBytes(st);
-                    f.Write(bytes, 0, bytes.Length);
-                }
-
-
                 // Send DAQ_STOP command
                 try
                 {
-                    int timeout = 0;
-                    /// Wait for max. 4s in case another command is on-going.
-                    /// This covers the case where a REQ_PAYLOAD is still
-                    /// receiving data. The REQ_PAYLOAD takes less than 4s to
-                    /// reply in even the largest amount of payload data sent.
-                    while (protoCubes.CurrentCommand != ProtoCubesSerial.Command.None)
-                    {
-                        Thread.Sleep(500);
-                        if (timeout++ >= 8)
-                            break;
-                    }
                     /// Finally, send the DAQ_STOP.
                     protoCubes.SendCommand(ProtoCubesSerial.Command.DAQStop, null);
                 }
@@ -1141,14 +1115,14 @@ namespace CitirocUI
 
         private void ReqStatus_DataReady(object sender, DataReadyEventArgs e)
         {
-            using (FileStream f = File.Open(
-                textBox_dataSavePath.Text.TrimEnd('\\') +
-                "\\_debug.log", FileMode.Append))
-            {
-                string s = "\t\t ReqStatus_DataReady: " + protoCubes.CurrentCommand.ToString() + "\n";
-                byte[] b = System.Text.Encoding.ASCII.GetBytes(s);
-                f.Write(b, 0, b.Length);
-            }
+            //using (FileStream f = File.Open(
+            //    textBox_dataSavePath.Text.TrimEnd('\\') +
+            //    "\\_debug.log", FileMode.Append))
+            //{
+            //    string s = "\t\t ReqStatus_DataReady: " + protoCubes.LastSentCommand.ToString() + "\n";
+            //    byte[] b = System.Text.Encoding.ASCII.GetBytes(s);
+            //    f.Write(b, 0, b.Length);
+            //}
 
             /* Quit early if not the right command... */
             if (e.Command != ProtoCubesSerial.Command.ReqStatus)
@@ -1164,7 +1138,7 @@ namespace CitirocUI
                 TimeSpan timeSinceEpoch = DateTime.UtcNow -
                     new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
-                        "<< REQ_STATUS data received: " +
+                        "<< REQ_STATUS data received ("     +e.Command+"/"+protoCubes.LastSentCommand+     "): " +
                         arduinoStatus.ToString() + "\n";
                 byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
                 f.Write(bytes, 0, bytes.Length);
@@ -1175,14 +1149,14 @@ namespace CitirocUI
 
         private void ReqPayload_DataReady(object sender, DataReadyEventArgs e)
         {
-            using (FileStream f = File.Open(
-                textBox_dataSavePath.Text.TrimEnd('\\') +
-                "\\_debug.log", FileMode.Append))
-            {
-                string s = "\t\t ReqPayload_DataReady: " + protoCubes.CurrentCommand.ToString() + "\n";
-                byte[] b = System.Text.Encoding.ASCII.GetBytes(s);
-                f.Write(b, 0, b.Length);
-            }
+            //using (FileStream f = File.Open(
+            //    textBox_dataSavePath.Text.TrimEnd('\\') +
+            //    "\\_debug.log", FileMode.Append))
+            //{
+            //    string s = "\t\t ReqPayload_DataReady: " + protoCubes.LastSentCommand.ToString() + "\n";
+            //    byte[] b = System.Text.Encoding.ASCII.GetBytes(s);
+            //    f.Write(b, 0, b.Length);
+            //}
 
             if ((e.Command == ProtoCubesSerial.Command.ReqPayload) &&
                 (selectedConnectionMode == 1))
@@ -1312,6 +1286,9 @@ namespace CitirocUI
             {
                 textBox_dataSavePath.Text = folderDlg.SelectedPath + "\\";
             }
+
+
+            protoCubes.ExcepFileFolder = textBox_dataSavePath.Text;
         }
 
         private void numericUpDown_loadData_ValueChanged(object sender, EventArgs e)

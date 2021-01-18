@@ -331,10 +331,12 @@ namespace CitirocUI
 
             // Create serial comm object and attach event to local function
             protoCubes = new ProtoCubesSerial();
-            protoCubes.ExcepFileFolder = textBox_dataSavePath.Text;
             protoCubes.DataReadyEvent += this.ReqStatus_DataReady;
             protoCubes.DataReadyEvent += this.ReqPayload_DataReady;
             protoCubes.DataReadyEvent += this.ReqBoardID_DataReady;
+
+            protoCubes.ExcepFileFolder = textBox_dataSavePath.Text;
+
 
             // Clear text in some labels
             label_nbHit.Text = "";
