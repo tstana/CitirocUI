@@ -751,6 +751,7 @@
             this.Controls.Add(this.label_timestamp);
             this.Controls.Add(this.button_readHK);
             this.Name = "ProtoCubesMonitor";
+            this.ShowIcon = false;
             this.Text = "Proto-CUBES Monitor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CubesMonitor_FormClosing);
             this.groupBox_HitRates.ResumeLayout(false);
