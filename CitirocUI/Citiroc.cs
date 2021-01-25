@@ -26,7 +26,7 @@ namespace CitirocUI
         private System.Drawing.Text.PrivateFontCollection pfcBryant = new System.Drawing.Text.PrivateFontCollection();
 
         ProtoCubesSerial protoCubes;
-        CubesMonitor cubesMonitorForm;
+        ProtoCubesMonitor protoCubesMonitorForm;
 
         public Citiroc()
         {
@@ -1802,20 +1802,20 @@ namespace CitirocUI
 
         private void btn_OpenCubesMonitor_Click(object sender, EventArgs e)
         {
-            if (cubesMonitorForm == null)
+            if (protoCubesMonitorForm == null)
             {
-                cubesMonitorForm = new CubesMonitor(protoCubes);
-                cubesMonitorForm.ConnectStatus = connectStatus;
-                cubesMonitorForm.FormClosed += delegate
+                protoCubesMonitorForm = new ProtoCubesMonitor(protoCubes);
+                protoCubesMonitorForm.ConnectStatus = connectStatus;
+                protoCubesMonitorForm.FormClosed += delegate
                     {
-                        cubesMonitorForm = null;
+                        protoCubesMonitorForm = null;
                     };
-                cubesMonitorForm.Show();
+                protoCubesMonitorForm.Show();
             }
             else
             {
-                cubesMonitorForm.WindowState = FormWindowState.Normal;
-                cubesMonitorForm.Focus();
+                protoCubesMonitorForm.WindowState = FormWindowState.Normal;
+                protoCubesMonitorForm.Focus();
             }
         }
 

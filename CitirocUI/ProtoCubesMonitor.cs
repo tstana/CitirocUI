@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace CitirocUI
 {
-    public partial class CubesMonitor : Form
+    public partial class ProtoCubesMonitor : Form
     {
          private ProtoCubesSerial protoCubes;
         
-        public CubesMonitor(ProtoCubesSerial protoCubes)
+        public ProtoCubesMonitor(ProtoCubesSerial protoCubes)
         {
             InitializeComponent();
             this.protoCubes = protoCubes;

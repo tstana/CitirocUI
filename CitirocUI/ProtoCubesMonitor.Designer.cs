@@ -1,6 +1,6 @@
 ﻿namespace CitirocUI
 {
-    partial class CubesMonitor
+    partial class ProtoCubesMonitor
     {
         /// <summary>
         /// Required designer variable.
