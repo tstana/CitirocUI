@@ -187,8 +187,6 @@ namespace CitirocUI
             if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
                 label_titleBar.Text += " (KTH)";
 
-            MessageBox.Show("NOTE: You are using a development version of the software!", "Warning");
-
             // Set FTDI device count to 0
             ftdiDeviceCount = 0;
             // Create new instance of the FTDI device class
