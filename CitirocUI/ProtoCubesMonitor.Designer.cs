@@ -79,6 +79,7 @@
             this.buttonHelp = new System.Windows.Forms.Button();
             this.button_Clear = new System.Windows.Forms.Button();
             this.tmrButtonColor = new System.Windows.Forms.Timer(this.components);
+            this.label_ConnStatus = new System.Windows.Forms.Label();
             this.groupBox_HitRates.SuspendLayout();
             this.groupBox_HvpsTelemetry.SuspendLayout();
             this.groupBox_HV.SuspendLayout();
@@ -722,11 +723,22 @@
             this.tmrButtonColor.Interval = 500;
             this.tmrButtonColor.Tick += new System.EventHandler(this.tmrButtonColor_Tick);
             // 
+            // label_ConnStatus
+            // 
+            this.label_ConnStatus.AutoSize = true;
+            this.label_ConnStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ConnStatus.Location = new System.Drawing.Point(12, 542);
+            this.label_ConnStatus.Name = "label_ConnStatus";
+            this.label_ConnStatus.Size = new System.Drawing.Size(152, 20);
+            this.label_ConnStatus.TabIndex = 47;
+            this.label_ConnStatus.Text = "label_ConnStatus";
+            // 
             // ProtoCubesMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 630);
+            this.Controls.Add(this.label_ConnStatus);
             this.Controls.Add(this.buttonHelp);
             this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.rtxtMonitor);
@@ -814,5 +826,6 @@
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Timer tmrButtonColor;
+        private System.Windows.Forms.Label label_ConnStatus;
     }
 }

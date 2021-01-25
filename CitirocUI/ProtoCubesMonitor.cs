@@ -23,7 +23,26 @@ namespace CitirocUI
             this.protoCubes.DataReadyEvent += ReqHK_DataReady;
         }
 
-        public int ConnectStatus { get; set; }
+        private int connectStatus;
+
+        public int ConnectStatus
+        {
+            get { return connectStatus; }
+            set
+            {
+                connectStatus = value;
+                if (connectStatus == 1)
+                {
+                    label_ConnStatus.Text = "Connected to Proto-CUBES on " +
+                        protoCubes.PortName;
+                }
+                else if (connectStatus == -1)
+                {
+                    label_ConnStatus.Text = "Not connected.";
+                    label_ConnStatus.ForeColor = Color.IndianRed;
+                }
+            }
+        }
 
         public RichTextBox CommMonitorTextBox
         {
