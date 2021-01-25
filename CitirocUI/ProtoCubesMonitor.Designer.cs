@@ -722,7 +722,7 @@
             this.tmrButtonColor.Interval = 500;
             this.tmrButtonColor.Tick += new System.EventHandler(this.tmrButtonColor_Tick);
             // 
-            // CubesMonitor
+            // ProtoCubesMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -738,8 +738,8 @@
             this.Controls.Add(this.label_ResetCount);
             this.Controls.Add(this.label_timestamp);
             this.Controls.Add(this.button_readHK);
-            this.Name = "CubesMonitor";
-            this.Text = "CUBES Monitor Window";
+            this.Name = "ProtoCubesMonitor";
+            this.Text = "Proto-CUBES Monitor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CubesMonitor_FormClosing);
             this.groupBox_HitRates.ResumeLayout(false);
             this.groupBox_HitRates.PerformLayout();

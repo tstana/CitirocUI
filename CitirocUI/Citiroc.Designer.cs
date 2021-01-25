@@ -1257,9 +1257,9 @@
             this.btn_OpenCubesMonitor.Name = "btn_OpenCubesMonitor";
             this.btn_OpenCubesMonitor.Size = new System.Drawing.Size(235, 37);
             this.btn_OpenCubesMonitor.TabIndex = 2;
-            this.btn_OpenCubesMonitor.Text = "Open CUBES Monitor";
+            this.btn_OpenCubesMonitor.Text = "Open Proto-CUBES Monitor";
             this.btn_OpenCubesMonitor.UseVisualStyleBackColor = true;
-            this.btn_OpenCubesMonitor.Click += new System.EventHandler(this.btn_OpenCubesMonitor_Click);
+            this.btn_OpenCubesMonitor.Click += new System.EventHandler(this.btn_OpenProtoCubesMonitor_Click);
             // 
             // comboBox_COMPortList
             // 

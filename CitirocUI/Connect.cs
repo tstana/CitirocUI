@@ -614,7 +614,7 @@ namespace CitirocUI
             }
         }
 
-        private void btn_OpenCubesMonitor_Click(object sender, EventArgs e)
+        private void btn_OpenProtoCubesMonitor_Click(object sender, EventArgs e)
         {
             if (protoCubesMonitorForm == null)
             {
