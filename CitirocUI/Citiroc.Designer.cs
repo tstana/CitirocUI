@@ -1244,7 +1244,7 @@
             this.groupBox_SerialPortSettings.Controls.Add(this.label139);
             this.groupBox_SerialPortSettings.Controls.Add(this.label138);
             this.groupBox_SerialPortSettings.Controls.Add(this.comboBox_Baudrate);
-            this.groupBox_SerialPortSettings.Location = new System.Drawing.Point(804, 15);
+            this.groupBox_SerialPortSettings.Location = new System.Drawing.Point(795, 11);
             this.groupBox_SerialPortSettings.Name = "groupBox_SerialPortSettings";
             this.groupBox_SerialPortSettings.Size = new System.Drawing.Size(264, 459);
             this.groupBox_SerialPortSettings.TabIndex = 11;
