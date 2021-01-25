@@ -232,9 +232,6 @@ namespace CitirocUI
                 {
                     protoCubes.ClosePort();
 
-                    label_ConnStatus.Text = "Not connected.";
-                    label_ConnStatus.ForeColor = Color.IndianRed;
-
                     roundButton_connect.BackColor = Color.Gainsboro;
                     roundButton_connect.ForeColor = Color.Black;
                     roundButton_connectSmall.BackColor = Color.Gainsboro;
@@ -259,7 +256,7 @@ namespace CitirocUI
                     protoCubes.Handshake = Handshake.None;
                     protoCubes.RtsEnable = false;
 
-                    protoCubes.DisplayWindow = rtxtMonitor;
+                    protoCubes.DisplayWindow = cubesMonitorForm.CommMonitorTextBox;
 
                     //// Set the read/write timeouts
                     protoCubes.ReadTimeout = 500;
@@ -270,9 +267,6 @@ namespace CitirocUI
                     {
                         throw new Exception();
                     }
-
-                    label_ConnStatus.Text = protoCubes.info;
-                    label_ConnStatus.ForeColor = WeerocGreen;
 
                     // Update connection indicators
                     connectStatus = 1;
@@ -342,6 +336,8 @@ namespace CitirocUI
                     roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
                     label_boardStatus.Text = "Board status\n" + "Not connected";
                 }
+
+                cubesMonitorForm.ConnectStatus = connectStatus;
             }
             else
             {
@@ -535,15 +531,6 @@ namespace CitirocUI
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 groupBox_SerialPortSettings.Visible = false;
-
-                if (panel_CubesMonitor.Visible)
-                {
-                    // already visible, will be closed
-                    CubesMonitorVisible(false);
-
-                    protoCubes.DataReadyEvent -= CubesMonitor_DataReady;
-                    btn_CubesMonitor.Text = "CUBES Monitor >>>";
-                }
 
                 switchBox_acquisitionMode.Visible = true;
                 label_numData.Text = "Number of acquisitions:";
