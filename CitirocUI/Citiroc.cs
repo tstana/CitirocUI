@@ -1800,25 +1800,6 @@ namespace CitirocUI
             }
         }
 
-        private void btn_OpenCubesMonitor_Click(object sender, EventArgs e)
-        {
-            if (protoCubesMonitorForm == null)
-            {
-                protoCubesMonitorForm = new ProtoCubesMonitor(protoCubes);
-                protoCubesMonitorForm.ConnectStatus = connectStatus;
-                protoCubesMonitorForm.FormClosed += delegate
-                    {
-                        protoCubesMonitorForm = null;
-                    };
-                protoCubesMonitorForm.Show();
-            }
-            else
-            {
-                protoCubesMonitorForm.WindowState = FormWindowState.Normal;
-                protoCubesMonitorForm.Focus();
-            }
-        }
-
         private void buttonHelp_Click(object sender, EventArgs e)
         {
             string helpString =
