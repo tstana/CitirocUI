@@ -962,10 +962,11 @@
             // button_UIScale
             // 
             this.button_UIScale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.button_UIScale.Dock = System.Windows.Forms.DockStyle.Right;
             this.button_UIScale.FlatAppearance.BorderSize = 0;
             this.button_UIScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_UIScale.ForeColor = System.Drawing.Color.Transparent;
-            this.button_UIScale.Location = new System.Drawing.Point(80, 1);
+            this.button_UIScale.Location = new System.Drawing.Point(79, 0);
             this.button_UIScale.Name = "button_UIScale";
             this.button_UIScale.Size = new System.Drawing.Size(30, 30);
             this.button_UIScale.TabIndex = 35;
@@ -992,11 +993,12 @@
             // btn_minimize
             // 
             this.btn_minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.btn_minimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_minimize.FlatAppearance.BorderSize = 0;
             this.btn_minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(151)))), ((int)(((byte)(174)))));
             this.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_minimize.ForeColor = System.Drawing.Color.White;
-            this.btn_minimize.Location = new System.Drawing.Point(56, 1);
+            this.btn_minimize.Location = new System.Drawing.Point(49, 0);
             this.btn_minimize.Name = "btn_minimize";
             this.btn_minimize.Size = new System.Drawing.Size(30, 30);
             this.btn_minimize.TabIndex = 27;
@@ -1021,12 +1023,13 @@
             // btn_close
             // 
             this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.btn_close.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
             this.btn_close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(107, 1);
+            this.btn_close.Location = new System.Drawing.Point(109, 0);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(30, 30);
             this.btn_close.TabIndex = 25;
@@ -11811,11 +11814,12 @@
             this.button_screenshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.button_screenshot.BackgroundImage = global::CitirocUI.Properties.Resources.Screenshot_icon;
             this.button_screenshot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_screenshot.Dock = System.Windows.Forms.DockStyle.Right;
             this.button_screenshot.FlatAppearance.BorderSize = 0;
             this.button_screenshot.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(151)))), ((int)(((byte)(174)))));
             this.button_screenshot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_screenshot.ForeColor = System.Drawing.Color.White;
-            this.button_screenshot.Location = new System.Drawing.Point(0, 1);
+            this.button_screenshot.Location = new System.Drawing.Point(-11, 0);
             this.button_screenshot.Name = "button_screenshot";
             this.button_screenshot.Size = new System.Drawing.Size(60, 30);
             this.button_screenshot.TabIndex = 28;
