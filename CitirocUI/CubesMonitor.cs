@@ -12,14 +12,16 @@ namespace CitirocUI
 {
     public partial class CubesMonitor : Form
     {
+         private ProtoCubesSerial protoCubes;
+        
         public CubesMonitor(ProtoCubesSerial protoCubes)
         {
             InitializeComponent();
             this.protoCubes = protoCubes;
+            this.protoCubes.MonitorActive = true;
+            this.protoCubes.DisplayWindow = CommMonitorTextBox;
             this.protoCubes.DataReadyEvent += ReqHK_DataReady;
         }
-
-        private ProtoCubesSerial protoCubes;
 
         public int ConnectStatus { get; set; }
 
@@ -385,6 +387,7 @@ namespace CitirocUI
         private void CubesMonitor_FormClosing(object sender, FormClosingEventArgs e)
         {
             protoCubes.DataReadyEvent -= ReqHK_DataReady;
+            protoCubes.MonitorActive = false;
         }
     }
 }

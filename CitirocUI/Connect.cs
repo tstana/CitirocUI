@@ -256,8 +256,6 @@ namespace CitirocUI
                     protoCubes.Handshake = Handshake.None;
                     protoCubes.RtsEnable = false;
 
-                    protoCubes.DisplayWindow = cubesMonitorForm.CommMonitorTextBox;
-
                     //// Set the read/write timeouts
                     protoCubes.ReadTimeout = 500;
                     protoCubes.WriteTimeout = 500;

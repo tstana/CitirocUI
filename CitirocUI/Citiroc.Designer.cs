@@ -984,7 +984,7 @@
             this.label_help.Margin = new System.Windows.Forms.Padding(0);
             this.label_help.Name = "label_help";
             this.label_help.Padding = new System.Windows.Forms.Padding(10, 10, 20, 10);
-            this.label_help.Size = new System.Drawing.Size(1080, 200);
+            this.label_help.Size = new System.Drawing.Size(1101, 200);
             this.label_help.TabIndex = 3;
             this.label_help.Text = "Welcome to the Citiroc User Interface";
             this.label_help.TextChanged += new System.EventHandler(this.label_help_TextChanged);
@@ -1042,7 +1042,7 @@
             this.label_titleBar.ForeColor = System.Drawing.Color.White;
             this.label_titleBar.Location = new System.Drawing.Point(0, 0);
             this.label_titleBar.Name = "label_titleBar";
-            this.label_titleBar.Size = new System.Drawing.Size(1080, 30);
+            this.label_titleBar.Size = new System.Drawing.Size(1101, 30);
             this.label_titleBar.TabIndex = 26;
             this.label_titleBar.Text = "    Citiroc User Interface v";
             this.label_titleBar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1211,7 +1211,7 @@
             this.tabControl_top.Name = "tabControl_top";
             this.tabControl_top.Padding = new System.Drawing.Point(0, 0);
             this.tabControl_top.SelectedIndex = 0;
-            this.tabControl_top.Size = new System.Drawing.Size(1080, 490);
+            this.tabControl_top.Size = new System.Drawing.Size(1101, 490);
             this.tabControl_top.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl_top.TabIndex = 4;
             this.tabControl_top.TabStop = false;
@@ -1233,7 +1233,7 @@
             this.tabPage_main.Location = new System.Drawing.Point(14, 4);
             this.tabPage_main.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage_main.Name = "tabPage_main";
-            this.tabPage_main.Size = new System.Drawing.Size(1062, 482);
+            this.tabPage_main.Size = new System.Drawing.Size(1083, 482);
             this.tabPage_main.TabIndex = 1;
             this.tabPage_main.Text = "Connect";
             // 
@@ -11826,10 +11826,10 @@
             // tblPnlMain
             // 
             this.tblPnlMain.BackColor = System.Drawing.SystemColors.Control;
-            this.tblPnlMain.ColumnCount = 3;
+            this.tblPnlMain.ColumnCount = 2;
             this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1080F));
-            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 457F));
+            this.tblPnlMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblPnlMain.Controls.Add(this.panel1, 0, 1);
             this.tblPnlMain.Controls.Add(this.pnlTopBar, 1, 0);
             this.tblPnlMain.Controls.Add(this.tabControl_top, 1, 1);
@@ -11843,8 +11843,7 @@
             this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblPnlMain.Size = new System.Drawing.Size(1737, 720);
+            this.tblPnlMain.Size = new System.Drawing.Size(1301, 720);
             this.tblPnlMain.TabIndex = 38;
             // 
             // panel1
@@ -11888,7 +11887,7 @@
             this.pnlTopBar.Location = new System.Drawing.Point(200, 0);
             this.pnlTopBar.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(1080, 30);
+            this.pnlTopBar.Size = new System.Drawing.Size(1101, 30);
             this.pnlTopBar.TabIndex = 39;
             // 
             // pnlTools
@@ -11898,7 +11897,7 @@
             this.pnlTools.Controls.Add(this.button_UIScale);
             this.pnlTools.Controls.Add(this.btn_close);
             this.pnlTools.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlTools.Location = new System.Drawing.Point(941, 0);
+            this.pnlTools.Location = new System.Drawing.Point(962, 0);
             this.pnlTools.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTools.Name = "pnlTools";
             this.pnlTools.Size = new System.Drawing.Size(139, 30);
@@ -11915,7 +11914,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1735, 720);
+            this.ClientSize = new System.Drawing.Size(1296, 720);
             this.Controls.Add(this.tblPnlMain);
             this.Controls.Add(this.label_tempOnBoard);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
