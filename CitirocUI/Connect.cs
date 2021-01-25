@@ -335,7 +335,8 @@ namespace CitirocUI
                     label_boardStatus.Text = "Board status\n" + "Not connected";
                 }
 
-                cubesMonitorForm.ConnectStatus = connectStatus;
+                if (cubesMonitorForm != null)
+                    cubesMonitorForm.ConnectStatus = connectStatus;
             }
             else
             {

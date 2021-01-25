@@ -1805,6 +1805,7 @@ namespace CitirocUI
             if (cubesMonitorForm == null)
             {
                 cubesMonitorForm = new CubesMonitor(protoCubes);
+                cubesMonitorForm.ConnectStatus = connectStatus;
                 cubesMonitorForm.FormClosed += delegate
                     {
                         cubesMonitorForm = null;
