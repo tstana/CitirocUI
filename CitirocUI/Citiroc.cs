@@ -1798,7 +1798,6 @@ namespace CitirocUI
             }
         }
 
-        #region CUBES Monitor
         private void btn_OpenCubesMonitor_Click(object sender, EventArgs e)
         {
             if (cubesMonitorForm == null)
@@ -1909,46 +1908,6 @@ namespace CitirocUI
                 tmrButtonColor.Enabled = true;
             }
         }
-
-        private void checkBox_hvReset_MouseHover(object sender, EventArgs e)
-        {
-            label_help.Text = "Tick to send HVPS reset command. Will _not_ be " +
-                "persistent and _only_ send HV reset once." +
-                Environment.NewLine + Environment.NewLine +
-                "All other persistent settings will not be sent to the HVPS.";
-        }
-
-        private void textBox_hvpsCmdsSent_MouseHover(object sender, EventArgs e)
-        {
-            label_help.Text = "Number of HVPS commands sent.";
-        }
-
-        private void textBox_hvpsCmdsSent_MouseLeave(object sender, EventArgs e)
-        {
-            label_help.Text = "";
-        }
-
-        private void textBox_hvpsCmdsAcked_MouseHover(object sender, EventArgs e)
-        {
-            label_help.Text = "Number of HVPS commands acknowledged.";
-        }
-
-        private void textBox_hvpsCmdsAcked_MouseLeave(object sender, EventArgs e)
-        {
-            label_help.Text = "";
-        }
-
-        private void textBox_hvpsCmdsRej_MouseHover(object sender, EventArgs e)
-        {
-            label_help.Text = "Number of HVPS commands rejected (HVPS replied " +
-                "with \"hxx\")";
-        }
-
-        private void textBox_hvpsCmdsRej_MouseLeave(object sender, EventArgs e)
-        {
-            label_help.Text = "";
-        }
-        #endregion
 
         private void tmrButtonColor_Tick(object sender, EventArgs e)
         {
