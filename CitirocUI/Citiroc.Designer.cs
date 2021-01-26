@@ -962,10 +962,11 @@
             // button_UIScale
             // 
             this.button_UIScale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.button_UIScale.Dock = System.Windows.Forms.DockStyle.Right;
             this.button_UIScale.FlatAppearance.BorderSize = 0;
             this.button_UIScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_UIScale.ForeColor = System.Drawing.Color.Transparent;
-            this.button_UIScale.Location = new System.Drawing.Point(80, 1);
+            this.button_UIScale.Location = new System.Drawing.Point(79, 0);
             this.button_UIScale.Name = "button_UIScale";
             this.button_UIScale.Size = new System.Drawing.Size(30, 30);
             this.button_UIScale.TabIndex = 35;
@@ -984,7 +985,7 @@
             this.label_help.Margin = new System.Windows.Forms.Padding(0);
             this.label_help.Name = "label_help";
             this.label_help.Padding = new System.Windows.Forms.Padding(10, 10, 20, 10);
-            this.label_help.Size = new System.Drawing.Size(1101, 200);
+            this.label_help.Size = new System.Drawing.Size(1080, 200);
             this.label_help.TabIndex = 3;
             this.label_help.Text = "Welcome to the Citiroc User Interface";
             this.label_help.TextChanged += new System.EventHandler(this.label_help_TextChanged);
@@ -992,11 +993,12 @@
             // btn_minimize
             // 
             this.btn_minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.btn_minimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_minimize.FlatAppearance.BorderSize = 0;
             this.btn_minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(151)))), ((int)(((byte)(174)))));
             this.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_minimize.ForeColor = System.Drawing.Color.White;
-            this.btn_minimize.Location = new System.Drawing.Point(56, 1);
+            this.btn_minimize.Location = new System.Drawing.Point(49, 0);
             this.btn_minimize.Name = "btn_minimize";
             this.btn_minimize.Size = new System.Drawing.Size(30, 30);
             this.btn_minimize.TabIndex = 27;
@@ -1021,12 +1023,13 @@
             // btn_close
             // 
             this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
+            this.btn_close.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
             this.btn_close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(107, 1);
+            this.btn_close.Location = new System.Drawing.Point(109, 0);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(30, 30);
             this.btn_close.TabIndex = 25;
@@ -1042,7 +1045,7 @@
             this.label_titleBar.ForeColor = System.Drawing.Color.White;
             this.label_titleBar.Location = new System.Drawing.Point(0, 0);
             this.label_titleBar.Name = "label_titleBar";
-            this.label_titleBar.Size = new System.Drawing.Size(1101, 30);
+            this.label_titleBar.Size = new System.Drawing.Size(1080, 30);
             this.label_titleBar.TabIndex = 26;
             this.label_titleBar.Text = "    Citiroc User Interface v";
             this.label_titleBar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1211,7 +1214,7 @@
             this.tabControl_top.Name = "tabControl_top";
             this.tabControl_top.Padding = new System.Drawing.Point(0, 0);
             this.tabControl_top.SelectedIndex = 0;
-            this.tabControl_top.Size = new System.Drawing.Size(1101, 490);
+            this.tabControl_top.Size = new System.Drawing.Size(1080, 490);
             this.tabControl_top.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl_top.TabIndex = 4;
             this.tabControl_top.TabStop = false;
@@ -1233,7 +1236,7 @@
             this.tabPage_main.Location = new System.Drawing.Point(14, 4);
             this.tabPage_main.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage_main.Name = "tabPage_main";
-            this.tabPage_main.Size = new System.Drawing.Size(1083, 482);
+            this.tabPage_main.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_main.TabIndex = 1;
             this.tabPage_main.Text = "Connect";
             // 
@@ -1244,7 +1247,7 @@
             this.groupBox_SerialPortSettings.Controls.Add(this.label139);
             this.groupBox_SerialPortSettings.Controls.Add(this.label138);
             this.groupBox_SerialPortSettings.Controls.Add(this.comboBox_Baudrate);
-            this.groupBox_SerialPortSettings.Location = new System.Drawing.Point(804, 15);
+            this.groupBox_SerialPortSettings.Location = new System.Drawing.Point(795, 11);
             this.groupBox_SerialPortSettings.Name = "groupBox_SerialPortSettings";
             this.groupBox_SerialPortSettings.Size = new System.Drawing.Size(264, 459);
             this.groupBox_SerialPortSettings.TabIndex = 11;
@@ -1257,9 +1260,9 @@
             this.btn_OpenCubesMonitor.Name = "btn_OpenCubesMonitor";
             this.btn_OpenCubesMonitor.Size = new System.Drawing.Size(235, 37);
             this.btn_OpenCubesMonitor.TabIndex = 2;
-            this.btn_OpenCubesMonitor.Text = "Open CUBES Monitor";
+            this.btn_OpenCubesMonitor.Text = "Open Proto-CUBES Monitor";
             this.btn_OpenCubesMonitor.UseVisualStyleBackColor = true;
-            this.btn_OpenCubesMonitor.Click += new System.EventHandler(this.btn_OpenCubesMonitor_Click);
+            this.btn_OpenCubesMonitor.Click += new System.EventHandler(this.btn_OpenProtoCubesMonitor_Click);
             // 
             // comboBox_COMPortList
             // 
@@ -11811,11 +11814,12 @@
             this.button_screenshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));
             this.button_screenshot.BackgroundImage = global::CitirocUI.Properties.Resources.Screenshot_icon;
             this.button_screenshot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_screenshot.Dock = System.Windows.Forms.DockStyle.Right;
             this.button_screenshot.FlatAppearance.BorderSize = 0;
             this.button_screenshot.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(151)))), ((int)(((byte)(174)))));
             this.button_screenshot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_screenshot.ForeColor = System.Drawing.Color.White;
-            this.button_screenshot.Location = new System.Drawing.Point(0, 1);
+            this.button_screenshot.Location = new System.Drawing.Point(-11, 0);
             this.button_screenshot.Name = "button_screenshot";
             this.button_screenshot.Size = new System.Drawing.Size(60, 30);
             this.button_screenshot.TabIndex = 28;
@@ -11843,7 +11847,7 @@
             this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblPnlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tblPnlMain.Size = new System.Drawing.Size(1301, 720);
+            this.tblPnlMain.Size = new System.Drawing.Size(1280, 720);
             this.tblPnlMain.TabIndex = 38;
             // 
             // panel1
@@ -11887,7 +11891,7 @@
             this.pnlTopBar.Location = new System.Drawing.Point(200, 0);
             this.pnlTopBar.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(1101, 30);
+            this.pnlTopBar.Size = new System.Drawing.Size(1080, 30);
             this.pnlTopBar.TabIndex = 39;
             // 
             // pnlTools
@@ -11897,7 +11901,7 @@
             this.pnlTools.Controls.Add(this.button_UIScale);
             this.pnlTools.Controls.Add(this.btn_close);
             this.pnlTools.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlTools.Location = new System.Drawing.Point(962, 0);
+            this.pnlTools.Location = new System.Drawing.Point(941, 0);
             this.pnlTools.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTools.Name = "pnlTools";
             this.pnlTools.Size = new System.Drawing.Size(139, 30);
@@ -11914,7 +11918,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1296, 720);
+            this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.tblPnlMain);
             this.Controls.Add(this.label_tempOnBoard);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);

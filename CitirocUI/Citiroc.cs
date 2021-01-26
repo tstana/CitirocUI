@@ -26,7 +26,7 @@ namespace CitirocUI
         private System.Drawing.Text.PrivateFontCollection pfcBryant = new System.Drawing.Text.PrivateFontCollection();
 
         ProtoCubesSerial protoCubes;
-        CubesMonitor cubesMonitorForm;
+        ProtoCubesMonitor protoCubesMonitorForm;
 
         public Citiroc()
         {
@@ -186,8 +186,6 @@ namespace CitirocUI
             label_titleBar.Text += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
                 label_titleBar.Text += " (KTH)";
-
-            MessageBox.Show("NOTE: You are using a development version of the software!", "Warning");
 
             // Set FTDI device count to 0
             ftdiDeviceCount = 0;
@@ -1797,24 +1795,6 @@ namespace CitirocUI
                 }
 
                 bitmap.Save(strSaveImageName, System.Drawing.Imaging.ImageFormat.Png);
-            }
-        }
-
-        private void btn_OpenCubesMonitor_Click(object sender, EventArgs e)
-        {
-            if (cubesMonitorForm == null)
-            {
-                cubesMonitorForm = new CubesMonitor(protoCubes);
-                cubesMonitorForm.FormClosed += delegate
-                    {
-                        cubesMonitorForm = null;
-                    };
-                cubesMonitorForm.Show();
-            }
-            else
-            {
-                cubesMonitorForm.WindowState = FormWindowState.Normal;
-                cubesMonitorForm.Focus();
             }
         }
 

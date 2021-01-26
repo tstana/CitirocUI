@@ -335,7 +335,8 @@ namespace CitirocUI
                     label_boardStatus.Text = "Board status\n" + "Not connected";
                 }
 
-                cubesMonitorForm.ConnectStatus = connectStatus;
+                if (protoCubesMonitorForm != null)
+                    protoCubesMonitorForm.ConnectStatus = connectStatus;
             }
             else
             {
@@ -352,6 +353,15 @@ namespace CitirocUI
             }
         }
 
+        private void roundButton_connect_MouseEnter(object sender, EventArgs e)
+        {
+            if (connectStatus == -1)
+                label_help.Text = "Click on this button to connect the selected board to the computer.";
+            else if (connectStatus == 0)
+                label_help.Text = "Looks like there is an issue with the connection. Please verify the board is properly plugged in and powered and click again.";
+            else if (connectStatus == 1)
+                label_help.Text = "Connected successfully! Click again if you wish to disconnect.";
+        }
 
         private void button_loadFw_Click(object sender, EventArgs e)
         {
@@ -512,16 +522,6 @@ namespace CitirocUI
             connectStatus = -1;
         }
 
-        private void roundButton_connect_MouseEnter(object sender, EventArgs e)
-        {
-            if (connectStatus == -1)
-                label_help.Text = "Click on this button to connect the selected board to the computer.";
-            else if (connectStatus == 0)
-                label_help.Text = "Looks like there is an issue with the connection. Please verify the board is properly plugged in and powered and click again.";
-            else if (connectStatus == 1)
-                label_help.Text = "Connected successfully! Click again if you wish to disconnect.";
-        }
-
         private void comboBox_SelectConnection_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedConnectionMode = comboBox_SelectConnection.SelectedIndex;
@@ -611,6 +611,25 @@ namespace CitirocUI
             if (comboBox_COMPortList.Items.Count > 0)
             {
                 comboBox_COMPortList.SelectedIndex = 0;
+            }
+        }
+
+        private void btn_OpenProtoCubesMonitor_Click(object sender, EventArgs e)
+        {
+            if (protoCubesMonitorForm == null)
+            {
+                protoCubesMonitorForm = new ProtoCubesMonitor(protoCubes);
+                protoCubesMonitorForm.ConnectStatus = connectStatus;
+                protoCubesMonitorForm.FormClosed += delegate
+                {
+                    protoCubesMonitorForm = null;
+                };
+                protoCubesMonitorForm.Show();
+            }
+            else
+            {
+                protoCubesMonitorForm.WindowState = FormWindowState.Normal;
+                protoCubesMonitorForm.Focus();
             }
         }
 

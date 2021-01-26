@@ -99,11 +99,11 @@
     <Compile Include="Citiroc.Designer.cs">
       <DependentUpon>Citiroc.cs</DependentUpon>
     </Compile>
-    <Compile Include="CubesMonitor.cs">
+    <Compile Include="ProtoCubesMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CubesMonitor.Designer.cs">
-      <DependentUpon>CubesMonitor.cs</DependentUpon>
+    <Compile Include="ProtoCubesMonitor.Designer.cs">
+      <DependentUpon>ProtoCubesMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="ProtoCubesSerial.cs" />
     <Compile Include="Connect.cs">
@@ -165,8 +165,8 @@
     <EmbeddedResource Include="Citiroc.resx">
       <DependentUpon>Citiroc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CubesMonitor.resx">
-      <DependentUpon>CubesMonitor.cs</DependentUpon>
+    <EmbeddedResource Include="ProtoCubesMonitor.resx">
+      <DependentUpon>ProtoCubesMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
