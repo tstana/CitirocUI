@@ -409,24 +409,15 @@ namespace CitirocUI
             protoCubes.MonitorActive = false;
         }
 
-        private void numUpDown_dt2_ValueChanged(object sender, EventArgs e)
+        private void buttonHelp_Click(object sender, EventArgs e)
         {
-
+            string helpString =
+             "TX data is colored yellow\r\n" +
+             "RX data is colored green\r\n" +
+             "\r\n" +
+             "Press \"Clear\" to clear monitor contents.";
+            MessageBox.Show(helpString, "Help");
         }
 
-        private void label_hitCountMPPC1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_hitCountMPPC2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_Voltage_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

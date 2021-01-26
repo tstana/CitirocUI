@@ -1798,15 +1798,10 @@ namespace CitirocUI
             }
         }
 
-        private void buttonHelp_Click(object sender, EventArgs e)
-        {
-            string helpString =
-            "TX data is colored yellow\r\n" +
-            "RX data is colored green\r\n" +
-            "\r\n" +
-            "Press \"Clear\" to clear monitor contents.";
-            MessageBox.Show(helpString, "Help");
-        }
+        //private void buttonHelp_Click(object sender, EventArgs e)
+        //{
+ 
+        //}
 
         void button_SendResets_Click(object sender, EventArgs e)
         {
