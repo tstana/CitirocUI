@@ -389,5 +389,25 @@ namespace CitirocUI
             protoCubes.DataReadyEvent -= ReqHK_DataReady;
             protoCubes.MonitorActive = false;
         }
+
+        private void numUpDown_dt2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_hitCountMPPC1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_hitCountMPPC2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_Voltage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
