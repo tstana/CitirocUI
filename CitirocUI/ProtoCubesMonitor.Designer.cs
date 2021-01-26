@@ -80,6 +80,7 @@
             this.button_Clear = new System.Windows.Forms.Button();
             this.tmrButtonColor = new System.Windows.Forms.Timer(this.components);
             this.groupBoxMonitor = new System.Windows.Forms.GroupBox();
+            this.label_ConnStatus = new System.Windows.Forms.Label();
             this.groupBox_HitRates.SuspendLayout();
             this.groupBox_HvpsTelemetry.SuspendLayout();
             this.groupBox_HV.SuspendLayout();
@@ -100,7 +101,7 @@
             this.button_readHK.BackColor = System.Drawing.SystemColors.Control;
             this.button_readHK.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_readHK.Location = new System.Drawing.Point(7, 26);
-            this.button_readHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_readHK.Margin = new System.Windows.Forms.Padding(4);
             this.button_readHK.Name = "button_readHK";
             this.button_readHK.Size = new System.Drawing.Size(520, 42);
             this.button_readHK.TabIndex = 2;
@@ -112,7 +113,7 @@
             // 
             this.textBox_ResetCount.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_ResetCount.Location = new System.Drawing.Point(306, 113);
-            this.textBox_ResetCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_ResetCount.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_ResetCount.Name = "textBox_ResetCount";
             this.textBox_ResetCount.ReadOnly = true;
             this.textBox_ResetCount.Size = new System.Drawing.Size(221, 26);
@@ -124,7 +125,7 @@
             // 
             this.textBox_timestamp.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_timestamp.Location = new System.Drawing.Point(306, 82);
-            this.textBox_timestamp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_timestamp.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_timestamp.Name = "textBox_timestamp";
             this.textBox_timestamp.ReadOnly = true;
             this.textBox_timestamp.Size = new System.Drawing.Size(221, 26);
@@ -166,9 +167,9 @@
             this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC3);
             this.groupBox_HitRates.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_HitRates.Location = new System.Drawing.Point(7, 169);
-            this.groupBox_HitRates.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_HitRates.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_HitRates.Name = "groupBox_HitRates";
-            this.groupBox_HitRates.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_HitRates.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_HitRates.Size = new System.Drawing.Size(231, 157);
             this.groupBox_HitRates.TabIndex = 42;
             this.groupBox_HitRates.TabStop = false;
@@ -190,7 +191,7 @@
             // 
             this.textBox_hitCountOR32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_hitCountOR32.Location = new System.Drawing.Point(107, 124);
-            this.textBox_hitCountOR32.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_hitCountOR32.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hitCountOR32.Name = "textBox_hitCountOR32";
             this.textBox_hitCountOR32.ReadOnly = true;
             this.textBox_hitCountOR32.Size = new System.Drawing.Size(109, 24);
@@ -201,7 +202,7 @@
             // 
             this.textBox_hitCountMPPC2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_hitCountMPPC2.Location = new System.Drawing.Point(107, 60);
-            this.textBox_hitCountMPPC2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_hitCountMPPC2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hitCountMPPC2.Name = "textBox_hitCountMPPC2";
             this.textBox_hitCountMPPC2.ReadOnly = true;
             this.textBox_hitCountMPPC2.Size = new System.Drawing.Size(109, 24);
@@ -224,7 +225,7 @@
             // 
             this.textBox_hitCountMPPC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_hitCountMPPC1.Location = new System.Drawing.Point(107, 28);
-            this.textBox_hitCountMPPC1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_hitCountMPPC1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hitCountMPPC1.Name = "textBox_hitCountMPPC1";
             this.textBox_hitCountMPPC1.ReadOnly = true;
             this.textBox_hitCountMPPC1.Size = new System.Drawing.Size(109, 24);
@@ -235,7 +236,7 @@
             // 
             this.textBox_hitCountMPPC3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_hitCountMPPC3.Location = new System.Drawing.Point(107, 92);
-            this.textBox_hitCountMPPC3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_hitCountMPPC3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hitCountMPPC3.Name = "textBox_hitCountMPPC3";
             this.textBox_hitCountMPPC3.ReadOnly = true;
             this.textBox_hitCountMPPC3.Size = new System.Drawing.Size(109, 24);
@@ -278,9 +279,9 @@
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_currentFromHVPS);
             this.groupBox_HvpsTelemetry.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_HvpsTelemetry.Location = new System.Drawing.Point(262, 169);
-            this.groupBox_HvpsTelemetry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_HvpsTelemetry.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_HvpsTelemetry.Name = "groupBox_HvpsTelemetry";
-            this.groupBox_HvpsTelemetry.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_HvpsTelemetry.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_HvpsTelemetry.Size = new System.Drawing.Size(274, 157);
             this.groupBox_HvpsTelemetry.TabIndex = 41;
             this.groupBox_HvpsTelemetry.TabStop = false;
@@ -320,7 +321,7 @@
             // textBox_hvpsCmdsSent
             // 
             this.textBox_hvpsCmdsSent.Location = new System.Drawing.Point(62, 124);
-            this.textBox_hvpsCmdsSent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_hvpsCmdsSent.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hvpsCmdsSent.Name = "textBox_hvpsCmdsSent";
             this.textBox_hvpsCmdsSent.ReadOnly = true;
             this.textBox_hvpsCmdsSent.Size = new System.Drawing.Size(56, 26);
@@ -331,7 +332,7 @@
             // textBox_hvpsCmdsAcked
             // 
             this.textBox_hvpsCmdsAcked.Location = new System.Drawing.Point(133, 124);
-            this.textBox_hvpsCmdsAcked.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_hvpsCmdsAcked.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hvpsCmdsAcked.Name = "textBox_hvpsCmdsAcked";
             this.textBox_hvpsCmdsAcked.ReadOnly = true;
             this.textBox_hvpsCmdsAcked.Size = new System.Drawing.Size(63, 26);
@@ -342,7 +343,7 @@
             // textBox_hvpsCmdsRej
             // 
             this.textBox_hvpsCmdsRej.Location = new System.Drawing.Point(204, 124);
-            this.textBox_hvpsCmdsRej.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_hvpsCmdsRej.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hvpsCmdsRej.Name = "textBox_hvpsCmdsRej";
             this.textBox_hvpsCmdsRej.ReadOnly = true;
             this.textBox_hvpsCmdsRej.Size = new System.Drawing.Size(63, 26);
@@ -353,7 +354,7 @@
             // textBox_tempFromHVPS
             // 
             this.textBox_tempFromHVPS.Location = new System.Drawing.Point(158, 92);
-            this.textBox_tempFromHVPS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_tempFromHVPS.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_tempFromHVPS.Name = "textBox_tempFromHVPS";
             this.textBox_tempFromHVPS.ReadOnly = true;
             this.textBox_tempFromHVPS.Size = new System.Drawing.Size(109, 26);
@@ -363,7 +364,7 @@
             // textBox_voltageFromHVPS
             // 
             this.textBox_voltageFromHVPS.Location = new System.Drawing.Point(158, 28);
-            this.textBox_voltageFromHVPS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_voltageFromHVPS.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_voltageFromHVPS.Name = "textBox_voltageFromHVPS";
             this.textBox_voltageFromHVPS.ReadOnly = true;
             this.textBox_voltageFromHVPS.Size = new System.Drawing.Size(109, 26);
@@ -383,7 +384,7 @@
             // textBox_currentFromHVPS
             // 
             this.textBox_currentFromHVPS.Location = new System.Drawing.Point(158, 60);
-            this.textBox_currentFromHVPS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_currentFromHVPS.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_currentFromHVPS.Name = "textBox_currentFromHVPS";
             this.textBox_currentFromHVPS.ReadOnly = true;
             this.textBox_currentFromHVPS.Size = new System.Drawing.Size(109, 26);
@@ -396,9 +397,9 @@
             this.groupBox_HV.Controls.Add(this.groupBox_hvTemporary);
             this.groupBox_HV.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_HV.Location = new System.Drawing.Point(7, 334);
-            this.groupBox_HV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_HV.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_HV.Name = "groupBox_HV";
-            this.groupBox_HV.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_HV.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_HV.Size = new System.Drawing.Size(529, 257);
             this.groupBox_HV.TabIndex = 43;
             this.groupBox_HV.TabStop = false;
@@ -421,9 +422,9 @@
             this.groupBox_hvPersistent.Controls.Add(this.label_refTemp);
             this.groupBox_hvPersistent.Controls.Add(this.checkBox_hvReset);
             this.groupBox_hvPersistent.Location = new System.Drawing.Point(8, 98);
-            this.groupBox_hvPersistent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_hvPersistent.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_hvPersistent.Name = "groupBox_hvPersistent";
-            this.groupBox_hvPersistent.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_hvPersistent.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_hvPersistent.Size = new System.Drawing.Size(512, 149);
             this.groupBox_hvPersistent.TabIndex = 1;
             this.groupBox_hvPersistent.TabStop = false;
@@ -438,7 +439,7 @@
             0,
             131072});
             this.numUpDown_dt2.Location = new System.Drawing.Point(291, 106);
-            this.numUpDown_dt2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDown_dt2.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDown_dt2.Maximum = new decimal(new int[] {
             3400,
             0,
@@ -458,7 +459,7 @@
             0,
             131072});
             this.numUpDown_dt1.Location = new System.Drawing.Point(291, 64);
-            this.numUpDown_dt1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDown_dt1.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDown_dt1.Maximum = new decimal(new int[] {
             3400,
             0,
@@ -477,7 +478,7 @@
             0,
             65536});
             this.numUpDown_refVolt.Location = new System.Drawing.Point(426, 25);
-            this.numUpDown_refVolt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDown_refVolt.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDown_refVolt.Maximum = new decimal(new int[] {
             55,
             0,
@@ -536,7 +537,7 @@
             0,
             131072});
             this.numUpDown_dtp2.Location = new System.Drawing.Point(126, 106);
-            this.numUpDown_dtp2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDown_dtp2.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDown_dtp2.Maximum = new decimal(new int[] {
             15,
             0,
@@ -561,7 +562,7 @@
             0,
             131072});
             this.numUpDown_dtp1.Location = new System.Drawing.Point(126, 64);
-            this.numUpDown_dtp1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDown_dtp1.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDown_dtp1.Maximum = new decimal(new int[] {
             15,
             0,
@@ -601,7 +602,7 @@
             // 
             this.button_hvSendPersistent.BackColor = System.Drawing.SystemColors.Control;
             this.button_hvSendPersistent.Location = new System.Drawing.Point(391, 76);
-            this.button_hvSendPersistent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_hvSendPersistent.Margin = new System.Windows.Forms.Padding(4);
             this.button_hvSendPersistent.Name = "button_hvSendPersistent";
             this.button_hvSendPersistent.Size = new System.Drawing.Size(105, 40);
             this.button_hvSendPersistent.TabIndex = 7;
@@ -618,7 +619,7 @@
             0,
             65536});
             this.numUpDown_refTemp.Location = new System.Drawing.Point(229, 27);
-            this.numUpDown_refTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDown_refTemp.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDown_refTemp.Maximum = new decimal(new int[] {
             60,
             0,
@@ -652,7 +653,7 @@
             // 
             this.checkBox_hvReset.AutoSize = true;
             this.checkBox_hvReset.Location = new System.Drawing.Point(10, 29);
-            this.checkBox_hvReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_hvReset.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_hvReset.Name = "checkBox_hvReset";
             this.checkBox_hvReset.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox_hvReset.Size = new System.Drawing.Size(64, 22);
@@ -668,9 +669,9 @@
             this.groupBox_hvTemporary.Controls.Add(this.label140);
             this.groupBox_hvTemporary.Controls.Add(this.checkBox_HVON);
             this.groupBox_hvTemporary.Location = new System.Drawing.Point(8, 24);
-            this.groupBox_hvTemporary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_hvTemporary.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_hvTemporary.Name = "groupBox_hvTemporary";
-            this.groupBox_hvTemporary.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_hvTemporary.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_hvTemporary.Size = new System.Drawing.Size(512, 67);
             this.groupBox_hvTemporary.TabIndex = 0;
             this.groupBox_hvTemporary.TabStop = false;
@@ -680,7 +681,7 @@
             // 
             this.button_hvSendTemp.BackColor = System.Drawing.SystemColors.Control;
             this.button_hvSendTemp.Location = new System.Drawing.Point(391, 18);
-            this.button_hvSendTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_hvSendTemp.Margin = new System.Windows.Forms.Padding(4);
             this.button_hvSendTemp.Name = "button_hvSendTemp";
             this.button_hvSendTemp.Size = new System.Drawing.Size(105, 40);
             this.button_hvSendTemp.TabIndex = 4;
@@ -697,7 +698,7 @@
             0,
             65536});
             this.numUpDown_HV.Location = new System.Drawing.Point(229, 27);
-            this.numUpDown_HV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDown_HV.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDown_HV.Maximum = new decimal(new int[] {
             55,
             0,
@@ -733,7 +734,7 @@
             this.checkBox_HVON.Checked = true;
             this.checkBox_HVON.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_HVON.Location = new System.Drawing.Point(10, 28);
-            this.checkBox_HVON.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_HVON.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_HVON.Name = "checkBox_HVON";
             this.checkBox_HVON.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox_HVON.Size = new System.Drawing.Size(72, 22);
@@ -748,7 +749,7 @@
             this.rtxtMonitor.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtMonitor.ForeColor = System.Drawing.SystemColors.Info;
             this.rtxtMonitor.Location = new System.Drawing.Point(567, 13);
-            this.rtxtMonitor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtxtMonitor.Margin = new System.Windows.Forms.Padding(4);
             this.rtxtMonitor.Name = "rtxtMonitor";
             this.rtxtMonitor.ReadOnly = true;
             this.rtxtMonitor.Size = new System.Drawing.Size(260, 637);
@@ -760,7 +761,7 @@
             // 
             this.buttonHelp.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHelp.Location = new System.Drawing.Point(360, 599);
-            this.buttonHelp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonHelp.Margin = new System.Windows.Forms.Padding(4);
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.Size = new System.Drawing.Size(24, 31);
             this.buttonHelp.TabIndex = 46;
@@ -771,7 +772,7 @@
             // 
             this.button_Clear.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Clear.Location = new System.Drawing.Point(424, 599);
-            this.button_Clear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Clear.Margin = new System.Windows.Forms.Padding(4);
             this.button_Clear.Name = "button_Clear";
             this.button_Clear.Size = new System.Drawing.Size(105, 38);
             this.button_Clear.TabIndex = 45;
@@ -786,6 +787,7 @@
             // 
             // groupBoxMonitor
             // 
+            this.groupBoxMonitor.Controls.Add(this.label_ConnStatus);
             this.groupBoxMonitor.Controls.Add(this.textBox_ResetCount);
             this.groupBoxMonitor.Controls.Add(this.buttonHelp);
             this.groupBoxMonitor.Controls.Add(this.button_readHK);
@@ -802,7 +804,16 @@
             this.groupBoxMonitor.TabIndex = 47;
             this.groupBoxMonitor.TabStop = false;
             // 
-            // CubesMonitor
+            // label_ConnStatus
+            // 
+            this.label_ConnStatus.AutoSize = true;
+            this.label_ConnStatus.Location = new System.Drawing.Point(24, 612);
+            this.label_ConnStatus.Name = "label_ConnStatus";
+            this.label_ConnStatus.Size = new System.Drawing.Size(44, 18);
+            this.label_ConnStatus.TabIndex = 47;
+            this.label_ConnStatus.Text = "label1";
+            // 
+            // ProtoCubesMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -810,8 +821,8 @@
             this.Controls.Add(this.groupBoxMonitor);
             this.Controls.Add(this.rtxtMonitor);
             this.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "CubesMonitor";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "ProtoCubesMonitor";
             this.Text = "CUBES Monitor Window";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CubesMonitor_FormClosing);
             this.groupBox_HitRates.ResumeLayout(false);
@@ -889,5 +900,6 @@
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Timer tmrButtonColor;
         private System.Windows.Forms.GroupBox groupBoxMonitor;
+        private System.Windows.Forms.Label label_ConnStatus;
     }
 }
