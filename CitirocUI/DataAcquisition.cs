@@ -146,7 +146,11 @@ namespace CitirocUI
                 byte[] daqConf = new byte[2];
 
                 daqConf[0] = Convert.ToByte(individAcqTime);
-                daqConf[1] = (byte)comboBox_cubesDaqNumBins.SelectedIndex;
+
+                /// for (int i = 0; i < 6; ++i)
+                /// {
+                ///     daqConf[i+1] = numBinsFromForm[i];
+                /// }
 
                 try
                 {
@@ -197,10 +201,9 @@ namespace CitirocUI
             /* ... and update UI elements to indicate this */
             button_startAcquisition.Text = "Stop Acquisition";
 
-            protoCubes.NumBins = Convert.ToInt32(comboBox_cubesDaqNumBins.Text);
+            protoCubes.NumBins = 2048; // TODO: Array.Copy(from: numBinsFromForm);
 
-            comboBox_cubesDaqNumBins.Enabled = false;
-            label_cubesDaqNumBins.Enabled = false;
+            button_SelectNumBinsCubes.Enabled = false;
 
             tabControl_dataAcquisition.Enabled = false;
             progressBar_acquisition.Visible = true;
@@ -506,8 +509,7 @@ namespace CitirocUI
             tabControl_dataAcquisition.Enabled = true;
             progressBar_acquisition.Value = 0;
             progressBar_acquisition.Visible = false;
-            comboBox_cubesDaqNumBins.Enabled = true;
-            label_cubesDaqNumBins.Enabled = true;
+            button_SelectNumBinsCubes.Enabled = true;
 
             if (selectedConnectionMode == 0)
             {

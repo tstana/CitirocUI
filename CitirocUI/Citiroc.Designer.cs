@@ -773,9 +773,8 @@
             this.label_elapsedTimeAcquisition = new System.Windows.Forms.Label();
             this.tabControl_dataAcquisition = new System.Windows.Forms.TabControl();
             this.tabPage_perChannelCharge = new System.Windows.Forms.TabPage();
-            this.comboBox_cubesDaqNumBins = new System.Windows.Forms.ComboBox();
+            this.button_SelectNumBinsCubes = new System.Windows.Forms.Button();
             this.label_DataFile = new System.Windows.Forms.Label();
-            this.label_cubesDaqNumBins = new System.Windows.Forms.Label();
             this.textBox_LgCutLow = new CitirocUI.intTextBox();
             this.textBox_LgCutHigh = new CitirocUI.intTextBox();
             this.textBox_HgCutLow = new CitirocUI.intTextBox();
@@ -10134,9 +10133,8 @@
             // 
             // tabPage_perChannelCharge
             // 
-            this.tabPage_perChannelCharge.Controls.Add(this.comboBox_cubesDaqNumBins);
+            this.tabPage_perChannelCharge.Controls.Add(this.button_SelectNumBinsCubes);
             this.tabPage_perChannelCharge.Controls.Add(this.label_DataFile);
-            this.tabPage_perChannelCharge.Controls.Add(this.label_cubesDaqNumBins);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutLow);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_LgCutHigh);
             this.tabPage_perChannelCharge.Controls.Add(this.textBox_HgCutLow);
@@ -10159,21 +10157,15 @@
             this.tabPage_perChannelCharge.Text = "   Per channel   ";
             this.tabPage_perChannelCharge.UseVisualStyleBackColor = true;
             // 
-            // comboBox_cubesDaqNumBins
+            // button_SelectNumBinsCubes
             // 
-            this.comboBox_cubesDaqNumBins.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox_cubesDaqNumBins.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox_cubesDaqNumBins.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_cubesDaqNumBins.FormattingEnabled = true;
-            this.comboBox_cubesDaqNumBins.Items.AddRange(new object[] {
-            "2048",
-            "1024",
-            "512",
-            "256"});
-            this.comboBox_cubesDaqNumBins.Location = new System.Drawing.Point(937, 0);
-            this.comboBox_cubesDaqNumBins.Name = "comboBox_cubesDaqNumBins";
-            this.comboBox_cubesDaqNumBins.Size = new System.Drawing.Size(107, 32);
-            this.comboBox_cubesDaqNumBins.TabIndex = 29;
+            this.button_SelectNumBinsCubes.Location = new System.Drawing.Point(871, 3);
+            this.button_SelectNumBinsCubes.Name = "button_SelectNumBinsCubes";
+            this.button_SelectNumBinsCubes.Size = new System.Drawing.Size(173, 24);
+            this.button_SelectNumBinsCubes.TabIndex = 29;
+            this.button_SelectNumBinsCubes.Text = "Select Number of Bins...";
+            this.button_SelectNumBinsCubes.UseVisualStyleBackColor = true;
+            this.button_SelectNumBinsCubes.Click += new System.EventHandler(this.button_SelectNumBinsCubes_Click);
             // 
             // label_DataFile
             // 
@@ -10184,15 +10176,6 @@
             this.label_DataFile.TabIndex = 28;
             this.label_DataFile.Text = "file:";
             this.label_DataFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // label_cubesDaqNumBins
-            // 
-            this.label_cubesDaqNumBins.AutoSize = true;
-            this.label_cubesDaqNumBins.Location = new System.Drawing.Point(782, 5);
-            this.label_cubesDaqNumBins.Name = "label_cubesDaqNumBins";
-            this.label_cubesDaqNumBins.Size = new System.Drawing.Size(145, 24);
-            this.label_cubesDaqNumBins.TabIndex = 27;
-            this.label_cubesDaqNumBins.Text = "Number of Bins:";
             // 
             // textBox_LgCutLow
             // 
@@ -12865,12 +12848,11 @@
         private System.Windows.Forms.TabPage tabPage_firmwareProtoCUBES;
         private checkBox checkBox_RstReadReg;
         private System.Windows.Forms.Label label_DataFile;
-        private System.Windows.Forms.Label label_cubesDaqNumBins;
         private System.Windows.Forms.GroupBox groupBox_clearArduinoSD;
         private System.Windows.Forms.Label label_WarnClearArduinoSD;
         private System.Windows.Forms.Button button_ClearArduinoSD;
-        private System.Windows.Forms.ComboBox comboBox_cubesDaqNumBins;
         private System.Windows.Forms.Timer tmrButtonColor;
+        private System.Windows.Forms.Button button_SelectNumBinsCubes;
     }
 }
 
