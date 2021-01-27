@@ -35,6 +35,7 @@ namespace CitirocUI
                 {
                     label_ConnStatus.Text = "Connected to Proto-CUBES on " +
                         protoCubes.PortName;
+                    label_ConnStatus.ForeColor = Color.DarkGreen;
                 }
                 else if (connectStatus == -1)
                 {
