@@ -238,6 +238,8 @@ namespace CitirocUI
                     roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
                     connectStatus = -1;
                     label_boardStatus.Text = "Board status\n" + "No board connected";
+                    if (protoCubesMonitorForm != null)
+                        protoCubesMonitorForm.ConnectStatus = connectStatus;
                     return;
                 }
 

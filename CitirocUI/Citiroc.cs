@@ -1798,11 +1798,6 @@ namespace CitirocUI
             }
         }
 
-        //private void buttonHelp_Click(object sender, EventArgs e)
-        //{
- 
-        //}
-
         void button_SendResets_Click(object sender, EventArgs e)
         {
             byte[] gwConf = new byte[1];
