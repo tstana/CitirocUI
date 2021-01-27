@@ -64,6 +64,39 @@ namespace CitirocUI
             rtxtMonitor.Clear();
         }
 
+        private void button_readHK_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ConnectStatus == 1)
+                {
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.ReqHK, null);
+                    button_readHK.BackColor = Color.ForestGreen;
+                }
+                else
+                {
+                    throw new Exception("Please connect to an instrument " +
+                        "using the \"Connect\" tab.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send HK request command " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                button_readHK.BackColor = Color.IndianRed;
+            }
+
+            tmrButtonColor.Enabled = true;
+        }
+
         private void ReqHK_DataReady(object sender, DataReadyEventArgs e)
         {
             // Quit early if command is not REQ_HK!
@@ -227,39 +260,6 @@ namespace CitirocUI
                     textBox_hvpsCmdsRej.Text = hvpsCmdsRej.ToString();
                 }
             ));
-        }
-
-        private void button_readHK_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ConnectStatus == 1)
-                {
-                    protoCubes.SendCommand(ProtoCubesSerial.Command.ReqHK, null);
-                    button_readHK.BackColor = Color.ForestGreen;
-                }
-                else
-                {
-                    throw new Exception("Please connect to an instrument " +
-                        "using the \"Connect\" tab.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to send HK request command " +
-                    "to Proto-CUBES!"
-                    + Environment.NewLine
-                    + Environment.NewLine
-                    + "Error message:"
-                    + Environment.NewLine
-                    + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                button_readHK.BackColor = Color.IndianRed;
-            }
-
-            tmrButtonColor.Enabled = true;
         }
 
         private void button_hvSendTemp_Click(object sender, EventArgs e)
