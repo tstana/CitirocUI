@@ -10159,9 +10159,9 @@
             // 
             // button_SelectNumBinsCubes
             // 
-            this.button_SelectNumBinsCubes.Location = new System.Drawing.Point(871, 3);
+            this.button_SelectNumBinsCubes.Location = new System.Drawing.Point(807, 3);
             this.button_SelectNumBinsCubes.Name = "button_SelectNumBinsCubes";
-            this.button_SelectNumBinsCubes.Size = new System.Drawing.Size(173, 24);
+            this.button_SelectNumBinsCubes.Size = new System.Drawing.Size(237, 33);
             this.button_SelectNumBinsCubes.TabIndex = 29;
             this.button_SelectNumBinsCubes.Text = "Select Number of Bins...";
             this.button_SelectNumBinsCubes.UseVisualStyleBackColor = true;

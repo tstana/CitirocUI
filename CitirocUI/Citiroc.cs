@@ -1934,11 +1934,5 @@ namespace CitirocUI
             }
             catch { /* Blindly close... */}
         }
-        
-        private void button_SelectNumBinsCubes_Click(object sender, EventArgs e)
-        {
-            ProtoCubesNumBinsForm frm = new ProtoCubesNumBinsForm();
-            frm.ShowDialog();
-        }
     }
 }

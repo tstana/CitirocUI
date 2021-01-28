@@ -12,6 +12,12 @@ namespace CitirocUI
 {
     public partial class ProtoCubesNumBinsForm : Form
     {
+        private const int NumBinsMin = 7;       // 2048 >> NumBinsMin
+        private readonly string[] comboVar = { "log scale", "log"};
+        
+        public int[] indexArray = new int[6];
+
+
         public ProtoCubesNumBinsForm()
         {
             InitializeComponent();
@@ -19,6 +25,33 @@ namespace CitirocUI
 
         private void ProtoCubesNumBinsForm_Load(object sender, EventArgs e)
         {
+            for (int i = 0; i < NumBinsMin; i++)
+            {
+                int numBins = 2048 >> i;
+                comboBox_Ch0_hgNumBinsFixed.Items.Add(numBins);
+                comboBox_Ch0_lgNumBinsFixed.Items.Add(numBins);
+                comboBox_Ch16_hgNumBinsFixed.Items.Add(numBins);
+                comboBox_Ch16_lgNumBinsFixed.Items.Add(numBins);
+                comboBox_Ch31_hgNumBinsFixed.Items.Add(numBins);
+                comboBox_Ch31_lgNumBinsFixed.Items.Add(numBins);
+            }
+
+            for (int i = 0; i < comboVar.Length; i++)
+            {
+                comboBox_Ch0_hgNumBinsVar.Items.Add(comboVar[i]);
+                comboBox_Ch0_lgNumBinsVar.Items.Add(comboVar[i]);
+                comboBox_Ch16_hgNumBinsVar.Items.Add(comboVar[i]);
+                comboBox_Ch16_lgNumBinsVar.Items.Add(comboVar[i]);
+                comboBox_Ch31_hgNumBinsVar.Items.Add(comboVar[i]);
+                comboBox_Ch31_lgNumBinsVar.Items.Add(comboVar[i]);
+            }
+
+            checkBox_Ch0_lgVarBin.CheckedChanged +=new EventHandler(checkBox_CheckedChanged);
+            checkBox_Ch16_hgVarBin.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
+            checkBox_Ch16_lgVarBin.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
+            checkBox_Ch31_hgVarBin.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
+            checkBox_Ch31_lgVarBin.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
+
             UpdateComboBoxes();
         }
 
@@ -40,32 +73,7 @@ namespace CitirocUI
             comboBox_Ch31_lgNumBinsVar.Enabled = checkBox_Ch31_lgVarBin.Checked;
         }
 
-        private void checkBox_Ch0_hgVarBin_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateComboBoxes();
-        }
-
-        private void checkBox_Ch0_lgVarBin_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateComboBoxes();
-        }
-
-        private void checkBox_Ch16_hgVarBin_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateComboBoxes();
-        }
-
-        private void checkBox_Ch16_lgVarBin_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateComboBoxes();
-        }
-
-        private void checkBox_Ch31_hgVarBin_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateComboBoxes();
-        }
-
-        private void checkBox_Ch31_lgVarBin_CheckedChanged(object sender, EventArgs e)
+         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
             UpdateComboBoxes();
         }

@@ -89,7 +89,7 @@ namespace CitirocUI
             string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
 
             /* Now actually send the bytes... */
-            
+
             // USB (Weeroc board)
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
@@ -410,7 +410,7 @@ namespace CitirocUI
                 /// corresponding to a single DAQ after the run is done).
                 var stopwatchTotalDaqRun = Stopwatch.StartNew();
                 var stopwatchIndividualDaqRun = Stopwatch.StartNew();
-                var individualDaqTimeMillisec = 1000 + 
+                var individualDaqTimeMillisec = 1000 +
                     (Convert.ToInt32(textBox_numData.Text) * 1000);
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
@@ -551,7 +551,7 @@ namespace CitirocUI
         {
             /* Get actual acquistion time -- counted using a 10 MHz clock -- from firmware registers */
             ulong firmwareActualAcqTime = Convert.ToUInt64(Firmware.readWord(114, usbDevId), 2) |
-                Convert.ToUInt64(Firmware.readWord(115, usbDevId), 2) <<  8 |
+                Convert.ToUInt64(Firmware.readWord(115, usbDevId), 2) << 8 |
                 Convert.ToUInt64(Firmware.readWord(116, usbDevId), 2) << 16 |
                 Convert.ToUInt64(Firmware.readWord(117, usbDevId), 2) << 24 |
                 Convert.ToUInt64(Firmware.readWord(118, usbDevId), 2) << 32 |
@@ -711,7 +711,7 @@ namespace CitirocUI
             if (DataArrayListCount <= 1) return;
 
             string[] DataArray = new string[DataArrayListCount];
-  
+
             Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
             Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
             Array.Clear(Hit, 0, Hit.Length);
@@ -789,10 +789,10 @@ namespace CitirocUI
 
             ulong numTimeTrigs = 0;
 
-            if(selectedConnectionMode == 0)
+            if (selectedConnectionMode == 0)
             {
-                numTimeTrigs=(Convert.ToUInt64(Firmware.readWord(120, usbDevId), 2)) |
-                                 (Convert.ToUInt64(Firmware.readWord(121, usbDevId), 2) <<  8) |
+                numTimeTrigs = (Convert.ToUInt64(Firmware.readWord(120, usbDevId), 2)) |
+                                 (Convert.ToUInt64(Firmware.readWord(121, usbDevId), 2) << 8) |
                                  (Convert.ToUInt64(Firmware.readWord(122, usbDevId), 2) << 16) |
                                  (Convert.ToUInt64(Firmware.readWord(123, usbDevId), 2) << 24) |
                                  (Convert.ToUInt64(Firmware.readWord(124, usbDevId), 2) << 32) |
@@ -808,8 +808,8 @@ namespace CitirocUI
             else
             {
                 label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + HitCK[chNum];
-                label_elapsedTimeAcquisition.Text = "Elapsed time: " + ((double)(daqTimeTotal/256)).ToString("N3") + " s";
-                label_acqTime.Text = "Actual acq. time: " + ((double)(daqTimeActual/256)).ToString("N3") + " s";
+                label_elapsedTimeAcquisition.Text = "Elapsed time: " + ((double)(daqTimeTotal / 256)).ToString("N3") + " s";
+                label_acqTime.Text = "Actual acq. time: " + ((double)(daqTimeActual / 256)).ToString("N3") + " s";
             }
 
             resetZoom(chart_perChannelChargeHG);
@@ -825,7 +825,7 @@ namespace CitirocUI
             chart_perChannelChargeLG.Series[0].BorderColor = WeerocPaleBlue;
             chart_perChannelChargeLG.Series[0].BorderWidth = 0;
             chart_perChannelChargeLG.Series[0]["PointWidth"] = "1";
-         
+
             for (int i = LgCutLow; i < LgCutHigh + 1; i++)
                 if (PerChannelChargeLG[chNum, i] != 0)
                     chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
@@ -999,7 +999,7 @@ namespace CitirocUI
                     // Reverse histogram values for all six histo's
                     start += 256;
 
-                    for (int i = 0; i < numBins*6; i++)
+                    for (int i = 0; i < numBins * 6; i++)
                     {
                         Array.Reverse(adata, start + 2 * i, 2);
                     }
@@ -1046,12 +1046,12 @@ namespace CitirocUI
 
                     if (bincfg <= 3) {
                         // Values for display with non-variable binning
-                        PerChannelChargeHG[ 0, i << bincfg] = BitConverter.ToUInt16(adata, binOffset);
-                        PerChannelChargeLG[ 0, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 2*numBins);
-                        PerChannelChargeHG[16, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 4*numBins);
-                        PerChannelChargeLG[16, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 6*numBins);
-                        PerChannelChargeHG[31, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 8*numBins);
-                        PerChannelChargeLG[31, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 10*numBins);
+                        PerChannelChargeHG[0, i << bincfg] = BitConverter.ToUInt16(adata, binOffset);
+                        PerChannelChargeLG[0, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
+                        PerChannelChargeHG[16, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 4 * numBins);
+                        PerChannelChargeLG[16, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 6 * numBins);
+                        PerChannelChargeHG[31, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 8 * numBins);
+                        PerChannelChargeLG[31, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 10 * numBins);
                     }
                 }
 
@@ -1092,7 +1092,7 @@ namespace CitirocUI
             }
             catch (Exception ex)
             {
-                return("Invalid .dat file format :" + ex.Message);
+                return ("Invalid .dat file format :" + ex.Message);
             }
 
             return ("");
@@ -1140,7 +1140,7 @@ namespace CitirocUI
                 TimeSpan timeSinceEpoch = DateTime.UtcNow -
                     new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 string s = Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
-                        "<< REQ_STATUS data received ("     +e.Command+"/"+protoCubes.LastSentCommand+     "): " +
+                        "<< REQ_STATUS data received (" + e.Command + "/" + protoCubes.LastSentCommand + "): " +
                         arduinoStatus.ToString() + "\n";
                 byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
                 f.Write(bytes, 0, bytes.Length);
@@ -1182,14 +1182,14 @@ namespace CitirocUI
                 string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
                 string hkFileName = textBox_dataSavePath.Text + "_HK.dat";
 
-                string update=UpdateDataArrays(e.DataBytes);
+                string update = UpdateDataArrays(e.DataBytes);
 
                 if (update == "")
                 {
                     UpdatingLabel("Writing DAQ data to " + fileName, label_help);
                     // display data if tab is active
                     // displayDataFunction(fileName, e.DataBytes);
-                
+
                     /* Write data file */
                     using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
                     {
@@ -1284,7 +1284,7 @@ namespace CitirocUI
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
             folderDlg.Description = "Select folder to save to...";
             folderDlg.SelectedPath = path;
-            if(folderDlg.ShowDialog() == DialogResult.OK)
+            if (folderDlg.ShowDialog() == DialogResult.OK)
             {
                 textBox_dataSavePath.Text = folderDlg.SelectedPath + "\\";
             }
@@ -1316,7 +1316,7 @@ namespace CitirocUI
             OpenFileDialog DataLoadDialog = new OpenFileDialog();
             DataLoadDialog.Title = "Specify data file";
 
-            if(selectedConnectionMode == 1)     // Serial
+            if (selectedConnectionMode == 1)     // Serial
                 DataLoadDialog.Filter = "CUBES files|*.dat";
 
             DataLoadDialog.RestoreDirectory = true;
@@ -1336,11 +1336,11 @@ namespace CitirocUI
                 else
                 {
                     if (selectedConnectionMode == 1)
-                        loadCubesData();                        
+                        loadCubesData();
                     else
                         loadData();
                 }
-                    
+
             }
             else return;
         }
@@ -1377,7 +1377,7 @@ namespace CitirocUI
         {
             AdjustAcquisitionTime();
         }
-        
+
         private void textBox_numData_Leave(object sender, EventArgs e)
         {
             NumDataCheck();
@@ -1388,6 +1388,22 @@ namespace CitirocUI
             if (e.KeyValue == 13)
             {
                 NumDataCheck();
+            }
+        }
+
+        int[] binCfgArray = { 0, 0, 0, 0, 0, 0 };
+        private void button_SelectNumBinsCubes_Click(object sender, EventArgs e)
+        {
+            ProtoCubesNumBinsForm frm = new ProtoCubesNumBinsForm();
+
+            // send actual indexes
+            frm.indexArray = binCfgArray;
+            DialogResult result = frm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                // retrieve new data
+                binCfgArray = frm.indexArray;
             }
         }
         #endregion
