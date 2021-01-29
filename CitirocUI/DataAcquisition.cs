@@ -141,16 +141,19 @@ namespace CitirocUI
                 }
 
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
-                AdjustAcquisitionTime();            // TODO: Remove?
+                AdjustAcquisitionTime();
 
+                // Prep and send a SEND_DAQ_CONF command
                 byte[] daqConf = new byte[2];
 
                 daqConf[0] = Convert.ToByte(individAcqTime);
 
-                /// for (int i = 0; i < 6; ++i)
-                /// {
-                ///     daqConf[i+1] = numBinsFromForm[i];
-                /// }
+                for (int i = 0; i < 6; ++i)
+                {
+                    daqConf[i+1] = Convert.ToByte(binCfgArray[i]);
+                }
+
+                Array.Copy(numBinsArray, protoCubes.NumBins, 6);
 
                 try
                 {
@@ -170,6 +173,7 @@ namespace CitirocUI
                         MessageBoxIcon.Error);
                 }
 
+                // Finally, send a DAQ_START command:
                 try
                 {
                     protoCubes.SendCommand(ProtoCubesSerial.Command.DAQStart, null);
@@ -200,8 +204,6 @@ namespace CitirocUI
 
             /* ... and update UI elements to indicate this */
             button_startAcquisition.Text = "Stop Acquisition";
-
-            protoCubes.NumBins = 2048; // TODO: Array.Copy(from: numBinsFromForm);
 
             button_SelectNumBinsCubes.Enabled = false;
 
@@ -1403,7 +1405,30 @@ namespace CitirocUI
             if (result == DialogResult.OK)
             {
                 // retrieve new data
-                Array.Copy(frm.IndexArray, 0, binCfgArray, 0, 6);
+                Array.Copy(frm.IndexArray, binCfgArray, 6);
+                NumBinsFromBinCfg();
+            }
+        }
+
+        int[] numBinsArray = { 2048, 2048, 2048, 2048, 2048, 2048 };
+        private void NumBinsFromBinCfg()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                /// TODO: Use properties inside ProtoCubesNumBinsForm
+                ///       to set the bin_cfg ranges...
+                if (binCfgArray[i] < 7)
+                {
+                    numBinsArray[i] = 2048 >> binCfgArray[i];
+                }
+                else if (binCfgArray[i] == 11)
+                {
+                    numBinsArray[i] = 1024;
+                }
+                else if (binCfgArray[i] == 12)
+                {
+                    numBinsArray[i] = 128;
+                }
             }
         }
         #endregion

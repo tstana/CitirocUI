@@ -98,7 +98,6 @@ namespace CitirocUI
         private int commandReplyDataLen = 0;
 
         private int commandReplyBytesRead = 0;
-        private int numBins;       // TODO: Remove me (replace with expectedNumBytes or equiv.)
 
          //global variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
@@ -199,10 +198,9 @@ namespace CitirocUI
             set { _monvisible = value; }
         }
 
-        public int NumBins
+        public int[] NumBins
         {
-            get { return numBins; }
-            set { numBins = value; }
+            get; set;
         }
 
         /// <summary>
@@ -452,7 +450,10 @@ namespace CitirocUI
                     commandReplyDataLen = 26;
                     break;
                 case Command.ReqPayload:
-                    commandReplyDataLen = 23 + 256 + 6 * (numBins * 2) + 2;
+                    commandReplyDataLen = 23 + 256; // Unix time + histo. header
+                    for (int i = 0; i < 6; i++)
+                        commandReplyDataLen += 2 * NumBins[0]; // 2 bytes / bin
+                    commandReplyDataLen += 2; // "\r\n"
                     break;
                 default:
                     commandReplyDataLen = 0;
