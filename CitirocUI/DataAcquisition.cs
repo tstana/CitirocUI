@@ -1415,12 +1415,20 @@ namespace CitirocUI
         {
             for (int i = 0; i < 6; i++)
             {
-                if (binCfgArray[i] < 7) {
-                    numBinsArray[i] = 2048 >> binCfgArray[i];
-                }
-                // TODO: Add `else if` for variable binning...
                 /// TODO: Use properties inside ProtoCubesNumBinsForm
                 ///       to set the bin_cfg ranges...
+                if (binCfgArray[i] < 7)
+                {
+                    numBinsArray[i] = 2048 >> binCfgArray[i];
+                }
+                else if (binCfgArray[i] == 11)
+                {
+                    numBinsArray[i] = 1024;
+                }
+                else if (binCfgArray[i] == 12)
+                {
+                    numBinsArray[i] = 128;
+                }
             }
         }
         #endregion
