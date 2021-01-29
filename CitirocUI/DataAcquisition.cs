@@ -144,7 +144,7 @@ namespace CitirocUI
                 AdjustAcquisitionTime();
 
                 // Prep and send a SEND_DAQ_CONF command
-                byte[] daqConf = new byte[2];
+                byte[] daqConf = new byte[7];
 
                 daqConf[0] = Convert.ToByte(individAcqTime);
 

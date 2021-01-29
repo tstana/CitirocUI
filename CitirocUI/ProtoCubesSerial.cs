@@ -104,7 +104,6 @@ namespace CitirocUI
         private SerialPort comPort = new SerialPort();
 
         private Command lastSentCommand = Command.None;
-
         private string excepFileFolder;
         #endregion
 
@@ -198,10 +197,7 @@ namespace CitirocUI
             set { _monvisible = value; }
         }
 
-        public int[] NumBins
-        {
-            get; set;
-        }
+        public int[] NumBins { get; set; } = new int[6];
 
         /// <summary>
         /// property to hold our TransmissionType
@@ -348,14 +344,14 @@ namespace CitirocUI
                     break;
 
                 case Command.SendDAQConf:
-                    if (cmdParam.Length != 2)
+                    if (cmdParam.Length != 7)
                     {
                         throw new ArgumentException("Command '" +
-                            (char)cmd + "' takes in 2 bytes as parameter; " +
+                            (char)cmd + "' takes in 7 bytes as parameter; " +
                             "the parameter array consists of " +
                             cmdParam.Length.ToString() + " bytes instead!");
                     }
-                    cmdBytes = new byte[3];
+                    cmdBytes = new byte[8];
                     break;
 
                 case Command.SendReadReg:
