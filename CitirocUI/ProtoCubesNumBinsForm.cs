@@ -48,18 +48,18 @@ namespace CitirocUI
                 comboBox_Ch31_lgNumBinsVar.Items.Add(comboVar[i]);
             }
 
-            comboBox_Ch0_hgNumBinsFixed.SelectedIndex = 0;
-            comboBox_Ch0_lgNumBinsFixed.SelectedIndex = 0;
-            comboBox_Ch16_hgNumBinsFixed.SelectedIndex = 0;
-            comboBox_Ch16_lgNumBinsFixed.SelectedIndex = 0;
-            comboBox_Ch31_hgNumBinsFixed.SelectedIndex = 0;
-            comboBox_Ch31_lgNumBinsFixed.SelectedIndex = 0;
-            comboBox_Ch0_hgNumBinsVar.SelectedIndex = 0;
-            comboBox_Ch0_lgNumBinsVar.SelectedIndex = 0;
-            comboBox_Ch16_hgNumBinsVar.SelectedIndex = 0;
-            comboBox_Ch16_lgNumBinsVar.SelectedIndex = 0;
-            comboBox_Ch31_hgNumBinsVar.SelectedIndex = 0;
-            comboBox_Ch31_lgNumBinsVar.SelectedIndex = 0;
+            //comboBox_Ch0_hgNumBinsFixed.SelectedIndex = 0;
+            //comboBox_Ch0_lgNumBinsFixed.SelectedIndex = 0;
+            //comboBox_Ch16_hgNumBinsFixed.SelectedIndex = 0;
+            //comboBox_Ch16_lgNumBinsFixed.SelectedIndex = 0;
+            //comboBox_Ch31_hgNumBinsFixed.SelectedIndex = 0;
+            //comboBox_Ch31_lgNumBinsFixed.SelectedIndex = 0;
+            //comboBox_Ch0_hgNumBinsVar.SelectedIndex = 0;
+            //comboBox_Ch0_lgNumBinsVar.SelectedIndex = 0;
+            //comboBox_Ch16_hgNumBinsVar.SelectedIndex = 0;
+            //comboBox_Ch16_lgNumBinsVar.SelectedIndex = 0;
+            //comboBox_Ch31_hgNumBinsVar.SelectedIndex = 0;
+            //comboBox_Ch31_lgNumBinsVar.SelectedIndex = 0;
 
             checkBox_Ch0_lgVarBin.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
             checkBox_Ch16_hgVarBin.CheckedChanged += new EventHandler(checkBox_CheckedChanged);
@@ -72,20 +72,74 @@ namespace CitirocUI
 
         private void UpdateComboBoxes()
         {
+            if (!update)
+                return;
+
             comboBox_Ch0_hgNumBinsFixed.Enabled = !checkBox_Ch0_hgVarBin.Checked;
             comboBox_Ch0_hgNumBinsVar.Enabled =  checkBox_Ch0_hgVarBin.Checked;
+            if (checkBox_Ch0_hgVarBin.Checked)
+            {
+                IndexArray[0] = comboBox_Ch0_hgNumBinsVar.SelectedIndex + 11;
+            }
+            else
+            {
+                IndexArray[0] = comboBox_Ch0_hgNumBinsFixed.SelectedIndex;
+            }
+
             comboBox_Ch0_lgNumBinsFixed.Enabled = !checkBox_Ch0_lgVarBin.Checked;
             comboBox_Ch0_lgNumBinsVar.Enabled =  checkBox_Ch0_lgVarBin.Checked;
+            if (checkBox_Ch0_lgVarBin.Checked)
+            {
+                IndexArray[1] = comboBox_Ch0_lgNumBinsVar.SelectedIndex + 11;
+            }
+            else
+            {
+                IndexArray[1] = comboBox_Ch0_lgNumBinsFixed.SelectedIndex;
+            }
 
             comboBox_Ch16_hgNumBinsFixed.Enabled = !checkBox_Ch16_hgVarBin.Checked;
             comboBox_Ch16_hgNumBinsVar.Enabled = checkBox_Ch16_hgVarBin.Checked;
+            if (checkBox_Ch16_hgVarBin.Checked)
+            {
+                IndexArray[2] = comboBox_Ch16_hgNumBinsVar.SelectedIndex + 11;
+            }
+            else
+            {
+                IndexArray[2] = comboBox_Ch16_hgNumBinsFixed.SelectedIndex;
+            }
+            
             comboBox_Ch16_lgNumBinsFixed.Enabled = !checkBox_Ch16_lgVarBin.Checked;
             comboBox_Ch16_lgNumBinsVar.Enabled = checkBox_Ch16_lgVarBin.Checked;
+            if (checkBox_Ch16_lgVarBin.Checked)
+            {
+                IndexArray[3] = comboBox_Ch16_lgNumBinsVar.SelectedIndex + 11;
+            }
+            else
+            {
+                IndexArray[3] = comboBox_Ch16_lgNumBinsFixed.SelectedIndex;
+            }
 
             comboBox_Ch31_hgNumBinsFixed.Enabled = !checkBox_Ch31_hgVarBin.Checked;
             comboBox_Ch31_hgNumBinsVar.Enabled = checkBox_Ch31_hgVarBin.Checked;
+            if (checkBox_Ch31_hgVarBin.Checked)
+            {
+                IndexArray[4] = comboBox_Ch31_hgNumBinsVar.SelectedIndex + 11;
+            }
+            else
+            {
+                IndexArray[4] = comboBox_Ch31_hgNumBinsFixed.SelectedIndex;
+            }
+
             comboBox_Ch31_lgNumBinsFixed.Enabled = !checkBox_Ch31_lgVarBin.Checked;
             comboBox_Ch31_lgNumBinsVar.Enabled = checkBox_Ch31_lgVarBin.Checked;
+            if (checkBox_Ch31_lgVarBin.Checked)
+            {
+                IndexArray[5] = comboBox_Ch31_lgNumBinsVar.SelectedIndex + 11;
+            }
+            else
+            {
+                IndexArray[5] = comboBox_Ch31_lgNumBinsFixed.SelectedIndex;
+            }
         }
 
          private void checkBox_CheckedChanged(object sender, EventArgs e)
