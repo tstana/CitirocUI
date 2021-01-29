@@ -60,6 +60,8 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button_Load = new System.Windows.Forms.Button();
+            this.button_Save = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -73,18 +75,19 @@
             // 
             this.button_Apply.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button_Apply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Apply.Location = new System.Drawing.Point(406, 269);
+            this.button_Apply.Location = new System.Drawing.Point(403, 270);
             this.button_Apply.Name = "button_Apply";
             this.button_Apply.Size = new System.Drawing.Size(75, 23);
             this.button_Apply.TabIndex = 0;
             this.button_Apply.Text = "Apply";
             this.button_Apply.UseVisualStyleBackColor = true;
+            this.button_Apply.Click += new System.EventHandler(this.button_Apply_Click);
             // 
             // button_Cancel
             // 
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Cancel.Location = new System.Drawing.Point(278, 269);
+            this.button_Cancel.Location = new System.Drawing.Point(280, 270);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.button_Cancel.TabIndex = 0;
@@ -94,7 +97,7 @@
             // checkBox_Ch0_hgVarBin
             // 
             this.checkBox_Ch0_hgVarBin.AutoSize = true;
-            this.checkBox_Ch0_hgVarBin.Location = new System.Drawing.Point(5, 38);
+            this.checkBox_Ch0_hgVarBin.Location = new System.Drawing.Point(5, 40);
             this.checkBox_Ch0_hgVarBin.Name = "checkBox_Ch0_hgVarBin";
             this.checkBox_Ch0_hgVarBin.Size = new System.Drawing.Size(67, 17);
             this.checkBox_Ch0_hgVarBin.TabIndex = 1;
@@ -105,7 +108,7 @@
             // checkBox_Ch0_lgVarBin
             // 
             this.checkBox_Ch0_lgVarBin.AutoSize = true;
-            this.checkBox_Ch0_lgVarBin.Location = new System.Drawing.Point(5, 38);
+            this.checkBox_Ch0_lgVarBin.Location = new System.Drawing.Point(5, 40);
             this.checkBox_Ch0_lgVarBin.Name = "checkBox_Ch0_lgVarBin";
             this.checkBox_Ch0_lgVarBin.Size = new System.Drawing.Size(67, 17);
             this.checkBox_Ch0_lgVarBin.TabIndex = 1;
@@ -115,7 +118,7 @@
             // checkBox_Ch16_hgVarBin
             // 
             this.checkBox_Ch16_hgVarBin.AutoSize = true;
-            this.checkBox_Ch16_hgVarBin.Location = new System.Drawing.Point(5, 38);
+            this.checkBox_Ch16_hgVarBin.Location = new System.Drawing.Point(5, 40);
             this.checkBox_Ch16_hgVarBin.Name = "checkBox_Ch16_hgVarBin";
             this.checkBox_Ch16_hgVarBin.Size = new System.Drawing.Size(67, 17);
             this.checkBox_Ch16_hgVarBin.TabIndex = 1;
@@ -125,7 +128,7 @@
             // checkBox_Ch16_lgVarBin
             // 
             this.checkBox_Ch16_lgVarBin.AutoSize = true;
-            this.checkBox_Ch16_lgVarBin.Location = new System.Drawing.Point(5, 38);
+            this.checkBox_Ch16_lgVarBin.Location = new System.Drawing.Point(6, 40);
             this.checkBox_Ch16_lgVarBin.Name = "checkBox_Ch16_lgVarBin";
             this.checkBox_Ch16_lgVarBin.Size = new System.Drawing.Size(67, 17);
             this.checkBox_Ch16_lgVarBin.TabIndex = 1;
@@ -135,7 +138,7 @@
             // checkBox_Ch31_hgVarBin
             // 
             this.checkBox_Ch31_hgVarBin.AutoSize = true;
-            this.checkBox_Ch31_hgVarBin.Location = new System.Drawing.Point(5, 38);
+            this.checkBox_Ch31_hgVarBin.Location = new System.Drawing.Point(5, 40);
             this.checkBox_Ch31_hgVarBin.Name = "checkBox_Ch31_hgVarBin";
             this.checkBox_Ch31_hgVarBin.Size = new System.Drawing.Size(67, 17);
             this.checkBox_Ch31_hgVarBin.TabIndex = 1;
@@ -145,7 +148,7 @@
             // checkBox_Ch31_lgVarBin
             // 
             this.checkBox_Ch31_lgVarBin.AutoSize = true;
-            this.checkBox_Ch31_lgVarBin.Location = new System.Drawing.Point(5, 38);
+            this.checkBox_Ch31_lgVarBin.Location = new System.Drawing.Point(5, 39);
             this.checkBox_Ch31_lgVarBin.Name = "checkBox_Ch31_lgVarBin";
             this.checkBox_Ch31_lgVarBin.Size = new System.Drawing.Size(67, 17);
             this.checkBox_Ch31_lgVarBin.TabIndex = 1;
@@ -160,6 +163,7 @@
             this.comboBox_Ch0_hgNumBinsFixed.Name = "comboBox_Ch0_hgNumBinsFixed";
             this.comboBox_Ch0_hgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch0_hgNumBinsFixed.TabIndex = 2;
+            this.comboBox_Ch0_hgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch0_hgNumBinsFixed_SelectedIndexChanged);
             // 
             // comboBox_Ch0_hgNumBinsVar
             // 
@@ -169,24 +173,27 @@
             this.comboBox_Ch0_hgNumBinsVar.Name = "comboBox_Ch0_hgNumBinsVar";
             this.comboBox_Ch0_hgNumBinsVar.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch0_hgNumBinsVar.TabIndex = 2;
+            this.comboBox_Ch0_hgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch0_hgNumBinsVar_SelectedIndexChanged);
             // 
             // comboBox_Ch0_lgNumBinsFixed
             // 
             this.comboBox_Ch0_lgNumBinsFixed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch0_lgNumBinsFixed.FormattingEnabled = true;
-            this.comboBox_Ch0_lgNumBinsFixed.Location = new System.Drawing.Point(76, 10);
+            this.comboBox_Ch0_lgNumBinsFixed.Location = new System.Drawing.Point(73, 10);
             this.comboBox_Ch0_lgNumBinsFixed.Name = "comboBox_Ch0_lgNumBinsFixed";
             this.comboBox_Ch0_lgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch0_lgNumBinsFixed.TabIndex = 2;
+            this.comboBox_Ch0_lgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch0_lgNumBinsFixed_SelectedIndexChanged);
             // 
             // comboBox_Ch0_lgNumBinsVar
             // 
             this.comboBox_Ch0_lgNumBinsVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch0_lgNumBinsVar.FormattingEnabled = true;
-            this.comboBox_Ch0_lgNumBinsVar.Location = new System.Drawing.Point(76, 38);
+            this.comboBox_Ch0_lgNumBinsVar.Location = new System.Drawing.Point(73, 38);
             this.comboBox_Ch0_lgNumBinsVar.Name = "comboBox_Ch0_lgNumBinsVar";
             this.comboBox_Ch0_lgNumBinsVar.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch0_lgNumBinsVar.TabIndex = 2;
+            this.comboBox_Ch0_lgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch0_lgNumBinsVar_SelectedIndexChanged);
             // 
             // comboBox_Ch16_hgNumBinsFixed
             // 
@@ -196,6 +203,7 @@
             this.comboBox_Ch16_hgNumBinsFixed.Name = "comboBox_Ch16_hgNumBinsFixed";
             this.comboBox_Ch16_hgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch16_hgNumBinsFixed.TabIndex = 2;
+            this.comboBox_Ch16_hgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch16_hgNumBinsFixed_SelectedIndexChanged);
             // 
             // comboBox_Ch16_lgNumBinsFixed
             // 
@@ -205,15 +213,17 @@
             this.comboBox_Ch16_lgNumBinsFixed.Name = "comboBox_Ch16_lgNumBinsFixed";
             this.comboBox_Ch16_lgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch16_lgNumBinsFixed.TabIndex = 2;
+            this.comboBox_Ch16_lgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch16_lgNumBinsFixed_SelectedIndexChanged);
             // 
             // comboBox_Ch16_hgNumBinsVar
             // 
             this.comboBox_Ch16_hgNumBinsVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch16_hgNumBinsVar.FormattingEnabled = true;
-            this.comboBox_Ch16_hgNumBinsVar.Location = new System.Drawing.Point(76, 38);
+            this.comboBox_Ch16_hgNumBinsVar.Location = new System.Drawing.Point(76, 37);
             this.comboBox_Ch16_hgNumBinsVar.Name = "comboBox_Ch16_hgNumBinsVar";
             this.comboBox_Ch16_hgNumBinsVar.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch16_hgNumBinsVar.TabIndex = 2;
+            this.comboBox_Ch16_hgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch16_hgNumBinsVar_SelectedIndexChanged);
             // 
             // comboBox_Ch16_lgNumBinsVar
             // 
@@ -223,6 +233,7 @@
             this.comboBox_Ch16_lgNumBinsVar.Name = "comboBox_Ch16_lgNumBinsVar";
             this.comboBox_Ch16_lgNumBinsVar.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch16_lgNumBinsVar.TabIndex = 2;
+            this.comboBox_Ch16_lgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch16_lgNumBinsVar_SelectedIndexChanged);
             // 
             // comboBox_Ch31_hgNumBinsFixed
             // 
@@ -232,15 +243,17 @@
             this.comboBox_Ch31_hgNumBinsFixed.Name = "comboBox_Ch31_hgNumBinsFixed";
             this.comboBox_Ch31_hgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch31_hgNumBinsFixed.TabIndex = 2;
+            this.comboBox_Ch31_hgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch31_hgNumBinsFixed_SelectedIndexChanged);
             // 
             // comboBox_Ch31_lgNumBinsFixed
             // 
             this.comboBox_Ch31_lgNumBinsFixed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch31_lgNumBinsFixed.FormattingEnabled = true;
-            this.comboBox_Ch31_lgNumBinsFixed.Location = new System.Drawing.Point(76, 10);
+            this.comboBox_Ch31_lgNumBinsFixed.Location = new System.Drawing.Point(73, 10);
             this.comboBox_Ch31_lgNumBinsFixed.Name = "comboBox_Ch31_lgNumBinsFixed";
             this.comboBox_Ch31_lgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch31_lgNumBinsFixed.TabIndex = 2;
+            this.comboBox_Ch31_lgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch31_lgNumBinsFixed_SelectedIndexChanged);
             // 
             // comboBox_Ch31_hgNumBinsVar
             // 
@@ -250,15 +263,17 @@
             this.comboBox_Ch31_hgNumBinsVar.Name = "comboBox_Ch31_hgNumBinsVar";
             this.comboBox_Ch31_hgNumBinsVar.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch31_hgNumBinsVar.TabIndex = 2;
+            this.comboBox_Ch31_hgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch31_hgNumBinsVar_SelectedIndexChanged);
             // 
             // comboBox_Ch31_lgNumBinsVar
             // 
             this.comboBox_Ch31_lgNumBinsVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch31_lgNumBinsVar.FormattingEnabled = true;
-            this.comboBox_Ch31_lgNumBinsVar.Location = new System.Drawing.Point(76, 38);
+            this.comboBox_Ch31_lgNumBinsVar.Location = new System.Drawing.Point(73, 37);
             this.comboBox_Ch31_lgNumBinsVar.Name = "comboBox_Ch31_lgNumBinsVar";
             this.comboBox_Ch31_lgNumBinsVar.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Ch31_lgNumBinsVar.TabIndex = 2;
+            this.comboBox_Ch31_lgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch31_lgNumBinsVar_SelectedIndexChanged);
             // 
             // label_Ch16
             // 
@@ -296,7 +311,7 @@
             this.label_HG.Name = "label_HG";
             this.label_HG.Size = new System.Drawing.Size(205, 20);
             this.label_HG.TabIndex = 3;
-            this.label_HG.Text = "High Gain";
+            this.label_HG.Text = "Low Gain";
             this.label_HG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -309,7 +324,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(211, 20);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Low Gain";
+            this.label1.Text = "High Gain";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
@@ -419,11 +434,35 @@
             this.panel1.Size = new System.Drawing.Size(205, 70);
             this.panel1.TabIndex = 8;
             // 
+            // button_Load
+            // 
+            this.button_Load.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Load.Location = new System.Drawing.Point(34, 269);
+            this.button_Load.Name = "button_Load";
+            this.button_Load.Size = new System.Drawing.Size(75, 23);
+            this.button_Load.TabIndex = 5;
+            this.button_Load.Text = "Load";
+            this.button_Load.UseVisualStyleBackColor = true;
+            this.button_Load.Click += new System.EventHandler(this.button_Load_Click);
+            // 
+            // button_Save
+            // 
+            this.button_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Save.Location = new System.Drawing.Point(157, 270);
+            this.button_Save.Name = "button_Save";
+            this.button_Save.Size = new System.Drawing.Size(75, 23);
+            this.button_Save.TabIndex = 6;
+            this.button_Save.Text = "Save";
+            this.button_Save.UseVisualStyleBackColor = true;
+            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
+            // 
             // ProtoCubesNumBinsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 305);
+            this.Controls.Add(this.button_Save);
+            this.Controls.Add(this.button_Load);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_Apply);
@@ -484,5 +523,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button_Load;
+        private System.Windows.Forms.Button button_Save;
     }
 }

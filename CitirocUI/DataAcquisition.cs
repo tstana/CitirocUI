@@ -1397,13 +1397,13 @@ namespace CitirocUI
             ProtoCubesNumBinsForm frm = new ProtoCubesNumBinsForm();
 
             // send actual indexes
-            frm.indexArray = binCfgArray;
+            Array.Copy(binCfgArray,0,frm.IndexArray,0,6);
             DialogResult result = frm.ShowDialog();
 
             if (result == DialogResult.OK)
             {
                 // retrieve new data
-                binCfgArray = frm.indexArray;
+                Array.Copy(frm.IndexArray, 0, binCfgArray, 0, 6);
             }
         }
         #endregion
