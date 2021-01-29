@@ -967,128 +967,157 @@ namespace CitirocUI
                 UInt32 unixTimeArduino = Convert.ToUInt32(u_time.Substring(11));
                 cubesTelemetryArray[0] = unixTimeArduino;
 
-                // Header data
-                int start = 23;
+                // Header data offset is after "Unix time: <10 chars>"
+                int offset = 23;
 
                 // Start by getting the number of bins setting from the file
-                byte bincfg = adata[start + 255];
-                int numBins = 2048 >> bincfg;
+                int[] binCfg = new int[6];
+                for (int i = 0; i < 6; i++)
+                {
+                    binCfg[i] = adata[offset + 256 - 7 + i];
+                }
+
+                int[] numBins = new int[6];
+
+                NumBinsFromBinCfg(numBins, binCfg);
 
                 // Reverse individual fields to avoid BitConverter endianness issues...
                 if (BitConverter.IsLittleEndian)
                 {
                     // Start of DAQ HK data
-                    Array.Reverse(adata, start + 2, 4);
-                    Array.Reverse(adata, start + 6, 2);
-                    Array.Reverse(adata, start + 8, 2);
-                    Array.Reverse(adata, start + 10, 2);
-                    Array.Reverse(adata, start + 12, 2);
+                    Array.Reverse(adata, offset + 2, 4);
+                    Array.Reverse(adata, offset + 6, 2);
+                    Array.Reverse(adata, offset + 8, 2);
+                    Array.Reverse(adata, offset + 10, 2);
+                    Array.Reverse(adata, offset + 12, 2);
 
                     // Hit data         
-                    Array.Reverse(adata, start + 128, 2);
-                    Array.Reverse(adata, start + 130, 2);
-                    Array.Reverse(adata, start + 132, 4);
-                    Array.Reverse(adata, start + 136, 4);
-                    Array.Reverse(adata, start + 140, 4);
-                    Array.Reverse(adata, start + 144, 4);
+                    Array.Reverse(adata, offset + 128, 2);
+                    Array.Reverse(adata, offset + 130, 2);
+                    Array.Reverse(adata, offset + 132, 4);
+                    Array.Reverse(adata, offset + 136, 4);
+                    Array.Reverse(adata, offset + 140, 4);
+                    Array.Reverse(adata, offset + 144, 4);
 
                     // End of DAQ HK data
-                    Array.Reverse(adata, start + 148, 2);
-                    Array.Reverse(adata, start + 150, 2);
-                    Array.Reverse(adata, start + 152, 2);
-                    Array.Reverse(adata, start + 154, 2);
+                    Array.Reverse(adata, offset + 148, 2);
+                    Array.Reverse(adata, offset + 150, 2);
+                    Array.Reverse(adata, offset + 152, 2);
+                    Array.Reverse(adata, offset + 154, 2);
 
-                    // Reverse histogram values for all six histo's
-                    start += 256;
-
-                    for (int i = 0; i < numBins * 6; i++)
+                    /// Reverse histogram values for all six histo's, starting
+                    /// from HISTO_HDR
+                    offset += 256;
+                    for (int i = 0; i < 6; i++)
                     {
-                        Array.Reverse(adata, start + 2 * i, 2);
+                        for (int j = 0; j < numBins[i]; j++)
+                            Array.Reverse(adata, offset + 2*j, 2);
+                        offset += numBins[i];
                     }
                 }
 
-                // Back to start for data display...
-                start = 23;
+                // Back to offset for data display...
+                offset = 23;
 
-                string boardId = System.Text.Encoding.UTF8.GetString(adata, start, 2);
-                UInt32 time_reg = BitConverter.ToUInt32(adata, start + 2);
-                UInt16 temp_citiS = BitConverter.ToUInt16(adata, start + 6);
-                UInt16 temp_hvpsS = BitConverter.ToUInt16(adata, start + 8);
-                UInt16 hvps_voltS = BitConverter.ToUInt16(adata, start + 10);
-                UInt16 hvps_currS = BitConverter.ToUInt16(adata, start + 12);
+                string boardId = System.Text.Encoding.UTF8.GetString(adata, offset, 2);
+                UInt32 time_reg = BitConverter.ToUInt32(adata, offset + 2);
+                UInt16 temp_citiS = BitConverter.ToUInt16(adata, offset + 6);
+                UInt16 temp_hvpsS = BitConverter.ToUInt16(adata, offset + 8);
+                UInt16 hvps_voltS = BitConverter.ToUInt16(adata, offset + 10);
+                UInt16 hvps_currS = BitConverter.ToUInt16(adata, offset + 12);
                 cubesTelemetryArray[1] = time_reg;
                 cubesTelemetryArray[2] = temp_citiS;
                 cubesTelemetryArray[3] = temp_hvpsS;
                 cubesTelemetryArray[4] = hvps_voltS;
                 cubesTelemetryArray[5] = hvps_currS;
 
-                daqTimeTotal = BitConverter.ToUInt16(adata, start + 128);
-                daqTimeActual = BitConverter.ToUInt16(adata, start + 130);
-                HitCK[0] = BitConverter.ToUInt32(adata, start + 132);
-                HitCK[16] = BitConverter.ToUInt32(adata, start + 136);
-                HitCK[31] = BitConverter.ToUInt32(adata, start + 140);
-                HitCK[32] = BitConverter.ToUInt32(adata, start + 144);
+                daqTimeTotal = BitConverter.ToUInt16(adata, offset + 128);
+                daqTimeActual = BitConverter.ToUInt16(adata, offset + 130);
+                HitCK[0] = BitConverter.ToUInt32(adata, offset + 132);
+                HitCK[16] = BitConverter.ToUInt32(adata, offset + 136);
+                HitCK[31] = BitConverter.ToUInt32(adata, offset + 140);
+                HitCK[32] = BitConverter.ToUInt32(adata, offset + 144);
 
-                UInt16 temp_citiE = BitConverter.ToUInt16(adata, start + 148);
-                UInt16 temp_hvpsE = BitConverter.ToUInt16(adata, start + 150);
-                UInt16 hvps_voltE = BitConverter.ToUInt16(adata, start + 152);
-                UInt16 hvps_currE = BitConverter.ToUInt16(adata, start + 154);
+                UInt16 temp_citiE = BitConverter.ToUInt16(adata, offset + 148);
+                UInt16 temp_hvpsE = BitConverter.ToUInt16(adata, offset + 150);
+                UInt16 hvps_voltE = BitConverter.ToUInt16(adata, offset + 152);
+                UInt16 hvps_currE = BitConverter.ToUInt16(adata, offset + 154);
                 cubesTelemetryArray[6] = temp_citiE;
                 cubesTelemetryArray[7] = temp_hvpsE;
                 cubesTelemetryArray[8] = hvps_voltE;
                 cubesTelemetryArray[9] = hvps_currE;
-                cubesTelemetryArray[10] = bincfg;
 
                 // Display histogram data
-                start += 256;
+                offset += 256;
 
-                for (int i = 0; i < numBins; i++)
+                for (int i = 0; i < 6; i++)
                 {
-                    int binOffset = start + i * 2;
-
-                    if (bincfg <= 3) {
-                        // Values for display with non-variable binning
-                        PerChannelChargeHG[0, i << bincfg] = BitConverter.ToUInt16(adata, binOffset);
-                        PerChannelChargeLG[0, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 2 * numBins);
-                        PerChannelChargeHG[16, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 4 * numBins);
-                        PerChannelChargeLG[16, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 6 * numBins);
-                        PerChannelChargeHG[31, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 8 * numBins);
-                        PerChannelChargeLG[31, i << bincfg] = BitConverter.ToUInt16(adata, binOffset + 10 * numBins);
+                    if (binCfg[i] < 7)
+                    {
+                        for (int j = 0; j < numBins[i]; j++)
+                        {
+                            switch (i)
+                            {
+                                case 0:
+                                    PerChannelChargeHG[0, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 1:
+                                    PerChannelChargeLG[0, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 2:
+                                    PerChannelChargeHG[16, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 3:
+                                    PerChannelChargeLG[16, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 4:
+                                    PerChannelChargeHG[31, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 5:
+                                    PerChannelChargeLG[31, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                            }
+                            offset += 2;
+                        }
                     }
+                    // TODO: Add code for variable binning
+////                    offset += numBins[i];
                 }
 
                 // Reverse fields again for proper writing to file...
-                start = 23;
+                offset = 23;
 
                 if (BitConverter.IsLittleEndian)
                 {
                     // Start of DAQ HK data
-                    Array.Reverse(adata, start + 2, 4);
-                    Array.Reverse(adata, start + 6, 2);
-                    Array.Reverse(adata, start + 8, 2);
-                    Array.Reverse(adata, start + 10, 2);
-                    Array.Reverse(adata, start + 12, 2);
+                    Array.Reverse(adata, offset + 2, 4);
+                    Array.Reverse(adata, offset + 6, 2);
+                    Array.Reverse(adata, offset + 8, 2);
+                    Array.Reverse(adata, offset + 10, 2);
+                    Array.Reverse(adata, offset + 12, 2);
 
                     // Hit data         
-                    Array.Reverse(adata, start + 128, 2);
-                    Array.Reverse(adata, start + 130, 2);
-                    Array.Reverse(adata, start + 132, 4);
-                    Array.Reverse(adata, start + 136, 4);
-                    Array.Reverse(adata, start + 140, 4);
-                    Array.Reverse(adata, start + 144, 4);
+                    Array.Reverse(adata, offset + 128, 2);
+                    Array.Reverse(adata, offset + 130, 2);
+                    Array.Reverse(adata, offset + 132, 4);
+                    Array.Reverse(adata, offset + 136, 4);
+                    Array.Reverse(adata, offset + 140, 4);
+                    Array.Reverse(adata, offset + 144, 4);
 
                     // End of DAQ HK data
-                    Array.Reverse(adata, start + 148, 2);
-                    Array.Reverse(adata, start + 150, 2);
-                    Array.Reverse(adata, start + 152, 2);
-                    Array.Reverse(adata, start + 154, 2);
+                    Array.Reverse(adata, offset + 148, 2);
+                    Array.Reverse(adata, offset + 150, 2);
+                    Array.Reverse(adata, offset + 152, 2);
+                    Array.Reverse(adata, offset + 154, 2);
 
-                    // histogram values
-                    start += 256;
-
-                    for (int i = 0; i < numBins * 6; i++)
+                    /// Reverse histogram values for all six histo's, starting
+                    /// from HISTO_HDR
+                    offset += 256;
+                    for (int i = 0; i < 6; i++)
                     {
-                        Array.Reverse(adata, start + 2 * i, 2);
+                        for (int j = 0; j < numBins[i]; j++)
+                            Array.Reverse(adata, offset + 2 * j, 2);
+                        offset += numBins[i];
                     }
                 }
             }
@@ -1406,28 +1435,28 @@ namespace CitirocUI
             {
                 // retrieve new data
                 Array.Copy(frm.IndexArray, binCfgArray, 6);
-                NumBinsFromBinCfg();
+                NumBinsFromBinCfg(numBinsArray, binCfgArray);
             }
         }
 
         int[] numBinsArray = { 2048, 2048, 2048, 2048, 2048, 2048 };
-        private void NumBinsFromBinCfg()
+        private void NumBinsFromBinCfg(int[] numBins, int[] binCfg)
         {
             for (int i = 0; i < 6; i++)
             {
                 /// TODO: Use properties inside ProtoCubesNumBinsForm
                 ///       to set the bin_cfg ranges...
-                if (binCfgArray[i] < 7)
+                if (binCfg[i] < 7)
                 {
-                    numBinsArray[i] = 2048 >> binCfgArray[i];
+                    numBins[i] = 2048 >> binCfg[i];
                 }
-                else if (binCfgArray[i] == 11)
+                else if (binCfg[i] == 11)
                 {
-                    numBinsArray[i] = 1024;
+                    numBins[i] = 1024;
                 }
-                else if (binCfgArray[i] == 12)
+                else if (binCfg[i] == 12)
                 {
-                    numBinsArray[i] = 128;
+                    numBins[i] = 128;
                 }
             }
         }
