@@ -970,11 +970,11 @@ namespace CitirocUI
                 // Header data offset is after "Unix time: <10 chars>"
                 int offset = 23;
 
-                // Start by getting the number of bins setting from the file
+                // Start by getting the number of bins from the file
                 int[] binCfg = new int[6];
                 for (int i = 0; i < 6; i++)
                 {
-                    binCfg[i] = adata[offset + 256 - 7 + i];
+                    binCfg[i] = adata[offset + 256 - 6 + i];
                 }
 
                 int[] numBins = new int[6];
@@ -1011,12 +1011,14 @@ namespace CitirocUI
                     for (int i = 0; i < 6; i++)
                     {
                         for (int j = 0; j < numBins[i]; j++)
-                            Array.Reverse(adata, offset + 2*j, 2);
-                        offset += numBins[i];
+                        {
+                            Array.Reverse(adata, offset, 2);
+                            offset += 2;
+                        }
                     }
                 }
 
-                // Back to offset for data display...
+                // Back to start for data display...
                 offset = 23;
 
                 string boardId = System.Text.Encoding.UTF8.GetString(adata, offset, 2);
@@ -1077,11 +1079,10 @@ namespace CitirocUI
                                     PerChannelChargeLG[31, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
                                     break;
                             }
-                            offset += 2;
+                            offset += 2; // two bytes per bin
                         }
                     }
                     // TODO: Add code for variable binning
-////                    offset += numBins[i];
                 }
 
                 // Reverse fields again for proper writing to file...
@@ -1116,8 +1117,10 @@ namespace CitirocUI
                     for (int i = 0; i < 6; i++)
                     {
                         for (int j = 0; j < numBins[i]; j++)
-                            Array.Reverse(adata, offset + 2 * j, 2);
-                        offset += numBins[i];
+                        {
+                            Array.Reverse(adata, offset, 2);
+                            offset += 2;
+                        }
                     }
                 }
             }
