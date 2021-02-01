@@ -448,7 +448,7 @@ namespace CitirocUI
                 case Command.ReqPayload:
                     commandReplyDataLen = 23 + 256; // Unix time + histo. header
                     for (int i = 0; i < 6; i++)
-                        commandReplyDataLen += 2 * NumBins[0]; // 2 bytes / bin
+                        commandReplyDataLen += 2 * NumBins[i]; // 2 bytes / bin
                     commandReplyDataLen += 2; // "\r\n"
                     break;
                 default:
