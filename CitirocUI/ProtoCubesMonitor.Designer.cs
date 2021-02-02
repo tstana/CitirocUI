@@ -476,7 +476,7 @@
             this.numUpDown_refVolt.Location = new System.Drawing.Point(424, 27);
             this.numUpDown_refVolt.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDown_refVolt.Maximum = new decimal(new int[] {
-            55,
+            60,
             0,
             0,
             0});
@@ -696,7 +696,7 @@
             this.numUpDown_HV.Location = new System.Drawing.Point(229, 27);
             this.numUpDown_HV.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDown_HV.Maximum = new decimal(new int[] {
-            55,
+            60,
             0,
             0,
             0});
