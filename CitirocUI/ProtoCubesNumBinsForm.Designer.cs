@@ -74,10 +74,11 @@
             // button_Apply
             // 
             this.button_Apply.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_Apply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Apply.Location = new System.Drawing.Point(403, 270);
+            this.button_Apply.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Apply.Location = new System.Drawing.Point(538, 379);
+            this.button_Apply.Margin = new System.Windows.Forms.Padding(4);
             this.button_Apply.Name = "button_Apply";
-            this.button_Apply.Size = new System.Drawing.Size(75, 23);
+            this.button_Apply.Size = new System.Drawing.Size(100, 32);
             this.button_Apply.TabIndex = 0;
             this.button_Apply.Text = "Apply";
             this.button_Apply.UseVisualStyleBackColor = true;
@@ -86,20 +87,22 @@
             // button_Cancel
             // 
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Cancel.Location = new System.Drawing.Point(280, 270);
+            this.button_Cancel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Cancel.Location = new System.Drawing.Point(374, 379);
+            this.button_Cancel.Margin = new System.Windows.Forms.Padding(4);
             this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 0;
+            this.button_Cancel.Size = new System.Drawing.Size(100, 32);
+            this.button_Cancel.TabIndex = 3;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
             // 
             // checkBox_Ch0_hgVarBin
             // 
             this.checkBox_Ch0_hgVarBin.AutoSize = true;
-            this.checkBox_Ch0_hgVarBin.Location = new System.Drawing.Point(5, 40);
+            this.checkBox_Ch0_hgVarBin.Location = new System.Drawing.Point(7, 55);
+            this.checkBox_Ch0_hgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch0_hgVarBin.Name = "checkBox_Ch0_hgVarBin";
-            this.checkBox_Ch0_hgVarBin.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_Ch0_hgVarBin.Size = new System.Drawing.Size(82, 22);
             this.checkBox_Ch0_hgVarBin.TabIndex = 1;
             this.checkBox_Ch0_hgVarBin.Text = "Variable:";
             this.checkBox_Ch0_hgVarBin.UseVisualStyleBackColor = true;
@@ -108,9 +111,10 @@
             // checkBox_Ch0_lgVarBin
             // 
             this.checkBox_Ch0_lgVarBin.AutoSize = true;
-            this.checkBox_Ch0_lgVarBin.Location = new System.Drawing.Point(5, 40);
+            this.checkBox_Ch0_lgVarBin.Location = new System.Drawing.Point(18, 55);
+            this.checkBox_Ch0_lgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch0_lgVarBin.Name = "checkBox_Ch0_lgVarBin";
-            this.checkBox_Ch0_lgVarBin.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_Ch0_lgVarBin.Size = new System.Drawing.Size(82, 22);
             this.checkBox_Ch0_lgVarBin.TabIndex = 1;
             this.checkBox_Ch0_lgVarBin.Text = "Variable:";
             this.checkBox_Ch0_lgVarBin.UseVisualStyleBackColor = true;
@@ -118,9 +122,10 @@
             // checkBox_Ch16_hgVarBin
             // 
             this.checkBox_Ch16_hgVarBin.AutoSize = true;
-            this.checkBox_Ch16_hgVarBin.Location = new System.Drawing.Point(5, 40);
+            this.checkBox_Ch16_hgVarBin.Location = new System.Drawing.Point(7, 55);
+            this.checkBox_Ch16_hgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch16_hgVarBin.Name = "checkBox_Ch16_hgVarBin";
-            this.checkBox_Ch16_hgVarBin.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_Ch16_hgVarBin.Size = new System.Drawing.Size(82, 22);
             this.checkBox_Ch16_hgVarBin.TabIndex = 1;
             this.checkBox_Ch16_hgVarBin.Text = "Variable:";
             this.checkBox_Ch16_hgVarBin.UseVisualStyleBackColor = true;
@@ -128,9 +133,10 @@
             // checkBox_Ch16_lgVarBin
             // 
             this.checkBox_Ch16_lgVarBin.AutoSize = true;
-            this.checkBox_Ch16_lgVarBin.Location = new System.Drawing.Point(6, 40);
+            this.checkBox_Ch16_lgVarBin.Location = new System.Drawing.Point(19, 55);
+            this.checkBox_Ch16_lgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch16_lgVarBin.Name = "checkBox_Ch16_lgVarBin";
-            this.checkBox_Ch16_lgVarBin.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_Ch16_lgVarBin.Size = new System.Drawing.Size(82, 22);
             this.checkBox_Ch16_lgVarBin.TabIndex = 1;
             this.checkBox_Ch16_lgVarBin.Text = "Variable:";
             this.checkBox_Ch16_lgVarBin.UseVisualStyleBackColor = true;
@@ -138,9 +144,10 @@
             // checkBox_Ch31_hgVarBin
             // 
             this.checkBox_Ch31_hgVarBin.AutoSize = true;
-            this.checkBox_Ch31_hgVarBin.Location = new System.Drawing.Point(5, 40);
+            this.checkBox_Ch31_hgVarBin.Location = new System.Drawing.Point(7, 55);
+            this.checkBox_Ch31_hgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch31_hgVarBin.Name = "checkBox_Ch31_hgVarBin";
-            this.checkBox_Ch31_hgVarBin.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_Ch31_hgVarBin.Size = new System.Drawing.Size(82, 22);
             this.checkBox_Ch31_hgVarBin.TabIndex = 1;
             this.checkBox_Ch31_hgVarBin.Text = "Variable:";
             this.checkBox_Ch31_hgVarBin.UseVisualStyleBackColor = true;
@@ -148,9 +155,10 @@
             // checkBox_Ch31_lgVarBin
             // 
             this.checkBox_Ch31_lgVarBin.AutoSize = true;
-            this.checkBox_Ch31_lgVarBin.Location = new System.Drawing.Point(5, 39);
+            this.checkBox_Ch31_lgVarBin.Location = new System.Drawing.Point(18, 54);
+            this.checkBox_Ch31_lgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch31_lgVarBin.Name = "checkBox_Ch31_lgVarBin";
-            this.checkBox_Ch31_lgVarBin.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_Ch31_lgVarBin.Size = new System.Drawing.Size(82, 22);
             this.checkBox_Ch31_lgVarBin.TabIndex = 1;
             this.checkBox_Ch31_lgVarBin.Text = "Variable:";
             this.checkBox_Ch31_lgVarBin.UseVisualStyleBackColor = true;
@@ -159,9 +167,10 @@
             // 
             this.comboBox_Ch0_hgNumBinsFixed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch0_hgNumBinsFixed.FormattingEnabled = true;
-            this.comboBox_Ch0_hgNumBinsFixed.Location = new System.Drawing.Point(76, 10);
+            this.comboBox_Ch0_hgNumBinsFixed.Location = new System.Drawing.Point(101, 14);
+            this.comboBox_Ch0_hgNumBinsFixed.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch0_hgNumBinsFixed.Name = "comboBox_Ch0_hgNumBinsFixed";
-            this.comboBox_Ch0_hgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch0_hgNumBinsFixed.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch0_hgNumBinsFixed.TabIndex = 2;
             this.comboBox_Ch0_hgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch0_hgNumBinsFixed_SelectedIndexChanged);
             // 
@@ -169,9 +178,10 @@
             // 
             this.comboBox_Ch0_hgNumBinsVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch0_hgNumBinsVar.FormattingEnabled = true;
-            this.comboBox_Ch0_hgNumBinsVar.Location = new System.Drawing.Point(76, 38);
+            this.comboBox_Ch0_hgNumBinsVar.Location = new System.Drawing.Point(101, 53);
+            this.comboBox_Ch0_hgNumBinsVar.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch0_hgNumBinsVar.Name = "comboBox_Ch0_hgNumBinsVar";
-            this.comboBox_Ch0_hgNumBinsVar.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch0_hgNumBinsVar.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch0_hgNumBinsVar.TabIndex = 2;
             this.comboBox_Ch0_hgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch0_hgNumBinsVar_SelectedIndexChanged);
             // 
@@ -179,9 +189,10 @@
             // 
             this.comboBox_Ch0_lgNumBinsFixed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch0_lgNumBinsFixed.FormattingEnabled = true;
-            this.comboBox_Ch0_lgNumBinsFixed.Location = new System.Drawing.Point(73, 10);
+            this.comboBox_Ch0_lgNumBinsFixed.Location = new System.Drawing.Point(108, 14);
+            this.comboBox_Ch0_lgNumBinsFixed.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch0_lgNumBinsFixed.Name = "comboBox_Ch0_lgNumBinsFixed";
-            this.comboBox_Ch0_lgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch0_lgNumBinsFixed.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch0_lgNumBinsFixed.TabIndex = 2;
             this.comboBox_Ch0_lgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch0_lgNumBinsFixed_SelectedIndexChanged);
             // 
@@ -189,9 +200,10 @@
             // 
             this.comboBox_Ch0_lgNumBinsVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch0_lgNumBinsVar.FormattingEnabled = true;
-            this.comboBox_Ch0_lgNumBinsVar.Location = new System.Drawing.Point(73, 38);
+            this.comboBox_Ch0_lgNumBinsVar.Location = new System.Drawing.Point(108, 53);
+            this.comboBox_Ch0_lgNumBinsVar.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch0_lgNumBinsVar.Name = "comboBox_Ch0_lgNumBinsVar";
-            this.comboBox_Ch0_lgNumBinsVar.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch0_lgNumBinsVar.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch0_lgNumBinsVar.TabIndex = 2;
             this.comboBox_Ch0_lgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch0_lgNumBinsVar_SelectedIndexChanged);
             // 
@@ -199,9 +211,10 @@
             // 
             this.comboBox_Ch16_hgNumBinsFixed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch16_hgNumBinsFixed.FormattingEnabled = true;
-            this.comboBox_Ch16_hgNumBinsFixed.Location = new System.Drawing.Point(76, 10);
+            this.comboBox_Ch16_hgNumBinsFixed.Location = new System.Drawing.Point(101, 14);
+            this.comboBox_Ch16_hgNumBinsFixed.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch16_hgNumBinsFixed.Name = "comboBox_Ch16_hgNumBinsFixed";
-            this.comboBox_Ch16_hgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch16_hgNumBinsFixed.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch16_hgNumBinsFixed.TabIndex = 2;
             this.comboBox_Ch16_hgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch16_hgNumBinsFixed_SelectedIndexChanged);
             // 
@@ -209,9 +222,10 @@
             // 
             this.comboBox_Ch16_lgNumBinsFixed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch16_lgNumBinsFixed.FormattingEnabled = true;
-            this.comboBox_Ch16_lgNumBinsFixed.Location = new System.Drawing.Point(76, 10);
+            this.comboBox_Ch16_lgNumBinsFixed.Location = new System.Drawing.Point(112, 14);
+            this.comboBox_Ch16_lgNumBinsFixed.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch16_lgNumBinsFixed.Name = "comboBox_Ch16_lgNumBinsFixed";
-            this.comboBox_Ch16_lgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch16_lgNumBinsFixed.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch16_lgNumBinsFixed.TabIndex = 2;
             this.comboBox_Ch16_lgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch16_lgNumBinsFixed_SelectedIndexChanged);
             // 
@@ -219,9 +233,10 @@
             // 
             this.comboBox_Ch16_hgNumBinsVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch16_hgNumBinsVar.FormattingEnabled = true;
-            this.comboBox_Ch16_hgNumBinsVar.Location = new System.Drawing.Point(76, 37);
+            this.comboBox_Ch16_hgNumBinsVar.Location = new System.Drawing.Point(101, 51);
+            this.comboBox_Ch16_hgNumBinsVar.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch16_hgNumBinsVar.Name = "comboBox_Ch16_hgNumBinsVar";
-            this.comboBox_Ch16_hgNumBinsVar.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch16_hgNumBinsVar.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch16_hgNumBinsVar.TabIndex = 2;
             this.comboBox_Ch16_hgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch16_hgNumBinsVar_SelectedIndexChanged);
             // 
@@ -229,9 +244,10 @@
             // 
             this.comboBox_Ch16_lgNumBinsVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch16_lgNumBinsVar.FormattingEnabled = true;
-            this.comboBox_Ch16_lgNumBinsVar.Location = new System.Drawing.Point(76, 38);
+            this.comboBox_Ch16_lgNumBinsVar.Location = new System.Drawing.Point(112, 53);
+            this.comboBox_Ch16_lgNumBinsVar.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch16_lgNumBinsVar.Name = "comboBox_Ch16_lgNumBinsVar";
-            this.comboBox_Ch16_lgNumBinsVar.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch16_lgNumBinsVar.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch16_lgNumBinsVar.TabIndex = 2;
             this.comboBox_Ch16_lgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch16_lgNumBinsVar_SelectedIndexChanged);
             // 
@@ -239,9 +255,10 @@
             // 
             this.comboBox_Ch31_hgNumBinsFixed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch31_hgNumBinsFixed.FormattingEnabled = true;
-            this.comboBox_Ch31_hgNumBinsFixed.Location = new System.Drawing.Point(76, 10);
+            this.comboBox_Ch31_hgNumBinsFixed.Location = new System.Drawing.Point(101, 14);
+            this.comboBox_Ch31_hgNumBinsFixed.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch31_hgNumBinsFixed.Name = "comboBox_Ch31_hgNumBinsFixed";
-            this.comboBox_Ch31_hgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch31_hgNumBinsFixed.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch31_hgNumBinsFixed.TabIndex = 2;
             this.comboBox_Ch31_hgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch31_hgNumBinsFixed_SelectedIndexChanged);
             // 
@@ -249,9 +266,10 @@
             // 
             this.comboBox_Ch31_lgNumBinsFixed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch31_lgNumBinsFixed.FormattingEnabled = true;
-            this.comboBox_Ch31_lgNumBinsFixed.Location = new System.Drawing.Point(73, 10);
+            this.comboBox_Ch31_lgNumBinsFixed.Location = new System.Drawing.Point(108, 14);
+            this.comboBox_Ch31_lgNumBinsFixed.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch31_lgNumBinsFixed.Name = "comboBox_Ch31_lgNumBinsFixed";
-            this.comboBox_Ch31_lgNumBinsFixed.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch31_lgNumBinsFixed.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch31_lgNumBinsFixed.TabIndex = 2;
             this.comboBox_Ch31_lgNumBinsFixed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch31_lgNumBinsFixed_SelectedIndexChanged);
             // 
@@ -259,9 +277,10 @@
             // 
             this.comboBox_Ch31_hgNumBinsVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch31_hgNumBinsVar.FormattingEnabled = true;
-            this.comboBox_Ch31_hgNumBinsVar.Location = new System.Drawing.Point(76, 38);
+            this.comboBox_Ch31_hgNumBinsVar.Location = new System.Drawing.Point(101, 53);
+            this.comboBox_Ch31_hgNumBinsVar.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch31_hgNumBinsVar.Name = "comboBox_Ch31_hgNumBinsVar";
-            this.comboBox_Ch31_hgNumBinsVar.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch31_hgNumBinsVar.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch31_hgNumBinsVar.TabIndex = 2;
             this.comboBox_Ch31_hgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch31_hgNumBinsVar_SelectedIndexChanged);
             // 
@@ -269,9 +288,10 @@
             // 
             this.comboBox_Ch31_lgNumBinsVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Ch31_lgNumBinsVar.FormattingEnabled = true;
-            this.comboBox_Ch31_lgNumBinsVar.Location = new System.Drawing.Point(73, 37);
+            this.comboBox_Ch31_lgNumBinsVar.Location = new System.Drawing.Point(108, 51);
+            this.comboBox_Ch31_lgNumBinsVar.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Ch31_lgNumBinsVar.Name = "comboBox_Ch31_lgNumBinsVar";
-            this.comboBox_Ch31_lgNumBinsVar.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Ch31_lgNumBinsVar.Size = new System.Drawing.Size(160, 26);
             this.comboBox_Ch31_lgNumBinsVar.TabIndex = 2;
             this.comboBox_Ch31_lgNumBinsVar.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ch31_lgNumBinsVar_SelectedIndexChanged);
             // 
@@ -281,9 +301,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_Ch16.AutoSize = true;
-            this.label_Ch16.Location = new System.Drawing.Point(4, 98);
+            this.label_Ch16.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Ch16.Location = new System.Drawing.Point(5, 135);
+            this.label_Ch16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Ch16.Name = "label_Ch16";
-            this.label_Ch16.Size = new System.Drawing.Size(43, 75);
+            this.label_Ch16.Size = new System.Drawing.Size(53, 104);
             this.label_Ch16.TabIndex = 3;
             this.label_Ch16.Text = "MPPC2";
             this.label_Ch16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -294,9 +316,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_Ch31.AutoSize = true;
-            this.label_Ch31.Location = new System.Drawing.Point(4, 174);
+            this.label_Ch31.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Ch31.Location = new System.Drawing.Point(5, 240);
+            this.label_Ch31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Ch31.Name = "label_Ch31";
-            this.label_Ch31.Size = new System.Drawing.Size(43, 76);
+            this.label_Ch31.Size = new System.Drawing.Size(53, 107);
             this.label_Ch31.TabIndex = 3;
             this.label_Ch31.Text = "MPPC3";
             this.label_Ch31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -307,9 +331,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_HG.AutoSize = true;
-            this.label_HG.Location = new System.Drawing.Point(272, 1);
+            this.label_HG.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_HG.Location = new System.Drawing.Point(357, 1);
+            this.label_HG.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_HG.Name = "label_HG";
-            this.label_HG.Size = new System.Drawing.Size(205, 20);
+            this.label_HG.Size = new System.Drawing.Size(303, 28);
             this.label_HG.TabIndex = 3;
             this.label_HG.Text = "Low Gain";
             this.label_HG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -320,9 +346,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 1);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(67, 1);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 20);
+            this.label1.Size = new System.Drawing.Size(281, 28);
             this.label1.TabIndex = 3;
             this.label1.Text = "High Gain";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -332,8 +360,8 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 217F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 211F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 289F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 311F));
             this.tableLayoutPanel1.Controls.Add(this.label_Ch31, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label_Ch0, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label_Ch16, 0, 2);
@@ -345,14 +373,15 @@
             this.tableLayoutPanel1.Controls.Add(this.label_HG, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 17);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(480, 251);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(663, 348);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // label_Ch0
@@ -361,9 +390,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_Ch0.AutoSize = true;
-            this.label_Ch0.Location = new System.Drawing.Point(4, 22);
+            this.label_Ch0.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Ch0.Location = new System.Drawing.Point(5, 30);
+            this.label_Ch0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Ch0.Name = "label_Ch0";
-            this.label_Ch0.Size = new System.Drawing.Size(43, 75);
+            this.label_Ch0.Size = new System.Drawing.Size(53, 104);
             this.label_Ch0.TabIndex = 3;
             this.label_Ch0.Text = "MPPC1";
             this.label_Ch0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -374,10 +405,11 @@
             this.panel4.Controls.Add(this.comboBox_Ch0_hgNumBinsVar);
             this.panel4.Controls.Add(this.checkBox_Ch0_hgVarBin);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(54, 25);
+            this.panel4.Location = new System.Drawing.Point(67, 34);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(211, 69);
-            this.panel4.TabIndex = 3;
+            this.panel4.Size = new System.Drawing.Size(281, 96);
+            this.panel4.TabIndex = 4;
             // 
             // panel5
             // 
@@ -385,20 +417,23 @@
             this.panel5.Controls.Add(this.comboBox_Ch16_hgNumBinsVar);
             this.panel5.Controls.Add(this.checkBox_Ch16_hgVarBin);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(54, 101);
+            this.panel5.Location = new System.Drawing.Point(67, 139);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(211, 69);
-            this.panel5.TabIndex = 4;
+            this.panel5.Size = new System.Drawing.Size(281, 96);
+            this.panel5.TabIndex = 6;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.comboBox_Ch31_hgNumBinsFixed);
             this.panel6.Controls.Add(this.comboBox_Ch31_hgNumBinsVar);
             this.panel6.Controls.Add(this.checkBox_Ch31_hgVarBin);
-            this.panel6.Location = new System.Drawing.Point(54, 177);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(67, 244);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(211, 70);
-            this.panel6.TabIndex = 5;
+            this.panel6.Size = new System.Drawing.Size(281, 99);
+            this.panel6.TabIndex = 8;
             // 
             // panel7
             // 
@@ -406,10 +441,11 @@
             this.panel7.Controls.Add(this.comboBox_Ch0_lgNumBinsVar);
             this.panel7.Controls.Add(this.checkBox_Ch0_lgVarBin);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(272, 25);
+            this.panel7.Location = new System.Drawing.Point(357, 34);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(205, 69);
-            this.panel7.TabIndex = 6;
+            this.panel7.Size = new System.Drawing.Size(303, 96);
+            this.panel7.TabIndex = 5;
             // 
             // panel8
             // 
@@ -417,10 +453,10 @@
             this.panel8.Controls.Add(this.comboBox_Ch16_lgNumBinsVar);
             this.panel8.Controls.Add(this.checkBox_Ch16_lgVarBin);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(269, 101);
-            this.panel8.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.panel8.Location = new System.Drawing.Point(353, 139);
+            this.panel8.Margin = new System.Windows.Forms.Padding(0, 4, 4, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(208, 69);
+            this.panel8.Size = new System.Drawing.Size(307, 96);
             this.panel8.TabIndex = 7;
             // 
             // panel1
@@ -429,44 +465,51 @@
             this.panel1.Controls.Add(this.comboBox_Ch31_lgNumBinsVar);
             this.panel1.Controls.Add(this.checkBox_Ch31_lgVarBin);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(272, 177);
+            this.panel1.Location = new System.Drawing.Point(357, 244);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(205, 70);
-            this.panel1.TabIndex = 8;
+            this.panel1.Size = new System.Drawing.Size(303, 99);
+            this.panel1.TabIndex = 9;
             // 
             // button_Load
             // 
-            this.button_Load.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Load.Location = new System.Drawing.Point(34, 269);
+            this.button_Load.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Load.Location = new System.Drawing.Point(46, 377);
+            this.button_Load.Margin = new System.Windows.Forms.Padding(4);
             this.button_Load.Name = "button_Load";
-            this.button_Load.Size = new System.Drawing.Size(75, 23);
-            this.button_Load.TabIndex = 5;
-            this.button_Load.Text = "Load";
+            this.button_Load.Size = new System.Drawing.Size(100, 32);
+            this.button_Load.TabIndex = 1;
+            this.button_Load.Text = "Load...";
             this.button_Load.UseVisualStyleBackColor = true;
             this.button_Load.Click += new System.EventHandler(this.button_Load_Click);
             // 
             // button_Save
             // 
-            this.button_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Save.Location = new System.Drawing.Point(157, 270);
+            this.button_Save.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Save.Location = new System.Drawing.Point(210, 379);
+            this.button_Save.Margin = new System.Windows.Forms.Padding(4);
             this.button_Save.Name = "button_Save";
-            this.button_Save.Size = new System.Drawing.Size(75, 23);
-            this.button_Save.TabIndex = 6;
-            this.button_Save.Text = "Save";
+            this.button_Save.Size = new System.Drawing.Size(100, 32);
+            this.button_Save.TabIndex = 2;
+            this.button_Save.Text = "Save...";
             this.button_Save.UseVisualStyleBackColor = true;
             this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
             // ProtoCubesNumBinsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 305);
+            this.ClientSize = new System.Drawing.Size(689, 422);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.button_Load);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_Apply);
+            this.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ProtoCubesNumBinsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proto-CUBES Number of Bins";
