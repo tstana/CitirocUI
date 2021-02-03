@@ -305,9 +305,9 @@
             this.label_Ch16.Location = new System.Drawing.Point(5, 135);
             this.label_Ch16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Ch16.Name = "label_Ch16";
-            this.label_Ch16.Size = new System.Drawing.Size(53, 104);
+            this.label_Ch16.Size = new System.Drawing.Size(51, 104);
             this.label_Ch16.TabIndex = 3;
-            this.label_Ch16.Text = "MPPC2";
+            this.label_Ch16.Text = "Ch. 16";
             this.label_Ch16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_Ch31
@@ -320,9 +320,9 @@
             this.label_Ch31.Location = new System.Drawing.Point(5, 240);
             this.label_Ch31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Ch31.Name = "label_Ch31";
-            this.label_Ch31.Size = new System.Drawing.Size(53, 107);
+            this.label_Ch31.Size = new System.Drawing.Size(51, 107);
             this.label_Ch31.TabIndex = 3;
-            this.label_Ch31.Text = "MPPC3";
+            this.label_Ch31.Text = "Ch. 31";
             this.label_Ch31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_HG
@@ -332,10 +332,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_HG.AutoSize = true;
             this.label_HG.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_HG.Location = new System.Drawing.Point(357, 1);
+            this.label_HG.Location = new System.Drawing.Point(355, 1);
             this.label_HG.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_HG.Name = "label_HG";
-            this.label_HG.Size = new System.Drawing.Size(303, 28);
+            this.label_HG.Size = new System.Drawing.Size(304, 28);
             this.label_HG.TabIndex = 3;
             this.label_HG.Text = "Low Gain";
             this.label_HG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -347,7 +347,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(67, 1);
+            this.label1.Location = new System.Drawing.Point(65, 1);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(281, 28);
@@ -361,7 +361,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 289F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 311F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 312F));
             this.tableLayoutPanel1.Controls.Add(this.label_Ch31, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label_Ch0, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label_Ch16, 0, 2);
@@ -394,9 +394,9 @@
             this.label_Ch0.Location = new System.Drawing.Point(5, 30);
             this.label_Ch0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Ch0.Name = "label_Ch0";
-            this.label_Ch0.Size = new System.Drawing.Size(53, 104);
+            this.label_Ch0.Size = new System.Drawing.Size(51, 104);
             this.label_Ch0.TabIndex = 3;
-            this.label_Ch0.Text = "MPPC1";
+            this.label_Ch0.Text = "Ch. 0";
             this.label_Ch0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
@@ -405,7 +405,7 @@
             this.panel4.Controls.Add(this.comboBox_Ch0_hgNumBinsVar);
             this.panel4.Controls.Add(this.checkBox_Ch0_hgVarBin);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(67, 34);
+            this.panel4.Location = new System.Drawing.Point(65, 34);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(281, 96);
@@ -417,7 +417,7 @@
             this.panel5.Controls.Add(this.comboBox_Ch16_hgNumBinsVar);
             this.panel5.Controls.Add(this.checkBox_Ch16_hgVarBin);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(67, 139);
+            this.panel5.Location = new System.Drawing.Point(65, 139);
             this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(281, 96);
@@ -429,7 +429,7 @@
             this.panel6.Controls.Add(this.comboBox_Ch31_hgNumBinsVar);
             this.panel6.Controls.Add(this.checkBox_Ch31_hgVarBin);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(67, 244);
+            this.panel6.Location = new System.Drawing.Point(65, 244);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(281, 99);
@@ -441,10 +441,10 @@
             this.panel7.Controls.Add(this.comboBox_Ch0_lgNumBinsVar);
             this.panel7.Controls.Add(this.checkBox_Ch0_lgVarBin);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(357, 34);
+            this.panel7.Location = new System.Drawing.Point(355, 34);
             this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(303, 96);
+            this.panel7.Size = new System.Drawing.Size(304, 96);
             this.panel7.TabIndex = 5;
             // 
             // panel8
@@ -453,10 +453,10 @@
             this.panel8.Controls.Add(this.comboBox_Ch16_lgNumBinsVar);
             this.panel8.Controls.Add(this.checkBox_Ch16_lgVarBin);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(353, 139);
+            this.panel8.Location = new System.Drawing.Point(351, 139);
             this.panel8.Margin = new System.Windows.Forms.Padding(0, 4, 4, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(307, 96);
+            this.panel8.Size = new System.Drawing.Size(308, 96);
             this.panel8.TabIndex = 7;
             // 
             // panel1
@@ -465,10 +465,10 @@
             this.panel1.Controls.Add(this.comboBox_Ch31_lgNumBinsVar);
             this.panel1.Controls.Add(this.checkBox_Ch31_lgVarBin);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(357, 244);
+            this.panel1.Location = new System.Drawing.Point(355, 244);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(303, 99);
+            this.panel1.Size = new System.Drawing.Size(304, 99);
             this.panel1.TabIndex = 9;
             // 
             // button_Load
