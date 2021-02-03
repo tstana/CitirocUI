@@ -321,9 +321,6 @@ namespace CitirocUI
             label_nbHit.Text = "";
             label_DataFile.Text = "";
 
-            // Prep default value for CUBES DAQ number of bins
-            comboBox_cubesDaqNumBins.SelectedIndex = 0;
-
             // Prep. the user in Proto-CUBES mode
             comboBox_SelectConnection.SelectedIndex = 1;
         }

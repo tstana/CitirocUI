@@ -98,14 +98,12 @@ namespace CitirocUI
         private int commandReplyDataLen = 0;
 
         private int commandReplyBytesRead = 0;
-        private int numBins;       // TODO: Remove me (replace with expectedNumBytes or equiv.)
 
          //global variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
         private SerialPort comPort = new SerialPort();
 
         private Command lastSentCommand = Command.None;
-
         private string excepFileFolder;
         #endregion
 
@@ -199,11 +197,7 @@ namespace CitirocUI
             set { _monvisible = value; }
         }
 
-        public int NumBins
-        {
-            get { return numBins; }
-            set { numBins = value; }
-        }
+        public int[] NumBins { get; set; } = new int[6];
 
         /// <summary>
         /// property to hold our TransmissionType
@@ -350,14 +344,14 @@ namespace CitirocUI
                     break;
 
                 case Command.SendDAQConf:
-                    if (cmdParam.Length != 2)
+                    if (cmdParam.Length != 7)
                     {
                         throw new ArgumentException("Command '" +
-                            (char)cmd + "' takes in 2 bytes as parameter; " +
+                            (char)cmd + "' takes in 7 bytes as parameter; " +
                             "the parameter array consists of " +
                             cmdParam.Length.ToString() + " bytes instead!");
                     }
-                    cmdBytes = new byte[3];
+                    cmdBytes = new byte[8];
                     break;
 
                 case Command.SendReadReg:
@@ -452,7 +446,10 @@ namespace CitirocUI
                     commandReplyDataLen = 26;
                     break;
                 case Command.ReqPayload:
-                    commandReplyDataLen = 23 + 256 + 6 * (numBins * 2) + 2;
+                    commandReplyDataLen = 23 + 256; // Unix time + histo. header
+                    for (int i = 0; i < 6; i++)
+                        commandReplyDataLen += 2 * NumBins[i]; // 2 bytes / bin
+                    commandReplyDataLen += 2; // "\r\n"
                     break;
                 default:
                     commandReplyDataLen = 0;
