@@ -99,6 +99,7 @@
             // checkBox_Ch0_hgVarBin
             // 
             this.checkBox_Ch0_hgVarBin.AutoSize = true;
+            this.checkBox_Ch0_hgVarBin.Enabled = false;
             this.checkBox_Ch0_hgVarBin.Location = new System.Drawing.Point(7, 55);
             this.checkBox_Ch0_hgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch0_hgVarBin.Name = "checkBox_Ch0_hgVarBin";
@@ -111,6 +112,7 @@
             // checkBox_Ch0_lgVarBin
             // 
             this.checkBox_Ch0_lgVarBin.AutoSize = true;
+            this.checkBox_Ch0_lgVarBin.Enabled = false;
             this.checkBox_Ch0_lgVarBin.Location = new System.Drawing.Point(18, 55);
             this.checkBox_Ch0_lgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch0_lgVarBin.Name = "checkBox_Ch0_lgVarBin";
@@ -122,6 +124,7 @@
             // checkBox_Ch16_hgVarBin
             // 
             this.checkBox_Ch16_hgVarBin.AutoSize = true;
+            this.checkBox_Ch16_hgVarBin.Enabled = false;
             this.checkBox_Ch16_hgVarBin.Location = new System.Drawing.Point(7, 55);
             this.checkBox_Ch16_hgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch16_hgVarBin.Name = "checkBox_Ch16_hgVarBin";
@@ -133,6 +136,7 @@
             // checkBox_Ch16_lgVarBin
             // 
             this.checkBox_Ch16_lgVarBin.AutoSize = true;
+            this.checkBox_Ch16_lgVarBin.Enabled = false;
             this.checkBox_Ch16_lgVarBin.Location = new System.Drawing.Point(19, 55);
             this.checkBox_Ch16_lgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch16_lgVarBin.Name = "checkBox_Ch16_lgVarBin";
@@ -144,6 +148,7 @@
             // checkBox_Ch31_hgVarBin
             // 
             this.checkBox_Ch31_hgVarBin.AutoSize = true;
+            this.checkBox_Ch31_hgVarBin.Enabled = false;
             this.checkBox_Ch31_hgVarBin.Location = new System.Drawing.Point(7, 55);
             this.checkBox_Ch31_hgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch31_hgVarBin.Name = "checkBox_Ch31_hgVarBin";
@@ -155,6 +160,7 @@
             // checkBox_Ch31_lgVarBin
             // 
             this.checkBox_Ch31_lgVarBin.AutoSize = true;
+            this.checkBox_Ch31_lgVarBin.Enabled = false;
             this.checkBox_Ch31_lgVarBin.Location = new System.Drawing.Point(18, 54);
             this.checkBox_Ch31_lgVarBin.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ch31_lgVarBin.Name = "checkBox_Ch31_lgVarBin";
