@@ -314,9 +314,6 @@ namespace CitirocUI
             protoCubes.DataReadyEvent += this.ReqPayload_DataReady;
             protoCubes.DataReadyEvent += this.ReqBoardID_DataReady;
 
-            protoCubes.ExcepFileFolder = textBox_dataSavePath.Text;
-
-
             // Clear text in some labels
             label_nbHit.Text = "";
             label_DataFile.Text = "";
@@ -1906,13 +1903,6 @@ namespace CitirocUI
                     label_help.Text.Contains("Writing DAQ data to"))
             {
                 refreshDataChart();
-            }
-        }
-
-        private void textBox_dataSavePath_TextChanged(object sender, EventArgs e)
-        {
-            if (protoCubes != null) {
-                protoCubes.ExcepFileFolder = textBox_dataSavePath.Text;
             }
         }
 

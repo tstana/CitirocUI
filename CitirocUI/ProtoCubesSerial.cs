@@ -104,7 +104,6 @@ namespace CitirocUI
         private SerialPort comPort = new SerialPort();
 
         private Command lastSentCommand = Command.None;
-        private string excepFileFolder;
         #endregion
 
         #region Events
@@ -223,12 +222,6 @@ namespace CitirocUI
         {
             get { return lastSentCommand; }
             set { lastSentCommand = value; }
-        }
-
-        public string ExcepFileFolder
-        {
-            get { return excepFileFolder; }
-            set { excepFileFolder = value; }
         }
         #endregion
 
@@ -456,24 +449,6 @@ namespace CitirocUI
                     break;
             }
 
-
-            // TODO: REMOVE ME
-            // vvv
-            using (FileStream f = File.Open(
-                excepFileFolder.TrimEnd('\\') +
-                "\\_debug.log", FileMode.Append))
-            {
-                TimeSpan timeSinceEpoch = DateTime.UtcNow -
-                    new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                string st = "@" + Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
-                                        "  Sending " + cmd + "...\n";
-                st += "\t\t lastSentCommand: " + lastSentCommand + "\n";
-                st += "\t\t commandReplyDataLen: " + commandReplyDataLen + "\n";
-                byte[] bytes = System.Text.Encoding.ASCII.GetBytes(st);
-                f.Write(bytes, 0, bytes.Length);
-            }
-            // ^^^
-
             /* Prep the array, send it and set the currently executing cmd. */
             cmdBytes[0] = Convert.ToByte(cmd);
             if (cmdParam != null)
@@ -614,24 +589,6 @@ namespace CitirocUI
                 commandReplyBytesRead += numBytesRead;
                 if (commandReplyBytesRead >= commandReplyDataLen)
                 {
-                    // TODO: REMOVE ME
-                    // vvv
-                    using (FileStream f = File.Open(
-                        excepFileFolder.TrimEnd('\\') +
-                        "\\_debug.log", FileMode.Append))
-                    {
-                        TimeSpan timeSinceEpoch = DateTime.UtcNow -
-                            new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                        string st = "@" + Convert.ToUInt32(timeSinceEpoch.TotalSeconds).ToString() + ": " +
-                                                "  Reply from " + lastSentCommand + "...\n";
-                        st += "\t\t lastSentCommand: " + lastSentCommand + "\n";
-                        st += "\t\t commandReplyDataLen: " + commandReplyDataLen + "\n";
-                        byte[] bytes = System.Text.Encoding.ASCII.GetBytes(st);
-                        f.Write(bytes, 0, bytes.Length);
-                    }
-                    // ^^^
-
-
                     DataReadyEvent(this,
                         new DataReadyEventArgs(lastSentCommand,
                             commandReplyBuffer));
@@ -640,36 +597,27 @@ namespace CitirocUI
             }
             catch (ArgumentException)
             {
-                using (FileStream f = File.Open(
-                    excepFileFolder.TrimEnd('\\') + "\\_ProtoCubesSerial_Excep.log",
-                    FileMode.Append))
-                {
-                    string s = "Attempting to write too many bytes to " +
-                        "command reply buffer:" +
-                        Environment.NewLine +
-                        "commandReplyBytesRead = " + commandReplyBytesRead +
-                        Environment.NewLine +
-                        "dataB.Length = " + dataBytes.Length +
-                        Environment.NewLine +
-                        Environment.NewLine;
-                    byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
-                    f.Write(bytes, 0, bytes.Length);
-                }
+                string s = "Attempting to write too many bytes to " +
+                    "command reply buffer:" +
+                    Environment.NewLine +
+                    "commandReplyBytesRead = " + commandReplyBytesRead +
+                    Environment.NewLine +
+                    "dataB.Length = " + dataBytes.Length +
+                    Environment.NewLine +
+                    Environment.NewLine;
+                MessageBox.Show(s, "Exception", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 commandReplyBytesRead = 0;
             }
             catch (Exception excep)
             {
-                using (FileStream f = File.Open("_ProtoCubesSerial_Excep.log",
-                    FileMode.Append))
-                {
-                    string s = "Exception in comPort_DataReceived():" +
-                        Environment.NewLine +
-                        excep.Message +
-                        Environment.NewLine +
-                        Environment.NewLine;
-                    byte[] bytes = System.Text.Encoding.ASCII.GetBytes(s);
-                    f.Write(bytes, 0, bytes.Length);
-                }
+                string s = "Exception in comPort_DataReceived():" +
+                    Environment.NewLine +
+                    excep.Message +
+                    Environment.NewLine +
+                    Environment.NewLine;
+                MessageBox.Show(s, "Exception", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 commandReplyBytesRead = 0;
             }
 

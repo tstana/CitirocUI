@@ -10477,7 +10477,6 @@
             this.textBox_dataSavePath.Name = "textBox_dataSavePath";
             this.textBox_dataSavePath.Size = new System.Drawing.Size(475, 29);
             this.textBox_dataSavePath.TabIndex = 3;
-            this.textBox_dataSavePath.TextChanged += new System.EventHandler(this.textBox_dataSavePath_TextChanged);
             // 
             // button_startAcquisition
             // 
