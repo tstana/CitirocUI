@@ -143,6 +143,16 @@ namespace CitirocUI
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
                 AdjustAcquisitionTime();
 
+                /// Start by synchronizing UTC time between the CitirocUI
+                /// and Proto-CUBES, in case a long time has passed since
+                /// the last SEND_TIME command was sent to Proto-CUBES.
+                /// Also wait 50 ms to ensure all UART commands in this
+                /// run are properly received and interpreted. (Without
+                /// the 50 ms, it was observed that the DAQ_START cmd.
+                /// was not received by the Arduino.)
+                SendTimeToProtoCUBES();
+                Thread.Sleep(50);
+
                 // Prep and send a SEND_DAQ_CONF command
                 byte[] daqConf = new byte[7];
 
@@ -414,13 +424,14 @@ namespace CitirocUI
                 var stopwatchIndividualDaqRun = Stopwatch.StartNew();
                 var individualDaqTimeMillisec = 1000 +
                     (Convert.ToInt32(textBox_numData.Text) * 1000);
+                bool timeSent = false;
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
                     /// On every "DAQ_DUR + 1", stop the stopwatch and send the
                     /// REQ_STATUS command every 500 ms. When REQ_STATUS tells
                     /// us the Arduino has a new file available, the stopwatch
-                    /// can be restarted.
+                    /// can be restarted so the individual DAQ starts again.
                     if (timeAcquisitionMode &&
                         ((stopwatchIndividualDaqRun.ElapsedMilliseconds) >
                             individualDaqTimeMillisec))
@@ -439,6 +450,7 @@ namespace CitirocUI
                         stopwatchIndividualDaqRun.Stop();
                         ReqPayloadProcedure();
                         stopwatchIndividualDaqRun.Restart();
+
                         using (FileStream f = File.Open(
                             textBox_dataSavePath.Text.TrimEnd('\\') +
                             "\\_debug.log", FileMode.Append))
@@ -512,6 +524,9 @@ namespace CitirocUI
             progressBar_acquisition.Value = 0;
             progressBar_acquisition.Visible = false;
             button_SelectNumBinsCubes.Enabled = true;
+
+            // Next DAQ run will be the first
+            firstDaqRun = true;
 
             if (selectedConnectionMode == 0)
             {

@@ -277,35 +277,7 @@ namespace CitirocUI
                     label_help.Text = comboBox_SelectConnection.Text + " is connected. Click again if you wish to disconnect.";
 
                     // Send time on connection (Proto-CUBES)
-
-                    TimeSpan timeSinceEpoch = DateTime.UtcNow -
-                        new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                    UInt32 unixTime = Convert.ToUInt32(timeSinceEpoch.TotalSeconds);
-
-                    byte[] time = new byte[4];
-                    time[0] = (byte)((unixTime >> 24) & 0xff);
-                    time[1] = (byte)((unixTime >> 16) & 0xff);
-                    time[2] = (byte)((unixTime >> 8) & 0xff);
-                    time[3] = (byte)((unixTime) & 0xff);
-
-                    try
-                    {
-                        protoCubes.SendCommand(ProtoCubesSerial.Command.SendTime, time);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Failed to send time " +
-                            "to Proto-CUBES!"
-                            + Environment.NewLine
-                            + Environment.NewLine
-                            + "Error message:"
-                            + Environment.NewLine
-                            + ex.Message,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        throw new Exception();
-                    }
+                    SendTimeToProtoCUBES();
 
                     // Request Board ID on connect
                     try
@@ -363,6 +335,38 @@ namespace CitirocUI
                 label_help.Text = "Looks like there is an issue with the connection. Please verify the board is properly plugged in and powered and click again.";
             else if (connectStatus == 1)
                 label_help.Text = "Connected successfully! Click again if you wish to disconnect.";
+        }
+
+        private void SendTimeToProtoCUBES()
+        {
+            TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            UInt32 unixTime = Convert.ToUInt32(timeSinceEpoch.TotalSeconds);
+
+            byte[] time = new byte[4];
+            time[0] = (byte)((unixTime >> 24) & 0xff);
+            time[1] = (byte)((unixTime >> 16) & 0xff);
+            time[2] = (byte)((unixTime >> 8) & 0xff);
+            time[3] = (byte)((unixTime) & 0xff);
+
+            try
+            {
+                protoCubes.SendCommand(ProtoCubesSerial.Command.SendTime, time);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send time " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                throw new Exception();
+            }
         }
 
         private void button_loadFw_Click(object sender, EventArgs e)
