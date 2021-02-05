@@ -99,6 +99,18 @@
     <Compile Include="Citiroc.Designer.cs">
       <DependentUpon>Citiroc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProtoCubesNumBinsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProtoCubesNumBinsForm.Designer.cs">
+      <DependentUpon>ProtoCubesNumBinsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProtoCubesMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProtoCubesMonitor.Designer.cs">
+      <DependentUpon>ProtoCubesMonitor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProtoCubesSerial.cs" />
     <Compile Include="Connect.cs">
       <SubType>Form</SubType>
@@ -159,6 +171,9 @@
     <EmbeddedResource Include="Citiroc.resx">
       <DependentUpon>Citiroc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProtoCubesMonitor.resx">
+      <DependentUpon>ProtoCubesMonitor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -180,6 +195,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="ProtoCubesNumBinsForm.resx">
+      <DependentUpon>ProtoCubesNumBinsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Bryant-RegularCompressed.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

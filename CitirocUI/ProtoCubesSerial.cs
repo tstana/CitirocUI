@@ -61,15 +61,17 @@ namespace CitirocUI
             SendProbeConf       = 'P',
             SendHVPSConf        = 'H',
             SendHVPSTmpVolt     = 'V',
-            SendDAQDur          = 'D',
+            SendDAQConf         = 'D',
             SendReadReg         = 'R',
             SendGatewareConf    = 'G',
             SendTime            = 'Z',
 
             DAQStart            = 'S',
             DAQStop             = 'T',
+            DelFiles            = 'Q',
 
             ReqHK               = 'h',
+            ReqStatus           = 's',
             ReqPayload          = 'p',
             ReqBoardID          = 'i'
         }
@@ -93,15 +95,15 @@ namespace CitirocUI
         private bool _monvisible = false;
 
         private byte[] commandReplyBuffer = new byte[25000];
- 
-        private int _numBytesRetrieved = 0;
-        private int _numBins;       // TODO: Remove me (replace with expectedNumBytes or equiv.)
+        private int commandReplyDataLen = 0;
+
+        private int commandReplyBytesRead = 0;
 
          //global variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
         private SerialPort comPort = new SerialPort();
 
-        private Command currentCommand = Command.None;
+        private Command lastSentCommand = Command.None;
         #endregion
 
         #region Events
@@ -194,11 +196,7 @@ namespace CitirocUI
             set { _monvisible = value; }
         }
 
-        public int NumBins
-        {
-            get { return _numBins; }
-            set { _numBins = value; }
-        }
+        public int[] NumBins { get; set; } = new int[6];
 
         /// <summary>
         /// property to hold our TransmissionType
@@ -220,10 +218,10 @@ namespace CitirocUI
             set { _displayWindow = value; }
         }
 
-        public Command CurrentCommand
+        public Command LastSentCommand
         {
-            get { return currentCommand; }
-            set { currentCommand = value; }
+            get { return lastSentCommand; }
+            set { lastSentCommand = value; }
         }
         #endregion
 
@@ -306,7 +304,9 @@ namespace CitirocUI
                 case Command.DAQStop:
                 case Command.ReqBoardID:
                 case Command.ReqHK:
+                case Command.ReqStatus:
                 case Command.ReqPayload:
+                case Command.DelFiles:
                     if (cmdParam != null)
                     {
                         throw new ArgumentException("Command '" +
@@ -336,8 +336,18 @@ namespace CitirocUI
                     cmdBytes = new byte[33];
                     break;
 
+                case Command.SendDAQConf:
+                    if (cmdParam.Length != 7)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 7 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[8];
+                    break;
+
                 case Command.SendReadReg:
-                case Command.SendDAQDur:
                 case Command.SendGatewareConf:
                     if (cmdParam.Length != 1)
                     {
@@ -387,14 +397,64 @@ namespace CitirocUI
                         (char)cmd + "' received.");
             }
 
+            lastSentCommand = cmd;
+
+            /*
+             * Expected number of bytes:
+             *      ID:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Data (30 bytes)
+             *          \r\n (2 bytes)
+             *          ---
+             *          Total: 55
+             *      Status:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Data (1 byte)
+             *          \r\n (2 bytes)
+             *          ---
+             *          Total: 26
+             *      HK:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Data (38 bytes)
+             *          \r\n (2 bytes)
+             *          ---
+             *          Total: 63
+             *      DAQ:
+             *          Unix time: 0123456789\r\n (23 bytes)
+             *          Histo header (256 bytes)
+             *          Bins data (variable)
+             *          \r\n
+             *          ---
+             *          Total: calculated below
+             */
+            switch (lastSentCommand)
+            {
+                case Command.ReqBoardID:
+                    commandReplyDataLen = 55;
+                    break;
+                case Command.ReqHK:
+                    commandReplyDataLen = 63;
+                    break;
+                case Command.ReqStatus:
+                    commandReplyDataLen = 26;
+                    break;
+                case Command.ReqPayload:
+                    commandReplyDataLen = 23 + 256; // Unix time + histo. header
+                    for (int i = 0; i < 6; i++)
+                        commandReplyDataLen += 2 * NumBins[i]; // 2 bytes / bin
+                    commandReplyDataLen += 2; // "\r\n"
+                    break;
+                default:
+                    commandReplyDataLen = 0;
+                    break;
+            }
+
             /* Prep the array, send it and set the currently executing cmd. */
             cmdBytes[0] = Convert.ToByte(cmd);
             if (cmdParam != null)
                 Array.Copy(cmdParam, 0, cmdBytes, 1, cmdParam.Length);
 
-            this.SendData(cmdBytes, cmdBytes.Length);
-
-            currentCommand = cmd;
+            SendData(cmdBytes, cmdBytes.Length);
         }
         #endregion
 
@@ -520,75 +580,45 @@ namespace CitirocUI
                 DisplayData(dataBytes);
 
             /*
-             * Expected number of bytes:
-             *      ID:
-             *          Unix time: 0123456789\r\n (23 bytes)
-             *          Data (30 bytes)
-             *          \r\n (2 bytes)
-             *          ---
-             *          Total: 55
-             *      HK:
-             *          Unix time: 0123456789\r\n (23 bytes)
-             *          Data (38 bytes)
-             *          \r\n (2 bytes)
-             *          ---
-             *          Total: 63
-             *      DAQ:
-             *          Unix time: 0123456789\r\n (23 bytes)
-             *          Histo header (256 bytes)
-             *          Bins data (variable)
-             *          \r\n
-             *          ---
-             *          Total: calculated below
-             */
-            int dataLength;
-            switch (currentCommand) {
-                case Command.ReqBoardID:
-                    dataLength = 55;
-                    break;
-                case Command.ReqHK:
-                    dataLength = 63;
-                    break;
-                case Command.ReqPayload:
-                    dataLength = 23 + 256 + 6 * (_numBins * 2) + 2;
-                    break;
-                default:
-                    dataLength = 0;
-                    break;
-            }
-
-            /*
              * Buffer received data as it arrives until the expected number of
              * bytes have been received
              */
             try
             {
-                dataBytes.CopyTo(commandReplyBuffer, _numBytesRetrieved);
-                _numBytesRetrieved += numBytesRead;
-                if (_numBytesRetrieved >= dataLength)
+                dataBytes.CopyTo(commandReplyBuffer, commandReplyBytesRead);
+                commandReplyBytesRead += numBytesRead;
+                if (commandReplyBytesRead >= commandReplyDataLen)
                 {
                     DataReadyEvent(this,
-                        new DataReadyEventArgs(currentCommand,
+                        new DataReadyEventArgs(lastSentCommand,
                             commandReplyBuffer));
-                    currentCommand = Command.None;
-                    _numBytesRetrieved = 0;
+                    commandReplyBytesRead = 0;
                 }
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Attempting to write too many bytes to " +
-                    " command reply buffer:\n" +
-                    "_numBytesRetrieved = " + _numBytesRetrieved + "\n" +
-                    "dataB.Length = " + dataBytes.Length + "\n",
-                    "Error",
-                    MessageBoxButtons.OK,
+                string s = "Attempting to write too many bytes to " +
+                    "command reply buffer:" +
+                    Environment.NewLine +
+                    "commandReplyBytesRead = " + commandReplyBytesRead +
+                    Environment.NewLine +
+                    "dataB.Length = " + dataBytes.Length +
+                    Environment.NewLine +
+                    Environment.NewLine;
+                MessageBox.Show(s, "Exception", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                _numBytesRetrieved = 0;
+                commandReplyBytesRead = 0;
             }
             catch (Exception excep)
             {
-                MessageBox.Show(excep.Message, "Error");
-                _numBytesRetrieved = 0;
+                string s = "Exception in comPort_DataReceived():" +
+                    Environment.NewLine +
+                    excep.Message +
+                    Environment.NewLine +
+                    Environment.NewLine;
+                MessageBox.Show(s, "Exception", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                commandReplyBytesRead = 0;
             }
 
         }

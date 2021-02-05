@@ -25,6 +25,7 @@ namespace CitirocUI
         UInt16 daqTimeActual;
         int nbAcq = 100;
         bool timeAcquisitionMode = true;
+        byte arduinoStatus;
 
         #region Start Acquisition Button
         private void button_startAcquisition_Click(object sender, EventArgs e)
@@ -88,7 +89,7 @@ namespace CitirocUI
             string[] splitAcqTime = textBox_acquisitionTime.Text.Split(':');
 
             /* Now actually send the bytes... */
-            
+
             // USB (Weeroc board)
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
@@ -140,15 +141,33 @@ namespace CitirocUI
                 }
 
                 // Just in case we're setting an acquisition time not supported by Proto-CUBES:
-                AdjustAcquisitionTime();            // TODO: Remove?
+                AdjustAcquisitionTime();
 
-                byte[] daqDur = new byte[1];
+                /// Start by synchronizing UTC time between the CitirocUI
+                /// and Proto-CUBES, in case a long time has passed since
+                /// the last SEND_TIME command was sent to Proto-CUBES.
+                /// Also wait some time to ensure all UART commands in this
+                /// run are properly received and interpreted. (Without
+                /// the delay, it was observed that the DAQ_START cmd.
+                /// was not received by the Arduino.)
+                SendTimeToProtoCUBES();
+                Thread.Sleep(50);
 
-                daqDur[0] = Convert.ToByte(individAcqTime);
+                // Prep and send a SEND_DAQ_CONF command
+                byte[] daqConf = new byte[7];
+
+                daqConf[0] = Convert.ToByte(individAcqTime);
+
+                for (int i = 0; i < 6; ++i)
+                {
+                    daqConf[i+1] = Convert.ToByte(binCfgArray[i]);
+                }
+
+                Array.Copy(numBinsArray, protoCubes.NumBins, 6);
 
                 try
                 {
-                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendDAQDur, daqDur);
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendDAQConf, daqConf);
                 }
                 catch (Exception ex)
                 {
@@ -164,6 +183,9 @@ namespace CitirocUI
                         MessageBoxIcon.Error);
                 }
 
+                Thread.Sleep(50);
+
+                // Finally, send a DAQ_START command:
                 try
                 {
                     protoCubes.SendCommand(ProtoCubesSerial.Command.DAQStart, null);
@@ -190,15 +212,18 @@ namespace CitirocUI
             }
 
             /* Finally, start the DAQ on the UI end... */
+            backgroundWorker_dataAcquisition.RunWorkerAsync();
+
+            /* ... and update UI elements to indicate this */
             button_startAcquisition.Text = "Stop Acquisition";
+
+            button_SelectNumBinsCubes.Enabled = false;
 
             tabControl_dataAcquisition.Enabled = false;
             progressBar_acquisition.Visible = true;
 
             label_elapsedTimeAcquisition.Enabled = true;
             label_acqTime.Enabled = true;
-
-            backgroundWorker_dataAcquisition.RunWorkerAsync();
         }
         #endregion
 
@@ -385,49 +410,30 @@ namespace CitirocUI
                 /// total DAQ time and the other for individual DAQs
                 /// (Proto-CUBES runs multiple DAQs and sends the file
                 /// corresponding to a single DAQ after the run is done).
-                /// 
-                /// TODO: Change stopwatchIndividualDaqRun with timer? (See below...)
                 var stopwatchTotalDaqRun = Stopwatch.StartNew();
                 var stopwatchIndividualDaqRun = Stopwatch.StartNew();
-                bool inhibitReqPayload = true;
-
-                /// Start by sleeping for 50 ms, to make sure we don't de-inhibit
-                /// the first REQ_PAYLOAD.
-                Thread.Sleep(50);
+                var individualDaqTimeMillisec = 1000 +
+                    (Convert.ToInt32(textBox_numData.Text) * 1000);
+                bool timeSent = false;
 
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
-                    var individualDaqTimeMillisec = Convert.ToInt32(textBox_numData.Text) * 1000;      // TODO: Handle exception (???)
-
-                    /// TODO: This is very hardcoded and time-dependant -- make event-based or similar!
-
-                    /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                    /// Note: Can't use Control.Timer (or whatever the first hit when searching online
-                    /// for ".NET Timer" is), because that one is "optimized for WinForms", which can
-                    /// only run in UI thread -- and it is not the UART thread that this function works in.
-
-                    /// On every "DAQ_DUR + 3", send REQ_PAYLOAD command.
-                    /// Inhibit the REQ_PAYLOAD until next "DAQ_DUR+3"
-                    /// iteration.
-                    if (timeAcquisitionMode && (!inhibitReqPayload) &&
-                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 3000))
-                    {
-                        UpdatingLabel("Sending REQ_PAYLOAD to Proto-CUBES...", label_help);
-                        SendReqPayload();
-                        inhibitReqPayload = true;
-                    }
-
-                    // De-inhibit the REQ_PAYLOAD on "DAQ_DUR + 3" overflow.
+                    /// On every "DAQ_DUR + 1", stop the stopwatch and send the
+                    /// REQ_STATUS command every 500 ms. When REQ_STATUS tells
+                    /// us the Arduino has a new file available, the stopwatch
+                    /// can be restarted so the individual DAQ starts again.
                     if (timeAcquisitionMode &&
-                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) > 0) &&
-                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds % individualDaqTimeMillisec) < 50))
+                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds) >
+                            individualDaqTimeMillisec))
                     {
-                        inhibitReqPayload = false;
+                        stopwatchIndividualDaqRun.Stop();
+                        ReqPayloadProcedure();
+                        stopwatchIndividualDaqRun.Restart();
                     }
-                    /// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
                     // Stop the acquisition when on DAQ run "time-out"
-                    if (timeAcquisitionMode && stopwatchTotalDaqRun.ElapsedMilliseconds >= acqTimeMillisec)
+                    if (timeAcquisitionMode &&
+                        stopwatchTotalDaqRun.ElapsedMilliseconds >= acqTimeMillisec)
                     {
                         stopwatchTotalDaqRun.Stop();
                         stopwatchIndividualDaqRun.Stop();
@@ -435,7 +441,7 @@ namespace CitirocUI
                     }
                     Thread.Sleep(5);
 
-                    /* DAQ progess  */
+                    /* DAQ progess */
                     if (timeAcquisitionMode)
                     {
                         backgroundWorker_dataAcquisition.ReportProgress((int)(stopwatchTotalDaqRun.ElapsedMilliseconds * 100 / acqTimeMillisec));
@@ -484,6 +490,7 @@ namespace CitirocUI
             tabControl_dataAcquisition.Enabled = true;
             progressBar_acquisition.Value = 0;
             progressBar_acquisition.Visible = false;
+            button_SelectNumBinsCubes.Enabled = true;
 
             if (selectedConnectionMode == 0)
             {
@@ -495,6 +502,7 @@ namespace CitirocUI
                 // Send DAQ_STOP command
                 try
                 {
+                    /// Finally, send the DAQ_STOP.
                     protoCubes.SendCommand(ProtoCubesSerial.Command.DAQStop, null);
                 }
                 catch (Exception ex)
@@ -509,13 +517,12 @@ namespace CitirocUI
                         MessageBoxIcon.Error);
                 }
 
-                // Wait for 3 seconds and send REQ_PAYLOAD command
+                // Wait for one second and send REQ_PAYLOAD command
                 Stopwatch s = Stopwatch.StartNew();
-                label_help.Text = "NOTE: Waiting 3 seconds until sending REQ_PAYLOAD...";
-                while (s.ElapsedMilliseconds < 3000)
-                    ;
+                while (s.ElapsedMilliseconds < 1000)
+                    Thread.Sleep(5);
                 label_help.Text = "";
-                SendReqPayload();
+                ReqPayloadProcedure();
             }
         }
         #endregion
@@ -525,7 +532,7 @@ namespace CitirocUI
         {
             /* Get actual acquistion time -- counted using a 10 MHz clock -- from firmware registers */
             ulong firmwareActualAcqTime = Convert.ToUInt64(Firmware.readWord(114, usbDevId), 2) |
-                Convert.ToUInt64(Firmware.readWord(115, usbDevId), 2) <<  8 |
+                Convert.ToUInt64(Firmware.readWord(115, usbDevId), 2) << 8 |
                 Convert.ToUInt64(Firmware.readWord(116, usbDevId), 2) << 16 |
                 Convert.ToUInt64(Firmware.readWord(117, usbDevId), 2) << 24 |
                 Convert.ToUInt64(Firmware.readWord(118, usbDevId), 2) << 32 |
@@ -551,11 +558,32 @@ namespace CitirocUI
             }
         }
 
+        private void SendReqStatus()
+        {
+            UpdatingLabel("Sending REQ_STATUS to Proto-CUBES...", label_help);
+
+            try
+            {
+                protoCubes.SendCommand(ProtoCubesSerial.Command.ReqStatus, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send request status command " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
         private void SendReqPayload()
         {
-            /* TODO check textBox_NumBins limits !
-             */
-            int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
+            UpdatingLabel("Sending REQ_PAYLOAD to Proto-CUBES...", label_help);
 
             /*
              * Prep the ProtoCubesSerial instance for DAQ data reception
@@ -563,7 +591,6 @@ namespace CitirocUI
              */
             try
             {
-                protoCubes.NumBins = noOfBins;
                 protoCubes.SendCommand(ProtoCubesSerial.Command.ReqPayload, null);
             }
             catch (Exception ex)
@@ -579,6 +606,23 @@ namespace CitirocUI
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void ReqPayloadProcedure()
+        {
+            int i = 0;
+            do
+            {
+                /// Try to REQ_STATUS every 500 ms with an 8-try "timeout".
+                /// Break on new file available (bit 1 in status = '1').
+                SendReqStatus();
+                Thread.Sleep(500);
+                if ((arduinoStatus & 0x02) != 0) {
+                    SendReqPayload();
+                    break;
+                }
+            } while (i++ < 8);
+            arduinoStatus = 0;
         }
 
         private void loadData()
@@ -622,7 +666,7 @@ namespace CitirocUI
             if (DataArrayListCount <= 1) return;
 
             string[] DataArray = new string[DataArrayListCount];
-  
+
             Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
             Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
             Array.Clear(Hit, 0, Hit.Length);
@@ -694,14 +738,16 @@ namespace CitirocUI
             chart_perChannelChargeHG.Series[0].BorderWidth = 0;
             chart_perChannelChargeHG.Series[0]["PointWidth"] = "1";
 
-            for (int i = HgCutLow; i < HgCutHigh + 1; i++) if (PerChannelChargeHG[chNum, i] != 0) chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
+            for (int i = HgCutLow; i < HgCutHigh + 1; i++)
+                if (PerChannelChargeHG[chNum, i] != 0)
+                    chart_perChannelChargeHG.Series[0].Points.AddXY(i, PerChannelChargeHG[chNum, i]);
 
             ulong numTimeTrigs = 0;
 
-            if(selectedConnectionMode == 0)
+            if (selectedConnectionMode == 0)
             {
-                numTimeTrigs=(Convert.ToUInt64(Firmware.readWord(120, usbDevId), 2)) |
-                                 (Convert.ToUInt64(Firmware.readWord(121, usbDevId), 2) <<  8) |
+                numTimeTrigs = (Convert.ToUInt64(Firmware.readWord(120, usbDevId), 2)) |
+                                 (Convert.ToUInt64(Firmware.readWord(121, usbDevId), 2) << 8) |
                                  (Convert.ToUInt64(Firmware.readWord(122, usbDevId), 2) << 16) |
                                  (Convert.ToUInt64(Firmware.readWord(123, usbDevId), 2) << 24) |
                                  (Convert.ToUInt64(Firmware.readWord(124, usbDevId), 2) << 32) |
@@ -717,8 +763,8 @@ namespace CitirocUI
             else
             {
                 label_nbHit.Text = "Number of registered hit in channel " + chNum + " = " + HitCK[chNum];
-                label_elapsedTimeAcquisition.Text = "Elapsed time: " + ((double)(daqTimeTotal/256)).ToString("N3") + " s";
-                label_acqTime.Text = "Actual acq. time: " + ((double)(daqTimeActual/256)).ToString("N3") + " s";
+                label_elapsedTimeAcquisition.Text = "Elapsed time: " + ((double)(daqTimeTotal / 256)).ToString("N3") + " s";
+                label_acqTime.Text = "Actual acq. time: " + ((double)(daqTimeActual / 256)).ToString("N3") + " s";
             }
 
             resetZoom(chart_perChannelChargeHG);
@@ -734,8 +780,10 @@ namespace CitirocUI
             chart_perChannelChargeLG.Series[0].BorderColor = WeerocPaleBlue;
             chart_perChannelChargeLG.Series[0].BorderWidth = 0;
             chart_perChannelChargeLG.Series[0]["PointWidth"] = "1";
-         
-            for (int i = LgCutLow; i < LgCutHigh + 1; i++) if (PerChannelChargeLG[chNum, i] != 0) chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
+
+            for (int i = LgCutLow; i < LgCutHigh + 1; i++)
+                if (PerChannelChargeLG[chNum, i] != 0)
+                    chart_perChannelChargeLG.Series[0].Points.AddXY(i, PerChannelChargeLG[chNum, i]);
 
             resetZoom(chart_perChannelChargeLG);
             #endregion
@@ -860,7 +908,7 @@ namespace CitirocUI
                 if ((adata[21] != 0x0d) || (adata[22] != 0x0a)
                     || (u_time.IndexOf("Unix time:") != 0))
                 {
-                    return("Invalid data file format!");
+                    return ("Invalid data file format!");
                 }
 
                 Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
@@ -872,149 +920,199 @@ namespace CitirocUI
                 UInt32 unixTimeArduino = Convert.ToUInt32(u_time.Substring(11));
                 cubesTelemetryArray[0] = unixTimeArduino;
 
-                int start = 23;
-                // Header data
+                // Header data offset is after "Unix time: <10 chars>"
+                int offset = 23;
+
+                // Start by getting the number of bins from the file
+                int[] binCfg = new int[6];
+                for (int i = 0; i < 6; i++)
+                {
+                    binCfg[i] = adata[offset + 256 - 6 + i];
+                }
+
+                int[] numBins = new int[6];
+
+                NumBinsFromBinCfg(numBins, binCfg);
 
                 // Reverse individual fields to avoid BitConverter endianness issues...
                 if (BitConverter.IsLittleEndian)
                 {
                     // Start of DAQ HK data
-                    Array.Reverse(adata, start + 2, 4);
-                    Array.Reverse(adata, start + 6, 2);
-                    Array.Reverse(adata, start + 8, 2);
-                    Array.Reverse(adata, start + 10, 2);
-                    Array.Reverse(adata, start + 12, 2);
+                    Array.Reverse(adata, offset + 2, 4);
+                    Array.Reverse(adata, offset + 6, 2);
+                    Array.Reverse(adata, offset + 8, 2);
+                    Array.Reverse(adata, offset + 10, 2);
+                    Array.Reverse(adata, offset + 12, 2);
 
                     // Hit data         
-                    Array.Reverse(adata, start + 128, 2);
-                    Array.Reverse(adata, start + 130, 2);
-                    Array.Reverse(adata, start + 132, 4);
-                    Array.Reverse(adata, start + 136, 4);
-                    Array.Reverse(adata, start + 140, 4);
-                    Array.Reverse(adata, start + 144, 4);
+                    Array.Reverse(adata, offset + 128, 2);
+                    Array.Reverse(adata, offset + 130, 2);
+                    Array.Reverse(adata, offset + 132, 4);
+                    Array.Reverse(adata, offset + 136, 4);
+                    Array.Reverse(adata, offset + 140, 4);
+                    Array.Reverse(adata, offset + 144, 4);
 
                     // End of DAQ HK data
-                    Array.Reverse(adata, start + 148, 2);
-                    Array.Reverse(adata, start + 150, 2);
-                    Array.Reverse(adata, start + 152, 2);
-                    Array.Reverse(adata, start + 154, 2);
-                    Array.Reverse(adata, start + 254, 2);
+                    Array.Reverse(adata, offset + 148, 2);
+                    Array.Reverse(adata, offset + 150, 2);
+                    Array.Reverse(adata, offset + 152, 2);
+                    Array.Reverse(adata, offset + 154, 2);
 
-                    // histogram values
-                    for (int i = 0; i < 12288; i++)
+                    /// Reverse histogram values for all six histo's, starting
+                    /// from HISTO_HDR
+                    offset += 256;
+                    for (int i = 0; i < 6; i++)
                     {
-                        Array.Reverse(adata, 279 + 2 * i, 2);
+                        for (int j = 0; j < numBins[i]; j++)
+                        {
+                            Array.Reverse(adata, offset, 2);
+                            offset += 2;
+                        }
                     }
                 }
 
-                string boardId = System.Text.Encoding.UTF8.GetString(adata, start, 2);
-                UInt32 time_reg = BitConverter.ToUInt32(adata, start + 2);
-                UInt16 temp_citiS = BitConverter.ToUInt16(adata, start + 6);
-                UInt16 temp_hvpsS = BitConverter.ToUInt16(adata, start + 8);
-                UInt16 hvps_voltS = BitConverter.ToUInt16(adata, start + 10);
-                UInt16 hvps_currS = BitConverter.ToUInt16(adata, start + 12);
+                // Back to start for data display...
+                offset = 23;
+
+                string boardId = System.Text.Encoding.UTF8.GetString(adata, offset, 2);
+                UInt32 time_reg = BitConverter.ToUInt32(adata, offset + 2);
+                UInt16 temp_citiS = BitConverter.ToUInt16(adata, offset + 6);
+                UInt16 temp_hvpsS = BitConverter.ToUInt16(adata, offset + 8);
+                UInt16 hvps_voltS = BitConverter.ToUInt16(adata, offset + 10);
+                UInt16 hvps_currS = BitConverter.ToUInt16(adata, offset + 12);
                 cubesTelemetryArray[1] = time_reg;
                 cubesTelemetryArray[2] = temp_citiS;
                 cubesTelemetryArray[3] = temp_hvpsS;
                 cubesTelemetryArray[4] = hvps_voltS;
                 cubesTelemetryArray[5] = hvps_currS;
 
-                daqTimeTotal = BitConverter.ToUInt16(adata, start + 128);
-                daqTimeActual = BitConverter.ToUInt16(adata, start + 130);
-                HitCK[0] = BitConverter.ToUInt32(adata, start + 132);
-                HitCK[16] = BitConverter.ToUInt32(adata, start + 136);
-                HitCK[31] = BitConverter.ToUInt32(adata, start + 140);
-                HitCK[21] = BitConverter.ToUInt32(adata, start + 144);
+                daqTimeTotal = BitConverter.ToUInt16(adata, offset + 128);
+                daqTimeActual = BitConverter.ToUInt16(adata, offset + 130);
+                HitCK[0] = BitConverter.ToUInt32(adata, offset + 132);
+                HitCK[16] = BitConverter.ToUInt32(adata, offset + 136);
+                HitCK[31] = BitConverter.ToUInt32(adata, offset + 140);
+                HitCK[32] = BitConverter.ToUInt32(adata, offset + 144);
 
-                UInt16 temp_citiE = BitConverter.ToUInt16(adata, start + 148);
-                UInt16 temp_hvpsE = BitConverter.ToUInt16(adata, start + 150);
-                UInt16 hvps_voltE = BitConverter.ToUInt16(adata, start + 152);
-                UInt16 hvps_currE = BitConverter.ToUInt16(adata, start + 154);
-                UInt16 nrBins = BitConverter.ToUInt16(adata, start + 254);
+                UInt16 temp_citiE = BitConverter.ToUInt16(adata, offset + 148);
+                UInt16 temp_hvpsE = BitConverter.ToUInt16(adata, offset + 150);
+                UInt16 hvps_voltE = BitConverter.ToUInt16(adata, offset + 152);
+                UInt16 hvps_currE = BitConverter.ToUInt16(adata, offset + 154);
                 cubesTelemetryArray[6] = temp_citiE;
                 cubesTelemetryArray[7] = temp_hvpsE;
                 cubesTelemetryArray[8] = hvps_voltE;
                 cubesTelemetryArray[9] = hvps_currE;
-                cubesTelemetryArray[10] = nrBins;
 
-                // BIN data
-                start = 279;
-                int noOfBins = Convert.ToUInt16(textBox_NumBins.Text);
+                // Display histogram data
+                offset += 256;
 
-                for (int i = 0; i < noOfBins; i++)
+                for (int i = 0; i < 6; i++)
                 {
-                    int start0 = start + 2 * i;
-                    PerChannelChargeHG[0, i] = BitConverter.ToUInt16(adata, start0);
-                    PerChannelChargeLG[0, i] = BitConverter.ToUInt16(adata, start0 + 4096);
-                    PerChannelChargeHG[16, i] = BitConverter.ToUInt16(adata, start0 + 8192);
-                    PerChannelChargeLG[16, i] = BitConverter.ToUInt16(adata, start0 + 12288);
-                    PerChannelChargeHG[31, i] = BitConverter.ToUInt16(adata, start0 + 16384);
-                    PerChannelChargeLG[31, i] = BitConverter.ToUInt16(adata, start0 + 20480);
+                    if (binCfg[i] < 7)
+                    {
+                        for (int j = 0; j < numBins[i]; j++)
+                        {
+                            switch (i)
+                            {
+                                case 0:
+                                    PerChannelChargeHG[0, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 1:
+                                    PerChannelChargeLG[0, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 2:
+                                    PerChannelChargeHG[16, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 3:
+                                    PerChannelChargeLG[16, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 4:
+                                    PerChannelChargeHG[31, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                                case 5:
+                                    PerChannelChargeLG[31, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    break;
+                            }
+                            offset += 2; // two bytes per bin
+                        }
+                    }
+                    // TODO: Add code for variable binning
                 }
 
                 // Reverse fields again for proper writing to file...
-                start = 23;
+                offset = 23;
+
                 if (BitConverter.IsLittleEndian)
                 {
                     // Start of DAQ HK data
-                    Array.Reverse(adata, start + 2, 4);
-                    Array.Reverse(adata, start + 6, 2);
-                    Array.Reverse(adata, start + 8, 2);
-                    Array.Reverse(adata, start + 10, 2);
-                    Array.Reverse(adata, start + 12, 2);
+                    Array.Reverse(adata, offset + 2, 4);
+                    Array.Reverse(adata, offset + 6, 2);
+                    Array.Reverse(adata, offset + 8, 2);
+                    Array.Reverse(adata, offset + 10, 2);
+                    Array.Reverse(adata, offset + 12, 2);
 
                     // Hit data         
-                    Array.Reverse(adata, start + 128, 2);
-                    Array.Reverse(adata, start + 130, 2);
-                    Array.Reverse(adata, start + 132, 4);
-                    Array.Reverse(adata, start + 136, 4);
-                    Array.Reverse(adata, start + 140, 4);
-                    Array.Reverse(adata, start + 144, 4);
+                    Array.Reverse(adata, offset + 128, 2);
+                    Array.Reverse(adata, offset + 130, 2);
+                    Array.Reverse(adata, offset + 132, 4);
+                    Array.Reverse(adata, offset + 136, 4);
+                    Array.Reverse(adata, offset + 140, 4);
+                    Array.Reverse(adata, offset + 144, 4);
 
                     // End of DAQ HK data
-                    Array.Reverse(adata, start + 148, 2);
-                    Array.Reverse(adata, start + 150, 2);
-                    Array.Reverse(adata, start + 152, 2);
-                    Array.Reverse(adata, start + 154, 2);
-                    Array.Reverse(adata, start + 254, 2);
+                    Array.Reverse(adata, offset + 148, 2);
+                    Array.Reverse(adata, offset + 150, 2);
+                    Array.Reverse(adata, offset + 152, 2);
+                    Array.Reverse(adata, offset + 154, 2);
 
-                    // histogram values
-                    for (int i = 0; i < 12288; i++)
+                    /// Reverse histogram values for all six histo's, starting
+                    /// from HISTO_HDR
+                    offset += 256;
+                    for (int i = 0; i < 6; i++)
                     {
-                        Array.Reverse(adata, 279 + 2 * i, 2);
+                        for (int j = 0; j < numBins[i]; j++)
+                        {
+                            Array.Reverse(adata, offset, 2);
+                            offset += 2;
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                return("Invalid .dat file format :" + ex.Message);
+                return ("Invalid .dat file format :" + ex.Message);
             }
 
             return ("");
         }
 
-        private void loadProtocubesData()
+        private void loadCubesData()
         {
             if (DataLoadFile == null) return;
 
-            byte[] bytes = File.ReadAllBytes(DataLoadFile);
-            PlotProtoCubesData(DataLoadFile, bytes);
-        }
+            byte[] data = File.ReadAllBytes(DataLoadFile);
 
-        private void PlotProtoCubesData(string dataFile,byte[] his_data)
-        {
-            label_DataFile.Text = "file:" + Path.GetFileName(dataFile);
+            label_DataFile.Text = "file:" + Path.GetFileName(DataLoadFile);
             label_DataFile.Visible = true;
 
-            string upString = UpdateDataArrays(his_data);
+            string upString = UpdateDataArrays(data);
 
             refreshDataChart();
         }
         #endregion
 
-        #region Serial Data Ready Event Handler
+        #region Proto-CUBES Data Ready Event Handlers
 
-        private void DAQ_DataReady(object sender, DataReadyEventArgs e)
+        private void ReqStatus_DataReady(object sender, DataReadyEventArgs e)
+        {
+            /* Quit early if not the right command... */
+            if (e.Command != ProtoCubesSerial.Command.ReqStatus)
+                return;
+
+            /* Set Arduino status variable */
+            arduinoStatus = e.DataBytes[23];
+        }
+
+        private void ReqPayload_DataReady(object sender, DataReadyEventArgs e)
         {
             if ((e.Command == ProtoCubesSerial.Command.ReqPayload) &&
                 (selectedConnectionMode == 1))
@@ -1026,14 +1124,14 @@ namespace CitirocUI
                 string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
                 string hkFileName = textBox_dataSavePath.Text + "_HK.dat";
 
-                string update=UpdateDataArrays(e.DataBytes);
+                string update = UpdateDataArrays(e.DataBytes);
 
                 if (update == "")
                 {
                     UpdatingLabel("Writing DAQ data to " + fileName, label_help);
                     // display data if tab is active
                     // displayDataFunction(fileName, e.DataBytes);
-                
+
                     /* Write data file */
                     using (BinaryWriter dataFile = new BinaryWriter(File.Open(fileName, FileMode.Create)))
                     {
@@ -1074,8 +1172,11 @@ namespace CitirocUI
 
                     using (FileStream hkFile = File.Open(hkFileName, FileMode.Append))
                     {
-                        double tempCitiS = 0;
-                        double tempCitiE = 0;
+                        /// TODO: 2.7 V value below may have an offset from
+                        ///       ASIC to ASIC... Change to member variable
+                        ///       or setting read from CUBES?
+                        double tempCitiS = ((2.7 - (double)cubesTelemetryArray[2]) / 8e-3);
+                        double tempCitiE = ((2.7 - (double)cubesTelemetryArray[6]) / 8e-3);
                         double tempHS = ((double)cubesTelemetryArray[3] * 1.907e-5 - 1.035) / (-5.5e-3);
                         double tempHE = ((double)cubesTelemetryArray[7] * 1.907e-5 - 1.035) / (-5.5e-3);
                         double voltHS = (double)cubesTelemetryArray[4] * 1.812e-3;
@@ -1094,7 +1195,7 @@ namespace CitirocUI
                             HitCK[0].ToString() + "," +
                             HitCK[16].ToString() + "," +
                             HitCK[31].ToString() + "," +
-                            HitCK[21].ToString() + "," +
+                            HitCK[32].ToString() + "," +
                             tempCitiE.ToString("N3") + "," +
                             tempHE.ToString("N3") + "," +
                             voltHE.ToString("N3") + "," +
@@ -1116,19 +1217,19 @@ namespace CitirocUI
         }
         #endregion
 
+        #region UI Event Handlers
         private void label_DataFile_TextChanged(object sender, EventArgs e)
         {
             refreshDataChart();
         }
 
-        #region Other UI Event Handlers
         private void button_dataSavePath_Click(object sender, EventArgs e)
         {
             String path = textBox_dataSavePath.Text;
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
-            folderDlg.Description = "Select folder to save to..";
+            folderDlg.Description = "Select folder to save to...";
             folderDlg.SelectedPath = path;
-            if(folderDlg.ShowDialog() == DialogResult.OK)
+            if (folderDlg.ShowDialog() == DialogResult.OK)
             {
                 textBox_dataSavePath.Text = folderDlg.SelectedPath + "\\";
             }
@@ -1155,10 +1256,10 @@ namespace CitirocUI
 
             // Open dialog box
             OpenFileDialog DataLoadDialog = new OpenFileDialog();
-            DataLoadDialog.Title = "Specify Data file";
+            DataLoadDialog.Title = "Specify data file";
 
-            if(selectedConnectionMode == 1)     // Serial
-                DataLoadDialog.Filter = "ProtoCubes files|*.dat";
+            if (selectedConnectionMode == 1)     // Serial
+                DataLoadDialog.Filter = "CUBES files|*.dat";
 
             DataLoadDialog.RestoreDirectory = true;
 
@@ -1177,14 +1278,11 @@ namespace CitirocUI
                 else
                 {
                     if (selectedConnectionMode == 1)
-                    {
-                        loadProtocubesData();
-                    }
-                        
+                        loadCubesData();
                     else
                         loadData();
                 }
-                    
+
             }
             else return;
         }
@@ -1221,7 +1319,7 @@ namespace CitirocUI
         {
             AdjustAcquisitionTime();
         }
-        
+
         private void textBox_numData_Leave(object sender, EventArgs e)
         {
             NumDataCheck();
@@ -1232,6 +1330,45 @@ namespace CitirocUI
             if (e.KeyValue == 13)
             {
                 NumDataCheck();
+            }
+        }
+
+        int[] binCfgArray = { 0, 0, 0, 0, 0, 0 };
+        private void button_SelectNumBinsCubes_Click(object sender, EventArgs e)
+        {
+            ProtoCubesNumBinsForm frm = new ProtoCubesNumBinsForm();
+
+            // send actual indexes
+            Array.Copy(binCfgArray,0,frm.IndexArray,0,6);
+            DialogResult result = frm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                // retrieve new data
+                Array.Copy(frm.IndexArray, binCfgArray, 6);
+                NumBinsFromBinCfg(numBinsArray, binCfgArray);
+            }
+        }
+
+        int[] numBinsArray = { 2048, 2048, 2048, 2048, 2048, 2048 };
+        private void NumBinsFromBinCfg(int[] numBins, int[] binCfg)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                /// TODO: Use properties inside ProtoCubesNumBinsForm
+                ///       to set the bin_cfg ranges...
+                if (binCfg[i] < 7)
+                {
+                    numBins[i] = 2048 >> binCfg[i];
+                }
+                else if (binCfg[i] == 11)
+                {
+                    numBins[i] = 1024;
+                }
+                else if (binCfg[i] == 12)
+                {
+                    numBins[i] = 128;
+                }
             }
         }
         #endregion

@@ -232,15 +232,14 @@ namespace CitirocUI
                 {
                     protoCubes.ClosePort();
 
-                    label_ConnStatus.Text = "Not connected.";
-                    label_ConnStatus.ForeColor = Color.IndianRed;
-
                     roundButton_connect.BackColor = Color.Gainsboro;
                     roundButton_connect.ForeColor = Color.Black;
                     roundButton_connectSmall.BackColor = Color.Gainsboro;
                     roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff.png");
                     connectStatus = -1;
                     label_boardStatus.Text = "Board status\n" + "No board connected";
+                    if (protoCubesMonitorForm != null)
+                        protoCubesMonitorForm.ConnectStatus = connectStatus;
                     return;
                 }
 
@@ -259,8 +258,6 @@ namespace CitirocUI
                     protoCubes.Handshake = Handshake.None;
                     protoCubes.RtsEnable = false;
 
-                    protoCubes.DisplayWindow = rtxtMonitor;
-
                     //// Set the read/write timeouts
                     protoCubes.ReadTimeout = 500;
                     protoCubes.WriteTimeout = 500;
@@ -271,9 +268,6 @@ namespace CitirocUI
                         throw new Exception();
                     }
 
-                    label_ConnStatus.Text = protoCubes.info;
-                    label_ConnStatus.ForeColor = WeerocGreen;
-
                     // Update connection indicators
                     connectStatus = 1;
                     roundButton_connect.BackColor = WeerocGreen;
@@ -283,35 +277,7 @@ namespace CitirocUI
                     label_help.Text = comboBox_SelectConnection.Text + " is connected. Click again if you wish to disconnect.";
 
                     // Send time on connection (Proto-CUBES)
-
-                    TimeSpan timeSinceEpoch = DateTime.UtcNow -
-                        new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                    UInt32 unixTime = Convert.ToUInt32(timeSinceEpoch.TotalSeconds);
-
-                    byte[] time = new byte[4];
-                    time[0] = (byte)((unixTime >> 24) & 0xff);
-                    time[1] = (byte)((unixTime >> 16) & 0xff);
-                    time[2] = (byte)((unixTime >> 8) & 0xff);
-                    time[3] = (byte)((unixTime) & 0xff);
-
-                    try
-                    {
-                        protoCubes.SendCommand(ProtoCubesSerial.Command.SendTime, time);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Failed to send time " +
-                            "to Proto-CUBES!"
-                            + Environment.NewLine
-                            + Environment.NewLine
-                            + "Error message:"
-                            + Environment.NewLine
-                            + ex.Message,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        throw new Exception();
-                    }
+                    SendTimeToProtoCUBES();
 
                     // Request Board ID on connect
                     try
@@ -342,6 +308,9 @@ namespace CitirocUI
                     roundButton_connectSmall.BackgroundImage = new Bitmap(typeof(Citiroc), "Resources.onoff2.png");
                     label_boardStatus.Text = "Board status\n" + "Not connected";
                 }
+
+                if (protoCubesMonitorForm != null)
+                    protoCubesMonitorForm.ConnectStatus = connectStatus;
             }
             else
             {
@@ -358,6 +327,47 @@ namespace CitirocUI
             }
         }
 
+        private void roundButton_connect_MouseEnter(object sender, EventArgs e)
+        {
+            if (connectStatus == -1)
+                label_help.Text = "Click on this button to connect the selected board to the computer.";
+            else if (connectStatus == 0)
+                label_help.Text = "Looks like there is an issue with the connection. Please verify the board is properly plugged in and powered and click again.";
+            else if (connectStatus == 1)
+                label_help.Text = "Connected successfully! Click again if you wish to disconnect.";
+        }
+
+        private void SendTimeToProtoCUBES()
+        {
+            TimeSpan timeSinceEpoch = DateTime.UtcNow -
+                new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            UInt32 unixTime = Convert.ToUInt32(timeSinceEpoch.TotalSeconds);
+
+            byte[] time = new byte[4];
+            time[0] = (byte)((unixTime >> 24) & 0xff);
+            time[1] = (byte)((unixTime >> 16) & 0xff);
+            time[2] = (byte)((unixTime >> 8) & 0xff);
+            time[3] = (byte)((unixTime) & 0xff);
+
+            try
+            {
+                protoCubes.SendCommand(ProtoCubesSerial.Command.SendTime, time);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send time " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                throw new Exception();
+            }
+        }
 
         private void button_loadFw_Click(object sender, EventArgs e)
         {
@@ -518,16 +528,6 @@ namespace CitirocUI
             connectStatus = -1;
         }
 
-        private void roundButton_connect_MouseEnter(object sender, EventArgs e)
-        {
-            if (connectStatus == -1)
-                label_help.Text = "Click on this button to connect the selected board to the computer.";
-            else if (connectStatus == 0)
-                label_help.Text = "Looks like there is an issue with the connection. Please verify the board is properly plugged in and powered and click again.";
-            else if (connectStatus == 1)
-                label_help.Text = "Connected successfully! Click again if you wish to disconnect.";
-        }
-
         private void comboBox_SelectConnection_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedConnectionMode = comboBox_SelectConnection.SelectedIndex;
@@ -536,15 +536,6 @@ namespace CitirocUI
             {
                 groupBox_SerialPortSettings.Visible = false;
 
-                if (panel_CubesMonitor.Visible)
-                {
-                    // already visible, will be closed
-                    CubesMonitorVisible(false);
-
-                    protoCubes.DataReadyEvent -= CubesMonitor_DataReady;
-                    btn_CubesMonitor.Text = "CUBES Monitor >>>";
-                }
-
                 switchBox_acquisitionMode.Visible = true;
                 label_numData.Text = "Number of acquisitions:";
                 textBox_numData.Text = "100";
@@ -552,8 +543,7 @@ namespace CitirocUI
 
                 // Adjust other controls
                 label_DataFile.Visible = false;
-                label141.Visible = false;
-                textBox_NumBins.Visible = false;
+                button_SelectNumBinsCubes.Visible = false;
 
                 textBox_HgCutHigh.Text = "4095";
                 textBox_LgCutHigh.Text = "4095";
@@ -582,11 +572,10 @@ namespace CitirocUI
 
                 // Adjust other controls
                 label_DataFile.Visible = true;
-                label141.Visible = true;
-                textBox_NumBins.Visible = true;
+                button_SelectNumBinsCubes.Visible = true;
 
-                textBox_HgCutHigh.Text = textBox_NumBins.Text;
-                textBox_LgCutHigh.Text = textBox_NumBins.Text;
+                textBox_HgCutHigh.Text = "2048"; // TODO: Change - this is temporary!
+                textBox_LgCutHigh.Text = "2048"; // TODO: Change - this is temporary!
 
                 label115.Enabled = false;
                 textBox_delay.Enabled = false;
@@ -626,6 +615,25 @@ namespace CitirocUI
             if (comboBox_COMPortList.Items.Count > 0)
             {
                 comboBox_COMPortList.SelectedIndex = 0;
+            }
+        }
+
+        private void btn_OpenProtoCubesMonitor_Click(object sender, EventArgs e)
+        {
+            if (protoCubesMonitorForm == null)
+            {
+                protoCubesMonitorForm = new ProtoCubesMonitor(protoCubes);
+                protoCubesMonitorForm.ConnectStatus = connectStatus;
+                protoCubesMonitorForm.FormClosed += delegate
+                {
+                    protoCubesMonitorForm = null;
+                };
+                protoCubesMonitorForm.Show();
+            }
+            else
+            {
+                protoCubesMonitorForm.WindowState = FormWindowState.Normal;
+                protoCubesMonitorForm.Focus();
             }
         }
 
