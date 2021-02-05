@@ -1172,10 +1172,11 @@ namespace CitirocUI
 
                     using (FileStream hkFile = File.Open(hkFileName, FileMode.Append))
                     {
-                        /// TODO: Fill in the proper transfer function for the ASIC's
-                        ///       embedded temp. sensor. Currently assumed: 6 mV/deg.C
-                        double tempCitiS = ((double)cubesTelemetryArray[2] * 6);
-                        double tempCitiE = ((double)cubesTelemetryArray[6] * 6);
+                        /// TODO: 2.7 V value below may have an offset from
+                        ///       ASIC to ASIC... Change to member variable
+                        ///       or setting read from CUBES?
+                        double tempCitiS = ((2.7 - (double)cubesTelemetryArray[2]) / 8e-3);
+                        double tempCitiE = ((2.7 - (double)cubesTelemetryArray[6]) / 8e-3);
                         double tempHS = ((double)cubesTelemetryArray[3] * 1.907e-5 - 1.035) / (-5.5e-3);
                         double tempHE = ((double)cubesTelemetryArray[7] * 1.907e-5 - 1.035) / (-5.5e-3);
                         double voltHS = (double)cubesTelemetryArray[4] * 1.812e-3;
