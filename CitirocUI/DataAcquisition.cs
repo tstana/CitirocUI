@@ -146,9 +146,9 @@ namespace CitirocUI
                 /// Start by synchronizing UTC time between the CitirocUI
                 /// and Proto-CUBES, in case a long time has passed since
                 /// the last SEND_TIME command was sent to Proto-CUBES.
-                /// Also wait 50 ms to ensure all UART commands in this
+                /// Also wait some time to ensure all UART commands in this
                 /// run are properly received and interpreted. (Without
-                /// the 50 ms, it was observed that the DAQ_START cmd.
+                /// the delay, it was observed that the DAQ_START cmd.
                 /// was not received by the Arduino.)
                 SendTimeToProtoCUBES();
                 Thread.Sleep(50);
@@ -182,6 +182,8 @@ namespace CitirocUI
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
+
+                Thread.Sleep(50);
 
                 // Finally, send a DAQ_START command:
                 try
@@ -1170,8 +1172,10 @@ namespace CitirocUI
 
                     using (FileStream hkFile = File.Open(hkFileName, FileMode.Append))
                     {
-                        double tempCitiS = 0;
-                        double tempCitiE = 0;
+                        /// TODO: Fill in the proper transfer function for the ASIC's
+                        ///       embedded temp. sensor. Currently assumed: 6 mV/deg.C
+                        double tempCitiS = ((double)cubesTelemetryArray[2] * 6);
+                        double tempCitiE = ((double)cubesTelemetryArray[6] * 6);
                         double tempHS = ((double)cubesTelemetryArray[3] * 1.907e-5 - 1.035) / (-5.5e-3);
                         double tempHE = ((double)cubesTelemetryArray[7] * 1.907e-5 - 1.035) / (-5.5e-3);
                         double voltHS = (double)cubesTelemetryArray[4] * 1.812e-3;
