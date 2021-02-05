@@ -185,7 +185,7 @@ namespace CitirocUI
 
             label_titleBar.Text += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision >= 250)
-                label_titleBar.Text += " (KTH)";
+                label_titleBar.Text += " (KTH) --- NOTE: Beta version!";
 
             // Set FTDI device count to 0
             ftdiDeviceCount = 0;
