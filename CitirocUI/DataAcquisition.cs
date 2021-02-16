@@ -1122,7 +1122,7 @@ namespace CitirocUI
                 date = date.Replace(':', '-');
                 date = date.Replace('/', '-');
                 string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
-                string hkFileName = textBox_dataSavePath.Text + "_HK.dat";
+                string hkFileName = textBox_dataSavePath.Text + "_HK.csv";
 
                 string update = UpdateDataArrays(e.DataBytes);
 
@@ -1146,24 +1146,22 @@ namespace CitirocUI
                     {
                         using (FileStream hkFile = File.Open(hkFileName, FileMode.Append))
                         {
-                            string s = "# <0>,<1>,<2>,<3>,<4>,<5>,<6>,<7>,<8>,<9>," +
-                                "<10>,<11>,<12>,<13>,<14>,<15>" + Environment.NewLine +
-                                "#\t < 0> = Unix Time (Arduino, DAQ End)" + Environment.NewLine +
-                                "#\t < 1> = Unix Time (Gateware, DAQ Start)" + Environment.NewLine +
-                                "#\t < 2> = Citiroc Temp. (DAQ Start)" + Environment.NewLine +
-                                "#\t < 3> = HVPS Temp. (DAQ Start)" + Environment.NewLine +
-                                "#\t < 4> = HVPS Voltage (DAQ Start)" + Environment.NewLine +
-                                "#\t < 5> = HVPS Current (DAQ Start)" + Environment.NewLine +
-                                "#\t < 6> = Total DAQ Time (1/256 seconds)" + Environment.NewLine +
-                                "#\t < 7> = Actual DAQ Time (1/256 seconds)" + Environment.NewLine +
-                                "#\t < 8> = Trig. Count (Ch. 0)" + Environment.NewLine +
-                                "#\t < 9> = Trig. Count (Ch. 16)" + Environment.NewLine +
-                                "#\t <10> = Trig. Count (Ch. 31)" + Environment.NewLine +
-                                "#\t <11> = Trig. Count (OR32)" + Environment.NewLine +
-                                "#\t <12> = Citiroc Temp. (DAQ End)" + Environment.NewLine +
-                                "#\t <13> = HVPS Temp. (DAQ End)" + Environment.NewLine +
-                                "#\t <14> = HVPS Voltage (DAQ End)" + Environment.NewLine +
-                                "#\t <15> = HVPS Current (DAQ End)" + Environment.NewLine +
+                            string s = "Unix Time (Arduino, DAQ End);" +
+                                "Unix Time (Gateware, DAQ Start);" +
+                                "Citiroc Temperature (DAQ Start);" +
+                                "HVPS Temperature (DAQ Start);" +
+                                "HVPS Voltage (DAQ Start);" +
+                                "HVPS Current (DAQ Start);" +
+                                "Total DAQ Time (1/256 seconds);" +
+                                "Actual DAQ Time (1/256 seconds);" +
+                                "Trig. Count (Ch. 0);" +
+                                "Trig. Count (Ch. 16);" +
+                                "Trig. Count (Ch. 31);" +
+                                "Trig. Count (OR32);" +
+                                "Citiroc Temperature (DAQ End);" +
+                                "HVPS Temperature (DAQ End);" +
+                                "HVPS Voltage (DAQ End);" +
+                                "HVPS Current (DAQ End)" +
                                 Environment.NewLine;
                             byte[] hdr = System.Text.Encoding.ASCII.GetBytes(s);
                             hkFile.Write(hdr, 0, hdr.Length);
@@ -1184,21 +1182,21 @@ namespace CitirocUI
                         double currHS = (double)cubesTelemetryArray[5] * 5.194e-3;
                         double currHE = (double)cubesTelemetryArray[9] * 5.194e-3;
 
-                        string tmpStr = cubesTelemetryArray[0].ToString() + "," +
-                            cubesTelemetryArray[1].ToString() + "," +
-                            tempCitiS.ToString("N3") + "," +
-                            tempHS.ToString("N3") + "," +
-                            voltHS.ToString("N3") + "," +
-                            currHS.ToString("N3") + "," +
-                            daqTimeTotal.ToString() + "," +
-                            daqTimeActual.ToString() + "," +
-                            HitCK[0].ToString() + "," +
-                            HitCK[16].ToString() + "," +
-                            HitCK[31].ToString() + "," +
-                            HitCK[32].ToString() + "," +
-                            tempCitiE.ToString("N3") + "," +
-                            tempHE.ToString("N3") + "," +
-                            voltHE.ToString("N3") + "," +
+                        string tmpStr = cubesTelemetryArray[0].ToString() + ";" +
+                            cubesTelemetryArray[1].ToString() + ";" +
+                            tempCitiS.ToString("N3") + ";" +
+                            tempHS.ToString("N3") + ";" +
+                            voltHS.ToString("N3") + ";" +
+                            currHS.ToString("N3") + ";" +
+                            daqTimeTotal.ToString() + ";" +
+                            daqTimeActual.ToString() + ";" +
+                            HitCK[0].ToString() + ";" +
+                            HitCK[16].ToString() + ";" +
+                            HitCK[31].ToString() + ";" +
+                            HitCK[32].ToString() + ";" +
+                            tempCitiE.ToString("N3") + ";" +
+                            tempHE.ToString("N3") + ";" +
+                            voltHE.ToString("N3") + ";" +
                             currHE.ToString("N3") +
                             Environment.NewLine;
 
