@@ -416,36 +416,42 @@ namespace CitirocUI
                     (Convert.ToInt32(textBox_numData.Text) * 1000);
                 bool timeSent = false;
 
+                // CUBES always works in timed acquisition mode
+                timeAcquisitionMode = true;
+
                 while (!backgroundWorker_dataAcquisition.CancellationPending)
                 {
-                    /// On every "DAQ_DUR + 1", stop the stopwatch and send the
-                    /// REQ_STATUS command every 500 ms. When REQ_STATUS tells
-                    /// us the Arduino has a new file available, the stopwatch
-                    /// can be restarted so the individual DAQ starts again.
-                    if (timeAcquisitionMode &&
-                        ((stopwatchIndividualDaqRun.ElapsedMilliseconds) >
-                            individualDaqTimeMillisec))
-                    {
-                        stopwatchIndividualDaqRun.Stop();
-                        ReqPayloadProcedure();
-                        stopwatchIndividualDaqRun.Restart();
-                    }
-
                     // Stop the acquisition when on DAQ run "time-out"
-                    if (timeAcquisitionMode &&
-                        stopwatchTotalDaqRun.ElapsedMilliseconds >= acqTimeMillisec)
+                    if (stopwatchTotalDaqRun.ElapsedMilliseconds >= acqTimeMillisec)
                     {
                         stopwatchTotalDaqRun.Stop();
                         stopwatchIndividualDaqRun.Stop();
                         break;
                     }
+                    /// Alternatively, if the individual DAQ run time is smaller
+                    /// than the total DAQ run time, we need to send multiple
+                    /// REQ_PAYLOADs to Proto-CUBES to obtain data.
+                    /// 
+                    /// On every "DAQ_DUR + 1", stop the stopwatch and send the
+                    /// obtain the data when available (using a REQ_STATUS-REQ_PAYLOAD
+                    /// command combination). The individual DAQ stopwatch is restarted
+                    /// and DAQ restarts while the REQ_PAYLOAD data is still being
+                    /// downloaded. This restarting of the individual DAQ stopwatch
+                    /// should ensure the CitirocUI and the Arduino DAQ_DUR timers
+                    /// stay in sync, on average.
+                    else if ((stopwatchIndividualDaqRun.ElapsedMilliseconds) >
+                            individualDaqTimeMillisec)
+                    {
+                        stopwatchIndividualDaqRun.Stop();
+                        ReqPayloadProcedure();
+                        stopwatchIndividualDaqRun.Restart();
+                    }
                     Thread.Sleep(5);
 
                     /* DAQ progess */
-                    if (timeAcquisitionMode)
-                    {
-                        backgroundWorker_dataAcquisition.ReportProgress((int)(stopwatchTotalDaqRun.ElapsedMilliseconds * 100 / acqTimeMillisec));
-                    }
+                    backgroundWorker_dataAcquisition.ReportProgress(
+                        (int)((stopwatchTotalDaqRun.ElapsedMilliseconds * 100) /
+                                acqTimeMillisec));
                 }
 
                 return;
@@ -614,7 +620,8 @@ namespace CitirocUI
             do
             {
                 /// Try to REQ_STATUS every 500 ms with an 8-try "timeout".
-                /// Break on new file available (bit 1 in status = '1').
+                /// REQ_PAYLOAD and break on new file available (bit 1 in
+                /// status = '1').
                 SendReqStatus();
                 Thread.Sleep(500);
                 if ((arduinoStatus & 0x02) != 0) {
