@@ -551,6 +551,12 @@ namespace CitirocUI
                 label115.Enabled = true;
                 textBox_delay.Enabled = true;
                 label112.Enabled = true;
+
+                tabControl_calibration.Enabled = true;
+                foreach (TabPage tab in tabControl_calibration.TabPages)
+                {
+                    tab.ForeColor = SystemColors.ControlText;
+                }
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
@@ -580,6 +586,12 @@ namespace CitirocUI
                 label115.Enabled = false;
                 textBox_delay.Enabled = false;
                 label112.Enabled = false;
+
+                tabControl_calibration.Enabled = false;
+                foreach (TabPage tab in tabControl_calibration.TabPages)
+                {
+                    tab.ForeColor = SystemColors.ControlLight;
+                }
             }
 
             /// Select the appropriate tab page in the tab control under "Firmware", enable its
