@@ -138,9 +138,9 @@ namespace CitirocUI
                 Array.Reverse(hvps_cmds_rej);
             }
 
-            UInt32 hitCountMPPC3 = BitConverter.ToUInt32(ch0_hit_count, 0);
+            UInt32 hitCountMPPC1 = BitConverter.ToUInt32(ch0_hit_count, 0);
             UInt32 hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_count, 0);
-            UInt32 hitCountMPPC1 = BitConverter.ToUInt32(ch31_hit_count, 0);
+            UInt32 hitCountMPPC3 = BitConverter.ToUInt32(ch31_hit_count, 0);
             UInt32 hitCountOR32 = BitConverter.ToUInt32(or32_hit_count, 0);
 
             UInt32 resetCount = BitConverter.ToUInt32(reset_count, 0);
