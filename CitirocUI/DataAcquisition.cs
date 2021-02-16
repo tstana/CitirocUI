@@ -1011,25 +1011,31 @@ namespace CitirocUI
                     {
                         for (int j = 0; j < numBins[i]; j++)
                         {
+                            /// Each bin contains 2 ADC values; binCfg[i] for
+                            /// fixed-width binning adds more ADC values within
+                            /// each bin.
+                            int k = (j * 2) << binCfg[i];
+
+                            // Copy data into proper histogram array
                             switch (i)
                             {
                                 case 0:
-                                    PerChannelChargeHG[0, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    PerChannelChargeHG[0, k] = BitConverter.ToUInt16(adata, offset);
                                     break;
                                 case 1:
-                                    PerChannelChargeLG[0, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    PerChannelChargeLG[0, k] = BitConverter.ToUInt16(adata, offset);
                                     break;
                                 case 2:
-                                    PerChannelChargeHG[16, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    PerChannelChargeHG[16, k] = BitConverter.ToUInt16(adata, offset);
                                     break;
                                 case 3:
-                                    PerChannelChargeLG[16, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    PerChannelChargeLG[16, k] = BitConverter.ToUInt16(adata, offset);
                                     break;
                                 case 4:
-                                    PerChannelChargeHG[31, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    PerChannelChargeHG[31, k] = BitConverter.ToUInt16(adata, offset);
                                     break;
                                 case 5:
-                                    PerChannelChargeLG[31, j << binCfg[i]] = BitConverter.ToUInt16(adata, offset);
+                                    PerChannelChargeLG[31, k] = BitConverter.ToUInt16(adata, offset);
                                     break;
                             }
                             offset += 2; // two bytes per bin

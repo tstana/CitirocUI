@@ -545,9 +545,6 @@ namespace CitirocUI
                 label_DataFile.Visible = false;
                 button_SelectNumBinsCubes.Visible = false;
 
-                textBox_HgCutHigh.Text = "4095";
-                textBox_LgCutHigh.Text = "4095";
-
                 label115.Enabled = true;
                 textBox_delay.Enabled = true;
                 label112.Enabled = true;
@@ -579,9 +576,6 @@ namespace CitirocUI
                 // Adjust other controls
                 label_DataFile.Visible = true;
                 button_SelectNumBinsCubes.Visible = true;
-
-                textBox_HgCutHigh.Text = "2048"; // TODO: Change - this is temporary!
-                textBox_LgCutHigh.Text = "2048"; // TODO: Change - this is temporary!
 
                 label115.Enabled = false;
                 textBox_delay.Enabled = false;
