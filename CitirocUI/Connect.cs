@@ -541,6 +541,10 @@ namespace CitirocUI
                 textBox_numData.Text = "100";
                 switchBox_acquisitionMode_CheckedChanged(switchBox_acquisitionMode, EventArgs.Empty);
 
+                // Enable "Per Acquisitions" tab for Citiroc Eval Kit
+                tabControl_dataAcquisition.TabPages[1].Enabled = true;
+                tabControl_dataAcquisition.TabPages[1].Text = "   Per acquisition   ";
+
                 // Adjust other controls
                 label_DataFile.Visible = false;
                 button_SelectNumBinsCubes.Visible = false;
@@ -557,14 +561,14 @@ namespace CitirocUI
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                // Find COM ports and add them to the combo box, selecting the
-                // last COM port in list by default.
+                /// Find COM ports and add them to the combo box, selecting the
+                /// last COM port in list by default.
                 groupBox_SerialPortSettings.Visible = true;
                 AddCurrentComPortsToComboBox();
                 comboBox_Baudrate.SelectedIndex = comboBox_Baudrate.Items.Count - 1;
 
-                // Use the number of acquisitions box as the individual DAQ timer
-                // setting for Proto-CUBES...
+                /// Use the number of acquisitions box as the individual DAQ timer
+                /// setting for Proto-CUBES...
                 switchBox_acquisitionMode.Visible = false;
                 label_numData.Enabled = true;
                 label_numData.Text = "Individual DAQ time (s):";
@@ -572,6 +576,10 @@ namespace CitirocUI
                 textBox_numData.Text = "60";
 
                 AdjustAcquisitionTime();
+
+                // No "Per Acquisition" tab for Proto-CUBES...
+                tabControl_dataAcquisition.TabPages[1].Enabled = false;
+                tabControl_dataAcquisition.TabPages[1].Text = "   N/A   ";
 
                 // Adjust other controls
                 label_DataFile.Visible = true;
