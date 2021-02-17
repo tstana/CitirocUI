@@ -19,7 +19,7 @@ namespace CitirocUI
             InitializeComponent();
             this.protoCubes = protoCubes;
             this.protoCubes.MonitorActive = true;
-            this.protoCubes.DisplayWindow = CommMonitorTextBox;
+            this.protoCubes.DisplayWindow = SerialMonitorTextBox;
             this.protoCubes.DataReadyEvent += ReqHK_DataReady;
         }
 
@@ -45,7 +45,7 @@ namespace CitirocUI
             }
         }
 
-        public RichTextBox CommMonitorTextBox
+        public RichTextBox SerialMonitorTextBox
         {
             get { return rtxtMonitor; }
         }
