@@ -60,6 +60,9 @@ namespace CitirocUI
             textBox_voltageFromHVPS.Text = "";
             textBox_currentFromHVPS.Text = "";
             textBox_tempFromHVPS.Text = "";
+            textBox_hkadc_citi_temp.Text = "";
+            textBox_hkadc_current.Text = "";
+            textBox_hkadc_volt.Text = "";
 
             rtxtMonitor.Clear();
         }
@@ -181,7 +184,39 @@ namespace CitirocUI
             tempFromHVPS = (tempFromHVPS * 1.907 * Math.Pow(10, -5) - 1.035) /
                            (-5.5 * Math.Pow(10, -3));
 
-            // 3. Apply the values into the text boxes; use the Control.Invoke()
+            // 3. Handle the HK-ADC fields
+
+            byte[] hkadc_batt_voltage = new byte[4];
+            byte[] hkadc_batt_current = new byte[4];
+            byte[] hkadc_citi_temperature = new byte[4];
+            Array.Copy(e.DataBytes, 61, hkadc_batt_voltage, 0, 4);
+            Array.Copy(e.DataBytes, 65, hkadc_batt_current, 0, 4);
+            Array.Copy(e.DataBytes, 69, hkadc_citi_temperature, 0, 4);
+
+             // Reverse arrays before conversion if on a little-endian machine
+            //if (BitConverter.IsLittleEndian)
+            //{
+            //    Array.Reverse(hkadc_batt_voltage);
+            //    Array.Reverse(hkadc_batt_current);
+            //    Array.Reverse(hkadc_citi_temperature);
+            //}
+
+            s = System.Text.Encoding.UTF8.GetString(hkadc_batt_voltage);
+            if (s == "\0\0\0\0")
+                s = "0000";
+            Single hkadc_volt = float.Parse(s);
+            s = System.Text.Encoding.UTF8.GetString(hkadc_batt_current);
+            if (s == "\0\0\0\0")
+                s = "0000";
+            Single hkadc_current = float.Parse(s);
+            s = System.Text.Encoding.UTF8.GetString(hkadc_citi_temperature);
+            if (s == "\0\0\0\0")
+                s = "0000";
+            Single hkadc_citi_temp = float.Parse(s);
+            hkadc_citi_temp = (float)((2.7 - hkadc_citi_temp) / 8e-3);
+
+
+            // 4. Apply the values into the text boxes; use the Control.Invoke()
             //    method, to make sure the writing is done inside the original
             //    UI thread
             textBox_timestamp.Invoke(new EventHandler(
@@ -258,6 +293,24 @@ namespace CitirocUI
                 delegate
                 {
                     textBox_hvpsCmdsRej.Text = hvpsCmdsRej.ToString();
+                }
+            ));
+            textBox_hkadc_volt.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hkadc_volt.Text = hkadc_volt.ToString();
+                }
+            ));
+            textBox_hkadc_current.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hkadc_current.Text = hkadc_current.ToString();
+                }
+            ));
+            textBox_hkadc_citi_temp.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hkadc_citi_temp.Text = hkadc_citi_temp.ToString();
                 }
             ));
         }
@@ -420,5 +473,9 @@ namespace CitirocUI
             MessageBox.Show(helpString, "Help");
         }
 
+        private void groupBoxMonitor_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
