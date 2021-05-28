@@ -193,7 +193,7 @@ namespace CitirocUI
             Array.Copy(e.DataBytes, 65, hkadc_batt_current, 0, 4);
             Array.Copy(e.DataBytes, 69, hkadc_citi_temperature, 0, 4);
 
-             // Reverse arrays before conversion if on a little-endian machine
+            // Reverse arrays before conversion if on a little-endian machine
             //if (BitConverter.IsLittleEndian)
             //{
             //    Array.Reverse(hkadc_batt_voltage);
@@ -204,17 +204,23 @@ namespace CitirocUI
             s = System.Text.Encoding.UTF8.GetString(hkadc_batt_voltage);
             if (s == "\0\0\0\0")
                 s = "0000";
-            Single hkadc_volt = float.Parse(s);
+            UInt16 hkadc_volt = Convert.ToUInt16(s);
+            float volt_f = (float)(hkadc_volt * 2.0 * 8 / 1000);
+            Single hkadc_volt_f = (float)Math.Round(volt_f * 100f) / 100f;
+
             s = System.Text.Encoding.UTF8.GetString(hkadc_batt_current);
             if (s == "\0\0\0\0")
                 s = "0000";
-            Single hkadc_current = float.Parse(s);
+            UInt16 hkadc_current = Convert.ToUInt16(s);
+            Single hkadc_current_f = (float)(hkadc_current * 2.0 / 2500);
+
             s = System.Text.Encoding.UTF8.GetString(hkadc_citi_temperature);
             if (s == "\0\0\0\0")
                 s = "0000";
-            Single hkadc_citi_temp = float.Parse(s);
-            hkadc_citi_temp = (float)((2.7 - hkadc_citi_temp) / 8e-3);
-
+            UInt16 hkadc_citi_temp = Convert.ToUInt16(s);
+            float citi_temp_f = (float)(hkadc_citi_temp * 2.0 / 1000);
+            citi_temp_f = (float)((2.7 - citi_temp_f) / 8e-3);
+            Single hkadc_citi_temp_f = (float)Math.Round(citi_temp_f * 100f)/100f;
 
             // 4. Apply the values into the text boxes; use the Control.Invoke()
             //    method, to make sure the writing is done inside the original
@@ -298,19 +304,19 @@ namespace CitirocUI
             textBox_hkadc_volt.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_hkadc_volt.Text = hkadc_volt.ToString();
+                    textBox_hkadc_volt.Text = hkadc_volt_f.ToString();
                 }
             ));
             textBox_hkadc_current.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_hkadc_current.Text = hkadc_current.ToString();
+                    textBox_hkadc_current.Text = hkadc_current_f.ToString();
                 }
             ));
             textBox_hkadc_citi_temp.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_hkadc_citi_temp.Text = hkadc_citi_temp.ToString();
+                    textBox_hkadc_citi_temp.Text = hkadc_citi_temp_f.ToString();
                 }
             ));
         }
