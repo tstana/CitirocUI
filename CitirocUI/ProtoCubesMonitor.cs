@@ -193,14 +193,6 @@ namespace CitirocUI
             Array.Copy(e.DataBytes, 65, hkadc_batt_current, 0, 4);
             Array.Copy(e.DataBytes, 69, hkadc_citi_temperature, 0, 4);
 
-            // Reverse arrays before conversion if on a little-endian machine
-            //if (BitConverter.IsLittleEndian)
-            //{
-            //    Array.Reverse(hkadc_batt_voltage);
-            //    Array.Reverse(hkadc_batt_current);
-            //    Array.Reverse(hkadc_citi_temperature);
-            //}
-
             s = System.Text.Encoding.UTF8.GetString(hkadc_batt_voltage);
             if (s == "\0\0\0\0")
                 s = "0000";
@@ -477,11 +469,6 @@ namespace CitirocUI
              "\r\n" +
              "Press \"Clear\" to clear monitor contents.";
             MessageBox.Show(helpString, "Help");
-        }
-
-        private void groupBoxMonitor_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -983,6 +983,10 @@ namespace CitirocUI
 
                 string boardId = System.Text.Encoding.UTF8.GetString(adata, offset, 2);
                 UInt32 time_reg = BitConverter.ToUInt32(adata, offset + 2);
+
+                //byte[] abcd = new byte[2] { 32, 116 };
+                //UInt16 temp_citiS = BitConverter.ToUInt16(abcd, 0);
+
                 UInt16 temp_citiS = BitConverter.ToUInt16(adata, offset + 6);
                 UInt16 temp_hvpsS = BitConverter.ToUInt16(adata, offset + 8);
                 UInt16 hvps_voltS = BitConverter.ToUInt16(adata, offset + 10);
@@ -1056,14 +1060,14 @@ namespace CitirocUI
 
                 if (BitConverter.IsLittleEndian)
                 {
-                    // Start of DAQ HK data
+                    // start of daq hk data
                     Array.Reverse(adata, offset + 2, 4);
                     Array.Reverse(adata, offset + 6, 2);
                     Array.Reverse(adata, offset + 8, 2);
                     Array.Reverse(adata, offset + 10, 2);
                     Array.Reverse(adata, offset + 12, 2);
 
-                    // Hit data         
+                    // hit data         
                     Array.Reverse(adata, offset + 128, 2);
                     Array.Reverse(adata, offset + 130, 2);
                     Array.Reverse(adata, offset + 132, 4);
@@ -1071,14 +1075,14 @@ namespace CitirocUI
                     Array.Reverse(adata, offset + 140, 4);
                     Array.Reverse(adata, offset + 144, 4);
 
-                    // End of DAQ HK data
+                    // end of daq hk data
                     Array.Reverse(adata, offset + 148, 2);
                     Array.Reverse(adata, offset + 150, 2);
                     Array.Reverse(adata, offset + 152, 2);
                     Array.Reverse(adata, offset + 154, 2);
 
-                    /// Reverse histogram values for all six histo's, starting
-                    /// from HISTO_HDR
+                    /// reverse histogram values for all six histo's, starting
+                    /// from histo_hdr
                     offset += 256;
                     for (int i = 0; i < 6; i++)
                     {
@@ -1186,8 +1190,11 @@ namespace CitirocUI
                         /// TODO: 2.7 V value below may have an offset from
                         ///       ASIC to ASIC... Change to member variable
                         ///       or setting read from CUBES?
-                        double tempCitiS = ((2.7 - (double)cubesTelemetryArray[2]) / 8e-3);
-                        double tempCitiE = ((2.7 - (double)cubesTelemetryArray[6]) / 8e-3);
+
+                        double citi_temp_f = (double)(cubesTelemetryArray[2] * 2.0 / 1000);
+                        double tempCitiS = ((2.7 - (double)citi_temp_f) / 8e-3);
+                        citi_temp_f = (double)(cubesTelemetryArray[6] * 2.0 / 1000);
+                        double tempCitiE = ((2.7 - (double)citi_temp_f) / 8e-3);
                         double tempHS = ((double)cubesTelemetryArray[3] * 1.907e-5 - 1.035) / (-5.5e-3);
                         double tempHE = ((double)cubesTelemetryArray[7] * 1.907e-5 - 1.035) / (-5.5e-3);
                         double voltHS = (double)cubesTelemetryArray[4] * 1.812e-3;

@@ -911,7 +911,6 @@
             this.groupBoxMonitor.Size = new System.Drawing.Size(537, 720);
             this.groupBoxMonitor.TabIndex = 47;
             this.groupBoxMonitor.TabStop = false;
-            this.groupBoxMonitor.Enter += new System.EventHandler(this.groupBoxMonitor_Enter);
             // 
             // groupBox_HK_Adc
             // 
