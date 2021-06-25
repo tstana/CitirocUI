@@ -984,9 +984,6 @@ namespace CitirocUI
                 string boardId = System.Text.Encoding.UTF8.GetString(adata, offset, 2);
                 UInt32 time_reg = BitConverter.ToUInt32(adata, offset + 2);
 
-                //byte[] abcd = new byte[2] { 32, 116 };
-                //UInt16 temp_citiS = BitConverter.ToUInt16(abcd, 0);
-
                 UInt16 temp_citiS = BitConverter.ToUInt16(adata, offset + 6);
                 UInt16 temp_hvpsS = BitConverter.ToUInt16(adata, offset + 8);
                 UInt16 hvps_voltS = BitConverter.ToUInt16(adata, offset + 10);
