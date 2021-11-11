@@ -1136,7 +1136,7 @@ namespace CitirocUI
                 date = date.Replace(':', '-');
                 date = date.Replace('/', '-');
                 string fileName = textBox_dataSavePath.Text + "dataCITI_" + date + ".dat";
-                string hkFileName = textBox_dataSavePath.Text + "_HK.dat";
+                string hkFileName = textBox_dataSavePath.Text + "_HK.csv";
 
                 string update = UpdateDataArrays(e.DataBytes);
 
