@@ -876,6 +876,7 @@ namespace CitirocUI
                 if (hit[chn] == 1)
                 {
                     chart_perAcqChargeHG.Series[0].Points[chn].Color = Color.IndianRed;
+                    chart_perAcqChargeHG.Series[0].Points[chn].Color = Color.IndianRed;
                     chart_perAcqChargeLG.Series[0].Points[chn].Color = Color.IndianRed;
                     chart_perAcqChargeHG.Series[0].Points[chn].MarkerColor = Color.LightCoral;
                     chart_perAcqChargeLG.Series[0].Points[chn].MarkerColor = Color.LightCoral;
@@ -908,8 +909,10 @@ namespace CitirocUI
 
         private string UpdateDataArrays(byte[] adata)
         {
+            
             try
             {
+                
                 string u_time = System.Text.Encoding.UTF8.GetString(adata, 0, 21);
 
                 if ((adata[21] != 0x0d) || (adata[22] != 0x0a)
@@ -917,7 +920,7 @@ namespace CitirocUI
                 {
                     return ("Invalid data file format!");
                 }
-
+                
                 Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
                 Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
                 Array.Clear(Hit, 0, Hit.Length);
@@ -979,6 +982,7 @@ namespace CitirocUI
                 }
 
                 // Back to start for data display...
+                
                 offset = 23;
 
                 string boardId = System.Text.Encoding.UTF8.GetString(adata, offset, 2);
@@ -1012,6 +1016,7 @@ namespace CitirocUI
 
                 // Display histogram data
                 offset += 256;
+               
 
                 for (int i = 0; i < 6; i++)
                 {
@@ -1025,31 +1030,29 @@ namespace CitirocUI
                             int k = (j * 2) << binCfg[i];
 
                             // Copy data into proper histogram array
-                            switch (i)
-                            {
-                                case 0:
-                                    PerChannelChargeHG[0, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 1:
-                                    PerChannelChargeLG[0, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 2:
-                                    PerChannelChargeHG[16, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 3:
-                                    PerChannelChargeLG[16, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 4:
-                                    PerChannelChargeHG[31, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 5:
-                                    PerChannelChargeLG[31, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                            }
+                            fillHistogram(i, k, adata, offset);
                             offset += 2; // two bytes per bin
                         }
                     }
-                    // TODO: Add code for variable binning
+                    else if (binCfg[i] == 11)
+                    { //logaritmical
+                        for (int j = 0; j < 1024; j++) {
+                        
+                            int k = (j * 2) << 1;
+                            fillHistogram(i, k, adata, offset);
+                            offset += 2; // two bytes per bin
+                        }
+
+                    }
+                    else if (binCfg[i] == 12)
+                    { //logartimical scale
+                        for (int j = 0; j < 128; j++)
+                        {
+                           int k = (j * 2) << 4;
+                           fillHistogram(i, k, adata, offset);
+                            offset += 2;
+                        }
+                    }
                 }
 
                 // Reverse fields again for proper writing to file...
@@ -1094,9 +1097,34 @@ namespace CitirocUI
             catch (Exception ex)
             {
                 return ("Invalid .dat file format :" + ex.Message);
+                
             }
-
+            
             return ("");
+        }
+
+        private void fillHistogram(int i, int adcValue, byte[] adata, int offset){
+            switch (i)
+            {
+                case 0:
+                    PerChannelChargeHG[0, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 1:
+                    PerChannelChargeLG[0, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 2:
+                    PerChannelChargeHG[16, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 3:
+                    PerChannelChargeLG[16, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 4:
+                    PerChannelChargeHG[31, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 5:
+                    PerChannelChargeLG[31, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+            }
         }
 
         private void loadCubesData()
@@ -1108,8 +1136,9 @@ namespace CitirocUI
             label_DataFile.Text = "file:" + Path.GetFileName(DataLoadFile);
             label_DataFile.Visible = true;
 
+            
             string upString = UpdateDataArrays(data);
-
+            
             refreshDataChart();
         }
         #endregion
@@ -1374,7 +1403,7 @@ namespace CitirocUI
                 ///       to set the bin_cfg ranges...
                 if (binCfg[i] < 7)
                 {
-                    numBins[i] = 2048 >> binCfg[i];
+                    numBins[i] = 2048 >> binCfg[i]; //Selects bins for each channel
                 }
                 else if (binCfg[i] == 11)
                 {
@@ -1383,6 +1412,10 @@ namespace CitirocUI
                 else if (binCfg[i] == 12)
                 {
                     numBins[i] = 128;
+                }
+                else if (binCfg[i] == 13)
+                {
+                    numBins[i] = 955;
                 }
             }
         }
@@ -1466,7 +1499,7 @@ namespace CitirocUI
         #endregion
 
         #region Chart Image
-        private void DrawChartImage()
+        private void DrawChartImage(int[] binCfg)
         {
             Chart tmpChart = new Chart();
             tmpChart.Size = new Size(1800, 1200);
@@ -1536,8 +1569,21 @@ namespace CitirocUI
                         value = PerChannelChargeLG[31, i];
                         break;
                 }
+tmpChart.Series[0].Points.AddXY(i, value); 
+                    if (value != 0)
+                    {//Modify X axis depending on table
+                        if (binCfg[chart_idx] < 7) tmpChart.Series[0].Points.AddXY(i, value); 
 
-                if(value != 0) tmpChart.Series[0].Points.AddXY(i, value);
+                        else if (binCfg[chart_idx] == 11) {
+                            if(i < 1024) tmpChart.Series[0].Points.AddXY(i, value);
+                            else if(i < 1536) tmpChart.Series[0].Points.AddXY(2*i, value);
+                            else tmpChart.Series[0].Points.AddXY(4*i, value);
+                        }
+
+                        else if (binCfg[chart_idx] == 12) { }
+
+
+                    }
             }
 
                 tmpChart.DrawToBitmap(bmp, new Rectangle(P[chart_idx].X, P[chart_idx].Y,1800,1200));
