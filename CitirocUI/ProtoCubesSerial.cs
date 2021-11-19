@@ -57,6 +57,7 @@ namespace CitirocUI
         {
             None                = '-',
 
+            SendCitirocConfNVM  = 'N',
             SendCitirocConf     = 'C',
             SendProbeConf       = 'P',
             SendHVPSConf        = 'H',

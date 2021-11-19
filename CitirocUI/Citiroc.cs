@@ -504,8 +504,6 @@ namespace CitirocUI
             }
         }
 
-
-
         private void checkBox_selValEvt_CheckedChanged(object sender, EventArgs e)
         {
             if (((CheckBox)sender).Checked) { ((CheckBox)sender).Text = "IO_FPGA5 valid event"; checkBox_valEvt.Visible = false; }
@@ -1923,6 +1921,11 @@ namespace CitirocUI
                 protoCubes.ClosePort();
             }
             catch { /* Blindly close... */}
+        }
+
+        private void label_weerocDotCom_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
