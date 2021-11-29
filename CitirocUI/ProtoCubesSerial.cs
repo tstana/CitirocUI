@@ -57,6 +57,7 @@ namespace CitirocUI
         {
             None                = '-',
 
+            SelectCitirocConf   = 'n',
             SendCitirocConfNVM  = 'N',
             SendCitirocConf     = 'C',
             SendProbeConf       = 'P',
@@ -313,6 +314,28 @@ namespace CitirocUI
                         throw new ArgumentException("Command '" +
                             (char)cmd + "' does not accept any arguments.");
                     }
+                    break;
+
+                case Command.SendCitirocConfNVM:
+                    if (cmdParam.Length != 144)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 144 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[145];
+                    break;
+
+                case Command.SelectCitirocConf:
+                    if (cmdParam.Length != 1)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 1 byte as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[2];
                     break;
 
                 case Command.SendCitirocConf:
