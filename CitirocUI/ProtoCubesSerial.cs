@@ -64,6 +64,7 @@ namespace CitirocUI
             SendDAQConf         = 'D',
             SendReadReg         = 'R',
             SendGatewareConf    = 'G',
+            SendCalibConf       = 'A',
             SendTime            = 'Z',
 
             DAQStart            = 'S',

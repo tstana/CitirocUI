@@ -1836,7 +1836,51 @@ namespace CitirocUI
             tmrButtonColor.Enabled = true;
         }
 
+        private void Button_CaliFreq_Click(object sender, MouseEventArgs e)
+        {
+            byte[] CalibConf = new byte[4];
 
+            CalibConf = BitConverter.GetBytes((int)numericUpDown_CalibFreq.Value);
+
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(CalibConf);
+
+            }
+
+            if (checkBox_CalibrationFregEn.Checked)
+            {
+                CalibConf[0] = 0x80;
+            };
+
+            try
+            {
+                if (connectStatus == 1)
+                {
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendCalibConf, CalibConf);
+                    button_Send_CalibFreq.BackColor = WeerocGreen;
+                }
+                else
+                {
+                    throw new Exception("Please connect to an instrument " +
+                        "using the \"Connect\" tab.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send \"Calibration\" command " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                button_Send_CalibFreq.BackColor = Color.IndianRed;
+            }
+        }
         private void button_ClearArduinoSD_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Please confirm that you want to delete all SD " +
