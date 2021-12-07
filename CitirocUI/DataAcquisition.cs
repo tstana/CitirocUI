@@ -1035,21 +1035,32 @@ namespace CitirocUI
                         }
                     }
                     else if (binCfg[i] == 11)
-                    { //logaritmical
+                    { //table 1
+                        int k = 0;
                         for (int j = 0; j < 1024; j++) {
-                        
-                            int k = (j * 2) << 1;
+                            if (j < 513) k += 2; //First boundary 0-512
+                            else if (j <= 769) k += 4; // second 513-768
+                            else k += 8; // 769 - 1024
+
                             fillHistogram(i, k, adata, offset);
                             offset += 2; // two bytes per bin
                         }
+        
 
                     }
                     else if (binCfg[i] == 12)
-                    { //logartimical scale
+                    { //table 2
+                        int k = 0;
                         for (int j = 0; j < 128; j++)
                         {
-                           int k = (j * 2) << 4;
-                           fillHistogram(i, k, adata, offset);
+                            if (j < 33) k += 2;
+                            else if (j < 49) k += 4;
+                            else if (j < 65) k += 8;
+                            else if (j < 81) k += 16;
+                            else if (j < 97) k += 32;
+                            else if (j < 113) k += 64;
+                            else k += 128;
+                            fillHistogram(i, k, adata, offset);
                             offset += 2;
                         }
                     }
@@ -1569,22 +1580,10 @@ namespace CitirocUI
                         value = PerChannelChargeLG[31, i];
                         break;
                 }
-tmpChart.Series[0].Points.AddXY(i, value); 
-                    if (value != 0)
-                    {//Modify X axis depending on table
-                        if (binCfg[chart_idx] < 7) tmpChart.Series[0].Points.AddXY(i, value); 
 
-                        else if (binCfg[chart_idx] == 11) {
-                            if(i < 1024) tmpChart.Series[0].Points.AddXY(i, value);
-                            else if(i < 1536) tmpChart.Series[0].Points.AddXY(2*i, value);
-                            else tmpChart.Series[0].Points.AddXY(4*i, value);
-                        }
+                    if (value != 0) tmpChart.Series[0].Points.AddXY(i, value);
 
-                        else if (binCfg[chart_idx] == 12) { }
-
-
-                    }
-            }
+                }
 
                 tmpChart.DrawToBitmap(bmp, new Rectangle(P[chart_idx].X, P[chart_idx].Y,1800,1200));
            }
