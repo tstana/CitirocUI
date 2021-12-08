@@ -1424,10 +1424,6 @@ namespace CitirocUI
                 {
                     numBins[i] = 128;
                 }
-                else if (binCfg[i] == 13)
-                {
-                    numBins[i] = 955;
-                }
             }
         }
         #endregion
