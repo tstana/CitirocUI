@@ -14,7 +14,7 @@ namespace CitirocUI
     public partial class ProtoCubesNumBinsForm : Form
     {
         private const int NumBinsMin = 7;       // 2048 >> NumBinsMin
-        private readonly string[] comboVar = { "table 1", "table 2", "table 3"};
+        private readonly string[] comboVar = { "table 1", "table 2"};
 
         public int[] IndexArray = {0,0,0,0,0,0};
 
