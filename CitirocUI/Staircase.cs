@@ -150,7 +150,7 @@ namespace CitirocUI
                     // reconstruct the slow control with the unmasked measured channel
                     string strTemp1 = new string(chrTemp1);
                     strTempSC = strTemp1 + IntToBin(DacCode, 10) + strTemp2;
-                    sendSC(usbDevId, strTempSC);
+                    sendSC(usbDevId, strTempSC, ProtoCubesSerial.Command.SendCitirocConf);
 
                     // start data acquisition for channel chn
                     if (checkBox_staircaseTorQ.Checked) Firmware.sendWord(31, IntToBin(chn, 8), usbDevId);
@@ -207,7 +207,7 @@ namespace CitirocUI
             progressBar_staircase.Value = 0;
             Firmware.sendWord(6, "00000000", usbDevId);
             // send the slow control specified by the user to the ASIC (bits were forced during acquisition)
-            sendSC(usbDevId, getSC());
+            sendSC(usbDevId, getSC(), ProtoCubesSerial.Command.SendCitirocConf);
             button_startStaircase.Text = "Start";
         }
 

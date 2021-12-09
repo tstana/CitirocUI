@@ -99,6 +99,9 @@
     <Compile Include="Citiroc.Designer.cs">
       <DependentUpon>Citiroc.cs</DependentUpon>
     </Compile>
+    <Compile Include="NVMVConfigNoSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProtoCubesNumBinsForm.cs">
       <SubType>Form</SubType>
     </Compile>

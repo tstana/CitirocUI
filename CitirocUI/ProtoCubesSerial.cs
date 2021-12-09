@@ -57,9 +57,10 @@ namespace CitirocUI
         {
             None                = '-',
 
-            SelectCitirocConf   = 'n',
-            SendCitirocConfNVM  = 'N',
+
             SendCitirocConf     = 'C',
+            SelectCitirocConf   = 'O',
+            StoreCitirocConf    = 'N',
             SendProbeConf       = 'P',
             SendHVPSConf        = 'H',
             SendHVPSTmpVolt     = 'V',
@@ -316,7 +317,7 @@ namespace CitirocUI
                     }
                     break;
 
-                case Command.SendCitirocConfNVM:
+                case Command.StoreCitirocConf:
                     if (cmdParam.Length != 144)
                     {
                         throw new ArgumentException("Command '" +

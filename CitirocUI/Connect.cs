@@ -546,6 +546,8 @@ namespace CitirocUI
                 tabControl_dataAcquisition.TabPages[1].Text = "   Per acquisition   ";
 
                 // Adjust other controls
+                button_storeSC.Visible = false;
+                button_selectSC.Visible = false;
                 label_DataFile.Visible = false;
                 button_SelectNumBinsCubes.Visible = false;
 
@@ -582,6 +584,8 @@ namespace CitirocUI
                 tabControl_dataAcquisition.TabPages[1].Text = "   N/A   ";
 
                 // Adjust other controls
+                button_storeSC.Visible = true;
+                button_selectSC.Visible = true;
                 label_DataFile.Visible = true;
                 button_SelectNumBinsCubes.Visible = true;
 

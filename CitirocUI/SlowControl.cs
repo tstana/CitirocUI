@@ -541,51 +541,13 @@ namespace CitirocUI
         private void button_sendSC_Click(object sender, EventArgs e)
         {
             bool result = false;
-            string configNo = "";
-            if (sc_sendToNVM == 1)
-            {
-                if (NVMVConfigNoSelect.InputBox("Select Config Number", "Config Number:", ref configNo) == DialogResult.OK)
-                {
-                    try
-                    {   
-                        if (Convert.ToInt32(configNo, 10)>255)
-                        {
-                            _ = MessageBox.Show("Config number too large! Please choose a number below 255"
-                            + Environment.NewLine,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            configNo = Convert.ToString(Convert.ToInt32(configNo, 10), 2);
-                            configNo = configNo.PadLeft(8, '0');
-                            string strSC = getSC();
-                            MessageBox.Show(configNo, configNo, MessageBoxButtons.OKCancel);
-                            strSC += configNo;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        _ = MessageBox.Show("Input of incorrect type!"
-                        + Environment.NewLine
-                        + Environment.NewLine
-                        + "Error message:"
-                        + Environment.NewLine
-                        + ex.Message,
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-
-                    }
-                }
-            }
+            
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 // Test if software can read firmware version. If not, the board is not connected.
                 if (Firmware.readWord(100, usbDevId) != "00000000")
                 {
-                    result = sendSC(usbDevId, strSC);
+                    result = sendSC(usbDevId, strSC,ProtoCubesSerial.Command.SendCitirocConf);
                     if (result) button_sendSC.BackColor = WeerocGreen;
                     else button_sendSC.BackColor = Color.LightCoral;
                     button_sendSC.ForeColor = Color.White;
@@ -605,7 +567,8 @@ namespace CitirocUI
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                result = sendSC(usbDevId, strSC);
+                
+                result = sendSC(usbDevId, strSC, ProtoCubesSerial.Command.SendCitirocConf);
                 if (result)
                     button_sendSC.BackColor = WeerocGreen;
                 else
@@ -626,7 +589,7 @@ namespace CitirocUI
             tmrButtonColor.Enabled = true;
         }
 
-        private bool sendSC(int usbDevId, string strSC)
+        private bool sendSC(int usbDevId, string strSC, ProtoCubesSerial.Command cmd)
         {
             if (connectStatus != 1)
                 return false;
@@ -703,15 +666,8 @@ namespace CitirocUI
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
                 try
-                {
-                    if (sc_sendToNVM != 1)
-                    {
-                        protoCubes.SendCommand(ProtoCubesSerial.Command.SendCitirocConf, bytSC);
-                    }
-                    else
-                    {
-                        protoCubes.SendCommand(ProtoCubesSerial.Command.SendCitirocConfNVM, bytSC);
-                    }
+                {   
+                    protoCubes.SendCommand(cmd, bytSC);
                     result = true;
                 }
                 catch (Exception ex)
@@ -827,11 +783,6 @@ namespace CitirocUI
         private void checkBox_bypassPd_CheckedChanged(object sender, EventArgs e)
         {
             sc_bypassPd = SC.Switch((CheckBox)sender, button_sendSC);
-        }
-
-        private void checkBox_sendToNVM_CheckedChanged(object sender, EventArgs e)
-        {
-            sc_sendToNVM = SC.Switch((CheckBox)sender, button_sendSC);
         }
 
         private void checkBox_dacRef_CheckedChanged(object sender, EventArgs e)
@@ -1428,6 +1379,106 @@ namespace CitirocUI
             textBox_delay.Text = delay.ToString();
         }
 
+
+        private void button_storeSC_Click(object sender, EventArgs e)
+        {
+            string configNo = "";
+            bool result = false;
+
+            if (connectStatus == -1)
+            {
+                if (NVMVConfigNoSelect.InputBox("Select Config Number", "Config Number:", ref configNo) == DialogResult.OK)
+                {
+                    try
+                    {
+                        if (Convert.ToInt32(configNo, 10) > 255)
+                        {
+                            MessageBox.Show("Config number too large! Please choose a number below 255"
+                            + Environment.NewLine,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            configNo = Convert.ToString(Convert.ToInt32(configNo, 10), 2);
+                            configNo = configNo.PadLeft(8, '0');
+                            strSC += strRev(configNo);
+                            MessageBox.Show(configNo, configNo, MessageBoxButtons.OKCancel);
+                            MessageBox.Show(strSC, strSC, MessageBoxButtons.OKCancel);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Input of incorrect type!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + "Error message:"
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    }
+                    sc_sendToNVM = 1;
+                    result = sendSC(usbDevId, strSC, ProtoCubesSerial.Command.StoreCitirocConf);
+                    sc_sendToNVM = 0; 
+                    if (result)
+                        button_storeSC.BackColor = WeerocGreen;
+                    else
+                    {
+                        button_storeSC.BackColor = Color.LightCoral;
+                        label_help.Text = "Please configure your connection.";
+                    }
+                }
+            }
+            else
+            {
+                label_help.Text = "Please configure your connection.";
+            }
+        }
+        private void button_selectSC_Click(object sender, EventArgs e)
+        {
+            //Initialize string for input of config number selection
+            string configNo = "";
+
+            if (NVMVConfigNoSelect.InputBox("Select Config Number on NVM", "Config Number:", ref configNo) == DialogResult.OK)
+            {
+                try
+                {
+                    if (Convert.ToInt32(configNo, 10) > 255)
+                    {
+                        MessageBox.Show("Config number too large! Please choose a number below 255"
+                        + Environment.NewLine,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        byte[] citiConf = new byte[1];
+                        configNo = Convert.ToString(Convert.ToInt32(configNo, 10), 2);
+                        configNo = configNo.PadLeft(8, '0');
+                        uint intCmdTmp = Convert.ToUInt32(configNo, 2);
+                        citiConf[0] = Convert.ToByte(intCmdTmp);
+                        MessageBox.Show(configNo, configNo, MessageBoxButtons.OKCancel);
+                        protoCubes.SendCommand(ProtoCubesSerial.Command.SelectCitirocConf, citiConf);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Input of incorrect type!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+            }
+        }   
         private void button_saveSC_Click(object sender, EventArgs e)
         {
             string strSaveFileName = "";
@@ -1443,52 +1494,9 @@ namespace CitirocUI
             tw.WriteLine(getSC());
             tw.Close();
         }
-
+      
         private void button_loadSC_Click(object sender, EventArgs e)
         {
-            //Initialize string for input of config number selection
-            string configNo = "";
-            if (sc_sendToNVM == 1)
-            {
-                if (NVMVConfigNoSelect.InputBox("Select Config Number on NVM", "Config Number:", ref configNo) == DialogResult.OK)
-                {
-                    try {
-                        if (Convert.ToInt32(configNo, 10) > 255)
-                        {
-                            _ = MessageBox.Show("Config number too large! Please choose a number below 255"
-                            + Environment.NewLine,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            byte[] citiConf = new byte[1];
-                            configNo = Convert.ToString(Convert.ToInt32(configNo, 10), 2);
-                            configNo = configNo.PadLeft(8, '0');
-                            uint intCmdTmp = Convert.ToUInt32(configNo, 2);
-                            citiConf[0] = Convert.ToByte(intCmdTmp);
-                            MessageBox.Show(configNo, configNo, MessageBoxButtons.OKCancel);
-                            protoCubes.SendCommand(ProtoCubesSerial.Command.SelectCitirocConf, citiConf);
-                            //Kolla om det returneras ok om den sökta konfigurationen är installerad.
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        _ = MessageBox.Show("Input of incorrect type!"
-                        + Environment.NewLine
-                        + Environment.NewLine
-                        + "Error message:"
-                        + Environment.NewLine
-                        + ex.Message,
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
                 OpenFileDialog ScLoadDialog = new OpenFileDialog();
                 ScLoadDialog.Title = "Specify Data file";
                 //DataLDialog.Filter = "TxT files|*.txt";
@@ -1508,56 +1516,9 @@ namespace CitirocUI
                     }
                 }
                 else return;
-            }
-        }
+         }
         
         #endregion
     }
 
-    public class NVMVConfigNoSelect : Form
-    {
-       
-        public static DialogResult InputBox(string title, string promptText, ref string value)
-        {
-            Form form = new Form();
-            Label label = new Label();
-            TextBox textBox = new TextBox();
-            Button buttonOk = new Button();
-            Button buttonCancel = new Button();
-
-            form.Text = title;
-            label.Text = promptText;
-            textBox.Text = value;
-
-            buttonOk.Text = "OK";
-            buttonCancel.Text = "Cancel";
-            buttonOk.DialogResult = DialogResult.OK;
-            buttonCancel.DialogResult = DialogResult.Cancel;
-
-            label.SetBounds(9, 20, 372, 13);
-            textBox.SetBounds(12, 36, 372, 20);
-            buttonOk.SetBounds(228, 72, 75, 23);
-            buttonCancel.SetBounds(309, 72, 75, 23);
-
-            label.AutoSize = true;
-            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
-            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-
-            form.ClientSize = new Size(396, 107);
-            form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
-            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
-            form.FormBorderStyle = FormBorderStyle.FixedDialog;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.MinimizeBox = false;
-            form.MaximizeBox = false;
-            form.AcceptButton = buttonOk;
-            form.CancelButton = buttonCancel;
-
-            DialogResult dialogResult = form.ShowDialog();
-            value = textBox.Text;
-            return dialogResult;
-        }
-
-    }
 }

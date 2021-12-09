@@ -1264,7 +1264,14 @@ namespace CitirocUI
                 " 32 fast shaper outputs is very low. The input DAC calibration is used to adjust individual high voltage biasing of SiPM in a SiPM array" +
                 " so every SiPM has the same gain. Input DAC can be disabled per individual channel thanks to the checkboxes.";
         }
-
+        private void button_storeSC_MouseEnter(object sender, EventArgs e)
+        {
+            label_help.Text = "Store the current configuration to the non-volatile memory.";
+        }
+        private void button_selectSC_MouseEnter(object sender, EventArgs e)
+        {
+            label_help.Text = "Select a stored configuration from the non-volatile memory.";
+        }
         private void button_saveSC_MouseEnter(object sender, EventArgs e)
         {
             label_help.Text = "Save the current slow control configuration into a file for later use.";
@@ -1921,11 +1928,6 @@ namespace CitirocUI
                 protoCubes.ClosePort();
             }
             catch { /* Blindly close... */}
-        }
-
-        private void label_weerocDotCom_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

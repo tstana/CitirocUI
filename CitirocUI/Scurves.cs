@@ -234,7 +234,7 @@ namespace CitirocUI
 
                         // reconstruct the slow control with the unmasked measured channel
                         strTempSC = strTemp1 + IntToBin(DacCode, 10) + strTemp2;
-                        sendSC(usbDevId, strTempSC);
+                        sendSC(usbDevId, strTempSC, ProtoCubesSerial.Command.SendCitirocConf);
 
                         // start data acquisition for channel chn
                         if (checkBox_ScurvesTorQ.Checked) Firmware.sendWord(31, IntToBin(chn, 8), usbDevId);
@@ -252,7 +252,7 @@ namespace CitirocUI
                             }
                             else if (chn == 0 && i == 0)
                             {
-                                sendSC(usbDevId, strTempSC);
+                                sendSC(usbDevId, strTempSC, ProtoCubesSerial.Command.SendCitirocConf);
                                 if (checkBox_ScurvesTorQ.Checked) Firmware.sendWord(31, IntToBin(chn, 8), usbDevId);
                                 else Firmware.sendWord(31, IntToBin(33, 8), usbDevId);
                                 tries++;
@@ -330,7 +330,7 @@ namespace CitirocUI
 
                         // reconstruct the slow control with the unmasked measured channel
                         strTempSC = strTemp1 + IntToBin(DacCode, 10) + strTemp2;
-                        sendSC(usbDevId, strTempSC);
+                        sendSC(usbDevId, strTempSC, ProtoCubesSerial.Command.SendCitirocConf);
 
                         // start data acquisition for channel chn
                         if (checkBox_ScurvesTorQ.Checked) Firmware.sendWord(31, IntToBin(chn, 8), usbDevId);
@@ -348,7 +348,7 @@ namespace CitirocUI
                             }
                             else if (chn == 0 && i == 0)
                             {
-                                sendSC(usbDevId, strTempSC);
+                                sendSC(usbDevId, strTempSC, ProtoCubesSerial.Command.SendCitirocConf);
                                 if (checkBox_ScurvesTorQ.Checked) Firmware.sendWord(31, IntToBin(chn, 8), usbDevId);
                                 else Firmware.sendWord(31, IntToBin(34, 8), usbDevId);
                                 tries++;
@@ -415,7 +415,7 @@ namespace CitirocUI
             Firmware.sendWord(5, "0" + ((checkBox_selPSGlobalTrigger.Checked == true) ? "1" : "0") + ((checkBox_selPSMode.Checked == true) ? "1" : "0") + "000" + ((checkBox_PSGlobalTrigger.Checked == true) ? "1" : "0") + ((checkBox_PSMode.Checked == true) ? "1" : "0"), usbDevId);
             
             // Send the slow control specified by the user to the ASIC (bits were forced during acquisition)
-            sendSC(usbDevId, getSC());
+            sendSC(usbDevId, getSC(), ProtoCubesSerial.Command.SendCitirocConf);
 
             resetZoom(chart_Scurves);
         }
