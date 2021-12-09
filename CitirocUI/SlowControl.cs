@@ -1385,7 +1385,7 @@ namespace CitirocUI
             string configNo = "";
             bool result = false;
 
-            if (connectStatus == -1)
+            if (connectStatus == 1)
             {
                 if (NVMVConfigNoSelect.InputBox("Select Config Number", "Config Number:", ref configNo) == DialogResult.OK)
                 {
