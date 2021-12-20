@@ -1835,30 +1835,28 @@ namespace CitirocUI
             }
             tmrButtonColor.Enabled = true;
         }
-
-        private void Button_CaliFreq_Click(object sender, MouseEventArgs e)
+        private void button_SendCalibPulseConf_Click(object sender, EventArgs e)
         {
-            byte[] CalibConf = new byte[4];
+            byte[] calibconfdata = new byte[4];
 
-            CalibConf = BitConverter.GetBytes((int)numericUpDown_CalibFreq.Value);
+            calibconfdata = BitConverter.GetBytes((int)(50000000 / numericUpDown_CalibPulseFreq.Value));
 
             if (BitConverter.IsLittleEndian)
             {
-                Array.Reverse(CalibConf);
-
+                Array.Reverse(calibconfdata);
             }
 
-            if (checkBox_CalibrationFregEn.Checked)
+            if (checkBox_CalibPulseEn.Checked)
             {
-                CalibConf[0] = 0x80;
+                calibconfdata[0] = 0x80;
             };
 
             try
             {
                 if (connectStatus == 1)
                 {
-                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendCalibConf, CalibConf);
-                    button_Send_CalibFreq.BackColor = WeerocGreen;
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendCalibPulseConf, calibconfdata);
+                    button_SendCalibPulseConf.BackColor = WeerocGreen;
                 }
                 else
                 {
@@ -1868,7 +1866,7 @@ namespace CitirocUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to send \"Calibration\" command " +
+                MessageBox.Show("Failed to send calibration pulse command " +
                     "to Proto-CUBES!"
                     + Environment.NewLine
                     + Environment.NewLine
@@ -1878,9 +1876,11 @@ namespace CitirocUI
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                button_Send_CalibFreq.BackColor = Color.IndianRed;
+                button_SendCalibPulseConf.BackColor = Color.IndianRed;
             }
+            tmrButtonColor.Enabled = true;
         }
+
         private void button_ClearArduinoSD_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Please confirm that you want to delete all SD " +
@@ -1937,6 +1937,9 @@ namespace CitirocUI
 
             button_ClearArduinoSD.BackColor = Color.Gainsboro;
             button_ClearArduinoSD.ForeColor = SystemColors.ControlText;
+
+            button_SendCalibPulseConf.BackColor = Color.Gainsboro;
+            button_SendCalibPulseConf.ForeColor = SystemColors.ControlText;
         }
 
         private void label_help_TextChanged(object sender, EventArgs e)

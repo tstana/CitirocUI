@@ -603,12 +603,6 @@
             this.textBox_calibDac1 = new CitirocUI.intTextBox();
             this.label65 = new System.Windows.Forms.Label();
             this.textBox_calibDac0 = new CitirocUI.intTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label141 = new System.Windows.Forms.Label();
-            this.button_Send_CalibFreq = new System.Windows.Forms.Button();
-            this.checkBox_CalibrationFregEn = new CitirocUI.checkBox();
-            this.label140 = new System.Windows.Forms.Label();
-            this.numericUpDown_CalibFreq = new System.Windows.Forms.NumericUpDown();
             this.tabPage_probes = new System.Windows.Forms.TabPage();
             this.button_sendReadRegister = new System.Windows.Forms.Button();
             this.numericUpDown_rr = new System.Windows.Forms.NumericUpDown();
@@ -771,6 +765,12 @@
             this.textBox_stepStaircase = new CitirocUI.intTextBox();
             this.textBox_maxStaircase = new CitirocUI.intTextBox();
             this.textBox_minStaircase = new CitirocUI.intTextBox();
+            this.tabPage_CalibPulseConf = new System.Windows.Forms.TabPage();
+            this.label141 = new System.Windows.Forms.Label();
+            this.button_SendCalibPulseConf = new System.Windows.Forms.Button();
+            this.checkBox_CalibPulseEn = new CitirocUI.checkBox();
+            this.label140 = new System.Windows.Forms.Label();
+            this.numericUpDown_CalibPulseFreq = new System.Windows.Forms.NumericUpDown();
             this.tabPage_dataAcquisition = new System.Windows.Forms.TabPage();
             this.label_acquisitionTime = new System.Windows.Forms.Label();
             this.textBox_acquisitionTime = new System.Windows.Forms.MaskedTextBox();
@@ -920,8 +920,6 @@
             this.groupBox_inputDac.SuspendLayout();
             this.groupBox_DacT.SuspendLayout();
             this.groupBox_DacQ.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CalibFreq)).BeginInit();
             this.tabPage_probes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_rr)).BeginInit();
             this.groupBox_digitalProbe.SuspendLayout();
@@ -940,6 +938,8 @@
             this.tabPage_staircase.SuspendLayout();
             this.groupBox_channelSelectionStaircase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_staircase)).BeginInit();
+            this.tabPage_CalibPulseConf.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CalibPulseFreq)).BeginInit();
             this.tabPage_dataAcquisition.SuspendLayout();
             this.tabControl_dataAcquisition.SuspendLayout();
             this.tabPage_perChannelCharge.SuspendLayout();
@@ -1405,7 +1405,7 @@
             this.tabPage_slowControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_slowControl.Location = new System.Drawing.Point(14, 4);
             this.tabPage_slowControl.Name = "tabPage_slowControl";
-            this.tabPage_slowControl.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_slowControl.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_slowControl.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_slowControl.TabIndex = 0;
             this.tabPage_slowControl.Text = "Slow Control";
@@ -1464,7 +1464,6 @@
             this.tabControl_slowControl.Controls.Add(this.tabPage_preamplifier);
             this.tabControl_slowControl.Controls.Add(this.tabPage_EN);
             this.tabControl_slowControl.Controls.Add(this.tabPage_calibDac);
-            this.tabControl_slowControl.Controls.Add(this.tabPage2);
             this.tabControl_slowControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.tabControl_slowControl.Location = new System.Drawing.Point(-4, 0);
             this.tabControl_slowControl.Name = "tabControl_slowControl";
@@ -2011,8 +2010,8 @@
             this.checkBox_fshOnLg.AutoSize = true;
             this.checkBox_fshOnLg.Location = new System.Drawing.Point(485, 96);
             this.checkBox_fshOnLg.Name = "checkBox_fshOnLg";
-            this.checkBox_fshOnLg.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_fshOnLg.Size = new System.Drawing.Size(230, 28);
+            this.checkBox_fshOnLg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_fshOnLg.Size = new System.Drawing.Size(231, 28);
             this.checkBox_fshOnLg.TabIndex = 172;
             this.checkBox_fshOnLg.Text = "Low gain to fast shaper";
             this.checkBox_fshOnLg.UseVisualStyleBackColor = true;
@@ -2023,8 +2022,8 @@
             this.checkBox_triggerPolarity.AutoSize = true;
             this.checkBox_triggerPolarity.Location = new System.Drawing.Point(234, 96);
             this.checkBox_triggerPolarity.Name = "checkBox_triggerPolarity";
-            this.checkBox_triggerPolarity.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_triggerPolarity.Size = new System.Drawing.Size(171, 28);
+            this.checkBox_triggerPolarity.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_triggerPolarity.Size = new System.Drawing.Size(172, 28);
             this.checkBox_triggerPolarity.TabIndex = 170;
             this.checkBox_triggerPolarity.Text = "Negative trigger";
             this.checkBox_triggerPolarity.UseVisualStyleBackColor = true;
@@ -2035,8 +2034,8 @@
             this.checkBox_dacRef.AutoSize = true;
             this.checkBox_dacRef.Location = new System.Drawing.Point(234, 128);
             this.checkBox_dacRef.Name = "checkBox_dacRef";
-            this.checkBox_dacRef.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_dacRef.Size = new System.Drawing.Size(274, 28);
+            this.checkBox_dacRef.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_dacRef.Size = new System.Drawing.Size(275, 28);
             this.checkBox_dacRef.TabIndex = 169;
             this.checkBox_dacRef.Text = "Input DAC reference = 2.5 V";
             this.checkBox_dacRef.UseVisualStyleBackColor = true;
@@ -2047,8 +2046,8 @@
             this.checkBox_biasSca.AutoSize = true;
             this.checkBox_biasSca.Location = new System.Drawing.Point(234, 64);
             this.checkBox_biasSca.Name = "checkBox_biasSca";
-            this.checkBox_biasSca.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_biasSca.Size = new System.Drawing.Size(116, 28);
+            this.checkBox_biasSca.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_biasSca.Size = new System.Drawing.Size(117, 28);
             this.checkBox_biasSca.TabIndex = 168;
             this.checkBox_biasSca.Text = "SCA bias";
             this.checkBox_biasSca.UseVisualStyleBackColor = true;
@@ -2059,8 +2058,8 @@
             this.checkBox_latchDiscri.AutoSize = true;
             this.checkBox_latchDiscri.Location = new System.Drawing.Point(234, 32);
             this.checkBox_latchDiscri.Name = "checkBox_latchDiscri";
-            this.checkBox_latchDiscri.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_latchDiscri.Size = new System.Drawing.Size(142, 28);
+            this.checkBox_latchDiscri.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_latchDiscri.Size = new System.Drawing.Size(143, 28);
             this.checkBox_latchDiscri.TabIndex = 167;
             this.checkBox_latchDiscri.Text = "Latch trigger";
             this.checkBox_latchDiscri.UseVisualStyleBackColor = true;
@@ -2071,8 +2070,8 @@
             this.checkBox_scaOrPdLg.AutoSize = true;
             this.checkBox_scaOrPdLg.Location = new System.Drawing.Point(485, 64);
             this.checkBox_scaOrPdLg.Name = "checkBox_scaOrPdLg";
-            this.checkBox_scaOrPdLg.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_scaOrPdLg.Size = new System.Drawing.Size(276, 28);
+            this.checkBox_scaOrPdLg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_scaOrPdLg.Size = new System.Drawing.Size(277, 28);
             this.checkBox_scaOrPdLg.TabIndex = 166;
             this.checkBox_scaOrPdLg.Text = "Use peak sensing (low gain)";
             this.checkBox_scaOrPdLg.UseVisualStyleBackColor = true;
@@ -2083,8 +2082,8 @@
             this.checkBox_scaOrPdHg.AutoSize = true;
             this.checkBox_scaOrPdHg.Location = new System.Drawing.Point(485, 32);
             this.checkBox_scaOrPdHg.Name = "checkBox_scaOrPdHg";
-            this.checkBox_scaOrPdHg.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_scaOrPdHg.Size = new System.Drawing.Size(284, 28);
+            this.checkBox_scaOrPdHg.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_scaOrPdHg.Size = new System.Drawing.Size(285, 28);
             this.checkBox_scaOrPdHg.TabIndex = 165;
             this.checkBox_scaOrPdHg.Text = "Use peak sensing (high gain)";
             this.checkBox_scaOrPdHg.UseVisualStyleBackColor = true;
@@ -3283,7 +3282,7 @@
             this.tabPage_preamplifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_preamplifier.Location = new System.Drawing.Point(4, 34);
             this.tabPage_preamplifier.Name = "tabPage_preamplifier";
-            this.tabPage_preamplifier.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_preamplifier.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_preamplifier.Size = new System.Drawing.Size(1080, 405);
             this.tabPage_preamplifier.TabIndex = 0;
             this.tabPage_preamplifier.Text = "    Preamplifier    ";
@@ -4606,7 +4605,7 @@
             this.tabPage_EN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_EN.Location = new System.Drawing.Point(4, 34);
             this.tabPage_EN.Name = "tabPage_EN";
-            this.tabPage_EN.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_EN.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_EN.Size = new System.Drawing.Size(1080, 405);
             this.tabPage_EN.TabIndex = 1;
             this.tabPage_EN.Text = "    EN/PP    ";
@@ -5648,7 +5647,7 @@
             this.tabPage_calibDac.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_calibDac.Location = new System.Drawing.Point(4, 34);
             this.tabPage_calibDac.Name = "tabPage_calibDac";
-            this.tabPage_calibDac.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_calibDac.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_calibDac.Size = new System.Drawing.Size(1080, 405);
             this.tabPage_calibDac.TabIndex = 4;
             this.tabPage_calibDac.Text = "    Calibration    ";
@@ -8022,83 +8021,6 @@
             this.textBox_calibDac0.Leave += new System.EventHandler(this.textBox_calibDac_Leave);
             this.textBox_calibDac0.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox_calibDac_PreviewKeyDown);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.label141);
-            this.tabPage2.Controls.Add(this.button_Send_CalibFreq);
-            this.tabPage2.Controls.Add(this.checkBox_CalibrationFregEn);
-            this.tabPage2.Controls.Add(this.label140);
-            this.tabPage2.Controls.Add(this.numericUpDown_CalibFreq);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1080, 405);
-            this.tabPage2.TabIndex = 5;
-            this.tabPage2.Text = "Calibration Frequency";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label141
-            // 
-            this.label141.AutoSize = true;
-            this.label141.Location = new System.Drawing.Point(356, 202);
-            this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(39, 26);
-            this.label141.TabIndex = 20;
-            this.label141.Text = "Hz";
-            // 
-            // button_Send_CalibFreq
-            // 
-            this.button_Send_CalibFreq.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_Send_CalibFreq.FlatAppearance.BorderSize = 0;
-            this.button_Send_CalibFreq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Send_CalibFreq.Location = new System.Drawing.Point(726, 196);
-            this.button_Send_CalibFreq.Name = "button_Send_CalibFreq";
-            this.button_Send_CalibFreq.Size = new System.Drawing.Size(160, 35);
-            this.button_Send_CalibFreq.TabIndex = 19;
-            this.button_Send_CalibFreq.Text = "Send Config";
-            this.button_Send_CalibFreq.UseVisualStyleBackColor = false;
-            this.button_Send_CalibFreq.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_CaliFreq_Click);
-            // 
-            // checkBox_CalibrationFregEn
-            // 
-            this.checkBox_CalibrationFregEn.AutoSize = true;
-            this.checkBox_CalibrationFregEn.BackColor = System.Drawing.Color.White;
-            this.checkBox_CalibrationFregEn.Checked = true;
-            this.checkBox_CalibrationFregEn.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_CalibrationFregEn.Location = new System.Drawing.Point(428, 202);
-            this.checkBox_CalibrationFregEn.Name = "checkBox_CalibrationFregEn";
-            this.checkBox_CalibrationFregEn.Size = new System.Drawing.Size(276, 30);
-            this.checkBox_CalibrationFregEn.TabIndex = 18;
-            this.checkBox_CalibrationFregEn.Text = "Enable Calibration Signal";
-            this.checkBox_CalibrationFregEn.UseVisualStyleBackColor = false;
-            // 
-            // label140
-            // 
-            this.label140.AutoSize = true;
-            this.label140.Location = new System.Drawing.Point(194, 175);
-            this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(224, 26);
-            this.label140.TabIndex = 17;
-            this.label140.Text = "Calibration Frequnecy";
-            // 
-            // numericUpDown_CalibFreq
-            // 
-            this.numericUpDown_CalibFreq.Location = new System.Drawing.Point(198, 202);
-            this.numericUpDown_CalibFreq.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.numericUpDown_CalibFreq.Name = "numericUpDown_CalibFreq";
-            this.numericUpDown_CalibFreq.Size = new System.Drawing.Size(151, 32);
-            this.numericUpDown_CalibFreq.TabIndex = 16;
-            this.numericUpDown_CalibFreq.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // tabPage_probes
             // 
             this.tabPage_probes.BackColor = System.Drawing.Color.White;
@@ -8348,6 +8270,7 @@
             this.tabControl_calibration.Controls.Add(this.tabPage_sCurves);
             this.tabControl_calibration.Controls.Add(this.tabPage_holdScan);
             this.tabControl_calibration.Controls.Add(this.tabPage_staircase);
+            this.tabControl_calibration.Controls.Add(this.tabPage_CalibPulseConf);
             this.tabControl_calibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.tabControl_calibration.Location = new System.Drawing.Point(-4, 0);
             this.tabControl_calibration.Name = "tabControl_calibration";
@@ -8385,7 +8308,7 @@
             this.tabPage_sCurves.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_sCurves.Location = new System.Drawing.Point(4, 34);
             this.tabPage_sCurves.Name = "tabPage_sCurves";
-            this.tabPage_sCurves.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_sCurves.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_sCurves.Size = new System.Drawing.Size(1080, 456);
             this.tabPage_sCurves.TabIndex = 0;
             this.tabPage_sCurves.Text = "     S-curves    ";
@@ -8420,8 +8343,8 @@
             this.checkBox_ScurvesTorQ.AutoSize = true;
             this.checkBox_ScurvesTorQ.Location = new System.Drawing.Point(248, 44);
             this.checkBox_ScurvesTorQ.Name = "checkBox_ScurvesTorQ";
-            this.checkBox_ScurvesTorQ.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_ScurvesTorQ.Size = new System.Drawing.Size(180, 28);
+            this.checkBox_ScurvesTorQ.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_ScurvesTorQ.Size = new System.Drawing.Size(181, 28);
             this.checkBox_ScurvesTorQ.TabIndex = 39;
             this.checkBox_ScurvesTorQ.Text = "Charge S-curves";
             this.checkBox_ScurvesTorQ.UseVisualStyleBackColor = true;
@@ -8916,8 +8839,8 @@
             this.checkBox_ScurvesChoice.AutoSize = true;
             this.checkBox_ScurvesChoice.Location = new System.Drawing.Point(126, 44);
             this.checkBox_ScurvesChoice.Name = "checkBox_ScurvesChoice";
-            this.checkBox_ScurvesChoice.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.checkBox_ScurvesChoice.Size = new System.Drawing.Size(141, 28);
+            this.checkBox_ScurvesChoice.Padding = new System.Windows.Forms.Padding(0, 0, 11, 0);
+            this.checkBox_ScurvesChoice.Size = new System.Drawing.Size(142, 28);
             this.checkBox_ScurvesChoice.TabIndex = 38;
             this.checkBox_ScurvesChoice.Text = "On pedestal";
             this.checkBox_ScurvesChoice.UseVisualStyleBackColor = true;
@@ -9135,7 +9058,7 @@
             this.tabPage_holdScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_holdScan.Location = new System.Drawing.Point(4, 34);
             this.tabPage_holdScan.Name = "tabPage_holdScan";
-            this.tabPage_holdScan.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_holdScan.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_holdScan.Size = new System.Drawing.Size(1080, 456);
             this.tabPage_holdScan.TabIndex = 3;
             this.tabPage_holdScan.Text = "   Hold scan   ";
@@ -9447,7 +9370,7 @@
             this.tabPage_staircase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_staircase.Location = new System.Drawing.Point(4, 34);
             this.tabPage_staircase.Name = "tabPage_staircase";
-            this.tabPage_staircase.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_staircase.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_staircase.Size = new System.Drawing.Size(1080, 456);
             this.tabPage_staircase.TabIndex = 2;
             this.tabPage_staircase.Text = "    SiPM staircase    ";
@@ -10130,6 +10053,83 @@
             this.textBox_minStaircase.TabIndex = 38;
             this.textBox_minStaircase.Text = "150";
             // 
+            // tabPage_CalibPulseConf
+            // 
+            this.tabPage_CalibPulseConf.Controls.Add(this.label141);
+            this.tabPage_CalibPulseConf.Controls.Add(this.button_SendCalibPulseConf);
+            this.tabPage_CalibPulseConf.Controls.Add(this.checkBox_CalibPulseEn);
+            this.tabPage_CalibPulseConf.Controls.Add(this.label140);
+            this.tabPage_CalibPulseConf.Controls.Add(this.numericUpDown_CalibPulseFreq);
+            this.tabPage_CalibPulseConf.Location = new System.Drawing.Point(4, 34);
+            this.tabPage_CalibPulseConf.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage_CalibPulseConf.Name = "tabPage_CalibPulseConf";
+            this.tabPage_CalibPulseConf.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage_CalibPulseConf.Size = new System.Drawing.Size(1080, 456);
+            this.tabPage_CalibPulseConf.TabIndex = 4;
+            this.tabPage_CalibPulseConf.Text = "Calibration Pulse";
+            this.tabPage_CalibPulseConf.UseVisualStyleBackColor = true;
+            // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.Location = new System.Drawing.Point(356, 226);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(39, 26);
+            this.label141.TabIndex = 25;
+            this.label141.Text = "Hz";
+            // 
+            // button_SendCalibPulseConf
+            // 
+            this.button_SendCalibPulseConf.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_SendCalibPulseConf.FlatAppearance.BorderSize = 0;
+            this.button_SendCalibPulseConf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_SendCalibPulseConf.Location = new System.Drawing.Point(726, 220);
+            this.button_SendCalibPulseConf.Name = "button_SendCalibPulseConf";
+            this.button_SendCalibPulseConf.Size = new System.Drawing.Size(160, 35);
+            this.button_SendCalibPulseConf.TabIndex = 24;
+            this.button_SendCalibPulseConf.Text = "Send Config";
+            this.button_SendCalibPulseConf.UseVisualStyleBackColor = false;
+            this.button_SendCalibPulseConf.Click += new System.EventHandler(this.button_SendCalibPulseConf_Click);
+            // 
+            // checkBox_CalibPulseEn
+            // 
+            this.checkBox_CalibPulseEn.AutoSize = true;
+            this.checkBox_CalibPulseEn.BackColor = System.Drawing.Color.White;
+            this.checkBox_CalibPulseEn.Checked = true;
+            this.checkBox_CalibPulseEn.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_CalibPulseEn.Location = new System.Drawing.Point(428, 226);
+            this.checkBox_CalibPulseEn.Name = "checkBox_CalibPulseEn";
+            this.checkBox_CalibPulseEn.Size = new System.Drawing.Size(276, 30);
+            this.checkBox_CalibPulseEn.TabIndex = 23;
+            this.checkBox_CalibPulseEn.Text = "Enable Calibration Signal";
+            this.checkBox_CalibPulseEn.UseVisualStyleBackColor = false;
+            // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.Location = new System.Drawing.Point(182, 197);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(285, 26);
+            this.label140.TabIndex = 22;
+            this.label140.Text = "Calibration Pulse Frequency";
+            // 
+            // numericUpDown_CalibPulseFreq
+            // 
+            this.numericUpDown_CalibPulseFreq.Location = new System.Drawing.Point(198, 226);
+            this.numericUpDown_CalibPulseFreq.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.numericUpDown_CalibPulseFreq.Name = "numericUpDown_CalibPulseFreq";
+            this.numericUpDown_CalibPulseFreq.Size = new System.Drawing.Size(151, 32);
+            this.numericUpDown_CalibPulseFreq.TabIndex = 21;
+            this.numericUpDown_CalibPulseFreq.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // tabPage_dataAcquisition
             // 
             this.tabPage_dataAcquisition.BackColor = System.Drawing.Color.White;
@@ -10150,7 +10150,7 @@
             this.tabPage_dataAcquisition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_dataAcquisition.Location = new System.Drawing.Point(14, 4);
             this.tabPage_dataAcquisition.Name = "tabPage_dataAcquisition";
-            this.tabPage_dataAcquisition.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_dataAcquisition.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_dataAcquisition.Size = new System.Drawing.Size(1062, 482);
             this.tabPage_dataAcquisition.TabIndex = 2;
             this.tabPage_dataAcquisition.Text = "Data acquisition";
@@ -10237,7 +10237,7 @@
             this.tabPage_perChannelCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage_perChannelCharge.Location = new System.Drawing.Point(4, 34);
             this.tabPage_perChannelCharge.Name = "tabPage_perChannelCharge";
-            this.tabPage_perChannelCharge.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_perChannelCharge.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_perChannelCharge.Size = new System.Drawing.Size(1054, 370);
             this.tabPage_perChannelCharge.TabIndex = 0;
             this.tabPage_perChannelCharge.Text = "   Per channel   ";
@@ -10440,7 +10440,7 @@
             this.tabPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1054, 370);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "   Per acquisition   ";
@@ -10629,7 +10629,7 @@
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.tabPage1.Location = new System.Drawing.Point(14, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1062, 482);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "tabPage_FPGA";
@@ -10658,7 +10658,7 @@
             this.tabPage_firmwareWeerocEvalKit.Controls.Add(this.groupBox1);
             this.tabPage_firmwareWeerocEvalKit.Location = new System.Drawing.Point(4, 33);
             this.tabPage_firmwareWeerocEvalKit.Name = "tabPage_firmwareWeerocEvalKit";
-            this.tabPage_firmwareWeerocEvalKit.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_firmwareWeerocEvalKit.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_firmwareWeerocEvalKit.Size = new System.Drawing.Size(1045, 443);
             this.tabPage_firmwareWeerocEvalKit.TabIndex = 0;
             this.tabPage_firmwareWeerocEvalKit.Text = "Weeroc Eval. Kit";
@@ -11663,7 +11663,7 @@
             this.tabPage_firmwareProtoCUBES.Controls.Add(this.groupbox_CubesResets);
             this.tabPage_firmwareProtoCUBES.Location = new System.Drawing.Point(4, 33);
             this.tabPage_firmwareProtoCUBES.Name = "tabPage_firmwareProtoCUBES";
-            this.tabPage_firmwareProtoCUBES.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_firmwareProtoCUBES.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_firmwareProtoCUBES.Size = new System.Drawing.Size(1045, 443);
             this.tabPage_firmwareProtoCUBES.TabIndex = 1;
             this.tabPage_firmwareProtoCUBES.Text = "Proto-CUBES";
@@ -11987,7 +11987,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(752, 490);
+            this.ClientSize = new System.Drawing.Size(1280, 541);
             this.Controls.Add(this.tblPnlMain);
             this.Controls.Add(this.label_tempOnBoard);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
@@ -12019,9 +12019,6 @@
             this.groupBox_DacT.PerformLayout();
             this.groupBox_DacQ.ResumeLayout(false);
             this.groupBox_DacQ.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CalibFreq)).EndInit();
             this.tabPage_probes.ResumeLayout(false);
             this.tabPage_probes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_rr)).EndInit();
@@ -12048,6 +12045,9 @@
             this.groupBox_channelSelectionStaircase.ResumeLayout(false);
             this.groupBox_channelSelectionStaircase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_staircase)).EndInit();
+            this.tabPage_CalibPulseConf.ResumeLayout(false);
+            this.tabPage_CalibPulseConf.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CalibPulseFreq)).EndInit();
             this.tabPage_dataAcquisition.ResumeLayout(false);
             this.tabPage_dataAcquisition.PerformLayout();
             this.tabControl_dataAcquisition.ResumeLayout(false);
@@ -12942,12 +12942,12 @@
         private System.Windows.Forms.Button button_ClearArduinoSD;
         private System.Windows.Forms.Timer tmrButtonColor;
         private System.Windows.Forms.Button button_SelectNumBinsCubes;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage_CalibPulseConf;
         private System.Windows.Forms.Label label141;
-        private System.Windows.Forms.Button button_Send_CalibFreq;
-        private checkBox checkBox_CalibrationFregEn;
+        private System.Windows.Forms.Button button_SendCalibPulseConf;
+        private checkBox checkBox_CalibPulseEn;
         private System.Windows.Forms.Label label140;
-        private System.Windows.Forms.NumericUpDown numericUpDown_CalibFreq;
+        private System.Windows.Forms.NumericUpDown numericUpDown_CalibPulseFreq;
     }
 }
 
