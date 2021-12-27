@@ -765,6 +765,12 @@
             this.textBox_stepStaircase = new CitirocUI.intTextBox();
             this.textBox_maxStaircase = new CitirocUI.intTextBox();
             this.textBox_minStaircase = new CitirocUI.intTextBox();
+            this.tabPage_CalibPulseConf = new System.Windows.Forms.TabPage();
+            this.label141 = new System.Windows.Forms.Label();
+            this.button_SendCalibPulseConf = new System.Windows.Forms.Button();
+            this.checkBox_CalibPulseEn = new CitirocUI.checkBox();
+            this.label140 = new System.Windows.Forms.Label();
+            this.numericUpDown_CalibPulseFreq = new System.Windows.Forms.NumericUpDown();
             this.tabPage_dataAcquisition = new System.Windows.Forms.TabPage();
             this.label_acquisitionTime = new System.Windows.Forms.Label();
             this.textBox_acquisitionTime = new System.Windows.Forms.MaskedTextBox();
@@ -932,6 +938,8 @@
             this.tabPage_staircase.SuspendLayout();
             this.groupBox_channelSelectionStaircase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_staircase)).BeginInit();
+            this.tabPage_CalibPulseConf.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CalibPulseFreq)).BeginInit();
             this.tabPage_dataAcquisition.SuspendLayout();
             this.tabControl_dataAcquisition.SuspendLayout();
             this.tabPage_perChannelCharge.SuspendLayout();
@@ -8262,6 +8270,7 @@
             this.tabControl_calibration.Controls.Add(this.tabPage_sCurves);
             this.tabControl_calibration.Controls.Add(this.tabPage_holdScan);
             this.tabControl_calibration.Controls.Add(this.tabPage_staircase);
+            this.tabControl_calibration.Controls.Add(this.tabPage_CalibPulseConf);
             this.tabControl_calibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.tabControl_calibration.Location = new System.Drawing.Point(-4, 0);
             this.tabControl_calibration.Name = "tabControl_calibration";
@@ -10043,6 +10052,83 @@
             this.textBox_minStaircase.Size = new System.Drawing.Size(70, 29);
             this.textBox_minStaircase.TabIndex = 38;
             this.textBox_minStaircase.Text = "150";
+            // 
+            // tabPage_CalibPulseConf
+            // 
+            this.tabPage_CalibPulseConf.Controls.Add(this.label141);
+            this.tabPage_CalibPulseConf.Controls.Add(this.button_SendCalibPulseConf);
+            this.tabPage_CalibPulseConf.Controls.Add(this.checkBox_CalibPulseEn);
+            this.tabPage_CalibPulseConf.Controls.Add(this.label140);
+            this.tabPage_CalibPulseConf.Controls.Add(this.numericUpDown_CalibPulseFreq);
+            this.tabPage_CalibPulseConf.Location = new System.Drawing.Point(4, 34);
+            this.tabPage_CalibPulseConf.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage_CalibPulseConf.Name = "tabPage_CalibPulseConf";
+            this.tabPage_CalibPulseConf.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage_CalibPulseConf.Size = new System.Drawing.Size(1080, 456);
+            this.tabPage_CalibPulseConf.TabIndex = 4;
+            this.tabPage_CalibPulseConf.Text = "Calibration Pulse";
+            this.tabPage_CalibPulseConf.UseVisualStyleBackColor = true;
+            // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.Location = new System.Drawing.Point(356, 226);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(39, 26);
+            this.label141.TabIndex = 25;
+            this.label141.Text = "Hz";
+            // 
+            // button_SendCalibPulseConf
+            // 
+            this.button_SendCalibPulseConf.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_SendCalibPulseConf.FlatAppearance.BorderSize = 0;
+            this.button_SendCalibPulseConf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_SendCalibPulseConf.Location = new System.Drawing.Point(726, 220);
+            this.button_SendCalibPulseConf.Name = "button_SendCalibPulseConf";
+            this.button_SendCalibPulseConf.Size = new System.Drawing.Size(160, 35);
+            this.button_SendCalibPulseConf.TabIndex = 24;
+            this.button_SendCalibPulseConf.Text = "Send Config";
+            this.button_SendCalibPulseConf.UseVisualStyleBackColor = false;
+            this.button_SendCalibPulseConf.Click += new System.EventHandler(this.button_SendCalibPulseConf_Click);
+            // 
+            // checkBox_CalibPulseEn
+            // 
+            this.checkBox_CalibPulseEn.AutoSize = true;
+            this.checkBox_CalibPulseEn.BackColor = System.Drawing.Color.White;
+            this.checkBox_CalibPulseEn.Checked = true;
+            this.checkBox_CalibPulseEn.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_CalibPulseEn.Location = new System.Drawing.Point(428, 226);
+            this.checkBox_CalibPulseEn.Name = "checkBox_CalibPulseEn";
+            this.checkBox_CalibPulseEn.Size = new System.Drawing.Size(276, 30);
+            this.checkBox_CalibPulseEn.TabIndex = 23;
+            this.checkBox_CalibPulseEn.Text = "Enable Calibration Signal";
+            this.checkBox_CalibPulseEn.UseVisualStyleBackColor = false;
+            // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.Location = new System.Drawing.Point(182, 197);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(285, 26);
+            this.label140.TabIndex = 22;
+            this.label140.Text = "Calibration Pulse Frequency";
+            // 
+            // numericUpDown_CalibPulseFreq
+            // 
+            this.numericUpDown_CalibPulseFreq.Location = new System.Drawing.Point(198, 226);
+            this.numericUpDown_CalibPulseFreq.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.numericUpDown_CalibPulseFreq.Name = "numericUpDown_CalibPulseFreq";
+            this.numericUpDown_CalibPulseFreq.Size = new System.Drawing.Size(151, 32);
+            this.numericUpDown_CalibPulseFreq.TabIndex = 21;
+            this.numericUpDown_CalibPulseFreq.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // tabPage_dataAcquisition
             // 
@@ -11899,8 +11985,9 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(1280, 541);
             this.Controls.Add(this.tblPnlMain);
             this.Controls.Add(this.label_tempOnBoard);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
@@ -11958,6 +12045,9 @@
             this.groupBox_channelSelectionStaircase.ResumeLayout(false);
             this.groupBox_channelSelectionStaircase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_staircase)).EndInit();
+            this.tabPage_CalibPulseConf.ResumeLayout(false);
+            this.tabPage_CalibPulseConf.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CalibPulseFreq)).EndInit();
             this.tabPage_dataAcquisition.ResumeLayout(false);
             this.tabPage_dataAcquisition.PerformLayout();
             this.tabControl_dataAcquisition.ResumeLayout(false);
@@ -12852,6 +12942,12 @@
         private System.Windows.Forms.Button button_ClearArduinoSD;
         private System.Windows.Forms.Timer tmrButtonColor;
         private System.Windows.Forms.Button button_SelectNumBinsCubes;
+        private System.Windows.Forms.TabPage tabPage_CalibPulseConf;
+        private System.Windows.Forms.Label label141;
+        private System.Windows.Forms.Button button_SendCalibPulseConf;
+        private checkBox checkBox_CalibPulseEn;
+        private System.Windows.Forms.Label label140;
+        private System.Windows.Forms.NumericUpDown numericUpDown_CalibPulseFreq;
     }
 }
 

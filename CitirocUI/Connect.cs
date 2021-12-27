@@ -553,11 +553,13 @@ namespace CitirocUI
                 textBox_delay.Enabled = true;
                 label112.Enabled = true;
 
-                tabControl_calibration.Enabled = true;
                 foreach (TabPage tab in tabControl_calibration.TabPages)
                 {
                     tab.ForeColor = SystemColors.ControlText;
+                    tab.Enabled = true;
                 }
+                tabControl_calibration.TabPages[3].Enabled = false;
+                tabControl_calibration.TabPages[3].ForeColor = SystemColors.ControlLight;
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
@@ -589,11 +591,14 @@ namespace CitirocUI
                 textBox_delay.Enabled = false;
                 label112.Enabled = false;
 
-                tabControl_calibration.Enabled = false;
+                //Enables Calibration Pulse tab and disables the rest..
                 foreach (TabPage tab in tabControl_calibration.TabPages)
                 {
                     tab.ForeColor = SystemColors.ControlLight;
+                    tab.Enabled = false;
                 }
+                tabControl_calibration.TabPages[3].Enabled = true;
+                tabControl_calibration.TabPages[3].ForeColor = SystemColors.ControlText;
             }
 
             /// Select the appropriate tab page in the tab control under "Firmware", enable its

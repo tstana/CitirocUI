@@ -1835,7 +1835,51 @@ namespace CitirocUI
             }
             tmrButtonColor.Enabled = true;
         }
+        private void button_SendCalibPulseConf_Click(object sender, EventArgs e)
+        {
+            byte[] calibconfdata = new byte[4];
 
+            calibconfdata = BitConverter.GetBytes((int)(50000000 / numericUpDown_CalibPulseFreq.Value));
+
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(calibconfdata);
+            }
+
+            if (checkBox_CalibPulseEn.Checked)
+            {
+                calibconfdata[0] = 0x80;
+            };
+
+            try
+            {
+                if (connectStatus == 1)
+                {
+                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendCalibPulseConf, calibconfdata);
+                    button_SendCalibPulseConf.BackColor = WeerocGreen;
+                }
+                else
+                {
+                    throw new Exception("Please connect to an instrument " +
+                        "using the \"Connect\" tab.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send calibration pulse command " +
+                    "to Proto-CUBES!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                button_SendCalibPulseConf.BackColor = Color.IndianRed;
+            }
+            tmrButtonColor.Enabled = true;
+        }
 
         private void button_ClearArduinoSD_Click(object sender, EventArgs e)
         {
@@ -1893,6 +1937,9 @@ namespace CitirocUI
 
             button_ClearArduinoSD.BackColor = Color.Gainsboro;
             button_ClearArduinoSD.ForeColor = SystemColors.ControlText;
+
+            button_SendCalibPulseConf.BackColor = Color.Gainsboro;
+            button_SendCalibPulseConf.ForeColor = SystemColors.ControlText;
         }
 
         private void label_help_TextChanged(object sender, EventArgs e)

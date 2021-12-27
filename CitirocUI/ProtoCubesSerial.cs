@@ -64,6 +64,8 @@ namespace CitirocUI
             SendDAQConf         = 'D',
             SendReadReg         = 'R',
             SendGatewareConf    = 'G',
+            SendCalibPulseConf  = 'A',
+
             SendTime            = 'Z',
 
             DAQStart            = 'S',
@@ -357,6 +359,17 @@ namespace CitirocUI
                             cmdParam.Length.ToString() + " bytes instead!");
                     }
                     cmdBytes = new byte[2];
+                    break;
+
+                case Command.SendCalibPulseConf:
+                    if (cmdParam.Length != 4)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 4 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[5];
                     break;
 
                 case Command.SendTime:
