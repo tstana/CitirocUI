@@ -91,7 +91,7 @@ namespace CitirocUI
         int sc_enTriggersOutput;
         int sc_sendToNVM;
 
-        private static string strDefSC = "1110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111111111111111111111111111111111111111111111011111100111111101111001111011100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000111111110100101100010010110011111111111111011";
+        private static string strDefSC = "111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011111111111111111111111111111111111111111111101111110011111110111100111101110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000100010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000011111111010010110001001011001111111111111101100000000";
         string strSC = strDefSC;
         #endregion
 
@@ -592,7 +592,15 @@ namespace CitirocUI
         private bool sendSC(int usbDevId, string strSC, ProtoCubesSerial.Command cmd)
         {
             if (connectStatus != 1)
+            {
+                MessageBox.Show("Connect status not 1"
+                            + Environment.NewLine,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                 return false;
+            }
+                
 
             // Initialize result as false
             bool result = false;
@@ -616,7 +624,16 @@ namespace CitirocUI
                 }
             }
             else
+            {
+
+                MessageBox.Show("IntLenStrSC = " + intLenStrSC + Environment.NewLine + "scLength = " + scLength
+                            + Environment.NewLine,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+
                 return result;
+            }
 
             // Send configuration to Weeroc board
             if (comboBox_SelectConnection.SelectedIndex == 0)
@@ -1403,9 +1420,8 @@ namespace CitirocUI
                         {
                             configNo = Convert.ToString(Convert.ToInt32(configNo, 10), 2);
                             configNo = configNo.PadLeft(8, '0');
+                            strSC = getSC();
                             strSC += strRev(configNo);
-                            MessageBox.Show(configNo, configNo, MessageBoxButtons.OKCancel);
-                            MessageBox.Show(strSC, strSC, MessageBoxButtons.OKCancel);
                         }
                     }
                     catch (Exception ex)
@@ -1423,19 +1439,10 @@ namespace CitirocUI
                     sc_sendToNVM = 1;
                     result = sendSC(usbDevId, strSC, ProtoCubesSerial.Command.StoreCitirocConf);
                     sc_sendToNVM = 0; 
-                    if (result)
-                        button_storeSC.BackColor = WeerocGreen;
-                    else
-                    {
-                        button_storeSC.BackColor = Color.LightCoral;
-                        label_help.Text = "Please configure your connection.";
-                    }
+                    if (!result) label_help.Text = "Please configure your connection.";
                 }
             }
-            else
-            {
-                label_help.Text = "Please configure your connection.";
-            }
+            else label_help.Text = "Please configure your connection.";
         }
         private void button_selectSC_Click(object sender, EventArgs e)
         {
@@ -1461,7 +1468,6 @@ namespace CitirocUI
                         configNo = configNo.PadLeft(8, '0');
                         uint intCmdTmp = Convert.ToUInt32(configNo, 2);
                         citiConf[0] = Convert.ToByte(intCmdTmp);
-                        MessageBox.Show(configNo, configNo, MessageBoxButtons.OKCancel);
                         protoCubes.SendCommand(ProtoCubesSerial.Command.SelectCitirocConf, citiConf);
                     }
                 }

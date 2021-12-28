@@ -1404,7 +1404,7 @@
             this.button_selectSC.Name = "button_selectSC";
             this.button_selectSC.Size = new System.Drawing.Size(100, 35);
             this.button_selectSC.TabIndex = 12;
-            this.button_selectSC.Text = "Select";
+            this.button_selectSC.Text = "Select NVM";
             this.button_selectSC.UseVisualStyleBackColor = false;
             this.button_selectSC.Click += new System.EventHandler(this.button_selectSC_Click);
             this.button_selectSC.MouseEnter += new System.EventHandler(this.button_selectSC_MouseEnter);
