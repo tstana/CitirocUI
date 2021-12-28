@@ -876,7 +876,6 @@ namespace CitirocUI
                 if (hit[chn] == 1)
                 {
                     chart_perAcqChargeHG.Series[0].Points[chn].Color = Color.IndianRed;
-                    chart_perAcqChargeHG.Series[0].Points[chn].Color = Color.IndianRed;
                     chart_perAcqChargeLG.Series[0].Points[chn].Color = Color.IndianRed;
                     chart_perAcqChargeHG.Series[0].Points[chn].MarkerColor = Color.LightCoral;
                     chart_perAcqChargeLG.Series[0].Points[chn].MarkerColor = Color.LightCoral;
@@ -908,11 +907,9 @@ namespace CitirocUI
         }
 
         private string UpdateDataArrays(byte[] adata)
-        {
-            
+        { 
             try
             {
-                
                 string u_time = System.Text.Encoding.UTF8.GetString(adata, 0, 21);
 
                 if ((adata[21] != 0x0d) || (adata[22] != 0x0a)
@@ -982,7 +979,6 @@ namespace CitirocUI
                 }
 
                 // Back to start for data display...
-                
                 offset = 23;
 
                 string boardId = System.Text.Encoding.UTF8.GetString(adata, offset, 2);
@@ -1030,7 +1026,7 @@ namespace CitirocUI
                             int k = (j * 2) << binCfg[i];
 
                             // Copy data into proper histogram array
-                            fillHistogram(i, k, adata, offset);
+                            FillHistogram(i, k, adata, offset);
                             offset += 2; // two bytes per bin
                         }
                     }
@@ -1042,11 +1038,9 @@ namespace CitirocUI
                             else if (j <= 769) k += 4; // second 513-768
                             else k += 8; // 769 - 1024
 
-                            fillHistogram(i, k, adata, offset);
+                            FillHistogram(i, k, adata, offset);
                             offset += 2; // two bytes per bin
                         }
-        
-
                     }
                     else if (binCfg[i] == 12)
                     { //table 2
@@ -1060,7 +1054,7 @@ namespace CitirocUI
                             else if (j < 97) k += 32;
                             else if (j < 113) k += 64;
                             else k += 128;
-                            fillHistogram(i, k, adata, offset);
+                            FillHistogram(i, k, adata, offset);
                             offset += 2;
                         }
                     }
@@ -1108,13 +1102,12 @@ namespace CitirocUI
             catch (Exception ex)
             {
                 return ("Invalid .dat file format :" + ex.Message);
-                
             }
             
             return ("");
         }
 
-        private void fillHistogram(int i, int adcValue, byte[] adata, int offset){
+        private void FillHistogram(int i, int adcValue, byte[] adata, int offset){
             switch (i)
             {
                 case 0:
@@ -1147,7 +1140,6 @@ namespace CitirocUI
             label_DataFile.Text = "file:" + Path.GetFileName(DataLoadFile);
             label_DataFile.Visible = true;
 
-            
             string upString = UpdateDataArrays(data);
             
             refreshDataChart();
@@ -1577,12 +1569,12 @@ namespace CitirocUI
                         break;
                 }
 
-                    if (value != 0) tmpChart.Series[0].Points.AddXY(i, value);
+                if (value != 0) tmpChart.Series[0].Points.AddXY(i, value);
 
-                }
+            }
 
                 tmpChart.DrawToBitmap(bmp, new Rectangle(P[chart_idx].X, P[chart_idx].Y,1800,1200));
-           }
+            }
            
             bmp.Save(@"C:\Temp\test.png");
 
