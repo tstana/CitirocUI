@@ -907,7 +907,7 @@ namespace CitirocUI
         }
 
         private string UpdateDataArrays(byte[] adata)
-        { 
+        {
             try
             {
                 string u_time = System.Text.Encoding.UTF8.GetString(adata, 0, 21);
@@ -917,7 +917,7 @@ namespace CitirocUI
                 {
                     return ("Invalid data file format!");
                 }
-                
+
                 Array.Clear(PerChannelChargeHG, 0, PerChannelChargeHG.Length);
                 Array.Clear(PerChannelChargeLG, 0, PerChannelChargeLG.Length);
                 Array.Clear(Hit, 0, Hit.Length);
@@ -1012,7 +1012,6 @@ namespace CitirocUI
 
                 // Display histogram data
                 offset += 256;
-               
 
                 for (int i = 0; i < 6; i++)
                 {
@@ -1103,7 +1102,7 @@ namespace CitirocUI
             {
                 return ("Invalid .dat file format :" + ex.Message);
             }
-            
+
             return ("");
         }
 
@@ -1141,7 +1140,7 @@ namespace CitirocUI
             label_DataFile.Visible = true;
 
             string upString = UpdateDataArrays(data);
-            
+
             refreshDataChart();
         }
         #endregion
@@ -1406,7 +1405,7 @@ namespace CitirocUI
                 ///       to set the bin_cfg ranges...
                 if (binCfg[i] < 7)
                 {
-                    numBins[i] = 2048 >> binCfg[i]; //Selects bins for each channel
+                    numBins[i] = 2048 >> binCfg[i];
                 }
                 else if (binCfg[i] == 11)
                 {
@@ -1531,8 +1530,6 @@ namespace CitirocUI
             tmpChart.BorderlineWidth = 4;
             tmpChart.ChartAreas.Add(chartArea);
 
-
-
             for (int chart_idx = 0; chart_idx < 6; chart_idx++)
             {
                 tmpChart.Series.Clear();
@@ -1544,43 +1541,39 @@ namespace CitirocUI
                 tmpChart.Series[0].BorderWidth = 1;
                 tmpChart.Series[0]["PointWidth"] = "1";
 
-            int value = 0;
-            for (int i = 0; i < 2048; i++)
-            {
-                 switch (chart_idx)
+                int value = 0;
+                for (int i = 0; i < 2048; i++)
                 {
-                    case 0:
-                        value = PerChannelChargeHG[0, i];
-                        break;
-                    case 1:
-                        value = PerChannelChargeLG[0, i];
-                        break;
-                    case 2:
-                        value = PerChannelChargeHG[16, i];
-                        break;
-                    case 3:
-                        value = PerChannelChargeLG[16, i];
-                        break;
-                    case 4:
-                        value = PerChannelChargeHG[31, i];
-                        break;
-                    case 5:
-                        value = PerChannelChargeLG[31, i];
-                        break;
+                     switch (chart_idx)
+                    {
+                        case 0:
+                            value = PerChannelChargeHG[0, i];
+                            break;
+                        case 1:
+                            value = PerChannelChargeLG[0, i];
+                            break;
+                        case 2:
+                            value = PerChannelChargeHG[16, i];
+                            break;
+                        case 3:
+                            value = PerChannelChargeLG[16, i];
+                            break;
+                        case 4:
+                            value = PerChannelChargeHG[31, i];
+                            break;
+                        case 5:
+                            value = PerChannelChargeLG[31, i];
+                            break;
+                    }
+
+                    if (value != 0) tmpChart.Series[0].Points.AddXY(i, value);
+
                 }
-
-                if (value != 0) tmpChart.Series[0].Points.AddXY(i, value);
-
-            }
 
                 tmpChart.DrawToBitmap(bmp, new Rectangle(P[chart_idx].X, P[chart_idx].Y,1800,1200));
             }
            
             bmp.Save(@"C:\Temp\test.png");
-
-  
-
-
         }
         #endregion
     }
