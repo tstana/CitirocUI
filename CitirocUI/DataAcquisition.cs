@@ -1025,31 +1025,38 @@ namespace CitirocUI
                             int k = (j * 2) << binCfg[i];
 
                             // Copy data into proper histogram array
-                            switch (i)
-                            {
-                                case 0:
-                                    PerChannelChargeHG[0, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 1:
-                                    PerChannelChargeLG[0, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 2:
-                                    PerChannelChargeHG[16, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 3:
-                                    PerChannelChargeLG[16, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 4:
-                                    PerChannelChargeHG[31, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                                case 5:
-                                    PerChannelChargeLG[31, k] = BitConverter.ToUInt16(adata, offset);
-                                    break;
-                            }
+                            FillHistogram(i, k, adata, offset);
                             offset += 2; // two bytes per bin
                         }
                     }
-                    // TODO: Add code for variable binning
+                    else if (binCfg[i] == 11)
+                    { //table 1
+                        int k = 0;
+                        for (int j = 0; j < 1024; j++) {
+                            if (j < 513) k += 2; //First boundary 0-512
+                            else if (j <= 769) k += 4; // second 513-768
+                            else k += 8; // 769 - 1024
+
+                            FillHistogram(i, k, adata, offset);
+                            offset += 2; // two bytes per bin
+                        }
+                    }
+                    else if (binCfg[i] == 12)
+                    { //table 2
+                        int k = 0;
+                        for (int j = 0; j < 128; j++)
+                        {
+                            if (j < 33) k += 2;
+                            else if (j < 49) k += 4;
+                            else if (j < 65) k += 8;
+                            else if (j < 81) k += 16;
+                            else if (j < 97) k += 32;
+                            else if (j < 113) k += 64;
+                            else k += 128;
+                            FillHistogram(i, k, adata, offset);
+                            offset += 2;
+                        }
+                    }
                 }
 
                 // Reverse fields again for proper writing to file...
@@ -1097,6 +1104,30 @@ namespace CitirocUI
             }
 
             return ("");
+        }
+
+        private void FillHistogram(int i, int adcValue, byte[] adata, int offset){
+            switch (i)
+            {
+                case 0:
+                    PerChannelChargeHG[0, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 1:
+                    PerChannelChargeLG[0, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 2:
+                    PerChannelChargeHG[16, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 3:
+                    PerChannelChargeLG[16, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 4:
+                    PerChannelChargeHG[31, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+                case 5:
+                    PerChannelChargeLG[31, adcValue] = BitConverter.ToUInt16(adata, offset);
+                    break;
+            }
         }
 
         private void loadCubesData()
@@ -1466,7 +1497,7 @@ namespace CitirocUI
         #endregion
 
         #region Chart Image
-        private void DrawChartImage()
+        private void DrawChartImage(int[] binCfg)
         {
             Chart tmpChart = new Chart();
             tmpChart.Size = new Size(1800, 1200);
@@ -1499,8 +1530,6 @@ namespace CitirocUI
             tmpChart.BorderlineWidth = 4;
             tmpChart.ChartAreas.Add(chartArea);
 
-
-
             for (int chart_idx = 0; chart_idx < 6; chart_idx++)
             {
                 tmpChart.Series.Clear();
@@ -1512,42 +1541,39 @@ namespace CitirocUI
                 tmpChart.Series[0].BorderWidth = 1;
                 tmpChart.Series[0]["PointWidth"] = "1";
 
-            int value = 0;
-            for (int i = 0; i < 2048; i++)
-            {
-                 switch (chart_idx)
+                int value = 0;
+                for (int i = 0; i < 2048; i++)
                 {
-                    case 0:
-                        value = PerChannelChargeHG[0, i];
-                        break;
-                    case 1:
-                        value = PerChannelChargeLG[0, i];
-                        break;
-                    case 2:
-                        value = PerChannelChargeHG[16, i];
-                        break;
-                    case 3:
-                        value = PerChannelChargeLG[16, i];
-                        break;
-                    case 4:
-                        value = PerChannelChargeHG[31, i];
-                        break;
-                    case 5:
-                        value = PerChannelChargeLG[31, i];
-                        break;
+                     switch (chart_idx)
+                    {
+                        case 0:
+                            value = PerChannelChargeHG[0, i];
+                            break;
+                        case 1:
+                            value = PerChannelChargeLG[0, i];
+                            break;
+                        case 2:
+                            value = PerChannelChargeHG[16, i];
+                            break;
+                        case 3:
+                            value = PerChannelChargeLG[16, i];
+                            break;
+                        case 4:
+                            value = PerChannelChargeHG[31, i];
+                            break;
+                        case 5:
+                            value = PerChannelChargeLG[31, i];
+                            break;
+                    }
+
+                    if (value != 0) tmpChart.Series[0].Points.AddXY(i, value);
+
                 }
 
-                if(value != 0) tmpChart.Series[0].Points.AddXY(i, value);
-            }
-
                 tmpChart.DrawToBitmap(bmp, new Rectangle(P[chart_idx].X, P[chart_idx].Y,1800,1200));
-           }
+            }
            
             bmp.Save(@"C:\Temp\test.png");
-
-  
-
-
         }
         #endregion
     }
