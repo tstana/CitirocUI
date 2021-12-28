@@ -1848,8 +1848,12 @@ namespace CitirocUI
 
             if (checkBox_CalibPulseEn.Checked)
             {
-                calibconfdata[0] = 0x80;
-            };
+                calibconfdata[0] |= 0x80;
+            }
+            else
+            {
+                calibconfdata[0] &= 0x7f;
+            }
 
             try
             {
