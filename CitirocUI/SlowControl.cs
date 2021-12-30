@@ -590,7 +590,6 @@ namespace CitirocUI
                                     configNo = configNo.PadLeft(8, '0');
                                     strSC = getSC();
                                     strSC += strRev(configNo);
-                                    MessageBox.Show(configNo, configNo, MessageBoxButtons.OKCancel);
                                 }
                             }
                             catch (Exception ex)
