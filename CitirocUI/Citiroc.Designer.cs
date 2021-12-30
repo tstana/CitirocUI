@@ -1007,20 +1007,6 @@
             this.btn_minimize.UseVisualStyleBackColor = false;
             this.btn_minimize.Click += new System.EventHandler(this.btn_minimize_Click);
             // 
-            // label_weerocDotCom
-            // 
-            this.label_weerocDotCom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(32)))), ((int)(((byte)(70)))));
-            this.label_weerocDotCom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_weerocDotCom.ForeColor = System.Drawing.Color.White;
-            this.label_weerocDotCom.Location = new System.Drawing.Point(0, 0);
-            this.label_weerocDotCom.Margin = new System.Windows.Forms.Padding(0);
-            this.label_weerocDotCom.Name = "label_weerocDotCom";
-            this.label_weerocDotCom.Size = new System.Drawing.Size(200, 30);
-            this.label_weerocDotCom.TabIndex = 23;
-            this.label_weerocDotCom.Text = "www.weeroc.com";
-            this.label_weerocDotCom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_weerocDotCom.Click += new System.EventHandler(this.label_weerocDotCom_Click);
-            // 
             // btn_close
             // 
             this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(144)))));

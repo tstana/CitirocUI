@@ -1922,10 +1922,5 @@ namespace CitirocUI
             }
             catch { /* Blindly close... */}
         }
-
-        private void label_weerocDotCom_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

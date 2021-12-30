@@ -55,27 +55,27 @@ namespace CitirocUI
         /// </summary>
         public enum Command
         {
-            None                = '-',
+            None                 = '-',
 
-            SelectCitirocConf   = 'n',
-            SendCitirocConfNVM  = 'N',
-            SendCitirocConf     = 'C',
-            SendProbeConf       = 'P',
-            SendHVPSConf        = 'H',
-            SendHVPSTmpVolt     = 'V',
-            SendDAQConf         = 'D',
-            SendReadReg         = 'R',
-            SendGatewareConf    = 'G',
-            SendTime            = 'Z',
+            SendCitirocConf      = 'C',
+            SelectNVMCitirocConf = 'O',
+            SendNVMCitirocConf   = 'N',
+            SendProbeConf        = 'P',
+            SendHVPSConf         = 'H',
+            SendHVPSTmpVolt      = 'V',
+            SendDAQConf          = 'D',
+            SendReadReg          = 'R',
+            SendGatewareConf     = 'G',
+            SendTime             = 'Z',
 
-            DAQStart            = 'S',
-            DAQStop             = 'T',
-            DelFiles            = 'Q',
+            DAQStart             = 'S',
+            DAQStop              = 'T',
+            DelFiles             = 'Q',
 
-            ReqHK               = 'h',
-            ReqStatus           = 's',
-            ReqPayload          = 'p',
-            ReqBoardID          = 'i'
+            ReqHK                = 'h',
+            ReqStatus            = 's',
+            ReqPayload           = 'p',
+            ReqBoardID           = 'i'
         }
         #endregion
 
@@ -316,7 +316,7 @@ namespace CitirocUI
                     }
                     break;
 
-                case Command.SendCitirocConfNVM:
+                case Command.SendNVMCitirocConf:
                     if (cmdParam.Length != 144)
                     {
                         throw new ArgumentException("Command '" +
@@ -327,7 +327,7 @@ namespace CitirocUI
                     cmdBytes = new byte[145];
                     break;
 
-                case Command.SelectCitirocConf:
+                case Command.SelectNVMCitirocConf:
                     if (cmdParam.Length != 1)
                     {
                         throw new ArgumentException("Command '" +

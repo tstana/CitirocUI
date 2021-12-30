@@ -548,6 +548,9 @@ namespace CitirocUI
                 // Adjust other controls
                 label_DataFile.Visible = false;
                 button_SelectNumBinsCubes.Visible = false;
+                checkBox_sendToNVM.Visible = false;
+                checkBox_sendToNVM.Checked = false;
+                sc_sendToNVM = 0; 
 
                 label115.Enabled = true;
                 textBox_delay.Enabled = true;
@@ -584,6 +587,7 @@ namespace CitirocUI
                 // Adjust other controls
                 label_DataFile.Visible = true;
                 button_SelectNumBinsCubes.Visible = true;
+                checkBox_sendToNVM.Visible = true;
 
                 label115.Enabled = false;
                 textBox_delay.Enabled = false;
