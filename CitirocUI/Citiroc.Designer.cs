@@ -73,6 +73,7 @@
             this.button_loadFw = new System.Windows.Forms.Button();
             this.label_boardStatus = new System.Windows.Forms.Label();
             this.tabPage_slowControl = new System.Windows.Forms.TabPage();
+            this.button_selectSC = new System.Windows.Forms.Button();
             this.button_saveSC = new System.Windows.Forms.Button();
             this.button_loadSC = new System.Windows.Forms.Button();
             this.button_sendSC = new System.Windows.Forms.Button();
@@ -1006,6 +1007,19 @@
             this.btn_minimize.Text = "–";
             this.btn_minimize.UseVisualStyleBackColor = false;
             this.btn_minimize.Click += new System.EventHandler(this.btn_minimize_Click);
+            //
+            // label_weerocDotCom
+            // 
+            this.label_weerocDotCom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(32)))), ((int)(((byte)(70)))));
+            this.label_weerocDotCom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_weerocDotCom.ForeColor = System.Drawing.Color.White;
+            this.label_weerocDotCom.Location = new System.Drawing.Point(0, 0);
+            this.label_weerocDotCom.Margin = new System.Windows.Forms.Padding(0);
+            this.label_weerocDotCom.Name = "label_weerocDotCom";
+            this.label_weerocDotCom.Size = new System.Drawing.Size(200, 30);
+            this.label_weerocDotCom.TabIndex = 23;
+            this.label_weerocDotCom.Text = "www.weeroc.com";
+            this.label_weerocDotCom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_close
             // 
@@ -1378,6 +1392,7 @@
             // 
             this.tabPage_slowControl.AllowDrop = true;
             this.tabPage_slowControl.BackColor = System.Drawing.Color.White;
+            this.tabPage_slowControl.Controls.Add(this.button_selectSC);
             this.tabPage_slowControl.Controls.Add(this.button_saveSC);
             this.tabPage_slowControl.Controls.Add(this.button_loadSC);
             this.tabPage_slowControl.Controls.Add(this.button_sendSC);
@@ -1396,12 +1411,26 @@
             // checkBox_sendToNVM
             //
             this.checkBox_sendToNVM.AutoSize = true;
-            this.checkBox_sendToNVM.Location = new System.Drawing.Point(550,453);
+            this.checkBox_sendToNVM.Location = new System.Drawing.Point(450, 453);
             this.checkBox_sendToNVM.Name = "checkBox_sendToNVM";
-            this.checkBox_sendToNVM.Size = new System.Drawing.Size(206,28);
+            this.checkBox_sendToNVM.Size = new System.Drawing.Size(206, 28);
             this.checkBox_sendToNVM.Text = "Store configuration in NVM";
             this.checkBox_sendToNVM.UseVisualStyleBackColor = true;
-            this.checkBox_sendToNVM.CheckedChanged += new System.EventHandler(this.checkBox_sendToNVM_CheckedChanged);
+            // 
+            // button_selectSC
+            // 
+            this.button_selectSC.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_selectSC.FlatAppearance.BorderSize = 0;
+            this.button_selectSC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_selectSC.Location = new System.Drawing.Point(650, 449);
+            this.button_selectSC.Name = "button_selectSC";
+            this.button_selectSC.Size = new System.Drawing.Size(100, 35);
+            this.button_selectSC.TabIndex = 12;
+            this.button_selectSC.Text = "Select NVM";
+            this.button_selectSC.UseVisualStyleBackColor = false;
+            this.button_selectSC.Click += new System.EventHandler(this.button_selectSC_Click);
+            this.button_selectSC.MouseEnter += new System.EventHandler(this.button_selectSC_MouseEnter);
+            this.button_selectSC.MouseLeave += new System.EventHandler(this.object_MouseLeave);
             // 
             // button_saveSC
             // 
@@ -12017,6 +12046,7 @@
         private System.Windows.Forms.Button button_loadFw;
         private System.Windows.Forms.Label label_boardStatus;
         private System.Windows.Forms.TabPage tabPage_slowControl;
+        private System.Windows.Forms.Button button_selectSC;
         private System.Windows.Forms.Button button_saveSC;
         private System.Windows.Forms.Button button_loadSC;
         private System.Windows.Forms.Button button_sendSC;

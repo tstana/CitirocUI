@@ -99,7 +99,7 @@
     <Compile Include="Citiroc.Designer.cs">
       <DependentUpon>Citiroc.cs</DependentUpon>
     </Compile>
-    <Compile Include="NVMConfigNumSelect.cs">
+    <Compile Include="InputForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProtoCubesNumBinsForm.cs">

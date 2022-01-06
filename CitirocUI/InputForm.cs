@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CitirocUI
 {
-    public class NVMVConfigNumSelect : Form
+    public class InputForm : Form
     {
 
         public static DialogResult InputBox(string title, string promptText, ref string value)
@@ -54,6 +54,5 @@ namespace CitirocUI
             value = textBox.Text;
             return dialogResult;
         }
-
     }
 }

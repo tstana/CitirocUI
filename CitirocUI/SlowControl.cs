@@ -89,9 +89,8 @@ namespace CitirocUI
         int sc_triggerPolarity;
         int sc_enNor32TOc;
         int sc_enTriggersOutput;
-        int sc_sendToNVM;
 
-        private static string strDefSC = "111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011111111111111111111111111111111111111111111101111110011111110111100111101110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000110000000100010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000000010000000000011111111010010110001001011001111111111111101100000000";
+        private static string strDefSC = "1110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111111111111111111111111111111111111111111111011111100111111101111001111011100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001100000001000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000000100000000000111111110100101100010010110011111111111111011";
         string strSC = strDefSC;
         #endregion
 
@@ -147,7 +146,7 @@ namespace CitirocUI
         }
         #endregion
 
-        #region slow control management 
+        #region slow control management
 
         public string getSC() // ASIC specific
         {
@@ -541,8 +540,8 @@ namespace CitirocUI
         private void button_sendSC_Click(object sender, EventArgs e)
         {
             bool result = false;
-            string configNo = "";
-            
+            string strSC = getSC();
+
             if (comboBox_SelectConnection.SelectedIndex == 0)
             {
                 // Test if software can read firmware version. If not, the board is not connected.
@@ -568,51 +567,55 @@ namespace CitirocUI
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                if (sc_sendToNVM == 1)
+                string configNum = "";
+                if ((checkBox_sendToNVM.Checked == true) & (connectStatus != -1))
                 {
-                    if (connectStatus == 1)
+                    button_sendSC.BackColor = Color.LightCoral;
+                    tmrButtonColor.Enabled = true;
+                    label_help.Text = "Please configure your connection.";
+                    return;
+                }
+                
+                if (checkBox_sendToNVM.Checked == true)
+                {
+                    if (InputForm.InputBox("Select Config Number", "Config Number:", ref configNum) == DialogResult.OK)
                     {
-                        if (NVMVConfigNumSelect.InputBox("Select Config Number", "Config Number:", ref configNo) == DialogResult.OK)
+                        try
                         {
-                            try
+                            if (Convert.ToInt32(configNum, 10) > 255)
                             {
-                                if (Convert.ToInt32(configNo, 10) > 255)
-                                {
-                                    _ = MessageBox.Show("Config number too large! Please choose a number below 255"
-                                    + Environment.NewLine,
-                                    "Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
-                                }
-                                else
-                                {
-                                    configNo = Convert.ToString(Convert.ToInt32(configNo, 10), 2);
-                                    configNo = configNo.PadLeft(8, '0');
-                                    strSC = getSC();
-                                    strSC += strRev(configNo);
-                                    MessageBox.Show(configNo, configNo, MessageBoxButtons.OKCancel);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                _ = MessageBox.Show("Input of incorrect type!"
-                                + Environment.NewLine
-                                + Environment.NewLine
-                                + "Error message:"
-                                + Environment.NewLine
-                                + ex.Message,
+                                MessageBox.Show("Config number too large! Please choose a number below 255"
+                                + Environment.NewLine,
                                 "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                             }
+                            else
+                            {
+                                configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
+                                configNum = configNum.PadLeft(8, '0');
+                                strSC += strRev(configNum);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Input of incorrect type!"
+                            + Environment.NewLine
+                            + Environment.NewLine
+                            + "Error message:"
+                            + Environment.NewLine
+                            + ex.Message,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                         }
                     }
-                    else
-                    {
-                        label_help.Text = "Please configure your connection.";
-                    }
                 }
-
+                else
+                {
+                    label_help.Text = "Please configure your connection.";
+                }
+                
                 result = sendSC(usbDevId, strSC);
                 if (result)
                     button_sendSC.BackColor = WeerocGreen;
@@ -634,10 +637,60 @@ namespace CitirocUI
             tmrButtonColor.Enabled = true;
         }
 
+        private void button_selectSC_Click(object sender, EventArgs e)
+        {
+            //Initialize string for input of config number selection
+            string configNum = "";
+
+            if (connectStatus != 1)
+            {
+                    button_sendSC.BackColor = Color.LightCoral;
+                    tmrButtonColor.Enabled = true;
+                    label_help.Text = "Please configure your connection.";
+                    return;
+            }
+
+            if (InputForm.InputBox("Select Config Number on NVM", "Config Number:", ref configNum) == DialogResult.OK)
+            {
+                try
+                {
+                    if (Convert.ToInt32(configNum, 10) > 255)
+                    {
+                        MessageBox.Show("Config number too large! Please choose a number below 255"
+                        + Environment.NewLine,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        byte[] citiConf = new byte[1];
+                        configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
+                        configNum = configNum.PadLeft(8, '0');
+                        uint intCmdTmp = Convert.ToUInt32(configNum, 2);
+                        citiConf[0] = Convert.ToByte(intCmdTmp);
+                        protoCubes.SendCommand(ProtoCubesSerial.Command.SelectNVMCitirocConf, citiConf);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Input of incorrect type!"
+                    + Environment.NewLine
+                    + Environment.NewLine
+                    + "Error message:"
+                    + Environment.NewLine
+                    + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private bool sendSC(int usbDevId, string strSC)
         {
-            //if (connectStatus != 1)
-            //    return false;
+            if (connectStatus != 1)
+                return false;
 
             // Initialize result as false
             bool result = false;
@@ -712,7 +765,7 @@ namespace CitirocUI
             {
                 try
                 {
-                    if (sc_sendToNVM != 1)
+                    if (checkBox_sendToNVM.Checked == false)
                     {
                         protoCubes.SendCommand(ProtoCubesSerial.Command.SendCitirocConf, bytSC);
                     }
@@ -835,20 +888,6 @@ namespace CitirocUI
         private void checkBox_bypassPd_CheckedChanged(object sender, EventArgs e)
         {
             sc_bypassPd = SC.Switch((CheckBox)sender, button_sendSC);
-        }
-
-        private void checkBox_sendToNVM_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_sendToNVM.Checked == true)
-            {
-                if (button_sendSC.BackColor != Color.Gainsboro) { button_sendSC.BackColor = Color.Gainsboro; button_sendSC.ForeColor = Color.Black; }
-                sc_sendToNVM = 1;
-            }
-            else
-            {
-                if (button_sendSC.BackColor != Color.Gainsboro) { button_sendSC.BackColor = Color.Gainsboro; button_sendSC.ForeColor = Color.Black; }
-                sc_sendToNVM = 0;
-            }
         }
 
         private void checkBox_dacRef_CheckedChanged(object sender, EventArgs e)
@@ -1462,76 +1501,26 @@ namespace CitirocUI
         }
 
         private void button_loadSC_Click(object sender, EventArgs e)
-        {
-            //Initialize string for input of config number selection
-            string configNo = "";
-            if (sc_sendToNVM == 1)
+        {            
+            OpenFileDialog ScLoadDialog = new OpenFileDialog();
+            ScLoadDialog.Title = "Specify Data file";
+            //DataLDialog.Filter = "TxT files|*.txt";
+            ScLoadDialog.RestoreDirectory = true;
+
+            ArrayList DataArrayList;
+
+            if (ScLoadDialog.ShowDialog() == DialogResult.OK)
             {
-                if (connectStatus == 1)
-                {
-                    if (NVMVConfigNumSelect.InputBox("Select Config Number on NVM", "Config Number:", ref configNo) == DialogResult.OK)
-                    {
-                        try
-                        {
-                            if (Convert.ToInt32(configNo, 10) > 255)
-                            {
-                                _ = MessageBox.Show("Config number too large! Please choose a number below 255"
-                                + Environment.NewLine,
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                byte[] citiConf = new byte[1];
-                                configNo = Convert.ToString(Convert.ToInt32(configNo, 10), 2);
-                                configNo = configNo.PadLeft(8, '0');
-                                uint intCmdTmp = Convert.ToUInt32(configNo, 2);
-                                citiConf[0] = Convert.ToByte(intCmdTmp);
-                                protoCubes.SendCommand(ProtoCubesSerial.Command.SelectNVMCitirocConf, citiConf);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            _ = MessageBox.Show("Input of incorrect type!"
-                            + Environment.NewLine
-                            + Environment.NewLine
-                            + "Error message:"
-                            + Environment.NewLine
-                            + ex.Message,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        }
-                    }
-                }
+                if (ScLoadDialog.FileName == null) return;
                 else
                 {
-                    label_help.Text = "Please configure your connection.";
+                    DataArrayList = ReadFileLine(ScLoadDialog.FileName);
+                    setSC(DataArrayList[0].ToString());
+                    button_sendSC.BackColor = Color.Gainsboro;
+                    button_sendSC.ForeColor = Color.Black;
                 }
             }
-            else
-            {
-                OpenFileDialog ScLoadDialog = new OpenFileDialog();
-                ScLoadDialog.Title = "Specify Data file";
-                //DataLDialog.Filter = "TxT files|*.txt";
-                ScLoadDialog.RestoreDirectory = true;
-
-                ArrayList DataArrayList;
-
-                if (ScLoadDialog.ShowDialog() == DialogResult.OK)
-                {
-                    if (ScLoadDialog.FileName == null) return;
-                    else
-                    {
-                        DataArrayList = ReadFileLine(ScLoadDialog.FileName);
-                        setSC(DataArrayList[0].ToString());
-                        button_sendSC.BackColor = Color.Gainsboro;
-                        button_sendSC.ForeColor = Color.Black;
-                    }
-                }
-                else return;
-            }
+            else return;
         }
         
         #endregion
