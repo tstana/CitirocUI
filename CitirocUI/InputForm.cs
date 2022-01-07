@@ -21,7 +21,7 @@ namespace CitirocUI
             Button buttonOk = new Button();
             Button buttonCancel = new Button();
 
-            form.Text = title;
+            form.Text = title + "!!!! TODO: Check that input value is <= 255 !!!!";
             label.Text = promptText;
             textBox.Text = value;
 
