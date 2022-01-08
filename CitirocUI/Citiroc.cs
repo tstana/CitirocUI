@@ -1268,6 +1268,33 @@ namespace CitirocUI
         {
             label_help.Text = "Select which loaded configuration on the NVM to select.";
         }
+
+        private void button_selectSC_Click(object sender, EventArgs e)
+        {
+            if (connectStatus != -1)
+            {
+                button_selectSC.BackColor = Color.LightCoral;
+                tmrButtonColor.Enabled = true;
+                label_help.Text = "Please configure your connection.";
+                return;
+            }
+
+            //Initialize string for input of config number selection
+            string configNum = "";
+
+            if (ConfigIdInputForm.InputForm(ref configNum) == DialogResult.OK)
+            {
+                byte[] citiConf = new byte[1];
+                configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
+                configNum = configNum.PadLeft(8, '0');
+                uint intCmdTmp = Convert.ToUInt32(configNum, 2);
+                citiConf[0] = Convert.ToByte(intCmdTmp);
+                protoCubes.SendCommand(ProtoCubesSerial.Command.SelectNVMCitirocConf, citiConf);
+                button_selectSC.BackColor = WeerocGreen;
+                tmrButtonColor.Enabled = true;  
+            }
+        }
+
         private void button_saveSC_MouseEnter(object sender, EventArgs e)
         {
             label_help.Text = "Save the current slow control configuration into a file for later use.";

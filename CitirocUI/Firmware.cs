@@ -295,7 +295,7 @@ namespace CitirocUI
 
             //Set NCS to 1
             ftStatus = myFtdiDevice.Write(strFtDataSetBit(NCS, 1), 1, ref numFtWr);
-            
+
             if (ftStatus == FTDI.FT_STATUS.FT_OK)
                 status = 0;
             else

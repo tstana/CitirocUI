@@ -567,7 +567,6 @@ namespace CitirocUI
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                string configNum = "";
                 if ((checkBox_sendToNVM.Checked == true) & (connectStatus != 1))
                 {
                     button_sendSC.BackColor = Color.LightCoral;
@@ -575,19 +574,17 @@ namespace CitirocUI
                     label_help.Text = "Please configure your connection.";
                     return;
                 }
-                
+
+                string configNum = "";
+
                 if (checkBox_sendToNVM.Checked == true)
                 {
-                    if (InputForm.InputBox("Select Config Number", "Config Number:", ref configNum) == DialogResult.OK)
+                    if (ConfigIdInputForm.InputForm(ref configNum) == DialogResult.OK)
                     {
                         configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
                         configNum = configNum.PadLeft(8, '0');
                         strSC += strRev(configNum);
                      }
-                }
-                else
-                {
-                    label_help.Text = "Please configure your connection.";
                 }
                 
                 result = sendSC(usbDevId, strSC);
@@ -611,32 +608,6 @@ namespace CitirocUI
             tmrButtonColor.Enabled = true;
         }
 
-        private void button_selectSC_Click(object sender, EventArgs e)
-        {
-            //Initialize string for input of config number selection
-            string configNum = "";
-
-            if (connectStatus != 1)
-            {
-                    button_selectSC.BackColor = Color.LightCoral;
-                    tmrButtonColor.Enabled = true;
-                    label_help.Text = "Please configure your connection.";
-                    return;
-            }
-
-            if (InputForm.InputBox("Select Config Number on NVM", "Config Number:", ref configNum) == DialogResult.OK)
-            {   
-                byte[] citiConf = new byte[1];
-                configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
-                configNum = configNum.PadLeft(8, '0');
-                uint intCmdTmp = Convert.ToUInt32(configNum, 2);
-                citiConf[0] = Convert.ToByte(intCmdTmp);
-                protoCubes.SendCommand(ProtoCubesSerial.Command.SelectNVMCitirocConf, citiConf);
-                button_selectSC.BackColor = WeerocGreen;
-                tmrButtonColor.Enabled = true; 
-            }
-        }
-
         private bool sendSC(int usbDevId, string strSC)
         {
             if (connectStatus != 1)
@@ -644,27 +615,19 @@ namespace CitirocUI
 
             // Initialize result as false
             bool result = false;
-
-            // Get standard length of slow control bitstream
-            int scLength = strDefSC.Length;
-            // Get length of current slow control bitstream
-            int intLenStrSC = strSC.Length;
-            byte[] bytSC = new byte[scLength / 8];
+            byte[] bytSC = new byte[strSC.Length / 8];
 
             // If the length of the current bitstream is not OK, return false
             // else store the slow control in byte array
-            if (intLenStrSC == scLength)
+            
+            for (int i = 0; i < (strSC.Length / 8); i++)
             {
-                for (int i = 0; i < (scLength / 8); i++)
-                {
-                    string strScCmdTmp = strSC.Substring(i * 8, 8);
-                    strScCmdTmp = strRev(strScCmdTmp);
-                    uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
-                    bytSC[i] = Convert.ToByte(intCmdTmp);
-                }
+                string strScCmdTmp = strSC.Substring(i * 8, 8);
+                strScCmdTmp = strRev(strScCmdTmp);
+                uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
+                bytSC[i] = Convert.ToByte(intCmdTmp);
             }
-            else
-                return result;
+            
 
             // Send configuration to Weeroc board
             if (comboBox_SelectConnection.SelectedIndex == 0)
