@@ -879,6 +879,8 @@
             this.label_WarnClearArduinoSD = new System.Windows.Forms.Label();
             this.button_ClearArduinoSD = new System.Windows.Forms.Button();
             this.groupbox_CubesResets = new System.Windows.Forms.GroupBox();
+            this.groupBox_selectSC = new System.Windows.Forms.GroupBox();
+            this.label_selectSC = new System.Windows.Forms.Label();
             this.checkBox_RstSR = new CitirocUI.checkBox();
             this.checkBox_RstPA = new CitirocUI.checkBox();
             this.checkBox_RstReadReg = new CitirocUI.checkBox();
@@ -953,6 +955,7 @@
             this.tabPage_firmwareProtoCUBES.SuspendLayout();
             this.groupBox_clearArduinoSD.SuspendLayout();
             this.groupbox_CubesResets.SuspendLayout();
+            this.groupBox_selectSC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logoWeeroc)).BeginInit();
             this.tblPnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -1392,7 +1395,6 @@
             // 
             this.tabPage_slowControl.AllowDrop = true;
             this.tabPage_slowControl.BackColor = System.Drawing.Color.White;
-            this.tabPage_slowControl.Controls.Add(this.button_selectSC);
             this.tabPage_slowControl.Controls.Add(this.button_saveSC);
             this.tabPage_slowControl.Controls.Add(this.button_loadSC);
             this.tabPage_slowControl.Controls.Add(this.button_sendSC);
@@ -1411,7 +1413,7 @@
             // checkBox_sendToNVM
             //
             this.checkBox_sendToNVM.AutoSize = true;
-            this.checkBox_sendToNVM.Location = new System.Drawing.Point(450, 453);
+            this.checkBox_sendToNVM.Location = new System.Drawing.Point(554, 453);
             this.checkBox_sendToNVM.Name = "checkBox_sendToNVM";
             this.checkBox_sendToNVM.Size = new System.Drawing.Size(206, 28);
             this.checkBox_sendToNVM.Text = "Store configuration in NVM";
@@ -1419,13 +1421,11 @@
             // 
             // button_selectSC
             // 
-            this.button_selectSC.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_selectSC.FlatAppearance.BorderSize = 0;
-            this.button_selectSC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_selectSC.Location = new System.Drawing.Point(650, 449);
+            this.button_selectSC.BackColor = System.Drawing.SystemColors.Control;
+            this.button_selectSC.Location = new System.Drawing.Point(873, 25);
             this.button_selectSC.Name = "button_selectSC";
-            this.button_selectSC.Size = new System.Drawing.Size(100, 35);
-            this.button_selectSC.TabIndex = 12;
+            this.button_selectSC.Size = new System.Drawing.Size(150,28);
+            this.button_selectSC.TabIndex = 2;
             this.button_selectSC.Text = "Select NVM";
             this.button_selectSC.UseVisualStyleBackColor = false;
             this.button_selectSC.Click += new System.EventHandler(this.button_selectSC_Click);
@@ -11603,6 +11603,7 @@
             // 
             this.tabPage_firmwareProtoCUBES.Controls.Add(this.groupBox_clearArduinoSD);
             this.tabPage_firmwareProtoCUBES.Controls.Add(this.groupbox_CubesResets);
+            this.tabPage_firmwareProtoCUBES.Controls.Add(this.groupBox_selectSC);
             this.tabPage_firmwareProtoCUBES.Location = new System.Drawing.Point(4, 33);
             this.tabPage_firmwareProtoCUBES.Name = "tabPage_firmwareProtoCUBES";
             this.tabPage_firmwareProtoCUBES.Padding = new System.Windows.Forms.Padding(3);
@@ -11662,6 +11663,27 @@
             this.groupbox_CubesResets.TabIndex = 3;
             this.groupbox_CubesResets.TabStop = false;
             this.groupbox_CubesResets.Text = "Manual Resets";
+            // 
+            // groupBox_selectSC
+            // 
+            this.groupBox_selectSC.Controls.Add(this.label_selectSC);
+            this.groupBox_selectSC.Controls.Add(this.button_selectSC);
+            this.groupBox_selectSC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.groupBox_selectSC.Location = new System.Drawing.Point(4, 204);
+            this.groupBox_selectSC.Name = "groupBox_selectSC";
+            this.groupBox_selectSC.Size = new System.Drawing.Size(1035, 62);
+            this.groupBox_selectSC.TabIndex = 4;
+            this.groupBox_selectSC.TabStop = false;
+            this.groupBox_selectSC.Text = "Select configuration from NVM";
+            // 
+            // label_selectSC
+            // 
+            this.label_selectSC.AutoSize = true;
+            this.label_selectSC.Location = new System.Drawing.Point(6, 30);
+            this.label_selectSC.Name = "label_WarnClearArduinoSD";
+            this.label_selectSC.Size = new System.Drawing.Size(810, 18);
+            this.label_selectSC.TabIndex = 0;
+            this.label_selectSC.Text = "Select stored configuration to apply to NVM";
             // 
             // checkBox_RstSR
             // 
@@ -12013,6 +12035,8 @@
             this.groupBox_clearArduinoSD.PerformLayout();
             this.groupbox_CubesResets.ResumeLayout(false);
             this.groupbox_CubesResets.PerformLayout();
+            this.groupBox_selectSC.ResumeLayout(false);
+            this.groupBox_selectSC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logoWeeroc)).EndInit();
             this.tblPnlMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -12877,6 +12901,8 @@
         private System.Windows.Forms.TabPage tabPage_firmwareProtoCUBES;
         private checkBox checkBox_RstReadReg;
         private System.Windows.Forms.Label label_DataFile;
+        private System.Windows.Forms.GroupBox groupBox_selectSC;
+        private System.Windows.Forms.Label label_selectSC;
         private System.Windows.Forms.GroupBox groupBox_clearArduinoSD;
         private System.Windows.Forms.Label label_WarnClearArduinoSD;
         private System.Windows.Forms.Button button_ClearArduinoSD;

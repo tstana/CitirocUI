@@ -1883,6 +1883,9 @@ namespace CitirocUI
             button_sendSC.BackColor = Color.Gainsboro;
             button_sendSC.ForeColor = SystemColors.ControlText;
 
+            button_selectSC.BackColor = Color.Gainsboro;
+            button_selectSC.ForeColor = SystemColors.ControlText;
+
             button_sendProbes.BackColor = Color.Gainsboro;
             button_sendProbes.ForeColor = SystemColors.ControlText;
 

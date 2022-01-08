@@ -580,36 +580,10 @@ namespace CitirocUI
                 {
                     if (InputForm.InputBox("Select Config Number", "Config Number:", ref configNum) == DialogResult.OK)
                     {
-                        try
-                        {
-                            if (Convert.ToInt32(configNum, 10) > 255)
-                            {
-                                MessageBox.Show("Config number too large! Please choose a number below 255"
-                                + Environment.NewLine,
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
-                                configNum = configNum.PadLeft(8, '0');
-                                strSC += strRev(configNum);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Input of incorrect type!"
-                            + Environment.NewLine
-                            + Environment.NewLine
-                            + "Error message:"
-                            + Environment.NewLine
-                            + ex.Message,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        }
-                    }
+                        configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
+                        configNum = configNum.PadLeft(8, '0');
+                        strSC += strRev(configNum);
+                     }
                 }
                 else
                 {
@@ -644,46 +618,22 @@ namespace CitirocUI
 
             if (connectStatus != 1)
             {
-                    button_sendSC.BackColor = Color.LightCoral;
+                    button_selectSC.BackColor = Color.LightCoral;
                     tmrButtonColor.Enabled = true;
                     label_help.Text = "Please configure your connection.";
                     return;
             }
 
             if (InputForm.InputBox("Select Config Number on NVM", "Config Number:", ref configNum) == DialogResult.OK)
-            {
-                try
-                {
-                    if (Convert.ToInt32(configNum, 10) > 255)
-                    {
-                        MessageBox.Show("Config number too large! Please choose a number below 255"
-                        + Environment.NewLine,
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        byte[] citiConf = new byte[1];
-                        configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
-                        configNum = configNum.PadLeft(8, '0');
-                        uint intCmdTmp = Convert.ToUInt32(configNum, 2);
-                        citiConf[0] = Convert.ToByte(intCmdTmp);
-                        protoCubes.SendCommand(ProtoCubesSerial.Command.SelectNVMCitirocConf, citiConf);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Input of incorrect type!"
-                    + Environment.NewLine
-                    + Environment.NewLine
-                    + "Error message:"
-                    + Environment.NewLine
-                    + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                }
+            {   
+                byte[] citiConf = new byte[1];
+                configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
+                configNum = configNum.PadLeft(8, '0');
+                uint intCmdTmp = Convert.ToUInt32(configNum, 2);
+                citiConf[0] = Convert.ToByte(intCmdTmp);
+                protoCubes.SendCommand(ProtoCubesSerial.Command.SelectNVMCitirocConf, citiConf);
+                button_selectSC.BackColor = WeerocGreen;
+                tmrButtonColor.Enabled = true; 
             }
         }
 
@@ -1501,7 +1451,7 @@ namespace CitirocUI
         }
 
         private void button_loadSC_Click(object sender, EventArgs e)
-        {            
+        {
             OpenFileDialog ScLoadDialog = new OpenFileDialog();
             ScLoadDialog.Title = "Specify Data file";
             //DataLDialog.Filter = "TxT files|*.txt";

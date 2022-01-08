@@ -21,7 +21,7 @@ namespace CitirocUI
             Button buttonOk = new Button();
             Button buttonCancel = new Button();
 
-            form.Text = title + "!!!! TODO: Check that input value is <= 255 !!!!";
+            form.Text = title;
             label.Text = promptText;
             textBox.Text = value;
 
@@ -51,7 +51,37 @@ namespace CitirocUI
             form.CancelButton = buttonCancel;
 
             DialogResult dialogResult = form.ShowDialog();
-            value = textBox.Text;
+
+            try
+            {
+                if (Convert.ToInt32(textBox.Text, 10) > 255)
+                {
+                    MessageBox.Show("Config number too large! Please choose a number below 255"
+                    + Environment.NewLine,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                    dialogResult = DialogResult.Cancel;
+                }
+                else
+                {
+                    value = textBox.Text;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Input of incorrect type!"
+                        + Environment.NewLine
+                        + Environment.NewLine
+                        + "Error message:"
+                        + Environment.NewLine
+                        + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                dialogResult = DialogResult.Cancel;
+            }
+                
             return dialogResult;
         }
     }
