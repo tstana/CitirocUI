@@ -1271,7 +1271,7 @@ namespace CitirocUI
 
         private void button_selectSC_Click(object sender, EventArgs e)
         {
-            if (connectStatus != -1)
+            if (connectStatus != 1)
             {
                 button_selectSC.BackColor = Color.LightCoral;
                 tmrButtonColor.Enabled = true;
