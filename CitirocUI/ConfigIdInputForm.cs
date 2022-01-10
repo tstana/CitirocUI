@@ -33,7 +33,7 @@ namespace CitirocUI
             {
                 if (Convert.ToUInt32(textBox.Text, 10) > 255)
                 {
-                    label.Text = "Input too large! Must be below 255";
+                    label.Text = "Input too large, must be between 0-255";
                     AcceptButton.Enabled = false;
                 }
                 else
