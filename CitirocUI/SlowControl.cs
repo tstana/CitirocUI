@@ -567,7 +567,7 @@ namespace CitirocUI
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
-                if ((checkBox_sendToNVM.Checked == true) & (connectStatus != 1))
+                if ((checkBox_sendToNVM.Checked == true) && (connectStatus != 1))
                 {
                     button_sendSC.BackColor = Color.LightCoral;
                     tmrButtonColor.Enabled = true;

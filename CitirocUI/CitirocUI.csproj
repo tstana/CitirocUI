@@ -99,9 +99,6 @@
     <Compile Include="Citiroc.Designer.cs">
       <DependentUpon>Citiroc.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfigInputForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ConfigIdInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,9 +176,6 @@
     <Compile Include="USB.cs" />
     <EmbeddedResource Include="Citiroc.resx">
       <DependentUpon>Citiroc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConfigInputForm.resx">
-      <DependentUpon>ConfigInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigIdInputForm.resx">
       <DependentUpon>ConfigIdInputForm.cs</DependentUpon>
