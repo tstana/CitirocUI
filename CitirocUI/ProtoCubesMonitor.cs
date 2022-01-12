@@ -52,17 +52,17 @@ namespace CitirocUI
 
         private void button_Clear_Click(object sender, EventArgs e)
         {
-            textBox_timestamp.Text = "";
+            textBox_arduinoTime.Text = "";
             textBox_hitCountMPPC1.Text = "";
             textBox_hitCountMPPC2.Text = "";
             textBox_hitCountMPPC3.Text = "";
             textBox_hitCountOR32.Text = "";
-            textBox_voltageFromHVPS.Text = "";
-            textBox_currentFromHVPS.Text = "";
-            textBox_tempFromHVPS.Text = "";
-            textBox_hkadc_citi_temp.Text = "";
-            textBox_hkadc_current.Text = "";
-            textBox_hkadc_volt.Text = "";
+            textBox_hvpsVolt.Text = "";
+            textBox_hvpsCurr.Text = "";
+            textBox_hvpsTemp.Text = "";
+            textBox_hkadcCitiTemp.Text = "";
+            textBox_hkadcCurr.Text = "";
+            textBox_hkadcVolt.Text = "";
 
             rtxtMonitor.Clear();
         }
@@ -102,127 +102,189 @@ namespace CitirocUI
 
         private void ReqHK_DataReady(object sender, DataReadyEventArgs e)
         {
-            // Quit early if command is not REQ_HK!
+            // Quit early if command is not REQ_HK:
             if (e.Command != ProtoCubesSerial.Command.ReqHK)
                 return;
 
-            // 1. Handle the simple ones: the hit counts...
-            UInt32 timestamp = Convert.ToUInt32(System.Text.Encoding.ASCII.GetString(e.DataBytes, 11, 10));
 
-            byte[] ch0_hit_count = new byte[4];
-            byte[] ch16_hit_count = new byte[4];
-            byte[] ch31_hit_count = new byte[4];
-            byte[] or32_hit_count = new byte[4];
-            Array.Copy(e.DataBytes, 23, ch0_hit_count, 0, 4);
-            Array.Copy(e.DataBytes, 27, ch16_hit_count, 0, 4);
-            Array.Copy(e.DataBytes, 31, ch31_hit_count, 0, 4);
-            Array.Copy(e.DataBytes, 35, or32_hit_count, 0, 4);
+            ///
+            /// Step 1: Copy data bytes into local arrays
+            ///
+
+
+            /// Arduino timestamp, 10 chars after the text "Unix time: ", hence
+            /// offset should be 11:
+            int offset = 11;
+            int bytes = 10;
+            uint arduinoTime =
+                Convert.ToUInt32(Encoding.ASCII.GetString(e.DataBytes, offset, bytes));
+            offset += bytes;
+            offset += 2; // for the \r\n
+
+            /// CUBES timestamp, reset count and channel hit counters,
+            /// 4 bytes each:
+            bytes = 4;
+            byte[] cubes_time = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, cubes_time, 0, bytes);
+            offset += bytes;
 
             byte[] reset_count = new byte[4];
-            Array.Copy(e.DataBytes, 51, reset_count, 0, 4);
+            Array.Copy(e.DataBytes, offset, reset_count, 0, bytes);
+            offset += bytes;
 
-            byte[] hvps_cmds_sent = new byte[2];
-            Array.Copy(e.DataBytes, 55, hvps_cmds_sent, 0, 2);
-            byte[] hvps_cmds_acked = new byte[2];
-            Array.Copy(e.DataBytes, 57, hvps_cmds_acked, 0, 2);
-            byte[] hvps_cmds_rej = new byte[2];
-            Array.Copy(e.DataBytes, 59, hvps_cmds_rej, 0, 2);
+            byte[] ch0_hit_count = new byte[4];
+            Array.Copy(e.DataBytes, offset, ch0_hit_count, 0, bytes);
+            offset += bytes;
 
-            // Reverse arrays before conversion if on a little-endian machine
+            byte[] ch16_hit_count = new byte[4];
+            Array.Copy(e.DataBytes, offset, ch16_hit_count, 0, bytes);
+            offset += bytes;
+
+            byte[] ch31_hit_count = new byte[4];
+            Array.Copy(e.DataBytes, offset, ch31_hit_count, 0, bytes);
+            offset += bytes;
+
+            byte[] or32_hit_count = new byte[4];
+            Array.Copy(e.DataBytes, offset, or32_hit_count, 0, bytes);
+            offset += bytes;
+
+            // HVPS voltage, current, temperature and status:
+            bytes = 2;
+            byte[] hvps_volt = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hvps_volt, 0, bytes);
+            offset += bytes;
+
+            byte[] hvps_curr = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hvps_curr, 0, bytes);
+            offset += bytes;
+
+            byte[] hvps_temp = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hvps_temp, 0, bytes);
+            offset += bytes;
+
+            byte[] hvps_stat = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hvps_stat, 0, bytes);
+            offset += bytes;
+
+            // HVPS number of commands sent, acked and rejected:
+            byte[] hvps_cmds_sent = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hvps_cmds_sent, 0, bytes);
+            offset += bytes;
+
+            byte[] hvps_cmds_acked = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hvps_cmds_acked, 0, bytes);
+            offset += bytes;
+
+            byte[] hvps_cmds_rej = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hvps_cmds_rej, 0, bytes);
+            offset += bytes;
+
+            byte[] hvps_last_cmd_err = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hvps_last_cmd_err, 0, bytes);
+            offset += bytes;
+
+            // Finally, the on-board ADC readouts:
+            byte[] hkadc_batt_volt = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hkadc_batt_volt, 0, bytes);
+            offset += bytes;
+
+            byte[] hkadc_batt_curr = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hkadc_batt_curr, 0, bytes);
+            offset += bytes;
+
+            byte[] hkadc_citi_temp = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hkadc_citi_temp, 0, bytes);
+
+
+            ///
+            /// Step 2: Reverse arrays before conversion if we are on a
+            ///         little-endian machine
+            /// 
+
+
             if (BitConverter.IsLittleEndian)
             {
+                Array.Reverse(cubes_time);
+                Array.Reverse(reset_count);
                 Array.Reverse(ch0_hit_count);
                 Array.Reverse(ch16_hit_count);
                 Array.Reverse(ch31_hit_count);
                 Array.Reverse(or32_hit_count);
-                Array.Reverse(reset_count);
+                Array.Reverse(hvps_volt);
+                Array.Reverse(hvps_curr);
+                Array.Reverse(hvps_temp);
+                Array.Reverse(hvps_stat);
                 Array.Reverse(hvps_cmds_sent);
                 Array.Reverse(hvps_cmds_acked);
                 Array.Reverse(hvps_cmds_rej);
+                Array.Reverse(hvps_last_cmd_err);
+                Array.Reverse(hkadc_batt_volt);
+                Array.Reverse(hkadc_batt_curr);
+                Array.Reverse(hkadc_citi_temp);
             }
 
-            UInt32 hitCountMPPC1 = BitConverter.ToUInt32(ch0_hit_count, 0);
-            UInt32 hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_count, 0);
-            UInt32 hitCountMPPC3 = BitConverter.ToUInt32(ch31_hit_count, 0);
-            UInt32 hitCountOR32 = BitConverter.ToUInt32(or32_hit_count, 0);
 
-            UInt32 resetCount = BitConverter.ToUInt32(reset_count, 0);
+            ///
+            /// Step 3: Convert byte arrays to usable values
+            ///
 
-            UInt16 hvpsCmdsSent = BitConverter.ToUInt16(hvps_cmds_sent, 0);
-            UInt16 hvpsCmdsAcked = BitConverter.ToUInt16(hvps_cmds_acked, 0);
-            UInt16 hvpsCmdsRej = BitConverter.ToUInt16(hvps_cmds_rej, 0);
 
-            // 2. Now for the HVPS stuff... It is presented as ASCII characters
-            // by the HVPS, placed at particular offsets in the HK data stream.
-            // These characters need to be converted to a string, which then needs
-            // to be converted to a double representation before the conversion
-            // formula in the datasheet can be applied.
-            string s;
+            // CUBES timestamp and various counters:
+            /// TODO: CUBES timestamp...
+            uint resetCount = BitConverter.ToUInt32(reset_count, 0);
 
-            byte[] hvps_voltage = new byte[4];
-            Array.Copy(e.DataBytes, 39, hvps_voltage, 0, 4);
-            s = System.Text.Encoding.ASCII.GetString(hvps_voltage);
-            if (s == "\0\0\0\0")
-                s = "0000";
-            double voltageFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
-            voltageFromHVPS *= 1.812 * Math.Pow(10, -3);
+            uint hitCountMPPC1 = BitConverter.ToUInt32(ch0_hit_count, 0);
+            uint hitCountMPPC2 = BitConverter.ToUInt32(ch16_hit_count, 0);
+            uint hitCountMPPC3 = BitConverter.ToUInt32(ch31_hit_count, 0);
+            uint hitCountOR32 = BitConverter.ToUInt32(or32_hit_count, 0);
 
-            byte[] hvps_current = new byte[4];
-            Array.Copy(e.DataBytes, 43, hvps_current, 0, 4);
-            s = System.Text.Encoding.ASCII.GetString(hvps_current);
-            if (s == "\0\0\0\0")
-                s = "0000";
-            double currentFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
-            currentFromHVPS *= 5.194 * Math.Pow(10, -3);
+            /// Convert 16-bit values from HVPS to doubles using formulas from
+            /// the C11204-02 Command Reference Manual:
+            double hvpsVolt = Convert.ToDouble(
+                BitConverter.ToUInt16(hvps_volt, 0));
+            hvpsVolt *= 1.812 * Math.Pow(10, -3);
 
-            byte[] hvps_temp = new byte[4];
-            Array.Copy(e.DataBytes, 47, hvps_temp, 0, 4);
-            s = System.Text.Encoding.ASCII.GetString(hvps_temp);
-            if (s == "\0\0\0\0")
-                s = "0000";
-            double tempFromHVPS = Convert.ToDouble(Convert.ToUInt16(s, 16));
-            tempFromHVPS = (tempFromHVPS * 1.907 * Math.Pow(10, -5) - 1.035) /
+            double hvpsCurr = Convert.ToDouble(
+                BitConverter.ToUInt16(hvps_curr, 0));
+            hvpsCurr *= 5.194 * Math.Pow(10, -3);
+
+            double hvpsTemp = Convert.ToDouble(
+                BitConverter.ToUInt16(hvps_temp, 0));
+            hvpsTemp = (hvpsTemp * 1.907 * Math.Pow(10, -5) - 1.035) /
                            (-5.5 * Math.Pow(10, -3));
 
-            // 3. Handle the HK-ADC fields
+            // Other HVPS items:
+            uint hvpsCmdsSent = BitConverter.ToUInt16(hvps_cmds_sent, 0);
+            uint hvpsCmdsAcked = BitConverter.ToUInt16(hvps_cmds_acked, 0);
+            uint hvpsCmdsRej = BitConverter.ToUInt16(hvps_cmds_rej, 0);
 
-            byte[] hkadc_batt_voltage = new byte[4];
-            byte[] hkadc_batt_current = new byte[4];
-            byte[] hkadc_citi_temperature = new byte[4];
-            Array.Copy(e.DataBytes, 61, hkadc_batt_voltage, 0, 4);
-            Array.Copy(e.DataBytes, 65, hkadc_batt_current, 0, 4);
-            Array.Copy(e.DataBytes, 69, hkadc_citi_temperature, 0, 4);
+            // On-board ADC fields:
+            double hkadcVolt = Convert.ToDouble(
+                BitConverter.ToUInt16(hkadc_batt_volt, 0));
+            hkadcVolt = hkadcVolt * 2.0 * 8 / 1000;
 
-            s = System.Text.Encoding.UTF8.GetString(hkadc_batt_voltage);
-            if (s == "\0\0\0\0")
-                s = "0000";
-            UInt16 hkadc_volt = Convert.ToUInt16(s);
-            float volt_f = (float)(hkadc_volt * 2.0 * 8 / 1000);
-            Single hkadc_volt_f = (float)Math.Round(volt_f * 100f) / 100f;
+            double hkadcCurr = Convert.ToDouble(
+                BitConverter.ToUInt16(hkadc_batt_curr, 0));
+            hkadcCurr = hkadcCurr * 2.0 / 2500;
 
-            s = System.Text.Encoding.UTF8.GetString(hkadc_batt_current);
-            if (s == "\0\0\0\0")
-                s = "0000";
-            UInt16 hkadc_current = Convert.ToUInt16(s);
-            Single hkadc_current_f = (float)(hkadc_current * 2.0 / 2500);
+            double hkadcCitiTemp = Convert.ToDouble(
+                BitConverter.ToUInt16(hkadc_citi_temp, 0));
+            hkadcCitiTemp = hkadcCitiTemp * 2.0 / 1000;
+            hkadcCitiTemp = (2.7 - hkadcCitiTemp) / 8e-3;
 
-            s = System.Text.Encoding.UTF8.GetString(hkadc_citi_temperature);
-            if (s == "\0\0\0\0")
-                s = "0000";
-            UInt16 hkadc_citi_temp = Convert.ToUInt16(s);
-            float citi_temp_f = (float)(hkadc_citi_temp * 2.0 / 1000);
-            citi_temp_f = (float)((2.7 - citi_temp_f) / 8e-3);
-            Single hkadc_citi_temp_f = (float)Math.Round(citi_temp_f * 100f)/100f;
 
-            // 4. Apply the values into the text boxes; use the Control.Invoke()
-            //    method, to make sure the writing is done inside the original
-            //    UI thread
-            textBox_timestamp.Invoke(new EventHandler(
+            ///
+            /// Step 4: Apply the values into the text boxes; use the
+            ///         Control.Invoke() method to make sure the writing to
+            ///         text boxes is done inside the original UI thread.
+
+
+            textBox_arduinoTime.Invoke(new EventHandler(
                 delegate
                 {
                     DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                    DateTime time = epoch.AddSeconds(Convert.ToDouble(timestamp));
-                    textBox_timestamp.Text = time.ToString("hh:mm:ss tt") + " on " +
+                    DateTime time = epoch.AddSeconds(Convert.ToDouble(arduinoTime));
+                    textBox_arduinoTime.Text = time.ToString("hh:mm:ss tt") + " on " +
                         time.ToString("yyyy-MM-dd");
                 }
             ));
@@ -251,22 +313,22 @@ namespace CitirocUI
                     textBox_hitCountOR32.Text = hitCountOR32.ToString();
                 }
               ));
-            textBox_voltageFromHVPS.Invoke(new EventHandler(
+            textBox_hvpsVolt.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_voltageFromHVPS.Text = voltageFromHVPS.ToString("N3");
+                    textBox_hvpsVolt.Text = hvpsVolt.ToString("N3");
                 }
             ));
-            textBox_currentFromHVPS.Invoke(new EventHandler(
+            textBox_hvpsCurr.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_currentFromHVPS.Text = currentFromHVPS.ToString("N3");
+                    textBox_hvpsCurr.Text = hvpsCurr.ToString("N3");
                 }
             ));
-            textBox_tempFromHVPS.Invoke(new EventHandler(
+            textBox_hvpsTemp.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_tempFromHVPS.Text = tempFromHVPS.ToString("N3");
+                    textBox_hvpsTemp.Text = hvpsTemp.ToString("N3");
                 }
             ));
             textBox_ResetCount.Invoke(new EventHandler(
@@ -293,22 +355,22 @@ namespace CitirocUI
                     textBox_hvpsCmdsRej.Text = hvpsCmdsRej.ToString();
                 }
             ));
-            textBox_hkadc_volt.Invoke(new EventHandler(
+            textBox_hkadcVolt.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_hkadc_volt.Text = hkadc_volt_f.ToString();
+                    textBox_hkadcVolt.Text = hkadcVolt.ToString("N3");
                 }
             ));
-            textBox_hkadc_current.Invoke(new EventHandler(
+            textBox_hkadcCurr.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_hkadc_current.Text = hkadc_current_f.ToString();
+                    textBox_hkadcCurr.Text = hkadcCurr.ToString("N3");
                 }
             ));
-            textBox_hkadc_citi_temp.Invoke(new EventHandler(
+            textBox_hkadcCitiTemp.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_hkadc_citi_temp.Text = hkadc_citi_temp_f.ToString();
+                    textBox_hkadcCitiTemp.Text = hkadcCitiTemp.ToString("N3");
                 }
             ));
         }
