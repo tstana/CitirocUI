@@ -195,7 +195,7 @@
             this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC2);
             this.groupBox_HitRates.Controls.Add(this.label_hitCountMPPC3);
             this.groupBox_HitRates.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_HitRates.Location = new System.Drawing.Point(7, 169);
+            this.groupBox_HitRates.Location = new System.Drawing.Point(7, 244);
             this.groupBox_HitRates.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_HitRates.Name = "groupBox_HitRates";
             this.groupBox_HitRates.Padding = new System.Windows.Forms.Padding(4);
@@ -305,7 +305,7 @@
             this.groupBox_HvpsTelemetry.Controls.Add(this.label_Current);
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsCurr);
             this.groupBox_HvpsTelemetry.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_HvpsTelemetry.Location = new System.Drawing.Point(246, 169);
+            this.groupBox_HvpsTelemetry.Location = new System.Drawing.Point(253, 244);
             this.groupBox_HvpsTelemetry.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_HvpsTelemetry.Name = "groupBox_HvpsTelemetry";
             this.groupBox_HvpsTelemetry.Padding = new System.Windows.Forms.Padding(4);
@@ -422,7 +422,7 @@
             this.groupBox_HV.Controls.Add(this.groupBox_hvPersistent);
             this.groupBox_HV.Controls.Add(this.groupBox_hvTemporary);
             this.groupBox_HV.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_HV.Location = new System.Drawing.Point(7, 334);
+            this.groupBox_HV.Location = new System.Drawing.Point(7, 409);
             this.groupBox_HV.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_HV.Name = "groupBox_HV";
             this.groupBox_HV.Padding = new System.Windows.Forms.Padding(4);
@@ -921,7 +921,7 @@
             this.groupBox_HK_Adc.Controls.Add(this.label_hkadc_volt);
             this.groupBox_HK_Adc.Controls.Add(this.textBox_hkadcVolt);
             this.groupBox_HK_Adc.Controls.Add(this.groupBox3);
-            this.groupBox_HK_Adc.Location = new System.Drawing.Point(7, 599);
+            this.groupBox_HK_Adc.Location = new System.Drawing.Point(7, 156);
             this.groupBox_HK_Adc.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_HK_Adc.Name = "groupBox_HK_Adc";
             this.groupBox_HK_Adc.Padding = new System.Windows.Forms.Padding(4);
