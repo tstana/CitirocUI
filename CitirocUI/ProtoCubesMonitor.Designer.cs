@@ -82,7 +82,6 @@
             this.checkBox_HVON = new System.Windows.Forms.CheckBox();
             this.rtxtMonitor = new System.Windows.Forms.RichTextBox();
             this.buttonHelp = new System.Windows.Forms.Button();
-            this.button_Clear = new System.Windows.Forms.Button();
             this.tmrButtonColor = new System.Windows.Forms.Timer(this.components);
             this.groupBoxMonitor = new System.Windows.Forms.GroupBox();
             this.groupBox_HK_Adc = new System.Windows.Forms.GroupBox();
@@ -877,18 +876,6 @@
             this.buttonHelp.UseVisualStyleBackColor = true;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
-            // button_Clear
-            // 
-            this.button_Clear.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Clear.Location = new System.Drawing.Point(404, 673);
-            this.button_Clear.Margin = new System.Windows.Forms.Padding(4);
-            this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(105, 38);
-            this.button_Clear.TabIndex = 45;
-            this.button_Clear.Text = "Clear";
-            this.button_Clear.UseVisualStyleBackColor = true;
-            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
-            // 
             // tmrButtonColor
             // 
             this.tmrButtonColor.Interval = 500;
@@ -901,7 +888,6 @@
             this.groupBoxMonitor.Controls.Add(this.textBox_ResetCount);
             this.groupBoxMonitor.Controls.Add(this.buttonHelp);
             this.groupBoxMonitor.Controls.Add(this.button_readHK);
-            this.groupBoxMonitor.Controls.Add(this.button_Clear);
             this.groupBoxMonitor.Controls.Add(this.label_cubesTime);
             this.groupBoxMonitor.Controls.Add(this.label_arduinoTime);
             this.groupBoxMonitor.Controls.Add(this.label_ResetCount);
@@ -1261,7 +1247,6 @@
         private System.Windows.Forms.CheckBox checkBox_HVON;
         public System.Windows.Forms.RichTextBox rtxtMonitor;
         private System.Windows.Forms.Button buttonHelp;
-        private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Timer tmrButtonColor;
         private System.Windows.Forms.GroupBox groupBoxMonitor;
         private System.Windows.Forms.Label label_ConnStatus;
