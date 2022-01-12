@@ -202,7 +202,7 @@
             this.groupBox_HitRates.Size = new System.Drawing.Size(231, 157);
             this.groupBox_HitRates.TabIndex = 42;
             this.groupBox_HitRates.TabStop = false;
-            this.groupBox_HitRates.Text = "Channel Hit Rates";
+            this.groupBox_HitRates.Text = "Event Counters";
             // 
             // label_hitCountMPPC1
             // 
@@ -429,7 +429,7 @@
             this.groupBox_HV.Size = new System.Drawing.Size(520, 257);
             this.groupBox_HV.TabIndex = 43;
             this.groupBox_HV.TabStop = false;
-            this.groupBox_HV.Text = "HV settings";
+            this.groupBox_HV.Text = "HVPS Settings";
             // 
             // groupBox_hvPersistent
             // 
@@ -921,14 +921,14 @@
             this.groupBox_HK_Adc.Controls.Add(this.label_hkadc_volt);
             this.groupBox_HK_Adc.Controls.Add(this.textBox_hkadcVolt);
             this.groupBox_HK_Adc.Controls.Add(this.groupBox3);
-            this.groupBox_HK_Adc.Location = new System.Drawing.Point(7, 156);
+            this.groupBox_HK_Adc.Location = new System.Drawing.Point(7, 169);
             this.groupBox_HK_Adc.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_HK_Adc.Name = "groupBox_HK_Adc";
             this.groupBox_HK_Adc.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_HK_Adc.Size = new System.Drawing.Size(520, 67);
             this.groupBox_HK_Adc.TabIndex = 6;
             this.groupBox_HK_Adc.TabStop = false;
-            this.groupBox_HK_Adc.Text = "HK-ADC";
+            this.groupBox_HK_Adc.Text = "On-board ADC";
             // 
             // label_hkadc_citi_temp1
             // 
@@ -937,9 +937,9 @@
             this.label_hkadc_citi_temp1.Location = new System.Drawing.Point(328, 30);
             this.label_hkadc_citi_temp1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_hkadc_citi_temp1.Name = "label_hkadc_citi_temp1";
-            this.label_hkadc_citi_temp1.Size = new System.Drawing.Size(106, 18);
+            this.label_hkadc_citi_temp1.Size = new System.Drawing.Size(104, 18);
             this.label_hkadc_citi_temp1.TabIndex = 28;
-            this.label_hkadc_citi_temp1.Text = "Citi_temp (°C):";
+            this.label_hkadc_citi_temp1.Text = "Citiroc T. (°C):";
             // 
             // textBox_hkadcCitiTemp
             // 
