@@ -33,7 +33,7 @@
             this.textBox_ResetCount = new System.Windows.Forms.TextBox();
             this.textBox_arduinoTime = new System.Windows.Forms.TextBox();
             this.label_ResetCount = new System.Windows.Forms.Label();
-            this.label_timestamp = new System.Windows.Forms.Label();
+            this.label_arduinoTime = new System.Windows.Forms.Label();
             this.groupBox_HitRates = new System.Windows.Forms.GroupBox();
             this.label_hitCountMPPC1 = new System.Windows.Forms.Label();
             this.textBox_hitCountOR32 = new System.Windows.Forms.TextBox();
@@ -98,6 +98,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label_ConnStatus = new System.Windows.Forms.Label();
+            this.label_cubesTime = new System.Windows.Forms.Label();
+            this.textBox_cubesTime = new System.Windows.Forms.TextBox();
             this.groupBox_hkAdc = new System.Windows.Forms.GroupBox();
             this.label_hkadc_batt_volt = new System.Windows.Forms.Label();
             this.textBox_hkadc_batt_volt = new System.Windows.Forms.TextBox();
@@ -129,7 +131,7 @@
             // 
             this.button_readHK.BackColor = System.Drawing.SystemColors.Control;
             this.button_readHK.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_readHK.Location = new System.Drawing.Point(7, 26);
+            this.button_readHK.Location = new System.Drawing.Point(7, 21);
             this.button_readHK.Margin = new System.Windows.Forms.Padding(4);
             this.button_readHK.Name = "button_readHK";
             this.button_readHK.Size = new System.Drawing.Size(520, 42);
@@ -141,7 +143,7 @@
             // textBox_ResetCount
             // 
             this.textBox_ResetCount.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_ResetCount.Location = new System.Drawing.Point(299, 113);
+            this.textBox_ResetCount.Location = new System.Drawing.Point(299, 135);
             this.textBox_ResetCount.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_ResetCount.Name = "textBox_ResetCount";
             this.textBox_ResetCount.ReadOnly = true;
@@ -153,7 +155,7 @@
             // textBox_arduinoTime
             // 
             this.textBox_arduinoTime.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_arduinoTime.Location = new System.Drawing.Point(299, 82);
+            this.textBox_arduinoTime.Location = new System.Drawing.Point(299, 71);
             this.textBox_arduinoTime.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_arduinoTime.Name = "textBox_arduinoTime";
             this.textBox_arduinoTime.ReadOnly = true;
@@ -166,23 +168,23 @@
             // 
             this.label_ResetCount.AutoSize = true;
             this.label_ResetCount.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ResetCount.Location = new System.Drawing.Point(24, 116);
+            this.label_ResetCount.Location = new System.Drawing.Point(12, 138);
             this.label_ResetCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_ResetCount.Name = "label_ResetCount";
             this.label_ResetCount.Size = new System.Drawing.Size(91, 18);
             this.label_ResetCount.TabIndex = 3;
             this.label_ResetCount.Text = "Reset count:";
             // 
-            // label_timestamp
+            // label_arduinoTime
             // 
-            this.label_timestamp.AutoSize = true;
-            this.label_timestamp.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_timestamp.Location = new System.Drawing.Point(22, 85);
-            this.label_timestamp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_timestamp.Name = "label_timestamp";
-            this.label_timestamp.Size = new System.Drawing.Size(276, 18);
-            this.label_timestamp.TabIndex = 4;
-            this.label_timestamp.Text = "UTC timestamp of last telemetry packet:";
+            this.label_arduinoTime.AutoSize = true;
+            this.label_arduinoTime.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_arduinoTime.Location = new System.Drawing.Point(12, 74);
+            this.label_arduinoTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_arduinoTime.Name = "label_arduinoTime";
+            this.label_arduinoTime.Size = new System.Drawing.Size(243, 18);
+            this.label_arduinoTime.TabIndex = 4;
+            this.label_arduinoTime.Text = "UTC time (Arduino) on last readout:";
             // 
             // groupBox_HitRates
             // 
@@ -900,8 +902,10 @@
             this.groupBoxMonitor.Controls.Add(this.buttonHelp);
             this.groupBoxMonitor.Controls.Add(this.button_readHK);
             this.groupBoxMonitor.Controls.Add(this.button_Clear);
-            this.groupBoxMonitor.Controls.Add(this.label_timestamp);
+            this.groupBoxMonitor.Controls.Add(this.label_cubesTime);
+            this.groupBoxMonitor.Controls.Add(this.label_arduinoTime);
             this.groupBoxMonitor.Controls.Add(this.label_ResetCount);
+            this.groupBoxMonitor.Controls.Add(this.textBox_cubesTime);
             this.groupBoxMonitor.Controls.Add(this.groupBox_HV);
             this.groupBoxMonitor.Controls.Add(this.textBox_arduinoTime);
             this.groupBoxMonitor.Controls.Add(this.groupBox_HvpsTelemetry);
@@ -1090,6 +1094,29 @@
             this.label_ConnStatus.TabIndex = 47;
             this.label_ConnStatus.Text = "label_ConnStatus";
             // 
+            // label_cubesTime
+            // 
+            this.label_cubesTime.AutoSize = true;
+            this.label_cubesTime.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_cubesTime.Location = new System.Drawing.Point(12, 106);
+            this.label_cubesTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_cubesTime.Name = "label_cubesTime";
+            this.label_cubesTime.Size = new System.Drawing.Size(239, 18);
+            this.label_cubesTime.TabIndex = 4;
+            this.label_cubesTime.Text = "UTC time (CUBES) on last readout:";
+            // 
+            // textBox_cubesTime
+            // 
+            this.textBox_cubesTime.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_cubesTime.Location = new System.Drawing.Point(299, 103);
+            this.textBox_cubesTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_cubesTime.Name = "textBox_cubesTime";
+            this.textBox_cubesTime.ReadOnly = true;
+            this.textBox_cubesTime.Size = new System.Drawing.Size(221, 26);
+            this.textBox_cubesTime.TabIndex = 6;
+            this.textBox_cubesTime.TabStop = false;
+            this.textBox_cubesTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // groupBox_hkAdc
             // 
             this.groupBox_hkAdc.Location = new System.Drawing.Point(0, 0);
@@ -1190,7 +1217,7 @@
         private System.Windows.Forms.TextBox textBox_ResetCount;
         private System.Windows.Forms.TextBox textBox_arduinoTime;
         private System.Windows.Forms.Label label_ResetCount;
-        private System.Windows.Forms.Label label_timestamp;
+        private System.Windows.Forms.Label label_arduinoTime;
         private System.Windows.Forms.GroupBox groupBox_HitRates;
         private System.Windows.Forms.Label label_hitCountMPPC1;
         private System.Windows.Forms.TextBox textBox_hitCountOR32;
@@ -1262,5 +1289,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label label_cubesTime;
+        private System.Windows.Forms.TextBox textBox_cubesTime;
     }
 }

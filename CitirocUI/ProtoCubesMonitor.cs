@@ -230,7 +230,8 @@ namespace CitirocUI
 
 
             // CUBES timestamp and various counters:
-            /// TODO: CUBES timestamp...
+            uint cubesTime = BitConverter.ToUInt32(cubes_time, 0);
+
             uint resetCount = BitConverter.ToUInt32(reset_count, 0);
 
             uint hitCountMPPC1 = BitConverter.ToUInt32(ch0_hit_count, 0);
@@ -285,6 +286,16 @@ namespace CitirocUI
                     DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                     DateTime time = epoch.AddSeconds(Convert.ToDouble(arduinoTime));
                     textBox_arduinoTime.Text = time.ToString("hh:mm:ss tt") + " on " +
+                        time.ToString("yyyy-MM-dd");
+                }
+            ));
+
+            textBox_cubesTime.Invoke(new EventHandler(
+                delegate
+                {
+                    DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                    DateTime time = epoch.AddSeconds(Convert.ToDouble(cubesTime));
+                    textBox_cubesTime.Text = time.ToString("hh:mm:ss tt") + " on " +
                         time.ToString("yyyy-MM-dd");
                 }
             ));
