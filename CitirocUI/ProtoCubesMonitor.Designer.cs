@@ -81,7 +81,6 @@
             this.label140 = new System.Windows.Forms.Label();
             this.checkBox_HVON = new System.Windows.Forms.CheckBox();
             this.rtxtMonitor = new System.Windows.Forms.RichTextBox();
-            this.buttonHelp = new System.Windows.Forms.Button();
             this.tmrButtonColor = new System.Windows.Forms.Timer(this.components);
             this.groupBoxMonitor = new System.Windows.Forms.GroupBox();
             this.groupBox_HK_Adc = new System.Windows.Forms.GroupBox();
@@ -864,18 +863,6 @@
             this.rtxtMonitor.TabStop = false;
             this.rtxtMonitor.Text = "";
             // 
-            // buttonHelp
-            // 
-            this.buttonHelp.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHelp.Location = new System.Drawing.Point(357, 680);
-            this.buttonHelp.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(24, 31);
-            this.buttonHelp.TabIndex = 46;
-            this.buttonHelp.Text = "?";
-            this.buttonHelp.UseVisualStyleBackColor = true;
-            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
-            // 
             // tmrButtonColor
             // 
             this.tmrButtonColor.Interval = 500;
@@ -886,7 +873,6 @@
             this.groupBoxMonitor.Controls.Add(this.groupBox_HK_Adc);
             this.groupBoxMonitor.Controls.Add(this.label_ConnStatus);
             this.groupBoxMonitor.Controls.Add(this.textBox_ResetCount);
-            this.groupBoxMonitor.Controls.Add(this.buttonHelp);
             this.groupBoxMonitor.Controls.Add(this.button_readHK);
             this.groupBoxMonitor.Controls.Add(this.label_cubesTime);
             this.groupBoxMonitor.Controls.Add(this.label_arduinoTime);
@@ -1074,9 +1060,9 @@
             // label_ConnStatus
             // 
             this.label_ConnStatus.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ConnStatus.Location = new System.Drawing.Point(24, 687);
+            this.label_ConnStatus.Location = new System.Drawing.Point(7, 687);
             this.label_ConnStatus.Name = "label_ConnStatus";
-            this.label_ConnStatus.Size = new System.Drawing.Size(306, 18);
+            this.label_ConnStatus.Size = new System.Drawing.Size(513, 18);
             this.label_ConnStatus.TabIndex = 47;
             this.label_ConnStatus.Text = "label_ConnStatus";
             // 
@@ -1246,7 +1232,6 @@
         private System.Windows.Forms.Label label140;
         private System.Windows.Forms.CheckBox checkBox_HVON;
         public System.Windows.Forms.RichTextBox rtxtMonitor;
-        private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Timer tmrButtonColor;
         private System.Windows.Forms.GroupBox groupBoxMonitor;
         private System.Windows.Forms.Label label_ConnStatus;
