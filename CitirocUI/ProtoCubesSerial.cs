@@ -428,10 +428,10 @@ namespace CitirocUI
              *          Total: 26
              *      HK:
              *          Unix time: 0123456789\r\n (23 bytes)
-             *          Data (50 bytes)
+             *          Data (46 bytes)
              *          \r\n (2 bytes)
              *          ---
-             *          Total: 75
+             *          Total: 71
              *      DAQ:
              *          Unix time: 0123456789\r\n (23 bytes)
              *          Histo header (256 bytes)
@@ -446,7 +446,7 @@ namespace CitirocUI
                     commandReplyDataLen = 55;
                     break;
                 case Command.ReqHK:
-                    commandReplyDataLen = 75;
+                    commandReplyDataLen = 71;
                     break;
                 case Command.ReqStatus:
                     commandReplyDataLen = 26;
