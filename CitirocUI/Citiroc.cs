@@ -1839,7 +1839,7 @@ namespace CitirocUI
         {
             byte[] calibconfdata = new byte[4];
 
-            calibconfdata = BitConverter.GetBytes((int)(50000000 / numericUpDown_CalibPulseFreq.Value));
+            calibconfdata = BitConverter.GetBytes((int)(100000000 / numericUpDown_CalibPulseFreq.Value));
 
             if (BitConverter.IsLittleEndian)
             {
