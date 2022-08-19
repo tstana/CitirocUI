@@ -10115,9 +10115,19 @@
             // 
             // numericUpDown_CalibPulseFreq
             // 
+            this.numericUpDown_CalibPulseFreq.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.numericUpDown_CalibPulseFreq.Location = new System.Drawing.Point(198, 226);
             this.numericUpDown_CalibPulseFreq.Maximum = new decimal(new int[] {
-            100000000,
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_CalibPulseFreq.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -10125,7 +10135,7 @@
             this.numericUpDown_CalibPulseFreq.Size = new System.Drawing.Size(151, 32);
             this.numericUpDown_CalibPulseFreq.TabIndex = 21;
             this.numericUpDown_CalibPulseFreq.Value = new decimal(new int[] {
-            1,
+            1000,
             0,
             0,
             0});
