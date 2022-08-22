@@ -254,6 +254,8 @@ namespace CitirocUI
             hvpsTemp = (hvpsTemp * 1.907 * Math.Pow(10, -5) - 1.035) /
                            (-5.5 * Math.Pow(10, -3));
 
+            UInt16 hvpsStatus = BitConverter.ToUInt16(hvps_stat, 0);
+
             // Other HVPS items:
             uint hvpsCmdsSent = BitConverter.ToUInt16(hvps_cmds_sent, 0);
             uint hvpsCmdsAcked = BitConverter.ToUInt16(hvps_cmds_acked, 0);
@@ -340,6 +342,12 @@ namespace CitirocUI
                 delegate
                 {
                     textBox_hvpsTemp.Text = hvpsTemp.ToString("N3");
+                }
+            ));
+            textBox_hvpsStatus.Invoke(new EventHandler(
+                delegate
+                {
+                    textBox_hvpsStatus.Text = "0x" + hvpsStatus.ToString("X");
                 }
             ));
             textBox_ResetCount.Invoke(new EventHandler(
