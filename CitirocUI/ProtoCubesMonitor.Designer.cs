@@ -105,6 +105,8 @@
             this.textBox_hkadc_batt_current = new System.Windows.Forms.TextBox();
             this.label_hkadc_citi_temp = new System.Windows.Forms.Label();
             this.textBox_hkadc_cititemp = new System.Windows.Forms.TextBox();
+            this.label_hvpsStatus = new System.Windows.Forms.Label();
+            this.textBox_hvpsStatus = new System.Windows.Forms.TextBox();
             this.groupBox_HitRates.SuspendLayout();
             this.groupBox_HvpsTelemetry.SuspendLayout();
             this.groupBox_HV.SuspendLayout();
@@ -302,7 +304,9 @@
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsCmdsRej);
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsTemp);
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsVolt);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.label_hvpsStatus);
             this.groupBox_HvpsTelemetry.Controls.Add(this.label_Current);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsStatus);
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsCurr);
             this.groupBox_HvpsTelemetry.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_HvpsTelemetry.Location = new System.Drawing.Point(253, 244);
@@ -320,9 +324,9 @@
             this.label_Voltage.Location = new System.Drawing.Point(8, 31);
             this.label_Voltage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Voltage.Name = "label_Voltage";
-            this.label_Voltage.Size = new System.Drawing.Size(87, 18);
+            this.label_Voltage.Size = new System.Drawing.Size(58, 18);
             this.label_Voltage.TabIndex = 15;
-            this.label_Voltage.Text = "Voltage (V):";
+            this.label_Voltage.Text = "Volt.(V)";
             // 
             // label142
             // 
@@ -337,12 +341,12 @@
             // label_Temperature
             // 
             this.label_Temperature.AutoSize = true;
-            this.label_Temperature.Location = new System.Drawing.Point(8, 95);
+            this.label_Temperature.Location = new System.Drawing.Point(8, 63);
             this.label_Temperature.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Temperature.Name = "label_Temperature";
-            this.label_Temperature.Size = new System.Drawing.Size(132, 18);
+            this.label_Temperature.Size = new System.Drawing.Size(46, 18);
             this.label_Temperature.TabIndex = 2;
-            this.label_Temperature.Text = "Temperature (°C):";
+            this.label_Temperature.Text = "T(°C)";
             // 
             // textBox_hvpsCmdsSent
             // 
@@ -350,7 +354,7 @@
             this.textBox_hvpsCmdsSent.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hvpsCmdsSent.Name = "textBox_hvpsCmdsSent";
             this.textBox_hvpsCmdsSent.ReadOnly = true;
-            this.textBox_hvpsCmdsSent.Size = new System.Drawing.Size(56, 26);
+            this.textBox_hvpsCmdsSent.Size = new System.Drawing.Size(63, 26);
             this.textBox_hvpsCmdsSent.TabIndex = 3;
             this.textBox_hvpsCmdsSent.TabStop = false;
             this.textBox_hvpsCmdsSent.Text = "Sent";
@@ -379,41 +383,41 @@
             // 
             // textBox_hvpsTemp
             // 
-            this.textBox_hvpsTemp.Location = new System.Drawing.Point(158, 92);
+            this.textBox_hvpsTemp.Location = new System.Drawing.Point(63, 58);
             this.textBox_hvpsTemp.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hvpsTemp.Name = "textBox_hvpsTemp";
             this.textBox_hvpsTemp.ReadOnly = true;
-            this.textBox_hvpsTemp.Size = new System.Drawing.Size(109, 26);
+            this.textBox_hvpsTemp.Size = new System.Drawing.Size(55, 26);
             this.textBox_hvpsTemp.TabIndex = 3;
             this.textBox_hvpsTemp.TabStop = false;
             // 
             // textBox_hvpsVolt
             // 
-            this.textBox_hvpsVolt.Location = new System.Drawing.Point(158, 28);
+            this.textBox_hvpsVolt.Location = new System.Drawing.Point(63, 26);
             this.textBox_hvpsVolt.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hvpsVolt.Name = "textBox_hvpsVolt";
             this.textBox_hvpsVolt.ReadOnly = true;
-            this.textBox_hvpsVolt.Size = new System.Drawing.Size(109, 26);
+            this.textBox_hvpsVolt.Size = new System.Drawing.Size(55, 26);
             this.textBox_hvpsVolt.TabIndex = 16;
             this.textBox_hvpsVolt.TabStop = false;
             // 
             // label_Current
             // 
             this.label_Current.AutoSize = true;
-            this.label_Current.Location = new System.Drawing.Point(8, 63);
+            this.label_Current.Location = new System.Drawing.Point(137, 31);
             this.label_Current.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Current.Name = "label_Current";
-            this.label_Current.Size = new System.Drawing.Size(100, 18);
+            this.label_Current.Size = new System.Drawing.Size(74, 18);
             this.label_Current.TabIndex = 17;
-            this.label_Current.Text = "Current (mA):";
+            this.label_Current.Text = "Curr.(mA)";
             // 
             // textBox_hvpsCurr
             // 
-            this.textBox_hvpsCurr.Location = new System.Drawing.Point(158, 60);
+            this.textBox_hvpsCurr.Location = new System.Drawing.Point(211, 27);
             this.textBox_hvpsCurr.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_hvpsCurr.Name = "textBox_hvpsCurr";
             this.textBox_hvpsCurr.ReadOnly = true;
-            this.textBox_hvpsCurr.Size = new System.Drawing.Size(109, 26);
+            this.textBox_hvpsCurr.Size = new System.Drawing.Size(55, 26);
             this.textBox_hvpsCurr.TabIndex = 18;
             this.textBox_hvpsCurr.TabStop = false;
             // 
@@ -454,7 +458,7 @@
             this.groupBox_hvPersistent.Size = new System.Drawing.Size(505, 149);
             this.groupBox_hvPersistent.TabIndex = 1;
             this.groupBox_hvPersistent.TabStop = false;
-            this.groupBox_hvPersistent.Text = "Persistent (set temperature correction factor)";
+            this.groupBox_hvPersistent.Text = "Persistent (set to HVPS non-volatile memory)";
             // 
             // numUpDown_dt2
             // 
@@ -1139,6 +1143,27 @@
             this.textBox_hkadc_cititemp.Size = new System.Drawing.Size(100, 20);
             this.textBox_hkadc_cititemp.TabIndex = 0;
             // 
+            // label_hvpsStatus
+            // 
+            this.label_hvpsStatus.AutoSize = true;
+            this.label_hvpsStatus.Location = new System.Drawing.Point(137, 63);
+            this.label_hvpsStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_hvpsStatus.Name = "label_hvpsStatus";
+            this.label_hvpsStatus.Size = new System.Drawing.Size(54, 18);
+            this.label_hvpsStatus.TabIndex = 17;
+            this.label_hvpsStatus.Text = "Status:";
+            // 
+            // textBox_hvpsStatus
+            // 
+            this.textBox_hvpsStatus.Location = new System.Drawing.Point(199, 60);
+            this.textBox_hvpsStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_hvpsStatus.Name = "textBox_hvpsStatus";
+            this.textBox_hvpsStatus.ReadOnly = true;
+            this.textBox_hvpsStatus.Size = new System.Drawing.Size(68, 26);
+            this.textBox_hvpsStatus.TabIndex = 18;
+            this.textBox_hvpsStatus.TabStop = false;
+            this.textBox_hvpsStatus.Text = "0x";
+            // 
             // ProtoCubesMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -1261,5 +1286,7 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label_cubesTime;
         private System.Windows.Forms.TextBox textBox_cubesTime;
+        private System.Windows.Forms.Label label_hvpsStatus;
+        private System.Windows.Forms.TextBox textBox_hvpsStatus;
     }
 }
