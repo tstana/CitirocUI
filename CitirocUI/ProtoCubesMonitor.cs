@@ -272,6 +272,8 @@ namespace CitirocUI
 
             UInt16 hvpsStatus = BitConverter.ToUInt16(hvps_stat, 0);
 
+            UInt16 hvpsLastCmdErr = BitConverter.ToUInt16(hvps_last_cmd_err, 0);
+
             // Other HVPS items:
             uint hvpsCmdsSent = BitConverter.ToUInt16(hvps_cmds_sent, 0);
             uint hvpsCmdsAcked = BitConverter.ToUInt16(hvps_cmds_acked, 0);
@@ -388,6 +390,112 @@ namespace CitirocUI
                 delegate
                 {
                     textBox_hvpsCmdsRej.Text = hvpsCmdsRej.ToString();
+                    string t = "Number of commands rejected by the HVPS module";
+
+                    try
+                    {
+                        if (hvpsCmdsRej > 0)
+                        {
+                            t += Environment.NewLine;
+                            t += Environment.NewLine;
+                            t += "Last command to cause error: ";
+                            UInt16 cmd = (UInt16)((hvpsLastCmdErr & 0xff00) >> 8);
+                            switch (cmd)
+                            {
+                                case 0:
+                                    t += "HST";
+                                    break;
+                                case 1:
+                                    t += "HRT";
+                                    break;
+                                case 2:
+                                    t += "HPO";
+                                    break;
+                                case 3:
+                                    t += "HGS";
+                                    break;
+                                case 4:
+                                    t += "HGV";
+                                    break;
+                                case 5:
+                                    t += "HGC";
+                                    break;
+                                case 6:
+                                    t += "HGT";
+                                    break;
+                                case 7:
+                                    t += "HFI";
+                                    break;
+                                case 8:
+                                    t += "HGN";
+                                    break;
+                                case 9:
+                                    t += "HOF";
+                                    break;
+                                case 10:
+                                    t += "HON";
+                                    break;
+                                case 11:
+                                    t += "HRE";
+                                    break;
+                                case 12:
+                                    t += "HCM";
+                                    break;
+                                case 13:
+                                    t += "HSC";
+                                    break;
+                                case 14:
+                                    t += "HRC";
+                                    break;
+                                case 15:
+                                    t += "HBV";
+                                    break;
+                                default:
+                                    t += "Invalid!";
+                                    break;
+                            }
+                            t += "(" + cmd.ToString() + ")";
+
+                            t += Environment.NewLine;
+                            t += "Error: ";
+                            UInt16 err = (UInt16)(hvpsLastCmdErr & 0xff);
+                            switch (err)
+                            {
+                                case 1:
+                                    t += "UART communication error";
+                                    break;
+                                case 2:
+                                    t += "Timeout error";
+                                    break;
+                                case 3:
+                                    t += "Syntax error";
+                                    break;
+                                case 4:
+                                    t += "Checksum error";
+                                    break;
+                                case 5:
+                                    t += "Command error";
+                                    break;
+                                case 6:
+                                    t += "Parameter error";
+                                    break;
+                                case 7:
+                                    t += "Parameter size error";
+                                    break;
+                                default:
+                                    t += "Invalid!";
+                                    break;
+                            }
+                            t += "(" + err.ToString() + ")";
+
+                            t += Environment.NewLine;
+                            t += Environment.NewLine;
+                            t += "See C11204-02 Command Reference Manual for details."
+                        }
+                    }
+                    catch { /* pass-through */ }
+
+                    tooltip.SetToolTip(textBox_hvpsCmdsRej, t);
                 }
             ));
             textBox_hkadcVolt.Invoke(new EventHandler(
