@@ -52,7 +52,9 @@
             this.textBox_hvpsCmdsRej = new System.Windows.Forms.TextBox();
             this.textBox_hvpsTemp = new System.Windows.Forms.TextBox();
             this.textBox_hvpsVolt = new System.Windows.Forms.TextBox();
+            this.label_hvpsStatus = new System.Windows.Forms.Label();
             this.label_Current = new System.Windows.Forms.Label();
+            this.textBox_hvpsStatus = new System.Windows.Forms.TextBox();
             this.textBox_hvpsCurr = new System.Windows.Forms.TextBox();
             this.groupBox_HV = new System.Windows.Forms.GroupBox();
             this.groupBox_hvPersistent = new System.Windows.Forms.GroupBox();
@@ -105,8 +107,7 @@
             this.textBox_hkadc_batt_current = new System.Windows.Forms.TextBox();
             this.label_hkadc_citi_temp = new System.Windows.Forms.Label();
             this.textBox_hkadc_cititemp = new System.Windows.Forms.TextBox();
-            this.label_hvpsStatus = new System.Windows.Forms.Label();
-            this.textBox_hvpsStatus = new System.Windows.Forms.TextBox();
+            this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox_HitRates.SuspendLayout();
             this.groupBox_HvpsTelemetry.SuspendLayout();
             this.groupBox_HV.SuspendLayout();
@@ -401,6 +402,16 @@
             this.textBox_hvpsVolt.TabIndex = 16;
             this.textBox_hvpsVolt.TabStop = false;
             // 
+            // label_hvpsStatus
+            // 
+            this.label_hvpsStatus.AutoSize = true;
+            this.label_hvpsStatus.Location = new System.Drawing.Point(137, 63);
+            this.label_hvpsStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_hvpsStatus.Name = "label_hvpsStatus";
+            this.label_hvpsStatus.Size = new System.Drawing.Size(54, 18);
+            this.label_hvpsStatus.TabIndex = 17;
+            this.label_hvpsStatus.Text = "Status:";
+            // 
             // label_Current
             // 
             this.label_Current.AutoSize = true;
@@ -410,6 +421,18 @@
             this.label_Current.Size = new System.Drawing.Size(74, 18);
             this.label_Current.TabIndex = 17;
             this.label_Current.Text = "Curr.(mA)";
+            // 
+            // textBox_hvpsStatus
+            // 
+            this.textBox_hvpsStatus.Location = new System.Drawing.Point(199, 60);
+            this.textBox_hvpsStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_hvpsStatus.Name = "textBox_hvpsStatus";
+            this.textBox_hvpsStatus.ReadOnly = true;
+            this.textBox_hvpsStatus.Size = new System.Drawing.Size(68, 26);
+            this.textBox_hvpsStatus.TabIndex = 18;
+            this.textBox_hvpsStatus.TabStop = false;
+            this.textBox_hvpsStatus.Text = "0x";
+            this.textBox_hvpsStatus.MouseHover += new System.EventHandler(this.textBox_hvpsStatus_MouseHover);
             // 
             // textBox_hvpsCurr
             // 
@@ -1143,27 +1166,6 @@
             this.textBox_hkadc_cititemp.Size = new System.Drawing.Size(100, 20);
             this.textBox_hkadc_cititemp.TabIndex = 0;
             // 
-            // label_hvpsStatus
-            // 
-            this.label_hvpsStatus.AutoSize = true;
-            this.label_hvpsStatus.Location = new System.Drawing.Point(137, 63);
-            this.label_hvpsStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_hvpsStatus.Name = "label_hvpsStatus";
-            this.label_hvpsStatus.Size = new System.Drawing.Size(54, 18);
-            this.label_hvpsStatus.TabIndex = 17;
-            this.label_hvpsStatus.Text = "Status:";
-            // 
-            // textBox_hvpsStatus
-            // 
-            this.textBox_hvpsStatus.Location = new System.Drawing.Point(199, 60);
-            this.textBox_hvpsStatus.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hvpsStatus.Name = "textBox_hvpsStatus";
-            this.textBox_hvpsStatus.ReadOnly = true;
-            this.textBox_hvpsStatus.Size = new System.Drawing.Size(68, 26);
-            this.textBox_hvpsStatus.TabIndex = 18;
-            this.textBox_hvpsStatus.TabStop = false;
-            this.textBox_hvpsStatus.Text = "0x";
-            // 
             // ProtoCubesMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -1288,5 +1290,6 @@
         private System.Windows.Forms.TextBox textBox_cubesTime;
         private System.Windows.Forms.Label label_hvpsStatus;
         private System.Windows.Forms.TextBox textBox_hvpsStatus;
+        private System.Windows.Forms.ToolTip tooltip;
     }
 }

@@ -21,6 +21,22 @@ namespace CitirocUI
             this.protoCubes.MonitorActive = true;
             this.protoCubes.DisplayWindow = SerialMonitorTextBox;
             this.protoCubes.DataReadyEvent += ReqHK_DataReady;
+
+            tooltip.SetToolTip(textBox_arduinoTime, "UTC time on Arduino OBC Simulator");
+            tooltip.SetToolTip(textBox_cubesTime, "UTC time on CUBES PCB");
+            tooltip.SetToolTip(textBox_ResetCount, "Number of resets of the CUBES PCB");
+            tooltip.SetToolTip(textBox_hitCountMPPC1, "Number of events above threshold on MPPC1");
+            tooltip.SetToolTip(textBox_hitCountMPPC1, "Number of events above threshold on MPPC2");
+            tooltip.SetToolTip(textBox_hitCountMPPC1, "Number of events above threshold on MPPC3");
+            tooltip.SetToolTip(textBox_hitCountOR32, "Number of events above ASIC-wide (OR32) threshold");
+            tooltip.SetToolTip(textBox_hkadcCitiTemp, "Temperature measured on the Citiroc ASIC");
+            tooltip.SetToolTip(textBox_hkadcCurr, "Current measured at CUBES PCB input");
+            tooltip.SetToolTip(textBox_hkadcVolt, "Voltage measured at CUBES PCB input");
+            tooltip.SetToolTip(textBox_hvpsCmdsSent, "Number of commands sent to the HVPS module");
+            tooltip.SetToolTip(textBox_hvpsCmdsAcked, "Number of commands acknowledged (accepted) by the HVPS module");
+            tooltip.SetToolTip(textBox_hvpsCmdsRej, "Number of commands rejected by the HVPS module");
+            tooltip.SetToolTip(textBox_hvpsCurr, "Current at HVPS module output");
+            tooltip.SetToolTip(textBox_hvpsVolt, "Voltage at HVPS module output");
         }
 
         private int connectStatus;
@@ -550,6 +566,117 @@ namespace CitirocUI
              "\r\n" +
              "Press \"Clear\" to clear monitor contents.";
             MessageBox.Show(helpString, "Help");
+        }
+
+        private void textBox_hvpsStatus_MouseHover(object sender, EventArgs e)
+        {
+            string t = "HVPS module status";
+
+            try
+            {
+                UInt16 stat = Convert.ToUInt16(textBox_hvpsStatus.Text.Substring(2), 16);
+
+                t += Environment.NewLine;
+                if ((stat & 0x0001) == 0)
+                {
+                    t += "bit 0: 0 (High Voltage Output: OFF)";
+                }
+                else
+                {
+                    t += "bit 0: 1 (High Voltage Output: ON)";
+                }
+                t += Environment.NewLine;
+                if ((stat & 0x0002) == 0)
+                {
+                    t += "bit 1: 0 (Over-current protection: OFF)";
+                }
+                else
+                {
+                    t += "bit 1: 1 (Over-current protection: ON)";
+                }
+                t += Environment.NewLine;
+                if ((stat & 0x0004) == 0)
+                {
+                    t += "bit 2: 0 (Output current value: Within spec.)";
+                }
+                else
+                {
+                    t += "bit 2: 1 (Output current value: Outside spec.)";
+                }
+                t += Environment.NewLine;
+                if ((stat & 0x0008) == 0)
+                {
+                    t += "bit 3: 0 (Temperature sensor: Disconnected)";
+                }
+                else
+                {
+                    t += "bit 3: 1 (Temperature sensor: Connected)";
+                }
+                t += Environment.NewLine;
+                if ((stat & 0x0010) == 0)
+                {
+                    t += "bit 4: 0 (Operating temperature: Within spec.)";
+                }
+                else
+                {
+                    t += "bit 4: 1 (Operating temperature: Outside spec.)";
+                }
+                t += Environment.NewLine;
+                if ((stat & 0x0040) == 0)
+                {
+                    t += "bit 6: 0 (Temperature correction: Enabled)";
+                }
+                else
+                {
+                    t += "bit 6: 1 (Temperature correction: Disabled)";
+                }
+                t += Environment.NewLine;
+                if ((stat & 0x0400) == 0)
+                {
+                    t += "bit 10: 0 (Automatic restoration: OFF)";
+                }
+                else
+                {
+                    t += "bit 10: 1 (Automatic restoration: ON)";
+                }
+                t += Environment.NewLine;
+                if ((stat & 0x0800) == 0)
+                {
+                    t += "bit 11: 0 (Voltage suppression: OFF)";
+                }
+                else
+                {
+                    t += "bit 11: 1 (Voltage suppression: ON)";
+                }
+                t += Environment.NewLine;
+                if ((stat & 0x1000) == 0)
+                {
+                    t += "bit 12: 0 (Output voltage control on pin 12: OFF)";
+                }
+                else
+                {
+                    t += "bit 12: 1 (Output voltage control on pin 12: ON)";
+                }
+                t += Environment.NewLine;
+                if ((stat & 0x4000) == 0)
+                {
+                    t += "bit 14: 0 (Voltage stability: Unstable -- changing)";
+                }
+                else
+                {
+                    t += "bit 14: 1 (Voltage stability: Stable)";
+                }
+
+                t += Environment.NewLine;
+                t += Environment.NewLine;
+                t += "See C11204-02 Command Reference Manual for details.";
+            }
+            catch
+            {
+                /* pass-through */ ;
+            }
+
+            tooltip.SetToolTip(textBox_hvpsStatus, t);
         }
     }
 }
