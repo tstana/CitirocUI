@@ -490,7 +490,7 @@ namespace CitirocUI
 
                             t += Environment.NewLine;
                             t += Environment.NewLine;
-                            t += "See C11204-02 Command Reference Manual for details."
+                            t += "See C11204-02 Command Reference Manual for details.";
                         }
                     }
                     catch { /* pass-through */ }
