@@ -380,7 +380,7 @@
             this.textBox_hvpsCmdsRej.Size = new System.Drawing.Size(63, 26);
             this.textBox_hvpsCmdsRej.TabIndex = 3;
             this.textBox_hvpsCmdsRej.TabStop = false;
-            this.textBox_hvpsCmdsRej.Text = "Rej";
+            this.textBox_hvpsCmdsRej.Text = "Failed";
             // 
             // textBox_hvpsTemp
             // 
