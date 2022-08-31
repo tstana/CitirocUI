@@ -49,7 +49,7 @@
             this.label_Temperature = new System.Windows.Forms.Label();
             this.textBox_hvpsCmdsSent = new System.Windows.Forms.TextBox();
             this.textBox_hvpsCmdsAcked = new System.Windows.Forms.TextBox();
-            this.textBox_hvpsCmdsRej = new System.Windows.Forms.TextBox();
+            this.textBox_hvpsCmdsFailed = new System.Windows.Forms.TextBox();
             this.textBox_hvpsTemp = new System.Windows.Forms.TextBox();
             this.textBox_hvpsVolt = new System.Windows.Forms.TextBox();
             this.label_hvpsStatus = new System.Windows.Forms.Label();
@@ -302,7 +302,7 @@
             this.groupBox_HvpsTelemetry.Controls.Add(this.label_Temperature);
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsCmdsSent);
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsCmdsAcked);
-            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsCmdsRej);
+            this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsCmdsFailed);
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsTemp);
             this.groupBox_HvpsTelemetry.Controls.Add(this.textBox_hvpsVolt);
             this.groupBox_HvpsTelemetry.Controls.Add(this.label_hvpsStatus);
@@ -371,16 +371,16 @@
             this.textBox_hvpsCmdsAcked.TabStop = false;
             this.textBox_hvpsCmdsAcked.Text = "Acked";
             // 
-            // textBox_hvpsCmdsRej
+            // textBox_hvpsCmdsFailed
             // 
-            this.textBox_hvpsCmdsRej.Location = new System.Drawing.Point(204, 124);
-            this.textBox_hvpsCmdsRej.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hvpsCmdsRej.Name = "textBox_hvpsCmdsRej";
-            this.textBox_hvpsCmdsRej.ReadOnly = true;
-            this.textBox_hvpsCmdsRej.Size = new System.Drawing.Size(63, 26);
-            this.textBox_hvpsCmdsRej.TabIndex = 3;
-            this.textBox_hvpsCmdsRej.TabStop = false;
-            this.textBox_hvpsCmdsRej.Text = "Failed";
+            this.textBox_hvpsCmdsFailed.Location = new System.Drawing.Point(204, 124);
+            this.textBox_hvpsCmdsFailed.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_hvpsCmdsFailed.Name = "textBox_hvpsCmdsFailed";
+            this.textBox_hvpsCmdsFailed.ReadOnly = true;
+            this.textBox_hvpsCmdsFailed.Size = new System.Drawing.Size(63, 26);
+            this.textBox_hvpsCmdsFailed.TabIndex = 3;
+            this.textBox_hvpsCmdsFailed.TabStop = false;
+            this.textBox_hvpsCmdsFailed.Text = "Failed";
             // 
             // textBox_hvpsTemp
             // 
@@ -1232,7 +1232,7 @@
         private System.Windows.Forms.Label label_Temperature;
         private System.Windows.Forms.TextBox textBox_hvpsCmdsSent;
         private System.Windows.Forms.TextBox textBox_hvpsCmdsAcked;
-        private System.Windows.Forms.TextBox textBox_hvpsCmdsRej;
+        private System.Windows.Forms.TextBox textBox_hvpsCmdsFailed;
         private System.Windows.Forms.TextBox textBox_hvpsTemp;
         private System.Windows.Forms.TextBox textBox_hvpsVolt;
         private System.Windows.Forms.Label label_Current;

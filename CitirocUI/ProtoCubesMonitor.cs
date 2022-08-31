@@ -34,7 +34,7 @@ namespace CitirocUI
             tooltip.SetToolTip(textBox_hkadcVolt, "Voltage measured at CUBES PCB input");
             tooltip.SetToolTip(textBox_hvpsCmdsSent, "Number of commands sent to the HVPS module");
             tooltip.SetToolTip(textBox_hvpsCmdsAcked, "Number of commands acknowledged (accepted) by the HVPS module");
-            tooltip.SetToolTip(textBox_hvpsCmdsRej, "Number of commands rejected by the HVPS module");
+            tooltip.SetToolTip(textBox_hvpsCmdsFailed, "Number of commands rejected by the HVPS module");
             tooltip.SetToolTip(textBox_hvpsCurr, "Current at HVPS module output");
             tooltip.SetToolTip(textBox_hvpsVolt, "Voltage at HVPS module output");
         }
@@ -191,8 +191,8 @@ namespace CitirocUI
             Array.Copy(e.DataBytes, offset, hvps_cmds_acked, 0, bytes);
             offset += bytes;
 
-            byte[] hvps_cmds_rej = new byte[bytes];
-            Array.Copy(e.DataBytes, offset, hvps_cmds_rej, 0, bytes);
+            byte[] hvps_cmds_failed = new byte[bytes];
+            Array.Copy(e.DataBytes, offset, hvps_cmds_failed, 0, bytes);
             offset += bytes;
 
             byte[] hvps_last_cmd_err = new byte[bytes];
@@ -232,7 +232,7 @@ namespace CitirocUI
                 Array.Reverse(hvps_stat);
                 Array.Reverse(hvps_cmds_sent);
                 Array.Reverse(hvps_cmds_acked);
-                Array.Reverse(hvps_cmds_rej);
+                Array.Reverse(hvps_cmds_failed);
                 Array.Reverse(hvps_last_cmd_err);
                 Array.Reverse(hkadc_batt_volt);
                 Array.Reverse(hkadc_batt_curr);
@@ -277,7 +277,7 @@ namespace CitirocUI
             // Other HVPS items:
             uint hvpsCmdsSent = BitConverter.ToUInt16(hvps_cmds_sent, 0);
             uint hvpsCmdsAcked = BitConverter.ToUInt16(hvps_cmds_acked, 0);
-            uint hvpsCmdsRej = BitConverter.ToUInt16(hvps_cmds_rej, 0);
+            uint hvpsCmdsFailed = BitConverter.ToUInt16(hvps_cmds_failed, 0);
 
             // On-board ADC fields:
             double hkadcVolt = Convert.ToDouble(
@@ -386,15 +386,15 @@ namespace CitirocUI
                     textBox_hvpsCmdsAcked.Text = hvpsCmdsAcked.ToString();
                 }
             ));
-            textBox_hvpsCmdsRej.Invoke(new EventHandler(
+            textBox_hvpsCmdsFailed.Invoke(new EventHandler(
                 delegate
                 {
-                    textBox_hvpsCmdsRej.Text = hvpsCmdsRej.ToString();
+                    textBox_hvpsCmdsFailed.Text = hvpsCmdsFailed.ToString();
                     string t = "Number of commands rejected by the HVPS module";
 
                     try
                     {
-                        if (hvpsCmdsRej > 0)
+                        if (hvpsCmdsFailed > 0)
                         {
                             t += Environment.NewLine;
                             t += Environment.NewLine;
@@ -403,51 +403,54 @@ namespace CitirocUI
                             switch (cmd)
                             {
                                 case 0:
-                                    t += "HST";
+                                    t += "None.";
                                     break;
                                 case 1:
-                                    t += "HRT";
+                                    t += "HST";
                                     break;
                                 case 2:
-                                    t += "HPO";
+                                    t += "HRT";
                                     break;
                                 case 3:
-                                    t += "HGS";
+                                    t += "HPO";
                                     break;
                                 case 4:
-                                    t += "HGV";
+                                    t += "HGS";
                                     break;
                                 case 5:
-                                    t += "HGC";
+                                    t += "HGV";
                                     break;
                                 case 6:
-                                    t += "HGT";
+                                    t += "HGC";
                                     break;
                                 case 7:
-                                    t += "HFI";
+                                    t += "HGT";
                                     break;
                                 case 8:
-                                    t += "HGN";
+                                    t += "HFI";
                                     break;
                                 case 9:
-                                    t += "HOF";
+                                    t += "HGN";
                                     break;
                                 case 10:
-                                    t += "HON";
+                                    t += "HOF";
                                     break;
                                 case 11:
-                                    t += "HRE";
+                                    t += "HON";
                                     break;
                                 case 12:
-                                    t += "HCM";
+                                    t += "HRE";
                                     break;
                                 case 13:
-                                    t += "HSC";
+                                    t += "HCM";
                                     break;
                                 case 14:
-                                    t += "HRC";
+                                    t += "HSC";
                                     break;
                                 case 15:
+                                    t += "HRC";
+                                    break;
+                                case 16:
                                     t += "HBV";
                                     break;
                                 default:
@@ -461,6 +464,9 @@ namespace CitirocUI
                             UInt16 err = (UInt16)(hvpsLastCmdErr & 0xff);
                             switch (err)
                             {
+                                case 0:
+                                    t += "None.";
+                                    break;
                                 case 1:
                                     t += "UART communication error";
                                     break;
@@ -495,7 +501,7 @@ namespace CitirocUI
                     }
                     catch { /* pass-through */ }
 
-                    tooltip.SetToolTip(textBox_hvpsCmdsRej, t);
+                    tooltip.SetToolTip(textBox_hvpsCmdsFailed, t);
                 }
             ));
             textBox_hkadcVolt.Invoke(new EventHandler(
