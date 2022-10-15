@@ -152,15 +152,13 @@ namespace CitirocUI
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog
             {
-                //InitialDirectory = @"D:\",
-                Title = "Browse Configuration Files",
+                Title = "Browse Bins Configuration Files",
 
                 CheckFileExists = true,
                 CheckPathExists = true,
 
-                DefaultExt = "conf",
-                Filter = "config files (*.conf)|*.conf",
-                FilterIndex = 2,
+                DefaultExt = "bins",
+                Filter = "bins files (*.bins)|*.bins|All Files (*.*)|*.*",
                 RestoreDirectory = true,
 
                 ReadOnlyChecked = true,
@@ -169,7 +167,6 @@ namespace CitirocUI
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                //textBox1.Text = openFileDialog1.FileName;
                 using (StreamReader file = new StreamReader(openFileDialog1.FileName))
                 {
                     string ln;
@@ -200,10 +197,9 @@ namespace CitirocUI
         {
             string strSaveFileName = "";
             SaveFileDialog ScSaveDialog = new SaveFileDialog();
-            ScSaveDialog.Title = "Specify Output file";
-            //ScSaveDialog.Filter = "All Files(*.*)|*.*";
-            ScSaveDialog.DefaultExt = "conf";
-            ScSaveDialog.Filter = "config files (*.conf)|*.conf";
+            ScSaveDialog.Title = "Save Bins Configuration File";
+            ScSaveDialog.DefaultExt = "bins";
+            ScSaveDialog.Filter = "bins files (*.bins)|*.bins|All Files (*.*)|*.*";
             ScSaveDialog.RestoreDirectory = true;
 
             if (ScSaveDialog.ShowDialog() == DialogResult.OK)
