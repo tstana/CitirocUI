@@ -76,6 +76,7 @@ namespace CitirocUI
                 return;
 
             comboBox_Ch0_hgNumBinsFixed.Enabled = !checkBox_Ch0_hgVarBin.Checked;
+            textBox_Ch0HgFixed.Enabled = !checkBox_Ch0_hgVarBin.Checked;
             comboBox_Ch0_hgNumBinsVar.Enabled =  checkBox_Ch0_hgVarBin.Checked;
             if (checkBox_Ch0_hgVarBin.Checked)
             {
@@ -87,6 +88,7 @@ namespace CitirocUI
             }
 
             comboBox_Ch0_lgNumBinsFixed.Enabled = !checkBox_Ch0_lgVarBin.Checked;
+            textBox_Ch0LgFixed.Enabled = !checkBox_Ch0_lgVarBin.Checked;
             comboBox_Ch0_lgNumBinsVar.Enabled =  checkBox_Ch0_lgVarBin.Checked;
             if (checkBox_Ch0_lgVarBin.Checked)
             {
@@ -98,6 +100,7 @@ namespace CitirocUI
             }
 
             comboBox_Ch16_hgNumBinsFixed.Enabled = !checkBox_Ch16_hgVarBin.Checked;
+            textBox_Ch16HgFixed.Enabled = !checkBox_Ch16_hgVarBin.Checked;
             comboBox_Ch16_hgNumBinsVar.Enabled = checkBox_Ch16_hgVarBin.Checked;
             if (checkBox_Ch16_hgVarBin.Checked)
             {
@@ -109,6 +112,7 @@ namespace CitirocUI
             }
             
             comboBox_Ch16_lgNumBinsFixed.Enabled = !checkBox_Ch16_lgVarBin.Checked;
+            textBox_Ch16LgFixed.Enabled = !checkBox_Ch16_lgVarBin.Checked;
             comboBox_Ch16_lgNumBinsVar.Enabled = checkBox_Ch16_lgVarBin.Checked;
             if (checkBox_Ch16_lgVarBin.Checked)
             {
@@ -120,6 +124,7 @@ namespace CitirocUI
             }
 
             comboBox_Ch31_hgNumBinsFixed.Enabled = !checkBox_Ch31_hgVarBin.Checked;
+            textBox_Ch31HgFixed.Enabled = !checkBox_Ch31_hgVarBin.Checked;
             comboBox_Ch31_hgNumBinsVar.Enabled = checkBox_Ch31_hgVarBin.Checked;
             if (checkBox_Ch31_hgVarBin.Checked)
             {
@@ -131,6 +136,7 @@ namespace CitirocUI
             }
 
             comboBox_Ch31_lgNumBinsFixed.Enabled = !checkBox_Ch31_lgVarBin.Checked;
+            textBox_Ch31LgFixed.Enabled = !checkBox_Ch31_lgVarBin.Checked;
             comboBox_Ch31_lgNumBinsVar.Enabled = checkBox_Ch31_lgVarBin.Checked;
             if (checkBox_Ch31_lgVarBin.Checked)
             {
@@ -142,7 +148,7 @@ namespace CitirocUI
             }
         }
 
-         private void checkBox_CheckedChanged(object sender, EventArgs e)
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
             UpdateComboBoxes();
         }
