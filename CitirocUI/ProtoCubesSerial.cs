@@ -415,9 +415,8 @@ namespace CitirocUI
             /*
              * Expected number of bytes:
              *      ID:
-             *          Unix time: 0123456789\r\n (23 bytes)
-             *          Data (30 bytes)
-             *          \r\n (2 bytes)
+             *          OBC: Mmm dd YYYY, HH:MM:ss\r\n
+             *          CUBES: Mmm dd YYYY, HH:MM:ss
              *          ---
              *          Total: 55
              *      Status:
