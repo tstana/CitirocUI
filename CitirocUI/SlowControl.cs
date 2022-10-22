@@ -575,15 +575,14 @@ namespace CitirocUI
                     return;
                 }
 
-                string configNum = "";
-
                 if (checkBox_sendToNVM.Checked == true)
                 {
-                    if (ConfigIdInputForm.InputForm(ref configNum) == DialogResult.OK)
+                    uint conf_id = 0;
+                    if (ConfigIdInputForm.InputForm(ref conf_id) == DialogResult.OK)
                     {
-                        configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
-                        configNum = configNum.PadLeft(8, '0');
-                        strSC += strRev(configNum);
+                        string confIdSC = Convert.ToString(conf_id, 2);
+                        confIdSC = confIdSC.PadLeft(8, '0');
+                        strSC += strRev(confIdSC);
                      }
                 }
                 

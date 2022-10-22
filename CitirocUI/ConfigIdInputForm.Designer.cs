@@ -72,7 +72,7 @@ namespace CitirocUI
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(202, 20);
             this.label.TabIndex = 3;
-            this.label.Text = "Enter configuration number";
+            this.label.Text = "Citiroc Configuration ID (CONF_ID):";
             // 
             // ConfigIdInputForm
             // 

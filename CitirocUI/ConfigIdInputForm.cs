@@ -12,39 +12,42 @@ namespace CitirocUI
 {
     public partial class ConfigIdInputForm : Form
     {
-        public static string configNum = "";
+        public static uint conf_id = 0;
+
         public ConfigIdInputForm()
         {
             InitializeComponent();
         }
 
-        public static DialogResult InputForm(ref string value)
+        public static DialogResult InputForm(ref uint val)
         {
             Form form = new ConfigIdInputForm();
             DialogResult dialogResult = form.ShowDialog();
-            value = configNum;
+            val = conf_id;
             return dialogResult;
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {
-            label.Text = "Enter configuration number";
             try
             {
-                if (Convert.ToUInt32(textBox.Text, 10) > 255)
+                uint userInput = Convert.ToUInt32(textBox.Text, 10);
+                if ((userInput < 1) || (userInput > 254))
                 {
-                    label.Text = "Input too large, must be between 0-255";
+                    MessageBox.Show("CONF_ID must be between 1 and 254",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     AcceptButton.Enabled = false;
                 }
                 else
                 {
-                    configNum = textBox.Text;
+                    conf_id = userInput;
                     AcceptButton.Enabled = true;
                 }
             }
             catch
             {
-                label.Text = "Invalid data type!";
+                MessageBox.Show("CONF_ID must be a number between 1 and 254",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 AcceptButton.Enabled = false;
             }
         }

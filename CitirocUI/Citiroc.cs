@@ -1280,16 +1280,13 @@ namespace CitirocUI
             }
 
             //Initialize string for input of config number selection
-            string configNum = "";
+            uint conf_id = 0;
 
-            if (ConfigIdInputForm.InputForm(ref configNum) == DialogResult.OK)
+            if (ConfigIdInputForm.InputForm(ref conf_id) == DialogResult.OK)
             {
-                byte[] citiConf = new byte[1];
-                configNum = Convert.ToString(Convert.ToInt32(configNum, 10), 2);
-                configNum = configNum.PadLeft(8, '0');
-                uint intCmdTmp = Convert.ToUInt32(configNum, 2);
-                citiConf[0] = Convert.ToByte(intCmdTmp);
-                protoCubes.SendCommand(ProtoCubesSerial.Command.SelectNVMCitirocConf, citiConf);
+                byte[] cmdParam = new byte[1];
+                cmdParam[0] = Convert.ToByte(conf_id);
+                protoCubes.SendCommand(ProtoCubesSerial.Command.SelectNVMCitirocConf, cmdParam);
                 button_selectSC.BackColor = WeerocGreen;
                 tmrButtonColor.Enabled = true;  
             }
