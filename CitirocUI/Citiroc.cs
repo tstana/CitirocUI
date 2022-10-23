@@ -504,8 +504,6 @@ namespace CitirocUI
             }
         }
 
-
-
         private void checkBox_selValEvt_CheckedChanged(object sender, EventArgs e)
         {
             if (((CheckBox)sender).Checked) { ((CheckBox)sender).Text = "IO_FPGA5 valid event"; checkBox_valEvt.Visible = false; }
@@ -1266,6 +1264,33 @@ namespace CitirocUI
                 " 32 fast shaper outputs is very low. The input DAC calibration is used to adjust individual high voltage biasing of SiPM in a SiPM array" +
                 " so every SiPM has the same gain. Input DAC can be disabled per individual channel thanks to the checkboxes.";
         }
+        private void button_selectSC_MouseEnter(object sender, EventArgs e)
+        {
+            label_help.Text = "Select which loaded configuration on the NVM to select.";
+        }
+
+        private void button_selectSC_Click(object sender, EventArgs e)
+        {
+            if (connectStatus != 1)
+            {
+                button_selectSC.BackColor = Color.LightCoral;
+                tmrButtonColor.Enabled = true;
+                label_help.Text = "Please configure your connection.";
+                return;
+            }
+
+            //Initialize string for input of config number selection
+            uint conf_id = 0;
+
+            if (ConfigIdInputForm.InputForm(ref conf_id) == DialogResult.OK)
+            {
+                byte[] cmdParam = new byte[1];
+                cmdParam[0] = Convert.ToByte(conf_id);
+                protoCubes.SendCommand(ProtoCubesSerial.Command.SelectNVMCitirocConf, cmdParam);
+                button_selectSC.BackColor = WeerocGreen;
+                tmrButtonColor.Enabled = true;  
+            }
+        }
 
         private void button_saveSC_MouseEnter(object sender, EventArgs e)
         {
@@ -1929,6 +1954,9 @@ namespace CitirocUI
 
             button_sendSC.BackColor = Color.Gainsboro;
             button_sendSC.ForeColor = SystemColors.ControlText;
+
+            button_selectSC.BackColor = Color.Gainsboro;
+            button_selectSC.ForeColor = SystemColors.ControlText;
 
             button_sendProbes.BackColor = Color.Gainsboro;
             button_sendProbes.ForeColor = SystemColors.ControlText;

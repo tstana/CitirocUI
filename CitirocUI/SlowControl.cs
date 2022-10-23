@@ -540,7 +540,6 @@ namespace CitirocUI
         private void button_sendSC_Click(object sender, EventArgs e)
         {
             bool result = false;
-
             string strSC = getSC();
 
             if (comboBox_SelectConnection.SelectedIndex == 0)
@@ -568,6 +567,25 @@ namespace CitirocUI
             }
             else if (comboBox_SelectConnection.SelectedIndex == 1)
             {
+                if ((checkBox_sendToNVM.Checked == true) && (connectStatus != 1))
+                {
+                    button_sendSC.BackColor = Color.LightCoral;
+                    tmrButtonColor.Enabled = true;
+                    label_help.Text = "Please configure your connection.";
+                    return;
+                }
+
+                if (checkBox_sendToNVM.Checked == true)
+                {
+                    uint conf_id = 0;
+                    if (ConfigIdInputForm.InputForm(ref conf_id) == DialogResult.OK)
+                    {
+                        string confIdSC = Convert.ToString(conf_id, 2);
+                        confIdSC = confIdSC.PadLeft(8, '0');
+                        strSC += strRev(confIdSC);
+                     }
+                }
+                
                 result = sendSC(usbDevId, strSC);
                 if (result)
                     button_sendSC.BackColor = WeerocGreen;
@@ -596,27 +614,19 @@ namespace CitirocUI
 
             // Initialize result as false
             bool result = false;
-
-            // Get standard length of slow control bitstream
-            int scLength = strDefSC.Length;
-            // Get length of current slow control bitstream
-            int intLenStrSC = strSC.Length;
-            byte[] bytSC = new byte[scLength / 8];
+            byte[] bytSC = new byte[strSC.Length / 8];
 
             // If the length of the current bitstream is not OK, return false
             // else store the slow control in byte array
-            if (intLenStrSC == scLength)
+            
+            for (int i = 0; i < (strSC.Length / 8); i++)
             {
-                for (int i = 0; i < (scLength / 8); i++)
-                {
-                    string strScCmdTmp = strSC.Substring(i * 8, 8);
-                    strScCmdTmp = strRev(strScCmdTmp);
-                    uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
-                    bytSC[i] = Convert.ToByte(intCmdTmp);
-                }
+                string strScCmdTmp = strSC.Substring(i * 8, 8);
+                strScCmdTmp = strRev(strScCmdTmp);
+                uint intCmdTmp = Convert.ToUInt32(strScCmdTmp, 2);
+                bytSC[i] = Convert.ToByte(intCmdTmp);
             }
-            else
-                return result;
+            
 
             // Send configuration to Weeroc board
             if (comboBox_SelectConnection.SelectedIndex == 0)
@@ -667,8 +677,14 @@ namespace CitirocUI
             {
                 try
                 {
-                    protoCubes.SendCommand(ProtoCubesSerial.Command.SendCitirocConf,
-                        bytSC);
+                    if (checkBox_sendToNVM.Checked == false)
+                    {
+                        protoCubes.SendCommand(ProtoCubesSerial.Command.SendCitirocConf, bytSC);
+                    }
+                    else
+                    {
+                        protoCubes.SendCommand(ProtoCubesSerial.Command.SendNVMCitirocConf, bytSC);
+                    }
                     result = true;
                 }
                 catch (Exception ex)

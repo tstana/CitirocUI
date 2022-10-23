@@ -55,27 +55,29 @@ namespace CitirocUI
         /// </summary>
         public enum Command
         {
-            None                = '-',
+            None                 = '-',
 
-            SendCitirocConf     = 'C',
-            SendProbeConf       = 'P',
-            SendHVPSConf        = 'H',
-            SendHVPSTmpVolt     = 'V',
-            SendDAQConf         = 'D',
-            SendReadReg         = 'R',
-            SendGatewareConf    = 'G',
-            SendCalibPulseConf  = 'A',
+            SendCitirocConf      = 'C',
+            SelectNVMCitirocConf = 'O',
+            SendNVMCitirocConf   = 'N',
+            SendProbeConf        = 'P',
+            SendHVPSConf         = 'H',
+            SendHVPSTmpVolt      = 'V',
+            SendDAQConf          = 'D',
+            SendReadReg          = 'R',
+            SendGatewareConf     = 'G',
+            SendCalibPulseConf   = 'A',
 
-            SendTime            = 'Z',
+            SendTime = 'Z',
 
-            DAQStart            = 'S',
-            DAQStop             = 'T',
-            DelFiles            = 'Q',
+            DAQStart             = 'S',
+            DAQStop              = 'T',
+            DelFiles             = 'Q',
 
-            ReqHK               = 'h',
-            ReqStatus           = 's',
-            ReqPayload          = 'p',
-            ReqBoardID          = 'i'
+            ReqHK                = 'h',
+            ReqStatus            = 's',
+            ReqPayload           = 'p',
+            ReqBoardID           = 'i'
         }
         #endregion
 
@@ -314,6 +316,28 @@ namespace CitirocUI
                         throw new ArgumentException("Command '" +
                             (char)cmd + "' does not accept any arguments.");
                     }
+                    break;
+
+                case Command.SendNVMCitirocConf:
+                    if (cmdParam.Length != 144)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 144 bytes as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[145];
+                    break;
+
+                case Command.SelectNVMCitirocConf:
+                    if (cmdParam.Length != 1)
+                    {
+                        throw new ArgumentException("Command '" +
+                            (char)cmd + "' takes in 1 byte as parameter; " +
+                            "the parameter array consists of " +
+                            cmdParam.Length.ToString() + " bytes instead!");
+                    }
+                    cmdBytes = new byte[2];
                     break;
 
                 case Command.SendCitirocConf:
