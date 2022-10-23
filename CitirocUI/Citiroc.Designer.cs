@@ -1424,7 +1424,7 @@
             this.checkBox_sendToNVM.Location = new System.Drawing.Point(554, 453);
             this.checkBox_sendToNVM.Name = "checkBox_sendToNVM";
             this.checkBox_sendToNVM.Size = new System.Drawing.Size(206, 28);
-            this.checkBox_sendToNVM.Text = "Store configuration in NVM";
+            this.checkBox_sendToNVM.Text = "Store configuration to NVM";
             this.checkBox_sendToNVM.UseVisualStyleBackColor = true;
             // 
             // button_selectSC
@@ -1434,7 +1434,7 @@
             this.button_selectSC.Name = "button_selectSC";
             this.button_selectSC.Size = new System.Drawing.Size(150,28);
             this.button_selectSC.TabIndex = 2;
-            this.button_selectSC.Text = "Select NVM";
+            this.button_selectSC.Text = "Select NVM config.";
             this.button_selectSC.UseVisualStyleBackColor = false;
             this.button_selectSC.Click += new System.EventHandler(this.button_selectSC_Click);
             this.button_selectSC.MouseEnter += new System.EventHandler(this.button_selectSC_MouseEnter);
@@ -11770,16 +11770,16 @@
             this.groupBox_selectSC.Size = new System.Drawing.Size(1035, 62);
             this.groupBox_selectSC.TabIndex = 4;
             this.groupBox_selectSC.TabStop = false;
-            this.groupBox_selectSC.Text = "Select configuration from NVM";
+            this.groupBox_selectSC.Text = "Select Citiroc configuration from NVM";
             // 
             // label_selectSC
             // 
             this.label_selectSC.AutoSize = true;
             this.label_selectSC.Location = new System.Drawing.Point(6, 30);
-            this.label_selectSC.Name = "label_WarnClearArduinoSD";
+            this.label_selectSC.Name = "label_selectSC";
             this.label_selectSC.Size = new System.Drawing.Size(810, 18);
             this.label_selectSC.TabIndex = 0;
-            this.label_selectSC.Text = "Select stored configuration to apply to NVM";
+            this.label_selectSC.Text = "Select configuration stored NVM in to apply to Citiroc";
             // 
             // checkBox_RstSR
             // 
