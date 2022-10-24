@@ -1282,7 +1282,7 @@ namespace CitirocUI
             //Initialize string for input of config number selection
             uint conf_id = 0;
 
-            if (ConfigIdInputForm.InputForm(ref conf_id) == DialogResult.OK)
+            if (ConfigIdInputForm.InputForm(0, ref conf_id) == DialogResult.OK)
             {
                 byte[] cmdParam = new byte[1];
                 cmdParam[0] = Convert.ToByte(conf_id);

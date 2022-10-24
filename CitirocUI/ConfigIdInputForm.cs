@@ -12,6 +12,7 @@ namespace CitirocUI
 {
     public partial class ConfigIdInputForm : Form
     {
+        public static uint conf_id_min = 0;
         public static uint conf_id = 0;
 
         public ConfigIdInputForm()
@@ -19,8 +20,9 @@ namespace CitirocUI
             InitializeComponent();
         }
 
-        public static DialogResult InputForm(ref uint val)
+        public static DialogResult InputForm(uint min, ref uint val)
         {
+            conf_id_min = min;
             Form form = new ConfigIdInputForm();
             DialogResult dialogResult = form.ShowDialog();
             val = conf_id;
@@ -32,9 +34,10 @@ namespace CitirocUI
             try
             {
                 uint userInput = Convert.ToUInt32(textBox.Text, 10);
-                if ((userInput < 1) || (userInput > 254))
+                if ((userInput < conf_id_min) || (userInput > 254))
                 {
-                    MessageBox.Show("CONF_ID must be between 1 and 254",
+                    MessageBox.Show("CONF_ID must be between " +
+                        conf_id_min.ToString() + " and 254",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     AcceptButton.Enabled = false;
                 }
@@ -46,7 +49,8 @@ namespace CitirocUI
             }
             catch
             {
-                MessageBox.Show("CONF_ID must be a number between 1 and 254",
+                MessageBox.Show("CONF_ID must be a number between " +
+                        conf_id_min.ToString() + " and 254",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 AcceptButton.Enabled = false;
             }

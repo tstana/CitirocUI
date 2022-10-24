@@ -578,7 +578,7 @@ namespace CitirocUI
                 if (checkBox_sendToNVM.Checked == true)
                 {
                     uint conf_id = 0;
-                    if (ConfigIdInputForm.InputForm(ref conf_id) == DialogResult.OK)
+                    if (ConfigIdInputForm.InputForm(1, ref conf_id) == DialogResult.OK)
                     {
                         string confIdSC = Convert.ToString(conf_id, 2);
                         confIdSC = confIdSC.PadLeft(8, '0');
