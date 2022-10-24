@@ -488,8 +488,9 @@ namespace CitirocUI
                     break;
             }
 
-            /* Set reply buffer index to 0 on new command */
+            /* Clear reply buffer on new command */
             commandReplyBytesRead = 0;
+            Array.Clear(commandReplyBuffer, 0, commandReplyBuffer.Length);
 
             /* Prep the array, send it and set the currently executing cmd. */
             cmdBytes[0] = Convert.ToByte(cmd);
