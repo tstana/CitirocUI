@@ -4,6 +4,8 @@ using System.IO.Ports;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace CitirocUI
 {
@@ -102,6 +104,7 @@ namespace CitirocUI
         private int commandReplyDataLen = 0;
 
         private int commandReplyBytesRead = 0;
+        private bool commandReplyTimeout = false;
 
          //global variables
         private Color[] MessageColor = { Color.Blue, Color.Green, Color.Black, Color.Orange, Color.Red };
@@ -494,6 +497,16 @@ namespace CitirocUI
                 Array.Copy(cmdParam, 0, cmdBytes, 1, cmdParam.Length);
 
             SendData(cmdBytes, cmdBytes.Length);
+
+            commandReplyTimeout = false;
+            if(commandReplyDataLen > 0) {
+                Task t = Task.Run( () =>
+                {
+                    Thread.Sleep(500);
+                    commandReplyTimeout = true;
+                    comPort_DataReceived(this, null);
+                });
+            }
         }
         #endregion
 
@@ -626,7 +639,7 @@ namespace CitirocUI
             {
                 dataBytes.CopyTo(commandReplyBuffer, commandReplyBytesRead);
                 commandReplyBytesRead += numBytesRead;
-                if (commandReplyBytesRead >= commandReplyDataLen)
+                if ((commandReplyBytesRead >= commandReplyDataLen) || (commandReplyTimeout))
                 {
                     DataReadyEvent(this,
                         new DataReadyEventArgs(lastSentCommand,
