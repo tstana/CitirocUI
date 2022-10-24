@@ -279,6 +279,8 @@ namespace CitirocUI
                     // Send time on connection (Proto-CUBES)
                     SendTimeToProtoCUBES();
 
+                    Thread.Sleep(500);
+
                     // Request Board ID on connect
                     try
                     {
