@@ -500,7 +500,8 @@ namespace CitirocUI
             SendData(cmdBytes, cmdBytes.Length);
 
             commandReplyTimeout = false;
-            if(commandReplyDataLen > 0) {
+            if ((commandReplyDataLen > 0) &&
+                    (lastSentCommand != Command.ReqPayload)) {
                 Task t = Task.Run( () =>
                 {
                     Thread.Sleep(500);
