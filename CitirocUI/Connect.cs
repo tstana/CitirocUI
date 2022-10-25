@@ -669,8 +669,8 @@ namespace CitirocUI
             string s = "Board status\n" +
                 "Proto-CUBES is connected.\n\n" +
                 "Firmware and gateware info:\n" +
-                System.Text.Encoding.ASCII.GetString(e.DataBytes, 0, 55);
-            // TODO: Update the "55" above to the number sent as part of
+                System.Text.Encoding.ASCII.GetString(e.DataBytes, 0, 38);
+            // TODO: Update the "39" above to the final number sent as part of
             //       REQ_BOARD_ID reply...
 
             UpdatingLabel(s, label_boardStatus);
