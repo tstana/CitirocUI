@@ -443,9 +443,9 @@ namespace CitirocUI
              * Expected number of bytes:
              *      ID (example):
              *          OBC: Oct 25 2022\r\n
-             *          CUBES: Oct 25 2022\r\n
+             *          CUBES: C2|2022-10-25|Oct 25 2022\r\n
              *          ---
-             *          Total: 38
+             *          Total: 52
              *      Status:
              *          Unix time: 0123456789\r\n (23 bytes)
              *          Data (1 byte)
@@ -469,7 +469,7 @@ namespace CitirocUI
             switch (lastSentCommand)
             {
                 case Command.ReqBoardID:
-                    commandReplyDataLen = 38;
+                    commandReplyDataLen = 52;
                     break;
                 case Command.ReqHK:
                     commandReplyDataLen = 71;

@@ -667,11 +667,22 @@ namespace CitirocUI
                 return;
 
             string s = "Board status\n" +
-                "Proto-CUBES is connected.\n\n" +
-                "Firmware and gateware info:\n" +
-                System.Text.Encoding.ASCII.GetString(e.DataBytes, 0, 38);
-            // TODO: Update the "39" above to the final number sent as part of
-            //       REQ_BOARD_ID reply...
+                "Proto-CUBES is connected." + Environment.NewLine +
+                "Firmware and gateware info:" + Environment.NewLine;
+            
+            // Example reply to dismantle and print:
+            // OBC: Oct 25 2022\r\n
+            // CUBES: C2|2022-10-25|Oct 25 2022\r\n
+            s += System.Text.Encoding.ASCII.GetString(e.DataBytes, 0, 24) +
+                Environment.NewLine;
+            s += "  -- Board: " +
+                System.Text.Encoding.ASCII.GetString(e.DataBytes, 25, 2) +
+                Environment.NewLine;
+            s += "  -- Gateware: " +
+                System.Text.Encoding.ASCII.GetString(e.DataBytes, 28, 10) +
+                Environment.NewLine;
+            s += "  -- MSS firmware: " +
+                System.Text.Encoding.ASCII.GetString(e.DataBytes, 39, 11);
 
             UpdatingLabel(s, label_boardStatus);
         }
