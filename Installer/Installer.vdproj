@@ -21,20 +21,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0B0DBE46E48E2214D505F8DB6664A174"
-        "OwnerKey" = "8:_8281DAEAC2E44A37AF168D3E6D1ED5E7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0E404241F74F4AF6AB97EC602C32C61E"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0F84BD3403E209B26622C7FD80130E49"
-        "OwnerKey" = "8:_8281DAEAC2E44A37AF168D3E6D1ED5E7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -87,19 +75,55 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9767C2203D5E453D93F59BC5D7C908E3"
+        "OwnerKey" = "8:_8281DAEAC2E44A37AF168D3E6D1ED5E7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F70BBF7126F5FC3DADF71D1DDD9CDF6"
+        "OwnerKey" = "8:_8281DAEAC2E44A37AF168D3E6D1ED5E7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A79C554C86134CCDFE0398AE50849559"
+        "OwnerKey" = "8:_8281DAEAC2E44A37AF168D3E6D1ED5E7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AFBB2703D2EE4DF5A8AEB1DC7E45820F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B24312063D6542D3849D629F02915748"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B5B04776B3E624A0DA6B3B855E98E456"
-        "OwnerKey" = "8:_8281DAEAC2E44A37AF168D3E6D1ED5E7"
+        "MsmKey" = "8:_B6B93791D2ED45A995271E8F1927BF58"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B7A69ABD90AE4E28943EBF56AF82A6A2"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_C6A084431D89428A8E1325B638D826CF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DB4518388B8F400EB9D53DFD2141486C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -118,19 +142,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0B0DBE46E48E2214D505F8DB6664A174"
+        "OwnerKey" = "8:_9F70BBF7126F5FC3DADF71D1DDD9CDF6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0F84BD3403E209B26622C7FD80130E49"
+        "OwnerKey" = "8:_9767C2203D5E453D93F59BC5D7C908E3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B5B04776B3E624A0DA6B3B855E98E456"
+        "OwnerKey" = "8:_A79C554C86134CCDFE0398AE50849559"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -173,7 +197,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\CitirocUI-v.2.0.0.250-beta1.msi"
+        "OutputFilename" = "8:Release\\CitirocUI-v.2.0.0.250.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -220,7 +244,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.6.1"
+                "FrameworkVersion" = "8:v4.6.1"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=671728"
                 }
@@ -248,37 +272,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0B0DBE46E48E2214D505F8DB6664A174"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MathNet.Numerics, Version=3.19.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0B0DBE46E48E2214D505F8DB6664A174"
-                    {
-                    "Name" = "8:MathNet.Numerics.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MathNet.Numerics.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_554C1430DA934F1D95CE21AB85D3A663"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E404241F74F4AF6AB97EC602C32C61E"
             {
             "SourcePath" = "8:..\\CitirocUI\\Resources\\Usb2.0.dll"
@@ -297,37 +290,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0F84BD3403E209B26622C7FD80130E49"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FTD2XX_NET, Version=1.0.14.39395, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0F84BD3403E209B26622C7FD80130E49"
-                    {
-                    "Name" = "8:FTD2XX_NET.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:FTD2XX_NET.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_554C1430DA934F1D95CE21AB85D3A663"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1D833B6A74314022ACE9DF62113F8C04"
@@ -481,12 +443,23 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B24312063D6542D3849D629F02915748"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9767C2203D5E453D93F59BC5D7C908E3"
             {
-            "SourcePath" = "8:..\\CitirocUI\\Resources\\onoff2.png"
-            "TargetName" = "8:onoff2.png"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FTD2XX_NET, Version=1.0.14.39395, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_9767C2203D5E453D93F59BC5D7C908E3"
+                    {
+                    "Name" = "8:FTD2XX_NET.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FTD2XX_NET.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_4F46245609434A8DBC9B4D6E70606C07"
+            "Folder" = "8:_554C1430DA934F1D95CE21AB85D3A663"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -498,17 +471,48 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B5B04776B3E624A0DA6B3B855E98E456"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9F70BBF7126F5FC3DADF71D1DDD9CDF6"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:MathNet.Numerics, Version=3.19.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B5B04776B3E624A0DA6B3B855E98E456"
+                    "_9F70BBF7126F5FC3DADF71D1DDD9CDF6"
+                    {
+                    "Name" = "8:MathNet.Numerics.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MathNet.Numerics.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_554C1430DA934F1D95CE21AB85D3A663"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A79C554C86134CCDFE0398AE50849559"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_A79C554C86134CCDFE0398AE50849559"
                     {
                     "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
@@ -532,12 +536,112 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AFBB2703D2EE4DF5A8AEB1DC7E45820F"
+            {
+            "SourcePath" = "8:..\\asic-conf-files\\charge-lin-test-dg1062z.conf"
+            "TargetName" = "8:charge-lin-test-dg1062z.conf"
+            "Tag" = "8:"
+            "Folder" = "8:_62073BA5C5C8463E815043F2AF790968"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B24312063D6542D3849D629F02915748"
+            {
+            "SourcePath" = "8:..\\CitirocUI\\Resources\\onoff2.png"
+            "TargetName" = "8:onoff2.png"
+            "Tag" = "8:"
+            "Folder" = "8:_4F46245609434A8DBC9B4D6E70606C07"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B6B93791D2ED45A995271E8F1927BF58"
+            {
+            "SourcePath" = "8:..\\asic-conf-files\\charge-lin-test-dg1062z.non-calib.conf"
+            "TargetName" = "8:charge-lin-test-dg1062z.non-calib.conf"
+            "Tag" = "8:"
+            "Folder" = "8:_62073BA5C5C8463E815043F2AF790968"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B7A69ABD90AE4E28943EBF56AF82A6A2"
+            {
+            "SourcePath" = "8:..\\asic-conf-files\\calib-2.conf"
+            "TargetName" = "8:calib-2.conf"
+            "Tag" = "8:"
+            "Folder" = "8:_62073BA5C5C8463E815043F2AF790968"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C6A084431D89428A8E1325B638D826CF"
             {
             "SourcePath" = "8:..\\CitirocUI\\Resources\\Bryant-RegularCompressed.otf"
             "TargetName" = "8:Bryant-RegularCompressed.otf"
             "Tag" = "8:"
             "Folder" = "8:_4F46245609434A8DBC9B4D6E70606C07"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB4518388B8F400EB9D53DFD2141486C"
+            {
+            "SourcePath" = "8:..\\asic-conf-files\\calib-1.conf"
+            "TargetName" = "8:calib-1.conf"
+            "Tag" = "8:"
+            "Folder" = "8:_62073BA5C5C8463E815043F2AF790968"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -590,6 +694,17 @@
                         {
                         }
                     }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_62073BA5C5C8463E815043F2AF790968"
+                    {
+                    "Name" = "8:asic-conf-files"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_D4542BFD088642CABDC6BE85BB13C72C"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_7C068DE051B441F390B73DC88635BD0E"
@@ -618,9 +733,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:CitirocUI v2.0.0.250-beta1 (KTH)"
-        "ProductCode" = "8:{CDEF6295-9C44-4A63-AB60-64AEF668D41A}"
-        "PackageCode" = "8:{AF504AD1-DB1B-41C1-B3A2-3D793370BAA2}"
+        "ProductName" = "8:CitirocUI v2.0.0.250 (KTH)"
+        "ProductCode" = "8:{281DDB50-147E-4D17-85DA-B15CA7EFEC05}"
+        "PackageCode" = "8:{3B6D0FDE-2DDE-4618-8298-21370E9CB3AB}"
         "UpgradeCode" = "8:{8A76A71E-60A9-4FF3-8FB7-B3A5BDD78A0F}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
